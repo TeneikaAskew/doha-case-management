@@ -120,3 +120,13 @@
   white-space: pre-wrap; font-family: var(--font-family-primary); font-size: var(--font-size-sm);
   line-height: 1.6; margin: 0; }
 .document-viewer-source { padding: var(--space-3) var(--space-5); border-top: 1px solid var(--border-light); }
+
+.source-chip { display: inline-flex; align-items: center; gap: var(--space-1);
+  padding: var(--space-1) var(--space-2); border-radius: var(--radius-pill);
+  font-size: var(--font-size-xs); font-weight: 600; background: var(--bg-sidebar);
+  color: var(--text-secondary); border: 1px solid var(--border-medium); }
+.source-chip-link:hover { color: var(--dcsa-ocean); border-color: var(--dcsa-ocean); }
+.document-received { margin: var(--space-2) 0 var(--space-3); }
+.document-section { margin-top: var(--space-4); }
+.document-section h5 { font-size: var(--font-size-sm); text-transform: uppercase;
+  letter-spacing: 0.5px; color: var(--text-secondary); margin-bottom: var(--space-1); }
