@@ -203,6 +203,7 @@ class IdentityIdentifier(BaseModel):
     subjectValue: str
     recordValue: str
     match: bool
+    score: float = Field(ge=0.0, le=1.0, default=1.0)  # per-identifier match score
 
 
 class IdentityMatch(BaseModel):

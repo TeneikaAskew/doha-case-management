@@ -608,20 +608,44 @@
           {
             "field": "Name",
             "subjectValue": "Daniel R. Okafor",
-            "recordValue": "Daniel Okafor",
-            "match": true
+            "recordValue": "OKAFOR, DANIEL",
+            "match": true,
+            "score": 0.97
           },
           {
             "field": "DOB",
             "subjectValue": "1988-03-14",
             "recordValue": "1988-03-14",
-            "match": true
+            "match": true,
+            "score": 1.0
           },
           {
             "field": "SSN",
             "subjectValue": "923-04-4821",
             "recordValue": "923-04-4821",
-            "match": true
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "Phone",
+            "subjectValue": "(703) 555-0142",
+            "recordValue": "703-555-0142",
+            "match": true,
+            "score": 0.98
+          },
+          {
+            "field": "Email",
+            "subjectValue": "d.okafor88@example.com",
+            "recordValue": "dokafor.va@mailhost.example",
+            "match": false,
+            "score": 0.34
+          },
+          {
+            "field": "Address",
+            "subjectValue": "1427 Birch Hollow Ct, Manassas, VA 20109",
+            "recordValue": "1427 BIRCH HOLLOW CT, MANASSAS, VA 20109-2415",
+            "match": true,
+            "score": 0.93
           }
         ]
       },
@@ -667,13 +691,22 @@
             "field": "Passport",
             "subjectValue": "531048291",
             "recordValue": "531048291",
-            "match": true
+            "match": true,
+            "score": 1.0
           },
           {
             "field": "Name",
             "subjectValue": "Daniel R. Okafor",
             "recordValue": "OKAFOR, DANIEL R",
-            "match": true
+            "match": true,
+            "score": 0.98
+          },
+          {
+            "field": "DOB",
+            "subjectValue": "1988-03-14",
+            "recordValue": "1988-03-14",
+            "match": true,
+            "score": 1.0
           }
         ]
       },

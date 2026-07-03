@@ -446,19 +446,43 @@
             "field": "Fingerprint",
             "subjectValue": "Enrolled (Rap Back)",
             "recordValue": "Match",
-            "match": true
+            "match": true,
+            "score": 1.0
           },
           {
             "field": "Name",
             "subjectValue": "Marcus T. Bell",
             "recordValue": "BELL, MARCUS T",
-            "match": true
+            "match": true,
+            "score": 0.97
           },
           {
             "field": "DOB",
             "subjectValue": "1992-11-02",
             "recordValue": "1992-11-02",
-            "match": true
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "SSN",
+            "subjectValue": "917-38-7733",
+            "recordValue": "917-38-7733",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "Phone",
+            "subjectValue": "(757) 555-0186",
+            "recordValue": "757-555-0186",
+            "match": true,
+            "score": 0.98
+          },
+          {
+            "field": "Address",
+            "subjectValue": "88 Quarry Ridge Rd, Chesapeake, VA 23320",
+            "recordValue": "88 QUARRY RIDGE RD, CHESAPEAKE, VA 23320",
+            "match": true,
+            "score": 0.96
           }
         ]
       },
@@ -507,14 +531,44 @@
           {
             "field": "Name",
             "subjectValue": "Marcus T. Bell",
-            "recordValue": "Marcus Bell",
-            "match": true
+            "recordValue": "BELL, MARCUS",
+            "match": true,
+            "score": 0.95
+          },
+          {
+            "field": "DOB",
+            "subjectValue": "1992-11-02",
+            "recordValue": "1992-11-02",
+            "match": true,
+            "score": 1.0
           },
           {
             "field": "SSN",
             "subjectValue": "917-38-7733",
             "recordValue": "917-38-7733",
-            "match": true
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "Phone",
+            "subjectValue": "(757) 555-0186",
+            "recordValue": "Not on bureau file",
+            "match": false,
+            "score": 0.0
+          },
+          {
+            "field": "Email",
+            "subjectValue": "mtbell92@example.com",
+            "recordValue": "marcus.bell.hr@tidewater.example",
+            "match": false,
+            "score": 0.29
+          },
+          {
+            "field": "Address",
+            "subjectValue": "88 Quarry Ridge Rd, Chesapeake, VA 23320",
+            "recordValue": "414 KEMPSVILLE CROSSING LN, VIRGINIA BEACH, VA 23464",
+            "match": false,
+            "score": 0.58
           }
         ]
       },

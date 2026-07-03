@@ -21,11 +21,14 @@ import { REFS } from '../references.js';
 const STAGES = ['INITIATION', 'INVESTIGATION', 'ADJUDICATION', 'CONTINUOUS_VETTING'];
 const STATUS_RANK = { ACTION_REQUIRED: 0, NEEDS_REVIEW: 1, CLEAR: 2 };
 const BANDS = [
-  // light tint fills with dark hue ink: lighter look, AA text, badge-consistent
-  { id: 'low', label: 'Low (<40)', bg: 'var(--risk-low-bg)', ink: 'var(--risk-low)' },
+  // bg: light tint fill; ink: dark AA text on the tint; swatch: true hue for the legend
+  { id: 'low', label: 'Low (<40)', bg: 'var(--risk-low-bg)', ink: 'var(--risk-low)',
+    swatch: 'var(--risk-low)' },
   { id: 'moderate', label: 'Moderate (40-74)',
-    bg: 'var(--risk-moderate-bg)', ink: 'var(--status-warning-dark)' },
-  { id: 'high', label: 'High (75+)', bg: 'var(--risk-high-bg)', ink: 'var(--risk-high)' },
+    bg: 'var(--risk-moderate-bg)', ink: 'var(--status-warning-dark)',
+    swatch: 'var(--risk-moderate)' },
+  { id: 'high', label: 'High (75+)', bg: 'var(--risk-high-bg)', ink: 'var(--risk-high)',
+    swatch: 'var(--risk-high)' },
 ];
 
 export default function SubjectsHome() {
@@ -140,7 +143,7 @@ export default function SubjectsHome() {
         </div>
         <div className="risk-bar-legend">
           {BANDS.map((b) => (
-            <span key={b.id} className="risk-bar-key" style={{ '--band-ink': b.ink }}>
+            <span key={b.id} className="risk-bar-key" style={{ '--band-swatch': b.swatch }}>
               {b.label}: {bandCount(b.id)}
             </span>
           ))}

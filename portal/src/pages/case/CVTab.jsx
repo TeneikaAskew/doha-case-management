@@ -93,7 +93,13 @@ function AlertBody({ alert: a, state, isAnalyst, dispositionAlert }) {
             <tbody>
               {a.identityMatch.identifiers.map((idf) => (
                 <tr key={idf.field}>
-                  <td>{idf.field}</td><td>{idf.subjectValue}</td><td>{idf.recordValue}</td>
+                  <td className="identity-field">
+                    {idf.field}
+                    {idf.score != null && (
+                      <span className="identity-score">{Math.round(idf.score * 100)}%</span>
+                    )}
+                  </td>
+                  <td>{idf.subjectValue}</td><td>{idf.recordValue}</td>
                   <td><StatusBadge variant={idf.match ? 'success' : 'error'}>
                     {idf.match ? 'Match' : 'No match'}
                   </StatusBadge></td>

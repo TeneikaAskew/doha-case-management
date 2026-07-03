@@ -17,20 +17,44 @@
           {
             "field": "Name",
             "subjectValue": "Daniel R. Okafor",
-            "recordValue": "Daniel Okafor",
-            "match": true
+            "recordValue": "OKAFOR, DANIEL",
+            "match": true,
+            "score": 0.97
           },
           {
             "field": "DOB",
             "subjectValue": "1988-03-14",
             "recordValue": "1988-03-14",
-            "match": true
+            "match": true,
+            "score": 1.0
           },
           {
             "field": "SSN",
             "subjectValue": "923-04-4821",
             "recordValue": "923-04-4821",
-            "match": true
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "Phone",
+            "subjectValue": "(703) 555-0142",
+            "recordValue": "703-555-0142",
+            "match": true,
+            "score": 0.98
+          },
+          {
+            "field": "Email",
+            "subjectValue": "d.okafor88@example.com",
+            "recordValue": "dokafor.va@mailhost.example",
+            "match": false,
+            "score": 0.34
+          },
+          {
+            "field": "Address",
+            "subjectValue": "1427 Birch Hollow Ct, Manassas, VA 20109",
+            "recordValue": "1427 BIRCH HOLLOW CT, MANASSAS, VA 20109-2415",
+            "match": true,
+            "score": 0.93
           }
         ]
       },
@@ -76,13 +100,22 @@
             "field": "Passport",
             "subjectValue": "531048291",
             "recordValue": "531048291",
-            "match": true
+            "match": true,
+            "score": 1.0
           },
           {
             "field": "Name",
             "subjectValue": "Daniel R. Okafor",
             "recordValue": "OKAFOR, DANIEL R",
-            "match": true
+            "match": true,
+            "score": 0.98
+          },
+          {
+            "field": "DOB",
+            "subjectValue": "1988-03-14",
+            "recordValue": "1988-03-14",
+            "match": true,
+            "score": 1.0
           }
         ]
       },
@@ -140,19 +173,43 @@
             "field": "Fingerprint",
             "subjectValue": "Enrolled (Rap Back)",
             "recordValue": "Match",
-            "match": true
+            "match": true,
+            "score": 1.0
           },
           {
             "field": "Name",
             "subjectValue": "Marcus T. Bell",
             "recordValue": "BELL, MARCUS T",
-            "match": true
+            "match": true,
+            "score": 0.97
           },
           {
             "field": "DOB",
             "subjectValue": "1992-11-02",
             "recordValue": "1992-11-02",
-            "match": true
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "SSN",
+            "subjectValue": "917-38-7733",
+            "recordValue": "917-38-7733",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "Phone",
+            "subjectValue": "(757) 555-0186",
+            "recordValue": "757-555-0186",
+            "match": true,
+            "score": 0.98
+          },
+          {
+            "field": "Address",
+            "subjectValue": "88 Quarry Ridge Rd, Chesapeake, VA 23320",
+            "recordValue": "88 QUARRY RIDGE RD, CHESAPEAKE, VA 23320",
+            "match": true,
+            "score": 0.96
           }
         ]
       },
@@ -201,14 +258,44 @@
           {
             "field": "Name",
             "subjectValue": "Marcus T. Bell",
-            "recordValue": "Marcus Bell",
-            "match": true
+            "recordValue": "BELL, MARCUS",
+            "match": true,
+            "score": 0.95
+          },
+          {
+            "field": "DOB",
+            "subjectValue": "1992-11-02",
+            "recordValue": "1992-11-02",
+            "match": true,
+            "score": 1.0
           },
           {
             "field": "SSN",
             "subjectValue": "917-38-7733",
             "recordValue": "917-38-7733",
-            "match": true
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "Phone",
+            "subjectValue": "(757) 555-0186",
+            "recordValue": "Not on bureau file",
+            "match": false,
+            "score": 0.0
+          },
+          {
+            "field": "Email",
+            "subjectValue": "mtbell92@example.com",
+            "recordValue": "marcus.bell.hr@tidewater.example",
+            "match": false,
+            "score": 0.29
+          },
+          {
+            "field": "Address",
+            "subjectValue": "88 Quarry Ridge Rd, Chesapeake, VA 23320",
+            "recordValue": "414 KEMPSVILLE CROSSING LN, VIRGINIA BEACH, VA 23464",
+            "match": false,
+            "score": 0.58
           }
         ]
       },
@@ -272,13 +359,43 @@
             "field": "Name",
             "subjectValue": "Samuel K. Boateng",
             "recordValue": "SAMUEL K. BOATENG",
-            "match": true
+            "match": true,
+            "score": 0.96
           },
           {
             "field": "DOB",
             "subjectValue": "1993-05-14",
             "recordValue": "1993-05-14",
-            "match": true
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "SSN",
+            "subjectValue": "933-21-1481",
+            "recordValue": "933-21-1481",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "Phone",
+            "subjectValue": "(703) 555-0113",
+            "recordValue": "703-555-0113",
+            "match": true,
+            "score": 0.98
+          },
+          {
+            "field": "Email",
+            "subjectValue": "samuel.boateng@contractor.example",
+            "recordValue": "sboateng13@mailhost.example",
+            "match": false,
+            "score": 0.29
+          },
+          {
+            "field": "Address",
+            "subjectValue": "503 Halstead Ct, Alexandria, VA 22310",
+            "recordValue": "503 HALSTEAD CT, ALEXANDRIA, VA 22310-1091",
+            "match": true,
+            "score": 0.95
           }
         ]
       },
@@ -324,13 +441,43 @@
             "field": "Name",
             "subjectValue": "Ethan C. Marsh",
             "recordValue": "ETHAN C. MARSH",
-            "match": true
+            "match": true,
+            "score": 0.98
           },
           {
             "field": "DOB",
             "subjectValue": "1980-07-16",
             "recordValue": "1980-07-16",
-            "match": true
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "SSN",
+            "subjectValue": "935-35-1555",
+            "recordValue": "935-35-1555",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "Phone",
+            "subjectValue": "(703) 555-0115",
+            "recordValue": "703-555-0115",
+            "match": true,
+            "score": 0.98
+          },
+          {
+            "field": "Email",
+            "subjectValue": "ethan.marsh@contractor.example",
+            "recordValue": "emarsh15@mailhost.example",
+            "match": false,
+            "score": 0.37
+          },
+          {
+            "field": "Address",
+            "subjectValue": "565 Bright Leaf Way, Fairfax, VA 22031",
+            "recordValue": "565 BRIGHT LEAF WAY, FAIRFAX, VA 22031-1105",
+            "match": true,
+            "score": 0.9
           }
         ]
       },

@@ -329,13 +329,43 @@
             "field": "Name",
             "subjectValue": "Samuel K. Boateng",
             "recordValue": "SAMUEL K. BOATENG",
-            "match": true
+            "match": true,
+            "score": 0.96
           },
           {
             "field": "DOB",
             "subjectValue": "1993-05-14",
             "recordValue": "1993-05-14",
-            "match": true
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "SSN",
+            "subjectValue": "933-21-1481",
+            "recordValue": "933-21-1481",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "Phone",
+            "subjectValue": "(703) 555-0113",
+            "recordValue": "703-555-0113",
+            "match": true,
+            "score": 0.98
+          },
+          {
+            "field": "Email",
+            "subjectValue": "samuel.boateng@contractor.example",
+            "recordValue": "sboateng13@mailhost.example",
+            "match": false,
+            "score": 0.29
+          },
+          {
+            "field": "Address",
+            "subjectValue": "503 Halstead Ct, Alexandria, VA 22310",
+            "recordValue": "503 HALSTEAD CT, ALEXANDRIA, VA 22310-1091",
+            "match": true,
+            "score": 0.95
           }
         ]
       },

@@ -97,6 +97,39 @@ def _guideline_card(code: str, precedent_fn) -> dict:
     )
 
 
+def _identity_identifiers(idx: int, subj: dict) -> list[dict]:
+    """Six-identifier scorecard with deterministic, realistic record variants:
+    provider records carry uppercase names, unformatted phones, stale or
+    ZIP+4 addresses, and rarely a matching email."""
+    first, last = subj["name"].split()[0], subj["name"].split()[-1]
+    phone_digits = "".join(ch for ch in subj["phone"] if ch.isdigit())
+    stale_address = idx % 4 == 0  # every 4th subject: bureau file has old address
+    if stale_address:
+        record_addr = subj["addressHistory"][1]["address"].upper()
+        addr_score, addr_match = 0.57, False
+    else:
+        record_addr = f"{subj['address'].upper()}-{1000 + (idx * 7) % 9000:04d}"
+        addr_score, addr_match = round(0.9 + (idx % 5) * 0.015, 2), True
+    return [
+        dict(field="Name", subjectValue=subj["name"],
+             recordValue=subj["name"].upper(), match=True,
+             score=round(0.95 + (idx % 4) * 0.01, 2)),
+        dict(field="DOB", subjectValue=subj["dob"], recordValue=subj["dob"],
+             match=True, score=1.0),
+        dict(field="SSN", subjectValue=subj["ssn"], recordValue=subj["ssn"],
+             match=True, score=1.0),
+        dict(field="Phone", subjectValue=subj["phone"],
+             recordValue=f"{phone_digits[:3]}-{phone_digits[3:6]}-{phone_digits[6:]}",
+             match=True, score=0.98),
+        dict(field="Email", subjectValue=subj["email"],
+             recordValue=f"{first[0].lower()}{last.lower()}{idx % 90:02d}"
+                         "@mailhost.example",
+             match=False, score=round(0.25 + (idx % 4) * 0.04, 2)),
+        dict(field="Address", subjectValue=subj["address"],
+             recordValue=record_addr, match=addr_match, score=addr_score),
+    ]
+
+
 def _roster_alert(idx: int, subj: dict, code: str) -> dict:
     category = "FINANCIAL" if code == "F" else "SUITABILITY"
     provider = {"F": "TransUnion", "K": "DISS / prior adjudications"}.get(code, "LexisNexis")
@@ -106,10 +139,8 @@ def _roster_alert(idx: int, subj: dict, code: str) -> dict:
         receivedDate="2026-06-18",
         provider=provider,
         description=GUIDELINE_TEMPLATES[code]["evidence"] + ".",
-        identityMatch=dict(confidence=0.93, identifiers=[
-            dict(field="Name", subjectValue=subj["name"],
-                 recordValue=subj["name"].upper(), match=True),
-            dict(field="DOB", subjectValue=subj["dob"], recordValue=subj["dob"], match=True)]),
+        identityMatch=dict(confidence=0.93,
+                           identifiers=_identity_identifiers(idx, subj)),
         threshold=dict(rule="Category threshold met", met=True,
                        detail="Meets CV investigative-standard threshold."),
         priorAdjudication=dict(previouslyAdjudicated=False, reference=None),

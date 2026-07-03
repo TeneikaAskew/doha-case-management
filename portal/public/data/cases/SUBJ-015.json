@@ -318,13 +318,43 @@
             "field": "Name",
             "subjectValue": "Ethan C. Marsh",
             "recordValue": "ETHAN C. MARSH",
-            "match": true
+            "match": true,
+            "score": 0.98
           },
           {
             "field": "DOB",
             "subjectValue": "1980-07-16",
             "recordValue": "1980-07-16",
-            "match": true
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "SSN",
+            "subjectValue": "935-35-1555",
+            "recordValue": "935-35-1555",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "Phone",
+            "subjectValue": "(703) 555-0115",
+            "recordValue": "703-555-0115",
+            "match": true,
+            "score": 0.98
+          },
+          {
+            "field": "Email",
+            "subjectValue": "ethan.marsh@contractor.example",
+            "recordValue": "emarsh15@mailhost.example",
+            "match": false,
+            "score": 0.37
+          },
+          {
+            "field": "Address",
+            "subjectValue": "565 Bright Leaf Way, Fairfax, VA 22031",
+            "recordValue": "565 BRIGHT LEAF WAY, FAIRFAX, VA 22031-1105",
+            "match": true,
+            "score": 0.9
           }
         ]
       },
