@@ -63,3 +63,29 @@
 .directory-search { min-width: 240px; }
 .directory-check { display: inline-flex; align-items: center; gap: var(--space-2);
   font-size: var(--font-size-sm); color: var(--text-secondary); padding-bottom: 10px; }
+
+/* Sign in */
+.signin-screen { min-height: 100vh; display: flex; align-items: center; justify-content: center;
+  padding: var(--space-6); background: var(--dcsa-navy);
+  background: linear-gradient(160deg, var(--dcsa-navy) 0%, var(--dcsa-navy-light) 100%); }
+.signin-card { width: 100%; max-width: 640px; background: var(--bg-card);
+  border-radius: var(--radius-lg); box-shadow: var(--shadow-dropdown);
+  padding: var(--space-8); display: flex; flex-direction: column; gap: var(--space-5); }
+.signin-header { display: flex; align-items: center; gap: var(--space-4); }
+.signin-seal { display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  width: 56px; height: 56px; border-radius: 50%; border: 2px solid var(--dcsa-gold);
+  background: var(--dcsa-navy); color: var(--text-inverse); font-weight: 700;
+  font-size: var(--font-size-xs); letter-spacing: 0.5px; }
+.signin-app-name { font-size: var(--font-size-xl); font-weight: 700; color: var(--text-primary); }
+.signin-app-subtitle { font-size: var(--font-size-sm); color: var(--text-secondary); }
+.signin-consent h2 { font-size: var(--font-size-base); margin-bottom: var(--space-2); }
+.signin-consent-text { max-height: 220px; overflow-y: auto; padding: var(--space-3);
+  border: 1px solid var(--border-light); border-radius: var(--radius-sm);
+  background: var(--bg-sidebar); font-size: var(--font-size-sm); color: var(--text-secondary); }
+.signin-consent-text p { margin: 0 0 var(--space-2); }
+.signin-consent-text ul { margin: 0; padding-left: var(--space-5); display: flex;
+  flex-direction: column; gap: var(--space-2); }
+.signin-button { width: 100%; justify-content: center; padding: var(--space-3) var(--space-4);
+  font-size: var(--font-size-base); }
+.signin-help { font-size: var(--font-size-sm); color: var(--text-secondary); margin: 0; }
+.signin-disclaimer { font-size: var(--font-size-xs); color: var(--text-muted); margin: 0; }

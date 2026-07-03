@@ -1,7 +1,9 @@
 import { HashRouter, Routes, Route } from 'react-router-dom';
+import { SessionProvider, useSession } from './state/SessionContext.jsx';
 import { PersonaProvider } from './state/PersonaContext.jsx';
 import { DemoProvider } from './state/DemoContext.jsx';
 import AppShell from './layouts/AppShell.jsx';
+import SignIn from './pages/SignIn.jsx';
 import SubjectsHome from './pages/SubjectsHome.jsx';
 import Dashboard from './pages/Dashboard.jsx';
 import CaseQueue from './pages/CaseQueue.jsx';
@@ -12,7 +14,9 @@ import Analytics from './pages/Analytics.jsx';
 import NotFound from './pages/NotFound.jsx';
 import './pages/pages.css';
 
-export default function App() {
+function Gate() {
+  const { signedIn } = useSession();
+  if (!signedIn) return <SignIn />;
   return (
     <PersonaProvider>
       <DemoProvider>
@@ -32,5 +36,13 @@ export default function App() {
         </HashRouter>
       </DemoProvider>
     </PersonaProvider>
+  );
+}
+
+export default function App() {
+  return (
+    <SessionProvider>
+      <Gate />
+    </SessionProvider>
   );
 }

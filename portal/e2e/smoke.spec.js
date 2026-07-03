@@ -2,6 +2,8 @@ import { test, expect } from '@playwright/test';
 
 test('every page loads and the hero case walks through all tabs', async ({ page }) => {
   await page.goto('/#/');
+  await expect(page.getByText('Standard Mandatory DoD Notice and Consent')).toBeVisible();
+  await page.getByRole('button', { name: /accept conditions and sign in/i }).click();
   await expect(page.getByRole('heading', { name: 'Subjects' })).toBeVisible();
   await expect(page.getByText('Total Subjects')).toBeVisible();
   await expect(page.getByText('Vetting Pipeline')).toBeVisible();
@@ -40,4 +42,7 @@ test('every page loads and the hero case walks through all tabs', async ({ page 
   await expect(page.getByRole('heading', { name: 'FBI CJIS / NCIC + Rap Back' })).toBeVisible();
   await page.goto('/#/analytics');
   await expect(page.getByRole('heading', { name: 'Analytics' })).toBeVisible();
+
+  await page.getByRole('button', { name: 'Sign out' }).click();
+  await expect(page.getByText('Standard Mandatory DoD Notice and Consent')).toBeVisible();
 });

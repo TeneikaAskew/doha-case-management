@@ -2,10 +2,11 @@ import { useState } from 'react';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import {
   FiHome, FiUser, FiUsers, FiActivity, FiDatabase, FiBarChart2,
-  FiChevronLeft, FiChevronRight, FiSearch, FiRotateCcw,
+  FiChevronLeft, FiChevronRight, FiSearch, FiRotateCcw, FiLogOut,
 } from 'react-icons/fi';
 import { usePersona } from '../state/PersonaContext.jsx';
 import { useDemo } from '../state/DemoContext.jsx';
+import { useSession } from '../state/SessionContext.jsx';
 import { PERSONAS } from '../domain.js';
 import './shell.css';
 
@@ -23,6 +24,7 @@ const NAV_ITEMS = [
 export default function AppShell() {
   const { persona, setPersona } = usePersona();
   const { reset } = useDemo();
+  const { signOut } = useSession();
   const navigate = useNavigate();
   const [collapsed, setCollapsed] = useState(
     () => localStorage.getItem(SIDEBAR_STORAGE_KEY) === 'collapsed');
@@ -64,6 +66,9 @@ export default function AppShell() {
           </label>
           <button type="button" className="btn btn-ghost header-reset" onClick={reset}>
             <FiRotateCcw aria-hidden="true" /> Reset demo
+          </button>
+          <button type="button" className="btn btn-ghost header-reset" onClick={signOut}>
+            <FiLogOut aria-hidden="true" /> Sign out
           </button>
         </div>
       </header>
