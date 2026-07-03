@@ -1,15 +1,41 @@
 import KVGrid from '../../components/KVGrid.jsx';
 import AIBadge from '../../components/AIBadge.jsx';
 import GuidelineChip from '../../components/GuidelineChip.jsx';
+import { ALERT_CATEGORY_LABELS } from '../../domain.js';
+
+function alertAccent(category) {
+  if (category === 'TERRORISM') return 'var(--status-hrh)';
+  if (category === 'CRIMINAL') return 'var(--status-warning)';
+  if (category === 'FINANCIAL') return 'var(--status-caution)';
+  return 'var(--accent-teal)';
+}
 
 export default function OverviewTab({ caseData }) {
   const s = caseData.subject;
+  const alertCounts = caseData.alerts.reduce((acc, a) => {
+    acc[a.category] = (acc[a.category] || 0) + 1;
+    return acc;
+  }, {});
   return (
     <div>
       <div className="card ai-summary">
         <h3>Executive summary <AIBadge /></h3>
         <p>{caseData.aiSummary}</p>
       </div>
+      {caseData.alerts.length > 0 && (
+        <div className="card">
+          <h3>CV alert summary</h3>
+          <div className="alert-summary-grid">
+            {Object.entries(alertCounts).map(([category, count]) => (
+              <div key={category} className="alert-summary-card"
+                style={{ '--alert-accent': alertAccent(category) }}>
+                <div className="alert-count">{count}</div>
+                <div className="alert-type">{ALERT_CATEGORY_LABELS[category] || category}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
       <div className="card">
         <h3>Subject</h3>
         <KVGrid items={[

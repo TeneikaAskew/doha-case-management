@@ -24,6 +24,22 @@ describe('primitives', () => {
     expect(screen.getByText('3 overdue')).toBeInTheDocument();
   });
 
+  it('KPICard with onClick renders as a button and fires', () => {
+    const onClick = vi.fn();
+    render(<KPICard label="Open alerts" value={5} onClick={onClick} />);
+    const btn = screen.getByRole('button');
+    expect(btn.className).toContain('kpi-clickable');
+    fireEvent.click(btn);
+    expect(onClick).toHaveBeenCalledTimes(1);
+  });
+
+  it('KPICard applies the active class when active', () => {
+    render(<KPICard label="New" value={2} onClick={() => {}} active />);
+    const btn = screen.getByRole('button');
+    expect(btn.className).toContain('active');
+    expect(btn).toHaveAttribute('aria-pressed', 'true');
+  });
+
   it('GuidelineChip shows letter with full name tooltip', () => {
     render(<GuidelineChip code="F" />);
     expect(screen.getByText('F')).toHaveAttribute('title', 'Financial Considerations');

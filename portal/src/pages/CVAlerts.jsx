@@ -20,17 +20,30 @@ export default function CVAlerts() {
   const navigate = useNavigate();
   const { demo } = useDemo();
   const [category, setCategory] = useState('ALL');
+  const [kpiFilter, setKpiFilter] = useState(null);
   const { data, loading, error } = useData(getAlerts);
 
   const alerts = useMemo(() => {
     if (!data) return [];
     return data
       .map((a) => ({ ...a, state: demo.alertStates[a.id] || a.state }))
-      .filter((a) => category === 'ALL' || a.category === category);
-  }, [data, demo.alertStates, category]);
+      .filter((a) => category === 'ALL' || a.category === category)
+      .filter((a) => {
+        const isOpen = !['ADJUDICATED', 'CLOSED'].includes(a.state);
+        switch (kpiFilter) {
+          case 'OPEN': return isOpen;
+          case 'NEW': return a.state === 'NEW';
+          case 'HIGH': return isOpen && a.severity === 'HIGH';
+          case 'REFERRED': return a.state === 'REFERRED';
+          default: return true;
+        }
+      });
+  }, [data, demo.alertStates, category, kpiFilter]);
 
   if (loading) return <Loading />;
   if (error) return <div className="page"><ErrorAlert message={error} /></div>;
+
+  const toggleKpi = (key) => setKpiFilter((prev) => (prev === key ? null : key));
 
   const all = data.map((a) => ({ ...a, state: demo.alertStates[a.id] || a.state }));
   const open = all.filter((a) => !['ADJUDICATED', 'CLOSED'].includes(a.state));
@@ -66,15 +79,19 @@ export default function CVAlerts() {
         </label>
       </div>
       <div className="kpi-grid">
-        <KPICard label="Open alerts" value={open.length} accent="var(--status-alert)" />
+        <KPICard label="Open alerts" value={open.length} accent="var(--status-alert)"
+          onClick={() => toggleKpi('OPEN')} active={kpiFilter === 'OPEN'} />
         <KPICard label="New" value={all.filter((a) => a.state === 'NEW').length}
-          accent="var(--status-warning)" />
+          accent="var(--status-warning)"
+          onClick={() => toggleKpi('NEW')} active={kpiFilter === 'NEW'} />
         <KPICard label="High severity"
           value={open.filter((a) => a.severity === 'HIGH').length}
-          accent="var(--risk-high)" />
+          accent="var(--risk-high)"
+          onClick={() => toggleKpi('HIGH')} active={kpiFilter === 'HIGH'} />
         <KPICard label="Referred"
           value={all.filter((a) => a.state === 'REFERRED').length}
-          accent="var(--dcsa-gold)" />
+          accent="var(--dcsa-gold)"
+          onClick={() => toggleKpi('REFERRED')} active={kpiFilter === 'REFERRED'} />
       </div>
       {alerts.length === 0
         ? <EmptyState title="No alerts" message="No alerts match the current filter." />
