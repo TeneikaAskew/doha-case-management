@@ -107,7 +107,7 @@
 .timeline-strip-item:last-child .timeline-strip-marker::before { display: none; }
 .timeline-strip-marker::after { content: ''; position: absolute; top: 0; left: 0;
   width: 14px; height: 14px; border-radius: 50%; box-sizing: border-box;
-  background: var(--dcsa-gold); border: 2px solid var(--dcsa-navy); }
+  background: var(--dcsa-gold); border: 1px solid var(--dcsa-navy); }
 .timeline-strip-event { font-size: var(--font-size-xs); font-weight: 600;
   color: var(--text-primary); }
 .timeline-detail-toggle { margin-bottom: var(--space-3); }
@@ -166,7 +166,7 @@
 .interview-rail { position: relative; }
 .interview-rail::after { content: ''; position: absolute; top: 4px; left: 0;
   width: 14px; height: 14px; border-radius: 50%; box-sizing: border-box;
-  background: var(--dcsa-gold); border: 2px solid var(--dcsa-navy); }
+  background: var(--dcsa-gold); border: 1px solid var(--dcsa-navy); }
 .interview-rail::before { content: ''; position: absolute; top: 20px;
   bottom: calc(var(--space-3) * -1 - 4px); left: 6px; width: 2px;
   background: var(--border-light); }
@@ -238,7 +238,7 @@
 .alert-step-marker::after { content: ''; position: absolute; top: 0; left: 0;
   width: 16px; height: 16px; border-radius: 50%; box-sizing: border-box; }
 .alert-stepper li.done .alert-step-marker::after { background: var(--dcsa-gold);
-  border: 2px solid var(--dcsa-navy); }
+  border: 1px solid var(--dcsa-navy); }
 .alert-stepper li.todo .alert-step-marker::after { background: var(--bg-card);
   border: 2px dashed var(--border-medium); }
 .alert-step-state { font-size: var(--font-size-xs); font-weight: 700; }
