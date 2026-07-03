@@ -26,9 +26,11 @@ test('every page loads and the hero case walks through all tabs', async ({ page 
   await page.getByRole('tab', { name: 'Overview' }).click();
   await expect(page.getByText('923-04-4821').first()).toBeVisible();
 
-  // Record-check drill-down: Bell's police report opens from the Investigation tab.
+  // Record-check drill-down: checks are grouped by category; Bell's police
+  // report lives inside the Investigative fieldwork group.
   await page.goto('/#/cases/SUBJ-002?tab=investigation');
-  await page.getByRole('button', { name: /police report retrieval/i }).click();
+  await page.getByRole('button', { name: /investigative fieldwork/i }).click();
+  await expect(page.getByText(/police report retrieval/i).first()).toBeVisible();
   await page.getByRole('button', { name: /view document/i }).click();
   await expect(page.getByText(/Arrest report 26-044812/)).toBeVisible();
 
