@@ -2,6 +2,47 @@ import { useState } from 'react';
 import { FiShield } from 'react-icons/fi';
 import { useSession } from '../state/SessionContext.jsx';
 import { PASSWORD_SHA256, sha256Hex } from '../accessControl.js';
+import { REFS } from '../references.js';
+
+const REFERENCES = [
+  ['DOHA Industrial Security Clearance Decisions', REFS.DOHA_DECISIONS,
+   'Data source: real published hearing and Appeal Board decisions power the '
+   + 'precedent citations, outcome analytics, and sample decision document'],
+  ['Defense Office of Hearings and Appeals (DOHA)', REFS.DOHA,
+   'The DoD appeals body whose published decisions this demo draws from'],
+  ['DOE Office of Hearings and Appeals - Security Cases', REFS.DOE_OHA_CASES,
+   'Department of Energy clearance decisions (10 CFR 710), a parallel corpus'],
+  ['SEAD 4 - National Security Adjudicative Guidelines', REFS.SEAD4,
+   'The 13 guidelines (A-M) and whole-person factors used in case analysis'],
+  ['SEAD 3 - Reporting Requirements', REFS.SEAD3,
+   'Unofficial foreign-travel reporting behind the travel alerts'],
+  ['SEAD 6 - Continuous Evaluation', REFS.SEAD6,
+   'Policy basis for the continuous-vetting workflow'],
+  ['DCSA Background Investigations', REFS.FIS,
+   'Tiered investigation coverage reflected in record checks'],
+  ['DCSA Continuous Vetting', REFS.DCSA_CV,
+   'CV enrollment and alert categories'],
+  ['DCSA Personnel Vetting', REFS.DCSA_PV,
+   'Mission context and terminology'],
+  ['Standard Form 86 (OPM)', REFS.SF86,
+   'Subject self-report sections compared against record checks'],
+  ['SEAD 8 - Temporary Eligibility', REFS.SEAD8,
+   'Interim eligibility shown on in-process subjects'],
+  ['Federal Personnel Vetting Guidelines', REFS.FPVG,
+   'Federal vetting standards and terminology'],
+  ['Trusted Workforce 2.0 Policy Index', REFS.TW_INDEX,
+   'Policy framework for the modernized vetting model'],
+  ['DoDI 5200.02 - DoD Personnel Security Program', REFS.DODI_520002,
+   'Program-level requirements for personnel security'],
+  ['DoD Suitability Guide for Employees', REFS.SUITABILITY,
+   'Suitability adjudication concepts'],
+  ['CDSE Training Toolkits', REFS.CDSE,
+   'Security training resources informing workflow depictions'],
+  ['CDSE Personnel Vetting Toolkit', REFS.CDSE_PV,
+   'Vetting policy and procedure references'],
+  ['CDSE Adjudicator Toolkit', REFS.CDSE_ADJ,
+   'Adjudicator-facing resources behind the adjudication tab'],
+];
 
 export default function SignIn() {
   const { signIn } = useSession();
@@ -29,41 +70,30 @@ export default function SignIn() {
         </div>
 
         <div className="signin-consent">
-          <h2>Standard Mandatory DoD Notice and Consent</h2>
+          <h2>About This Demo</h2>
           <div className="signin-consent-text" role="region"
-            aria-label="Standard Mandatory DoD Notice and Consent">
+            aria-label="About this demo">
             <p>
-              You are accessing a U.S. Government (USG) Information System (IS) that is
-              provided for USG-authorized use only. By using this IS (which includes any
-              device attached to this IS), you consent to the following conditions:
+              A demonstration of subject-centric personnel-vetting case management:
+              one place to see the whole person - identity and history, record
+              checks with source documents, adjudicative-guideline analysis,
+              continuous-vetting alerts, and adjudication - built as a React
+              single-page app over deterministic, generated case data.
             </p>
-            <ul>
-              <li>
-                The USG routinely intercepts and monitors communications on this IS for
-                purposes including, but not limited to, penetration testing, COMSEC
-                monitoring, network operations and defense, personnel misconduct (PM), law
-                enforcement (LE), and counterintelligence (CI) investigations.
-              </li>
-              <li>At any time, the USG may inspect and seize data stored on this IS.</li>
-              <li>
-                Communications using, or data stored on, this IS are not private, are
-                subject to routine monitoring, interception, and search, and may be
-                disclosed or used for any USG-authorized purpose.
-              </li>
-              <li>
-                This IS includes security measures (e.g., authentication and access
-                controls) to protect USG interests - not for your personal benefit or
-                privacy.
-              </li>
-              <li>
-                Notwithstanding the above, using this IS does not constitute consent to
-                PM, LE or CI investigative searching or monitoring of the content of
-                privileged communications, or work product, related to personal
-                representation or advice of attorneys, psychotherapists, or clergy, and
-                their assistants. Such communications and work product are private and
-                confidential. See User Agreement for details.
-              </li>
-            </ul>
+            <p>
+              The concept is inspired by the DoD personnel security mission and
+              leverages publicly released decisions from the{' '}
+              <a href="https://doha.ogc.osd.mil/Industrial-Security-Program/"
+                target="_blank" rel="noreferrer">
+                DOHA Industrial Security Program
+              </a>
+              : precedent citations, outcome analytics, and the sample decision
+              document are drawn from that published corpus.
+            </p>
+            <p>
+              All subjects, alerts, and documents are fictional. No affiliation
+              with, or endorsement by, DoD, DCSA, or DOHA is implied.
+            </p>
           </div>
         </div>
 
@@ -76,7 +106,7 @@ export default function SignIn() {
             onChange={(e) => { setPassword(e.target.value); setError(null); }} />
           {error && <p className="signin-error" role="alert">{error}</p>}
           <button type="submit" className="btn btn-primary signin-button">
-            <FiShield aria-hidden="true" /> Accept conditions and sign in with CAC/PIV
+            <FiShield aria-hidden="true" /> Sign in with CAC/PIV (SSO)
           </button>
         </form>
 
@@ -87,6 +117,23 @@ export default function SignIn() {
         <p className="signin-disclaimer">
           Demonstration system - authentication is simulated and all data is synthetic.
         </p>
+
+        <div className="signin-refs">
+          <h2>References &amp; Data Sources</h2>
+          <table className="signin-refs-table">
+            <thead>
+              <tr><th>Resource</th><th>Role in this demo</th></tr>
+            </thead>
+            <tbody>
+              {REFERENCES.map(([name, url, role]) => (
+                <tr key={name}>
+                  <td><a href={url} target="_blank" rel="noreferrer">{name}</a></td>
+                  <td>{role}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );

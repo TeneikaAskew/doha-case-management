@@ -44,12 +44,11 @@
 .risk-bar { display: flex; height: 36px; border-radius: var(--radius-sm);
   overflow: hidden; margin-bottom: var(--space-3); }
 .risk-bar-segment { display: flex; align-items: center; justify-content: center;
-  background: var(--band-bg); color: var(--band-ink); font-weight: 700;
-  box-shadow: inset 0 0 0 1px var(--band-ink); }
+  background: var(--band-bg); color: var(--band-ink); font-weight: 700; }
 .risk-bar-legend { display: flex; gap: var(--space-4); flex-wrap: wrap; }
 .risk-bar-key { font-size: var(--font-size-sm); color: var(--text-secondary); }
 .risk-bar-key::before { content: ''; display: inline-block; width: 10px; height: 10px;
-  border-radius: 2px; background: var(--band-ink); margin-right: var(--space-1); }
+  border-radius: 2px; background: var(--band-swatch); margin-right: var(--space-1); }
 .attention-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: var(--space-4); margin-bottom: var(--space-5); align-items: stretch; }
 .attention-grid > .card { margin-top: 0; }
@@ -101,6 +100,20 @@
   font-size: var(--font-size-base); margin-top: var(--space-2); }
 .signin-help { font-size: var(--font-size-sm); color: var(--text-secondary); margin: 0; }
 .signin-disclaimer { font-size: var(--font-size-xs); color: var(--text-muted); margin: 0; }
+.signin-refs { border-top: 1px solid var(--border-light); padding-top: var(--space-4); }
+.signin-refs h2 { font-size: var(--font-size-sm); text-transform: uppercase;
+  letter-spacing: 0.5px; color: var(--text-secondary); margin-bottom: var(--space-2); }
+.signin-refs-table { width: 100%; border-collapse: collapse;
+  font-size: var(--font-size-xs); }
+.signin-refs-table th { text-align: left; font-weight: 700; color: var(--text-muted);
+  text-transform: uppercase; letter-spacing: 0.5px;
+  padding: var(--space-1) var(--space-3) var(--space-1) 0;
+  border-bottom: 1px solid var(--border-light); }
+.signin-refs-table td { padding: var(--space-2) var(--space-3) var(--space-2) 0;
+  border-bottom: 1px solid var(--border-light); vertical-align: top;
+  color: var(--text-secondary); }
+.signin-refs-table tr:last-child td { border-bottom: none; }
+.signin-refs-table a { color: var(--text-link); font-weight: 600; }
 
 /* Help */
 .help-pages { display: flex; flex-direction: column; gap: var(--space-3);

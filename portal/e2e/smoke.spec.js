@@ -2,12 +2,12 @@ import { test, expect } from '@playwright/test';
 
 test('every page loads and the hero case walks through all tabs', async ({ page }) => {
   await page.goto('/#/');
-  await expect(page.getByText('Standard Mandatory DoD Notice and Consent')).toBeVisible();
+  await expect(page.getByText('About This Demo')).toBeVisible();
   await expect(page.getByLabel('Access password')).toBeVisible();
   const password = process.env.DEMO_ACCESS_PASSWORD; // from portal/.env, gitignored
   if (password) {
     await page.getByLabel('Access password').fill(password);
-    await page.getByRole('button', { name: /accept conditions and sign in/i }).click();
+    await page.getByRole('button', { name: /sign in with cac\/piv/i }).click();
   } else {
     await page.evaluate(() => localStorage.setItem('demo.session', 'active'));
     await page.goto('/#/');
@@ -52,5 +52,5 @@ test('every page loads and the hero case walks through all tabs', async ({ page 
   await expect(page.getByRole('heading', { name: 'Analytics' })).toBeVisible();
 
   await page.getByRole('button', { name: 'Sign out' }).click();
-  await expect(page.getByText('Standard Mandatory DoD Notice and Consent')).toBeVisible();
+  await expect(page.getByText('About This Demo')).toBeVisible();
 });

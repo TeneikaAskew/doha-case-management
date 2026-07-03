@@ -49,7 +49,7 @@ describe('AppShell', () => {
   it('signs out via the header button and returns to the consent page', () => {
     render(<App />);
     fireEvent.click(screen.getByRole('button', { name: 'Sign out' }));
-    expect(screen.getByText('Standard Mandatory DoD Notice and Consent')).toBeInTheDocument();
+    expect(screen.getByText('About This Demo')).toBeInTheDocument();
     expect(localStorage.getItem('demo.session')).toBeNull();
   });
 });
