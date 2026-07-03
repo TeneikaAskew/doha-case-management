@@ -238,3 +238,4 @@
 
 /* An opened source document spans the full briefing width */
 .briefing-factor-doc-open { grid-column: 1 / -1; }
+.briefing-factor-doc-open .document-viewer { width: 100%; align-self: stretch; }
