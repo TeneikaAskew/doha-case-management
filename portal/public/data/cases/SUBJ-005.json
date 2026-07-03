@@ -16,43 +16,44 @@
     "ssn": "925-45-1185",
     "dob": "1985-06-15",
     "placeOfBirth": "Dayton, OH",
-    "citizenship": "United States",
+    "citizenship": "United States (by birth)",
+    "nationality": "American",
     "gender": "Male",
     "race": "Black or African American",
-    "height": "6' 7\"",
+    "height": "6' 0\"",
     "weight": "165 lb",
     "eyeColor": "Blue",
     "hairColor": "Black",
     "maritalStatus": "Divorced",
-    "phone": "(703) 555-2005",
+    "phone": "(703) 555-0105",
     "email": "tomas.herrera@contractor.example",
-    "address": "105 Demo Street, Arlington, VA 22205",
+    "address": "255 Foxhall Pl, Silver Spring, MD 20902",
     "addressHistory": [
       {
-        "address": "105 Demo Street, Arlington, VA 22205",
-        "fromDate": "2021-04",
+        "address": "255 Foxhall Pl, Silver Spring, MD 20902",
+        "fromDate": "2021-06",
         "toDate": null
       },
       {
-        "address": "405 Founders Way Apt 5, Alexandria, VA 22302",
-        "fromDate": "2016-07",
-        "toDate": "2021-04"
+        "address": "385 Copper Creek Ct Apt 7, Alexandria, VA 22310",
+        "fromDate": "2014-01",
+        "toDate": "2021-06"
       }
     ],
     "employmentHistory": [
       {
-        "employer": "Meridian Defense Systems",
+        "employer": "Meridian National Services",
         "title": "Facilities Technician",
-        "location": "Arlington, VA",
-        "fromDate": "2020-01",
+        "address": "8280 Greensboro Dr Suite 550, McLean, VA 22102",
+        "fromDate": "2019-08",
         "toDate": null
       },
       {
-        "employer": "Calvert Federal Services",
+        "employer": "Chesapeake Mission Services",
         "title": "Associate Facilities Technician",
-        "location": "Falls Church, VA",
-        "fromDate": "2015-06",
-        "toDate": "2020-01"
+        "address": "1420 Spring Hill Rd Suite 210, McLean, VA 22102",
+        "fromDate": "2014-01",
+        "toDate": "2019-08"
       }
     ]
   },

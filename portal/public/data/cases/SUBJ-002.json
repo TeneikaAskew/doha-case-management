@@ -20,6 +20,7 @@
     "dob": "1992-11-02",
     "placeOfBirth": "Norfolk, Virginia",
     "citizenship": "United States (by birth)",
+    "nationality": "American",
     "gender": "Male",
     "race": "White",
     "height": "5' 10\"",
@@ -51,21 +52,21 @@
       {
         "employer": "Tidewater Defense Logistics",
         "title": "Logistics Coordinator",
-        "location": "Chesapeake, VA",
+        "address": "1401 Precon Dr Suite 210, Chesapeake, VA 23320",
         "fromDate": "2019-04",
         "toDate": null
       },
       {
         "employer": "Port of Virginia",
         "title": "Warehouse Operations Specialist",
-        "location": "Norfolk, VA",
+        "address": "600 World Trade Center, Norfolk, VA 23510",
         "fromDate": "2014-10",
         "toDate": "2019-04"
       },
       {
         "employer": "U.S. Navy (enlisted)",
         "title": "Logistics Specialist (LS2)",
-        "location": "Naval Station Norfolk, VA",
+        "address": "1530 Gilbert St, Naval Station Norfolk, VA 23511",
         "fromDate": "2010-08",
         "toDate": "2014-09"
       }

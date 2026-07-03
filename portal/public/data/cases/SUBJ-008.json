@@ -16,43 +16,44 @@
     "ssn": "928-66-1296",
     "dob": "1988-09-18",
     "placeOfBirth": "Columbus, OH",
-    "citizenship": "United States",
+    "citizenship": "United States (by birth)",
+    "nationality": "American",
     "gender": "Female",
     "race": "White",
-    "height": "5' 10\"",
+    "height": "5' 4\"",
     "weight": "180 lb",
     "eyeColor": "Brown",
     "hairColor": "Brown",
     "maritalStatus": "Divorced",
-    "phone": "(703) 555-2008",
+    "phone": "(703) 555-0108",
     "email": "hannah.whitmore@contractor.example",
-    "address": "108 Demo Street, Arlington, VA 22208",
+    "address": "348 Glen Forest Dr, Springfield, VA 22153",
     "addressHistory": [
       {
-        "address": "108 Demo Street, Arlington, VA 22208",
-        "fromDate": "2021-04",
+        "address": "348 Glen Forest Dr, Springfield, VA 22153",
+        "fromDate": "2017-09",
         "toDate": null
       },
       {
-        "address": "408 Founders Way Apt 8, Alexandria, VA 22302",
-        "fromDate": "2016-07",
-        "toDate": "2021-04"
+        "address": "436 Halstead Ct Apt 10, Woodbridge, VA 22192",
+        "fromDate": "2011-04",
+        "toDate": "2017-09"
       }
     ],
     "employmentHistory": [
       {
-        "employer": "Meridian Defense Systems",
+        "employer": "Vantage Federal Group",
         "title": "Contracts Specialist",
-        "location": "Arlington, VA",
-        "fromDate": "2020-01",
+        "address": "1550 Crystal Dr Suite 700, Arlington, VA 22202",
+        "fromDate": "2014-02",
         "toDate": null
       },
       {
-        "employer": "Calvert Federal Services",
+        "employer": "Capital Meridian Group",
         "title": "Associate Contracts Specialist",
-        "location": "Falls Church, VA",
-        "fromDate": "2015-06",
-        "toDate": "2020-01"
+        "address": "7918 Jones Branch Dr Suite 400, McLean, VA 22102",
+        "fromDate": "2011-04",
+        "toDate": "2014-02"
       }
     ]
   },

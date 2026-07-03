@@ -16,43 +16,44 @@
     "ssn": "931-87-1407",
     "dob": "1991-03-12",
     "placeOfBirth": "Dayton, OH",
-    "citizenship": "United States",
+    "citizenship": "United States (by birth)",
+    "nationality": "American",
     "gender": "Male",
     "race": "Hispanic or Latino",
-    "height": "6' 4\"",
+    "height": "5' 9\"",
     "weight": "195 lb",
     "eyeColor": "Hazel",
     "hairColor": "Gray",
     "maritalStatus": "Divorced",
-    "phone": "(703) 555-2011",
+    "phone": "(703) 555-0111",
     "email": "gregory.stone@contractor.example",
-    "address": "111 Demo Street, Arlington, VA 22201",
+    "address": "441 Waverly Row, Silver Spring, MD 20902",
     "addressHistory": [
       {
-        "address": "111 Demo Street, Arlington, VA 22201",
-        "fromDate": "2021-04",
+        "address": "441 Waverly Row, Silver Spring, MD 20902",
+        "fromDate": "2020-03",
         "toDate": null
       },
       {
-        "address": "411 Founders Way Apt 11, Alexandria, VA 22302",
-        "fromDate": "2016-07",
-        "toDate": "2021-04"
+        "address": "487 Stonebridge Ter Apt 4, Alexandria, VA 22310",
+        "fromDate": "2014-07",
+        "toDate": "2020-03"
       }
     ],
     "employmentHistory": [
       {
-        "employer": "Meridian Defense Systems",
+        "employer": "Summit Bridge Partners",
         "title": "Security Escort",
-        "location": "Arlington, VA",
-        "fromDate": "2020-01",
+        "address": "12015 Lee Jackson Memorial Hwy, Fairfax, VA 22033",
+        "fromDate": "2017-05",
         "toDate": null
       },
       {
-        "employer": "Calvert Federal Services",
+        "employer": "Chesapeake Mission Services",
         "title": "Associate Security Escort",
-        "location": "Falls Church, VA",
-        "fromDate": "2015-06",
-        "toDate": "2020-01"
+        "address": "1420 Spring Hill Rd Suite 210, McLean, VA 22102",
+        "fromDate": "2014-07",
+        "toDate": "2017-05"
       }
     ]
   },

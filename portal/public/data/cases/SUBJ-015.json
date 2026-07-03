@@ -18,43 +18,44 @@
     "ssn": "935-35-1555",
     "dob": "1980-07-16",
     "placeOfBirth": "San Antonio, TX",
-    "citizenship": "United States",
+    "citizenship": "United States (by birth)",
+    "nationality": "American",
     "gender": "Male",
     "race": "Hispanic or Latino",
-    "height": "6' 8\"",
+    "height": "5' 5\"",
     "weight": "215 lb",
     "eyeColor": "Hazel",
     "hairColor": "Gray",
     "maritalStatus": "Single",
-    "phone": "(703) 555-2015",
+    "phone": "(703) 555-0115",
     "email": "ethan.marsh@contractor.example",
-    "address": "115 Demo Street, Arlington, VA 22205",
+    "address": "565 Bright Leaf Way, Fairfax, VA 22031",
     "addressHistory": [
       {
-        "address": "115 Demo Street, Arlington, VA 22205",
-        "fromDate": "2021-04",
+        "address": "565 Bright Leaf Way, Fairfax, VA 22031",
+        "fromDate": "2017-07",
         "toDate": null
       },
       {
-        "address": "415 Founders Way Apt 15, Alexandria, VA 22302",
-        "fromDate": "2016-07",
-        "toDate": "2021-04"
+        "address": "555 Glen Forest Dr Apt 8, Silver Spring, MD 20902",
+        "fromDate": "2012-02",
+        "toDate": "2017-07"
       }
     ],
     "employmentHistory": [
       {
-        "employer": "Meridian Defense Systems",
+        "employer": "Summit Bridge Partners",
         "title": "Test Engineer",
-        "location": "Arlington, VA",
-        "fromDate": "2020-01",
+        "address": "12015 Lee Jackson Memorial Hwy, Fairfax, VA 22033",
+        "fromDate": "2021-09",
         "toDate": null
       },
       {
-        "employer": "Calvert Federal Services",
+        "employer": "Dominion Applied Research",
         "title": "Associate Test Engineer",
-        "location": "Falls Church, VA",
-        "fromDate": "2015-06",
-        "toDate": "2020-01"
+        "address": "2214 Rock Hill Rd Suite 600, Herndon, VA 20170",
+        "fromDate": "2012-02",
+        "toDate": "2021-09"
       }
     ]
   },

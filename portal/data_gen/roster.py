@@ -25,6 +25,29 @@ HAIR = ["Brown", "Black", "Blond", "Gray"]
 MARITAL = ["Single", "Married", "Divorced"]
 BIRTHPLACES = ["Richmond, VA", "Baltimore, MD", "Columbus, OH", "San Antonio, TX",
                "Tacoma, WA", "Dayton, OH"]
+HEIGHTS = ["5' 4\"", "5' 6\"", "5' 7\"", "5' 9\"", "5' 10\"", "6' 0\"",
+           "6' 1\"", "5' 5\""]
+STREETS = ["Cedarfield Ln", "Halstead Ct", "Mill Race Dr", "Bright Leaf Way",
+           "Stonebridge Ter", "Foxhall Pl", "Larkspur Ct", "Weatherby Rd",
+           "Glen Forest Dr", "Saddlebrook Ln", "Copper Creek Ct", "Waverly Row"]
+CITIES = [("Arlington, VA", "22204"), ("Alexandria, VA", "22310"),
+          ("Springfield, VA", "22153"), ("Fairfax, VA", "22031"),
+          ("Woodbridge, VA", "22192"), ("Silver Spring, MD", "20902")]
+# (employer, full street address) — current and prior, cycled per subject
+CURRENT_EMPLOYERS = [
+    ("Vantage Federal Group", "1550 Crystal Dr Suite 700, Arlington, VA 22202"),
+    ("Meridian National Services", "8280 Greensboro Dr Suite 550, McLean, VA 22102"),
+    ("Clearwater Mission Systems", "5875 Trinity Pkwy Suite 300, Centreville, VA 20120"),
+    ("Summit Bridge Partners", "12015 Lee Jackson Memorial Hwy, Fairfax, VA 22033"),
+]
+PRIOR_EMPLOYERS = [
+    ("Ardent Federal Systems", "2101 Wilson Blvd Suite 900, Arlington, VA 22201"),
+    ("Blue Ridge Integration", "110 Thomas Johnson Dr, Frederick, MD 21702"),
+    ("Capital Meridian Group", "7918 Jones Branch Dr Suite 400, McLean, VA 22102"),
+    ("Dominion Applied Research", "2214 Rock Hill Rd Suite 600, Herndon, VA 20170"),
+    ("Irongate Technologies", "13873 Park Center Rd Suite 120, Herndon, VA 20171"),
+    ("Chesapeake Mission Services", "1420 Spring Hill Rd Suite 210, McLean, VA 22102"),
+]
 
 GUIDELINE_TEMPLATES = {
     "E": dict(name="Personal Conduct", severity="B", provider="Employment records",
@@ -116,6 +139,48 @@ def _whole_person(clean: bool, code, alert_id, doc_ref) -> list[dict]:
     return rows
 
 
+def _profile(n: int, name: str, position: str) -> dict:
+    """Deterministic, fully-populated biographic profile for roster subject n.
+
+    Fictional-but-safe identifiers: 900-series SSNs (never issued by SSA),
+    555-01xx phone numbers (reserved for fiction), example-domain emails.
+    """
+    first, last = name.split()[0], name.split()[-1]
+    city, zip_ = CITIES[n % len(CITIES)]
+    prior_city, prior_zip = CITIES[(n + 2) % len(CITIES)]
+    address = f"{100 + n * 31 % 800} {STREETS[n % len(STREETS)]}, {city} {zip_}"
+    prior_address = (f"{300 + n * 17 % 600} {STREETS[(n + 5) % len(STREETS)]} "
+                     f"Apt {2 + n % 9}, {prior_city} {prior_zip}")
+    moved = f"20{16 + n % 7}-0{1 + n % 9}"
+    prior_from = f"20{9 + n % 6}-0{1 + (n + 4) % 9}"
+    hired = f"20{14 + n % 8}-0{1 + (n + 2) % 9}"
+    cur_employer, cur_emp_addr = CURRENT_EMPLOYERS[n % len(CURRENT_EMPLOYERS)]
+    prior_employer, prior_emp_addr = PRIOR_EMPLOYERS[n % len(PRIOR_EMPLOYERS)]
+    return dict(
+        ssn=f"9{20 + n:02d}-{10 + (n * 7) % 80:02d}-{1000 + n * 37:04d}",
+        dob=f"19{80 + (n % 15)}-0{1 + n % 9}-1{n % 9}",
+        placeOfBirth=BIRTHPLACES[n % len(BIRTHPLACES)],
+        citizenship="United States (by birth)", nationality="American",
+        gender=GENDERS[n % 2], race=RACES[n % 4],
+        height=HEIGHTS[n % len(HEIGHTS)], weight=f"{140 + n * 5} lb",
+        eyeColor=EYES[n % 4], hairColor=HAIR[n % 4],
+        maritalStatus=MARITAL[n % 3],
+        phone=f"(703) 555-01{n:02d}",
+        email=f"{first.lower()}.{last.lower()}@contractor.example",
+        address=address,
+        addressHistory=[
+            dict(address=address, fromDate=moved, toDate=None),
+            dict(address=prior_address, fromDate=prior_from, toDate=moved),
+        ],
+        employmentHistory=[
+            dict(employer=cur_employer, title=position, address=cur_emp_addr,
+                 fromDate=hired, toDate=None),
+            dict(employer=prior_employer, title=f"Associate {position}",
+                 address=prior_emp_addr, fromDate=prior_from, toDate=hired),
+        ],
+    )
+
+
 def build_roster_cases(precedent_fn) -> list[dict]:
     cases = []
     for row in ROSTER:
@@ -125,31 +190,7 @@ def build_roster_cases(precedent_fn) -> list[dict]:
             status=status, eligibility=elig, riskScore=risk,
             fastTrack=(risk < 15 and stage in ("INITIATION", "INVESTIGATION")),
             flaggedGuidelines=codes, daysInStage=days, cvEnrolled=cv, openAlerts=n_alerts,
-            ssn=f"9{20 + n:02d}-{10 + (n * 7) % 80:02d}-{1000 + n * 37:04d}",
-            dob=f"19{80 + (n % 15)}-0{1 + n % 9}-1{n % 9}",
-            placeOfBirth=BIRTHPLACES[n % len(BIRTHPLACES)],
-            citizenship="United States",
-            gender=GENDERS[n % 2], race=RACES[n % 4],
-            height=f"{5 + (n % 2)}' {2 + (n % 9)}\"", weight=f"{140 + n * 5} lb",
-            eyeColor=EYES[n % 4], hairColor=HAIR[n % 4],
-            maritalStatus=MARITAL[n % 3],
-            phone=f"(703) 555-{2000 + n:04d}",
-            email=f"{name.split()[0].lower()}.{name.split()[-1].lower()}"
-                  "@contractor.example",
-            address=f"{100 + n} Demo Street, Arlington, VA 2220{n % 10}",
-            addressHistory=[
-                dict(address=f"{100 + n} Demo Street, Arlington, VA 2220{n % 10}",
-                     fromDate="2021-04", toDate=None),
-                dict(address=f"{400 + n} Founders Way Apt {n}, Alexandria, VA 22302",
-                     fromDate="2016-07", toDate="2021-04"),
-            ],
-            employmentHistory=[
-                dict(employer="Meridian Defense Systems", title=position,
-                     location="Arlington, VA", fromDate="2020-01", toDate=None),
-                dict(employer="Calvert Federal Services",
-                     title=f"Associate {position}", location="Falls Church, VA",
-                     fromDate="2015-06", toDate="2020-01"),
-            ],
+            **_profile(n, name, position),
         )
         alerts = [_roster_alert(n, subj, codes[0])] if n_alerts else []
         clean = not codes

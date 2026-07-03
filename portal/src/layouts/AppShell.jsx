@@ -43,7 +43,7 @@ export default function AppShell() {
     <div className="app">
       <header className="app-header">
         <div className="app-header-brand">
-          <span className="app-header-seal" aria-hidden="true">DCSA</span>
+          <img className="app-header-seal" src={`${import.meta.env.BASE_URL}dcsa-seal.png`} alt="DCSA seal" />
           <div>
             <div className="app-header-title">Personnel Vetting</div>
             <div className="app-header-subtitle">Case management demo</div>

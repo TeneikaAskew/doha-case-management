@@ -18,43 +18,44 @@
     "ssn": "926-52-1222",
     "dob": "1986-07-16",
     "placeOfBirth": "Richmond, VA",
-    "citizenship": "United States",
+    "citizenship": "United States (by birth)",
+    "nationality": "American",
     "gender": "Female",
     "race": "Asian",
-    "height": "5' 8\"",
+    "height": "6' 1\"",
     "weight": "170 lb",
     "eyeColor": "Green",
     "hairColor": "Blond",
     "maritalStatus": "Single",
-    "phone": "(703) 555-2006",
+    "phone": "(703) 555-0106",
     "email": "renee.calloway@contractor.example",
-    "address": "106 Demo Street, Arlington, VA 22206",
+    "address": "286 Larkspur Ct, Arlington, VA 22204",
     "addressHistory": [
       {
-        "address": "106 Demo Street, Arlington, VA 22206",
-        "fromDate": "2021-04",
+        "address": "286 Larkspur Ct, Arlington, VA 22204",
+        "fromDate": "2022-07",
         "toDate": null
       },
       {
-        "address": "406 Founders Way Apt 6, Alexandria, VA 22302",
-        "fromDate": "2016-07",
-        "toDate": "2021-04"
+        "address": "402 Waverly Row Apt 8, Springfield, VA 22153",
+        "fromDate": "209-02",
+        "toDate": "2022-07"
       }
     ],
     "employmentHistory": [
       {
-        "employer": "Meridian Defense Systems",
+        "employer": "Clearwater Mission Systems",
         "title": "Program Analyst",
-        "location": "Arlington, VA",
-        "fromDate": "2020-01",
+        "address": "5875 Trinity Pkwy Suite 300, Centreville, VA 20120",
+        "fromDate": "2020-09",
         "toDate": null
       },
       {
-        "employer": "Calvert Federal Services",
+        "employer": "Ardent Federal Systems",
         "title": "Associate Program Analyst",
-        "location": "Falls Church, VA",
-        "fromDate": "2015-06",
-        "toDate": "2020-01"
+        "address": "2101 Wilson Blvd Suite 900, Arlington, VA 22201",
+        "fromDate": "209-02",
+        "toDate": "2020-09"
       }
     ]
   },

@@ -29,6 +29,7 @@ export const ALERTS = [
 export const CASE_001 = {
   subject: { ...SUBJECTS[0], ssn: '923-04-4821', dob: '1988-03-14',
     placeOfBirth: 'Lagos, Nigeria', citizenship: 'United States (naturalized 2003)',
+    nationality: 'American',
     gender: 'Male', race: 'Black or African American',
     height: "6' 1\"", weight: '205 lb', eyeColor: 'Brown', hairColor: 'Black',
     maritalStatus: 'Married', phone: '(703) 555-0142', email: 'd.okafor88@example.com',
@@ -41,9 +42,11 @@ export const CASE_001 = {
     ],
     employmentHistory: [
       { employer: 'Sentinel Dynamics LLC', title: 'Senior Systems Engineer',
-        location: 'Chantilly, VA', fromDate: '2018-02', toDate: null },
+        address: '14840 Conference Center Dr Suite 300, Chantilly, VA 20151',
+        fromDate: '2018-02', toDate: null },
       { employer: 'Praxis Federal Solutions', title: 'Systems Engineer',
-        location: 'Reston, VA', fromDate: '2013-01', toDate: '2018-02' },
+        address: '11951 Freedom Dr Suite 900, Reston, VA 20190',
+        fromDate: '2013-01', toDate: '2018-02' },
     ] },
   aiSummary: 'Significant unresolved financial concerns under Guideline F.',
   timeline: [

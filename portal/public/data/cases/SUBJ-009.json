@@ -18,43 +18,44 @@
     "ssn": "929-73-1333",
     "dob": "1989-01-10",
     "placeOfBirth": "San Antonio, TX",
-    "citizenship": "United States",
+    "citizenship": "United States (by birth)",
+    "nationality": "American",
     "gender": "Male",
     "race": "Black or African American",
-    "height": "6' 2\"",
+    "height": "5' 6\"",
     "weight": "185 lb",
     "eyeColor": "Blue",
     "hairColor": "Black",
     "maritalStatus": "Single",
-    "phone": "(703) 555-2009",
+    "phone": "(703) 555-0109",
     "email": "derek.nakamura@contractor.example",
-    "address": "109 Demo Street, Arlington, VA 22209",
+    "address": "379 Saddlebrook Ln, Fairfax, VA 22031",
     "addressHistory": [
       {
-        "address": "109 Demo Street, Arlington, VA 22209",
-        "fromDate": "2021-04",
+        "address": "379 Saddlebrook Ln, Fairfax, VA 22031",
+        "fromDate": "2018-01",
         "toDate": null
       },
       {
-        "address": "409 Founders Way Apt 9, Alexandria, VA 22302",
-        "fromDate": "2016-07",
-        "toDate": "2021-04"
+        "address": "453 Mill Race Dr Apt 2, Silver Spring, MD 20902",
+        "fromDate": "2012-05",
+        "toDate": "2018-01"
       }
     ],
     "employmentHistory": [
       {
-        "employer": "Meridian Defense Systems",
+        "employer": "Meridian National Services",
         "title": "Intelligence Analyst",
-        "location": "Arlington, VA",
-        "fromDate": "2020-01",
+        "address": "8280 Greensboro Dr Suite 550, McLean, VA 22102",
+        "fromDate": "2015-03",
         "toDate": null
       },
       {
-        "employer": "Calvert Federal Services",
+        "employer": "Dominion Applied Research",
         "title": "Associate Intelligence Analyst",
-        "location": "Falls Church, VA",
-        "fromDate": "2015-06",
-        "toDate": "2020-01"
+        "address": "2214 Rock Hill Rd Suite 600, Herndon, VA 20170",
+        "fromDate": "2012-05",
+        "toDate": "2015-03"
       }
     ]
   },

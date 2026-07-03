@@ -4,9 +4,8 @@
   z-index: 100; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); }
 .app-header-brand { display: flex; align-items: center; gap: var(--space-3);
   color: var(--text-inverse); }
-.app-header-seal { display: inline-flex; align-items: center; justify-content: center;
-  width: 36px; height: 36px; border-radius: 50%; border: 2px solid var(--dcsa-gold);
-  color: var(--dcsa-gold); font-size: 10px; font-weight: 700; letter-spacing: 0.5px; }
+.app-header-seal { display: block; width: 40px; height: 40px; flex-shrink: 0;
+  object-fit: contain; }
 .app-header-title { font-size: var(--font-size-lg); font-weight: 700; line-height: 1.2; }
 .app-header-subtitle { font-size: var(--font-size-xs); color: var(--dcsa-ice); }
 .app-header-search { flex: 1; max-width: 420px; position: relative; display: flex;

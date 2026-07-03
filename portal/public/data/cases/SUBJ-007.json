@@ -18,43 +18,44 @@
     "ssn": "927-59-1259",
     "dob": "1987-08-17",
     "placeOfBirth": "Baltimore, MD",
-    "citizenship": "United States",
+    "citizenship": "United States (by birth)",
+    "nationality": "American",
     "gender": "Male",
     "race": "Hispanic or Latino",
-    "height": "6' 9\"",
+    "height": "5' 5\"",
     "weight": "175 lb",
     "eyeColor": "Hazel",
     "hairColor": "Gray",
     "maritalStatus": "Married",
-    "phone": "(703) 555-2007",
+    "phone": "(703) 555-0107",
     "email": "victor.osei@contractor.example",
-    "address": "107 Demo Street, Arlington, VA 22207",
+    "address": "317 Weatherby Rd, Alexandria, VA 22310",
     "addressHistory": [
       {
-        "address": "107 Demo Street, Arlington, VA 22207",
-        "fromDate": "2021-04",
+        "address": "317 Weatherby Rd, Alexandria, VA 22310",
+        "fromDate": "2016-08",
         "toDate": null
       },
       {
-        "address": "407 Founders Way Apt 7, Alexandria, VA 22302",
-        "fromDate": "2016-07",
-        "toDate": "2021-04"
+        "address": "419 Cedarfield Ln Apt 9, Fairfax, VA 22031",
+        "fromDate": "2010-03",
+        "toDate": "2016-08"
       }
     ],
     "employmentHistory": [
       {
-        "employer": "Meridian Defense Systems",
+        "employer": "Summit Bridge Partners",
         "title": "Network Administrator",
-        "location": "Arlington, VA",
-        "fromDate": "2020-01",
+        "address": "12015 Lee Jackson Memorial Hwy, Fairfax, VA 22033",
+        "fromDate": "2021-01",
         "toDate": null
       },
       {
-        "employer": "Calvert Federal Services",
+        "employer": "Blue Ridge Integration",
         "title": "Associate Network Administrator",
-        "location": "Falls Church, VA",
-        "fromDate": "2015-06",
-        "toDate": "2020-01"
+        "address": "110 Thomas Johnson Dr, Frederick, MD 21702",
+        "fromDate": "2010-03",
+        "toDate": "2021-01"
       }
     ]
   },

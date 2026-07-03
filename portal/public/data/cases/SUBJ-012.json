@@ -16,43 +16,44 @@
     "ssn": "932-14-1444",
     "dob": "1992-04-13",
     "placeOfBirth": "Richmond, VA",
-    "citizenship": "United States",
+    "citizenship": "United States (by birth)",
+    "nationality": "American",
     "gender": "Female",
     "race": "White",
-    "height": "5' 5\"",
+    "height": "5' 10\"",
     "weight": "200 lb",
     "eyeColor": "Brown",
     "hairColor": "Brown",
     "maritalStatus": "Single",
-    "phone": "(703) 555-2012",
+    "phone": "(703) 555-0112",
     "email": "monica.reyes@contractor.example",
-    "address": "112 Demo Street, Arlington, VA 22202",
+    "address": "472 Cedarfield Ln, Arlington, VA 22204",
     "addressHistory": [
       {
-        "address": "112 Demo Street, Arlington, VA 22202",
+        "address": "472 Cedarfield Ln, Arlington, VA 22204",
         "fromDate": "2021-04",
         "toDate": null
       },
       {
-        "address": "412 Founders Way Apt 12, Alexandria, VA 22302",
-        "fromDate": "2016-07",
+        "address": "504 Foxhall Pl Apt 5, Springfield, VA 22153",
+        "fromDate": "209-08",
         "toDate": "2021-04"
       }
     ],
     "employmentHistory": [
       {
-        "employer": "Meridian Defense Systems",
+        "employer": "Vantage Federal Group",
         "title": "Supply Chain Manager",
-        "location": "Arlington, VA",
-        "fromDate": "2020-01",
+        "address": "1550 Crystal Dr Suite 700, Arlington, VA 22202",
+        "fromDate": "2018-06",
         "toDate": null
       },
       {
-        "employer": "Calvert Federal Services",
+        "employer": "Ardent Federal Systems",
         "title": "Associate Supply Chain Manager",
-        "location": "Falls Church, VA",
-        "fromDate": "2015-06",
-        "toDate": "2020-01"
+        "address": "2101 Wilson Blvd Suite 900, Arlington, VA 22201",
+        "fromDate": "209-08",
+        "toDate": "2018-06"
       }
     ]
   },

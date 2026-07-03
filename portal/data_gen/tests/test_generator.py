@@ -41,6 +41,30 @@ def test_every_case_file_validates(out):
         assert case.subject.addressHistory and case.subject.employmentHistory
 
 
+def test_every_subject_profile_is_complete(out):
+    """Demo requirement: no biographic field may be missing or blank, anywhere."""
+    out_dir, _ = out
+    for f in sorted((out_dir / "cases").glob("*.json")):
+        case = schemas.CaseDetail.model_validate(json.loads(f.read_text(encoding="utf-8")))
+        s = case.subject
+        for field in ("name", "position", "ssn", "dob", "placeOfBirth",
+                      "citizenship", "nationality", "gender", "race", "height",
+                      "weight", "eyeColor", "hairColor", "maritalStatus",
+                      "phone", "email", "address"):
+            assert getattr(s, field), f"{s.id}: blank {field}"
+        assert len(s.addressHistory) >= 2, f"{s.id}: needs address history"
+        assert s.addressHistory[0].toDate is None, f"{s.id}: first address must be current"
+        assert s.addressHistory[0].address == s.address
+        for a in s.addressHistory:
+            assert a.address and a.fromDate, f"{s.id}: incomplete address entry"
+        assert len(s.employmentHistory) >= 2, f"{s.id}: needs employment history"
+        assert s.employmentHistory[0].toDate is None, f"{s.id}: first job must be current"
+        assert s.employmentHistory[0].title == s.position
+        for e in s.employmentHistory:
+            assert e.employer and e.title and e.address and e.fromDate, \
+                f"{s.id}: incomplete employment entry"
+
+
 def test_hero1_depth(out):
     out_dir, _ = out
     case = schemas.CaseDetail.model_validate(

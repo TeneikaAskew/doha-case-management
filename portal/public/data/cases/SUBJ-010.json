@@ -16,43 +16,44 @@
     "ssn": "930-80-1370",
     "dob": "1990-02-11",
     "placeOfBirth": "Tacoma, WA",
-    "citizenship": "United States",
+    "citizenship": "United States (by birth)",
+    "nationality": "American",
     "gender": "Female",
     "race": "Asian",
-    "height": "5' 3\"",
+    "height": "5' 7\"",
     "weight": "190 lb",
     "eyeColor": "Green",
     "hairColor": "Blond",
     "maritalStatus": "Married",
-    "phone": "(703) 555-2010",
+    "phone": "(703) 555-0110",
     "email": "fatima.aziz@contractor.example",
-    "address": "110 Demo Street, Arlington, VA 22200",
+    "address": "410 Copper Creek Ct, Woodbridge, VA 22192",
     "addressHistory": [
       {
-        "address": "110 Demo Street, Arlington, VA 22200",
-        "fromDate": "2021-04",
+        "address": "410 Copper Creek Ct, Woodbridge, VA 22192",
+        "fromDate": "2019-02",
         "toDate": null
       },
       {
-        "address": "410 Founders Way Apt 10, Alexandria, VA 22302",
-        "fromDate": "2016-07",
-        "toDate": "2021-04"
+        "address": "470 Bright Leaf Way Apt 3, Arlington, VA 22204",
+        "fromDate": "2013-06",
+        "toDate": "2019-02"
       }
     ],
     "employmentHistory": [
       {
-        "employer": "Meridian Defense Systems",
+        "employer": "Clearwater Mission Systems",
         "title": "Linguist",
-        "location": "Arlington, VA",
-        "fromDate": "2020-01",
+        "address": "5875 Trinity Pkwy Suite 300, Centreville, VA 20120",
+        "fromDate": "2016-04",
         "toDate": null
       },
       {
-        "employer": "Calvert Federal Services",
+        "employer": "Irongate Technologies",
         "title": "Associate Linguist",
-        "location": "Falls Church, VA",
-        "fromDate": "2015-06",
-        "toDate": "2020-01"
+        "address": "13873 Park Center Rd Suite 120, Herndon, VA 20171",
+        "fromDate": "2013-06",
+        "toDate": "2016-04"
       }
     ]
   },

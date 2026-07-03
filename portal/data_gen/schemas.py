@@ -46,7 +46,7 @@ class AddressEntry(BaseModel):
 class EmploymentEntry(BaseModel):
     employer: str
     title: str
-    location: str
+    address: str  # employer's full street address
     fromDate: str
     toDate: Optional[str] = None  # None = current
 
@@ -56,6 +56,7 @@ class SubjectProfile(SubjectSummary):
     dob: str
     placeOfBirth: str
     citizenship: str
+    nationality: str
     gender: str
     race: str
     height: str

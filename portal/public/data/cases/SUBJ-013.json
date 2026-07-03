@@ -18,43 +18,44 @@
     "ssn": "933-21-1481",
     "dob": "1993-05-14",
     "placeOfBirth": "Baltimore, MD",
-    "citizenship": "United States",
+    "citizenship": "United States (by birth)",
+    "nationality": "American",
     "gender": "Male",
     "race": "Black or African American",
-    "height": "6' 6\"",
+    "height": "6' 0\"",
     "weight": "205 lb",
     "eyeColor": "Blue",
     "hairColor": "Black",
     "maritalStatus": "Married",
-    "phone": "(703) 555-2013",
+    "phone": "(703) 555-0113",
     "email": "samuel.boateng@contractor.example",
-    "address": "113 Demo Street, Arlington, VA 22203",
+    "address": "503 Halstead Ct, Alexandria, VA 22310",
     "addressHistory": [
       {
-        "address": "113 Demo Street, Arlington, VA 22203",
-        "fromDate": "2021-04",
+        "address": "503 Halstead Ct, Alexandria, VA 22310",
+        "fromDate": "2022-05",
         "toDate": null
       },
       {
-        "address": "413 Founders Way Apt 13, Alexandria, VA 22302",
-        "fromDate": "2016-07",
-        "toDate": "2021-04"
+        "address": "521 Larkspur Ct Apt 6, Fairfax, VA 22031",
+        "fromDate": "2010-09",
+        "toDate": "2022-05"
       }
     ],
     "employmentHistory": [
       {
-        "employer": "Meridian Defense Systems",
+        "employer": "Meridian National Services",
         "title": "Systems Administrator",
-        "location": "Arlington, VA",
-        "fromDate": "2020-01",
+        "address": "8280 Greensboro Dr Suite 550, McLean, VA 22102",
+        "fromDate": "2019-07",
         "toDate": null
       },
       {
-        "employer": "Calvert Federal Services",
+        "employer": "Blue Ridge Integration",
         "title": "Associate Systems Administrator",
-        "location": "Falls Church, VA",
-        "fromDate": "2015-06",
-        "toDate": "2020-01"
+        "address": "110 Thomas Johnson Dr, Frederick, MD 21702",
+        "fromDate": "2010-09",
+        "toDate": "2019-07"
       }
     ]
   },

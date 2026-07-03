@@ -45,10 +45,13 @@ export default function CaseDetail() {
       <div className="card subject-header">
         <div className="subject-main">
           <h1>{s.name}</h1>
-          <p className="muted">
-            {s.position} · {s.tier} · DOB {s.dob} · SSN <span>{s.ssn}</span>
-            {' '}· Eligibility: {ELIGIBILITY_LABELS[s.eligibility]}
-          </p>
+          <div className="subject-meta">
+            <span>{s.position}</span>
+            <span>{s.dob}</span>
+            <span>{s.ssn}</span>
+            <span>Eligibility: {ELIGIBILITY_LABELS[s.eligibility]}</span>
+            <span>{s.tier}</span>
+          </div>
           <div className="subject-pills">
             <StatusBadge variant={STATUS_VARIANTS[s.status]}>{STATUS_LABELS[s.status]}</StatusBadge>
             <StatusBadge variant="info">{STAGE_LABELS[s.stage]}</StatusBadge>

@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
 import KVGrid from '../../components/KVGrid.jsx';
 import AIBadge from '../../components/AIBadge.jsx';
 import GuidelineChip from '../../components/GuidelineChip.jsx';
@@ -5,19 +7,65 @@ import DataTable from '../../components/DataTable.jsx';
 import WholePersonWorksheet from './WholePersonWorksheet.jsx';
 import { ALERT_CATEGORY_LABELS } from '../../domain.js';
 
-const fmtRange = (row) => `${row.fromDate} — ${row.toDate || 'Present'}`;
-
 const ADDRESS_COLUMNS = [
   { key: 'address', label: 'Address' },
-  { key: 'fromDate', label: 'Period', render: fmtRange },
+  { key: 'fromDate', label: 'Start' },
+  { key: 'toDate', label: 'End', render: (row) => row.toDate || 'Present' },
 ];
 
 const EMPLOYMENT_COLUMNS = [
   { key: 'employer', label: 'Employer' },
-  { key: 'title', label: 'Title' },
-  { key: 'location', label: 'Location' },
-  { key: 'fromDate', label: 'Period', render: fmtRange },
+  { key: 'title', label: 'Role' },
+  { key: 'address', label: 'Employer address' },
+  { key: 'fromDate', label: 'Start' },
+  { key: 'toDate', label: 'End', render: (row) => row.toDate || 'Present' },
 ];
+
+function TimelineStrip({ events }) {
+  const ordered = [...events].sort((a, b) => a.date.localeCompare(b.date));
+  return (
+    <ol className="timeline-strip">
+      {ordered.map((e, i) => (
+        <li key={i} className="timeline-strip-item">
+          <span className="timeline-strip-date">{e.date}</span>
+          <span className="timeline-strip-marker" aria-hidden="true" />
+          <span className="timeline-strip-event">{e.event}</span>
+          <span className="timeline-strip-actor muted">{e.actor} ({e.role})</span>
+          {e.note && <span className="timeline-strip-note muted">{e.note}</span>}
+        </li>
+      ))}
+    </ol>
+  );
+}
+
+function CaseTimelineCard({ timeline }) {
+  const [detailOpen, setDetailOpen] = useState(false);
+  return (
+    <div className="card">
+      <h3>Case timeline</h3>
+      <TimelineStrip events={timeline} />
+      <button type="button" className="btn btn-ghost timeline-detail-toggle"
+        aria-expanded={detailOpen} onClick={() => setDetailOpen(!detailOpen)}>
+        {detailOpen ? <FiChevronUp aria-hidden="true" /> : <FiChevronDown aria-hidden="true" />}
+        {detailOpen ? 'Hide full detail' : 'Show full detail'}
+      </button>
+      {detailOpen && (
+        <ol className="timeline">
+          {timeline.map((e, i) => (
+            <li key={i}>
+              <span className="timeline-date">{e.date}</span>
+              <span className="timeline-body">
+                <strong>{e.event}</strong>
+                <span className="muted"> — {e.actor} ({e.role})</span>
+                {e.note && <div className="muted">{e.note}</div>}
+              </span>
+            </li>
+          ))}
+        </ol>
+      )}
+    </div>
+  );
+}
 
 function alertAccent(category) {
   if (category === 'TERRORISM') return 'var(--status-hrh)';
@@ -60,6 +108,7 @@ export default function OverviewTab({ caseData }) {
           { label: 'Place of birth', value: s.placeOfBirth },
           { label: 'SSN', value: s.ssn },
           { label: 'Citizenship', value: s.citizenship },
+          { label: 'Nationality', value: s.nationality },
           { label: 'Gender', value: s.gender },
           { label: 'Race', value: s.race },
           { label: 'Height', value: s.height },
@@ -85,21 +134,7 @@ export default function OverviewTab({ caseData }) {
           rowKey="fromDate" />
       </div>
       <WholePersonWorksheet caseData={caseData} />
-      <div className="card">
-        <h3>Case timeline</h3>
-        <ol className="timeline">
-          {caseData.timeline.map((e, i) => (
-            <li key={i}>
-              <span className="timeline-date">{e.date}</span>
-              <span className="timeline-body">
-                <strong>{e.event}</strong>
-                <span className="muted"> — {e.actor} ({e.role})</span>
-                {e.note && <div className="muted">{e.note}</div>}
-              </span>
-            </li>
-          ))}
-        </ol>
-      </div>
+      <CaseTimelineCard timeline={caseData.timeline} />
     </div>
   );
 }

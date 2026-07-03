@@ -16,43 +16,44 @@
     "ssn": "924-38-1148",
     "dob": "1984-05-14",
     "placeOfBirth": "Tacoma, WA",
-    "citizenship": "United States",
+    "citizenship": "United States (by birth)",
+    "nationality": "American",
     "gender": "Female",
     "race": "White",
-    "height": "5' 6\"",
+    "height": "5' 10\"",
     "weight": "160 lb",
     "eyeColor": "Brown",
     "hairColor": "Brown",
     "maritalStatus": "Married",
-    "phone": "(703) 555-2004",
+    "phone": "(703) 555-0104",
     "email": "alicia.grant@contractor.example",
-    "address": "104 Demo Street, Arlington, VA 22204",
+    "address": "224 Stonebridge Ter, Woodbridge, VA 22192",
     "addressHistory": [
       {
-        "address": "104 Demo Street, Arlington, VA 22204",
-        "fromDate": "2021-04",
+        "address": "224 Stonebridge Ter, Woodbridge, VA 22192",
+        "fromDate": "2020-05",
         "toDate": null
       },
       {
-        "address": "404 Founders Way Apt 4, Alexandria, VA 22302",
-        "fromDate": "2016-07",
-        "toDate": "2021-04"
+        "address": "368 Saddlebrook Ln Apt 6, Arlington, VA 22204",
+        "fromDate": "2013-09",
+        "toDate": "2020-05"
       }
     ],
     "employmentHistory": [
       {
-        "employer": "Meridian Defense Systems",
+        "employer": "Vantage Federal Group",
         "title": "Software Developer",
-        "location": "Arlington, VA",
-        "fromDate": "2020-01",
+        "address": "1550 Crystal Dr Suite 700, Arlington, VA 22202",
+        "fromDate": "2018-07",
         "toDate": null
       },
       {
-        "employer": "Calvert Federal Services",
+        "employer": "Irongate Technologies",
         "title": "Associate Software Developer",
-        "location": "Falls Church, VA",
-        "fromDate": "2015-06",
-        "toDate": "2020-01"
+        "address": "13873 Park Center Rd Suite 120, Herndon, VA 20171",
+        "fromDate": "2013-09",
+        "toDate": "2018-07"
       }
     ]
   },

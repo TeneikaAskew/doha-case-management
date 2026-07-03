@@ -22,6 +22,7 @@ def _hero1(precedent_fn) -> dict:
         daysInStage=41, openAlerts=2,
         ssn="923-04-4821", dob="1988-03-14",
         placeOfBirth="Lagos, Nigeria", citizenship="United States (naturalized 2003)",
+        nationality="American",
         gender="Male", race="Black or African American",
         height="6' 1\"", weight="205 lb", eyeColor="Brown", hairColor="Black",
         maritalStatus="Married", phone="(703) 555-0142",
@@ -37,11 +38,14 @@ def _hero1(precedent_fn) -> dict:
         ],
         employmentHistory=[
             dict(employer="Sentinel Dynamics LLC", title="Senior Systems Engineer",
-                 location="Chantilly, VA", fromDate="2018-02", toDate=None),
+                 address="14840 Conference Center Dr Suite 300, Chantilly, VA 20151",
+                 fromDate="2018-02", toDate=None),
             dict(employer="Praxis Federal Solutions", title="Systems Engineer",
-                 location="Reston, VA", fromDate="2013-01", toDate="2018-02"),
+                 address="11951 Freedom Dr Suite 900, Reston, VA 20190",
+                 fromDate="2013-01", toDate="2018-02"),
             dict(employer="George Mason University", title="Research Assistant",
-                 location="Fairfax, VA", fromDate="2010-08", toDate="2012-12"),
+                 address="4400 University Dr, Fairfax, VA 22030",
+                 fromDate="2010-08", toDate="2012-12"),
         ],
     ))
     cu_url, cu_doc = docs.credit_extract(
@@ -374,6 +378,7 @@ def _hero2(precedent_fn) -> dict:
         daysInStage=9, openAlerts=1,
         ssn="917-38-7733", dob="1992-11-02",
         placeOfBirth="Norfolk, Virginia", citizenship="United States (by birth)",
+        nationality="American",
         gender="Male", race="White",
         height="5' 10\"", weight="182 lb", eyeColor="Blue", hairColor="Brown",
         maritalStatus="Divorced", phone="(757) 555-0186",
@@ -389,11 +394,14 @@ def _hero2(precedent_fn) -> dict:
         ],
         employmentHistory=[
             dict(employer="Tidewater Defense Logistics", title="Logistics Coordinator",
-                 location="Chesapeake, VA", fromDate="2019-04", toDate=None),
+                 address="1401 Precon Dr Suite 210, Chesapeake, VA 23320",
+                 fromDate="2019-04", toDate=None),
             dict(employer="Port of Virginia", title="Warehouse Operations Specialist",
-                 location="Norfolk, VA", fromDate="2014-10", toDate="2019-04"),
+                 address="600 World Trade Center, Norfolk, VA 23510",
+                 fromDate="2014-10", toDate="2019-04"),
             dict(employer="U.S. Navy (enlisted)", title="Logistics Specialist (LS2)",
-                 location="Naval Station Norfolk, VA", fromDate="2010-08", toDate="2014-09"),
+                 address="1530 Gilbert St, Naval Station Norfolk, VA 23511",
+                 fromDate="2010-08", toDate="2014-09"),
         ],
     ))
     rb_url, rb_doc = docs.rapback(
@@ -621,6 +629,7 @@ def _hero3(precedent_fn) -> dict:
         daysInStage=22, fastTrack=True, cvEnrolled=False,
         ssn="941-62-2210", dob="1996-07-30",
         placeOfBirth="Edison, New Jersey", citizenship="United States (by birth)",
+        nationality="American",
         gender="Female", race="Asian",
         height="5' 4\"", weight="128 lb", eyeColor="Brown", hairColor="Black",
         maritalStatus="Never married", phone="(410) 555-0129",
@@ -636,9 +645,11 @@ def _hero3(precedent_fn) -> dict:
         ],
         employmentHistory=[
             dict(employer="Chesapeake Analytics Group", title="Financial Analyst",
-                 location="Columbia, MD", fromDate="2022-06", toDate=None),
+                 address="10960 Grantchester Way Suite 520, Columbia, MD 21044",
+                 fromDate="2022-06", toDate=None),
             dict(employer="T. Rowe Price", title="Junior Financial Analyst",
-                 location="Baltimore, MD", fromDate="2018-07", toDate="2022-06"),
+                 address="100 E Pratt St, Baltimore, MD 21202",
+                 fromDate="2018-07", toDate="2022-06"),
         ],
     ))
     sf_url, sf_doc = docs.sf86_excerpt(

@@ -17,6 +17,7 @@
     "dob": "1996-07-30",
     "placeOfBirth": "Edison, New Jersey",
     "citizenship": "United States (by birth)",
+    "nationality": "American",
     "gender": "Female",
     "race": "Asian",
     "height": "5' 4\"",
@@ -48,14 +49,14 @@
       {
         "employer": "Chesapeake Analytics Group",
         "title": "Financial Analyst",
-        "location": "Columbia, MD",
+        "address": "10960 Grantchester Way Suite 520, Columbia, MD 21044",
         "fromDate": "2022-06",
         "toDate": null
       },
       {
         "employer": "T. Rowe Price",
         "title": "Junior Financial Analyst",
-        "location": "Baltimore, MD",
+        "address": "100 E Pratt St, Baltimore, MD 21202",
         "fromDate": "2018-07",
         "toDate": "2022-06"
       }
