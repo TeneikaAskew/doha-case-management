@@ -37,3 +37,7 @@ sead4_llm/llm_cache/
 doha_parsed_cases/all_cases.parquet
 doha_parsed_cases/all_cases.json
 doha_parsed_cases/checkpoints_archive/
+
+# Node
+node_modules/
+portal/dist/

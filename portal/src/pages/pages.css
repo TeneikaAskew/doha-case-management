@@ -88,8 +88,16 @@
 .signin-consent-text p { margin: 0 0 var(--space-2); }
 .signin-consent-text ul { margin: 0; padding-left: var(--space-5); display: flex;
   flex-direction: column; gap: var(--space-2); }
+.signin-form { display: flex; flex-direction: column; gap: var(--space-2); }
+.signin-password-label { font-size: var(--font-size-sm); font-weight: 600;
+  color: var(--text-secondary); }
+.signin-password { padding: var(--space-3); border: 1px solid var(--border-medium);
+  border-radius: var(--radius-sm); font-family: inherit;
+  font-size: var(--font-size-base); background: var(--bg-input); }
+.signin-password:focus { outline: 2px solid var(--border-focus); outline-offset: 1px; }
+.signin-error { margin: 0; font-size: var(--font-size-sm); color: var(--status-alert); }
 .signin-button { width: 100%; justify-content: center; padding: var(--space-3) var(--space-4);
-  font-size: var(--font-size-base); }
+  font-size: var(--font-size-base); margin-top: var(--space-2); }
 .signin-help { font-size: var(--font-size-sm); color: var(--text-secondary); margin: 0; }
 .signin-disclaimer { font-size: var(--font-size-xs); color: var(--text-muted); margin: 0; }
 

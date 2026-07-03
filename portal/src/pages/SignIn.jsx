@@ -1,8 +1,21 @@
+import { useState } from 'react';
 import { FiShield } from 'react-icons/fi';
 import { useSession } from '../state/SessionContext.jsx';
+import { PASSWORD_SHA256, sha256Hex } from '../accessControl.js';
 
 export default function SignIn() {
   const { signIn } = useSession();
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState(null);
+
+  const submit = async (e) => {
+    e.preventDefault();
+    if (await sha256Hex(password) === PASSWORD_SHA256) {
+      signIn();
+    } else {
+      setError('Incorrect access password. Contact the demo owner for access.');
+    }
+  };
 
   return (
     <div className="signin-screen">
@@ -54,9 +67,18 @@ export default function SignIn() {
           </div>
         </div>
 
-        <button type="button" className="btn btn-primary signin-button" onClick={signIn}>
-          <FiShield aria-hidden="true" /> Accept conditions and sign in with CAC/PIV
-        </button>
+        <form className="signin-form" onSubmit={submit}>
+          <label className="signin-password-label" htmlFor="signin-password">
+            Access password
+          </label>
+          <input id="signin-password" type="password" className="signin-password"
+            value={password} autoComplete="current-password"
+            onChange={(e) => { setPassword(e.target.value); setError(null); }} />
+          {error && <p className="signin-error" role="alert">{error}</p>}
+          <button type="submit" className="btn btn-primary signin-button">
+            <FiShield aria-hidden="true" /> Accept conditions and sign in with CAC/PIV
+          </button>
+        </form>
 
         <p className="signin-help">
           Select your DoD PKI certificate when prompted. Common Access Card (CAC) or

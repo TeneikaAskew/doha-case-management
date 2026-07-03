@@ -63,6 +63,48 @@ python -m pytest data_gen/tests -v        # Data generator (pytest)
 
 Design spec: `docs/superpowers/specs/2026-07-02-vetting-case-management-design.md`.
 
+### Demo Data Provenance
+
+The portal mixes two clearly separated data layers:
+
+**Layer 1 — Real public DOHA decisions** (`doha_parsed_cases/*.parquet`). The
+~36,700 published hearing and appeal decisions scraped from doha.ogc.osd.mil
+(see [DOHA_SCRAPING_GUIDE.md](DOHA_SCRAPING_GUIDE.md)) feed exactly three
+things, via `portal/data_gen/corpus.py`:
+
+- **Precedent citations** on guideline cards — real case numbers, outcomes,
+  and links back to the official DOHA site
+- **One real decision document** rendered in the document viewer
+- **Analytics page statistics** — grant/deny rates by guideline and year,
+  computed from the actual corpus
+
+These are public records; they contain no more PII than DOHA itself publishes.
+
+**Layer 2 — Synthetic subjects and cases** (`portal/data_gen/`). None of the
+15 subjects comes from a DOHA case. Every person, address, SSN, DOB, credit
+record, police report, and CV alert is fabricated by plain Python — no LLM
+and no randomness at generation time, so output is deterministic and
+reviewable in source:
+
+- **3 "hero" cases** (`hero_cases.py`) are hand-authored fictional narratives
+  written to be realistic under SEAD-4. Residential addresses are invented
+  street/number combinations in real localities; a few *employer* addresses
+  are real public business addresses used as workplaces.
+- **12 roster subjects** (`roster.py`) are assembled by deterministic index
+  arithmetic over fixed lists of streets, cities, and employers.
+- **Fictional-safety conventions**, enforced by the pytest suite: 900-series
+  SSNs (never issued by the SSA), 555-01xx phone numbers (reserved for
+  fiction), and example-domain emails.
+
+The case *structure* is modeled on the real process — SEAD-4's thirteen
+Adjudicative Guidelines and nine whole-person factors, SF-86 sections, and
+the DCSA continuous-vetting alert flow — with disqualifier/mitigator entries
+citing actual Adjudicative Guidelines paragraphs (e.g., AG ¶ 19(a)).
+
+Tooling: `pydantic` (schema validation for every generated record),
+`pandas`/`pyarrow` (parquet corpus), Playwright (corpus scraping), and
+`pytest` (30 tests enforcing the invariants above).
+
 ## Complete Workflow
 
 The typical workflow consists of three main phases:
