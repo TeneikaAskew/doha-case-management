@@ -124,7 +124,7 @@
       "note": "New collection account: $12,400 past due (auto loan)"
     }
   ],
-  "wholePersonSummary": "Sustained financial delinquency ($47,300 across five accounts) compounded by incomplete SF-86 disclosure and unreported foreign travel. Mitigation is thin: the 2024 job loss explains how the debt began but not the continued non-payment since re-employment. Duress exposure is elevated — delinquent debt plus close foreign family ties — and with no documented repayment behavior, the whole-person picture currently weighs against restoring eligibility.",
+  "wholePersonSummary": "Sustained financial delinquency ($47,300 across five accounts) compounded by incomplete SF-86 disclosure and unreported foreign travel. Mitigation is thin: the 2024 job loss explains how the debt began but not the continued non-payment since re-employment. Duress exposure is elevated - delinquent debt plus close foreign family ties - and with no documented repayment behavior, the whole-person picture currently weighs against restoring eligibility.",
   "wholePerson": [
     {
       "factor": "Nature, extent, and seriousness of the conduct",
@@ -157,7 +157,7 @@
     },
     {
       "factor": "Frequency and recency of the conduct",
-      "assessment": "Ongoing and current — the newest collection alert is June 2026. This is a continuing condition, not a discrete past event.",
+      "assessment": "Ongoing and current - the newest collection alert is June 2026. This is a continuing condition, not a discrete past event.",
       "aiRating": "CONCERN",
       "evidence": [
         {
@@ -192,8 +192,8 @@
       "evidence": [
         {
           "type": "RECORD_CHECK",
-          "ref": "Financial record checks",
-          "label": "Financial record checks"
+          "ref": "Tri-bureau credit re-check",
+          "label": "Tri-bureau credit re-check"
         }
       ]
     },
@@ -233,8 +233,8 @@
       "evidence": [
         {
           "type": "RECORD_CHECK",
-          "ref": "Financial record checks",
-          "label": "Financial record checks"
+          "ref": "Tri-bureau credit re-check",
+          "label": "Tri-bureau credit re-check"
         }
       ]
     }
@@ -244,7 +244,7 @@
       "code": "F",
       "name": "Financial Considerations",
       "severity": "C",
-      "aiReasoning": "Disqualifying conditions AG ¶ 19(a) and 19(c) are established by the credit record. Mitigator ¶ 20(b) applies only partially: the 2024 job loss was beyond his control, but there is no evidence he acted responsibly under the circumstances since re-employment.",
+      "aiReasoning": "Disqualifying conditions AG Â¶ 19(a) and 19(c) are established by the credit record. Mitigator Â¶ 20(b) applies only partially: the 2024 job loss was beyond his control, but there is no evidence he acted responsibly under the circumstances since re-employment.",
       "evidence": [
         {
           "provider": "TransUnion",
@@ -267,25 +267,25 @@
       ],
       "disqualifiers": [
         {
-          "code": "AG ¶ 19(a)",
+          "code": "AG Â¶ 19(a)",
           "description": "Inability to satisfy debts",
           "evidence": "$47,300 delinquent across five accounts"
         },
         {
-          "code": "AG ¶ 19(c)",
+          "code": "AG Â¶ 19(c)",
           "description": "A history of not meeting financial obligations",
           "evidence": "Charge-offs 2024-2026 and unpaid 2025 judgment"
         }
       ],
       "mitigators": [
         {
-          "code": "AG ¶ 20(b)",
+          "code": "AG Â¶ 20(b)",
           "description": "Conditions largely beyond the person's control",
           "applicability": "PARTIAL",
           "reasoning": "Job loss was involuntary, but no responsible action (payment plan, counseling) is documented since."
         },
         {
-          "code": "AG ¶ 20(d)",
+          "code": "AG Â¶ 20(d)",
           "description": "Good-faith effort to repay overdue creditors",
           "applicability": "NONE",
           "reasoning": "No repayment evidence in file."
@@ -319,7 +319,7 @@
       "code": "B",
       "name": "Foreign Influence",
       "severity": "B",
-      "aiReasoning": "AG ¶ 7(a) contacts are established: mother and two siblings in Nigeria, one sibling employed by a state-owned oil company. Unreported April 2026 travel weighs against ¶ 8(a) mitigation. Combined with financial pressure, heightens coercion risk.",
+      "aiReasoning": "AG Â¶ 7(a) contacts are established: mother and two siblings in Nigeria, one sibling employed by a state-owned oil company. Unreported April 2026 travel weighs against Â¶ 8(a) mitigation. Combined with financial pressure, heightens coercion risk.",
       "evidence": [
         {
           "provider": "SF-86 self-report",
@@ -336,14 +336,14 @@
       ],
       "disqualifiers": [
         {
-          "code": "AG ¶ 7(a)",
+          "code": "AG Â¶ 7(a)",
           "description": "Contact with a foreign family member who could create a risk of foreign exploitation or pressure",
           "evidence": "Sibling employed by state-owned enterprise"
         }
       ],
       "mitigators": [
         {
-          "code": "AG ¶ 8(a)",
+          "code": "AG Â¶ 8(a)",
           "description": "Nature of relationships makes exploitation unlikely",
           "applicability": "PARTIAL",
           "reasoning": "Contacts are familial and disclosed, but the unreported travel undercuts confidence in ongoing candor."
@@ -378,6 +378,7 @@
     "recordChecks": [
       {
         "item": "Subject interview (ESI)",
+        "category": "SUBJECT_INTERVIEW",
         "status": "COMPLETE",
         "provider": "DCSA field operations",
         "requestedDate": "2025-10-02",
@@ -388,6 +389,7 @@
       },
       {
         "item": "Employment coverage (10 yrs)",
+        "category": "EMPLOYMENT",
         "status": "COMPLETE",
         "provider": "DCSA field operations",
         "requestedDate": "2025-10-02",
@@ -398,6 +400,7 @@
       },
       {
         "item": "Neighborhood/reference interviews",
+        "category": "REFERENCES",
         "status": "COMPLETE",
         "provider": "DCSA field operations",
         "requestedDate": "2025-10-02",
@@ -407,7 +410,8 @@
         "documentUrl": null
       },
       {
-        "item": "Financial record checks",
+        "item": "Tri-bureau credit re-check",
+        "category": "FINANCIAL",
         "status": "COMPLETE",
         "provider": "TransUnion",
         "requestedDate": "2026-03-10",
@@ -417,7 +421,8 @@
         "documentUrl": "documents/SUBJ-001/credit-extract-20260620.json"
       },
       {
-        "item": "FinCEN financial-intelligence check",
+        "item": "SAR registry query",
+        "category": "FINANCIAL",
         "status": "COMPLETE",
         "provider": "FinCEN / Treasury",
         "requestedDate": "2026-04-10",
@@ -427,7 +432,8 @@
         "documentUrl": "documents/SUBJ-001/sar-20260415.json"
       },
       {
-        "item": "Foreign travel records check",
+        "item": "Border-crossing records",
+        "category": "FOREIGN",
         "status": "COMPLETE",
         "provider": "CBP I-94 Foreign Travel",
         "requestedDate": "2026-05-01",
@@ -438,6 +444,7 @@
       },
       {
         "item": "Foreign contact expansion leads",
+        "category": "FOREIGN",
         "status": "PENDING",
         "provider": "DCSA field operations",
         "requestedDate": "2026-02-01",
@@ -500,13 +507,33 @@
         "date": "2025-11-19",
         "type": "Enhanced Subject Interview",
         "interviewer": "S. Whitfield",
-        "summary": "Subject candid about job loss; understated debt total. Described family in Nigeria as 'not close', which conflicts with monthly remittance records."
+        "summary": "Subject interviewed under oath for approximately two hours. He was candid about the 2024 layoff and six-month unemployment period, and volunteered that he fell behind on an auto loan and two credit cards during that time. However, he characterized his total delinquency as 'around $9,000' - consistent with his SF-86 response but well below the $47,300 established by the tri-bureau re-check. He described his mother and two siblings in Nigeria as 'not close' with contact limited to holidays, which conflicts with bank records showing monthly remittances to Lagos beneficiaries since January 2026. Subject declined to elaborate on the purpose of the transfers.",
+        "conflict": true,
+        "highlight": "conflicts with bank records showing monthly remittances to Lagos beneficiaries"
       },
       {
         "date": "2025-12-04",
-        "type": "Reference interview",
+        "type": "Supervisor reference",
         "interviewer": "S. Whitfield",
-        "summary": "Coworker describes subject as reliable; unaware of financial stress."
+        "summary": "Current supervisor at Sentinel Dynamics describes subject as technically excellent and dependable, with no attendance or conduct issues in seven years. Unaware of any financial stress. Noted subject declined a 2025 promotion that would have required relocation; understood subject has family in Nigeria but knew of no recent travel.",
+        "conflict": false,
+        "highlight": null
+      },
+      {
+        "date": "2026-01-14",
+        "type": "Neighborhood interview",
+        "interviewer": "J. Ramos",
+        "summary": "Neighbor of six years describes a stable, quiet household with no indicators of substance misuse, gambling, or spending beyond means. Recalled subject's spouse mentioning money being 'tight' since the 2024 layoff. Nothing further developed.",
+        "conflict": false,
+        "highlight": null
+      },
+      {
+        "date": "2026-05-20",
+        "type": "Coworker follow-up",
+        "interviewer": "S. Whitfield",
+        "summary": "Coworker of four years, re-interviewed after the CBP travel alert. Described subject as reliable and private; recalled subject mentioning an April 2026 trip to Lagos for a family funeral. Travel is corroborated by the I-94 record, but no corresponding foreign-travel report was filed with the FSO as required under SEAD-3.",
+        "conflict": true,
+        "highlight": "no corresponding foreign-travel report was filed with the FSO"
       }
     ],
     "roiEntries": [

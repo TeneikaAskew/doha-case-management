@@ -31,6 +31,15 @@ function renderTab(personaId = 'investigator') {
 beforeEach(() => localStorage.clear());
 
 describe('InvestigationTab', () => {
+  it('renders the interview ledger with conflict verdicts and highlight', () => {
+    renderTab();
+    expect(screen.getByText('Enhanced Subject Interview')).toBeInTheDocument();
+    expect(screen.getByText('Conflict')).toBeInTheDocument();
+    expect(screen.getByText('No conflict')).toBeInTheDocument();
+    const mark = screen.getByText('understated the debt total');
+    expect(mark.tagName).toBe('MARK');
+  });
+
   it('renders self-report vs matched result with discrepancy flag', () => {
     renderTab();
     expect(screen.getByText('Two delinquent accounts totaling about $9,000')).toBeInTheDocument();
@@ -38,11 +47,24 @@ describe('InvestigationTab', () => {
     expect(screen.getByText('Discrepancy')).toBeInTheDocument();
   });
 
-  it('renders record checks with status pills', () => {
+  it('renders record checks grouped by category with status pills', () => {
     renderTab();
     expect(screen.getByText('Record Checks')).toBeInTheDocument();
-    expect(screen.getByText('Subject interview (ESI)')).toBeInTheDocument();
+    expect(screen.getByText('Subject interview')).toBeInTheDocument();
+    expect(screen.getByText('Financial record checks')).toBeInTheDocument();
+    expect(screen.getByText('Foreign travel & contacts')).toBeInTheDocument();
+    // provider-specific checks live inside categories, not as top-level rows
+    expect(screen.queryByText('SAR registry query')).not.toBeInTheDocument();
     expect(screen.getAllByText('Complete').length).toBeGreaterThan(0);
+  });
+
+  it('groups multiple sources under one category', () => {
+    renderTab();
+    fireEvent.click(screen.getByRole('button', { name: /financial record checks/i }));
+    expect(screen.getByText('Tri-bureau credit re-check')).toBeInTheDocument();
+    expect(screen.getByText('SAR registry query')).toBeInTheDocument();
+    expect(screen.getByText('TransUnion')).toBeInTheDocument();
+    expect(screen.getByText('FinCEN / Treasury')).toBeInTheDocument();
   });
 
   it('cites and links the coverage-scope authorities for the record checks', () => {

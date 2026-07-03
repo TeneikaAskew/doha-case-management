@@ -161,6 +161,8 @@ class Interview(BaseModel):
     type: str
     interviewer: str
     summary: str
+    conflict: bool = False       # testimony conflicts with record evidence
+    highlight: Optional[str] = None  # exact substring of summary to emphasize in UI
 
 
 class RoiEntry(BaseModel):

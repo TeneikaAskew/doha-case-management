@@ -234,7 +234,7 @@
       "code": "J",
       "name": "Criminal Conduct",
       "severity": "B",
-      "aiReasoning": "AG ¶ 31(b) applies on arrest evidence; adjudication should await disposition. Isolated incident weighs toward ¶ 32(a) over time.",
+      "aiReasoning": "AG Â¶ 31(b) applies on arrest evidence; adjudication should await disposition. Isolated incident weighs toward Â¶ 32(a) over time.",
       "evidence": [
         {
           "provider": "FBI Rap Back",
@@ -245,14 +245,14 @@
       ],
       "disqualifiers": [
         {
-          "code": "AG ¶ 31(b)",
+          "code": "AG Â¶ 31(b)",
           "description": "Evidence of criminal conduct regardless of whether the person was formally charged",
           "evidence": "Fingerprint-verified arrest record"
         }
       ],
       "mitigators": [
         {
-          "code": "AG ¶ 32(a)",
+          "code": "AG Â¶ 32(a)",
           "description": "So much time has elapsed / unlikely to recur",
           "applicability": "NONE",
           "reasoning": "Arrest occurred within the last two weeks."
@@ -286,7 +286,7 @@
       "code": "G",
       "name": "Alcohol Consumption",
       "severity": "B",
-      "aiReasoning": "Single alcohol-related incident (AG ¶ 22(a)). No evidence yet of a pattern or diagnosis; evaluation report would inform ¶ 23(b).",
+      "aiReasoning": "Single alcohol-related incident (AG Â¶ 22(a)). No evidence yet of a pattern or diagnosis; evaluation report would inform Â¶ 23(b).",
       "evidence": [
         {
           "provider": "FBI Rap Back",
@@ -297,14 +297,14 @@
       ],
       "disqualifiers": [
         {
-          "code": "AG ¶ 22(a)",
+          "code": "AG Â¶ 22(a)",
           "description": "Alcohol-related incident away from work",
           "evidence": "DUI arrest 2026-06-21"
         }
       ],
       "mitigators": [
         {
-          "code": "AG ¶ 23(a)",
+          "code": "AG Â¶ 23(a)",
           "description": "So much time has passed / no pattern",
           "applicability": "NONE",
           "reasoning": "Incident is current."
@@ -338,17 +338,19 @@
   "investigation": {
     "recordChecks": [
       {
-        "item": "T3 automated record checks (2023)",
+        "item": "Criminal history baseline (2023)",
+        "category": "CRIMINAL",
         "status": "COMPLETE",
         "provider": "FBI CJIS / NCIC + Rap Back",
         "requestedDate": "2023-02-01",
         "completedDate": "2023-03-20",
-        "scope": "NCIC criminal history, tri-bureau credit, DMV - T3 initial investigation",
-        "resultSummary": "All checks clear at adjudication (2023).",
+        "scope": "NCIC criminal history and DMV - T3 initial investigation",
+        "resultSummary": "No record at adjudication (2023).",
         "documentUrl": null
       },
       {
         "item": "Police report retrieval (2026 arrest)",
+        "category": "CRIMINAL",
         "status": "COMPLETE",
         "provider": "State & local courts",
         "requestedDate": "2026-06-24",
@@ -359,12 +361,24 @@
       },
       {
         "item": "Court disposition monitoring",
+        "category": "CRIMINAL",
         "status": "PENDING",
         "provider": "State & local courts",
         "requestedDate": "2026-06-30",
         "completedDate": null,
         "scope": "Chesapeake General District Court docket watch",
         "resultSummary": "Arraignment scheduled 2026-07-14; disposition pending.",
+        "documentUrl": null
+      },
+      {
+        "item": "Credit baseline (2023)",
+        "category": "FINANCIAL",
+        "status": "COMPLETE",
+        "provider": "TransUnion",
+        "requestedDate": "2023-02-01",
+        "completedDate": "2023-03-20",
+        "scope": "Tri-bureau credit - T3 initial investigation",
+        "resultSummary": "All accounts current at adjudication (2023).",
         "documentUrl": null
       }
     ],

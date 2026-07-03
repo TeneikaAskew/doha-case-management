@@ -154,6 +154,7 @@
     "recordChecks": [
       {
         "item": "Fingerprint / FBI criminal history",
+        "category": "CRIMINAL",
         "status": "COMPLETE",
         "provider": "FBI CJIS / NCIC + Rap Back",
         "requestedDate": "2026-06-11",
@@ -164,6 +165,7 @@
       },
       {
         "item": "Credit check",
+        "category": "FINANCIAL",
         "status": "COMPLETE",
         "provider": "Equifax",
         "requestedDate": "2026-06-11",
@@ -174,6 +176,7 @@
       },
       {
         "item": "Education verification",
+        "category": "EDUCATION",
         "status": "COMPLETE",
         "provider": "LexisNexis",
         "requestedDate": "2026-06-11",
@@ -184,6 +187,7 @@
       },
       {
         "item": "Employment verification",
+        "category": "EMPLOYMENT",
         "status": "PENDING",
         "provider": "LexisNexis",
         "requestedDate": "2026-06-11",
@@ -194,6 +198,7 @@
       },
       {
         "item": "Subject interview",
+        "category": "SUBJECT_INTERVIEW",
         "status": "NOT_REQUIRED",
         "provider": "DCSA field operations",
         "requestedDate": "2026-06-10",

@@ -13,49 +13,106 @@ const CHECK_VARIANT = { COMPLETE: 'success', PENDING: 'warning', NOT_REQUIRED: '
 const CHECK_LABEL = { COMPLETE: 'Complete', PENDING: 'Pending', NOT_REQUIRED: 'Not required' };
 const ROI_ITEMS = ['Financial', 'Foreign contacts', 'Employment', 'Criminal', 'General'];
 
-function RecordCheckRow({ check }) {
-  const [open, setOpen] = useState(false);
+const CHECK_CATEGORY_LABELS = {
+  CRIMINAL: 'Criminal record checks',
+  FINANCIAL: 'Financial record checks',
+  FOREIGN: 'Foreign travel & contacts',
+  EMPLOYMENT: 'Employment verification',
+  EDUCATION: 'Education verification',
+  REFERENCES: 'References & neighborhood',
+  SUBJECT_INTERVIEW: 'Subject interview',
+  SECURITY: 'Security & conduct records',
+  FIELDWORK: 'Investigative fieldwork',
+};
+const CATEGORY_ORDER = Object.keys(CHECK_CATEGORY_LABELS);
+
+function InterviewSummary({ summary, highlight }) {
+  if (!highlight) return summary;
+  const at = summary.indexOf(highlight);
+  if (at === -1) return summary;
+  return (
+    <>
+      {summary.slice(0, at)}
+      <mark className="interview-mark">{highlight}</mark>
+      {summary.slice(at + highlight.length)}
+    </>
+  );
+}
+
+function rollupStatus(checks) {
+  if (checks.some((c) => c.status === 'PENDING')) return 'PENDING';
+  if (checks.every((c) => c.status === 'NOT_REQUIRED')) return 'NOT_REQUIRED';
+  return 'COMPLETE';
+}
+
+function groupChecks(checks) {
+  const byCategory = new Map();
+  checks.forEach((c) => {
+    const key = c.category || 'FIELDWORK';
+    if (!byCategory.has(key)) byCategory.set(key, []);
+    byCategory.get(key).push(c);
+  });
+  return [...byCategory.entries()].sort(
+    (a, b) => CATEGORY_ORDER.indexOf(a[0]) - CATEGORY_ORDER.indexOf(b[0]));
+}
+
+function RecordCheckDetail({ check, showItem }) {
   const [docOpen, setDocOpen] = useState(false);
+  return (
+    <div className="record-check-detail">
+      {showItem && <span className="record-check-subitem">{check.item}</span>}
+      <div className="record-check-meta">
+        <SourceChip provider={check.provider} />
+        <span className="record-check-dates">
+          <span className="record-check-lbl">Requested</span>
+          <span>{check.requestedDate}</span>
+          <span className="record-check-arrow" aria-hidden="true">→</span>
+          <span className="record-check-lbl">Completed</span>
+          <span>{check.completedDate || 'Pending'}</span>
+        </span>
+      </div>
+      <div className="record-check-cell">
+        <span className="record-check-lbl">What was checked</span>
+        <span>{check.scope}</span>
+      </div>
+      <div className="record-check-cell">
+        <span className="record-check-lbl">Result</span>
+        <span>{check.resultSummary}</span>
+      </div>
+      {check.documentUrl && (
+        <>
+          <button type="button" className="btn btn-ghost"
+            onClick={() => setDocOpen(!docOpen)}>
+            <FiFileText aria-hidden="true" /> View document
+          </button>
+          {docOpen && <DocumentViewer url={check.documentUrl} />}
+        </>
+      )}
+    </div>
+  );
+}
+
+function RecordCheckGroup({ category, checks }) {
+  const [open, setOpen] = useState(false);
+  const status = rollupStatus(checks);
   return (
     <li className="record-check">
       <button type="button" className="record-check-header" onClick={() => setOpen(!open)}
         aria-expanded={open}>
-        <span className="record-check-item">{check.item}</span>
-        <StatusBadge variant={CHECK_VARIANT[check.status]}>
-          {CHECK_LABEL[check.status]}
+        <span className="record-check-item">
+          {CHECK_CATEGORY_LABELS[category] || category}
+        </span>
+        <StatusBadge variant={CHECK_VARIANT[status]}>
+          {CHECK_LABEL[status]}
         </StatusBadge>
         <FiChevronDown className={open ? 'collapsible-chevron open' : 'collapsible-chevron'}
           aria-hidden="true" />
       </button>
       {open && (
         <div className="record-check-body">
-          <div className="record-check-meta">
-            <SourceChip provider={check.provider} />
-            <span className="record-check-dates">
-              <span className="record-check-lbl">Requested</span>
-              <span>{check.requestedDate}</span>
-              <span className="record-check-arrow" aria-hidden="true">→</span>
-              <span className="record-check-lbl">Completed</span>
-              <span>{check.completedDate || 'Pending'}</span>
-            </span>
-          </div>
-          <div className="record-check-cell">
-            <span className="record-check-lbl">What was checked</span>
-            <span>{check.scope}</span>
-          </div>
-          <div className="record-check-cell">
-            <span className="record-check-lbl">Result</span>
-            <span>{check.resultSummary}</span>
-          </div>
-          {check.documentUrl && (
-            <>
-              <button type="button" className="btn btn-ghost"
-                onClick={() => setDocOpen(!docOpen)}>
-                <FiFileText aria-hidden="true" /> View document
-              </button>
-              {docOpen && <DocumentViewer url={check.documentUrl} />}
-            </>
-          )}
+          {checks.map((c) => (
+            <RecordCheckDetail key={c.item} check={c} showItem={checks.length > 1} />
+          ))}
         </div>
       )}
     </li>
@@ -86,7 +143,9 @@ export default function InvestigationTab({ caseData }) {
       <div className="card">
         <h3>Record Checks</h3>
         <ul className="record-check-list">
-          {inv.recordChecks.map((c) => <RecordCheckRow key={c.item} check={c} />)}
+          {groupChecks(inv.recordChecks).map(([category, checks]) => (
+            <RecordCheckGroup key={category} category={category} checks={checks} />
+          ))}
         </ul>
         <SectionRef>
           Coverage scope per the{' '}
@@ -127,13 +186,24 @@ export default function InvestigationTab({ caseData }) {
       {inv.interviews.length > 0 && (
         <div className="card">
           <h3>Interviews</h3>
-          {inv.interviews.map((iv, i) => (
-            <div key={i} className="interview">
-              <strong>{iv.type}</strong>
-              <span className="muted"> - {iv.date}, {iv.interviewer}</span>
-              <p>{iv.summary}</p>
-            </div>
-          ))}
+          <ul className="interview-ledger">
+            {inv.interviews.map((iv, i) => (
+              <li key={i} className="interview-row">
+                <span className="interview-date">{iv.date}</span>
+                <span className="interview-rail" aria-hidden="true" />
+                <div className="interview-who">
+                  <div className="interview-type">{iv.type}</div>
+                  <span className={`conflict-chip ${iv.conflict ? 'conflict' : 'clear'}`}>
+                    {iv.conflict ? 'Conflict' : 'No conflict'}
+                  </span>
+                  <div className="interview-interviewer">{iv.interviewer}</div>
+                </div>
+                <blockquote className="interview-quote">
+                  <InterviewSummary summary={iv.summary} highlight={iv.highlight} />
+                </blockquote>
+              </li>
+            ))}
+          </ul>
         </div>
       )}
 

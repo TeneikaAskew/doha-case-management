@@ -197,23 +197,47 @@
   "investigation": {
     "recordChecks": [
       {
-        "item": "Automated record checks",
+        "item": "Criminal history check",
+        "category": "CRIMINAL",
         "status": "COMPLETE",
         "provider": "FBI CJIS / NCIC + Rap Back",
         "requestedDate": "2026-05-02",
         "completedDate": "2026-05-15",
-        "scope": "NCIC criminal history, tri-bureau credit, DMV",
-        "resultSummary": "Unauthorized USB device connected to a standalone lab system.",
+        "scope": "NGI fingerprint submission, NCIC query, DMV",
+        "resultSummary": "No criminal record.",
+        "documentUrl": null
+      },
+      {
+        "item": "Credit check",
+        "category": "FINANCIAL",
+        "status": "COMPLETE",
+        "provider": "TransUnion",
+        "requestedDate": "2026-05-02",
+        "completedDate": "2026-05-15",
+        "scope": "Tri-bureau credit pull",
+        "resultSummary": "All accounts current; no derogatory tradelines.",
         "documentUrl": null
       },
       {
         "item": "Tier-required fieldwork",
+        "category": "FIELDWORK",
         "status": "PENDING",
         "provider": "DCSA field operations",
         "requestedDate": "2026-05-02",
         "completedDate": null,
         "scope": "Tier-scoped interviews and local records",
         "resultSummary": "Fieldwork in progress.",
+        "documentUrl": null
+      },
+      {
+        "item": "Security & conduct records",
+        "category": "SECURITY",
+        "status": "COMPLETE",
+        "provider": "DISS / prior adjudications",
+        "requestedDate": "2026-05-02",
+        "completedDate": "2026-06-18",
+        "scope": "Security incident history, prior adjudications, conduct records",
+        "resultSummary": "Unauthorized USB device connected to a standalone lab system.",
         "documentUrl": null
       }
     ],

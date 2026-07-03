@@ -223,3 +223,18 @@ def test_deterministic(tmp_path):
     gen.main(b)
     assert (a / "subjects.json").read_text(encoding="utf-8") == \
            (b / "subjects.json").read_text(encoding="utf-8")
+
+
+def test_no_em_dashes_or_mojibake_in_generated_data(out):
+    """CLAUDE.md copy rule: hyphens only. Catches raw and double-encoded dashes.
+
+    doha-record.json is exempt: it is the verbatim text of a real DOHA decision.
+    """
+    out_dir, _ = out
+    banned = ["—", "–", "â€"]  # em dash, en dash, mojibake prefix
+    for f in sorted(out_dir.rglob("*.json")):
+        if f.name == "doha-record.json":
+            continue
+        text = f.read_text(encoding="utf-8")
+        for ch in banned:
+            assert ch not in text, f"{f.name} contains banned dash {ch!r}"
