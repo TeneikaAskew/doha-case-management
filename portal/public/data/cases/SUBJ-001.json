@@ -160,19 +160,22 @@
           "caseNumber": "23-01864",
           "outcome": "DENIED",
           "year": 2026,
-          "relevance": "DOHA hearing decision involving Guideline F (Financial Considerations)"
+          "relevance": "DOHA hearing decision involving Guideline F (Financial Considerations)",
+          "sourceUrl": "https://doha.ogc.osd.mil/Industrial-Security-Program/Industrial-Security-Clearance-Decisions/ISCR-Hearing-Decisions/2026-ISCR-Hearing-Decisions/FileId/245264/"
         },
         {
           "caseNumber": "24-00939",
           "outcome": "DENIED",
           "year": 2026,
-          "relevance": "DOHA hearing decision involving Guideline F (Financial Considerations)"
+          "relevance": "DOHA hearing decision involving Guideline F (Financial Considerations)",
+          "sourceUrl": "https://doha.ogc.osd.mil/Industrial-Security-Program/Industrial-Security-Clearance-Decisions/ISCR-Hearing-Decisions/2026-ISCR-Hearing-Decisions/FileId/245280/"
         },
         {
           "caseNumber": "24-00971",
           "outcome": "GRANTED",
           "year": 2026,
-          "relevance": "DOHA hearing decision involving Guideline F (Financial Considerations)"
+          "relevance": "DOHA hearing decision involving Guideline F (Financial Considerations)",
+          "sourceUrl": "https://doha.ogc.osd.mil/Industrial-Security-Program/Industrial-Security-Clearance-Decisions/ISCR-Hearing-Decisions/2026-ISCR-Hearing-Decisions/FileId/245262/"
         }
       ]
     },
@@ -215,19 +218,22 @@
           "caseNumber": "24-02453",
           "outcome": "DENIED",
           "year": 2026,
-          "relevance": "DOHA hearing decision involving Guideline B (Foreign Influence)"
+          "relevance": "DOHA hearing decision involving Guideline B (Foreign Influence)",
+          "sourceUrl": "https://doha.ogc.osd.mil/Industrial-Security-Program/Industrial-Security-Clearance-Decisions/ISCR-Hearing-Decisions/2026-ISCR-Hearing-Decisions/FileId/245209/"
         },
         {
           "caseNumber": "21-02538",
           "outcome": "DENIED",
           "year": 2025,
-          "relevance": "DOHA hearing decision involving Guideline B (Foreign Influence)"
+          "relevance": "DOHA hearing decision involving Guideline B (Foreign Influence)",
+          "sourceUrl": "https://doha.ogc.osd.mil/Industrial-Security-Program/Industrial-Security-Clearance-Decisions/ISCR-Hearing-Decisions/2025-ISCR-Hearing-Decisions/FileId/233663/"
         },
         {
           "caseNumber": "22-02603",
           "outcome": "GRANTED",
           "year": 2025,
-          "relevance": "DOHA hearing decision involving Guideline B (Foreign Influence)"
+          "relevance": "DOHA hearing decision involving Guideline B (Foreign Influence)",
+          "sourceUrl": "https://doha.ogc.osd.mil/Industrial-Security-Program/Industrial-Security-Clearance-Decisions/ISCR-Hearing-Decisions/2025-ISCR-Hearing-Decisions/FileId/243459/"
         }
       ]
     }

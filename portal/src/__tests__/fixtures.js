@@ -46,7 +46,8 @@ export const CASE_001 = {
       mitigators: [{ code: 'AG ¶ 20(b)', description: 'Conditions beyond control',
         applicability: 'PARTIAL', reasoning: 'Job loss involuntary; no repayment since.' }],
       precedents: [{ caseNumber: '20-01001', outcome: 'DENIED', year: 2021,
-        relevance: 'DOHA hearing decision involving Guideline F' }] },
+        relevance: 'DOHA hearing decision involving Guideline F',
+        sourceUrl: 'https://doha.example/2021-ISCR-Hearing-Decisions/FileId/111111/' }] },
   ],
   investigation: {
     coverage: [{ item: 'Subject interview (ESI)', status: 'COMPLETE' }],

@@ -20,6 +20,12 @@ describe('GuidelinesTab', () => {
     expect(screen.getByText('DENIED')).toBeInTheDocument();
   });
 
+  it('renders the precedent case number as an external link to the official decision', () => {
+    render(<GuidelinesTab caseData={CASE_001} />);
+    expect(screen.getByRole('link', { name: /20-01001/ }))
+      .toHaveAttribute('href', 'https://doha.example/2021-ISCR-Hearing-Decisions/FileId/111111/');
+  });
+
   it('collapses the first section when its header is clicked', () => {
     render(<GuidelinesTab caseData={CASE_001} />);
     fireEvent.click(screen.getByRole('button', { name: /financial considerations/i }));

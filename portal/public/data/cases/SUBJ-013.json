@@ -69,19 +69,22 @@
           "caseNumber": "23-01001",
           "outcome": "DENIED",
           "year": 2025,
-          "relevance": "DOHA hearing decision involving Guideline K (Handling Protected Information)"
+          "relevance": "DOHA hearing decision involving Guideline K (Handling Protected Information)",
+          "sourceUrl": "https://doha.ogc.osd.mil/Industrial-Security-Program/Industrial-Security-Clearance-Decisions/ISCR-Hearing-Decisions/2025-ISCR-Hearing-Decisions/FileId/233776/"
         },
         {
           "caseNumber": "24-01547",
           "outcome": "DENIED",
           "year": 2025,
-          "relevance": "DOHA hearing decision involving Guideline K (Handling Protected Information)"
+          "relevance": "DOHA hearing decision involving Guideline K (Handling Protected Information)",
+          "sourceUrl": "https://doha.ogc.osd.mil/Industrial-Security-Program/Industrial-Security-Clearance-Decisions/ISCR-Hearing-Decisions/2025-ISCR-Hearing-Decisions/FileId/241359/"
         },
         {
           "caseNumber": "23-01442",
           "outcome": "GRANTED",
           "year": 2025,
-          "relevance": "DOHA hearing decision involving Guideline K (Handling Protected Information)"
+          "relevance": "DOHA hearing decision involving Guideline K (Handling Protected Information)",
+          "sourceUrl": "https://doha.ogc.osd.mil/Industrial-Security-Program/Industrial-Security-Clearance-Decisions/ISCR-Hearing-Decisions/2025-ISCR-Hearing-Decisions/FileId/239519/"
         }
       ]
     }

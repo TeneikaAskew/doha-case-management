@@ -1,3 +1,4 @@
+import { FiExternalLink } from 'react-icons/fi';
 import CollapsibleSection from '../../components/CollapsibleSection.jsx';
 import SeverityBadge from '../../components/SeverityBadge.jsx';
 import StatusBadge from '../../components/StatusBadge.jsx';
@@ -67,7 +68,14 @@ export default function GuidelinesTab({ caseData }) {
             <tbody>
               {g.precedents.map((p) => (
                 <tr key={p.caseNumber}>
-                  <td>{p.caseNumber}</td>
+                  <td>
+                    {p.sourceUrl ? (
+                      <a href={p.sourceUrl} target="_blank" rel="noreferrer"
+                        title="Open official DOHA decision (PDF)">
+                        {p.caseNumber} <FiExternalLink aria-hidden="true" />
+                      </a>
+                    ) : p.caseNumber}
+                  </td>
                   <td><StatusBadge variant={OUTCOME_VARIANT[p.outcome] || 'neutral'}>
                     {p.outcome}</StatusBadge></td>
                   <td>{p.year ?? '—'}</td>

@@ -10,7 +10,7 @@ PARQUET_PATHS = [
     REPO_ROOT / "doha_parsed_cases" / "all_cases_1.parquet",
     REPO_ROOT / "doha_parsed_cases" / "all_cases_2.parquet",
 ]
-COLUMNS = ["case_number", "date", "outcome", "guidelines", "case_type"]
+COLUMNS = ["case_number", "date", "outcome", "guidelines", "case_type", "source_url"]
 FULL_COLUMNS = ["case_number", "date", "outcome", "case_type", "guidelines",
                 "full_text", "judge", "source_url"]
 
@@ -90,11 +90,25 @@ def extract_year(date_str) -> int | None:
     return int(m.group(0)) if m else None
 
 
+def listing_url(source_url) -> str | None:
+    """Return the year-listing page (everything before '/FileId/') for a DOHA PDF url."""
+    if not source_url:
+        return None
+    parts = re.split(r"/FileId/", str(source_url), maxsplit=1, flags=re.IGNORECASE)
+    return parts[0] if len(parts) > 1 else None
+
+
 def _has_guideline(guidelines, code: str) -> bool:
     # Parquet nulls arrive as None or NaN (float); values are lists/ndarrays of strings.
     if guidelines is None or isinstance(guidelines, float):
         return False
     return code in list(guidelines)
+
+
+def _row_source_url(v) -> str | None:
+    if v is None or (isinstance(v, float) and pd.isna(v)):
+        return None
+    return str(v) if str(v).strip() else None
 
 
 def find_precedents(df: pd.DataFrame | None, code: str, limit: int = 3) -> list[dict]:
@@ -113,8 +127,25 @@ def find_precedents(df: pd.DataFrame | None, code: str, limit: int = 3) -> list[
         dict(caseNumber=str(r.case_number), outcome=str(r.outcome),
              year=extract_year(r.date),
              relevance=f"DOHA {r.case_type} decision involving Guideline {code} "
-                       f"({GUIDELINE_NAMES[code]})")
+                       f"({GUIDELINE_NAMES[code]})",
+             sourceUrl=_row_source_url(getattr(r, "source_url", None)))
         for r in picks.itertuples()
+    ]
+
+
+def build_case_links(df: pd.DataFrame | None, case_numbers: list[str]) -> list[dict]:
+    """Build a CaseLink-shaped dict per (case_number, row) — a case number can have
+    both a hearing and an appeal row, so each matching row emits its own entry."""
+    if df is None:
+        return []
+    wanted = sorted(set(case_numbers))
+    hits = df[df["case_number"].isin(wanted)].sort_values(["case_number", "case_type"])
+    return [
+        dict(caseNumber=str(r.case_number), caseType=str(r.case_type),
+             year=extract_year(r.date), outcome=str(r.outcome),
+             listingUrl=listing_url(getattr(r, "source_url", None)),
+             pdfUrl=_row_source_url(getattr(r, "source_url", None)))
+        for r in hits.itertuples()
     ]
 
 

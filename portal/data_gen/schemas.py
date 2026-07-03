@@ -65,6 +65,7 @@ class Precedent(BaseModel):
     outcome: str
     year: Optional[int] = None
     relevance: str
+    sourceUrl: Optional[str] = None
 
 
 class GuidelineAssessment(BaseModel):
@@ -273,6 +274,19 @@ class PipelineStats(BaseModel):
 class Analytics(BaseModel):
     corpus: CorpusStats
     pipeline: PipelineStats
+
+
+class CaseLink(BaseModel):
+    caseNumber: str
+    caseType: str
+    year: Optional[int] = None
+    outcome: str
+    listingUrl: Optional[str] = None
+    pdfUrl: Optional[str] = None
+
+
+class CaseLinksFile(BaseModel):
+    links: list[CaseLink]
 
 
 class SubjectsFile(BaseModel):

@@ -85,6 +85,24 @@ def test_every_document_and_alert_points_to_source_document(out):
         assert a.documentUrl == doc_url
 
 
+def test_case_links_file_validates_and_covers_precedents(out):
+    out_dir, _ = out
+    data = json.loads((out_dir / "case-links.json").read_text(encoding="utf-8"))
+    parsed = schemas.CaseLinksFile.model_validate(data)
+    assert parsed.links
+
+    subj1 = schemas.CaseDetail.model_validate(
+        json.loads((out_dir / "cases" / "SUBJ-001.json").read_text(encoding="utf-8")))
+    precedent_numbers = {p.caseNumber for g in subj1.guidelines for p in g.precedents}
+    linked_numbers = {link.caseNumber for link in parsed.links}
+    assert precedent_numbers <= linked_numbers
+
+    for link in parsed.links:
+        if link.pdfUrl:
+            assert link.listingUrl
+            assert link.pdfUrl.startswith(link.listingUrl)
+
+
 def test_deterministic(tmp_path):
     a, b = tmp_path / "a", tmp_path / "b"
     gen.main(a)

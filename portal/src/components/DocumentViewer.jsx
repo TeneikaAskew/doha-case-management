@@ -6,6 +6,11 @@ import './components.css';
 
 const OUTCOME_VARIANT = { GRANTED: 'success', DENIED: 'error' };
 
+const listingUrl = (u) => {
+  const i = u?.toLowerCase().indexOf('/fileid/');
+  return i > 0 ? u.slice(0, i) : null;
+};
+
 export default function DocumentViewer({ url }) {
   const { data: doc, loading, error } = useData(() => fetchJson(url), [url]);
   if (loading) return <Loading />;
@@ -26,6 +31,12 @@ export default function DocumentViewer({ url }) {
       {doc.sourceUrl && (
         <p className="muted document-viewer-source">
           Source: <a href={doc.sourceUrl} target="_blank" rel="noreferrer">{doc.sourceUrl}</a>
+          {listingUrl(doc.sourceUrl) && (
+            <>
+              {' · '}
+              <a href={listingUrl(doc.sourceUrl)} target="_blank" rel="noreferrer">Year index</a>
+            </>
+          )}
         </p>
       )}
     </div>

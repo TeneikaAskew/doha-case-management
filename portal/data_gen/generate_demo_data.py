@@ -88,6 +88,14 @@ def main(out_dir: Path = DEFAULT_OUT) -> dict:
         dump(c.model_dump(), out_dir / "cases" / f"{c.subject.id}.json")
     dump(schemas.AlertsFile(alerts=all_alerts).model_dump(), out_dir / "alerts.json")
 
+    precedent_case_numbers = {
+        p.caseNumber for c in validated_cases for g in c.guidelines for p in g.precedents
+    }
+    precedent_case_numbers.add(source_document.caseNumber)
+    case_links = corpus.build_case_links(df, sorted(precedent_case_numbers))
+    case_links_file = schemas.CaseLinksFile(links=case_links)
+    dump(case_links_file.model_dump(), out_dir / "case-links.json")
+
     providers = [schemas.ProviderInfo(
         id=pid, name=name, category=cat, usedIn=used, guidelines=gls,
         status=status, recordCount=count, lastSync=f"{TODAY}T06:00:00Z")

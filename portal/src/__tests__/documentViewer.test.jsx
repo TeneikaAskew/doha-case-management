@@ -8,7 +8,7 @@ const DOC_FIXTURE = {
   date: '01/13/2026',
   outcome: 'DENIED',
   judge: 'Eric C. Price',
-  sourceUrl: 'https://doha.ogc.osd.mil/example',
+  sourceUrl: 'https://doha.ogc.osd.mil/Industrial-Security-Program/Industrial-Security-Clearance-Decisions/ISCR-Hearing-Decisions/2026-ISCR-Hearing-Decisions/FileId/245264/',
   fullText: 'DEPARTMENT OF DEFENSE\nDEFENSE OFFICE OF HEARINGS AND APPEALS\n\nDecision text.',
 };
 
@@ -27,5 +27,8 @@ describe('DocumentViewer', () => {
     expect(screen.getByText(/Decision text\./)).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /doha\.ogc\.osd\.mil/i }))
       .toHaveAttribute('href', DOC_FIXTURE.sourceUrl);
+    expect(screen.getByRole('link', { name: /year index/i }))
+      .toHaveAttribute('href',
+        'https://doha.ogc.osd.mil/Industrial-Security-Program/Industrial-Security-Clearance-Decisions/ISCR-Hearing-Decisions/2026-ISCR-Hearing-Decisions');
   });
 });
