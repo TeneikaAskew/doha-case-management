@@ -10,15 +10,20 @@ describe('GuidelinesTab', () => {
     expect(screen.getByText('C')).toBeInTheDocument(); // severity badge
   });
 
-  it('shows disqualifiers, mitigators, evidence, and precedents when expanded', () => {
+  it('shows disqualifiers, mitigators, evidence, and precedents in the open first section', () => {
     render(<GuidelinesTab caseData={CASE_001} />);
-    fireEvent.click(screen.getByRole('button', { name: /financial considerations/i }));
     expect(screen.getByText('AG ¶ 19(a)')).toBeInTheDocument();
     expect(screen.getByText('AG ¶ 20(b)')).toBeInTheDocument();
     expect(screen.getByText('PARTIAL')).toBeInTheDocument();
     expect(screen.getByText('$47,300 delinquent across 5 accounts')).toBeInTheDocument();
     expect(screen.getByText('20-01001')).toBeInTheDocument();
     expect(screen.getByText('DENIED')).toBeInTheDocument();
+  });
+
+  it('collapses the first section when its header is clicked', () => {
+    render(<GuidelinesTab caseData={CASE_001} />);
+    fireEvent.click(screen.getByRole('button', { name: /financial considerations/i }));
+    expect(screen.queryByText('AG ¶ 19(a)')).not.toBeInTheDocument();
   });
 
   it('renders empty state when no guidelines flagged', () => {

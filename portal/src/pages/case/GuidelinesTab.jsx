@@ -19,7 +19,7 @@ export default function GuidelinesTab({ caseData }) {
         <CollapsibleSection key={g.code}
           title={`${g.code} — ${g.name}`}
           meta={<SeverityBadge level={g.severity} />}
-          defaultOpen={guidelines.length > 1 && i === 0}>
+          defaultOpen={i === 0}>
           <div className="guideline-ai card-inset">
             <h4>AI assessment <AIBadge /></h4>
             <p>{g.aiReasoning}</p>
