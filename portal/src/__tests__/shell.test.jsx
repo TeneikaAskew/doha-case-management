@@ -11,7 +11,8 @@ describe('AppShell', () => {
   it('renders header, sidebar links, and dashboard route', () => {
     render(<App />);
     expect(screen.getByText('Personnel Vetting')).toBeInTheDocument();
-    for (const label of ['Dashboard', 'Case queue', 'CV alerts', 'Data providers', 'Analytics']) {
+    for (const label of ['Subjects', 'Dashboard', 'Case queue', 'CV alerts',
+      'Data providers', 'Analytics']) {
       expect(screen.getByRole('link', { name: label })).toBeInTheDocument();
     }
   });
@@ -33,7 +34,7 @@ describe('AppShell', () => {
   it('toggles sidebar collapse state and persists it to localStorage', () => {
     render(<App />);
     const toggle = screen.getByRole('button', { name: 'Toggle sidebar' });
-    const nav = screen.getByRole('link', { name: 'Dashboard' }).closest('nav');
+    const nav = screen.getByRole('link', { name: 'Subjects' }).closest('nav');
 
     fireEvent.click(toggle);
     expect(localStorage.getItem('demo.sidebar')).toBe('collapsed');

@@ -26,7 +26,8 @@ export default function CaseQueue() {
   const { persona } = usePersona();
   const [params] = useSearchParams();
   const q = (params.get('q') || '').toLowerCase();
-  const [stage, setStage] = useState(q ? 'ALL' : PERSONA_STAGE[persona.id]);
+  const [stage, setStage] = useState(
+    params.get('stage') || (q ? 'ALL' : PERSONA_STAGE[persona.id]));
   const [guideline, setGuideline] = useState('ALL');
 
   useEffect(() => {

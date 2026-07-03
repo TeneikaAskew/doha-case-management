@@ -1,0 +1,202 @@
+import { useMemo, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { getSubjects, getAlerts } from '../data/api.js';
+import { useData } from '../data/useData.js';
+import { useDemo } from '../state/DemoContext.jsx';
+import {
+  STAGE_LABELS, STATUS_LABELS, STATUS_VARIANTS, riskBand,
+} from '../domain.js';
+import KPICard from '../components/KPICard.jsx';
+import DataTable from '../components/DataTable.jsx';
+import StatusBadge from '../components/StatusBadge.jsx';
+import GuidelineChip from '../components/GuidelineChip.jsx';
+import AIBadge from '../components/AIBadge.jsx';
+import { Loading, ErrorAlert } from '../components/States.jsx';
+
+const STAGES = ['INITIATION', 'INVESTIGATION', 'ADJUDICATION', 'CONTINUOUS_VETTING'];
+const STATUS_RANK = { ACTION_REQUIRED: 0, NEEDS_REVIEW: 1, CLEAR: 2 };
+const BANDS = [
+  { id: 'low', label: 'Low (<40)', color: 'var(--risk-low)' },
+  { id: 'moderate', label: 'Moderate (40-74)', color: 'var(--risk-moderate)' },
+  { id: 'high', label: 'High (75+)', color: 'var(--risk-high)' },
+];
+
+export default function SubjectsHome() {
+  const navigate = useNavigate();
+  const { demo } = useDemo();
+  const subjectsQ = useData(getSubjects);
+  const alertsQ = useData(getAlerts);
+  const [q, setQ] = useState('');
+  const [stageFilter, setStageFilter] = useState('ALL');
+  const [cvOnly, setCvOnly] = useState(false);
+  const [alertsOnly, setAlertsOnly] = useState(false);
+
+  const model = useMemo(() => {
+    if (!subjectsQ.data || !alertsQ.data) return null;
+    const openBySubject = {};
+    for (const a of alertsQ.data) {
+      const state = demo.alertStates[a.id] || a.state;
+      if (!['ADJUDICATED', 'CLOSED'].includes(state)) {
+        openBySubject[a.subjectId] = (openBySubject[a.subjectId] || 0) + 1;
+      }
+    }
+    const subjects = subjectsQ.data.map((s) => ({
+      ...s, effectiveOpenAlerts: openBySubject[s.id] || 0,
+    }));
+    const attention = subjects
+      .filter((s) => s.status !== 'CLEAR' || s.effectiveOpenAlerts > 0)
+      .sort((a, b) =>
+        STATUS_RANK[a.status] - STATUS_RANK[b.status]
+        || b.effectiveOpenAlerts - a.effectiveOpenAlerts
+        || b.riskScore - a.riskScore)
+      .slice(0, 5);
+    return { subjects, attention };
+  }, [subjectsQ.data, alertsQ.data, demo.alertStates]);
+
+  if (subjectsQ.loading || alertsQ.loading) return <Loading />;
+  const error = subjectsQ.error || alertsQ.error;
+  if (error) return <div className="page"><ErrorAlert message={error} /></div>;
+
+  const { subjects, attention } = model;
+  const stageCount = (st) => subjects.filter((s) => s.stage === st).length;
+  const bandCount = (b) => subjects.filter((s) => riskBand(s.riskScore) === b).length;
+
+  const directory = subjects
+    .filter((s) => `${s.name} ${s.position}`.toLowerCase().includes(q.toLowerCase()))
+    .filter((s) => stageFilter === 'ALL' || s.stage === stageFilter)
+    .filter((s) => !cvOnly || s.cvEnrolled)
+    .filter((s) => !alertsOnly || s.effectiveOpenAlerts > 0);
+
+  const columns = [
+    { key: 'name', label: 'Subject', sortable: true,
+      render: (s) => <div><strong>{s.name}</strong><div className="muted">{s.position}</div></div> },
+    { key: 'tier', label: 'Tier', sortable: true },
+    { key: 'stage', label: 'Stage', render: (s) => STAGE_LABELS[s.stage] },
+    { key: 'status', label: 'Status',
+      render: (s) => <StatusBadge variant={STATUS_VARIANTS[s.status]}>{STATUS_LABELS[s.status]}</StatusBadge> },
+    { key: 'riskScore', label: 'AI risk', sortable: true },
+    { key: 'cvEnrolled', label: 'CV',
+      render: (s) => (s.cvEnrolled ? <StatusBadge variant="success">Enrolled</StatusBadge>
+        : <span className="muted">—</span>) },
+    { key: 'effectiveOpenAlerts', label: 'Open alerts', sortable: true },
+    { key: 'flaggedGuidelines', label: 'Guidelines',
+      render: (s) => s.flaggedGuidelines.map((g) => <GuidelineChip key={g} code={g} />) },
+  ];
+
+  return (
+    <div className="page">
+      <div className="page-header">
+        <div>
+          <h1>Subjects</h1>
+          <p>Whole-person view of the vetted population <AIBadge /></p>
+        </div>
+      </div>
+
+      <div className="kpi-grid">
+        <KPICard label="Total subjects" value={subjects.length}
+          accent="var(--dcsa-navy)" />
+        <KPICard label="CV-enrolled"
+          value={subjects.filter((s) => s.cvEnrolled).length}
+          accent="var(--dcsa-ocean)" />
+        <KPICard label="Initial vetting backlog"
+          value={subjects.filter((s) => ['INITIATION', 'INVESTIGATION'].includes(s.stage)).length}
+          accent="var(--dcsa-gold)" />
+        <KPICard label="Awaiting adjudication" value={stageCount('ADJUDICATION')}
+          accent="var(--status-warning)" />
+        <KPICard label="With open alerts"
+          value={subjects.filter((s) => s.effectiveOpenAlerts > 0).length}
+          accent="var(--status-alert)" />
+      </div>
+
+      <div className="card">
+        <h3>Vetting pipeline</h3>
+        <div className="pipeline-strip">
+          {STAGES.map((st) => (
+            <Link key={st} className="pipeline-segment" to={`/cases?stage=${st}`}>
+              <span className="pipeline-count">{stageCount(st)}</span>
+              <span className="pipeline-label">{STAGE_LABELS[st]}</span>
+            </Link>
+          ))}
+        </div>
+      </div>
+
+      <div className="card">
+        <h3>AI risk distribution</h3>
+        <div className="risk-bar" role="img"
+          aria-label={BANDS.map((b) => `${b.label}: ${bandCount(b.id)}`).join(', ')}>
+          {BANDS.map((b) => bandCount(b.id) > 0 && (
+            <div key={b.id} className="risk-bar-segment"
+              style={{ flex: bandCount(b.id), '--band-color': b.color }}>
+              {bandCount(b.id)}
+            </div>
+          ))}
+        </div>
+        <div className="risk-bar-legend">
+          {BANDS.map((b) => (
+            <span key={b.id} className="risk-bar-key" style={{ '--band-color': b.color }}>
+              {b.label}: {bandCount(b.id)}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      <h2 className="dashboard-queue-title">Needs attention</h2>
+      <div className="attention-grid">
+        {attention.map((s) => (
+          <button key={s.id} type="button" className="card card-interactive attention-card"
+            data-testid="attention-card" onClick={() => navigate(`/cases/${s.id}`)}>
+            <div className="attention-head">
+              <div>
+                <strong>{s.name}</strong>
+                <div className="muted">{s.position}</div>
+              </div>
+              <div className={`risk-dial risk-${riskBand(s.riskScore)} risk-dial-sm`}>
+                <span className="risk-dial-value">{s.riskScore}</span>
+                <span className="risk-dial-label">AI risk</span>
+              </div>
+            </div>
+            <div className="subject-pills">
+              <StatusBadge variant="info">{STAGE_LABELS[s.stage]}</StatusBadge>
+              <StatusBadge variant={STATUS_VARIANTS[s.status]}>
+                {STATUS_LABELS[s.status]}
+              </StatusBadge>
+              {s.effectiveOpenAlerts > 0 && (
+                <StatusBadge variant="error">
+                  {s.effectiveOpenAlerts} open alert{s.effectiveOpenAlerts > 1 ? 's' : ''}
+                </StatusBadge>
+              )}
+              {s.flaggedGuidelines.map((g) => <GuidelineChip key={g} code={g} />)}
+            </div>
+          </button>
+        ))}
+      </div>
+
+      <h2 className="dashboard-queue-title">Subject directory</h2>
+      <div className="card directory-filters">
+        <label className="form-group directory-search">
+          <span>Search</span>
+          <input type="search" aria-label="Search subjects in directory" value={q}
+            onChange={(e) => setQ(e.target.value)} placeholder="Name or position…" />
+        </label>
+        <label className="form-group">
+          <span>Stage</span>
+          <select aria-label="Directory stage filter" value={stageFilter}
+            onChange={(e) => setStageFilter(e.target.value)}>
+            <option value="ALL">All stages</option>
+            {STAGES.map((st) => <option key={st} value={st}>{STAGE_LABELS[st]}</option>)}
+          </select>
+        </label>
+        <label className="directory-check">
+          <input type="checkbox" checked={cvOnly}
+            onChange={(e) => setCvOnly(e.target.checked)} /> CV-enrolled only
+        </label>
+        <label className="directory-check">
+          <input type="checkbox" checked={alertsOnly}
+            onChange={(e) => setAlertsOnly(e.target.checked)} /> Has open alerts
+        </label>
+      </div>
+      <DataTable columns={columns} rows={directory} rowKey="id"
+        onRowClick={(s) => navigate(`/cases/${s.id}`)} />
+    </div>
+  );
+}

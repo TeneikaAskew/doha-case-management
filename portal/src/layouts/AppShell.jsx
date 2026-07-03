@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import {
-  FiHome, FiUser, FiActivity, FiDatabase, FiBarChart2,
+  FiHome, FiUser, FiUsers, FiActivity, FiDatabase, FiBarChart2,
   FiChevronLeft, FiChevronRight, FiSearch, FiRotateCcw,
 } from 'react-icons/fi';
 import { usePersona } from '../state/PersonaContext.jsx';
@@ -12,7 +12,8 @@ import './shell.css';
 const SIDEBAR_STORAGE_KEY = 'demo.sidebar';
 
 const NAV_ITEMS = [
-  { to: '/', end: true, label: 'Dashboard', Icon: FiHome },
+  { to: '/', end: true, label: 'Subjects', Icon: FiUsers },
+  { to: '/dashboard', label: 'Dashboard', Icon: FiHome },
   { to: '/cases', label: 'Case queue', Icon: FiUser },
   { to: '/alerts', label: 'CV alerts', Icon: FiActivity },
   { to: '/providers', label: 'Data providers', Icon: FiDatabase },

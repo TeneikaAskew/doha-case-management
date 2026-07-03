@@ -29,3 +29,36 @@
 
 /* Analytics */
 .chart-card h3 { margin-bottom: var(--space-4); }
+
+/* Subjects home */
+.pipeline-strip { display: flex; gap: var(--space-2); }
+.pipeline-segment { flex: 1; display: flex; flex-direction: column; align-items: center;
+  gap: var(--space-1); padding: var(--space-3); border-radius: var(--radius-sm);
+  background: var(--bg-sidebar); border: 1px solid var(--border-light);
+  color: var(--text-primary); }
+.pipeline-segment:hover { border-color: var(--dcsa-ocean); color: var(--dcsa-ocean); }
+.pipeline-count { font-size: var(--font-size-xl); font-weight: 700; }
+.pipeline-label { font-size: var(--font-size-xs); text-transform: uppercase;
+  letter-spacing: 0.5px; color: var(--text-secondary); }
+.risk-bar { display: flex; height: 36px; border-radius: var(--radius-sm);
+  overflow: hidden; margin-bottom: var(--space-3); }
+.risk-bar-segment { display: flex; align-items: center; justify-content: center;
+  background: var(--band-color); color: var(--text-inverse); font-weight: 700; }
+.risk-bar-legend { display: flex; gap: var(--space-4); flex-wrap: wrap; }
+.risk-bar-key { font-size: var(--font-size-sm); color: var(--text-secondary); }
+.risk-bar-key::before { content: ''; display: inline-block; width: 10px; height: 10px;
+  border-radius: 2px; background: var(--band-color); margin-right: var(--space-1); }
+.attention-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--space-4); margin-bottom: var(--space-5); align-items: stretch; }
+.attention-grid > .card { margin-top: 0; }
+.attention-card { display: flex; flex-direction: column; gap: var(--space-3);
+  text-align: left; cursor: pointer; font: inherit; }
+.attention-head { display: flex; justify-content: space-between; gap: var(--space-3);
+  align-items: flex-start; width: 100%; }
+.attention-card .risk-dial { width: 56px; height: 56px; }
+.attention-card .risk-dial-value { font-size: var(--font-size-lg); }
+.directory-filters { display: flex; gap: var(--space-4); align-items: flex-end;
+  flex-wrap: wrap; margin-bottom: var(--space-4); }
+.directory-search { min-width: 240px; }
+.directory-check { display: inline-flex; align-items: center; gap: var(--space-2);
+  font-size: var(--font-size-sm); color: var(--text-secondary); padding-bottom: 10px; }

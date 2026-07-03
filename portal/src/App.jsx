@@ -2,6 +2,7 @@ import { HashRouter, Routes, Route } from 'react-router-dom';
 import { PersonaProvider } from './state/PersonaContext.jsx';
 import { DemoProvider } from './state/DemoContext.jsx';
 import AppShell from './layouts/AppShell.jsx';
+import SubjectsHome from './pages/SubjectsHome.jsx';
 import Dashboard from './pages/Dashboard.jsx';
 import CaseQueue from './pages/CaseQueue.jsx';
 import CaseDetail from './pages/case/CaseDetail.jsx';
@@ -18,7 +19,8 @@ export default function App() {
         <HashRouter>
           <Routes>
             <Route element={<AppShell />}>
-              <Route path="/" element={<Dashboard />} />
+              <Route path="/" element={<SubjectsHome />} />
+              <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/cases" element={<CaseQueue />} />
               <Route path="/cases/:id" element={<CaseDetail />} />
               <Route path="/alerts" element={<CVAlerts />} />
