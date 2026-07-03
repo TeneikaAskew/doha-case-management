@@ -12,6 +12,8 @@ import StatusBadge from '../components/StatusBadge.jsx';
 import GuidelineChip from '../components/GuidelineChip.jsx';
 import AIBadge from '../components/AIBadge.jsx';
 import { Loading, ErrorAlert } from '../components/States.jsx';
+import SectionRef, { RefLink } from '../components/SectionRef.jsx';
+import { REFS } from '../references.js';
 
 const STAGES = ['INITIATION', 'INVESTIGATION', 'ADJUDICATION', 'CONTINUOUS_VETTING'];
 const STATUS_RANK = { ACTION_REQUIRED: 0, NEEDS_REVIEW: 1, CLEAR: 2 };
@@ -197,6 +199,12 @@ export default function SubjectsHome() {
       </div>
       <DataTable columns={columns} rows={directory} rowKey="id"
         onRowClick={(s) => navigate(`/cases/${s.id}`)} />
+      <SectionRef>
+        Vetting lifecycle per{' '}
+        <RefLink href={REFS.DCSA_PV}>DCSA Personnel Vetting (Trusted Workforce
+        2.0)</RefLink>; continuous vetting under{' '}
+        <RefLink href={REFS.SEAD6}>SEAD 6</RefLink>.
+      </SectionRef>
     </div>
   );
 }

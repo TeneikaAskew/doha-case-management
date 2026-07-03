@@ -253,6 +253,46 @@ def _timeline(stage: str, elig: str, days: int, alerts: list[dict]) -> list[dict
     return rows
 
 
+def _record_checks(stage: str, codes: list, doc_ref) -> list[dict]:
+    """Category-first record checks: one entry per category, source in context."""
+    clean = not codes
+    issue = None if clean else GUIDELINE_TEMPLATES[codes[0]]["evidence"]
+    financial_issue = codes and codes[0] == "F"
+    checks = [
+        dict(item="Criminal history check", category="CRIMINAL", status="COMPLETE",
+             provider="FBI CJIS / NCIC + Rap Back",
+             requestedDate="2026-05-02", completedDate="2026-05-15",
+             scope="NGI fingerprint submission, NCIC query, DMV",
+             resultSummary="No criminal record.", documentUrl=None),
+        dict(item="Credit check", category="FINANCIAL", status="COMPLETE",
+             provider="TransUnion",
+             requestedDate="2026-05-02", completedDate="2026-05-15",
+             scope="Tri-bureau credit pull",
+             resultSummary=(issue + "." if financial_issue else
+                            "All accounts current; no derogatory tradelines."),
+             documentUrl=(doc_ref[0] if financial_issue and doc_ref else None)),
+        dict(item="Tier-required fieldwork", category="FIELDWORK",
+             status="COMPLETE" if stage != "INVESTIGATION" else "PENDING",
+             provider="DCSA field operations",
+             requestedDate="2026-05-02",
+             completedDate="2026-06-01" if stage != "INVESTIGATION" else None,
+             scope="Tier-scoped interviews and local records",
+             resultSummary=("Fieldwork complete." if stage != "INVESTIGATION"
+                            else "Fieldwork in progress."),
+             documentUrl=None),
+    ]
+    if codes and not financial_issue:
+        checks.append(dict(
+            item="Security & conduct records", category="SECURITY",
+            status="COMPLETE", provider="DISS / prior adjudications",
+            requestedDate="2026-05-02", completedDate="2026-06-18",
+            scope="Security incident history, prior adjudications, "
+                  "conduct records",
+            resultSummary=issue + ".",
+            documentUrl=(doc_ref[0] if doc_ref else None)))
+    return checks
+
+
 def build_roster_cases(precedent_fn) -> list[dict]:
     cases = []
     for row in ROSTER:
@@ -308,26 +348,7 @@ def build_roster_cases(precedent_fn) -> list[dict]:
                                       alerts[0]["id"] if alerts else None, doc_ref),
             guidelines=[_guideline_card(c, precedent_fn) for c in codes],
             investigation=dict(
-                recordChecks=[
-                    dict(item="Automated record checks", status="COMPLETE",
-                         provider="FBI CJIS / NCIC + Rap Back",
-                         requestedDate="2026-05-02", completedDate="2026-05-15",
-                         scope="NCIC criminal history, tri-bureau credit, DMV",
-                         resultSummary=("No adverse information." if clean else
-                                        GUIDELINE_TEMPLATES[codes[0]]["evidence"] + "."),
-                         documentUrl=(doc_ref[0] if doc_ref else None)),
-                    dict(item="Tier-required fieldwork",
-                         status="COMPLETE" if stage != "INVESTIGATION" else "PENDING",
-                         provider="DCSA field operations",
-                         requestedDate="2026-05-02",
-                         completedDate=("2026-06-01"
-                                        if stage != "INVESTIGATION" else None),
-                         scope="Tier-scoped interviews and local records",
-                         resultSummary=("Fieldwork complete."
-                                        if stage != "INVESTIGATION"
-                                        else "Fieldwork in progress."),
-                         documentUrl=None),
-                ],
+                recordChecks=_record_checks(stage, codes, doc_ref),
                 sf86Sections=[dict(
                     section="Section 22", title="Police record",
                     subjectReport="No police record", matchedResult="NCIC: no record",

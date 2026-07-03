@@ -11,6 +11,8 @@ import DataTable from '../components/DataTable.jsx';
 import StatusBadge from '../components/StatusBadge.jsx';
 import AIBadge from '../components/AIBadge.jsx';
 import { Loading, ErrorAlert, EmptyState } from '../components/States.jsx';
+import SectionRef, { RefLink } from '../components/SectionRef.jsx';
+import { REFS } from '../references.js';
 
 const SEVERITY_VARIANT = { HIGH: 'error', MODERATE: 'warning', LOW: 'info' };
 
@@ -96,6 +98,11 @@ export default function CVAlerts() {
         : <DataTable columns={columns} rows={alerts} rowKey="id"
             onRowClick={(a) =>
               navigate(`/cases/${a.subjectId}?tab=continuous-vetting&alert=${a.id}`)} />}
+      <SectionRef>
+        Continuous vetting under <RefLink href={REFS.SEAD6}>SEAD 6</RefLink>;
+        enrollment and automated checks per{' '}
+        <RefLink href={REFS.DCSA_CV}>DCSA Continuous Vetting</RefLink>.
+      </SectionRef>
     </div>
   );
 }

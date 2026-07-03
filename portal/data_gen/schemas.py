@@ -15,6 +15,9 @@ AlertState = Literal["NEW", "IDENTITY_CONFIRMED", "VALIDATED", "REFERRED",
                      "ADJUDICATED", "CLOSED"]
 Applicability = Literal["FULL", "PARTIAL", "NONE"]
 CoverageStatus = Literal["COMPLETE", "PENDING", "NOT_REQUIRED"]
+RecordCheckCategory = Literal["CRIMINAL", "FINANCIAL", "FOREIGN", "EMPLOYMENT",
+                              "EDUCATION", "REFERENCES", "SUBJECT_INTERVIEW",
+                              "SECURITY", "FIELDWORK"]
 AdjAction = Literal["GRANT", "GRANT_WITH_EXCEPTION", "LOI", "SOR", "DENY"]
 DocType = Literal["POLICE_REPORT", "CREDIT_REPORT", "SAR", "RAPBACK_NOTIFICATION",
                   "SF86_EXCERPT", "TRAVEL_RECORD", "INCIDENT_REPORT"]
@@ -133,6 +136,7 @@ class WholePersonFactor(BaseModel):
 
 class RecordCheck(BaseModel):
     item: str
+    category: RecordCheckCategory  # UI groups checks under one category heading
     status: CoverageStatus
     provider: str
     requestedDate: str

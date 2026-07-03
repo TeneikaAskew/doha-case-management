@@ -6,6 +6,8 @@ import CollapsibleSection from '../../components/CollapsibleSection.jsx';
 import SeverityBadge from '../../components/SeverityBadge.jsx';
 import AIBadge from '../../components/AIBadge.jsx';
 import WholePersonWorksheet from './WholePersonWorksheet.jsx';
+import SectionRef, { RefLink } from '../../components/SectionRef.jsx';
+import { REFS } from '../../references.js';
 
 export default function AdjudicationTab({ caseData }) {
   const { persona } = usePersona();
@@ -96,6 +98,11 @@ export default function AdjudicationTab({ caseData }) {
             <button type="submit" className="btn btn-primary">Record decision</button>
           </form>
         )}
+        <SectionRef>
+          Adjudication standards per <RefLink href={REFS.SEAD4}>SEAD 4</RefLink>;
+          LOI/SOR due process for contractor cases administered by{' '}
+          <RefLink href={REFS.DOHA}>DOHA</RefLink>.
+        </SectionRef>
       </div>
     </div>
   );

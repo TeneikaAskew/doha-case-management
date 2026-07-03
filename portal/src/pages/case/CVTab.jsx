@@ -14,6 +14,8 @@ import AIBadge from '../../components/AIBadge.jsx';
 import SourceChip from '../../components/SourceChip.jsx';
 import DocumentViewer from '../../components/DocumentViewer.jsx';
 import { EmptyState } from '../../components/States.jsx';
+import SectionRef, { RefLink } from '../../components/SectionRef.jsx';
+import { REFS } from '../../references.js';
 
 function AlertBody({ alert: a, state, isAnalyst, dispositionAlert }) {
   const [openDoc, setOpenDoc] = useState(null);
@@ -127,6 +129,11 @@ export default function CVTab({ caseData }) {
           </CollapsibleSection>
         );
       })}
+      <SectionRef>
+        Continuous vetting under <RefLink href={REFS.SEAD6}>SEAD 6</RefLink>;
+        enrollment and automated checks per{' '}
+        <RefLink href={REFS.DCSA_CV}>DCSA Continuous Vetting</RefLink>.
+      </SectionRef>
     </div>
   );
 }

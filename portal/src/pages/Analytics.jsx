@@ -6,6 +6,8 @@ import { getAnalytics } from '../data/api.js';
 import { useData } from '../data/useData.js';
 import KPICard from '../components/KPICard.jsx';
 import { Loading, ErrorAlert } from '../components/States.jsx';
+import SectionRef, { RefLink } from '../components/SectionRef.jsx';
+import { REFS } from '../references.js';
 
 const TICK = { fill: 'var(--text-secondary)', fontSize: 12 };
 const TOOLTIP_STYLE = {
@@ -87,6 +89,11 @@ export default function Analytics() {
           </BarChart>
         </ResponsiveContainer>
       </div>
+      <SectionRef>
+        Corpus derived from{' '}
+        <RefLink href={REFS.DOHA_DECISIONS}>DOHA Industrial Security Clearance
+        Decisions</RefLink>.
+      </SectionRef>
     </div>
   );
 }

@@ -3,6 +3,8 @@ import { useData } from '../data/useData.js';
 import { GUIDELINES } from '../domain.js';
 import StatusBadge from '../components/StatusBadge.jsx';
 import { Loading, ErrorAlert } from '../components/States.jsx';
+import SectionRef, { RefLink } from '../components/SectionRef.jsx';
+import { REFS } from '../references.js';
 
 const STATUS_VARIANT = { HEALTHY: 'success', DEGRADED: 'warning', OFFLINE: 'error' };
 const USED_IN_LABEL = { INVESTIGATION: 'Investigation', CV: 'Continuous vetting' };
@@ -67,6 +69,11 @@ export default function DataProviders() {
           </table>
         </div>
       </div>
+      <SectionRef>
+        Automated record checks per the{' '}
+        <RefLink href={REFS.FIS}>Federal Investigative Standards</RefLink> and{' '}
+        <RefLink href={REFS.DCSA_CV}>DCSA Continuous Vetting</RefLink>.
+      </SectionRef>
     </div>
   );
 }

@@ -99,6 +99,7 @@
 
 .sf86-section { padding: var(--space-4); border: 1px solid var(--border-light);
   border-radius: var(--radius-sm); margin-bottom: var(--space-3); }
+.sf86-section.flagged { border-color: var(--status-alert); }
 .sf86-heading { display: flex; align-items: center; gap: var(--space-2);
   margin-bottom: var(--space-3); flex-wrap: wrap; }
 .sf86-compare { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-5); }
@@ -199,6 +200,3 @@
 .worksheet-rating { display: flex; flex-direction: column; gap: var(--space-2);
   width: 100%; }
 .worksheet-rating-buttons { display: flex; gap: var(--space-2); }
-
-.section-ref { margin-top: var(--space-3); padding-top: var(--space-3);
-  border-top: 1px solid var(--border-light); font-size: var(--font-size-xs); }

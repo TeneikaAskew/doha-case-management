@@ -45,10 +45,12 @@ describe('InvestigationTab', () => {
     expect(screen.getAllByText('Complete').length).toBeGreaterThan(0);
   });
 
-  it('cites the coverage-scope authority for the record checks', () => {
+  it('cites and links the coverage-scope authorities for the record checks', () => {
     renderTab();
-    expect(screen.getByText(/Federal Investigative Standards/)).toBeInTheDocument();
-    expect(screen.getByText(/SEAD 3/)).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /federal investigative standards/i }))
+      .toHaveAttribute('href', expect.stringContaining('dcsa.mil'));
+    expect(screen.getByRole('link', { name: 'SEAD 3' }))
+      .toHaveAttribute('href', expect.stringContaining('dni.gov'));
     expect(screen.getByText(/\(T5\)/)).toBeInTheDocument(); // subject's tier
   });
 

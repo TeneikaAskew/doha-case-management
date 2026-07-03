@@ -13,6 +13,8 @@ import StatusBadge from '../components/StatusBadge.jsx';
 import GuidelineChip from '../components/GuidelineChip.jsx';
 import AIBadge from '../components/AIBadge.jsx';
 import { Loading, ErrorAlert } from '../components/States.jsx';
+import SectionRef, { RefLink } from '../components/SectionRef.jsx';
+import { REFS } from '../references.js';
 
 function buildKpis(personaId, subjects, alerts) {
   const inStage = (st) => subjects.filter((s) => s.stage === st);
@@ -114,6 +116,11 @@ export default function Dashboard() {
       <h2 className="dashboard-queue-title">{model.title}</h2>
       <DataTable columns={columns} rows={model.queue} rowKey="id"
         onRowClick={(s) => navigate(`/cases/${s.id}`)} />
+      <SectionRef>
+        Workload stages per{' '}
+        <RefLink href={REFS.DCSA_PV}>DCSA Personnel Vetting (Trusted Workforce
+        2.0)</RefLink>.
+      </SectionRef>
     </div>
   );
 }

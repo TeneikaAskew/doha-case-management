@@ -6,6 +6,8 @@ import StatusBadge from '../../components/StatusBadge.jsx';
 import GuidelineChip from '../../components/GuidelineChip.jsx';
 import SourceChip from '../../components/SourceChip.jsx';
 import DocumentViewer from '../../components/DocumentViewer.jsx';
+import SectionRef, { RefLink } from '../../components/SectionRef.jsx';
+import { REFS } from '../../references.js';
 
 const CHECK_VARIANT = { COMPLETE: 'success', PENDING: 'warning', NOT_REQUIRED: 'neutral' };
 const CHECK_LABEL = { COMPLETE: 'Complete', PENDING: 'Pending', NOT_REQUIRED: 'Not required' };
@@ -86,11 +88,12 @@ export default function InvestigationTab({ caseData }) {
         <ul className="record-check-list">
           {inv.recordChecks.map((c) => <RecordCheckRow key={c.item} check={c} />)}
         </ul>
-        <p className="muted section-ref">
-          Coverage scope per the Federal Investigative Standards for tiered
-          background investigations ({caseData.subject.tier}); subject reporting
-          obligations per SEAD 3.
-        </p>
+        <SectionRef>
+          Coverage scope per the{' '}
+          <RefLink href={REFS.FIS}>Federal Investigative Standards for tiered
+          background investigations</RefLink> ({caseData.subject.tier});
+          subject reporting obligations per <RefLink href={REFS.SEAD3}>SEAD 3</RefLink>.
+        </SectionRef>
       </div>
 
       <div className="card">
@@ -115,6 +118,10 @@ export default function InvestigationTab({ caseData }) {
             </div>
           </div>
         ))}
+        <SectionRef>
+          Self-reported items from <RefLink href={REFS.SF86}>Standard Form 86
+          (OPM)</RefLink>, compared against provider record checks.
+        </SectionRef>
       </div>
 
       {inv.interviews.length > 0 && (

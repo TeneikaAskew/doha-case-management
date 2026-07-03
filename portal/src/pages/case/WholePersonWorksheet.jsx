@@ -6,6 +6,8 @@ import { useDemo } from '../../state/DemoContext.jsx';
 import AIBadge from '../../components/AIBadge.jsx';
 import StatusBadge from '../../components/StatusBadge.jsx';
 import DocumentViewer from '../../components/DocumentViewer.jsx';
+import SectionRef, { RefLink } from '../../components/SectionRef.jsx';
+import { REFS } from '../../references.js';
 
 const RATINGS = [
   { id: 'FAVORABLE', label: 'Favorable', variant: 'success' },
@@ -139,6 +141,11 @@ export default function WholePersonWorksheet({ caseData }) {
             canRate={canRate} />
         ))}
       </ul>
+      <SectionRef>
+        Whole-person concept and factors per{' '}
+        <RefLink href={REFS.SEAD4}>SEAD 4, National Security Adjudicative
+        Guidelines</RefLink>, para. 2(d).
+      </SectionRef>
     </div>
   );
 }

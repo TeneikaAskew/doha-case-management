@@ -4,6 +4,8 @@ import SeverityBadge from '../../components/SeverityBadge.jsx';
 import StatusBadge from '../../components/StatusBadge.jsx';
 import AIBadge from '../../components/AIBadge.jsx';
 import { EmptyState } from '../../components/States.jsx';
+import SectionRef, { RefLink } from '../../components/SectionRef.jsx';
+import { REFS } from '../../references.js';
 
 const APPLICABILITY_VARIANT = { FULL: 'success', PARTIAL: 'warning', NONE: 'error' };
 const OUTCOME_VARIANT = { GRANTED: 'success', DENIED: 'error' };
@@ -86,6 +88,13 @@ export default function GuidelinesTab({ caseData }) {
           </table>
         </CollapsibleSection>
       ))}
+      <SectionRef>
+        Disqualifying and mitigating conditions per{' '}
+        <RefLink href={REFS.SEAD4}>SEAD 4, National Security Adjudicative
+        Guidelines</RefLink>; precedents from{' '}
+        <RefLink href={REFS.DOHA_DECISIONS}>DOHA Industrial Security Clearance
+        Decisions</RefLink>.
+      </SectionRef>
     </div>
   );
 }
