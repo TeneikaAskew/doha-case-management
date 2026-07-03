@@ -5,7 +5,7 @@ export function Loading() {
   return (
     <div className="state-block loading-container" role="status">
       <div className="loading-bar"><div className="loading-bar-fill" /></div>
-      <span className="loading-text">Loading…</span>
+      <span className="loading-text">Loading...</span>
     </div>
   );
 }

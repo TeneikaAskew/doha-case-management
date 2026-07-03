@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+import { FiChevronUp, FiChevronDown } from 'react-icons/fi';
 import './components.css';
 
 export default function DataTable({ columns, rows, rowKey, onRowClick }) {
@@ -25,7 +26,9 @@ export default function DataTable({ columns, rows, rowKey, onRowClick }) {
               <th key={c.key} className={c.sortable ? 'sortable' : ''}
                 onClick={c.sortable ? () => toggleSort(c.key) : undefined}>
                 {c.label}
-                {sort?.key === c.key && <span> {sort.dir === 1 ? '▲' : '▼'}</span>}
+                {sort?.key === c.key && (sort.dir === 1
+                  ? <FiChevronUp className="sort-icon" aria-hidden="true" />
+                  : <FiChevronDown className="sort-icon" aria-hidden="true" />)}
               </th>
             ))}
           </tr>

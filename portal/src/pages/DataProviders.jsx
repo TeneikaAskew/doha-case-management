@@ -1,4 +1,4 @@
-import { FiGrid, FiDatabase } from 'react-icons/fi';
+import { FiGrid, FiDatabase, FiCheck } from 'react-icons/fi';
 import { getProviders } from '../data/api.js';
 import { useData } from '../data/useData.js';
 import { GUIDELINES } from '../domain.js';
@@ -40,14 +40,14 @@ export default function DataProviders() {
                 <StatusBadge key={u} variant="neutral">{USED_IN_LABEL[u]}</StatusBadge>))}
             </div>
             <p><strong>{p.recordCount.toLocaleString('en-US')}</strong>
-              <span className="muted"> records · last sync {p.lastSync.slice(0, 10)}</span></p>
+              <span className="muted"> records, last sync {p.lastSync.slice(0, 10)}</span></p>
           </div>
         ))}
       </div>
 
       <div className="card">
         <h3 id="coverage-matrix-title">
-          <FiGrid className="section-icon" aria-hidden="true" />Provider → Guideline Coverage
+          <FiGrid className="section-icon" aria-hidden="true" />Provider to Guideline Coverage
         </h3>
         <div className="matrix-wrap">
           <table className="inline-table coverage-matrix" aria-labelledby="coverage-matrix-title">
@@ -63,7 +63,9 @@ export default function DataProviders() {
                   <td>{p.name}</td>
                   {codes.map((c) => (
                     <td key={c} className="matrix-cell">
-                      {p.guidelines.includes(c) ? '●' : ''}
+                      {p.guidelines.includes(c) && (
+                        <FiCheck aria-label={`Covers Guideline ${c}`} />
+                      )}
                     </td>
                   ))}
                 </tr>

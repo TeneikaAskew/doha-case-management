@@ -54,7 +54,7 @@ export default function AppShell() {
         </div>
         <form className="app-header-search" onSubmit={onSearch} role="search">
           <FiSearch className="app-header-search-icon" aria-hidden="true" />
-          <input name="q" type="search" placeholder="Search subjects…"
+          <input name="q" type="search" placeholder="Search subjects..."
             aria-label="Search subjects" />
         </form>
         <div className="app-header-actions">

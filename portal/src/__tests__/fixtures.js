@@ -153,7 +153,7 @@ export const CASE_001 = {
   adjudication: {
     recommendation: { action: 'SOR', aiSuggested: true,
       rationale: 'Unmitigated F concerns with candor issues.' },
-    sorDraft: 'STATEMENT OF REASONS (DRAFT) - Guideline F: …',
+    sorDraft: 'STATEMENT OF REASONS (DRAFT) - Guideline F: ...',
     decisions: [],
   },
   alerts: ALERTS,

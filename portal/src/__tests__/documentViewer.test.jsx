@@ -59,7 +59,7 @@ describe('DocumentViewer', () => {
   it('renders the source document title, case number, outcome, and full text', async () => {
     render(<MemoryRouter><DocumentViewer url="documents/doha-record.json" /></MemoryRouter>);
     expect(await screen.findByText('DOHA hearing decision 23-01864')).toBeInTheDocument();
-    expect(screen.getByText(/23-01864 · 01\/13\/2026 · Eric C\. Price/)).toBeInTheDocument();
+    expect(screen.getByText(/23-01864, 01\/13\/2026, Eric C\. Price/)).toBeInTheDocument();
     expect(screen.getByText('DENIED')).toBeInTheDocument();
     expect(screen.getByText(/Decision text\./)).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /doha\.ogc\.osd\.mil/i }))

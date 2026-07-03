@@ -190,7 +190,7 @@ export default function SubjectsHome() {
         <label className="form-group directory-search">
           <span>Search</span>
           <input type="search" aria-label="Search subjects in directory" value={q}
-            onChange={(e) => setQ(e.target.value)} placeholder="Name or position…" />
+            onChange={(e) => setQ(e.target.value)} placeholder="Name or position..." />
         </label>
         <label className="form-group">
           <span>Stage</span>

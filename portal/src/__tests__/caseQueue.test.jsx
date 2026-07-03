@@ -22,7 +22,7 @@ function renderQueue(initial = '/cases') {
 beforeEach(() => localStorage.clear());
 
 describe('CaseQueue', () => {
-  it('defaults to the persona stage filter (adjudicator → Adjudication)', async () => {
+  it('defaults to the persona stage filter (adjudicator -> Adjudication)', async () => {
     renderQueue();
     expect(await screen.findByText('Daniel R. Okafor')).toBeInTheDocument();
     expect(screen.queryByText('Priya N. Shah')).not.toBeInTheDocument();

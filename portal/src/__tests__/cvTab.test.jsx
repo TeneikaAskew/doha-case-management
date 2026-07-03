@@ -81,7 +81,7 @@ describe('CVTab', () => {
     fireEvent.click(screen.getByRole('button', { name: /new collection account/i }));
     expect(screen.getByText('Phases')).toBeInTheDocument();
     // completed: New (with actor); upcoming: rest of the workflow, dashed
-    expect(screen.getByText(/2026-06-20 · System/)).toBeInTheDocument();
+    expect(screen.getByText(/2026-06-20, System/)).toBeInTheDocument();
     expect(screen.getByText('Validated')).toBeInTheDocument();
     expect(screen.getByText('Adjudicated')).toBeInTheDocument();
     expect(screen.queryByText(/adjudicated by/i)).not.toBeInTheDocument();

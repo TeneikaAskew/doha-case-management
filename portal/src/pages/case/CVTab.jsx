@@ -50,7 +50,7 @@ function AlertPhases({ alert: a, state }) {
           <li key={`done-${i}`} className="done">
             <span className="alert-step-marker" aria-hidden="true" />
             <span className="alert-step-state">{ALERT_STATE_LABELS[p.state]}</span>
-            <span className="alert-step-meta">{p.date} · {p.actor}</span>
+            <span className="alert-step-meta">{p.date}, {p.actor}</span>
             {p.note && <span className="alert-step-note muted">{p.note}</span>}
           </li>
         ))}
@@ -80,7 +80,7 @@ function AlertBody({ alert: a, state, isAnalyst, dispositionAlert }) {
     <>
       <p className="muted">
         <SourceChip provider={a.provider} />
-        {' '}· Severity: {a.severity} · AI priority {a.priorityScore}
+        {' '}| Severity: {a.severity} | AI priority {a.priorityScore}
         {' '}<AIBadge />
       </p>
 

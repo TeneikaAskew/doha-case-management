@@ -4,7 +4,7 @@ import { getProviders } from '../data/api.js';
 import { useData } from '../data/useData.js';
 import './components.css';
 
-// Legacy display strings used in alert data → canonical providers.json names.
+// Legacy display strings used in alert data -> canonical providers.json names.
 const ALIASES = {
   'FBI Rap Back': 'FBI CJIS / NCIC + Rap Back',
   'FBI CJIS/NCIC': 'FBI CJIS / NCIC + Rap Back',

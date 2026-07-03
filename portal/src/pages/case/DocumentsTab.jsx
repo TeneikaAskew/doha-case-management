@@ -16,7 +16,7 @@ export default function DocumentsTab({ caseData }) {
           <div className="card document-card">
             <div>
               <h3><FiFileText className="section-icon" aria-hidden="true" />{d.title}</h3>
-              <p className="muted">{d.type} · {d.description}</p>
+              <p className="muted">{d.type}, {d.description}</p>
             </div>
             {d.url
               ? (

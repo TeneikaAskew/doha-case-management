@@ -77,7 +77,7 @@ export default function AdjudicationTab({ caseData }) {
         <ul className="decision-list">
           {decisions.map((d, i) => (
             <li key={i}>
-              <span className="muted">{d.date} · {d.adjudicator}</span>
+              <span className="muted">{d.date}, {d.adjudicator}</span>
               <div><strong>{ADJ_ACTION_LABELS[d.action]}</strong> - {d.rationale}</div>
             </li>
           ))}

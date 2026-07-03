@@ -33,6 +33,7 @@ describe('DataProviders', () => {
     expect(matrix).toBeInTheDocument();
     const fbiRow = screen.getAllByRole('row')
       .find((r) => r.textContent.includes('FBI CJIS'));
-    expect(fbiRow.textContent).toContain('●');
+    expect(fbiRow.querySelectorAll('[aria-label^="Covers Guideline"]').length)
+      .toBeGreaterThan(0);
   });
 });

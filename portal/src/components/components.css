@@ -50,7 +50,7 @@
   padding: 2px var(--space-2); border-radius: var(--radius-pill);
   background: var(--dcsa-ice); color: var(--dcsa-navy);
   font-size: var(--font-size-xs); font-weight: 600; cursor: help; }
-.ai-badge::before { content: '✦'; }
+.sort-icon { vertical-align: middle; margin-left: 2px; }
 
 .confidence-bar-wrap { display: inline-flex; align-items: center; gap: var(--space-2);
   min-width: 140px; }

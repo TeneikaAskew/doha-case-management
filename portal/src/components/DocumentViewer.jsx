@@ -45,8 +45,8 @@ function DohaDocumentView({ doc }) {
         <div>
           <h4>{doc.title}</h4>
           <p className="muted">
-            {doc.caseNumber} · {doc.date}
-            {doc.judge && ` · ${doc.judge}`}
+            {doc.caseNumber}, {doc.date}
+            {doc.judge && `, ${doc.judge}`}
           </p>
         </div>
         <StatusBadge variant={OUTCOME_VARIANT[doc.outcome] || 'neutral'}>{doc.outcome}</StatusBadge>
@@ -57,7 +57,7 @@ function DohaDocumentView({ doc }) {
           Source: <a href={doc.sourceUrl} target="_blank" rel="noreferrer">{doc.sourceUrl}</a>
           {listingUrl(doc.sourceUrl) && (
             <>
-              {' · '}
+              {' | '}
               <a href={listingUrl(doc.sourceUrl)} target="_blank" rel="noreferrer">Year index</a>
             </>
           )}
@@ -101,7 +101,7 @@ function DocumentPaper({ doc }) {
           <p>{s.body}</p>
         </div>
       ))}
-      <div className="paper-footer">Page 1 of 1 · Demo facsimile · not an official record</div>
+      <div className="paper-footer">Page 1 of 1 | Demo facsimile | not an official record</div>
     </div>
   );
 }
