@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { FiFlag, FiSliders, FiArchive } from 'react-icons/fi';
 import { usePersona } from '../../state/PersonaContext.jsx';
 import { useDemo } from '../../state/DemoContext.jsx';
 import { ADJ_ACTION_LABELS } from '../../domain.js';
@@ -32,13 +33,13 @@ export default function AdjudicationTab({ caseData }) {
   return (
     <div>
       <div className="card recommendation-panel">
-        <h3>Recommendation {adj.recommendation.aiSuggested && <AIBadge />}</h3>
+        <h3><FiFlag className="section-icon" aria-hidden="true" />Recommendation {adj.recommendation.aiSuggested && <AIBadge />}</h3>
         <p className="recommendation-action">{ADJ_ACTION_LABELS[adj.recommendation.action]}</p>
         <p>{adj.recommendation.rationale}</p>
       </div>
 
       <div className="card">
-        <h3>Guideline Weighing</h3>
+        <h3><FiSliders className="section-icon" aria-hidden="true" />Guideline Weighing</h3>
         <table className="inline-table">
           <thead>
             <tr><th>Guideline</th><th>Severity</th><th>Disqualifiers</th>
@@ -70,7 +71,7 @@ export default function AdjudicationTab({ caseData }) {
       )}
 
       <div className="card">
-        <h3>Decision History</h3>
+        <h3><FiArchive className="section-icon" aria-hidden="true" />Decision History</h3>
         {decisions.length === 0 && <p className="muted">No decisions recorded.</p>}
         <ul className="decision-list">
           {decisions.map((d, i) => (

@@ -1,5 +1,7 @@
 import { useState } from 'react';
-import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
+import {
+  FiChevronDown, FiChevronUp, FiFileText, FiActivity, FiUser, FiClock,
+} from 'react-icons/fi';
 import KVGrid from '../../components/KVGrid.jsx';
 import AIBadge from '../../components/AIBadge.jsx';
 import GuidelineChip from '../../components/GuidelineChip.jsx';
@@ -40,7 +42,7 @@ function CaseTimelineCard({ timeline }) {
   const [detailOpen, setDetailOpen] = useState(false);
   return (
     <div className="card">
-      <h3>Case Timeline</h3>
+      <h3><FiClock className="section-icon" aria-hidden="true" />Case Timeline</h3>
       <TimelineStrip events={timeline} />
       <button type="button" className="btn btn-ghost timeline-detail-toggle"
         aria-expanded={detailOpen} onClick={() => setDetailOpen(!detailOpen)}>
@@ -81,12 +83,12 @@ export default function OverviewTab({ caseData }) {
   return (
     <div>
       <div className="card ai-summary">
-        <h3>Executive Summary <AIBadge /></h3>
+        <h3><FiFileText className="section-icon" aria-hidden="true" />Executive Summary <AIBadge /></h3>
         <p>{caseData.aiSummary}</p>
       </div>
       {caseData.alerts.length > 0 && (
         <div className="card">
-          <h3>CV Alert Summary</h3>
+          <h3><FiActivity className="section-icon" aria-hidden="true" />CV Alert Summary</h3>
           <div className="alert-summary-grid">
             {Object.entries(alertCounts).map(([category, count]) => (
               <div key={category} className="alert-summary-card"
@@ -99,7 +101,7 @@ export default function OverviewTab({ caseData }) {
         </div>
       )}
       <div className="card">
-        <h3>Subject Information</h3>
+        <h3><FiUser className="section-icon" aria-hidden="true" />Subject Information</h3>
         <KVGrid items={[
           { label: 'Full name', value: s.name },
           { label: 'Date of birth', value: s.dob },
