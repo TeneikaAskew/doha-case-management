@@ -91,6 +91,59 @@ def _hero1(precedent_fn) -> dict:
         response="Yes. Two accounts, approximately $9,000 total, following a 2024 "
                  "layoff. Repayment intended on re-employment.",
         received="2025-09-08")
+    roi_entries = [
+        dict(date="2026-01-27", investigator="S. Whitfield",
+             item="Subject interview",
+             text="Enhanced Subject Interview conducted 2025-11-19 under "
+                  "oath. Subject's account of the delinquency (~$9,000) is "
+                  "materially inconsistent with bureau records ($47,300); "
+                  "his characterization of foreign family contact is "
+                  "inconsistent with remittance activity. Transcript and "
+                  "summary placed in file."),
+        dict(date="2026-01-27", investigator="S. Whitfield", item="Financial",
+             text="Tri-bureau credit data and state court records establish "
+                  "sustained delinquency across five accounts totaling "
+                  "$47,300, including two charge-offs and an unpaid 2025 "
+                  "small-claims judgment of $3,100. Delinquency has "
+                  "continued after re-employment in early 2025."),
+        dict(date="2026-01-27", investigator="S. Whitfield",
+             item="Foreign contacts",
+             text="Subject's mother and two siblings are resident in Lagos, "
+                  "Nigeria. One sibling's employment with a state-owned "
+                  "enterprise was developed through record checks and was "
+                  "not disclosed on the SF-86. Expanded lead recommended "
+                  "on the sibling's SOE role and subject's contact "
+                  "frequency."),
+        dict(date="2026-01-27", investigator="S. Whitfield", item="Employment",
+             text="Employment verified: Sentinel Dynamics LLC, 2018-02 to "
+                  "present, Senior Systems Engineer. The 2024 six-month "
+                  "gap is corroborated by employer records as an "
+                  "involuntary layoff; rehired at a comparable grade."),
+        dict(date="2026-01-27", investigator="J. Ramos", item="References",
+             text="Supervisor and neighborhood interviews favorable: "
+                  "dependable, stable household, no conduct or substance "
+                  "indicators. All sources unaware of financial stress; "
+                  "no source corroborated or contradicted foreign-contact "
+                  "reporting."),
+        dict(date="2026-03-18", investigator="S. Whitfield", item="Financial",
+             text="Supplemental credit re-check completed at adjudicator "
+                  "request. Delinquency total revised upward after a new "
+                  "collection placement; figures reconciled across "
+                  "TransUnion and Equifax and forwarded to adjudication."),
+        dict(date="2026-05-06", investigator="S. Whitfield",
+             item="Foreign travel",
+             text="CBP I-94 arrival/departure pair validated for travel to "
+                  "Nigeria, 2026-04-11 to 2026-04-25. No foreign-travel "
+                  "report on file with the FSO as required by SEAD-3. "
+                  "Coworker follow-up corroborates the trip; item referred "
+                  "to adjudication with the travel record attached."),
+    ]
+    roi_url, roi_doc = docs.roi(
+        "SUBJ-001", "roi-20260127", case_ref="DCSA-PR-2025-448121",
+        inv_type="T5 Periodic Reinvestigation", opened="2025-09-15",
+        transmitted="2026-01-27", lead="S. Whitfield",
+        office="DCSA Washington Field Office", entries=roi_entries,
+        received="2026-01-27")
     alerts = [
         dict(id="ALERT-101", subjectId="SUBJ-001", subjectName=subject["name"],
              category="FINANCIAL", severity="HIGH", priorityScore=82, state="NEW",
@@ -221,8 +274,8 @@ def _hero1(precedent_fn) -> dict:
         ],
         guidelines=[
             dict(code="F", name="Financial Considerations", severity="C",
-                 aiReasoning=("Disqualifying conditions AG Â¶ 19(a) and 19(c) are established by "
-                              "the credit record. Mitigator Â¶ 20(b) applies only partially: the "
+                 aiReasoning=("Disqualifying conditions AG ¶ 19(a) and 19(c) are established by "
+                              "the credit record. Mitigator ¶ 20(b) applies only partially: the "
                               "2024 job loss was beyond his control, but there is no evidence he "
                               "acted responsibly under the circumstances since re-employment."),
                  evidence=[
@@ -235,25 +288,25 @@ def _hero1(precedent_fn) -> dict:
                           description="Small-claims judgment $3,100 (2025), unpaid",
                           date="2025-08-02")],
                  disqualifiers=[
-                     dict(code="AG Â¶ 19(a)", description="Inability to satisfy debts",
+                     dict(code="AG ¶ 19(a)", description="Inability to satisfy debts",
                           evidence="$47,300 delinquent across five accounts"),
-                     dict(code="AG Â¶ 19(c)", description="A history of not meeting financial obligations",
+                     dict(code="AG ¶ 19(c)", description="A history of not meeting financial obligations",
                           evidence="Charge-offs 2024-2026 and unpaid 2025 judgment")],
                  mitigators=[
-                     dict(code="AG Â¶ 20(b)",
+                     dict(code="AG ¶ 20(b)",
                           description="Conditions largely beyond the person's control",
                           applicability="PARTIAL",
                           reasoning="Job loss was involuntary, but no responsible action "
                                     "(payment plan, counseling) is documented since."),
-                     dict(code="AG Â¶ 20(d)",
+                     dict(code="AG ¶ 20(d)",
                           description="Good-faith effort to repay overdue creditors",
                           applicability="NONE",
                           reasoning="No repayment evidence in file.")],
                  precedents=precedent_fn("F")),
             dict(code="B", name="Foreign Influence", severity="B",
-                 aiReasoning=("AG Â¶ 7(a) contacts are established: mother and two siblings in "
+                 aiReasoning=("AG ¶ 7(a) contacts are established: mother and two siblings in "
                               "Nigeria, one sibling employed by a state-owned oil company. "
-                              "Unreported April 2026 travel weighs against Â¶ 8(a) mitigation. "
+                              "Unreported April 2026 travel weighs against ¶ 8(a) mitigation. "
                               "Combined with financial pressure, heightens coercion risk."),
                  evidence=[
                      dict(provider="SF-86 self-report", type="Foreign contacts",
@@ -263,12 +316,12 @@ def _hero1(precedent_fn) -> dict:
                           description="Nigeria travel 2026-04-11 to 2026-04-25, unreported",
                           date="2026-05-02")],
                  disqualifiers=[
-                     dict(code="AG Â¶ 7(a)",
+                     dict(code="AG ¶ 7(a)",
                           description="Contact with a foreign family member who could create "
                                       "a risk of foreign exploitation or pressure",
                           evidence="Sibling employed by state-owned enterprise")],
                  mitigators=[
-                     dict(code="AG Â¶ 8(a)",
+                     dict(code="AG ¶ 8(a)",
                           description="Nature of relationships makes exploitation unlikely",
                           applicability="PARTIAL",
                           reasoning="Contacts are familial and disclosed, but the unreported "
@@ -402,53 +455,7 @@ def _hero1(precedent_fn) -> dict:
                              "corresponding foreign-travel report was filed with "
                              "the FSO as required under SEAD-3."),
             ],
-            roiEntries=[
-                dict(date="2026-01-27", investigator="S. Whitfield",
-                     item="Subject interview",
-                     text="Enhanced Subject Interview conducted 2025-11-19 under "
-                          "oath. Subject's account of the delinquency (~$9,000) is "
-                          "materially inconsistent with bureau records ($47,300); "
-                          "his characterization of foreign family contact is "
-                          "inconsistent with remittance activity. Transcript and "
-                          "summary placed in file."),
-                dict(date="2026-01-27", investigator="S. Whitfield", item="Financial",
-                     text="Tri-bureau credit data and state court records establish "
-                          "sustained delinquency across five accounts totaling "
-                          "$47,300, including two charge-offs and an unpaid 2025 "
-                          "small-claims judgment of $3,100. Delinquency has "
-                          "continued after re-employment in early 2025."),
-                dict(date="2026-01-27", investigator="S. Whitfield",
-                     item="Foreign contacts",
-                     text="Subject's mother and two siblings are resident in Lagos, "
-                          "Nigeria. One sibling's employment with a state-owned "
-                          "enterprise was developed through record checks and was "
-                          "not disclosed on the SF-86. Expanded lead recommended "
-                          "on the sibling's SOE role and subject's contact "
-                          "frequency."),
-                dict(date="2026-01-27", investigator="S. Whitfield", item="Employment",
-                     text="Employment verified: Sentinel Dynamics LLC, 2018-02 to "
-                          "present, Senior Systems Engineer. The 2024 six-month "
-                          "gap is corroborated by employer records as an "
-                          "involuntary layoff; rehired at a comparable grade."),
-                dict(date="2026-01-27", investigator="J. Ramos", item="References",
-                     text="Supervisor and neighborhood interviews favorable: "
-                          "dependable, stable household, no conduct or substance "
-                          "indicators. All sources unaware of financial stress; "
-                          "no source corroborated or contradicted foreign-contact "
-                          "reporting."),
-                dict(date="2026-03-18", investigator="S. Whitfield", item="Financial",
-                     text="Supplemental credit re-check completed at adjudicator "
-                          "request. Delinquency total revised upward after a new "
-                          "collection placement; figures reconciled across "
-                          "TransUnion and Equifax and forwarded to adjudication."),
-                dict(date="2026-05-06", investigator="S. Whitfield",
-                     item="Foreign travel",
-                     text="CBP I-94 arrival/departure pair validated for travel to "
-                          "Nigeria, 2026-04-11 to 2026-04-25. No foreign-travel "
-                          "report on file with the FSO as required by SEAD-3. "
-                          "Coworker follow-up corroborates the trip; item referred "
-                          "to adjudication with the travel record attached."),
-            ],
+            roiEntries=roi_entries,
         ),
         adjudication=dict(
             recommendation=dict(
@@ -468,7 +475,7 @@ def _hero1(precedent_fn) -> dict:
         alerts=alerts,
         documents=[
             dict(title="Report of Investigation (ROI)", type="ROI",
-                 description="T5 ROI transmitted 2026-01-27", url=None),
+                 description="T5 ROI transmitted 2026-01-27", url=roi_url),
             dict(title="SF-86 excerpt - Section 20A", type="SF-86",
                  description="Financial-record response, submitted 2025-09-08",
                  url=sf_url),
@@ -480,7 +487,7 @@ def _hero1(precedent_fn) -> dict:
                  description="Nigeria travel April 2026 (unreported)", url=trv_url),
         ],
         sourceDocuments={cu_url: cu_doc, trv_url: trv_doc, sar_url: sar_doc,
-                         sf_url: sf_doc},
+                         sf_url: sf_doc, roi_url: roi_doc},
     )
 
 
@@ -679,29 +686,29 @@ def _hero2(precedent_fn) -> dict:
         ],
         guidelines=[
             dict(code="J", name="Criminal Conduct", severity="B",
-                 aiReasoning="AG Â¶ 31(b) applies on arrest evidence; adjudication should await "
-                             "disposition. Isolated incident weighs toward Â¶ 32(a) over time.",
+                 aiReasoning="AG ¶ 31(b) applies on arrest evidence; adjudication should await "
+                             "disposition. Isolated incident weighs toward ¶ 32(a) over time.",
                  evidence=[dict(provider="FBI Rap Back", type="Arrest record",
                                 description="DUI arrest, Chesapeake PD, 2026-06-21",
                                 date="2026-06-23")],
-                 disqualifiers=[dict(code="AG Â¶ 31(b)",
+                 disqualifiers=[dict(code="AG ¶ 31(b)",
                                      description="Evidence of criminal conduct regardless of "
                                                  "whether the person was formally charged",
                                      evidence="Fingerprint-verified arrest record")],
-                 mitigators=[dict(code="AG Â¶ 32(a)",
+                 mitigators=[dict(code="AG ¶ 32(a)",
                                   description="So much time has elapsed / unlikely to recur",
                                   applicability="NONE",
                                   reasoning="Arrest occurred within the last two weeks.")],
                  precedents=precedent_fn("J")),
             dict(code="G", name="Alcohol Consumption", severity="B",
-                 aiReasoning="Single alcohol-related incident (AG Â¶ 22(a)). No evidence yet of "
-                             "a pattern or diagnosis; evaluation report would inform Â¶ 23(b).",
+                 aiReasoning="Single alcohol-related incident (AG ¶ 22(a)). No evidence yet of "
+                             "a pattern or diagnosis; evaluation report would inform ¶ 23(b).",
                  evidence=[dict(provider="FBI Rap Back", type="Arrest record",
                                 description="Alcohol-related driving arrest", date="2026-06-23")],
-                 disqualifiers=[dict(code="AG Â¶ 22(a)",
+                 disqualifiers=[dict(code="AG ¶ 22(a)",
                                      description="Alcohol-related incident away from work",
                                      evidence="DUI arrest 2026-06-21")],
-                 mitigators=[dict(code="AG Â¶ 23(a)",
+                 mitigators=[dict(code="AG ¶ 23(a)",
                                   description="So much time has passed / no pattern",
                                   applicability="NONE",
                                   reasoning="Incident is current.")],

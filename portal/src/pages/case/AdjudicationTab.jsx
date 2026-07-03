@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FiFlag, FiSliders, FiArchive } from 'react-icons/fi';
+import { FiFlag, FiSliders, FiArchive, FiFileText } from 'react-icons/fi';
 import { usePersona } from '../../state/PersonaContext.jsx';
 import { useDemo } from '../../state/DemoContext.jsx';
 import { ADJ_ACTION_LABELS } from '../../domain.js';
@@ -65,7 +65,8 @@ export default function AdjudicationTab({ caseData }) {
       <WholePersonWorksheet caseData={caseData} />
 
       {adj.sorDraft && (
-        <CollapsibleSection title="Statement of Reasons - draft" meta={<AIBadge />}>
+        <CollapsibleSection title="Statement of Reasons - draft" meta={<AIBadge />}
+          icon={<FiFileText />}>
           <pre className="sor-draft">{adj.sorDraft}</pre>
         </CollapsibleSection>
       )}

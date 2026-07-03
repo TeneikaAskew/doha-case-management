@@ -1,4 +1,6 @@
-import { FiExternalLink } from 'react-icons/fi';
+import {
+  FiExternalLink, FiShield, FiZap, FiFolder, FiAlertCircle, FiCheckCircle, FiBookOpen,
+} from 'react-icons/fi';
 import CollapsibleSection from '../../components/CollapsibleSection.jsx';
 import SeverityBadge from '../../components/SeverityBadge.jsx';
 import StatusBadge from '../../components/StatusBadge.jsx';
@@ -22,13 +24,14 @@ export default function GuidelinesTab({ caseData }) {
         <CollapsibleSection key={g.code}
           title={`${g.code} - ${g.name}`}
           meta={<SeverityBadge level={g.severity} />}
+          icon={<FiShield />}
           defaultOpen={i === 0}>
           <div className="guideline-ai card-inset">
-            <h4>AI assessment <AIBadge /></h4>
+            <h4><FiZap className="section-icon" aria-hidden="true" />AI assessment <AIBadge /></h4>
             <p>{g.aiReasoning}</p>
           </div>
 
-          <h4>Evidence</h4>
+          <h4><FiFolder className="section-icon" aria-hidden="true" />Evidence</h4>
           <table className="inline-table">
             <thead><tr><th>Provider</th><th>Type</th><th>Description</th><th>Date</th></tr></thead>
             <tbody>
@@ -41,7 +44,7 @@ export default function GuidelinesTab({ caseData }) {
             </tbody>
           </table>
 
-          <h4>Disqualifying conditions</h4>
+          <h4><FiAlertCircle className="section-icon" aria-hidden="true" />Disqualifying conditions</h4>
           <ul className="condition-list">
             {g.disqualifiers.map((d) => (
               <li key={d.code} className="condition disqualifier">
@@ -51,7 +54,7 @@ export default function GuidelinesTab({ caseData }) {
             ))}
           </ul>
 
-          <h4>Mitigating conditions</h4>
+          <h4><FiCheckCircle className="section-icon" aria-hidden="true" />Mitigating conditions</h4>
           <ul className="condition-list">
             {g.mitigators.map((m) => (
               <li key={m.code} className="condition mitigator">
@@ -64,7 +67,7 @@ export default function GuidelinesTab({ caseData }) {
             ))}
           </ul>
 
-          <h4>DOHA precedents <AIBadge /></h4>
+          <h4><FiBookOpen className="section-icon" aria-hidden="true" />DOHA precedents <AIBadge /></h4>
           <table className="inline-table">
             <thead><tr><th>Case</th><th>Outcome</th><th>Year</th><th>Relevance</th></tr></thead>
             <tbody>

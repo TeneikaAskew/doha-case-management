@@ -234,7 +234,7 @@
       "code": "J",
       "name": "Criminal Conduct",
       "severity": "B",
-      "aiReasoning": "AG Â¶ 31(b) applies on arrest evidence; adjudication should await disposition. Isolated incident weighs toward Â¶ 32(a) over time.",
+      "aiReasoning": "AG ¶ 31(b) applies on arrest evidence; adjudication should await disposition. Isolated incident weighs toward ¶ 32(a) over time.",
       "evidence": [
         {
           "provider": "FBI Rap Back",
@@ -245,14 +245,14 @@
       ],
       "disqualifiers": [
         {
-          "code": "AG Â¶ 31(b)",
+          "code": "AG ¶ 31(b)",
           "description": "Evidence of criminal conduct regardless of whether the person was formally charged",
           "evidence": "Fingerprint-verified arrest record"
         }
       ],
       "mitigators": [
         {
-          "code": "AG Â¶ 32(a)",
+          "code": "AG ¶ 32(a)",
           "description": "So much time has elapsed / unlikely to recur",
           "applicability": "NONE",
           "reasoning": "Arrest occurred within the last two weeks."
@@ -286,7 +286,7 @@
       "code": "G",
       "name": "Alcohol Consumption",
       "severity": "B",
-      "aiReasoning": "Single alcohol-related incident (AG Â¶ 22(a)). No evidence yet of a pattern or diagnosis; evaluation report would inform Â¶ 23(b).",
+      "aiReasoning": "Single alcohol-related incident (AG ¶ 22(a)). No evidence yet of a pattern or diagnosis; evaluation report would inform ¶ 23(b).",
       "evidence": [
         {
           "provider": "FBI Rap Back",
@@ -297,14 +297,14 @@
       ],
       "disqualifiers": [
         {
-          "code": "AG Â¶ 22(a)",
+          "code": "AG ¶ 22(a)",
           "description": "Alcohol-related incident away from work",
           "evidence": "DUI arrest 2026-06-21"
         }
       ],
       "mitigators": [
         {
-          "code": "AG Â¶ 23(a)",
+          "code": "AG ¶ 23(a)",
           "description": "So much time has passed / no pattern",
           "applicability": "NONE",
           "reasoning": "Incident is current."

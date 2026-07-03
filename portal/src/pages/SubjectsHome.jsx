@@ -1,5 +1,8 @@
 import { useMemo, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import {
+  FiTrendingUp, FiPieChart, FiAlertCircle, FiUsers,
+} from 'react-icons/fi';
 import { getSubjects, getAlerts } from '../data/api.js';
 import { useData } from '../data/useData.js';
 import { useDemo } from '../state/DemoContext.jsx';
@@ -111,7 +114,7 @@ export default function SubjectsHome() {
       </div>
 
       <div className="card">
-        <h3>Vetting Pipeline</h3>
+        <h3><FiTrendingUp className="section-icon" aria-hidden="true" />Vetting Pipeline</h3>
         <div className="pipeline-strip">
           {STAGES.map((st) => (
             <Link key={st} className="pipeline-segment" to={`/cases?stage=${st}`}>
@@ -123,7 +126,7 @@ export default function SubjectsHome() {
       </div>
 
       <div className="card">
-        <h3>AI Risk Distribution</h3>
+        <h3><FiPieChart className="section-icon" aria-hidden="true" />AI Risk Distribution</h3>
         <div className="risk-bar" role="img"
           aria-label={BANDS.map((b) => `${b.label}: ${bandCount(b.id)}`).join(', ')}>
           {BANDS.map((b) => bandCount(b.id) > 0 && (
@@ -142,7 +145,9 @@ export default function SubjectsHome() {
         </div>
       </div>
 
-      <h2 className="dashboard-queue-title">Needs Attention</h2>
+      <h2 className="dashboard-queue-title">
+        <FiAlertCircle className="section-icon" aria-hidden="true" />Needs Attention
+      </h2>
       <div className="attention-grid">
         {attention.map((s) => (
           <button key={s.id} type="button" className="card card-interactive attention-card"
@@ -173,7 +178,9 @@ export default function SubjectsHome() {
         ))}
       </div>
 
-      <h2 className="dashboard-queue-title">Subject Directory</h2>
+      <h2 className="dashboard-queue-title">
+        <FiUsers className="section-icon" aria-hidden="true" />Subject Directory
+      </h2>
       <div className="card directory-filters">
         <label className="form-group directory-search">
           <span>Search</span>

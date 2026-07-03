@@ -1,0 +1,33 @@
+{
+  "docType": "SF86_EXCERPT",
+  "title": "Section 22 - Police record",
+  "reference": "Section 22 - Police record",
+  "provider": "DISS / prior adjudications",
+  "receivedDate": "2026-04-15",
+  "subjectId": "SUBJ-006",
+  "fields": [
+    {
+      "label": "Form version",
+      "value": "SF-86 (Nov 2016)"
+    },
+    {
+      "label": "Submitted",
+      "value": "2026-04-15"
+    },
+    {
+      "label": "Section",
+      "value": "Section 22 - Police record"
+    },
+    {
+      "label": "Question",
+      "value": "In the last seven (7) years, have you been arrested by any police officer, sheriff, marshal, or any other type of law enforcement official?"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Subject response",
+      "body": "No."
+    }
+  ],
+  "transactions": []
+}

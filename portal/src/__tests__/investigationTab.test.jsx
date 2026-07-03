@@ -74,7 +74,7 @@ describe('InvestigationTab', () => {
     fireEvent.click(screen.getByRole('button', { name: /financial record checks/i }));
     const viewButtons = screen.getAllByRole('button', { name: /view/i });
     fireEvent.click(viewButtons[0]);
-    const docTitle = await screen.findByText(/Meridian Auto Finance/);
+    const docTitle = (await screen.findAllByText(/Meridian Auto Finance/))[0];
     // the document renders inside the table, in the row after the clicked one
     const docRow = docTitle.closest('tr');
     expect(docRow).toHaveClass('record-check-doc-row');
@@ -104,8 +104,8 @@ describe('InvestigationTab', () => {
     renderTab();
     fireEvent.click(screen.getByRole('button', { name: /financial record checks/i }));
     fireEvent.click(screen.getByRole('button', { name: 'View' }));
-    expect(await screen.findByText(/Meridian Auto Finance/))
-      .toBeInTheDocument();
+    expect((await screen.findAllByText(/Meridian Auto Finance/)).length)
+      .toBeGreaterThanOrEqual(1);
   });
 
   it('checks without a document show no view button when expanded', () => {

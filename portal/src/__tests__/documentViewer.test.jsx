@@ -69,35 +69,40 @@ describe('DocumentViewer', () => {
         'https://doha.ogc.osd.mil/Industrial-Security-Program/Industrial-Security-Clearance-Decisions/ISCR-Hearing-Decisions/2026-ISCR-Hearing-Decisions');
   });
 
-  it('renders a typed police report as a one-line label with fields and narrative', async () => {
-    render(<MemoryRouter>
+  it('renders a typed police report with header label, paper facsimile, and narrative', async () => {
+    const { container } = render(<MemoryRouter>
       <DocumentViewer url="documents/SUBJ-002/police-report.json" />
     </MemoryRouter>);
-    expect(await screen.findByText('Report 26-044812, Chesapeake Police Department'))
-      .toBeInTheDocument();
-    expect(screen.getByText('Police report')).toBeInTheDocument();       // type pill
+    // reference appears in the header line and on the paper letterhead
+    expect((await screen.findAllByText('Report 26-044812, Chesapeake Police Department'))
+      .length).toBe(2);
+    expect(screen.getAllByText('Police report').length).toBe(2); // pill + letterhead
     expect(screen.getByText('2026-06-30')).toBeInTheDocument();          // received date
     expect(screen.getByText('State & local courts')).toBeInTheDocument(); // source chip
+    expect(container.querySelector('.document-paper')).toBeInTheDocument();
     expect(screen.getByText('Officer narrative')).toBeInTheDocument();
   });
 
-  it('drops fields that duplicate the header, provider, or received date', async () => {
-    render(<MemoryRouter>
+  it('extracted-data pane drops fields duplicating the header, provider, or date', async () => {
+    const { container } = render(<MemoryRouter>
       <DocumentViewer url="documents/SUBJ-002/police-report.json" />
     </MemoryRouter>);
-    await screen.findByText('Report 26-044812, Chesapeake Police Department');
-    // report number and agency both appear in the header reference
-    expect(screen.queryByText('Report number')).not.toBeInTheDocument();
-    expect(screen.queryByText('Agency')).not.toBeInTheDocument();
-    expect(screen.getByText(/DUI - 1st offense/)).toBeInTheDocument();   // kept
+    await screen.findAllByText('Report 26-044812, Chesapeake Police Department');
+    const context = container.querySelector('.document-context');
+    expect(context).not.toHaveTextContent('Report number');
+    expect(context).not.toHaveTextContent('Agency');
+    expect(context).toHaveTextContent(/DUI - 1st offense/);              // kept
+    // the paper facsimile still shows the full document, duplicates included
+    const paper = container.querySelector('.document-paper');
+    expect(paper).toHaveTextContent('Report number:');
   });
 
-  it('renders SAR transactions as a table', async () => {
-    render(<MemoryRouter>
+  it('renders SAR transactions as a table on the paper facsimile', async () => {
+    const { container } = render(<MemoryRouter>
       <DocumentViewer url="documents/SUBJ-001/sar.json" />
     </MemoryRouter>);
-    expect(await screen.findByText(/SAR-2026-0415-88231/)).toBeInTheDocument();
-    expect(screen.getByRole('table')).toBeInTheDocument();
+    expect((await screen.findAllByText(/SAR-2026-0415-88231/)).length).toBe(2);
+    expect(container.querySelector('.document-paper table')).toBeInTheDocument();
     expect(screen.getByText('Wire (outbound)')).toBeInTheDocument();
     expect(screen.getByText('$3,000')).toBeInTheDocument();
   });

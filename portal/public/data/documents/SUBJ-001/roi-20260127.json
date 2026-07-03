@@ -1,0 +1,69 @@
+{
+  "docType": "ROI",
+  "title": "Report of Investigation DCSA-PR-2025-448121",
+  "reference": "T5 Periodic Reinvestigation, transmitted 2026-01-27",
+  "provider": "DCSA field operations",
+  "receivedDate": "2026-01-27",
+  "subjectId": "SUBJ-001",
+  "fields": [
+    {
+      "label": "Case reference",
+      "value": "DCSA-PR-2025-448121"
+    },
+    {
+      "label": "Investigation type",
+      "value": "T5 Periodic Reinvestigation"
+    },
+    {
+      "label": "Opened",
+      "value": "2025-09-15"
+    },
+    {
+      "label": "Transmitted",
+      "value": "2026-01-27"
+    },
+    {
+      "label": "Lead investigator",
+      "value": "S. Whitfield"
+    },
+    {
+      "label": "Field office",
+      "value": "DCSA Washington Field Office"
+    },
+    {
+      "label": "Coverage entries",
+      "value": "7"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Subject interview - 2026-01-27 (S. Whitfield)",
+      "body": "Enhanced Subject Interview conducted 2025-11-19 under oath. Subject's account of the delinquency (~$9,000) is materially inconsistent with bureau records ($47,300); his characterization of foreign family contact is inconsistent with remittance activity. Transcript and summary placed in file."
+    },
+    {
+      "heading": "Financial - 2026-01-27 (S. Whitfield)",
+      "body": "Tri-bureau credit data and state court records establish sustained delinquency across five accounts totaling $47,300, including two charge-offs and an unpaid 2025 small-claims judgment of $3,100. Delinquency has continued after re-employment in early 2025."
+    },
+    {
+      "heading": "Foreign contacts - 2026-01-27 (S. Whitfield)",
+      "body": "Subject's mother and two siblings are resident in Lagos, Nigeria. One sibling's employment with a state-owned enterprise was developed through record checks and was not disclosed on the SF-86. Expanded lead recommended on the sibling's SOE role and subject's contact frequency."
+    },
+    {
+      "heading": "Employment - 2026-01-27 (S. Whitfield)",
+      "body": "Employment verified: Sentinel Dynamics LLC, 2018-02 to present, Senior Systems Engineer. The 2024 six-month gap is corroborated by employer records as an involuntary layoff; rehired at a comparable grade."
+    },
+    {
+      "heading": "References - 2026-01-27 (J. Ramos)",
+      "body": "Supervisor and neighborhood interviews favorable: dependable, stable household, no conduct or substance indicators. All sources unaware of financial stress; no source corroborated or contradicted foreign-contact reporting."
+    },
+    {
+      "heading": "Financial - 2026-03-18 (S. Whitfield)",
+      "body": "Supplemental credit re-check completed at adjudicator request. Delinquency total revised upward after a new collection placement; figures reconciled across TransUnion and Equifax and forwarded to adjudication."
+    },
+    {
+      "heading": "Foreign travel - 2026-05-06 (S. Whitfield)",
+      "body": "CBP I-94 arrival/departure pair validated for travel to Nigeria, 2026-04-11 to 2026-04-25. No foreign-travel report on file with the FSO as required by SEAD-3. Coworker follow-up corroborates the trip; item referred to adjudication with the travel record attached."
+    }
+  ],
+  "transactions": []
+}

@@ -2,6 +2,7 @@ import {
   ResponsiveContainer, BarChart, Bar, LineChart, Line,
   XAxis, YAxis, CartesianGrid, Tooltip, Legend,
 } from 'recharts';
+import { FiBarChart2, FiTrendingUp, FiClock } from 'react-icons/fi';
 import { getAnalytics } from '../data/api.js';
 import { useData } from '../data/useData.js';
 import KPICard from '../components/KPICard.jsx';
@@ -46,7 +47,7 @@ export default function Analytics() {
       </div>
 
       <div className="card chart-card">
-        <h3>Cases by Guideline</h3>
+        <h3><FiBarChart2 className="section-icon" aria-hidden="true" />Cases by Guideline</h3>
         <ResponsiveContainer width="100%" height={280}>
           <BarChart data={corpus.byGuideline}>
             <CartesianGrid strokeDasharray="3 3" stroke="var(--border-light)" vertical={false} />
@@ -59,7 +60,7 @@ export default function Analytics() {
       </div>
 
       <div className="card chart-card">
-        <h3>Outcomes by Year</h3>
+        <h3><FiTrendingUp className="section-icon" aria-hidden="true" />Outcomes by Year</h3>
         <ResponsiveContainer width="100%" height={280}>
           <LineChart data={corpus.byYear}>
             <CartesianGrid strokeDasharray="3 3" stroke="var(--border-light)" vertical={false} />
@@ -76,7 +77,7 @@ export default function Analytics() {
       </div>
 
       <div className="card chart-card">
-        <h3>Pipeline Timeliness</h3>
+        <h3><FiClock className="section-icon" aria-hidden="true" />Pipeline Timeliness</h3>
         <ResponsiveContainer width="100%" height={280}>
           <BarChart data={pipeline.timeliness}>
             <CartesianGrid strokeDasharray="3 3" stroke="var(--border-light)" vertical={false} />

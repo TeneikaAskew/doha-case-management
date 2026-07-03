@@ -46,7 +46,8 @@ describe('WholePersonWorksheet', () => {
     renderSheet();
     fireEvent.click(screen.getByRole('button',
       { name: /TransUnion credit-file extract/i }));
-    expect(await screen.findByText(/Meridian Auto Finance/)).toBeInTheDocument();
+    expect((await screen.findAllByText(/Meridian Auto Finance/)).length)
+      .toBeGreaterThanOrEqual(1);
   });
 
   it('adjudicator expands a factor, rates it, and the tally updates', () => {

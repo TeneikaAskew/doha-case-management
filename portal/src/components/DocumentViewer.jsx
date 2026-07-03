@@ -16,6 +16,21 @@ const DOC_TYPE_LABELS = {
   SF86_EXCERPT: 'SF-86 excerpt',
   TRAVEL_RECORD: 'Travel record',
   INCIDENT_REPORT: 'Security incident report',
+  ROI: 'Report of Investigation',
+};
+
+const field = (doc, label) => doc.fields.find((f) => f.label === label)?.value;
+
+// Letterhead issuer for the paper facsimile, per document type.
+const PAPER_ISSUER = {
+  POLICE_REPORT: (d) => field(d, 'Agency') || d.provider,
+  CREDIT_REPORT: (d) => field(d, 'Bureau') || d.provider,
+  SAR: (d) => 'Financial Crimes Enforcement Network (FinCEN)',
+  RAPBACK_NOTIFICATION: () => 'Federal Bureau of Investigation - CJIS Division',
+  SF86_EXCERPT: () => 'U.S. Office of Personnel Management',
+  TRAVEL_RECORD: () => 'U.S. Customs and Border Protection',
+  INCIDENT_REPORT: (d) => d.provider,
+  ROI: () => 'Defense Counterintelligence and Security Agency',
 };
 
 const listingUrl = (u) => {
@@ -52,7 +67,51 @@ function DohaDocumentView({ doc }) {
   );
 }
 
+function DocumentPaper({ doc }) {
+  const issuer = (PAPER_ISSUER[doc.docType] || ((d) => d.provider))(doc);
+  return (
+    <div className="document-paper" aria-label="Document facsimile">
+      <div className="paper-letterhead">
+        <div className="paper-org">{issuer}</div>
+        <div className="paper-doc-type">{DOC_TYPE_LABELS[doc.docType] || doc.docType}</div>
+        <div className="paper-ref">{doc.reference || doc.title}</div>
+      </div>
+      <div className="paper-fields">
+        {doc.fields.map((f) => (
+          <div key={f.label} className="paper-field">
+            <span className="paper-field-label">{f.label}:</span> {f.value}
+          </div>
+        ))}
+      </div>
+      {doc.transactions.length > 0 && (
+        <table className="paper-table">
+          <thead><tr><th>Date</th><th>Type</th><th>Amount</th></tr></thead>
+          <tbody>
+            {doc.transactions.map((t) => (
+              <tr key={`${t.date}-${t.amount}`}>
+                <td>{t.date}</td><td>{t.type}</td><td>{t.amount}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
+      {doc.sections.map((s) => (
+        <div key={s.heading} className="paper-section">
+          <div className="paper-section-h">{s.heading}</div>
+          <p>{s.body}</p>
+        </div>
+      ))}
+      <div className="paper-footer">Page 1 of 1 · Demo facsimile · not an official record</div>
+    </div>
+  );
+}
+
 function GeneratedDocumentView({ doc }) {
+  const contextFields = doc.fields.filter((f) => {
+    const header = `${doc.title} ${doc.reference || ''}`.toLowerCase();
+    return !((header.includes(f.value.toLowerCase()) && f.value.length >= 5)
+      || f.value === doc.provider || f.value === doc.receivedDate);
+  });
   return (
     <div className="document-viewer">
       <div className="document-viewer-head document-viewer-head-line">
@@ -67,32 +126,21 @@ function GeneratedDocumentView({ doc }) {
           <span className="document-date">{doc.receivedDate}</span>
         </div>
       </div>
-      <div className="document-viewer-content">
-        <KVGrid items={doc.fields
-          .filter((f) => {
-            const header = `${doc.title} ${doc.reference || ''}`.toLowerCase();
-            return !((header.includes(f.value.toLowerCase()) && f.value.length >= 5)
-              || f.value === doc.provider || f.value === doc.receivedDate);
-          })
-          .map((f) => ({ label: f.label, value: f.value }))} />
-        {doc.transactions.length > 0 && (
-          <table className="inline-table">
-            <thead><tr><th>Date</th><th>Type</th><th>Amount</th></tr></thead>
-            <tbody>
-              {doc.transactions.map((t) => (
-                <tr key={`${t.date}-${t.amount}`}>
-                  <td>{t.date}</td><td>{t.type}</td><td>{t.amount}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        )}
-        {doc.sections.map((s) => (
-          <div key={s.heading} className="document-section">
-            <h5>{s.heading}</h5>
-            <p>{s.body}</p>
-          </div>
-        ))}
+      <div className="document-split">
+        <DocumentPaper doc={doc} />
+        <div className="document-context">
+          <h5 className="document-context-h">Extracted data</h5>
+          <KVGrid items={contextFields.map((f) => ({ label: f.label, value: f.value }))} />
+          {doc.transactions.length > 0 && (
+            <p className="muted document-context-note">
+              {doc.transactions.length} transactions listed on the document.
+            </p>
+          )}
+          <h5 className="document-context-h">Provenance</h5>
+          <p className="muted document-context-note">
+            Received {doc.receivedDate} via {doc.provider}.
+          </p>
+        </div>
       </div>
     </div>
   );

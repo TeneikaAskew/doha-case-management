@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { FiFileText } from 'react-icons/fi';
+import {
+  FiFileText, FiDollarSign, FiCreditCard, FiAlertTriangle, FiGlobe, FiAlertOctagon,
+  FiKey, FiUserX, FiActivity, FiUserCheck, FiSliders, FiRotateCcw,
+} from 'react-icons/fi';
 import { usePersona } from '../../state/PersonaContext.jsx';
 import { useDemo } from '../../state/DemoContext.jsx';
 import {
@@ -17,6 +20,16 @@ import { EmptyState } from '../../components/States.jsx';
 import SectionRef, { RefLink } from '../../components/SectionRef.jsx';
 import { REFS } from '../../references.js';
 
+const CATEGORY_ICONS = {
+  FINANCIAL: FiDollarSign,
+  CREDIT: FiCreditCard,
+  CRIMINAL: FiAlertTriangle,
+  FOREIGN_TRAVEL: FiGlobe,
+  TERRORISM: FiAlertOctagon,
+  ELIGIBILITY: FiKey,
+  SUITABILITY: FiUserX,
+};
+
 function AlertBody({ alert: a, state, isAnalyst, dispositionAlert }) {
   const [openDoc, setOpenDoc] = useState(null);
 
@@ -30,7 +43,7 @@ function AlertBody({ alert: a, state, isAnalyst, dispositionAlert }) {
 
       <div className="cv-steps">
         <div className="cv-step">
-          <h4>Step 1 - Identity match</h4>
+          <h4><FiUserCheck className="section-icon" aria-hidden="true" />Step 1 - Identity match</h4>
           <ConfidenceBar value={a.identityMatch.confidence} />
           <table className="inline-table">
             <thead><tr><th>Identifier</th><th>Subject</th><th>Record</th><th>Match</th></tr></thead>
@@ -48,7 +61,7 @@ function AlertBody({ alert: a, state, isAnalyst, dispositionAlert }) {
         </div>
 
         <div className="cv-step">
-          <h4>Step 2 - Investigative-standard threshold</h4>
+          <h4><FiSliders className="section-icon" aria-hidden="true" />Step 2 - Investigative-standard threshold</h4>
           <p><strong>{a.threshold.rule}</strong>{' '}
             <StatusBadge variant={a.threshold.met ? 'error' : 'success'}>
               {a.threshold.met ? 'Threshold met' : 'Below threshold'}
@@ -57,7 +70,7 @@ function AlertBody({ alert: a, state, isAnalyst, dispositionAlert }) {
         </div>
 
         <div className="cv-step">
-          <h4>Step 3 - Prior adjudication check</h4>
+          <h4><FiRotateCcw className="section-icon" aria-hidden="true" />Step 3 - Prior adjudication check</h4>
           <p>
             <StatusBadge variant={a.priorAdjudication.previouslyAdjudicated
               ? 'neutral' : 'info'}>
@@ -114,6 +127,7 @@ export default function CVTab({ caseData }) {
     <div>
       {caseData.alerts.map((a) => {
         const state = demo.alertStates[a.id] || a.state;
+        const CategoryIcon = CATEGORY_ICONS[a.category] || FiActivity;
         return (
           <CollapsibleSection key={a.id}
             title={`${ALERT_CATEGORY_LABELS[a.category]} - ${a.description}`}
@@ -123,6 +137,7 @@ export default function CVTab({ caseData }) {
               </StatusBadge>
               <span className="muted">{a.receivedDate}</span>
             </>}
+            icon={<CategoryIcon />}
             defaultOpen={a.id === focusId}>
             <AlertBody alert={a} state={state} isAnalyst={persona.id === 'analyst'}
               dispositionAlert={dispositionAlert} />

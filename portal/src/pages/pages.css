@@ -9,7 +9,8 @@
   font-weight: 700; }
 
 /* Dashboard */
-.dashboard-queue-title { margin-bottom: var(--space-3); }
+.dashboard-queue-title { margin-bottom: var(--space-3); display: flex;
+  align-items: center; gap: var(--space-2); }
 
 /* Data providers */
 .provider-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));

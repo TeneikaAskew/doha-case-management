@@ -223,10 +223,10 @@
   "alerts": [],
   "documents": [
     {
-      "title": "SF-86",
+      "title": "SF-86 excerpt - Section 22",
       "type": "SF-86",
-      "description": "Questionnaire on file",
-      "url": null
+      "description": "Police-record response, submitted 2026-04-15",
+      "url": "documents/SUBJ-014/sf86-section22.json"
     }
   ]
 }

@@ -57,8 +57,8 @@ describe('CVTab', () => {
     fireEvent.click(screen.getByRole('button', { name: /new collection account/i }));
     fireEvent.click(screen.getByRole('button',
       { name: /TransUnion credit-file extract/i }));
-    expect(await screen.findByText(/Meridian Auto Finance/))
-      .toBeInTheDocument();
+    expect((await screen.findAllByText(/Meridian Auto Finance/)).length)
+      .toBeGreaterThanOrEqual(1);
   });
 
   it('analyst dispositions an alert through a legal transition', () => {

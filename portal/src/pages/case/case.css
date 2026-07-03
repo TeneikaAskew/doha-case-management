@@ -85,11 +85,9 @@
   vertical-align: top; }
 .condition-list { list-style: none; display: grid; gap: var(--space-2); }
 .condition { padding: var(--space-3); border-radius: var(--radius-sm);
-  border-left: 3px solid; }
-.condition.disqualifier { background: var(--status-alert-bg);
-  border-left-color: var(--status-alert); }
-.condition.mitigator { background: var(--status-clear-bg);
-  border-left-color: var(--status-clear); }
+  border: 1px solid var(--border-light); border-left: 3px solid; }
+.condition.disqualifier { border-left-color: var(--status-alert); }
+.condition.mitigator { border-left-color: var(--status-clear); }
 
 /* Investigation tab */
 .coverage-list { list-style: none; display: grid; gap: var(--space-2); }

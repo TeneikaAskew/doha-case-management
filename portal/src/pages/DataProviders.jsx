@@ -1,3 +1,4 @@
+import { FiGrid, FiDatabase } from 'react-icons/fi';
 import { getProviders } from '../data/api.js';
 import { useData } from '../data/useData.js';
 import { GUIDELINES } from '../domain.js';
@@ -30,7 +31,7 @@ export default function DataProviders() {
         {providers.map((p) => (
           <div key={p.id} className="card provider-card">
             <div className="provider-card-head">
-              <h3>{p.name}</h3>
+              <h3><FiDatabase className="section-icon" aria-hidden="true" />{p.name}</h3>
               <StatusBadge variant={STATUS_VARIANT[p.status]}>{p.status}</StatusBadge>
             </div>
             <p className="muted">{p.category}</p>
@@ -45,7 +46,9 @@ export default function DataProviders() {
       </div>
 
       <div className="card">
-        <h3 id="coverage-matrix-title">Provider → Guideline Coverage</h3>
+        <h3 id="coverage-matrix-title">
+          <FiGrid className="section-icon" aria-hidden="true" />Provider → Guideline Coverage
+        </h3>
         <div className="matrix-wrap">
           <table className="inline-table coverage-matrix" aria-labelledby="coverage-matrix-title">
             <thead>

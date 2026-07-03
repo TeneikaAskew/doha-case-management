@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { FiList } from 'react-icons/fi';
 import { getSubjects, getAlerts } from '../data/api.js';
 import { useData } from '../data/useData.js';
 import { usePersona } from '../state/PersonaContext.jsx';
@@ -113,7 +114,9 @@ export default function Dashboard() {
       <div className="kpi-grid">
         {model.kpis.map((k) => <KPICard key={k.label} {...k} />)}
       </div>
-      <h2 className="dashboard-queue-title">{model.title}</h2>
+      <h2 className="dashboard-queue-title">
+        <FiList className="section-icon" aria-hidden="true" />{model.title}
+      </h2>
       <DataTable columns={columns} rows={model.queue} rowKey="id"
         onRowClick={(s) => navigate(`/cases/${s.id}`)} />
       <SectionRef>

@@ -118,6 +118,22 @@ def travel_record(subject_id, slug, *, traveler, document_number, carrier,
                    "(SEAD-3 reporting requirement).")])
 
 
+def roi(subject_id, slug, *, case_ref, inv_type, opened, transmitted, lead,
+        office, entries, received):
+    """Report of Investigation assembled from the case's ROI coverage entries."""
+    return _doc(
+        subject_id, slug, "ROI",
+        f"Report of Investigation {case_ref}",
+        f"{inv_type}, transmitted {transmitted}",
+        "DCSA field operations", received,
+        [("Case reference", case_ref), ("Investigation type", inv_type),
+         ("Opened", opened), ("Transmitted", transmitted),
+         ("Lead investigator", lead), ("Field office", office),
+         ("Coverage entries", str(len(entries)))],
+        sections=[(f"{e['item']} - {e['date']} ({e['investigator']})", e["text"])
+                  for e in entries])
+
+
 def incident_report(subject_id, slug, *, incident_id, date, facility, category,
                     summary, received):
     return _doc(

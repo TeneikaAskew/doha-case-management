@@ -367,6 +367,15 @@ def build_roster_cases(precedent_fn) -> list[dict]:
         if alerts and doc_ref:
             alerts[0]["documents"] = [dict(title=doc_ref[1], url=doc_ref[0])]
 
+        sf_url, sf_doc = docs.sf86_excerpt(
+            subj["id"], "sf86-section22", form_version="SF-86 (Nov 2016)",
+            submitted="2026-04-15", section="Section 22 - Police record",
+            question="In the last seven (7) years, have you been arrested by any "
+                     "police officer, sheriff, marshal, or any other type of law "
+                     "enforcement official?",
+            response="No.", received="2026-04-15")
+        source_documents[sf_url] = sf_doc
+
         cases.append(dict(
             subject=subj,
             aiSummary=("No adverse information developed; routine processing."
@@ -395,8 +404,9 @@ def build_roster_cases(precedent_fn) -> list[dict]:
                               else "Obtain subject response on the developed issue."),
                 sorDraft=None, decisions=[]),
             alerts=alerts,
-            documents=[dict(title="SF-86", type="SF-86",
-                            description="Questionnaire on file", url=None)],
+            documents=[dict(title="SF-86 excerpt - Section 22", type="SF-86",
+                            description="Police-record response, submitted 2026-04-15",
+                            url=sf_url)],
             sourceDocuments=source_documents,
         ))
     return cases
