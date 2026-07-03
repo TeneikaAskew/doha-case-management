@@ -92,7 +92,7 @@
       "date": "2023-04-10",
       "actor": "Adjudicator L. Ortiz",
       "role": "Adjudicator",
-      "event": "Favorable adjudication — Secret granted",
+      "event": "Favorable adjudication - Secret granted",
       "note": "Clean T3"
     },
     {
@@ -114,7 +114,7 @@
       "actor": "R. Chen",
       "role": "Analyst",
       "event": "Financial alert adjudicated",
-      "note": "No action — resolved delinquency"
+      "note": "No action - resolved delinquency"
     },
     {
       "date": "2026-06-23",
@@ -131,10 +131,12 @@
       "note": "Chesapeake PD report 26-044812"
     }
   ],
+  "wholePersonSummary": "",
   "wholePerson": [
     {
       "factor": "Nature, extent, and seriousness of the conduct",
       "assessment": "Single DUI arrest with elevated BAC (0.18%); serious but isolated.",
+      "aiRating": "NEUTRAL",
       "evidence": [
         {
           "type": "ALERT",
@@ -151,6 +153,7 @@
     {
       "factor": "Circumstances surrounding the conduct",
       "assessment": "Off-duty, single-vehicle stop; no accident or injury.",
+      "aiRating": "NEUTRAL",
       "evidence": [
         {
           "type": "DOCUMENT",
@@ -162,6 +165,7 @@
     {
       "factor": "Frequency and recency of the conduct",
       "assessment": "First incident; very recent (2026-06-21).",
+      "aiRating": "NEUTRAL",
       "evidence": [
         {
           "type": "DOCUMENT",
@@ -173,16 +177,19 @@
     {
       "factor": "Individual's age and maturity at the time of the conduct",
       "assessment": "Age 33 at incident; fully accountable adult.",
+      "aiRating": "NEUTRAL",
       "evidence": []
     },
     {
       "factor": "Extent to which participation is voluntary",
       "assessment": "Conduct voluntary.",
+      "aiRating": "NEUTRAL",
       "evidence": []
     },
     {
       "factor": "Presence or absence of rehabilitation and other permanent behavioral changes",
-      "assessment": "Unknown — disposition pending; no treatment enrollment evidenced yet.",
+      "assessment": "Unknown - disposition pending; no treatment enrollment evidenced yet.",
+      "aiRating": "NEUTRAL",
       "evidence": [
         {
           "type": "RECORD_CHECK",
@@ -194,6 +201,7 @@
     {
       "factor": "Motivation for the conduct",
       "assessment": "No indication of underlying pattern; single-night lapse per report.",
+      "aiRating": "NEUTRAL",
       "evidence": [
         {
           "type": "DOCUMENT",
@@ -205,11 +213,13 @@
     {
       "factor": "Potential for pressure, coercion, exploitation, or duress",
       "assessment": "Low; incident already self-reported to FSO.",
+      "aiRating": "NEUTRAL",
       "evidence": []
     },
     {
       "factor": "Likelihood of continuation or recurrence",
       "assessment": "Indeterminate pending court outcome and any treatment.",
+      "aiRating": "NEUTRAL",
       "evidence": [
         {
           "type": "RECORD_CHECK",
@@ -333,7 +343,7 @@
         "provider": "FBI CJIS / NCIC + Rap Back",
         "requestedDate": "2023-02-01",
         "completedDate": "2023-03-20",
-        "scope": "NCIC criminal history, tri-bureau credit, DMV — T3 initial investigation",
+        "scope": "NCIC criminal history, tri-bureau credit, DMV - T3 initial investigation",
         "resultSummary": "All checks clear at adjudication (2023).",
         "documentUrl": null
       },
@@ -510,7 +520,7 @@
       "url": "documents/SUBJ-002/credit-extract-20251012.json"
     },
     {
-      "title": "SF-86 excerpt — Section 22",
+      "title": "SF-86 excerpt - Section 22",
       "type": "SF-86",
       "description": "Police-record response, submitted 2023-01-15",
       "url": "documents/SUBJ-002/sf86-section22.json"

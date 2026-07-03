@@ -124,10 +124,12 @@
       "note": "New collection account: $12,400 past due (auto loan)"
     }
   ],
+  "wholePersonSummary": "",
   "wholePerson": [
     {
       "factor": "Nature, extent, and seriousness of the conduct",
       "assessment": "Sustained delinquency plus incomplete disclosure; serious.",
+      "aiRating": "NEUTRAL",
       "evidence": [
         {
           "type": "ALERT",
@@ -144,6 +146,7 @@
     {
       "factor": "Circumstances surrounding the conduct",
       "assessment": "Six-month unemployment in 2024 contributed to initial arrears.",
+      "aiRating": "NEUTRAL",
       "evidence": [
         {
           "type": "RECORD_CHECK",
@@ -155,6 +158,7 @@
     {
       "factor": "Frequency and recency of the conduct",
       "assessment": "Ongoing; newest alert June 2026.",
+      "aiRating": "NEUTRAL",
       "evidence": [
         {
           "type": "ALERT",
@@ -166,11 +170,13 @@
     {
       "factor": "Individual's age and maturity at the time of the conduct",
       "assessment": "Adult throughout (36-38).",
+      "aiRating": "NEUTRAL",
       "evidence": []
     },
     {
       "factor": "Extent to which participation is voluntary",
       "assessment": "Debt partly circumstantial; non-disclosure voluntary.",
+      "aiRating": "NEUTRAL",
       "evidence": [
         {
           "type": "DOCUMENT",
@@ -182,6 +188,7 @@
     {
       "factor": "Presence or absence of rehabilitation and other permanent behavioral changes",
       "assessment": "No payment plan or counseling evidenced to date.",
+      "aiRating": "NEUTRAL",
       "evidence": [
         {
           "type": "RECORD_CHECK",
@@ -193,6 +200,7 @@
     {
       "factor": "Motivation for the conduct",
       "assessment": "No evidence of divided loyalty; financial strain.",
+      "aiRating": "NEUTRAL",
       "evidence": [
         {
           "type": "DOCUMENT",
@@ -204,6 +212,7 @@
     {
       "factor": "Potential for pressure, coercion, exploitation, or duress",
       "assessment": "Elevated: debt plus close foreign family ties and unreported travel.",
+      "aiRating": "NEUTRAL",
       "evidence": [
         {
           "type": "ALERT",
@@ -220,6 +229,7 @@
     {
       "factor": "Likelihood of continuation or recurrence",
       "assessment": "High absent documented repayment behavior.",
+      "aiRating": "NEUTRAL",
       "evidence": [
         {
           "type": "RECORD_CHECK",
@@ -440,7 +450,7 @@
     "sf86Sections": [
       {
         "section": "Section 20A",
-        "title": "Financial record — delinquencies",
+        "title": "Financial record - delinquencies",
         "subjectReport": "Two delinquent accounts totaling about $9,000",
         "matchedResult": "Five delinquent accounts totaling $47,300 (TransUnion/Equifax)",
         "discrepancy": true,
@@ -520,7 +530,7 @@
       "aiSuggested": true,
       "rationale": "Unmitigated F and B concerns with candor issues; propose SOR unless subject provides documented repayment plan and travel report."
     },
-    "sorDraft": "STATEMENT OF REASONS (DRAFT) — Guideline F: You are indebted on five delinquent accounts totaling approximately $47,300, including a $12,400 charged-off auto loan (2026) and an unpaid $3,100 civil judgment (2025). Guideline B: Your mother and two siblings are citizens and residents of Nigeria; one sibling is employed by a state-owned enterprise. You traveled to Nigeria from on or about April 11 to April 25, 2026, and failed to report this travel as required. Guideline E cross-reference: your SF-86 understated your delinquent debt.",
+    "sorDraft": "STATEMENT OF REASONS (DRAFT) - Guideline F: You are indebted on five delinquent accounts totaling approximately $47,300, including a $12,400 charged-off auto loan (2026) and an unpaid $3,100 civil judgment (2025). Guideline B: Your mother and two siblings are citizens and residents of Nigeria; one sibling is employed by a state-owned enterprise. You traveled to Nigeria from on or about April 11 to April 25, 2026, and failed to report this travel as required. Guideline E cross-reference: your SF-86 understated your delinquent debt.",
     "decisions": []
   },
   "alerts": [
@@ -627,7 +637,7 @@
       "url": null
     },
     {
-      "title": "SF-86 excerpt — Section 20A",
+      "title": "SF-86 excerpt - Section 20A",
       "type": "SF-86",
       "description": "Financial-record response, submitted 2025-09-08",
       "url": "documents/SUBJ-001/sf86-section20a.json"

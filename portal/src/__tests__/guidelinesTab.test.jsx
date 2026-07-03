@@ -6,7 +6,7 @@ import { CASE_001 } from './fixtures.js';
 describe('GuidelinesTab', () => {
   it('renders a section per guideline with severity badge', () => {
     render(<GuidelinesTab caseData={CASE_001} />);
-    expect(screen.getByText('F — Financial Considerations')).toBeInTheDocument();
+    expect(screen.getByText('F - Financial Considerations')).toBeInTheDocument();
     expect(screen.getByText('C')).toBeInTheDocument(); // severity badge
   });
 

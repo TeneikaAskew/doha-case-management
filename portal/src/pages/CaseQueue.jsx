@@ -63,7 +63,7 @@ export default function CaseQueue() {
     { key: 'flaggedGuidelines', label: 'Guidelines',
       render: (s) => s.flaggedGuidelines.length
         ? s.flaggedGuidelines.map((g) => <GuidelineChip key={g} code={g} />)
-        : <span className="muted">—</span> },
+        : <span className="muted">-</span> },
     { key: 'daysInStage', label: 'Days in stage', sortable: true },
   ];
 
@@ -88,7 +88,7 @@ export default function CaseQueue() {
               onChange={(e) => setGuideline(e.target.value)}>
               <option value="ALL">All guidelines</option>
               {Object.entries(GUIDELINES).map(([k, v]) => (
-                <option key={k} value={k}>{k} — {v}</option>))}
+                <option key={k} value={k}>{k} - {v}</option>))}
             </select>
           </label>
         </div>

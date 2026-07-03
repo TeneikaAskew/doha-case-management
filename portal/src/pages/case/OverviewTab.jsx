@@ -54,7 +54,7 @@ function CaseTimelineCard({ timeline }) {
               <span className="timeline-date">{e.date}</span>
               <span className="timeline-body">
                 <strong>{e.event}</strong>
-                <span className="muted"> — {e.actor} ({e.role})</span>
+                <span className="muted"> - {e.actor} ({e.role})</span>
                 {e.note && <div className="muted">{e.note}</div>}
               </span>
             </li>

@@ -127,6 +127,7 @@ class WholePersonEvidence(BaseModel):
 class WholePersonFactor(BaseModel):
     factor: str
     assessment: str
+    aiRating: Literal["FAVORABLE", "NEUTRAL", "CONCERN", "PENDING"] = "NEUTRAL"
     evidence: list[WholePersonEvidence] = []
 
 
@@ -285,6 +286,7 @@ class CaseDetail(BaseModel):
     subject: SubjectProfile
     aiSummary: str
     timeline: list[TimelineEvent]
+    wholePersonSummary: str = ""
     wholePerson: list[WholePersonFactor]
     guidelines: list[GuidelineAssessment]
     investigation: Investigation

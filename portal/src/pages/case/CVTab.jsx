@@ -28,7 +28,7 @@ function AlertBody({ alert: a, state, isAnalyst, dispositionAlert }) {
 
       <div className="cv-steps">
         <div className="cv-step">
-          <h4>Step 1 — Identity match</h4>
+          <h4>Step 1 - Identity match</h4>
           <ConfidenceBar value={a.identityMatch.confidence} />
           <table className="inline-table">
             <thead><tr><th>Identifier</th><th>Subject</th><th>Record</th><th>Match</th></tr></thead>
@@ -46,7 +46,7 @@ function AlertBody({ alert: a, state, isAnalyst, dispositionAlert }) {
         </div>
 
         <div className="cv-step">
-          <h4>Step 2 — Investigative-standard threshold</h4>
+          <h4>Step 2 - Investigative-standard threshold</h4>
           <p><strong>{a.threshold.rule}</strong>{' '}
             <StatusBadge variant={a.threshold.met ? 'error' : 'success'}>
               {a.threshold.met ? 'Threshold met' : 'Below threshold'}
@@ -55,7 +55,7 @@ function AlertBody({ alert: a, state, isAnalyst, dispositionAlert }) {
         </div>
 
         <div className="cv-step">
-          <h4>Step 3 — Prior adjudication check</h4>
+          <h4>Step 3 - Prior adjudication check</h4>
           <p>
             <StatusBadge variant={a.priorAdjudication.previouslyAdjudicated
               ? 'neutral' : 'info'}>
@@ -63,7 +63,7 @@ function AlertBody({ alert: a, state, isAnalyst, dispositionAlert }) {
                 ? 'Previously adjudicated' : 'Not previously adjudicated'}
             </StatusBadge>
             {a.priorAdjudication.reference && (
-              <span className="muted"> — {a.priorAdjudication.reference}</span>)}
+              <span className="muted"> - {a.priorAdjudication.reference}</span>)}
           </p>
         </div>
       </div>
@@ -114,7 +114,7 @@ export default function CVTab({ caseData }) {
         const state = demo.alertStates[a.id] || a.state;
         return (
           <CollapsibleSection key={a.id}
-            title={`${ALERT_CATEGORY_LABELS[a.category]} — ${a.description}`}
+            title={`${ALERT_CATEGORY_LABELS[a.category]} - ${a.description}`}
             meta={<>
               <StatusBadge variant={ALERT_STATE_VARIANTS[state]}>
                 {ALERT_STATE_LABELS[state]}

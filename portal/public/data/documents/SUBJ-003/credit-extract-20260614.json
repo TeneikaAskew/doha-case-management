@@ -1,6 +1,6 @@
 {
   "docType": "CREDIT_REPORT",
-  "title": "Credit-file extract — Summary — all open accounts",
+  "title": "Credit-file extract - Summary - all open accounts",
   "provider": "Equifax",
   "receivedDate": "2026-06-14",
   "subjectId": "SUBJ-003",
@@ -11,7 +11,7 @@
     },
     {
       "label": "Account",
-      "value": "Summary — all open accounts"
+      "value": "Summary - all open accounts"
     },
     {
       "label": "Account number",

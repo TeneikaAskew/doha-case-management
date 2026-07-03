@@ -35,7 +35,7 @@ STREETS = ["Cedarfield Ln", "Halstead Ct", "Mill Race Dr", "Bright Leaf Way",
 CITIES = [("Arlington, VA", "22204"), ("Alexandria, VA", "22310"),
           ("Springfield, VA", "22153"), ("Fairfax, VA", "22031"),
           ("Woodbridge, VA", "22192"), ("Silver Spring, MD", "20902")]
-# (employer, full street address) — current and prior, cycled per subject
+# (employer, full street address) - current and prior, cycled per subject
 CURRENT_EMPLOYERS = [
     ("Vantage Federal Group", "1550 Crystal Dr Suite 700, Arlington, VA 22202"),
     ("Meridian National Services", "8280 Greensboro Dr Suite 550, McLean, VA 22102"),
@@ -126,7 +126,7 @@ def _whole_person(clean: bool, code, alert_id, doc_ref) -> list[dict]:
                 factor=factor, evidence=[],
                 assessment=("No adverse information across all checked sources."
                             if i == 0 else
-                            "Not applicable — no adverse information developed.")))
+                            "Not applicable - no adverse information developed.")))
             continue
         evidence = []
         if i == 0:
@@ -220,7 +220,7 @@ def _timeline(stage: str, elig: str, days: int, alerts: list[dict]) -> list[dict
             dict(date=iso(stage_start), actor="D. Foley", role="Investigator",
                  event="ROI transmitted", note=None),
         ]
-    else:  # CONTINUOUS_VETTING — adjudicated in the past, then enrolled
+    else:  # CONTINUOUS_VETTING - adjudicated in the past, then enrolled
         adjudicated = stage_start - timedelta(days=7)
         rows = [
             dict(date=iso(adjudicated - timedelta(days=150)), **initiated),
@@ -228,7 +228,7 @@ def _timeline(stage: str, elig: str, days: int, alerts: list[dict]) -> list[dict
                  role="Investigator", event="ROI transmitted", note=None),
             dict(date=iso(adjudicated), actor="Adjudicator L. Ortiz",
                  role="Adjudicator",
-                 event=f"Favorable adjudication — {GRANT_LABELS[elig]} granted",
+                 event=f"Favorable adjudication - {GRANT_LABELS[elig]} granted",
                  note=None),
             dict(date=iso(stage_start), actor="System", role="CV",
                  event="Enrolled in CV", note=None),
@@ -264,7 +264,7 @@ def build_roster_cases(precedent_fn) -> list[dict]:
                 account_masked="(2 accounts)", account_type="Installment/revolving",
                 balance="$9,800", past_due="$9,800", days_past_due="90+",
                 date_reported="2026-06-18",
-                payment_status="Delinquent — reported via CV credit monitoring",
+                payment_status="Delinquent - reported via CV credit monitoring",
                 history="Two accounts first delinquent 2026-02; no payment activity "
                         "since 2026-03.",
                 received="2026-06-18")

@@ -1,6 +1,6 @@
 {
   "docType": "CREDIT_REPORT",
-  "title": "Credit-file extract — Two delinquent accounts (summary)",
+  "title": "Credit-file extract - Two delinquent accounts (summary)",
   "provider": "TransUnion",
   "receivedDate": "2026-06-18",
   "subjectId": "SUBJ-015",
@@ -39,7 +39,7 @@
     },
     {
       "label": "Payment status",
-      "value": "Delinquent — reported via CV credit monitoring"
+      "value": "Delinquent - reported via CV credit monitoring"
     }
   ],
   "sections": [

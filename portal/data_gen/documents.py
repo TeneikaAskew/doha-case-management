@@ -33,7 +33,7 @@ def police_report(subject_id, slug, *, agency, report_number, incident_date,
                   narrative, received):
     return _doc(
         subject_id, slug, "POLICE_REPORT",
-        f"Arrest report {report_number} — {agency}", "State & local courts", received,
+        f"Arrest report {report_number} - {agency}", "State & local courts", received,
         [("Agency", agency), ("Report number", report_number),
          ("Incident date", incident_date), ("Location", location),
          ("Charges", "; ".join(charges)), ("Arresting officer", officer),
@@ -46,7 +46,7 @@ def credit_extract(subject_id, slug, *, bureau, account_name, account_masked,
                    payment_status, history, received):
     return _doc(
         subject_id, slug, "CREDIT_REPORT",
-        f"Credit-file extract — {account_name}", bureau, received,
+        f"Credit-file extract - {account_name}", bureau, received,
         [("Bureau", bureau), ("Account", account_name),
          ("Account number", account_masked), ("Account type", account_type),
          ("Balance", balance), ("Past due", past_due),
@@ -87,7 +87,7 @@ def sf86_excerpt(subject_id, slug, *, form_version, submitted, section, question
                  response, received):
     return _doc(
         subject_id, slug, "SF86_EXCERPT",
-        f"SF-86 excerpt — {section}", "DISS / prior adjudications", received,
+        f"SF-86 excerpt - {section}", "DISS / prior adjudications", received,
         [("Form version", form_version), ("Submitted", submitted),
          ("Section", section), ("Question", question)],
         sections=[("Subject response", response)])
@@ -97,7 +97,7 @@ def travel_record(subject_id, slug, *, traveler, document_number, carrier,
                   departure, arrival, destination, returned, received):
     return _doc(
         subject_id, slug, "TRAVEL_RECORD",
-        f"I-94 border crossing record — {destination}", "CBP I-94 Foreign Travel",
+        f"I-94 border crossing record - {destination}", "CBP I-94 Foreign Travel",
         received,
         [("Traveler", traveler), ("Travel document", document_number),
          ("Carrier", carrier), ("Departure", departure), ("Arrival abroad", arrival),

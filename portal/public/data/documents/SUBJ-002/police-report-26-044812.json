@@ -1,6 +1,6 @@
 {
   "docType": "POLICE_REPORT",
-  "title": "Arrest report 26-044812 — Chesapeake Police Department",
+  "title": "Arrest report 26-044812 - Chesapeake Police Department",
   "provider": "State & local courts",
   "receivedDate": "2026-06-30",
   "subjectId": "SUBJ-002",
@@ -23,7 +23,7 @@
     },
     {
       "label": "Charges",
-      "value": "DUI — 1st offense (VA 18.2-266); BAC 0.15%+ enhancement"
+      "value": "DUI - 1st offense (VA 18.2-266); BAC 0.15%+ enhancement"
     },
     {
       "label": "Arresting officer",

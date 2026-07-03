@@ -134,7 +134,7 @@ def find_precedents(df: pd.DataFrame | None, code: str, limit: int = 3) -> list[
 
 
 def build_case_links(df: pd.DataFrame | None, case_numbers: list[str]) -> list[dict]:
-    """Build a CaseLink-shaped dict per (case_number, row) — a case number can have
+    """Build a CaseLink-shaped dict per (case_number, row) - a case number can have
     both a hearing and an appeal row, so each matching row emits its own entry."""
     if df is None:
         return []

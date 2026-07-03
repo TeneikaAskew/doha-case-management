@@ -1,8 +1,8 @@
 :root {
-  /* Brand — official DCSA Ecosystem Style Guide */
+  /* Brand - official DCSA Ecosystem Style Guide */
   --dcsa-navy: #002D5B;
   --dcsa-navy-light: #0A3A6B;
-  /* MAPS accent — teal (replaces official Ocean Blue for this demo) */
+  /* MAPS accent - teal (replaces official Ocean Blue for this demo) */
   --accent-teal: #009BB5;
   --accent-teal-dark: #007A91;
   /* Ocean tokens aliased to teal so existing component references pick up the new accent */
@@ -64,7 +64,7 @@
   --shadow-dropdown: 0 4px 12px rgba(0, 21, 48, 0.08);
   --sidebar-width: 220px; --header-height: 56px;
 
-  /* KPI active (clickable) state — MAPS Material blue */
+  /* KPI active (clickable) state - MAPS Material blue */
   --kpi-active: #1976D2;
   --kpi-active-ring: rgba(25, 118, 210, 0.25);
 }

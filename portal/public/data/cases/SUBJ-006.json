@@ -83,50 +83,60 @@
       "note": null
     }
   ],
+  "wholePersonSummary": "",
   "wholePerson": [
     {
       "factor": "Nature, extent, and seriousness of the conduct",
       "assessment": "Single developed issue: Employment application omitted a 2022 termination for cause.",
+      "aiRating": "NEUTRAL",
       "evidence": []
     },
     {
       "factor": "Circumstances surrounding the conduct",
       "assessment": "Single-issue case; no additional adverse factors developed.",
+      "aiRating": "NEUTRAL",
       "evidence": []
     },
     {
       "factor": "Frequency and recency of the conduct",
       "assessment": "Single-issue case; no additional adverse factors developed.",
+      "aiRating": "NEUTRAL",
       "evidence": []
     },
     {
       "factor": "Individual's age and maturity at the time of the conduct",
       "assessment": "Single-issue case; no additional adverse factors developed.",
+      "aiRating": "NEUTRAL",
       "evidence": []
     },
     {
       "factor": "Extent to which participation is voluntary",
       "assessment": "Single-issue case; no additional adverse factors developed.",
+      "aiRating": "NEUTRAL",
       "evidence": []
     },
     {
       "factor": "Presence or absence of rehabilitation and other permanent behavioral changes",
       "assessment": "Single-issue case; no additional adverse factors developed.",
+      "aiRating": "NEUTRAL",
       "evidence": []
     },
     {
       "factor": "Motivation for the conduct",
       "assessment": "Single-issue case; no additional adverse factors developed.",
+      "aiRating": "NEUTRAL",
       "evidence": []
     },
     {
       "factor": "Potential for pressure, coercion, exploitation, or duress",
       "assessment": "Single-issue case; no additional adverse factors developed.",
+      "aiRating": "NEUTRAL",
       "evidence": []
     },
     {
       "factor": "Likelihood of continuation or recurrence",
       "assessment": "Single-issue case; no additional adverse factors developed.",
+      "aiRating": "NEUTRAL",
       "evidence": []
     }
   ],

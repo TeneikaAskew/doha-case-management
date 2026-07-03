@@ -15,13 +15,13 @@ const DOC_FIXTURE = {
 
 const POLICE_FIXTURE = {
   docType: 'POLICE_REPORT',
-  title: 'Arrest report 26-044812 — Chesapeake Police Department',
+  title: 'Arrest report 26-044812 - Chesapeake Police Department',
   provider: 'State & local courts',
   receivedDate: '2026-06-30',
   subjectId: 'SUBJ-002',
   fields: [
     { label: 'Agency', value: 'Chesapeake Police Department' },
-    { label: 'Charges', value: 'DUI — 1st offense (VA 18.2-266)' },
+    { label: 'Charges', value: 'DUI - 1st offense (VA 18.2-266)' },
   ],
   sections: [{ heading: 'Officer narrative', body: 'Vehicle observed varying speed.' }],
   transactions: [],

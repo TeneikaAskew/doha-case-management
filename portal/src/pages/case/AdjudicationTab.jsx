@@ -68,7 +68,7 @@ export default function AdjudicationTab({ caseData }) {
       </div>
 
       {adj.sorDraft && (
-        <CollapsibleSection title="Statement of Reasons — draft" meta={<AIBadge />}>
+        <CollapsibleSection title="Statement of Reasons - draft" meta={<AIBadge />}>
           <pre className="sor-draft">{adj.sorDraft}</pre>
         </CollapsibleSection>
       )}
@@ -80,7 +80,7 @@ export default function AdjudicationTab({ caseData }) {
           {decisions.map((d, i) => (
             <li key={i}>
               <span className="muted">{d.date} · {d.adjudicator}</span>
-              <div><strong>{ADJ_ACTION_LABELS[d.action]}</strong> — {d.rationale}</div>
+              <div><strong>{ADJ_ACTION_LABELS[d.action]}</strong> - {d.rationale}</div>
             </li>
           ))}
         </ul>

@@ -85,7 +85,7 @@ def _hero1(precedent_fn) -> dict:
         received="2026-04-16")
     sf_url, sf_doc = docs.sf86_excerpt(
         "SUBJ-001", "sf86-section20a", form_version="SF-86 (Nov 2016)",
-        submitted="2025-09-08", section="Section 20A — Financial record",
+        submitted="2025-09-08", section="Section 20A - Financial record",
         question="In the last seven (7) years, have you been over 120 days "
                  "delinquent on any debt?",
         response="Yes. Two accounts, approximately $9,000 total, following a 2024 "
@@ -149,47 +149,73 @@ def _hero1(precedent_fn) -> dict:
                  event="Financial alert received",
                  note="New collection account: $12,400 past due (auto loan)"),
         ],
+        wholePersonSummary=(
+            "Sustained financial delinquency ($47,300 across five accounts) compounded "
+            "by incomplete SF-86 disclosure and unreported foreign travel. Mitigation "
+            "is thin: the 2024 job loss explains how the debt began but not the "
+            "continued non-payment since re-employment. Duress exposure is elevated — "
+            "delinquent debt plus close foreign family ties — and with no documented "
+            "repayment behavior, the whole-person picture currently weighs against "
+            "restoring eligibility."),
         wholePerson=[
-            dict(factor=docs.WHOLE_PERSON_FACTORS[0],
-                 assessment="Sustained delinquency plus incomplete disclosure; serious.",
+            dict(factor=docs.WHOLE_PERSON_FACTORS[0], aiRating="CONCERN",
+                 assessment="Sustained delinquency across five accounts totaling "
+                            "$47,300, with two charge-offs and an unpaid 2025 "
+                            "judgment. Incomplete disclosure on the SF-86 compounds "
+                            "the underlying financial issue; serious.",
                  evidence=[
                      dict(type="ALERT", ref="ALERT-101",
                           label="New collection account alert"),
                      dict(type="DOCUMENT", ref=cu_url,
                           label="TransUnion credit-file extract")]),
-            dict(factor=docs.WHOLE_PERSON_FACTORS[1],
-                 assessment="Six-month unemployment in 2024 contributed to initial "
-                            "arrears.",
+            dict(factor=docs.WHOLE_PERSON_FACTORS[1], aiRating="NEUTRAL",
+                 assessment="Six-month unemployment in 2024 contributed to the "
+                            "initial arrears. Delinquency has persisted since "
+                            "re-employment, which limits how far circumstances "
+                            "mitigate.",
                  evidence=[dict(type="RECORD_CHECK",
                                 ref="Employment coverage (10 yrs)",
                                 label="Employment coverage")]),
-            dict(factor=docs.WHOLE_PERSON_FACTORS[2],
-                 assessment="Ongoing; newest alert June 2026.",
+            dict(factor=docs.WHOLE_PERSON_FACTORS[2], aiRating="CONCERN",
+                 assessment="Ongoing and current — the newest collection alert is "
+                            "June 2026. This is a continuing condition, not a "
+                            "discrete past event.",
                  evidence=[dict(type="ALERT", ref="ALERT-101",
                                 label="New collection account alert")]),
-            dict(factor=docs.WHOLE_PERSON_FACTORS[3],
-                 assessment="Adult throughout (36-38).", evidence=[]),
-            dict(factor=docs.WHOLE_PERSON_FACTORS[4],
-                 assessment="Debt partly circumstantial; non-disclosure voluntary.",
+            dict(factor=docs.WHOLE_PERSON_FACTORS[3], aiRating="NEUTRAL",
+                 assessment="Adult throughout the period at issue (ages 36-38). "
+                            "Age and maturity neither mitigate nor aggravate.",
+                 evidence=[]),
+            dict(factor=docs.WHOLE_PERSON_FACTORS[4], aiRating="CONCERN",
+                 assessment="The debt is partly circumstantial, but the Section 20A "
+                            "non-disclosure was a voluntary choice. Voluntariness "
+                            "weighs on the candor issue more than the debt itself.",
                  evidence=[dict(type="DOCUMENT", ref=sf_url,
                                 label="SF-86 Section 20A response")]),
-            dict(factor=docs.WHOLE_PERSON_FACTORS[5],
-                 assessment="No payment plan or counseling evidenced to date.",
+            dict(factor=docs.WHOLE_PERSON_FACTORS[5], aiRating="CONCERN",
+                 assessment="No payment plan, credit counseling, or repayment "
+                            "activity evidenced to date. Rehabilitation cannot yet "
+                            "be credited.",
                  evidence=[dict(type="RECORD_CHECK", ref="Financial record checks",
                                 label="Financial record checks")]),
-            dict(factor=docs.WHOLE_PERSON_FACTORS[6],
-                 assessment="No evidence of divided loyalty; financial strain.",
+            dict(factor=docs.WHOLE_PERSON_FACTORS[6], aiRating="NEUTRAL",
+                 assessment="No evidence of divided loyalty; the remittance pattern "
+                            "reads as family financial support under strain. "
+                            "Motivation appears economic, not ideological.",
                  evidence=[dict(type="DOCUMENT", ref=sar_url,
                                 label="FinCEN SAR (remittances)")]),
-            dict(factor=docs.WHOLE_PERSON_FACTORS[7],
-                 assessment="Elevated: debt plus close foreign family ties and "
-                            "unreported travel.",
+            dict(factor=docs.WHOLE_PERSON_FACTORS[7], aiRating="CONCERN",
+                 assessment="Elevated. Significant delinquent debt combined with "
+                            "close foreign family ties and unreported travel "
+                            "creates classic leverage conditions.",
                  evidence=[
                      dict(type="ALERT", ref="ALERT-102",
                           label="Unreported foreign travel alert"),
                      dict(type="DOCUMENT", ref=trv_url, label="I-94 travel record")]),
-            dict(factor=docs.WHOLE_PERSON_FACTORS[8],
-                 assessment="High absent documented repayment behavior.",
+            dict(factor=docs.WHOLE_PERSON_FACTORS[8], aiRating="CONCERN",
+                 assessment="High absent documented repayment behavior. The June "
+                            "2026 alert shows the financial pattern is still "
+                            "active.",
                  evidence=[dict(type="RECORD_CHECK", ref="Financial record checks",
                                 label="Financial record checks")]),
         ],
@@ -301,7 +327,7 @@ def _hero1(precedent_fn) -> dict:
                      documentUrl=None),
             ],
             sf86Sections=[
-                dict(section="Section 20A", title="Financial record — delinquencies",
+                dict(section="Section 20A", title="Financial record - delinquencies",
                      subjectReport="Two delinquent accounts totaling about $9,000",
                      matchedResult="Five delinquent accounts totaling $47,300 (TransUnion/Equifax)",
                      discrepancy=True, providers=["TransUnion", "Equifax"], guideline="F"),
@@ -344,7 +370,7 @@ def _hero1(precedent_fn) -> dict:
                 action="SOR", aiSuggested=True,
                 rationale="Unmitigated F and B concerns with candor issues; propose SOR "
                           "unless subject provides documented repayment plan and travel report."),
-            sorDraft=("STATEMENT OF REASONS (DRAFT) — Guideline F: You are indebted on five "
+            sorDraft=("STATEMENT OF REASONS (DRAFT) - Guideline F: You are indebted on five "
                       "delinquent accounts totaling approximately $47,300, including a $12,400 "
                       "charged-off auto loan (2026) and an unpaid $3,100 civil judgment (2025). "
                       "Guideline B: Your mother and two siblings are citizens and residents of "
@@ -358,7 +384,7 @@ def _hero1(precedent_fn) -> dict:
         documents=[
             dict(title="Report of Investigation (ROI)", type="ROI",
                  description="T5 ROI transmitted 2026-01-27", url=None),
-            dict(title="SF-86 excerpt — Section 20A", type="SF-86",
+            dict(title="SF-86 excerpt - Section 20A", type="SF-86",
                  description="Financial-record response, submitted 2025-09-08",
                  url=sf_url),
             dict(title="TransUnion credit-file extract", type="Provider record",
@@ -409,16 +435,16 @@ def _hero2(precedent_fn) -> dict:
     ))
     rb_url, rb_doc = docs.rapback(
         "SUBJ-002", "rapback-20260623", notification_id="NGI-RB-2026-174403",
-        trigger_event="Criminal retain — arrest fingerprint submission",
+        trigger_event="Criminal retain - arrest fingerprint submission",
         arrest_date="2026-06-21", agency="Chesapeake Police Department, VA",
-        ori="VA0930100", charges=["DUI — 1st offense (VA 18.2-266)",
+        ori="VA0930100", charges=["DUI - 1st offense (VA 18.2-266)",
                                   "BAC 0.15%+ enhancement"],
         received="2026-06-23")
     pr_url, pr_doc = docs.police_report(
         "SUBJ-002", "police-report-26-044812", agency="Chesapeake Police Department",
         report_number="26-044812", incident_date="2026-06-21",
         location="I-64 W near Greenbrier Pkwy, Chesapeake, VA",
-        charges=["DUI — 1st offense (VA 18.2-266)", "BAC 0.15%+ enhancement"],
+        charges=["DUI - 1st offense (VA 18.2-266)", "BAC 0.15%+ enhancement"],
         officer="Ofc. T. Ramirez #4471", booking_number="CB-26-08822",
         disposition="Released on summons; arraignment 2026-07-14",
         narrative="Vehicle observed varying speed 45-70 mph and crossing lane "
@@ -439,7 +465,7 @@ def _hero2(precedent_fn) -> dict:
         received="2025-10-12")
     sf_url, sf_doc = docs.sf86_excerpt(
         "SUBJ-002", "sf86-section22", form_version="SF-86 (Nov 2016)",
-        submitted="2023-01-15", section="Section 22 — Police record",
+        submitted="2023-01-15", section="Section 22 - Police record",
         question="In the last seven (7) years, have you been arrested by any police "
                  "officer, sheriff, marshal, or any other type of law enforcement "
                  "official?",
@@ -490,56 +516,78 @@ def _hero2(precedent_fn) -> dict:
             dict(date="2023-03-22", actor="D. Foley", role="Investigator",
                  event="ROI transmitted", note="No issues developed"),
             dict(date="2023-04-10", actor="Adjudicator L. Ortiz", role="Adjudicator",
-                 event="Favorable adjudication — Secret granted", note="Clean T3"),
+                 event="Favorable adjudication - Secret granted", note="Clean T3"),
             dict(date="2023-05-01", actor="System", role="CV", event="Enrolled in CV", note=None),
             dict(date="2025-10-12", actor="System", role="CV",
                  event="Financial alert received",
                  note="30-day delinquency, $800 retail account"),
             dict(date="2025-11-20", actor="R. Chen", role="Analyst",
                  event="Financial alert adjudicated",
-                 note="No action — resolved delinquency"),
+                 note="No action - resolved delinquency"),
             dict(date="2026-06-23", actor="System", role="CV",
                  event="Criminal alert received", note="DUI arrest 2026-06-21"),
             dict(date="2026-06-30", actor="S. Whitfield", role="Investigator",
                  event="Police report retrieved", note="Chesapeake PD report 26-044812"),
         ],
+        wholePersonSummary=(
+            "Serious but isolated alcohol incident by a subject with an otherwise "
+            "clean record who self-reported promptly to his FSO. Rehabilitation and "
+            "recurrence cannot be assessed until the court disposition and any "
+            "treatment evidence arrive; consider holding final adjudication open "
+            "until the disposition is received."),
         wholePerson=[
-            dict(factor=docs.WHOLE_PERSON_FACTORS[0],
-                 assessment="Single DUI arrest with elevated BAC (0.18%); serious "
-                            "but isolated.",
+            dict(factor=docs.WHOLE_PERSON_FACTORS[0], aiRating="CONCERN",
+                 assessment="Single DUI arrest with elevated BAC (0.18%), roughly "
+                            "twice the legal limit. Serious on its face, but an "
+                            "isolated event in an otherwise clean record.",
                  evidence=[
                      dict(type="ALERT", ref="ALERT-201", label="Rap Back DUI alert"),
                      dict(type="DOCUMENT", ref=pr_url,
                           label="Chesapeake PD arrest report")]),
-            dict(factor=docs.WHOLE_PERSON_FACTORS[1],
-                 assessment="Off-duty, single-vehicle stop; no accident or injury.",
+            dict(factor=docs.WHOLE_PERSON_FACTORS[1], aiRating="NEUTRAL",
+                 assessment="Off-duty, single-vehicle stop with no accident, "
+                            "injury, or property damage. Subject was cooperative "
+                            "per the arresting officer's narrative.",
                  evidence=[dict(type="DOCUMENT", ref=pr_url,
                                 label="Chesapeake PD arrest report")]),
-            dict(factor=docs.WHOLE_PERSON_FACTORS[2],
-                 assessment="First incident; very recent (2026-06-21).",
+            dict(factor=docs.WHOLE_PERSON_FACTORS[2], aiRating="CONCERN",
+                 assessment="First alcohol-related incident on record; no prior "
+                            "arrests. Very recent (2026-06-21), which limits the "
+                            "time-based mitigator for now.",
                  evidence=[dict(type="DOCUMENT", ref=rb_url,
                                 label="Rap Back notification")]),
-            dict(factor=docs.WHOLE_PERSON_FACTORS[3],
-                 assessment="Age 33 at incident; fully accountable adult.",
+            dict(factor=docs.WHOLE_PERSON_FACTORS[3], aiRating="NEUTRAL",
+                 assessment="Age 33 at the time of the incident; a fully "
+                            "accountable adult. Neither mitigating nor "
+                            "aggravating.",
                  evidence=[]),
-            dict(factor=docs.WHOLE_PERSON_FACTORS[4],
-                 assessment="Conduct voluntary.", evidence=[]),
-            dict(factor=docs.WHOLE_PERSON_FACTORS[5],
-                 assessment="Unknown — disposition pending; no treatment enrollment "
-                            "evidenced yet.",
+            dict(factor=docs.WHOLE_PERSON_FACTORS[4], aiRating="NEUTRAL",
+                 assessment="Conduct was voluntary; no indication of coercion or "
+                            "third-party involvement.",
+                 evidence=[]),
+            dict(factor=docs.WHOLE_PERSON_FACTORS[5], aiRating="PENDING",
+                 assessment="Unknown - court disposition pending and no treatment "
+                            "or counseling enrollment evidenced yet. Any "
+                            "court-ordered alcohol evaluation will inform this "
+                            "factor.",
                  evidence=[dict(type="RECORD_CHECK",
                                 ref="Court disposition monitoring",
                                 label="Court disposition monitoring")]),
-            dict(factor=docs.WHOLE_PERSON_FACTORS[6],
-                 assessment="No indication of underlying pattern; single-night "
-                            "lapse per report.",
+            dict(factor=docs.WHOLE_PERSON_FACTORS[6], aiRating="FAVORABLE",
+                 assessment="No indication of an underlying pattern; the report "
+                            "reads as a single-night lapse after a social event. "
+                            "The resolved 2025 financial alert is unrelated.",
                  evidence=[dict(type="DOCUMENT", ref=pr_url,
                                 label="Chesapeake PD arrest report")]),
-            dict(factor=docs.WHOLE_PERSON_FACTORS[7],
-                 assessment="Low; incident already self-reported to FSO.",
+            dict(factor=docs.WHOLE_PERSON_FACTORS[7], aiRating="FAVORABLE",
+                 assessment="Low. Subject self-reported the arrest to his FSO "
+                            "within 48 hours, which removes concealment leverage "
+                            "and demonstrates candor.",
                  evidence=[]),
-            dict(factor=docs.WHOLE_PERSON_FACTORS[8],
-                 assessment="Indeterminate pending court outcome and any treatment.",
+            dict(factor=docs.WHOLE_PERSON_FACTORS[8], aiRating="PENDING",
+                 assessment="Indeterminate pending the court outcome and any "
+                            "treatment conditions. Re-score this factor when the "
+                            "disposition arrives.",
                  evidence=[dict(type="RECORD_CHECK",
                                 ref="Court disposition monitoring",
                                 label="Court disposition monitoring")]),
@@ -579,7 +627,7 @@ def _hero2(precedent_fn) -> dict:
                 dict(item="T3 automated record checks (2023)", status="COMPLETE",
                      provider="FBI CJIS / NCIC + Rap Back", requestedDate="2023-02-01",
                      completedDate="2023-03-20",
-                     scope="NCIC criminal history, tri-bureau credit, DMV — T3 "
+                     scope="NCIC criminal history, tri-bureau credit, DMV - T3 "
                            "initial investigation",
                      resultSummary="All checks clear at adjudication (2023).",
                      documentUrl=None),
@@ -624,7 +672,7 @@ def _hero2(precedent_fn) -> dict:
                  description="Report 26-044812, retrieved 2026-06-30", url=pr_url),
             dict(title="TransUnion credit-file extract", type="Provider record",
                  description="Resolved 2025 retail delinquency", url=cr_url),
-            dict(title="SF-86 excerpt — Section 22", type="SF-86",
+            dict(title="SF-86 excerpt - Section 22", type="SF-86",
                  description="Police-record response, submitted 2023-01-15", url=sf_url),
         ],
         sourceDocuments={rb_url: rb_doc, pr_url: pr_doc, cr_url: cr_doc,
@@ -665,14 +713,14 @@ def _hero3(precedent_fn) -> dict:
     ))
     sf_url, sf_doc = docs.sf86_excerpt(
         "SUBJ-003", "sf86-section20a", form_version="SF-86 (Nov 2016)",
-        submitted="2026-06-10", section="Section 20A — Financial record",
+        submitted="2026-06-10", section="Section 20A - Financial record",
         question="In the last seven (7) years, have you been over 120 days "
                  "delinquent on any debt?",
         response="No.",
         received="2026-06-10")
     cr_url, cr_doc = docs.credit_extract(
         "SUBJ-003", "credit-extract-20260614", bureau="Equifax",
-        account_name="Summary — all open accounts", account_masked="(8 accounts)",
+        account_name="Summary - all open accounts", account_masked="(8 accounts)",
         account_type="Tri-bureau summary", balance="$14,900", past_due="$0",
         days_past_due="0", date_reported="2026-06-14",
         payment_status="All accounts current; utilization 12%",
@@ -690,18 +738,25 @@ def _hero3(precedent_fn) -> dict:
                  event="Case initiated", note="T3 initial via NBIS eApp"),
             dict(date="2026-06-14", actor="System", role="System",
                  event="Record checks completed",
-                 note="Fingerprint, credit, and criminal-history checks — no record"),
+                 note="Fingerprint, credit, and criminal-history checks - no record"),
             dict(date="2026-06-28", actor="System", role="System",
                  event="AI triage: fast-track candidate", note="Risk score 8/100"),
         ],
+        wholePersonSummary=(
+            "No adverse information across any checked source; credit, "
+            "criminal-history, and education checks all returned clean. Strong "
+            "fast-track candidate - the only open item is a routine employment "
+            "verification."),
         wholePerson=[
-            dict(factor=docs.WHOLE_PERSON_FACTORS[0],
-                 assessment="No adverse information across all checked sources.",
+            dict(factor=docs.WHOLE_PERSON_FACTORS[0], aiRating="FAVORABLE",
+                 assessment="No adverse information across all checked sources. "
+                            "Credit, criminal-history, and education checks all "
+                            "returned clean.",
                  evidence=[dict(type="DOCUMENT", ref=cr_url,
                                 label="Equifax tri-bureau summary")]),
         ] + [
-            dict(factor=f,
-                 assessment="Not applicable — no adverse information developed.",
+            dict(factor=f, aiRating="NEUTRAL",
+                 assessment="Not applicable - no adverse information developed.",
                  evidence=[])
             for f in docs.WHOLE_PERSON_FACTORS[1:]
         ],
@@ -732,7 +787,7 @@ def _hero3(precedent_fn) -> dict:
                 dict(item="Subject interview", status="NOT_REQUIRED",
                      provider="DCSA field operations", requestedDate="2026-06-10",
                      completedDate=None,
-                     scope="Not triggered — no issues developed",
+                     scope="Not triggered - no issues developed",
                      resultSummary="Not required for clean T3.", documentUrl=None),
             ],
             sf86Sections=[
@@ -759,7 +814,7 @@ def _hero3(precedent_fn) -> dict:
             sorDraft=None, decisions=[],
         ),
         alerts=[],
-        documents=[dict(title="SF-86 excerpt — Section 20A", type="SF-86",
+        documents=[dict(title="SF-86 excerpt - Section 20A", type="SF-86",
                         description="T3 questionnaire excerpt", url=sf_url),
                    dict(title="Equifax tri-bureau summary", type="Provider record",
                         description="Clean credit summary 2026-06-14", url=cr_url)],

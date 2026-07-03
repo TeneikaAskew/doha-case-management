@@ -8,7 +8,7 @@ import { CASE_001 } from './fixtures.js';
 vi.mock('../data/api.js', () => ({
   fetchJson: () => Promise.resolve({
     docType: 'CREDIT_REPORT',
-    title: 'Credit-file extract — Meridian Auto Finance',
+    title: 'Credit-file extract - Meridian Auto Finance',
     provider: 'TransUnion', receivedDate: '2026-06-20', subjectId: 'SUBJ-001',
     fields: [{ label: 'Balance', value: '$12,400' }], sections: [], transactions: [],
   }),
@@ -33,7 +33,7 @@ beforeEach(() => localStorage.clear());
 describe('CVTab', () => {
   it('lists alerts with category and state', () => {
     renderTab();
-    expect(screen.getByText(/Financial — New collection account/)).toBeInTheDocument();
+    expect(screen.getByText(/Financial - New collection account/)).toBeInTheDocument();
     expect(screen.getByText('New')).toBeInTheDocument();
   });
 
@@ -57,7 +57,7 @@ describe('CVTab', () => {
     fireEvent.click(screen.getByRole('button', { name: /new collection account/i }));
     fireEvent.click(screen.getByRole('button',
       { name: /TransUnion credit-file extract/i }));
-    expect(await screen.findByText(/Credit-file extract — Meridian Auto Finance/))
+    expect(await screen.findByText(/Credit-file extract - Meridian Auto Finance/))
       .toBeInTheDocument();
   });
 

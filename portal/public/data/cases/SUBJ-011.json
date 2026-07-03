@@ -88,50 +88,60 @@
       "note": null
     }
   ],
+  "wholePersonSummary": "",
   "wholePerson": [
     {
       "factor": "Nature, extent, and seriousness of the conduct",
       "assessment": "No adverse information across all checked sources.",
+      "aiRating": "NEUTRAL",
       "evidence": []
     },
     {
       "factor": "Circumstances surrounding the conduct",
-      "assessment": "Not applicable — no adverse information developed.",
+      "assessment": "Not applicable - no adverse information developed.",
+      "aiRating": "NEUTRAL",
       "evidence": []
     },
     {
       "factor": "Frequency and recency of the conduct",
-      "assessment": "Not applicable — no adverse information developed.",
+      "assessment": "Not applicable - no adverse information developed.",
+      "aiRating": "NEUTRAL",
       "evidence": []
     },
     {
       "factor": "Individual's age and maturity at the time of the conduct",
-      "assessment": "Not applicable — no adverse information developed.",
+      "assessment": "Not applicable - no adverse information developed.",
+      "aiRating": "NEUTRAL",
       "evidence": []
     },
     {
       "factor": "Extent to which participation is voluntary",
-      "assessment": "Not applicable — no adverse information developed.",
+      "assessment": "Not applicable - no adverse information developed.",
+      "aiRating": "NEUTRAL",
       "evidence": []
     },
     {
       "factor": "Presence or absence of rehabilitation and other permanent behavioral changes",
-      "assessment": "Not applicable — no adverse information developed.",
+      "assessment": "Not applicable - no adverse information developed.",
+      "aiRating": "NEUTRAL",
       "evidence": []
     },
     {
       "factor": "Motivation for the conduct",
-      "assessment": "Not applicable — no adverse information developed.",
+      "assessment": "Not applicable - no adverse information developed.",
+      "aiRating": "NEUTRAL",
       "evidence": []
     },
     {
       "factor": "Potential for pressure, coercion, exploitation, or duress",
-      "assessment": "Not applicable — no adverse information developed.",
+      "assessment": "Not applicable - no adverse information developed.",
+      "aiRating": "NEUTRAL",
       "evidence": []
     },
     {
       "factor": "Likelihood of continuation or recurrence",
-      "assessment": "Not applicable — no adverse information developed.",
+      "assessment": "Not applicable - no adverse information developed.",
+      "aiRating": "NEUTRAL",
       "evidence": []
     }
   ],

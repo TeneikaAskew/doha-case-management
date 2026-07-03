@@ -11,7 +11,7 @@
     },
     {
       "label": "Trigger event",
-      "value": "Criminal retain — arrest fingerprint submission"
+      "value": "Criminal retain - arrest fingerprint submission"
     },
     {
       "label": "Arrest date",
@@ -31,7 +31,7 @@
     },
     {
       "label": "Charges",
-      "value": "DUI — 1st offense (VA 18.2-266); BAC 0.15%+ enhancement"
+      "value": "DUI - 1st offense (VA 18.2-266); BAC 0.15%+ enhancement"
     }
   ],
   "sections": [

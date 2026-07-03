@@ -98,7 +98,7 @@ export const CASE_001 = {
         resultSummary: 'Lead open.', documentUrl: null },
     ],
     sf86Sections: [
-      { section: 'Section 20A', title: 'Financial record — delinquencies',
+      { section: 'Section 20A', title: 'Financial record - delinquencies',
         subjectReport: 'Two delinquent accounts totaling about $9,000',
         matchedResult: 'Five delinquent accounts totaling $47,300',
         discrepancy: true, providers: ['TransUnion', 'Equifax'], guideline: 'F' },
@@ -111,7 +111,7 @@ export const CASE_001 = {
   adjudication: {
     recommendation: { action: 'SOR', aiSuggested: true,
       rationale: 'Unmitigated F concerns with candor issues.' },
-    sorDraft: 'STATEMENT OF REASONS (DRAFT) — Guideline F: …',
+    sorDraft: 'STATEMENT OF REASONS (DRAFT) - Guideline F: …',
     decisions: [],
   },
   alerts: ALERTS,

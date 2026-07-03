@@ -77,7 +77,7 @@ export default function SubjectsHome() {
     { key: 'riskScore', label: 'AI risk', sortable: true },
     { key: 'cvEnrolled', label: 'CV',
       render: (s) => (s.cvEnrolled ? <StatusBadge variant="success">Enrolled</StatusBadge>
-        : <span className="muted">—</span>) },
+        : <span className="muted">-</span>) },
     { key: 'effectiveOpenAlerts', label: 'Alerts', sortable: true },
     { key: 'flaggedGuidelines', label: 'Guidelines',
       render: (s) => s.flaggedGuidelines.map((g) => <GuidelineChip key={g} code={g} />) },

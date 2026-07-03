@@ -76,7 +76,7 @@
       "actor": "System",
       "role": "System",
       "event": "Record checks completed",
-      "note": "Fingerprint, credit, and criminal-history checks — no record"
+      "note": "Fingerprint, credit, and criminal-history checks - no record"
     },
     {
       "date": "2026-06-28",
@@ -86,10 +86,12 @@
       "note": "Risk score 8/100"
     }
   ],
+  "wholePersonSummary": "",
   "wholePerson": [
     {
       "factor": "Nature, extent, and seriousness of the conduct",
       "assessment": "No adverse information across all checked sources.",
+      "aiRating": "NEUTRAL",
       "evidence": [
         {
           "type": "DOCUMENT",
@@ -100,42 +102,50 @@
     },
     {
       "factor": "Circumstances surrounding the conduct",
-      "assessment": "Not applicable — no adverse information developed.",
+      "assessment": "Not applicable - no adverse information developed.",
+      "aiRating": "NEUTRAL",
       "evidence": []
     },
     {
       "factor": "Frequency and recency of the conduct",
-      "assessment": "Not applicable — no adverse information developed.",
+      "assessment": "Not applicable - no adverse information developed.",
+      "aiRating": "NEUTRAL",
       "evidence": []
     },
     {
       "factor": "Individual's age and maturity at the time of the conduct",
-      "assessment": "Not applicable — no adverse information developed.",
+      "assessment": "Not applicable - no adverse information developed.",
+      "aiRating": "NEUTRAL",
       "evidence": []
     },
     {
       "factor": "Extent to which participation is voluntary",
-      "assessment": "Not applicable — no adverse information developed.",
+      "assessment": "Not applicable - no adverse information developed.",
+      "aiRating": "NEUTRAL",
       "evidence": []
     },
     {
       "factor": "Presence or absence of rehabilitation and other permanent behavioral changes",
-      "assessment": "Not applicable — no adverse information developed.",
+      "assessment": "Not applicable - no adverse information developed.",
+      "aiRating": "NEUTRAL",
       "evidence": []
     },
     {
       "factor": "Motivation for the conduct",
-      "assessment": "Not applicable — no adverse information developed.",
+      "assessment": "Not applicable - no adverse information developed.",
+      "aiRating": "NEUTRAL",
       "evidence": []
     },
     {
       "factor": "Potential for pressure, coercion, exploitation, or duress",
-      "assessment": "Not applicable — no adverse information developed.",
+      "assessment": "Not applicable - no adverse information developed.",
+      "aiRating": "NEUTRAL",
       "evidence": []
     },
     {
       "factor": "Likelihood of continuation or recurrence",
-      "assessment": "Not applicable — no adverse information developed.",
+      "assessment": "Not applicable - no adverse information developed.",
+      "aiRating": "NEUTRAL",
       "evidence": []
     }
   ],
@@ -188,7 +198,7 @@
         "provider": "DCSA field operations",
         "requestedDate": "2026-06-10",
         "completedDate": null,
-        "scope": "Not triggered — no issues developed",
+        "scope": "Not triggered - no issues developed",
         "resultSummary": "Not required for clean T3.",
         "documentUrl": null
       }
@@ -245,7 +255,7 @@
   "alerts": [],
   "documents": [
     {
-      "title": "SF-86 excerpt — Section 20A",
+      "title": "SF-86 excerpt - Section 20A",
       "type": "SF-86",
       "description": "T3 questionnaire excerpt",
       "url": "documents/SUBJ-003/sf86-section20a.json"

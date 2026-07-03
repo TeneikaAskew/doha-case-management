@@ -53,7 +53,7 @@ describe('primitives', () => {
   it('AIBadge carries the human-authority tooltip', () => {
     render(<AIBadge />);
     expect(screen.getByText('AI-assisted'))
-      .toHaveAttribute('title', 'AI-assisted — human decision authority');
+      .toHaveAttribute('title', 'AI-assisted - human decision authority');
   });
 
   it('ConfidenceBar shows percent', () => {

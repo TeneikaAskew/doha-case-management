@@ -18,7 +18,7 @@ export default function GuidelinesTab({ caseData }) {
     <div>
       {guidelines.map((g, i) => (
         <CollapsibleSection key={g.code}
-          title={`${g.code} — ${g.name}`}
+          title={`${g.code} - ${g.name}`}
           meta={<SeverityBadge level={g.severity} />}
           defaultOpen={i === 0}>
           <div className="guideline-ai card-inset">
@@ -43,7 +43,7 @@ export default function GuidelinesTab({ caseData }) {
           <ul className="condition-list">
             {g.disqualifiers.map((d) => (
               <li key={d.code} className="condition disqualifier">
-                <strong>{d.code}</strong> — {d.description}
+                <strong>{d.code}</strong> - {d.description}
                 <div className="muted">Evidence: {d.evidence}</div>
               </li>
             ))}
@@ -53,7 +53,7 @@ export default function GuidelinesTab({ caseData }) {
           <ul className="condition-list">
             {g.mitigators.map((m) => (
               <li key={m.code} className="condition mitigator">
-                <strong>{m.code}</strong> — {m.description}{' '}
+                <strong>{m.code}</strong> - {m.description}{' '}
                 <StatusBadge variant={APPLICABILITY_VARIANT[m.applicability]}>
                   {m.applicability}
                 </StatusBadge>
@@ -78,7 +78,7 @@ export default function GuidelinesTab({ caseData }) {
                   </td>
                   <td><StatusBadge variant={OUTCOME_VARIANT[p.outcome] || 'neutral'}>
                     {p.outcome}</StatusBadge></td>
-                  <td>{p.year ?? '—'}</td>
+                  <td>{p.year ?? '-'}</td>
                   <td>{p.relevance}</td>
                 </tr>
               ))}

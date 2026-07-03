@@ -79,11 +79,11 @@ export default function InvestigationTab({ caseData }) {
       </div>
 
       <div className="card">
-        <h3>SF-86 Review — Self-Report vs Record Checks</h3>
+        <h3>SF-86 Review - Self-Report vs Record Checks</h3>
         {inv.sf86Sections.map((s) => (
           <div key={s.section} className={`sf86-section ${s.discrepancy ? 'flagged' : ''}`}>
             <div className="sf86-heading">
-              <strong>{s.section} — {s.title}</strong>
+              <strong>{s.section} - {s.title}</strong>
               {s.discrepancy && <StatusBadge variant="error">Discrepancy</StatusBadge>}
               {s.guideline && <GuidelineChip code={s.guideline} />}
             </div>
@@ -108,7 +108,7 @@ export default function InvestigationTab({ caseData }) {
           {inv.interviews.map((iv, i) => (
             <div key={i} className="interview">
               <strong>{iv.type}</strong>
-              <span className="muted"> — {iv.date}, {iv.interviewer}</span>
+              <span className="muted"> - {iv.date}, {iv.interviewer}</span>
               <p>{iv.summary}</p>
             </div>
           ))}
