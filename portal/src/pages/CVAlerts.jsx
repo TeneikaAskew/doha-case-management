@@ -4,7 +4,7 @@ import { getAlerts } from '../data/api.js';
 import { useData } from '../data/useData.js';
 import { useDemo } from '../state/DemoContext.jsx';
 import {
-  ALERT_CATEGORY_LABELS, ALERT_STATE_LABELS, ALERT_STATE_VARIANTS,
+  ALERT_CATEGORY_LABELS, ALERT_STATE_LABELS, ALERT_STATE_VARIANTS, riskBand,
 } from '../domain.js';
 import KPICard from '../components/KPICard.jsx';
 import DataTable from '../components/DataTable.jsx';
@@ -15,6 +15,10 @@ import SectionRef, { RefLink } from '../components/SectionRef.jsx';
 import { REFS } from '../references.js';
 
 const SEVERITY_VARIANT = { HIGH: 'error', MODERATE: 'warning', LOW: 'info' };
+const RISK_ACCENT = {
+  // moderate uses the dark warning variant: base orange fails AA as text on white
+  low: 'var(--risk-low)', moderate: 'var(--status-warning-dark)', high: 'var(--risk-high)',
+};
 
 export default function CVAlerts() {
   const navigate = useNavigate();
@@ -55,7 +59,12 @@ export default function CVAlerts() {
       render: (a) => ALERT_CATEGORY_LABELS[a.category] },
     { key: 'severity', label: 'Severity',
       render: (a) => <StatusBadge variant={SEVERITY_VARIANT[a.severity]}>{a.severity}</StatusBadge> },
-    { key: 'priorityScore', label: 'AI priority', sortable: true },
+    { key: 'priorityScore', label: 'AI priority', sortable: true, align: 'center',
+      render: (a) => (
+        <span className="risk-cell"
+          style={{ '--risk-color': RISK_ACCENT[riskBand(a.priorityScore)] }}>
+          {a.priorityScore}
+        </span>) },
     { key: 'state', label: 'State',
       render: (a) => <StatusBadge variant={ALERT_STATE_VARIANTS[a.state]}>{ALERT_STATE_LABELS[a.state]}</StatusBadge> },
     { key: 'receivedDate', label: 'Received', sortable: true },
@@ -66,7 +75,7 @@ export default function CVAlerts() {
       <div className="page-header">
         <div>
           <h1>Alerts from Data Providers</h1>
-          <p>Continuous vetting alert inbox <AIBadge /></p>
+          <p>Initial and Continuous Vetting Alert Pipeline <AIBadge /></p>
         </div>
         <label className="form-group">
           <span>Category</span>

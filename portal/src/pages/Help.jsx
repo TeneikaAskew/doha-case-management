@@ -23,8 +23,9 @@ const PAGES = [
     + 'Guidelines (SEAD-4 analysis with precedents), Investigation (record checks, '
     + 'SF-86 review, interviews, ROI), Adjudication (recommendation, decisions), '
     + 'Continuous Vetting (alert triage), and Documents.'],
-  ['Alerts from Data Providers', 'The continuous-vetting inbox. Each alert carries a 3-step '
-    + 'validation: identity match, threshold, prior adjudication.'],
+  ['Alerts', 'Alerts from data providers - the initial and continuous vetting '
+    + 'alert pipeline. Each alert carries a 3-step validation: identity match, '
+    + 'threshold, prior adjudication.'],
   ['Data Providers', 'The record sources feeding investigations and continuous '
     + 'vetting, with the provider-to-guideline coverage matrix.'],
   ['Analytics', 'The real DOHA decision corpus (~36,700 cases) and demo pipeline '

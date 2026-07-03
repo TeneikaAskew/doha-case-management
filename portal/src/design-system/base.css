@@ -61,3 +61,8 @@ h3 { font-size: var(--font-size-lg); font-weight: 600; }
 .section-icon { color: var(--accent-teal); flex-shrink: 0; }
 
 .card h3 { display: flex; align-items: center; gap: var(--space-2); }
+
+/* On phones, wide content (tables, pre) scrolls inside its card */
+@media (max-width: 640px) {
+  .card { overflow-x: auto; }
+}

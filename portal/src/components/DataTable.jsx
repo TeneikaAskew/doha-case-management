@@ -24,6 +24,7 @@ export default function DataTable({ columns, rows, rowKey, onRowClick }) {
           <tr>
             {columns.map((c) => (
               <th key={c.key} className={c.sortable ? 'sortable' : ''}
+                style={c.align ? { textAlign: c.align } : undefined}
                 onClick={c.sortable ? () => toggleSort(c.key) : undefined}>
                 {c.label}
                 {sort?.key === c.key && (sort.dir === 1
@@ -38,7 +39,9 @@ export default function DataTable({ columns, rows, rowKey, onRowClick }) {
             <tr key={row[rowKey]} className={onRowClick ? 'clickable' : ''}
               onClick={onRowClick ? () => onRowClick(row) : undefined}>
               {columns.map((c) => (
-                <td key={c.key}>{c.render ? c.render(row) : row[c.key]}</td>
+                <td key={c.key} style={c.align ? { textAlign: c.align } : undefined}>
+                  {c.render ? c.render(row) : row[c.key]}
+                </td>
               ))}
             </tr>
           ))}

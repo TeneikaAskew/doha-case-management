@@ -12,7 +12,7 @@ describe('AppShell', () => {
   it('renders header, sidebar links, and dashboard route', () => {
     render(<App />);
     expect(screen.getByText('Personnel Vetting')).toBeInTheDocument();
-    for (const label of ['Subjects', 'Dashboard', 'Case Queue', 'Alerts from Data Providers',
+    for (const label of ['Subjects', 'Dashboard', 'Case Queue', 'Alerts',
       'Data Providers', 'Analytics', 'Help']) {
       expect(screen.getByRole('link', { name: label })).toBeInTheDocument();
     }
