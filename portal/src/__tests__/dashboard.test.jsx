@@ -42,4 +42,13 @@ describe('Dashboard', () => {
     expect(await screen.findByText('Cases in investigation')).toBeInTheDocument();
     expect(screen.getByText('Priya N. Shah')).toBeInTheDocument();
   });
+
+  it('analyst KPIs respect demo alert dispositions', async () => {
+    localStorage.setItem('demo.state',
+      JSON.stringify({ alertStates: { 'ALERT-101': 'CLOSED' }, decisions: {}, roiEntries: {} }));
+    renderDash('analyst');
+    expect(await screen.findByText('Open alerts')).toBeInTheDocument();
+    const openCard = screen.getByText('Open alerts').closest('.kpi-card');
+    expect(openCard).toHaveTextContent('0');
+  });
 });

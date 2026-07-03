@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { getSubjects } from '../data/api.js';
 import { useData } from '../data/useData.js';
@@ -28,6 +28,11 @@ export default function CaseQueue() {
   const q = (params.get('q') || '').toLowerCase();
   const [stage, setStage] = useState(q ? 'ALL' : PERSONA_STAGE[persona.id]);
   const [guideline, setGuideline] = useState('ALL');
+
+  useEffect(() => {
+    if (q) setStage('ALL');
+  }, [q]);
+
   const navigate = useNavigate();
   const { data: subjects, loading, error } = useData(getSubjects);
 

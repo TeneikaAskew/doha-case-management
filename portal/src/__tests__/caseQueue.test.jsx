@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
+import { MemoryRouter, useNavigate, Routes, Route } from 'react-router-dom';
 import { PersonaProvider } from '../state/PersonaContext.jsx';
 import { DemoProvider } from '../state/DemoContext.jsx';
 import { SUBJECTS } from './fixtures.js';
@@ -48,5 +48,28 @@ describe('CaseQueue', () => {
     expect(screen.getByText('Action required')).toBeInTheDocument();
     expect(screen.getByText('F')).toBeInTheDocument();
     expect(screen.getByText('B')).toBeInTheDocument();
+  });
+
+  it('searching while already on the queue clears the stage filter', async () => {
+    localStorage.setItem('demo.persona', 'adjudicator');
+    function Harness() {
+      const navigate = useNavigate();
+      return (
+        <>
+          <button onClick={() => navigate('/cases?q=shah')}>go-search</button>
+          <CaseQueue />
+        </>
+      );
+    }
+    render(
+      <PersonaProvider><DemoProvider>
+        <MemoryRouter initialEntries={['/cases']}>
+          <Routes><Route path="/cases" element={<Harness />} /></Routes>
+        </MemoryRouter>
+      </DemoProvider></PersonaProvider>
+    );
+    expect(await screen.findByText('Daniel R. Okafor')).toBeInTheDocument();
+    fireEvent.click(screen.getByText('go-search'));
+    expect(await screen.findByText('Priya N. Shah')).toBeInTheDocument();
   });
 });

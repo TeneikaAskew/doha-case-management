@@ -87,7 +87,13 @@ def corpus_analytics(df: pd.DataFrame | None) -> dict:
     outcomes = Counter(df["outcome"].fillna("UNKNOWN"))
     years = df["date"].map(extract_year)
     by_year = []
-    for y in sorted({int(v) for v in years.dropna().unique()}):
+    # Some corpus rows carry regulatory-citation dates rather than decision
+    # dates (e.g. "February 20, 1960" from E.O. 10865, "January 2, 1992" from
+    # DoD Directive 5220.6), which show up as large false spikes in those
+    # years. DOHA's modern electronic decision era starts around 1996, so
+    # restrict the year-over-year chart to that range; totalCases and the
+    # other aggregates below are unaffected.
+    for y in sorted({int(v) for v in years.dropna().unique() if v >= 1996}):
         mask = years == y
         by_year.append(dict(year=int(y),
                             granted=int((df.loc[mask, "outcome"] == "GRANTED").sum()),

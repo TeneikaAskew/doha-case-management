@@ -10,31 +10,6 @@
     },
     "byYear": [
       {
-        "year": 1960,
-        "granted": 346,
-        "denied": 549
-      },
-      {
-        "year": 1990,
-        "granted": 1,
-        "denied": 2
-      },
-      {
-        "year": 1992,
-        "granted": 529,
-        "denied": 704
-      },
-      {
-        "year": 1993,
-        "granted": 6,
-        "denied": 3
-      },
-      {
-        "year": 1995,
-        "granted": 4,
-        "denied": 5
-      },
-      {
         "year": 1996,
         "granted": 11,
         "denied": 12

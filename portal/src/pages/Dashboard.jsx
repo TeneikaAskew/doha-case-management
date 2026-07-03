@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { getSubjects, getAlerts } from '../data/api.js';
 import { useData } from '../data/useData.js';
 import { usePersona } from '../state/PersonaContext.jsx';
+import { useDemo } from '../state/DemoContext.jsx';
 import {
   STAGE_LABELS, STATUS_LABELS, STATUS_VARIANTS, riskBand,
 } from '../domain.js';
@@ -73,14 +74,16 @@ function buildKpis(personaId, subjects, alerts) {
 
 export default function Dashboard() {
   const { persona } = usePersona();
+  const { demo } = useDemo();
   const navigate = useNavigate();
   const subjectsQ = useData(getSubjects);
   const alertsQ = useData(getAlerts);
 
   const model = useMemo(() => {
     if (!subjectsQ.data || !alertsQ.data) return null;
-    return buildKpis(persona.id, subjectsQ.data, alertsQ.data);
-  }, [persona.id, subjectsQ.data, alertsQ.data]);
+    const effectiveAlerts = alertsQ.data.map((a) => ({ ...a, state: demo.alertStates[a.id] || a.state }));
+    return buildKpis(persona.id, subjectsQ.data, effectiveAlerts);
+  }, [persona.id, subjectsQ.data, alertsQ.data, demo.alertStates]);
 
   if (subjectsQ.loading || alertsQ.loading) return <Loading />;
   const error = subjectsQ.error || alertsQ.error;

@@ -16,8 +16,10 @@ def tiny_df():
              guidelines=["J"], case_type="appeal"),
         dict(case_number="18-04004", date="May 1, 2018", outcome="REMANDED",
              guidelines=["F"], case_type="appeal"),
-        dict(case_number="95-05005", date="June 3, 1995", outcome="DENIED",
+        dict(case_number="05-05005", date="June 3, 2005", outcome="DENIED",
              guidelines=["G"], case_type="hearing"),
+        dict(case_number="60-00001", date="February 20, 1960", outcome="DENIED",
+             guidelines=["J"], case_type="hearing"),
     ])
 
 
@@ -44,12 +46,13 @@ def test_find_precedents_fallback_without_corpus():
 def test_corpus_analytics_shape(tiny_df):
     stats = corpus.corpus_analytics(tiny_df)
     validated = schemas.CorpusStats.model_validate(stats)
-    assert validated.totalCases == 5
-    assert validated.byCaseType == {"hearing": 3, "appeal": 2}
+    assert validated.totalCases == 6
+    assert validated.byCaseType == {"hearing": 4, "appeal": 2}
     f_stat = next(g for g in validated.byGuideline if g.code == "F")
     assert f_stat.cases == 3
     years = [y.year for y in validated.byYear]
-    assert 1995 in years
+    assert 2005 in years
+    assert all(y.year >= 1996 for y in validated.byYear)
 
 
 def test_corpus_analytics_fallback():
