@@ -8,6 +8,7 @@ on:
       - '**.py'
       - 'requirements.txt'
       - 'sead4_llm/requirements.txt'
+      - 'portal/**'
       - '.github/workflows/ci.yml'
   pull_request:
     branches: [main]
@@ -15,6 +16,7 @@ on:
       - '**.py'
       - 'requirements.txt'
       - 'sead4_llm/requirements.txt'
+      - 'portal/**'
       - '.github/workflows/ci.yml'
 
 jobs:
@@ -137,15 +139,41 @@ jobs:
       - name: Run regex pattern tests
         run: python ci_cd/test_regex_patterns.py
 
+  portal:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: portal
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: portal/package-lock.json
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
+
+  portal-datagen:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install pydantic pandas pyarrow pytest
+      - run: python -m pytest portal/data_gen/tests -v
+
   # Summary job that requires all tests to pass
   ci-success:
-    needs: [test, test-matrix]
+    needs: [test, test-matrix, portal, portal-datagen]
     runs-on: ubuntu-latest
     if: always()
     steps:
       - name: Check all jobs passed
         run: |
-          if [ "${{ needs.test.result }}" != "success" ] || [ "${{ needs.test-matrix.result }}" != "success" ]; then
+          if [ "${{ needs.test.result }}" != "success" ] || [ "${{ needs.test-matrix.result }}" != "success" ] || [ "${{ needs.portal.result }}" != "success" ] || [ "${{ needs.portal-datagen.result }}" != "success" ]; then
             echo "❌ Some tests failed"
             exit 1
           fi

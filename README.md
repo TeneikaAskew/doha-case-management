@@ -37,6 +37,32 @@ python -m streamlit run sead4_llm/demo_ui.py
 
 The app opens at `http://localhost:8501`.
 
+## Vetting Case Management Demo (portal/)
+
+A Checkr-inspired, DCSA-branded React demo of a personnel-vetting case management
+platform: investigator/analyst/adjudicator personas, SEAD-4 guideline views,
+SF-86 vs record-check comparison, adjudication workspace, continuous vetting
+alerts with 3-step validation, data provider registry, and analytics from the
+real DOHA corpus. All data is synthetic except DOHA precedents and corpus
+aggregates. All AI content is pre-computed and labeled "AI-assisted — human
+decision authority."
+
+```bash
+cd portal
+npm install
+npm run dev          # http://localhost:5173
+
+# Regenerate demo data (optional; output is committed)
+python data_gen/generate_demo_data.py
+
+# Tests
+npm test                                   # React (vitest)
+npm run test:e2e                          # Playwright smoke test
+python -m pytest data_gen/tests -v        # Data generator (pytest)
+```
+
+Design spec: `docs/superpowers/specs/2026-07-02-vetting-case-management-design.md`.
+
 ## Complete Workflow
 
 The typical workflow consists of three main phases:
