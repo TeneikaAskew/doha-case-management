@@ -1,4 +1,5 @@
 import { Link, useParams, useSearchParams } from 'react-router-dom';
+import { FiMessageCircle } from 'react-icons/fi';
 import { getCase } from '../../data/api.js';
 import { useData } from '../../data/useData.js';
 import { usePersona } from '../../state/PersonaContext.jsx';
@@ -14,6 +15,7 @@ import InvestigationTab from './InvestigationTab.jsx';
 import AdjudicationTab from './AdjudicationTab.jsx';
 import CVTab from './CVTab.jsx';
 import DocumentsTab from './DocumentsTab.jsx';
+import AskCaseTab from './AskCaseTab.jsx';
 import './case.css';
 
 const TABS = [
@@ -23,6 +25,7 @@ const TABS = [
   { slug: 'adjudication', label: 'Adjudication', component: AdjudicationTab },
   { slug: 'continuous-vetting', label: 'Continuous Vetting', component: CVTab },
   { slug: 'documents', label: 'Documents', component: DocumentsTab },
+  { slug: 'ask', label: 'Ask the Case', Icon: FiMessageCircle, component: AskCaseTab },
 ];
 
 export default function CaseDetail() {
@@ -74,6 +77,7 @@ export default function CaseDetail() {
           <button key={t.slug} role="tab" aria-selected={t.slug === tab.slug}
             className={`tab-button ${t.slug === tab.slug ? 'active' : ''}`}
             onClick={() => setParams({ tab: t.slug })}>
+            {t.Icon && <t.Icon className="tab-icon" aria-hidden="true" />}
             {t.label}
           </button>
         ))}

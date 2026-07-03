@@ -1,7 +1,9 @@
 import { createContext, useContext, useState } from 'react';
 import { ALERT_TRANSITIONS } from '../domain.js';
 
-const EMPTY = { alertStates: {}, decisions: {}, roiEntries: {}, worksheetRatings: {} };
+const EMPTY = {
+  alertStates: {}, decisions: {}, roiEntries: {}, worksheetRatings: {}, askThreads: {},
+};
 const DemoContext = createContext(null);
 
 function load() {
@@ -28,10 +30,15 @@ export function DemoProvider({ children }) {
     persist({ ...demo, alertStates: { ...demo.alertStates, [alertId]: nextState } });
   };
 
+  // functional update: consecutive appends in one turn must not clobber each other
   const appendTo = (bucket, caseId, entry) =>
-    persist({
-      ...demo,
-      [bucket]: { ...demo[bucket], [caseId]: [...(demo[bucket][caseId] || []), entry] },
+    setDemo((prev) => {
+      const next = {
+        ...prev,
+        [bucket]: { ...prev[bucket], [caseId]: [...(prev[bucket][caseId] || []), entry] },
+      };
+      localStorage.setItem('demo.state', JSON.stringify(next));
+      return next;
     });
 
   const setWorksheetRating = (caseId, factorIndex, rating, note) =>
@@ -51,6 +58,7 @@ export function DemoProvider({ children }) {
     dispositionAlert,
     recordDecision: (caseId, d) => appendTo('decisions', caseId, d),
     addRoiEntry: (caseId, e) => appendTo('roiEntries', caseId, e),
+    addAskMessage: (caseId, m) => appendTo('askThreads', caseId, m),
     setWorksheetRating,
     reset: () => persist(EMPTY),
   };

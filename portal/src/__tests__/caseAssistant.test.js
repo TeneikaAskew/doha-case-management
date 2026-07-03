@@ -39,4 +39,23 @@ describe('askCase', () => {
     const res = askCase(CASE_001, 'Show me the credit file extract from TransUnion');
     expect(res.citations.some((c) => c.docUrl)).toBe(true);
   });
+
+  it('tolerates typos in question terms', () => {
+    const res = askCase(CASE_001, 'what did the intervew establish?');
+    expect(res.answer).toMatch(/understated the debt total/i);
+  });
+
+  it('treats "what else?" as a follow-up: same topic, new passages', () => {
+    const first = askCase(CASE_001, 'How much delinquent debt does the subject have?');
+    const history = [
+      { role: 'user', text: 'How much delinquent debt does the subject have?' },
+      { role: 'assistant', text: first.answer, citations: first.citations },
+    ];
+    const res = askCase(CASE_001, 'what else?', { history });
+    expect(res.answer).not.toMatch(/couldn't find/i);
+    const firstLabels = new Set(first.citations.map((c) => c.label));
+    // follow-up surfaces passages not already cited
+    expect(res.citations.some((c) => !firstLabels.has(c.label))).toBe(true);
+    expect(res.citations.every((c) => !firstLabels.has(c.label))).toBe(true);
+  });
 });

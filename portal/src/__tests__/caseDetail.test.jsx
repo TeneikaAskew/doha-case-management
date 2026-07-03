@@ -38,6 +38,15 @@ describe('CaseDetail', () => {
     expect(screen.getByText('78')).toBeInTheDocument();
   });
 
+  it('offers the Ask the Case tab immediately after Documents', async () => {
+    renderCase();
+    await screen.findByText('Daniel R. Okafor');
+    const tabs = screen.getAllByRole('tab').map((t) => t.textContent);
+    const docsAt = tabs.indexOf('Documents');
+    expect(docsAt).toBeGreaterThan(-1);
+    expect(tabs[docsAt + 1]).toMatch(/Ask the Case/);
+  });
+
   it('does not render redundant eligibility or CV enrolled pills', async () => {
     renderCase();
     await screen.findByText('Daniel R. Okafor');

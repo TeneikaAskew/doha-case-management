@@ -32,7 +32,12 @@ jobs:
           cache-dependency-path: portal/package-lock.json
       - run: npm ci
       - run: npm test -- --run
+      # VITE_GEMINI_API_KEY is baked into the public bundle by design (demo).
+      # The key MUST be restricted in Google Cloud: website restriction to this
+      # Pages origin, API restriction to the Generative Language API, low quota.
       - run: npm run build
+        env:
+          VITE_GEMINI_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
       - uses: actions/upload-pages-artifact@v3
         with:
           path: portal/dist
