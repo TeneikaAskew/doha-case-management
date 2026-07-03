@@ -16,7 +16,7 @@ const NAV_ITEMS = [
   { to: '/', end: true, label: 'Subjects', Icon: FiUsers },
   { to: '/dashboard', label: 'Dashboard', Icon: FiHome },
   { to: '/cases', label: 'Case Queue', Icon: FiUser },
-  { to: '/alerts', label: 'CV Alerts', Icon: FiActivity },
+  { to: '/alerts', label: 'Alerts from Data Providers', Icon: FiActivity },
   { to: '/providers', label: 'Data Providers', Icon: FiDatabase },
   { to: '/analytics', label: 'Analytics', Icon: FiBarChart2 },
   { to: '/help', label: 'Help', Icon: FiHelpCircle },

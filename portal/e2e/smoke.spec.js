@@ -10,7 +10,7 @@ test('every page loads and the hero case walks through all tabs', async ({ page 
     await page.getByRole('button', { name: /sign in with sso/i }).click();
   } else {
     await page.evaluate(() => localStorage.setItem('demo.session', 'active'));
-    await page.goto('/#/');
+    await page.reload();
   }
   await expect(page.getByRole('heading', { name: 'Subjects' })).toBeVisible();
   await expect(page.getByText('Total Subjects')).toBeVisible();
@@ -42,10 +42,12 @@ test('every page loads and the hero case walks through all tabs', async ({ page 
   await page.getByRole('button', { name: /criminal record checks/i }).click();
   await expect(page.getByText('State & local courts').first()).toBeVisible();
   await page.getByRole('button', { name: 'View' }).click();
-  await expect(page.getByText(/Report 26-044812, Chesapeake Police Department/)).toBeVisible();
+  // The split document view shows the reference twice (header + paper facsimile).
+  await expect(page.getByText(/Report 26-044812, Chesapeake Police Department/).first())
+    .toBeVisible();
 
   await page.goto('/#/alerts');
-  await expect(page.getByRole('heading', { name: 'CV Alerts' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Alerts from Data Providers' })).toBeVisible();
   await page.goto('/#/providers');
   await expect(page.getByRole('heading', { name: 'FBI CJIS / NCIC + Rap Back' })).toBeVisible();
   await page.goto('/#/analytics');

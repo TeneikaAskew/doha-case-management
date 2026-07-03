@@ -65,7 +65,7 @@ export default function CVAlerts() {
     <div className="page">
       <div className="page-header">
         <div>
-          <h1>CV Alerts</h1>
+          <h1>Alerts from Data Providers</h1>
           <p>Continuous vetting alert inbox <AIBadge /></p>
         </div>
         <label className="form-group">

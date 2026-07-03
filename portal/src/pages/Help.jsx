@@ -23,7 +23,7 @@ const PAGES = [
     + 'Guidelines (SEAD-4 analysis with precedents), Investigation (record checks, '
     + 'SF-86 review, interviews, ROI), Adjudication (recommendation, decisions), '
     + 'Continuous Vetting (alert triage), and Documents.'],
-  ['CV Alerts', 'The continuous-vetting inbox. Each alert carries a 3-step '
+  ['Alerts from Data Providers', 'The continuous-vetting inbox. Each alert carries a 3-step '
     + 'validation: identity match, threshold, prior adjudication.'],
   ['Data Providers', 'The record sources feeding investigations and continuous '
     + 'vetting, with the provider-to-guideline coverage matrix.'],
