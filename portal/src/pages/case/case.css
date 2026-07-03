@@ -23,8 +23,8 @@
   background: var(--risk-high-bg); }
 .risk-dial.risk-moderate { border-color: var(--risk-moderate); color: var(--risk-moderate);
   background: var(--risk-moderate-bg); }
-.risk-dial.risk-low { border-color: var(--status-clear); color: var(--status-clear);
-  background: var(--status-clear-bg); }
+.risk-dial.risk-low { border-color: var(--risk-low); color: var(--risk-low);
+  background: var(--risk-low-bg); }
 
 .tab-bar { display: flex; gap: var(--space-1); border-bottom: 2px solid var(--border-light);
   margin-bottom: var(--space-5); overflow-x: auto; }

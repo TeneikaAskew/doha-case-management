@@ -21,8 +21,9 @@ import { REFS } from '../references.js';
 const STAGES = ['INITIATION', 'INVESTIGATION', 'ADJUDICATION', 'CONTINUOUS_VETTING'];
 const STATUS_RANK = { ACTION_REQUIRED: 0, NEEDS_REVIEW: 1, CLEAR: 2 };
 const BANDS = [
+  // moderate fill uses the dark warning variant so white segment text meets AA
   { id: 'low', label: 'Low (<40)', color: 'var(--risk-low)' },
-  { id: 'moderate', label: 'Moderate (40-74)', color: 'var(--risk-moderate)' },
+  { id: 'moderate', label: 'Moderate (40-74)', color: 'var(--status-warning-dark)' },
   { id: 'high', label: 'High (75+)', color: 'var(--risk-high)' },
 ];
 

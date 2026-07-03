@@ -19,7 +19,8 @@ const PERSONA_STAGE = {
 };
 
 const RISK_ACCENT = {
-  low: 'var(--risk-low)', moderate: 'var(--risk-moderate)', high: 'var(--risk-high)',
+  // moderate uses the dark warning variant: base orange fails AA as text on white
+  low: 'var(--risk-low)', moderate: 'var(--status-warning-dark)', high: 'var(--risk-high)',
 };
 
 export default function CaseQueue() {
