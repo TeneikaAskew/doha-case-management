@@ -1,4 +1,5 @@
 """Procedural roster of 12 lighter subjects around the 3 hero cases."""
+import documents as docs
 from hero_cases import TODAY  # fixed reference date, re-exported for the generator
 
 # id-suffix, name, position, tier, stage, status, eligibility, risk, guidelines, days, cv, alerts
@@ -65,11 +66,12 @@ def _guideline_card(code: str, precedent_fn) -> dict:
 
 def _roster_alert(idx: int, subj: dict, code: str) -> dict:
     category = "FINANCIAL" if code == "F" else "SUITABILITY"
+    provider = {"F": "TransUnion", "K": "DISS / prior adjudications"}.get(code, "LexisNexis")
     return dict(
         id=f"ALERT-{300 + idx}", subjectId=subj["id"], subjectName=subj["name"],
         category=category, severity="MODERATE", priorityScore=55 + idx, state="NEW",
         receivedDate="2026-06-18",
-        provider="TransUnion" if code == "F" else "LexisNexis",
+        provider=provider,
         description=GUIDELINE_TEMPLATES[code]["evidence"] + ".",
         identityMatch=dict(confidence=0.93, identifiers=[
             dict(field="Name", subjectValue=subj["name"],
@@ -79,6 +81,31 @@ def _roster_alert(idx: int, subj: dict, code: str) -> dict:
                        detail="Meets CV investigative-standard threshold."),
         priorAdjudication=dict(previouslyAdjudicated=False, reference=None),
     )
+
+
+def _whole_person(clean: bool, code, alert_id, doc_ref) -> list[dict]:
+    """Nine canonical factors; single-issue rosters attach their alert/doc evidence."""
+    issue = None if clean else GUIDELINE_TEMPLATES[code]["evidence"]
+    rows = []
+    for i, factor in enumerate(docs.WHOLE_PERSON_FACTORS):
+        if clean:
+            rows.append(dict(
+                factor=factor, evidence=[],
+                assessment=("No adverse information across all checked sources."
+                            if i == 0 else
+                            "Not applicable — no adverse information developed.")))
+            continue
+        evidence = []
+        if i == 0:
+            if alert_id:
+                evidence.append(dict(type="ALERT", ref=alert_id, label="CV alert"))
+            if doc_ref:
+                evidence.append(dict(type="DOCUMENT", ref=doc_ref[0], label=doc_ref[1]))
+        rows.append(dict(
+            factor=factor, evidence=evidence,
+            assessment=(f"Single developed issue: {issue}." if i == 0 else
+                        "Single-issue case; no additional adverse factors developed.")))
+    return rows
 
 
 def build_roster_cases(precedent_fn) -> list[dict]:
@@ -95,6 +122,35 @@ def build_roster_cases(precedent_fn) -> list[dict]:
         )
         alerts = [_roster_alert(n, subj, codes[0])] if n_alerts else []
         clean = not codes
+
+        source_documents = {}
+        doc_ref = None
+        if n_alerts and codes[0] == "F":
+            url, doc = docs.credit_extract(
+                subj["id"], "credit-extract-20260618", bureau="TransUnion",
+                account_name="Two delinquent accounts (summary)",
+                account_masked="(2 accounts)", account_type="Installment/revolving",
+                balance="$9,800", past_due="$9,800", days_past_due="90+",
+                date_reported="2026-06-18",
+                payment_status="Delinquent — reported via CV credit monitoring",
+                history="Two accounts first delinquent 2026-02; no payment activity "
+                        "since 2026-03.",
+                received="2026-06-18")
+            source_documents[url] = doc
+            doc_ref = (url, "TransUnion credit-file extract")
+        elif n_alerts:
+            url, doc = docs.incident_report(
+                subj["id"], "incident-report-2025-0142",
+                incident_id="SIR-2025-0142", date="2025-12-02",
+                facility="Fort Meade annex B-2", category="Security infraction",
+                summary=GUIDELINE_TEMPLATES[codes[0]]["evidence"] + ". Reported by "
+                        "facility security officer; no compromise determined.",
+                received="2026-06-18")
+            source_documents[url] = doc
+            doc_ref = (url, "Security incident report")
+        if alerts and doc_ref:
+            alerts[0]["documents"] = [dict(title=doc_ref[1], url=doc_ref[0])]
+
         cases.append(dict(
             subject=subj,
             aiSummary=("No adverse information developed; routine processing."
@@ -103,13 +159,30 @@ def build_roster_cases(precedent_fn) -> list[dict]:
                        f"({GUIDELINE_TEMPLATES[codes[0]]['name']}); otherwise clear."),
             timeline=[dict(date="2026-05-01", actor="K. Rivas", role="FSO",
                            event="Case initiated in NBIS eApp", note=None)],
-            wholePerson=[dict(factor="Overall record",
-                              assessment="Routine" if clean else "Single-issue case")],
+            wholePerson=_whole_person(clean, codes[0] if codes else None,
+                                      alerts[0]["id"] if alerts else None, doc_ref),
             guidelines=[_guideline_card(c, precedent_fn) for c in codes],
             investigation=dict(
-                coverage=[dict(item="Automated record checks", status="COMPLETE"),
-                          dict(item="Tier-required fieldwork",
-                               status="COMPLETE" if stage != "INVESTIGATION" else "PENDING")],
+                recordChecks=[
+                    dict(item="Automated record checks", status="COMPLETE",
+                         provider="FBI CJIS / NCIC + Rap Back",
+                         requestedDate="2026-05-02", completedDate="2026-05-15",
+                         scope="NCIC criminal history, tri-bureau credit, DMV",
+                         resultSummary=("No adverse information." if clean else
+                                        GUIDELINE_TEMPLATES[codes[0]]["evidence"] + "."),
+                         documentUrl=(doc_ref[0] if doc_ref else None)),
+                    dict(item="Tier-required fieldwork",
+                         status="COMPLETE" if stage != "INVESTIGATION" else "PENDING",
+                         provider="DCSA field operations",
+                         requestedDate="2026-05-02",
+                         completedDate=("2026-06-01"
+                                        if stage != "INVESTIGATION" else None),
+                         scope="Tier-scoped interviews and local records",
+                         resultSummary=("Fieldwork complete."
+                                        if stage != "INVESTIGATION"
+                                        else "Fieldwork in progress."),
+                         documentUrl=None),
+                ],
                 sf86Sections=[dict(
                     section="Section 22", title="Police record",
                     subjectReport="No police record", matchedResult="NCIC: no record",
@@ -124,5 +197,6 @@ def build_roster_cases(precedent_fn) -> list[dict]:
             alerts=alerts,
             documents=[dict(title="SF-86", type="SF-86",
                             description="Questionnaire on file", url=None)],
+            sourceDocuments=source_documents,
         ))
     return cases

@@ -1,0 +1,86 @@
+{
+  "docType": "SAR",
+  "title": "Suspicious Activity Report SAR-2026-0415-88231",
+  "provider": "FinCEN / Treasury",
+  "receivedDate": "2026-04-16",
+  "subjectId": "SUBJ-001",
+  "fields": [
+    {
+      "label": "Filing institution",
+      "value": "First Commonwealth Bank"
+    },
+    {
+      "label": "SAR number",
+      "value": "SAR-2026-0415-88231"
+    },
+    {
+      "label": "Filing date",
+      "value": "2026-04-15"
+    },
+    {
+      "label": "Activity period",
+      "value": "2026-01-05 to 2026-03-30"
+    },
+    {
+      "label": "Total amount",
+      "value": "$27,500"
+    },
+    {
+      "label": "Transaction count",
+      "value": "9"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Narrative",
+      "body": "Nine outbound wire remittances of $2,500-$3,500 to two beneficiary accounts in Lagos, Nigeria, inconsistent with stated account purpose and salary deposits. Pattern is consistent with structured family remittances under financial stress; no sanctioned parties identified."
+    }
+  ],
+  "transactions": [
+    {
+      "date": "2026-01-05",
+      "type": "Wire (outbound)",
+      "amount": "$3,000"
+    },
+    {
+      "date": "2026-01-26",
+      "type": "Wire (outbound)",
+      "amount": "$2,500"
+    },
+    {
+      "date": "2026-02-09",
+      "type": "Wire (outbound)",
+      "amount": "$3,500"
+    },
+    {
+      "date": "2026-02-23",
+      "type": "Wire (outbound)",
+      "amount": "$3,000"
+    },
+    {
+      "date": "2026-03-02",
+      "type": "Wire (outbound)",
+      "amount": "$3,000"
+    },
+    {
+      "date": "2026-03-09",
+      "type": "Wire (outbound)",
+      "amount": "$2,500"
+    },
+    {
+      "date": "2026-03-16",
+      "type": "Wire (outbound)",
+      "amount": "$3,500"
+    },
+    {
+      "date": "2026-03-23",
+      "type": "Wire (outbound)",
+      "amount": "$3,000"
+    },
+    {
+      "date": "2026-03-30",
+      "type": "Wire (outbound)",
+      "amount": "$3,500"
+    }
+  ]
+}

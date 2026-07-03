@@ -43,32 +43,109 @@
   ],
   "wholePerson": [
     {
-      "factor": "Overall record",
-      "assessment": "No adverse information across all checked sources."
+      "factor": "Nature, extent, and seriousness of the conduct",
+      "assessment": "No adverse information across all checked sources.",
+      "evidence": [
+        {
+          "type": "DOCUMENT",
+          "ref": "documents/SUBJ-003/credit-extract-20260614.json",
+          "label": "Equifax tri-bureau summary"
+        }
+      ]
+    },
+    {
+      "factor": "Circumstances surrounding the conduct",
+      "assessment": "Not applicable — no adverse information developed.",
+      "evidence": []
+    },
+    {
+      "factor": "Frequency and recency of the conduct",
+      "assessment": "Not applicable — no adverse information developed.",
+      "evidence": []
+    },
+    {
+      "factor": "Individual's age and maturity at the time of the conduct",
+      "assessment": "Not applicable — no adverse information developed.",
+      "evidence": []
+    },
+    {
+      "factor": "Extent to which participation is voluntary",
+      "assessment": "Not applicable — no adverse information developed.",
+      "evidence": []
+    },
+    {
+      "factor": "Presence or absence of rehabilitation and other permanent behavioral changes",
+      "assessment": "Not applicable — no adverse information developed.",
+      "evidence": []
+    },
+    {
+      "factor": "Motivation for the conduct",
+      "assessment": "Not applicable — no adverse information developed.",
+      "evidence": []
+    },
+    {
+      "factor": "Potential for pressure, coercion, exploitation, or duress",
+      "assessment": "Not applicable — no adverse information developed.",
+      "evidence": []
+    },
+    {
+      "factor": "Likelihood of continuation or recurrence",
+      "assessment": "Not applicable — no adverse information developed.",
+      "evidence": []
     }
   ],
   "guidelines": [],
   "investigation": {
-    "coverage": [
+    "recordChecks": [
       {
         "item": "Fingerprint / FBI criminal history",
-        "status": "COMPLETE"
+        "status": "COMPLETE",
+        "provider": "FBI CJIS / NCIC + Rap Back",
+        "requestedDate": "2026-06-11",
+        "completedDate": "2026-06-14",
+        "scope": "NGI fingerprint submission and NCIC query",
+        "resultSummary": "No record.",
+        "documentUrl": null
       },
       {
         "item": "Credit check",
-        "status": "COMPLETE"
+        "status": "COMPLETE",
+        "provider": "Equifax",
+        "requestedDate": "2026-06-11",
+        "completedDate": "2026-06-14",
+        "scope": "Tri-bureau pull (Equifax, Experian, TransUnion)",
+        "resultSummary": "All accounts current; utilization 12%.",
+        "documentUrl": "documents/SUBJ-003/credit-extract-20260614.json"
       },
       {
         "item": "Education verification",
-        "status": "COMPLETE"
+        "status": "COMPLETE",
+        "provider": "LexisNexis",
+        "requestedDate": "2026-06-11",
+        "completedDate": "2026-06-20",
+        "scope": "Degree verification, University of Maryland (2018)",
+        "resultSummary": "B.S. Finance verified.",
+        "documentUrl": null
       },
       {
         "item": "Employment verification",
-        "status": "PENDING"
+        "status": "PENDING",
+        "provider": "LexisNexis",
+        "requestedDate": "2026-06-11",
+        "completedDate": null,
+        "scope": "Current employer verification (2019-present)",
+        "resultSummary": "Response pending from employer of record.",
+        "documentUrl": null
       },
       {
         "item": "Subject interview",
-        "status": "NOT_REQUIRED"
+        "status": "NOT_REQUIRED",
+        "provider": "DCSA field operations",
+        "requestedDate": "2026-06-10",
+        "completedDate": null,
+        "scope": "Not triggered — no issues developed",
+        "resultSummary": "Not required for clean T3.",
+        "documentUrl": null
       }
     ],
     "sf86Sections": [
@@ -123,10 +200,16 @@
   "alerts": [],
   "documents": [
     {
-      "title": "SF-86 (2026-06-10)",
+      "title": "SF-86 excerpt — Section 20A",
       "type": "SF-86",
-      "description": "T3 questionnaire",
-      "url": "documents/doha-record.json"
+      "description": "T3 questionnaire excerpt",
+      "url": "documents/SUBJ-003/sf86-section20a.json"
+    },
+    {
+      "title": "Equifax tri-bureau summary",
+      "type": "Provider record",
+      "description": "Clean credit summary 2026-06-14",
+      "url": "documents/SUBJ-003/credit-extract-20260614.json"
     }
   ]
 }

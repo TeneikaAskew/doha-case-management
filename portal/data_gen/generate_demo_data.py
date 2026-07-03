@@ -63,16 +63,15 @@ def main(out_dir: Path = DEFAULT_OUT) -> dict:
 
     cases = build_hero_cases(precedents) + build_roster_cases(precedents)
 
-    # One real DOHA record, reused for every case document and CV alert source.
+    # One real DOHA record kept for reference; typed per-subject documents
+    # are authored in hero_cases/roster and written below.
     df_full = corpus.load_full_corpus()
     doc = corpus.get_source_document(df_full)
     source_document = schemas.SourceDocument.model_validate(doc)
-    DOC_URL = "documents/doha-record.json"
+
+    source_documents = {}
     for c in cases:
-        for d in c["documents"]:
-            d.update(url=DOC_URL)
-        for a in c["alerts"]:
-            a.update(documentUrl=DOC_URL)
+        source_documents.update(c.pop("sourceDocuments", {}))
 
     validated_cases = [schemas.CaseDetail.model_validate(c) for c in cases]
     subjects = [schemas.SubjectSummary.model_validate(c["subject"]) for c in cases]
@@ -83,6 +82,11 @@ def main(out_dir: Path = DEFAULT_OUT) -> dict:
                         encoding="utf-8")
 
     dump(source_document.model_dump(), out_dir / "documents" / "doha-record.json")
+    for url, d in source_documents.items():
+        gd = schemas.GeneratedDocument.model_validate(d)
+        path = out_dir / url
+        path.parent.mkdir(parents=True, exist_ok=True)
+        dump(gd.model_dump(), path)
     dump(schemas.SubjectsFile(subjects=subjects).model_dump(), out_dir / "subjects.json")
     for c in validated_cases:
         dump(c.model_dump(), out_dir / "cases" / f"{c.subject.id}.json")

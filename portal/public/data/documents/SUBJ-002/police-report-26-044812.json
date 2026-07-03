@@ -1,0 +1,48 @@
+{
+  "docType": "POLICE_REPORT",
+  "title": "Arrest report 26-044812 — Chesapeake Police Department",
+  "provider": "State & local courts",
+  "receivedDate": "2026-06-30",
+  "subjectId": "SUBJ-002",
+  "fields": [
+    {
+      "label": "Agency",
+      "value": "Chesapeake Police Department"
+    },
+    {
+      "label": "Report number",
+      "value": "26-044812"
+    },
+    {
+      "label": "Incident date",
+      "value": "2026-06-21"
+    },
+    {
+      "label": "Location",
+      "value": "I-64 W near Greenbrier Pkwy, Chesapeake, VA"
+    },
+    {
+      "label": "Charges",
+      "value": "DUI — 1st offense (VA 18.2-266); BAC 0.15%+ enhancement"
+    },
+    {
+      "label": "Arresting officer",
+      "value": "Ofc. T. Ramirez #4471"
+    },
+    {
+      "label": "Booking number",
+      "value": "CB-26-08822"
+    },
+    {
+      "label": "Disposition",
+      "value": "Released on summons; arraignment 2026-07-14"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Officer narrative",
+      "body": "Vehicle observed varying speed 45-70 mph and crossing lane markings at 2314 hours. Traffic stop initiated. Driver identified as BELL, MARCUS T by VA operator's license. Odor of alcoholic beverage, bloodshot eyes; subject cooperative. SFSTs indicated impairment. Breath test at station: 0.18% BAC. Subject booked, printed, and released on summons to a sober third party."
+    }
+  ],
+  "transactions": []
+}

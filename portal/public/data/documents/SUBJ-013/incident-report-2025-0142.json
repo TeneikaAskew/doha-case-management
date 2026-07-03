@@ -1,0 +1,32 @@
+{
+  "docType": "INCIDENT_REPORT",
+  "title": "Security incident report SIR-2025-0142",
+  "provider": "DISS / prior adjudications",
+  "receivedDate": "2026-06-18",
+  "subjectId": "SUBJ-013",
+  "fields": [
+    {
+      "label": "Incident ID",
+      "value": "SIR-2025-0142"
+    },
+    {
+      "label": "Date",
+      "value": "2025-12-02"
+    },
+    {
+      "label": "Facility",
+      "value": "Fort Meade annex B-2"
+    },
+    {
+      "label": "Category",
+      "value": "Security infraction"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Incident summary",
+      "body": "One security infraction: classified document left unsecured (2025). Reported by facility security officer; no compromise determined."
+    }
+  ],
+  "transactions": []
+}

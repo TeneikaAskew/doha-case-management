@@ -1,0 +1,52 @@
+{
+  "docType": "CREDIT_REPORT",
+  "title": "Credit-file extract — Summary — all open accounts",
+  "provider": "Equifax",
+  "receivedDate": "2026-06-14",
+  "subjectId": "SUBJ-003",
+  "fields": [
+    {
+      "label": "Bureau",
+      "value": "Equifax"
+    },
+    {
+      "label": "Account",
+      "value": "Summary — all open accounts"
+    },
+    {
+      "label": "Account number",
+      "value": "(8 accounts)"
+    },
+    {
+      "label": "Account type",
+      "value": "Tri-bureau summary"
+    },
+    {
+      "label": "Balance",
+      "value": "$14,900"
+    },
+    {
+      "label": "Past due",
+      "value": "$0"
+    },
+    {
+      "label": "Days past due",
+      "value": "0"
+    },
+    {
+      "label": "Date reported",
+      "value": "2026-06-14"
+    },
+    {
+      "label": "Payment status",
+      "value": "All accounts current; utilization 12%"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Account history summary",
+      "body": "Eight open accounts, oldest 2014. No delinquencies, collections, judgments, or bankruptcies on file at any bureau."
+    }
+  ],
+  "transactions": []
+}

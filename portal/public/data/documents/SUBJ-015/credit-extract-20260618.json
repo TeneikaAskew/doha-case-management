@@ -1,0 +1,52 @@
+{
+  "docType": "CREDIT_REPORT",
+  "title": "Credit-file extract — Two delinquent accounts (summary)",
+  "provider": "TransUnion",
+  "receivedDate": "2026-06-18",
+  "subjectId": "SUBJ-015",
+  "fields": [
+    {
+      "label": "Bureau",
+      "value": "TransUnion"
+    },
+    {
+      "label": "Account",
+      "value": "Two delinquent accounts (summary)"
+    },
+    {
+      "label": "Account number",
+      "value": "(2 accounts)"
+    },
+    {
+      "label": "Account type",
+      "value": "Installment/revolving"
+    },
+    {
+      "label": "Balance",
+      "value": "$9,800"
+    },
+    {
+      "label": "Past due",
+      "value": "$9,800"
+    },
+    {
+      "label": "Days past due",
+      "value": "90+"
+    },
+    {
+      "label": "Date reported",
+      "value": "2026-06-18"
+    },
+    {
+      "label": "Payment status",
+      "value": "Delinquent — reported via CV credit monitoring"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Account history summary",
+      "body": "Two accounts first delinquent 2026-02; no payment activity since 2026-03."
+    }
+  ],
+  "transactions": []
+}

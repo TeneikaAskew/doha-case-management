@@ -68,39 +68,106 @@
   "wholePerson": [
     {
       "factor": "Nature, extent, and seriousness of the conduct",
-      "assessment": "Sustained delinquency plus incomplete disclosure; serious."
+      "assessment": "Sustained delinquency plus incomplete disclosure; serious.",
+      "evidence": [
+        {
+          "type": "ALERT",
+          "ref": "ALERT-101",
+          "label": "New collection account alert"
+        },
+        {
+          "type": "DOCUMENT",
+          "ref": "documents/SUBJ-001/credit-extract-20260620.json",
+          "label": "TransUnion credit-file extract"
+        }
+      ]
     },
     {
       "factor": "Circumstances surrounding the conduct",
-      "assessment": "Six-month unemployment in 2024 contributed to initial arrears."
+      "assessment": "Six-month unemployment in 2024 contributed to initial arrears.",
+      "evidence": [
+        {
+          "type": "RECORD_CHECK",
+          "ref": "Employment coverage (10 yrs)",
+          "label": "Employment coverage"
+        }
+      ]
     },
     {
-      "factor": "Frequency and recency",
-      "assessment": "Ongoing; newest alert June 2026."
+      "factor": "Frequency and recency of the conduct",
+      "assessment": "Ongoing; newest alert June 2026.",
+      "evidence": [
+        {
+          "type": "ALERT",
+          "ref": "ALERT-101",
+          "label": "New collection account alert"
+        }
+      ]
     },
     {
-      "factor": "Age and maturity at the time",
-      "assessment": "Adult throughout (36-38)."
+      "factor": "Individual's age and maturity at the time of the conduct",
+      "assessment": "Adult throughout (36-38).",
+      "evidence": []
     },
     {
-      "factor": "Voluntariness of participation",
-      "assessment": "Debt partly circumstantial; non-disclosure voluntary."
+      "factor": "Extent to which participation is voluntary",
+      "assessment": "Debt partly circumstantial; non-disclosure voluntary.",
+      "evidence": [
+        {
+          "type": "DOCUMENT",
+          "ref": "documents/SUBJ-001/sf86-section20a.json",
+          "label": "SF-86 Section 20A response"
+        }
+      ]
     },
     {
-      "factor": "Rehabilitation and behavioral changes",
-      "assessment": "No payment plan or counseling evidenced to date."
+      "factor": "Presence or absence of rehabilitation and other permanent behavioral changes",
+      "assessment": "No payment plan or counseling evidenced to date.",
+      "evidence": [
+        {
+          "type": "RECORD_CHECK",
+          "ref": "Financial record checks",
+          "label": "Financial record checks"
+        }
+      ]
     },
     {
-      "factor": "Motivation",
-      "assessment": "No evidence of divided loyalty; financial strain."
+      "factor": "Motivation for the conduct",
+      "assessment": "No evidence of divided loyalty; financial strain.",
+      "evidence": [
+        {
+          "type": "DOCUMENT",
+          "ref": "documents/SUBJ-001/sar-20260415.json",
+          "label": "FinCEN SAR (remittances)"
+        }
+      ]
     },
     {
-      "factor": "Potential for pressure, coercion, or duress",
-      "assessment": "Elevated: debt plus close foreign family ties."
+      "factor": "Potential for pressure, coercion, exploitation, or duress",
+      "assessment": "Elevated: debt plus close foreign family ties and unreported travel.",
+      "evidence": [
+        {
+          "type": "ALERT",
+          "ref": "ALERT-102",
+          "label": "Unreported foreign travel alert"
+        },
+        {
+          "type": "DOCUMENT",
+          "ref": "documents/SUBJ-001/travel-record-20260502.json",
+          "label": "I-94 travel record"
+        }
+      ]
     },
     {
       "factor": "Likelihood of continuation or recurrence",
-      "assessment": "High absent documented repayment behavior."
+      "assessment": "High absent documented repayment behavior.",
+      "evidence": [
+        {
+          "type": "RECORD_CHECK",
+          "ref": "Financial record checks",
+          "label": "Financial record checks"
+        }
+      ]
     }
   ],
   "guidelines": [
@@ -239,26 +306,76 @@
     }
   ],
   "investigation": {
-    "coverage": [
+    "recordChecks": [
       {
         "item": "Subject interview (ESI)",
-        "status": "COMPLETE"
+        "status": "COMPLETE",
+        "provider": "DCSA field operations",
+        "requestedDate": "2025-10-02",
+        "completedDate": "2025-11-19",
+        "scope": "Enhanced subject interview covering financial, foreign contact, and employment issues",
+        "resultSummary": "Subject acknowledged two delinquent accounts; understated total debt.",
+        "documentUrl": null
       },
       {
         "item": "Employment coverage (10 yrs)",
-        "status": "COMPLETE"
+        "status": "COMPLETE",
+        "provider": "DCSA field operations",
+        "requestedDate": "2025-10-02",
+        "completedDate": "2025-12-04",
+        "scope": "Employer records and supervisor interviews, 2015-2025",
+        "resultSummary": "Employment verified; 2024 layoff confirmed.",
+        "documentUrl": null
       },
       {
         "item": "Neighborhood/reference interviews",
-        "status": "COMPLETE"
+        "status": "COMPLETE",
+        "provider": "DCSA field operations",
+        "requestedDate": "2025-10-02",
+        "completedDate": "2025-12-04",
+        "scope": "Two references, one neighbor (Manassas, VA)",
+        "resultSummary": "No derogatory information developed.",
+        "documentUrl": null
       },
       {
         "item": "Financial record checks",
-        "status": "COMPLETE"
+        "status": "COMPLETE",
+        "provider": "TransUnion",
+        "requestedDate": "2026-03-10",
+        "completedDate": "2026-03-15",
+        "scope": "Tri-bureau credit re-check plus civil judgment search",
+        "resultSummary": "$47,300 delinquent across five accounts; unpaid $3,100 judgment (2025).",
+        "documentUrl": "documents/SUBJ-001/credit-extract-20260620.json"
+      },
+      {
+        "item": "FinCEN financial-intelligence check",
+        "status": "COMPLETE",
+        "provider": "FinCEN / Treasury",
+        "requestedDate": "2026-04-10",
+        "completedDate": "2026-04-16",
+        "scope": "SAR registry query on subject identifiers",
+        "resultSummary": "One SAR: structured remittances to Nigeria, Jan-Mar 2026.",
+        "documentUrl": "documents/SUBJ-001/sar-20260415.json"
+      },
+      {
+        "item": "Foreign travel records check",
+        "status": "COMPLETE",
+        "provider": "CBP I-94 Foreign Travel",
+        "requestedDate": "2026-05-01",
+        "completedDate": "2026-05-02",
+        "scope": "I-94 crossing history, 2021-2026",
+        "resultSummary": "Unreported Nigeria travel 2026-04-11 to 2026-04-25.",
+        "documentUrl": "documents/SUBJ-001/travel-record-20260502.json"
       },
       {
         "item": "Foreign contact expansion leads",
-        "status": "PENDING"
+        "status": "PENDING",
+        "provider": "DCSA field operations",
+        "requestedDate": "2026-02-01",
+        "completedDate": null,
+        "scope": "Expanded lead on sibling's state-owned-enterprise employment",
+        "resultSummary": "Lead open with overseas partner agency.",
+        "documentUrl": null
       }
     ],
     "sf86Sections": [
@@ -391,7 +508,12 @@
         "previouslyAdjudicated": false,
         "reference": null
       },
-      "documentUrl": "documents/doha-record.json"
+      "documents": [
+        {
+          "title": "TransUnion credit-file extract",
+          "url": "documents/SUBJ-001/credit-extract-20260620.json"
+        }
+      ]
     },
     {
       "id": "ALERT-102",
@@ -430,7 +552,12 @@
         "previouslyAdjudicated": false,
         "reference": null
       },
-      "documentUrl": "documents/doha-record.json"
+      "documents": [
+        {
+          "title": "CBP I-94 travel record",
+          "url": "documents/SUBJ-001/travel-record-20260502.json"
+        }
+      ]
     }
   ],
   "documents": [
@@ -438,19 +565,31 @@
       "title": "Report of Investigation (ROI)",
       "type": "ROI",
       "description": "T5 ROI transmitted 2026-01-27",
-      "url": "documents/doha-record.json"
+      "url": null
     },
     {
-      "title": "SF-86 (2025-09-08)",
+      "title": "SF-86 excerpt — Section 20A",
       "type": "SF-86",
-      "description": "Questionnaire for National Security Positions",
-      "url": "documents/doha-record.json"
+      "description": "Financial-record response, submitted 2025-09-08",
+      "url": "documents/SUBJ-001/sf86-section20a.json"
     },
     {
-      "title": "Credit reports (Mar/Jun 2026)",
+      "title": "TransUnion credit-file extract",
       "type": "Provider record",
-      "description": "TransUnion and Equifax pulls",
-      "url": "documents/doha-record.json"
+      "description": "Charged-off auto loan, reported 2026-06-20",
+      "url": "documents/SUBJ-001/credit-extract-20260620.json"
+    },
+    {
+      "title": "FinCEN SAR",
+      "type": "Provider record",
+      "description": "Structured remittances Jan-Mar 2026",
+      "url": "documents/SUBJ-001/sar-20260415.json"
+    },
+    {
+      "title": "CBP I-94 travel record",
+      "type": "Provider record",
+      "description": "Nigeria travel April 2026 (unreported)",
+      "url": "documents/SUBJ-001/travel-record-20260502.json"
     }
   ]
 }

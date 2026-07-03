@@ -16,6 +16,9 @@ AlertState = Literal["NEW", "IDENTITY_CONFIRMED", "VALIDATED", "REFERRED",
 Applicability = Literal["FULL", "PARTIAL", "NONE"]
 CoverageStatus = Literal["COMPLETE", "PENDING", "NOT_REQUIRED"]
 AdjAction = Literal["GRANT", "GRANT_WITH_EXCEPTION", "LOI", "SOR", "DENY"]
+DocType = Literal["POLICE_REPORT", "CREDIT_REPORT", "SAR", "RAPBACK_NOTIFICATION",
+                  "SF86_EXCERPT", "TRAVEL_RECORD", "INCIDENT_REPORT"]
+EvidenceType = Literal["ALERT", "RECORD_CHECK", "DOCUMENT"]
 
 
 class SubjectSummary(BaseModel):
@@ -87,14 +90,27 @@ class TimelineEvent(BaseModel):
     note: Optional[str] = None
 
 
+class WholePersonEvidence(BaseModel):
+    type: EvidenceType
+    ref: str      # ALERT: alert id; RECORD_CHECK: recordCheck item; DOCUMENT: document url
+    label: str
+
+
 class WholePersonFactor(BaseModel):
     factor: str
     assessment: str
+    evidence: list[WholePersonEvidence] = []
 
 
-class CoverageItem(BaseModel):
+class RecordCheck(BaseModel):
     item: str
     status: CoverageStatus
+    provider: str
+    requestedDate: str
+    completedDate: Optional[str] = None
+    scope: str
+    resultSummary: str
+    documentUrl: Optional[str] = None
 
 
 class SF86Section(BaseModel):
@@ -122,7 +138,7 @@ class RoiEntry(BaseModel):
 
 
 class Investigation(BaseModel):
-    coverage: list[CoverageItem]
+    recordChecks: list[RecordCheck]
     sf86Sections: list[SF86Section]
     interviews: list[Interview]
     roiEntries: list[RoiEntry]
@@ -170,6 +186,11 @@ class PriorAdjudication(BaseModel):
     reference: Optional[str] = None
 
 
+class AlertDocument(BaseModel):
+    title: str
+    url: str
+
+
 class CVAlert(BaseModel):
     id: str
     subjectId: str
@@ -184,7 +205,7 @@ class CVAlert(BaseModel):
     identityMatch: IdentityMatch
     threshold: Threshold
     priorAdjudication: PriorAdjudication
-    documentUrl: Optional[str] = None
+    documents: list[AlertDocument] = []
 
 
 class Document(BaseModel):
@@ -203,6 +224,33 @@ class SourceDocument(BaseModel):
     judge: Optional[str] = None
     sourceUrl: Optional[str] = None
     fullText: str
+
+
+class DocField(BaseModel):
+    label: str
+    value: str
+
+
+class DocSection(BaseModel):
+    heading: str
+    body: str
+
+
+class DocTransaction(BaseModel):
+    date: str
+    type: str
+    amount: str
+
+
+class GeneratedDocument(BaseModel):
+    docType: DocType
+    title: str
+    provider: str
+    receivedDate: str
+    subjectId: str
+    fields: list[DocField]
+    sections: list[DocSection] = []
+    transactions: list[DocTransaction] = []
 
 
 class CaseDetail(BaseModel):

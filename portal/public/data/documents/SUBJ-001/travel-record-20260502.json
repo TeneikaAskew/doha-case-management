@@ -1,0 +1,44 @@
+{
+  "docType": "TRAVEL_RECORD",
+  "title": "I-94 border crossing record — Nigeria",
+  "provider": "CBP I-94 Foreign Travel",
+  "receivedDate": "2026-05-02",
+  "subjectId": "SUBJ-001",
+  "fields": [
+    {
+      "label": "Traveler",
+      "value": "OKAFOR, DANIEL R"
+    },
+    {
+      "label": "Travel document",
+      "value": "5310xxxx"
+    },
+    {
+      "label": "Carrier",
+      "value": "Lufthansa LH 568"
+    },
+    {
+      "label": "Departure",
+      "value": "2026-04-11 (IAD)"
+    },
+    {
+      "label": "Arrival abroad",
+      "value": "2026-04-12 (LOS)"
+    },
+    {
+      "label": "Destination",
+      "value": "Nigeria"
+    },
+    {
+      "label": "Return to U.S.",
+      "value": "2026-04-25 (IAD)"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Record detail",
+      "body": "Arrival/departure record pair matched by travel-document number. No corresponding foreign-travel report on file with the FSO (SEAD-3 reporting requirement)."
+    }
+  ],
+  "transactions": []
+}

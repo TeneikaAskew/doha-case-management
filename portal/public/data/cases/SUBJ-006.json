@@ -31,8 +31,49 @@
   ],
   "wholePerson": [
     {
-      "factor": "Overall record",
-      "assessment": "Single-issue case"
+      "factor": "Nature, extent, and seriousness of the conduct",
+      "assessment": "Single developed issue: Employment application omitted a 2022 termination for cause.",
+      "evidence": []
+    },
+    {
+      "factor": "Circumstances surrounding the conduct",
+      "assessment": "Single-issue case; no additional adverse factors developed.",
+      "evidence": []
+    },
+    {
+      "factor": "Frequency and recency of the conduct",
+      "assessment": "Single-issue case; no additional adverse factors developed.",
+      "evidence": []
+    },
+    {
+      "factor": "Individual's age and maturity at the time of the conduct",
+      "assessment": "Single-issue case; no additional adverse factors developed.",
+      "evidence": []
+    },
+    {
+      "factor": "Extent to which participation is voluntary",
+      "assessment": "Single-issue case; no additional adverse factors developed.",
+      "evidence": []
+    },
+    {
+      "factor": "Presence or absence of rehabilitation and other permanent behavioral changes",
+      "assessment": "Single-issue case; no additional adverse factors developed.",
+      "evidence": []
+    },
+    {
+      "factor": "Motivation for the conduct",
+      "assessment": "Single-issue case; no additional adverse factors developed.",
+      "evidence": []
+    },
+    {
+      "factor": "Potential for pressure, coercion, exploitation, or duress",
+      "assessment": "Single-issue case; no additional adverse factors developed.",
+      "evidence": []
+    },
+    {
+      "factor": "Likelihood of continuation or recurrence",
+      "assessment": "Single-issue case; no additional adverse factors developed.",
+      "evidence": []
     }
   ],
   "guidelines": [
@@ -90,14 +131,26 @@
     }
   ],
   "investigation": {
-    "coverage": [
+    "recordChecks": [
       {
         "item": "Automated record checks",
-        "status": "COMPLETE"
+        "status": "COMPLETE",
+        "provider": "FBI CJIS / NCIC + Rap Back",
+        "requestedDate": "2026-05-02",
+        "completedDate": "2026-05-15",
+        "scope": "NCIC criminal history, tri-bureau credit, DMV",
+        "resultSummary": "Employment application omitted a 2022 termination for cause.",
+        "documentUrl": null
       },
       {
         "item": "Tier-required fieldwork",
-        "status": "PENDING"
+        "status": "PENDING",
+        "provider": "DCSA field operations",
+        "requestedDate": "2026-05-02",
+        "completedDate": null,
+        "scope": "Tier-scoped interviews and local records",
+        "resultSummary": "Fieldwork in progress.",
+        "documentUrl": null
       }
     ],
     "sf86Sections": [
@@ -131,7 +184,7 @@
       "title": "SF-86",
       "type": "SF-86",
       "description": "Questionnaire on file",
-      "url": "documents/doha-record.json"
+      "url": null
     }
   ]
 }

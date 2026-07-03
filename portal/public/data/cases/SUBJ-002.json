@@ -20,7 +20,7 @@
     "dob": "1992-11-02",
     "address": "88 Quarry Ridge Rd, Chesapeake, VA 23320"
   },
-  "aiSummary": "CV-enrolled Secret holder with a fingerprint-verified DUI arrest on 2026-06-21 (Guideline J/G). Single incident, disposition pending; prior record clean. Analyst validation pending; recommend request for police report and command notification rather than immediate suspension.",
+  "aiSummary": "CV-enrolled Secret holder with a fingerprint-verified DUI arrest on 2026-06-21 (Guideline J/G). Police report retrieved 2026-06-30: single incident, BAC 0.18%, disposition pending arraignment 2026-07-14; prior record clean. Recommend LOI and command notification rather than immediate eligibility action.",
   "timeline": [
     {
       "date": "2023-04-10",
@@ -49,24 +49,101 @@
       "role": "CV",
       "event": "Rap Back criminal alert received",
       "note": "DUI arrest 2026-06-21"
+    },
+    {
+      "date": "2026-06-30",
+      "actor": "S. Whitfield",
+      "role": "Investigator",
+      "event": "Police report retrieved",
+      "note": "Chesapeake PD report 26-044812"
     }
   ],
   "wholePerson": [
     {
       "factor": "Nature, extent, and seriousness of the conduct",
-      "assessment": "Single DUI arrest; serious but isolated."
+      "assessment": "Single DUI arrest with elevated BAC (0.18%); serious but isolated.",
+      "evidence": [
+        {
+          "type": "ALERT",
+          "ref": "ALERT-201",
+          "label": "Rap Back DUI alert"
+        },
+        {
+          "type": "DOCUMENT",
+          "ref": "documents/SUBJ-002/police-report-26-044812.json",
+          "label": "Chesapeake PD arrest report"
+        }
+      ]
     },
     {
-      "factor": "Frequency and recency",
-      "assessment": "First incident; very recent."
+      "factor": "Circumstances surrounding the conduct",
+      "assessment": "Off-duty, single-vehicle stop; no accident or injury.",
+      "evidence": [
+        {
+          "type": "DOCUMENT",
+          "ref": "documents/SUBJ-002/police-report-26-044812.json",
+          "label": "Chesapeake PD arrest report"
+        }
+      ]
     },
     {
-      "factor": "Rehabilitation and behavioral changes",
-      "assessment": "Unknown — disposition pending."
+      "factor": "Frequency and recency of the conduct",
+      "assessment": "First incident; very recent (2026-06-21).",
+      "evidence": [
+        {
+          "type": "DOCUMENT",
+          "ref": "documents/SUBJ-002/rapback-20260623.json",
+          "label": "Rap Back notification"
+        }
+      ]
+    },
+    {
+      "factor": "Individual's age and maturity at the time of the conduct",
+      "assessment": "Age 33 at incident; fully accountable adult.",
+      "evidence": []
+    },
+    {
+      "factor": "Extent to which participation is voluntary",
+      "assessment": "Conduct voluntary.",
+      "evidence": []
+    },
+    {
+      "factor": "Presence or absence of rehabilitation and other permanent behavioral changes",
+      "assessment": "Unknown — disposition pending; no treatment enrollment evidenced yet.",
+      "evidence": [
+        {
+          "type": "RECORD_CHECK",
+          "ref": "Court disposition monitoring",
+          "label": "Court disposition monitoring"
+        }
+      ]
+    },
+    {
+      "factor": "Motivation for the conduct",
+      "assessment": "No indication of underlying pattern; single-night lapse per report.",
+      "evidence": [
+        {
+          "type": "DOCUMENT",
+          "ref": "documents/SUBJ-002/police-report-26-044812.json",
+          "label": "Chesapeake PD arrest report"
+        }
+      ]
+    },
+    {
+      "factor": "Potential for pressure, coercion, exploitation, or duress",
+      "assessment": "Low; incident already self-reported to FSO.",
+      "evidence": []
     },
     {
       "factor": "Likelihood of continuation or recurrence",
-      "assessment": "Indeterminate pending court outcome and any treatment."
+      "assessment": "Indeterminate pending court outcome and any treatment.",
+      "evidence": [
+        {
+          "type": "RECORD_CHECK",
+          "ref": "Court disposition monitoring",
+          "label": "Court disposition monitoring"
+        }
+      ]
     }
   ],
   "guidelines": [
@@ -176,14 +253,36 @@
     }
   ],
   "investigation": {
-    "coverage": [
+    "recordChecks": [
       {
         "item": "T3 automated record checks (2023)",
-        "status": "COMPLETE"
+        "status": "COMPLETE",
+        "provider": "FBI CJIS / NCIC + Rap Back",
+        "requestedDate": "2023-02-01",
+        "completedDate": "2023-03-20",
+        "scope": "NCIC criminal history, tri-bureau credit, DMV — T3 initial investigation",
+        "resultSummary": "All checks clear at adjudication (2023).",
+        "documentUrl": null
       },
       {
         "item": "Police report retrieval (2026 arrest)",
-        "status": "PENDING"
+        "status": "COMPLETE",
+        "provider": "State & local courts",
+        "requestedDate": "2026-06-24",
+        "completedDate": "2026-06-30",
+        "scope": "Chesapeake PD incident/arrest report 26-044812 for 2026-06-21 DUI arrest",
+        "resultSummary": "Report received: BAC 0.18%, first offense, arraignment 2026-07-14.",
+        "documentUrl": "documents/SUBJ-002/police-report-26-044812.json"
+      },
+      {
+        "item": "Court disposition monitoring",
+        "status": "PENDING",
+        "provider": "State & local courts",
+        "requestedDate": "2026-06-30",
+        "completedDate": null,
+        "scope": "Chesapeake General District Court docket watch",
+        "resultSummary": "Arraignment scheduled 2026-07-14; disposition pending.",
+        "documentUrl": null
       }
     ],
     "sf86Sections": [
@@ -262,7 +361,16 @@
         "previouslyAdjudicated": false,
         "reference": null
       },
-      "documentUrl": "documents/doha-record.json"
+      "documents": [
+        {
+          "title": "Rap Back notification",
+          "url": "documents/SUBJ-002/rapback-20260623.json"
+        },
+        {
+          "title": "Chesapeake PD arrest report",
+          "url": "documents/SUBJ-002/police-report-26-044812.json"
+        }
+      ]
     },
     {
       "id": "ALERT-202",
@@ -301,7 +409,12 @@
         "previouslyAdjudicated": true,
         "reference": "CV disposition 2025-11-20: no action"
       },
-      "documentUrl": "documents/doha-record.json"
+      "documents": [
+        {
+          "title": "TransUnion credit-file extract",
+          "url": "documents/SUBJ-002/credit-extract-20251012.json"
+        }
+      ]
     }
   ],
   "documents": [
@@ -309,13 +422,25 @@
       "title": "Rap Back notification",
       "type": "Provider record",
       "description": "FBI arrest notification 2026-06-23",
-      "url": "documents/doha-record.json"
+      "url": "documents/SUBJ-002/rapback-20260623.json"
     },
     {
-      "title": "SF-86 (2023-01-15)",
+      "title": "Chesapeake PD arrest report",
+      "type": "Provider record",
+      "description": "Report 26-044812, retrieved 2026-06-30",
+      "url": "documents/SUBJ-002/police-report-26-044812.json"
+    },
+    {
+      "title": "TransUnion credit-file extract",
+      "type": "Provider record",
+      "description": "Resolved 2025 retail delinquency",
+      "url": "documents/SUBJ-002/credit-extract-20251012.json"
+    },
+    {
+      "title": "SF-86 excerpt — Section 22",
       "type": "SF-86",
-      "description": "Original T3 questionnaire",
-      "url": "documents/doha-record.json"
+      "description": "Police-record response, submitted 2023-01-15",
+      "url": "documents/SUBJ-002/sf86-section22.json"
     }
   ]
 }

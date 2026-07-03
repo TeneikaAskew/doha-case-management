@@ -43,7 +43,12 @@
         "previouslyAdjudicated": false,
         "reference": null
       },
-      "documentUrl": "documents/doha-record.json"
+      "documents": [
+        {
+          "title": "TransUnion credit-file extract",
+          "url": "documents/SUBJ-001/credit-extract-20260620.json"
+        }
+      ]
     },
     {
       "id": "ALERT-102",
@@ -82,7 +87,12 @@
         "previouslyAdjudicated": false,
         "reference": null
       },
-      "documentUrl": "documents/doha-record.json"
+      "documents": [
+        {
+          "title": "CBP I-94 travel record",
+          "url": "documents/SUBJ-001/travel-record-20260502.json"
+        }
+      ]
     },
     {
       "id": "ALERT-201",
@@ -127,7 +137,16 @@
         "previouslyAdjudicated": false,
         "reference": null
       },
-      "documentUrl": "documents/doha-record.json"
+      "documents": [
+        {
+          "title": "Rap Back notification",
+          "url": "documents/SUBJ-002/rapback-20260623.json"
+        },
+        {
+          "title": "Chesapeake PD arrest report",
+          "url": "documents/SUBJ-002/police-report-26-044812.json"
+        }
+      ]
     },
     {
       "id": "ALERT-202",
@@ -166,7 +185,12 @@
         "previouslyAdjudicated": true,
         "reference": "CV disposition 2025-11-20: no action"
       },
-      "documentUrl": "documents/doha-record.json"
+      "documents": [
+        {
+          "title": "TransUnion credit-file extract",
+          "url": "documents/SUBJ-002/credit-extract-20251012.json"
+        }
+      ]
     },
     {
       "id": "ALERT-313",
@@ -177,7 +201,7 @@
       "priorityScore": 68,
       "state": "NEW",
       "receivedDate": "2026-06-18",
-      "provider": "LexisNexis",
+      "provider": "DISS / prior adjudications",
       "description": "One security infraction: classified document left unsecured (2025).",
       "identityMatch": {
         "confidence": 0.93,
@@ -205,7 +229,12 @@
         "previouslyAdjudicated": false,
         "reference": null
       },
-      "documentUrl": "documents/doha-record.json"
+      "documents": [
+        {
+          "title": "Security incident report",
+          "url": "documents/SUBJ-013/incident-report-2025-0142.json"
+        }
+      ]
     },
     {
       "id": "ALERT-315",
@@ -244,7 +273,12 @@
         "previouslyAdjudicated": false,
         "reference": null
       },
-      "documentUrl": "documents/doha-record.json"
+      "documents": [
+        {
+          "title": "TransUnion credit-file extract",
+          "url": "documents/SUBJ-015/credit-extract-20260618.json"
+        }
+      ]
     }
   ]
 }

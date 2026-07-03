@@ -1,0 +1,52 @@
+{
+  "docType": "CREDIT_REPORT",
+  "title": "Credit-file extract — Meridian Auto Finance",
+  "provider": "TransUnion",
+  "receivedDate": "2026-06-20",
+  "subjectId": "SUBJ-001",
+  "fields": [
+    {
+      "label": "Bureau",
+      "value": "TransUnion"
+    },
+    {
+      "label": "Account",
+      "value": "Meridian Auto Finance"
+    },
+    {
+      "label": "Account number",
+      "value": "****3308"
+    },
+    {
+      "label": "Account type",
+      "value": "Auto loan"
+    },
+    {
+      "label": "Balance",
+      "value": "$12,400"
+    },
+    {
+      "label": "Past due",
+      "value": "$12,400"
+    },
+    {
+      "label": "Days past due",
+      "value": "120+"
+    },
+    {
+      "label": "Date reported",
+      "value": "2026-06-20"
+    },
+    {
+      "label": "Payment status",
+      "value": "Charged off / collection"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Account history summary",
+      "body": "Opened 2022-08; current through 2024-03; delinquency began during 2024 employment gap and account charged off 2026-05. Placed with Harborline Recovery LLC 2026-06."
+    }
+  ],
+  "transactions": []
+}

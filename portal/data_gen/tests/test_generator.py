@@ -68,21 +68,70 @@ def test_source_document_validates(out):
     schemas.SourceDocument.model_validate(data)
 
 
-def test_every_document_and_alert_points_to_source_document(out):
+def _load_case(out_dir, subj_id):
+    return schemas.CaseDetail.model_validate(
+        json.loads((out_dir / "cases" / f"{subj_id}.json").read_text(encoding="utf-8")))
+
+
+def _provider_names(out_dir):
+    providers = schemas.ProvidersFile.model_validate(
+        json.loads((out_dir / "providers.json").read_text(encoding="utf-8")))
+    return {p.name for p in providers.providers}
+
+
+def test_typed_documents_exist_and_validate(out):
     out_dir, _ = out
-    doc_url = "documents/doha-record.json"
-    case_files = sorted((out_dir / "cases").glob("*.json"))
-    for f in case_files:
+    doc_files = sorted((out_dir / "documents").glob("SUBJ-*/*.json"))
+    assert doc_files, "expected per-subject generated documents"
+    for f in doc_files:
+        doc = schemas.GeneratedDocument.model_validate(
+            json.loads(f.read_text(encoding="utf-8")))
+        assert doc.subjectId == f.parent.name
+        assert doc.fields
+
+
+def test_every_alert_document_and_record_check_resolves(out):
+    out_dir, _ = out
+    names = _provider_names(out_dir)
+    for f in sorted((out_dir / "cases").glob("*.json")):
         case = schemas.CaseDetail.model_validate(json.loads(f.read_text(encoding="utf-8")))
-        for d in case.documents:
-            assert d.url == doc_url
         for a in case.alerts:
-            assert a.documentUrl == doc_url
-    alerts = schemas.AlertsFile.model_validate(
-        json.loads((out_dir / "alerts.json").read_text(encoding="utf-8")))
-    assert alerts.alerts
-    for a in alerts.alerts:
-        assert a.documentUrl == doc_url
+            assert a.documents, f"{a.id} has no source documents"
+            for d in a.documents:
+                assert (out_dir / d.url).is_file(), f"missing {d.url}"
+        for rc in case.investigation.recordChecks:
+            if rc.documentUrl:
+                assert (out_dir / rc.documentUrl).is_file(), f"missing {rc.documentUrl}"
+                assert rc.provider in names, f"non-canonical provider {rc.provider}"
+            if rc.status == "COMPLETE":
+                assert rc.completedDate
+
+
+def test_whole_person_has_nine_canonical_factors(out):
+    out_dir, _ = out
+    import documents as docsmod
+    for f in sorted((out_dir / "cases").glob("*.json")):
+        case = schemas.CaseDetail.model_validate(json.loads(f.read_text(encoding="utf-8")))
+        assert [w.factor for w in case.wholePerson] == docsmod.WHOLE_PERSON_FACTORS
+        for w in case.wholePerson:
+            for ev in w.evidence:
+                if ev.type == "DOCUMENT":
+                    assert (out_dir / ev.ref).is_file()
+                if ev.type == "ALERT":
+                    assert ev.ref in {a.id for a in case.alerts}
+
+
+def test_hero2_police_report_wiring(out):
+    out_dir, _ = out
+    case = _load_case(out_dir, "SUBJ-002")
+    pr = next(rc for rc in case.investigation.recordChecks
+              if "Police report" in rc.item)
+    assert pr.status == "COMPLETE" and pr.documentUrl
+    doc = schemas.GeneratedDocument.model_validate(
+        json.loads((out_dir / pr.documentUrl).read_text(encoding="utf-8")))
+    assert doc.docType == "POLICE_REPORT"
+    alert = next(a for a in case.alerts if a.id == "ALERT-201")
+    assert {d.url for d in alert.documents} >= {pr.documentUrl}
 
 
 def test_case_links_file_validates_and_covers_precedents(out):
