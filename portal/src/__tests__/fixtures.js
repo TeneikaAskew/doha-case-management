@@ -23,3 +23,50 @@ export const ALERTS = [
     threshold: { rule: 'Delinquent debt > $5,000', met: true, detail: 'Exceeds threshold.' },
     priorAdjudication: { previouslyAdjudicated: false, reference: null } },
 ];
+
+export const CASE_001 = {
+  subject: { ...SUBJECTS[0], ssnMasked: '***-**-4821', dob: '1988-03-14',
+    address: '1427 Birch Hollow Ct, Manassas, VA 20109' },
+  aiSummary: 'Significant unresolved financial concerns under Guideline F.',
+  timeline: [
+    { date: '2026-01-27', actor: 'S. Whitfield', role: 'Investigator',
+      event: 'ROI transmitted', note: 'Financial issues flagged' },
+  ],
+  wholePerson: [
+    { factor: 'Frequency and recency', assessment: 'Ongoing; newest alert June 2026.' },
+  ],
+  guidelines: [
+    { code: 'F', name: 'Financial Considerations', severity: 'C',
+      aiReasoning: 'AG ¶ 19(a) established by the credit record.',
+      evidence: [{ provider: 'TransUnion', type: 'Credit report',
+        description: '$47,300 delinquent across 5 accounts', date: '2026-03-15' }],
+      disqualifiers: [{ code: 'AG ¶ 19(a)', description: 'Inability to satisfy debts',
+        evidence: '$47,300 delinquent' }],
+      mitigators: [{ code: 'AG ¶ 20(b)', description: 'Conditions beyond control',
+        applicability: 'PARTIAL', reasoning: 'Job loss involuntary; no repayment since.' }],
+      precedents: [{ caseNumber: '20-01001', outcome: 'DENIED', year: 2021,
+        relevance: 'DOHA hearing decision involving Guideline F' }] },
+  ],
+  investigation: {
+    coverage: [{ item: 'Subject interview (ESI)', status: 'COMPLETE' }],
+    sf86Sections: [
+      { section: 'Section 20A', title: 'Financial record — delinquencies',
+        subjectReport: 'Two delinquent accounts totaling about $9,000',
+        matchedResult: 'Five delinquent accounts totaling $47,300',
+        discrepancy: true, providers: ['TransUnion', 'Equifax'], guideline: 'F' },
+    ],
+    interviews: [{ date: '2025-11-19', type: 'Enhanced Subject Interview',
+      interviewer: 'S. Whitfield', summary: 'Subject understated debt total.' }],
+    roiEntries: [{ date: '2026-01-27', investigator: 'S. Whitfield', item: 'Financial',
+      text: 'Credit data establishes sustained delinquency.' }],
+  },
+  adjudication: {
+    recommendation: { action: 'SOR', aiSuggested: true,
+      rationale: 'Unmitigated F concerns with candor issues.' },
+    sorDraft: 'STATEMENT OF REASONS (DRAFT) — Guideline F: …',
+    decisions: [],
+  },
+  alerts: ALERTS,
+  documents: [{ title: 'Report of Investigation (ROI)', type: 'ROI',
+    description: 'T5 ROI transmitted 2026-01-27', url: null }],
+};
