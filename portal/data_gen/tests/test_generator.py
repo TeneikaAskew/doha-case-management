@@ -36,7 +36,9 @@ def test_every_case_file_validates(out):
     assert len(case_files) == 15
     for f in case_files:
         case = schemas.CaseDetail.model_validate(json.loads(f.read_text(encoding="utf-8")))
-        assert case.subject.ssnMasked.startswith("***-**-")
+        # Fictional 900-series SSNs only (never issued by SSA).
+        assert case.subject.ssn.startswith("9") and len(case.subject.ssn) == 11
+        assert case.subject.addressHistory and case.subject.employmentHistory
 
 
 def test_hero1_depth(out):

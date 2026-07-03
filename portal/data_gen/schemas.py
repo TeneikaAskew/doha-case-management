@@ -37,10 +37,37 @@ class SubjectSummary(BaseModel):
     openAlerts: int = Field(ge=0)
 
 
-class SubjectProfile(SubjectSummary):
-    ssnMasked: str
-    dob: str
+class AddressEntry(BaseModel):
     address: str
+    fromDate: str
+    toDate: Optional[str] = None  # None = current
+
+
+class EmploymentEntry(BaseModel):
+    employer: str
+    title: str
+    location: str
+    fromDate: str
+    toDate: Optional[str] = None  # None = current
+
+
+class SubjectProfile(SubjectSummary):
+    ssn: str  # fictional; 900-series area numbers are never issued by SSA
+    dob: str
+    placeOfBirth: str
+    citizenship: str
+    gender: str
+    race: str
+    height: str
+    weight: str
+    eyeColor: str
+    hairColor: str
+    maritalStatus: str
+    phone: str
+    email: str
+    address: str
+    addressHistory: list[AddressEntry]
+    employmentHistory: list[EmploymentEntry]
 
 
 class EvidenceItem(BaseModel):

@@ -13,9 +13,48 @@
     "daysInStage": 510,
     "cvEnrolled": true,
     "openAlerts": 0,
-    "ssnMasked": "***-**-1518",
+    "ssn": "934-28-1518",
     "dob": "1994-06-15",
-    "address": "114 Demo Street, Arlington, VA 22204"
+    "placeOfBirth": "Columbus, OH",
+    "citizenship": "United States",
+    "gender": "Female",
+    "race": "Asian",
+    "height": "5' 7\"",
+    "weight": "210 lb",
+    "eyeColor": "Green",
+    "hairColor": "Blond",
+    "maritalStatus": "Divorced",
+    "phone": "(703) 555-2014",
+    "email": "laura.ferris@contractor.example",
+    "address": "114 Demo Street, Arlington, VA 22204",
+    "addressHistory": [
+      {
+        "address": "114 Demo Street, Arlington, VA 22204",
+        "fromDate": "2021-04",
+        "toDate": null
+      },
+      {
+        "address": "414 Founders Way Apt 14, Alexandria, VA 22302",
+        "fromDate": "2016-07",
+        "toDate": "2021-04"
+      }
+    ],
+    "employmentHistory": [
+      {
+        "employer": "Meridian Defense Systems",
+        "title": "Budget Analyst",
+        "location": "Arlington, VA",
+        "fromDate": "2020-01",
+        "toDate": null
+      },
+      {
+        "employer": "Calvert Federal Services",
+        "title": "Associate Budget Analyst",
+        "location": "Falls Church, VA",
+        "fromDate": "2015-06",
+        "toDate": "2020-01"
+      }
+    ]
   },
   "aiSummary": "No adverse information developed; routine processing.",
   "timeline": [

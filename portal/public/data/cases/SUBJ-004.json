@@ -13,9 +13,48 @@
     "daysInStage": 3,
     "cvEnrolled": false,
     "openAlerts": 0,
-    "ssnMasked": "***-**-1148",
+    "ssn": "924-38-1148",
     "dob": "1984-05-14",
-    "address": "104 Demo Street, Arlington, VA 22204"
+    "placeOfBirth": "Tacoma, WA",
+    "citizenship": "United States",
+    "gender": "Female",
+    "race": "White",
+    "height": "5' 6\"",
+    "weight": "160 lb",
+    "eyeColor": "Brown",
+    "hairColor": "Brown",
+    "maritalStatus": "Married",
+    "phone": "(703) 555-2004",
+    "email": "alicia.grant@contractor.example",
+    "address": "104 Demo Street, Arlington, VA 22204",
+    "addressHistory": [
+      {
+        "address": "104 Demo Street, Arlington, VA 22204",
+        "fromDate": "2021-04",
+        "toDate": null
+      },
+      {
+        "address": "404 Founders Way Apt 4, Alexandria, VA 22302",
+        "fromDate": "2016-07",
+        "toDate": "2021-04"
+      }
+    ],
+    "employmentHistory": [
+      {
+        "employer": "Meridian Defense Systems",
+        "title": "Software Developer",
+        "location": "Arlington, VA",
+        "fromDate": "2020-01",
+        "toDate": null
+      },
+      {
+        "employer": "Calvert Federal Services",
+        "title": "Associate Software Developer",
+        "location": "Falls Church, VA",
+        "fromDate": "2015-06",
+        "toDate": "2020-01"
+      }
+    ]
   },
   "aiSummary": "No adverse information developed; routine processing.",
   "timeline": [

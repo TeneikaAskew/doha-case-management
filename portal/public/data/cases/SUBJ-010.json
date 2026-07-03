@@ -13,9 +13,48 @@
     "daysInStage": 12,
     "cvEnrolled": false,
     "openAlerts": 0,
-    "ssnMasked": "***-**-1370",
+    "ssn": "930-80-1370",
     "dob": "1990-02-11",
-    "address": "110 Demo Street, Arlington, VA 22200"
+    "placeOfBirth": "Tacoma, WA",
+    "citizenship": "United States",
+    "gender": "Female",
+    "race": "Asian",
+    "height": "5' 3\"",
+    "weight": "190 lb",
+    "eyeColor": "Green",
+    "hairColor": "Blond",
+    "maritalStatus": "Married",
+    "phone": "(703) 555-2010",
+    "email": "fatima.aziz@contractor.example",
+    "address": "110 Demo Street, Arlington, VA 22200",
+    "addressHistory": [
+      {
+        "address": "110 Demo Street, Arlington, VA 22200",
+        "fromDate": "2021-04",
+        "toDate": null
+      },
+      {
+        "address": "410 Founders Way Apt 10, Alexandria, VA 22302",
+        "fromDate": "2016-07",
+        "toDate": "2021-04"
+      }
+    ],
+    "employmentHistory": [
+      {
+        "employer": "Meridian Defense Systems",
+        "title": "Linguist",
+        "location": "Arlington, VA",
+        "fromDate": "2020-01",
+        "toDate": null
+      },
+      {
+        "employer": "Calvert Federal Services",
+        "title": "Associate Linguist",
+        "location": "Falls Church, VA",
+        "fromDate": "2015-06",
+        "toDate": "2020-01"
+      }
+    ]
   },
   "aiSummary": "No adverse information developed; routine processing.",
   "timeline": [

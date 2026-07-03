@@ -13,9 +13,53 @@
     "daysInStage": 22,
     "cvEnrolled": false,
     "openAlerts": 0,
-    "ssnMasked": "***-**-2210",
+    "ssn": "941-62-2210",
     "dob": "1996-07-30",
-    "address": "510 Alder Grove Ln, Columbia, MD 21044"
+    "placeOfBirth": "Edison, New Jersey",
+    "citizenship": "United States (by birth)",
+    "gender": "Female",
+    "race": "Asian",
+    "height": "5' 4\"",
+    "weight": "128 lb",
+    "eyeColor": "Brown",
+    "hairColor": "Black",
+    "maritalStatus": "Never married",
+    "phone": "(410) 555-0129",
+    "email": "priya.shah96@example.com",
+    "address": "510 Alder Grove Ln, Columbia, MD 21044",
+    "addressHistory": [
+      {
+        "address": "510 Alder Grove Ln, Columbia, MD 21044",
+        "fromDate": "2022-07",
+        "toDate": null
+      },
+      {
+        "address": "3901 Falls Rd Apt 316, Baltimore, MD 21211",
+        "fromDate": "2018-08",
+        "toDate": "2022-07"
+      },
+      {
+        "address": "12 Coventry Ct, Edison, NJ 08820",
+        "fromDate": "1996-07",
+        "toDate": "2018-08"
+      }
+    ],
+    "employmentHistory": [
+      {
+        "employer": "Chesapeake Analytics Group",
+        "title": "Financial Analyst",
+        "location": "Columbia, MD",
+        "fromDate": "2022-06",
+        "toDate": null
+      },
+      {
+        "employer": "T. Rowe Price",
+        "title": "Junior Financial Analyst",
+        "location": "Baltimore, MD",
+        "fromDate": "2018-07",
+        "toDate": "2022-06"
+      }
+    ]
   },
   "aiSummary": "Clean T3 case: all automated checks returned clear, no discrepancies between SF-86 and record sources, full coverage complete except one employment verification in progress. AI triage classifies this case as a fast-track candidate for favorable eAdjudication.",
   "timeline": [

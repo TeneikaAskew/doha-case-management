@@ -13,9 +13,48 @@
     "daysInStage": 340,
     "cvEnrolled": true,
     "openAlerts": 0,
-    "ssnMasked": "***-**-1444",
+    "ssn": "932-14-1444",
     "dob": "1992-04-13",
-    "address": "112 Demo Street, Arlington, VA 22202"
+    "placeOfBirth": "Richmond, VA",
+    "citizenship": "United States",
+    "gender": "Female",
+    "race": "White",
+    "height": "5' 5\"",
+    "weight": "200 lb",
+    "eyeColor": "Brown",
+    "hairColor": "Brown",
+    "maritalStatus": "Single",
+    "phone": "(703) 555-2012",
+    "email": "monica.reyes@contractor.example",
+    "address": "112 Demo Street, Arlington, VA 22202",
+    "addressHistory": [
+      {
+        "address": "112 Demo Street, Arlington, VA 22202",
+        "fromDate": "2021-04",
+        "toDate": null
+      },
+      {
+        "address": "412 Founders Way Apt 12, Alexandria, VA 22302",
+        "fromDate": "2016-07",
+        "toDate": "2021-04"
+      }
+    ],
+    "employmentHistory": [
+      {
+        "employer": "Meridian Defense Systems",
+        "title": "Supply Chain Manager",
+        "location": "Arlington, VA",
+        "fromDate": "2020-01",
+        "toDate": null
+      },
+      {
+        "employer": "Calvert Federal Services",
+        "title": "Associate Supply Chain Manager",
+        "location": "Falls Church, VA",
+        "fromDate": "2015-06",
+        "toDate": "2020-01"
+      }
+    ]
   },
   "aiSummary": "No adverse information developed; routine processing.",
   "timeline": [

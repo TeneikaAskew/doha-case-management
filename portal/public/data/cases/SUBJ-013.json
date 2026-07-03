@@ -15,9 +15,48 @@
     "daysInStage": 120,
     "cvEnrolled": true,
     "openAlerts": 1,
-    "ssnMasked": "***-**-1481",
+    "ssn": "933-21-1481",
     "dob": "1993-05-14",
-    "address": "113 Demo Street, Arlington, VA 22203"
+    "placeOfBirth": "Baltimore, MD",
+    "citizenship": "United States",
+    "gender": "Male",
+    "race": "Black or African American",
+    "height": "6' 6\"",
+    "weight": "205 lb",
+    "eyeColor": "Blue",
+    "hairColor": "Black",
+    "maritalStatus": "Married",
+    "phone": "(703) 555-2013",
+    "email": "samuel.boateng@contractor.example",
+    "address": "113 Demo Street, Arlington, VA 22203",
+    "addressHistory": [
+      {
+        "address": "113 Demo Street, Arlington, VA 22203",
+        "fromDate": "2021-04",
+        "toDate": null
+      },
+      {
+        "address": "413 Founders Way Apt 13, Alexandria, VA 22302",
+        "fromDate": "2016-07",
+        "toDate": "2021-04"
+      }
+    ],
+    "employmentHistory": [
+      {
+        "employer": "Meridian Defense Systems",
+        "title": "Systems Administrator",
+        "location": "Arlington, VA",
+        "fromDate": "2020-01",
+        "toDate": null
+      },
+      {
+        "employer": "Calvert Federal Services",
+        "title": "Associate Systems Administrator",
+        "location": "Falls Church, VA",
+        "fromDate": "2015-06",
+        "toDate": "2020-01"
+      }
+    ]
   },
   "aiSummary": "One developed issue under Guideline K (Handling Protected Information); otherwise clear.",
   "timeline": [

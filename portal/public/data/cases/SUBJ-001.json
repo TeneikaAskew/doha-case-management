@@ -16,9 +16,60 @@
     "daysInStage": 41,
     "cvEnrolled": true,
     "openAlerts": 2,
-    "ssnMasked": "***-**-4821",
+    "ssn": "923-04-4821",
     "dob": "1988-03-14",
-    "address": "1427 Birch Hollow Ct, Manassas, VA 20109"
+    "placeOfBirth": "Lagos, Nigeria",
+    "citizenship": "United States (naturalized 2003)",
+    "gender": "Male",
+    "race": "Black or African American",
+    "height": "6' 1\"",
+    "weight": "205 lb",
+    "eyeColor": "Brown",
+    "hairColor": "Black",
+    "maritalStatus": "Married",
+    "phone": "(703) 555-0142",
+    "email": "d.okafor88@example.com",
+    "address": "1427 Birch Hollow Ct, Manassas, VA 20109",
+    "addressHistory": [
+      {
+        "address": "1427 Birch Hollow Ct, Manassas, VA 20109",
+        "fromDate": "2019-08",
+        "toDate": null
+      },
+      {
+        "address": "7605 Sudley Rd Apt 214, Manassas, VA 20109",
+        "fromDate": "2014-06",
+        "toDate": "2019-08"
+      },
+      {
+        "address": "2201 Wilson Blvd Apt 903, Arlington, VA 22201",
+        "fromDate": "2010-05",
+        "toDate": "2014-06"
+      }
+    ],
+    "employmentHistory": [
+      {
+        "employer": "Sentinel Dynamics LLC",
+        "title": "Senior Systems Engineer",
+        "location": "Chantilly, VA",
+        "fromDate": "2018-02",
+        "toDate": null
+      },
+      {
+        "employer": "Praxis Federal Solutions",
+        "title": "Systems Engineer",
+        "location": "Reston, VA",
+        "fromDate": "2013-01",
+        "toDate": "2018-02"
+      },
+      {
+        "employer": "George Mason University",
+        "title": "Research Assistant",
+        "location": "Fairfax, VA",
+        "fromDate": "2010-08",
+        "toDate": "2012-12"
+      }
+    ]
   },
   "aiSummary": "Significant unresolved financial concerns (Guideline F): $47,300 in delinquent debt across five accounts, with a new collection alert in June 2026. Foreign influence concerns (Guideline B): three family members resident in Nigeria, one employed by a state-owned enterprise, plus unreported April 2026 travel. SF-86 understated the delinquency, raising candor questions. Mitigation is partial at best; whole-person factors do not yet resolve the doubt.",
   "timeline": [

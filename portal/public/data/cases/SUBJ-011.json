@@ -13,9 +13,48 @@
     "daysInStage": 8,
     "cvEnrolled": false,
     "openAlerts": 0,
-    "ssnMasked": "***-**-1407",
+    "ssn": "931-87-1407",
     "dob": "1991-03-12",
-    "address": "111 Demo Street, Arlington, VA 22201"
+    "placeOfBirth": "Dayton, OH",
+    "citizenship": "United States",
+    "gender": "Male",
+    "race": "Hispanic or Latino",
+    "height": "6' 4\"",
+    "weight": "195 lb",
+    "eyeColor": "Hazel",
+    "hairColor": "Gray",
+    "maritalStatus": "Divorced",
+    "phone": "(703) 555-2011",
+    "email": "gregory.stone@contractor.example",
+    "address": "111 Demo Street, Arlington, VA 22201",
+    "addressHistory": [
+      {
+        "address": "111 Demo Street, Arlington, VA 22201",
+        "fromDate": "2021-04",
+        "toDate": null
+      },
+      {
+        "address": "411 Founders Way Apt 11, Alexandria, VA 22302",
+        "fromDate": "2016-07",
+        "toDate": "2021-04"
+      }
+    ],
+    "employmentHistory": [
+      {
+        "employer": "Meridian Defense Systems",
+        "title": "Security Escort",
+        "location": "Arlington, VA",
+        "fromDate": "2020-01",
+        "toDate": null
+      },
+      {
+        "employer": "Calvert Federal Services",
+        "title": "Associate Security Escort",
+        "location": "Falls Church, VA",
+        "fromDate": "2015-06",
+        "toDate": "2020-01"
+      }
+    ]
   },
   "aiSummary": "No adverse information developed; routine processing.",
   "timeline": [

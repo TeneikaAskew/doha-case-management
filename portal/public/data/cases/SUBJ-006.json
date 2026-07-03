@@ -15,9 +15,48 @@
     "daysInStage": 33,
     "cvEnrolled": false,
     "openAlerts": 0,
-    "ssnMasked": "***-**-1222",
+    "ssn": "926-52-1222",
     "dob": "1986-07-16",
-    "address": "106 Demo Street, Arlington, VA 22206"
+    "placeOfBirth": "Richmond, VA",
+    "citizenship": "United States",
+    "gender": "Female",
+    "race": "Asian",
+    "height": "5' 8\"",
+    "weight": "170 lb",
+    "eyeColor": "Green",
+    "hairColor": "Blond",
+    "maritalStatus": "Single",
+    "phone": "(703) 555-2006",
+    "email": "renee.calloway@contractor.example",
+    "address": "106 Demo Street, Arlington, VA 22206",
+    "addressHistory": [
+      {
+        "address": "106 Demo Street, Arlington, VA 22206",
+        "fromDate": "2021-04",
+        "toDate": null
+      },
+      {
+        "address": "406 Founders Way Apt 6, Alexandria, VA 22302",
+        "fromDate": "2016-07",
+        "toDate": "2021-04"
+      }
+    ],
+    "employmentHistory": [
+      {
+        "employer": "Meridian Defense Systems",
+        "title": "Program Analyst",
+        "location": "Arlington, VA",
+        "fromDate": "2020-01",
+        "toDate": null
+      },
+      {
+        "employer": "Calvert Federal Services",
+        "title": "Associate Program Analyst",
+        "location": "Falls Church, VA",
+        "fromDate": "2015-06",
+        "toDate": "2020-01"
+      }
+    ]
   },
   "aiSummary": "One developed issue under Guideline E (Personal Conduct); otherwise clear.",
   "timeline": [

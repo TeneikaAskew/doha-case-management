@@ -15,9 +15,48 @@
     "daysInStage": 21,
     "cvEnrolled": true,
     "openAlerts": 1,
-    "ssnMasked": "***-**-1555",
+    "ssn": "935-35-1555",
     "dob": "1980-07-16",
-    "address": "115 Demo Street, Arlington, VA 22205"
+    "placeOfBirth": "San Antonio, TX",
+    "citizenship": "United States",
+    "gender": "Male",
+    "race": "Hispanic or Latino",
+    "height": "6' 8\"",
+    "weight": "215 lb",
+    "eyeColor": "Hazel",
+    "hairColor": "Gray",
+    "maritalStatus": "Single",
+    "phone": "(703) 555-2015",
+    "email": "ethan.marsh@contractor.example",
+    "address": "115 Demo Street, Arlington, VA 22205",
+    "addressHistory": [
+      {
+        "address": "115 Demo Street, Arlington, VA 22205",
+        "fromDate": "2021-04",
+        "toDate": null
+      },
+      {
+        "address": "415 Founders Way Apt 15, Alexandria, VA 22302",
+        "fromDate": "2016-07",
+        "toDate": "2021-04"
+      }
+    ],
+    "employmentHistory": [
+      {
+        "employer": "Meridian Defense Systems",
+        "title": "Test Engineer",
+        "location": "Arlington, VA",
+        "fromDate": "2020-01",
+        "toDate": null
+      },
+      {
+        "employer": "Calvert Federal Services",
+        "title": "Associate Test Engineer",
+        "location": "Falls Church, VA",
+        "fromDate": "2015-06",
+        "toDate": "2020-01"
+      }
+    ]
   },
   "aiSummary": "One developed issue under Guideline F (Financial Considerations); otherwise clear.",
   "timeline": [

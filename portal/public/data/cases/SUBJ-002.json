@@ -16,9 +16,60 @@
     "daysInStage": 9,
     "cvEnrolled": true,
     "openAlerts": 1,
-    "ssnMasked": "***-**-7733",
+    "ssn": "917-38-7733",
     "dob": "1992-11-02",
-    "address": "88 Quarry Ridge Rd, Chesapeake, VA 23320"
+    "placeOfBirth": "Norfolk, Virginia",
+    "citizenship": "United States (by birth)",
+    "gender": "Male",
+    "race": "White",
+    "height": "5' 10\"",
+    "weight": "182 lb",
+    "eyeColor": "Blue",
+    "hairColor": "Brown",
+    "maritalStatus": "Divorced",
+    "phone": "(757) 555-0186",
+    "email": "mtbell92@example.com",
+    "address": "88 Quarry Ridge Rd, Chesapeake, VA 23320",
+    "addressHistory": [
+      {
+        "address": "88 Quarry Ridge Rd, Chesapeake, VA 23320",
+        "fromDate": "2021-03",
+        "toDate": null
+      },
+      {
+        "address": "414 Kempsville Crossing Ln, Virginia Beach, VA 23464",
+        "fromDate": "2016-09",
+        "toDate": "2021-03"
+      },
+      {
+        "address": "1108 Colley Ave Apt 2B, Norfolk, VA 23517",
+        "fromDate": "2012-06",
+        "toDate": "2016-09"
+      }
+    ],
+    "employmentHistory": [
+      {
+        "employer": "Tidewater Defense Logistics",
+        "title": "Logistics Coordinator",
+        "location": "Chesapeake, VA",
+        "fromDate": "2019-04",
+        "toDate": null
+      },
+      {
+        "employer": "Port of Virginia",
+        "title": "Warehouse Operations Specialist",
+        "location": "Norfolk, VA",
+        "fromDate": "2014-10",
+        "toDate": "2019-04"
+      },
+      {
+        "employer": "U.S. Navy (enlisted)",
+        "title": "Logistics Specialist (LS2)",
+        "location": "Naval Station Norfolk, VA",
+        "fromDate": "2010-08",
+        "toDate": "2014-09"
+      }
+    ]
   },
   "aiSummary": "CV-enrolled Secret holder with a fingerprint-verified DUI arrest on 2026-06-21 (Guideline J/G). Police report retrieved 2026-06-30: single incident, BAC 0.18%, disposition pending arraignment 2026-07-14; prior record clean. Recommend LOI and command notification rather than immediate eligibility action.",
   "timeline": [

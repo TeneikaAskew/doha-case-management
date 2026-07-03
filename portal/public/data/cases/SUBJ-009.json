@@ -15,9 +15,48 @@
     "daysInStage": 27,
     "cvEnrolled": false,
     "openAlerts": 0,
-    "ssnMasked": "***-**-1333",
+    "ssn": "929-73-1333",
     "dob": "1989-01-10",
-    "address": "109 Demo Street, Arlington, VA 22209"
+    "placeOfBirth": "San Antonio, TX",
+    "citizenship": "United States",
+    "gender": "Male",
+    "race": "Black or African American",
+    "height": "6' 2\"",
+    "weight": "185 lb",
+    "eyeColor": "Blue",
+    "hairColor": "Black",
+    "maritalStatus": "Single",
+    "phone": "(703) 555-2009",
+    "email": "derek.nakamura@contractor.example",
+    "address": "109 Demo Street, Arlington, VA 22209",
+    "addressHistory": [
+      {
+        "address": "109 Demo Street, Arlington, VA 22209",
+        "fromDate": "2021-04",
+        "toDate": null
+      },
+      {
+        "address": "409 Founders Way Apt 9, Alexandria, VA 22302",
+        "fromDate": "2016-07",
+        "toDate": "2021-04"
+      }
+    ],
+    "employmentHistory": [
+      {
+        "employer": "Meridian Defense Systems",
+        "title": "Intelligence Analyst",
+        "location": "Arlington, VA",
+        "fromDate": "2020-01",
+        "toDate": null
+      },
+      {
+        "employer": "Calvert Federal Services",
+        "title": "Associate Intelligence Analyst",
+        "location": "Falls Church, VA",
+        "fromDate": "2015-06",
+        "toDate": "2020-01"
+      }
+    ]
   },
   "aiSummary": "One developed issue under Guideline H (Drug Involvement and Substance Misuse); otherwise clear.",
   "timeline": [

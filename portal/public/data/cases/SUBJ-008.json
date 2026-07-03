@@ -13,9 +13,48 @@
     "daysInStage": 19,
     "cvEnrolled": false,
     "openAlerts": 0,
-    "ssnMasked": "***-**-1296",
+    "ssn": "928-66-1296",
     "dob": "1988-09-18",
-    "address": "108 Demo Street, Arlington, VA 22208"
+    "placeOfBirth": "Columbus, OH",
+    "citizenship": "United States",
+    "gender": "Female",
+    "race": "White",
+    "height": "5' 10\"",
+    "weight": "180 lb",
+    "eyeColor": "Brown",
+    "hairColor": "Brown",
+    "maritalStatus": "Divorced",
+    "phone": "(703) 555-2008",
+    "email": "hannah.whitmore@contractor.example",
+    "address": "108 Demo Street, Arlington, VA 22208",
+    "addressHistory": [
+      {
+        "address": "108 Demo Street, Arlington, VA 22208",
+        "fromDate": "2021-04",
+        "toDate": null
+      },
+      {
+        "address": "408 Founders Way Apt 8, Alexandria, VA 22302",
+        "fromDate": "2016-07",
+        "toDate": "2021-04"
+      }
+    ],
+    "employmentHistory": [
+      {
+        "employer": "Meridian Defense Systems",
+        "title": "Contracts Specialist",
+        "location": "Arlington, VA",
+        "fromDate": "2020-01",
+        "toDate": null
+      },
+      {
+        "employer": "Calvert Federal Services",
+        "title": "Associate Contracts Specialist",
+        "location": "Falls Church, VA",
+        "fromDate": "2015-06",
+        "toDate": "2020-01"
+      }
+    ]
   },
   "aiSummary": "No adverse information developed; routine processing.",
   "timeline": [

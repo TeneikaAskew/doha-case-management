@@ -15,9 +15,48 @@
     "daysInStage": 58,
     "cvEnrolled": false,
     "openAlerts": 0,
-    "ssnMasked": "***-**-1259",
+    "ssn": "927-59-1259",
     "dob": "1987-08-17",
-    "address": "107 Demo Street, Arlington, VA 22207"
+    "placeOfBirth": "Baltimore, MD",
+    "citizenship": "United States",
+    "gender": "Male",
+    "race": "Hispanic or Latino",
+    "height": "6' 9\"",
+    "weight": "175 lb",
+    "eyeColor": "Hazel",
+    "hairColor": "Gray",
+    "maritalStatus": "Married",
+    "phone": "(703) 555-2007",
+    "email": "victor.osei@contractor.example",
+    "address": "107 Demo Street, Arlington, VA 22207",
+    "addressHistory": [
+      {
+        "address": "107 Demo Street, Arlington, VA 22207",
+        "fromDate": "2021-04",
+        "toDate": null
+      },
+      {
+        "address": "407 Founders Way Apt 7, Alexandria, VA 22302",
+        "fromDate": "2016-07",
+        "toDate": "2021-04"
+      }
+    ],
+    "employmentHistory": [
+      {
+        "employer": "Meridian Defense Systems",
+        "title": "Network Administrator",
+        "location": "Arlington, VA",
+        "fromDate": "2020-01",
+        "toDate": null
+      },
+      {
+        "employer": "Calvert Federal Services",
+        "title": "Associate Network Administrator",
+        "location": "Falls Church, VA",
+        "fromDate": "2015-06",
+        "toDate": "2020-01"
+      }
+    ]
   },
   "aiSummary": "One developed issue under Guideline M (Use of Information Technology); otherwise clear.",
   "timeline": [

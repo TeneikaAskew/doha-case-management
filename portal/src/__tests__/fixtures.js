@@ -26,8 +26,24 @@ export const ALERTS = [
 ];
 
 export const CASE_001 = {
-  subject: { ...SUBJECTS[0], ssnMasked: '***-**-4821', dob: '1988-03-14',
-    address: '1427 Birch Hollow Ct, Manassas, VA 20109' },
+  subject: { ...SUBJECTS[0], ssn: '923-04-4821', dob: '1988-03-14',
+    placeOfBirth: 'Lagos, Nigeria', citizenship: 'United States (naturalized 2003)',
+    gender: 'Male', race: 'Black or African American',
+    height: "6' 1\"", weight: '205 lb', eyeColor: 'Brown', hairColor: 'Black',
+    maritalStatus: 'Married', phone: '(703) 555-0142', email: 'd.okafor88@example.com',
+    address: '1427 Birch Hollow Ct, Manassas, VA 20109',
+    addressHistory: [
+      { address: '1427 Birch Hollow Ct, Manassas, VA 20109',
+        fromDate: '2019-08', toDate: null },
+      { address: '7605 Sudley Rd Apt 214, Manassas, VA 20109',
+        fromDate: '2014-06', toDate: '2019-08' },
+    ],
+    employmentHistory: [
+      { employer: 'Sentinel Dynamics LLC', title: 'Senior Systems Engineer',
+        location: 'Chantilly, VA', fromDate: '2018-02', toDate: null },
+      { employer: 'Praxis Federal Solutions', title: 'Systems Engineer',
+        location: 'Reston, VA', fromDate: '2013-01', toDate: '2018-02' },
+    ] },
   aiSummary: 'Significant unresolved financial concerns under Guideline F.',
   timeline: [
     { date: '2026-01-27', actor: 'S. Whitfield', role: 'Investigator',

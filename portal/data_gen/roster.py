@@ -18,6 +18,14 @@ ROSTER = [
     (15, "Ethan C. Marsh",    "Test Engineer",          "T3", "CONTINUOUS_VETTING", "ACTION_REQUIRED", "SECRET",    71,  ["F"], 21,  True, 1),
 ]
 
+GENDERS = ["Female", "Male"]
+RACES = ["White", "Black or African American", "Asian", "Hispanic or Latino"]
+EYES = ["Brown", "Blue", "Green", "Hazel"]
+HAIR = ["Brown", "Black", "Blond", "Gray"]
+MARITAL = ["Single", "Married", "Divorced"]
+BIRTHPLACES = ["Richmond, VA", "Baltimore, MD", "Columbus, OH", "San Antonio, TX",
+               "Tacoma, WA", "Dayton, OH"]
+
 GUIDELINE_TEMPLATES = {
     "E": dict(name="Personal Conduct", severity="B", provider="Employment records",
               evidence="Employment application omitted a 2022 termination for cause",
@@ -117,8 +125,31 @@ def build_roster_cases(precedent_fn) -> list[dict]:
             status=status, eligibility=elig, riskScore=risk,
             fastTrack=(risk < 15 and stage in ("INITIATION", "INVESTIGATION")),
             flaggedGuidelines=codes, daysInStage=days, cvEnrolled=cv, openAlerts=n_alerts,
-            ssnMasked=f"***-**-{1000 + n * 37}", dob=f"19{80 + (n % 15)}-0{1 + n % 9}-1{n % 9}",
+            ssn=f"9{20 + n:02d}-{10 + (n * 7) % 80:02d}-{1000 + n * 37:04d}",
+            dob=f"19{80 + (n % 15)}-0{1 + n % 9}-1{n % 9}",
+            placeOfBirth=BIRTHPLACES[n % len(BIRTHPLACES)],
+            citizenship="United States",
+            gender=GENDERS[n % 2], race=RACES[n % 4],
+            height=f"{5 + (n % 2)}' {2 + (n % 9)}\"", weight=f"{140 + n * 5} lb",
+            eyeColor=EYES[n % 4], hairColor=HAIR[n % 4],
+            maritalStatus=MARITAL[n % 3],
+            phone=f"(703) 555-{2000 + n:04d}",
+            email=f"{name.split()[0].lower()}.{name.split()[-1].lower()}"
+                  "@contractor.example",
             address=f"{100 + n} Demo Street, Arlington, VA 2220{n % 10}",
+            addressHistory=[
+                dict(address=f"{100 + n} Demo Street, Arlington, VA 2220{n % 10}",
+                     fromDate="2021-04", toDate=None),
+                dict(address=f"{400 + n} Founders Way Apt {n}, Alexandria, VA 22302",
+                     fromDate="2016-07", toDate="2021-04"),
+            ],
+            employmentHistory=[
+                dict(employer="Meridian Defense Systems", title=position,
+                     location="Arlington, VA", fromDate="2020-01", toDate=None),
+                dict(employer="Calvert Federal Services",
+                     title=f"Associate {position}", location="Falls Church, VA",
+                     fromDate="2015-06", toDate="2020-01"),
+            ],
         )
         alerts = [_roster_alert(n, subj, codes[0])] if n_alerts else []
         clean = not codes
