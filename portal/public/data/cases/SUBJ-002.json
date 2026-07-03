@@ -480,6 +480,14 @@
           "title": "Chesapeake PD arrest report",
           "url": "documents/SUBJ-002/police-report-26-044812.json"
         }
+      ],
+      "history": [
+        {
+          "state": "NEW",
+          "date": "2026-06-23",
+          "actor": "System",
+          "note": "Rap Back notification received"
+        }
       ]
     },
     {
@@ -523,6 +531,32 @@
         {
           "title": "TransUnion credit-file extract",
           "url": "documents/SUBJ-002/credit-extract-20251012.json"
+        }
+      ],
+      "history": [
+        {
+          "state": "NEW",
+          "date": "2025-10-12",
+          "actor": "System",
+          "note": "Alert received via TransUnion CV feed"
+        },
+        {
+          "state": "IDENTITY_CONFIRMED",
+          "date": "2025-10-20",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "VALIDATED",
+          "date": "2025-10-28",
+          "actor": "R. Chen (Analyst)",
+          "note": "Delinquency verified; low severity"
+        },
+        {
+          "state": "ADJUDICATED",
+          "date": "2025-11-20",
+          "actor": "R. Chen (Analyst)",
+          "note": "No action - resolved delinquency"
         }
       ]
     }

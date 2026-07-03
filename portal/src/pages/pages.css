@@ -90,3 +90,36 @@
   font-size: var(--font-size-base); }
 .signin-help { font-size: var(--font-size-sm); color: var(--text-secondary); margin: 0; }
 .signin-disclaimer { font-size: var(--font-size-xs); color: var(--text-muted); margin: 0; }
+
+/* Help */
+.help-pages { display: flex; flex-direction: column; gap: var(--space-3);
+  margin-top: var(--space-3); }
+.help-page-row { display: grid; grid-template-columns: 150px 1fr;
+  gap: var(--space-3); }
+.help-page-row dt { font-weight: 700; }
+.help-page-row dd { margin: 0; color: var(--text-secondary); }
+.legend { display: flex; flex-direction: column; gap: var(--space-2);
+  margin: var(--space-3) 0; }
+.legend-row { display: grid; grid-template-columns: 220px 1fr;
+  gap: var(--space-3); align-items: center; }
+.legend-key { display: inline-flex; align-items: center; gap: var(--space-2); }
+.legend-term { font-weight: 600; }
+.legend-note { margin: 0; }
+.legend-h { margin-top: var(--space-4); font-size: var(--font-size-xs);
+  font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+  color: var(--text-secondary); }
+.legend-dot { width: 14px; height: 14px; border-radius: 50%;
+  display: inline-block; flex-shrink: 0; }
+.risk-low-dot { background: var(--risk-low); }
+.risk-moderate-dot { background: var(--risk-moderate); }
+.risk-high-dot { background: var(--risk-high); }
+.legend-guidelines { display: grid; grid-template-columns: 1fr 1fr;
+  gap: var(--space-2) var(--space-6); }
+.legend-guidelines .legend-row { grid-template-columns: 44px 1fr; }
+@media (max-width: 900px) { .legend-guidelines { grid-template-columns: 1fr; } }
+.faq-item { border-bottom: 1px solid var(--border-light);
+  padding: var(--space-2) 0; }
+.faq-item:last-of-type { border-bottom: none; }
+.faq-item summary { cursor: pointer; font-weight: 600; }
+.faq-item p { margin: var(--space-2) 0 0; color: var(--text-secondary);
+  max-width: 75ch; }

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import {
-  FiHome, FiUser, FiUsers, FiActivity, FiDatabase, FiBarChart2,
+  FiHome, FiUser, FiUsers, FiActivity, FiDatabase, FiBarChart2, FiHelpCircle,
   FiChevronLeft, FiChevronRight, FiSearch, FiRotateCcw, FiLogOut,
 } from 'react-icons/fi';
 import { usePersona } from '../state/PersonaContext.jsx';
@@ -19,6 +19,7 @@ const NAV_ITEMS = [
   { to: '/alerts', label: 'CV Alerts', Icon: FiActivity },
   { to: '/providers', label: 'Data Providers', Icon: FiDatabase },
   { to: '/analytics', label: 'Analytics', Icon: FiBarChart2 },
+  { to: '/help', label: 'Help', Icon: FiHelpCircle },
 ];
 
 export default function AppShell() {

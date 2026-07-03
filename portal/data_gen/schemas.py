@@ -248,6 +248,7 @@ class CVAlert(BaseModel):
     threshold: Threshold
     priorAdjudication: PriorAdjudication
     documents: list[AlertDocument] = []
+    history: list[AlertPhase] = []  # workflow phases walked so far, oldest first
 
 
 class Document(BaseModel):

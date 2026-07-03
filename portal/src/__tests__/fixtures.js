@@ -23,8 +23,29 @@ export const ALERTS = [
     threshold: { rule: 'Delinquent debt > $5,000', met: true, detail: 'Exceeds threshold.' },
     priorAdjudication: { previouslyAdjudicated: false, reference: null },
     documents: [{ title: 'TransUnion credit-file extract',
-      url: 'documents/SUBJ-001/credit-extract-20260620.json' }] },
+      url: 'documents/SUBJ-001/credit-extract-20260620.json' }],
+    history: [{ state: 'NEW', date: '2026-06-20', actor: 'System',
+      note: 'Alert received via TransUnion CV feed' }] },
 ];
+
+export const ADJUDICATED_ALERT = {
+  id: 'ALERT-102', subjectId: 'SUBJ-001', subjectName: 'Daniel R. Okafor',
+  category: 'FINANCIAL', severity: 'LOW', priorityScore: 20, state: 'ADJUDICATED',
+  receivedDate: '2025-10-12', provider: 'TransUnion',
+  description: 'Resolved 30-day delinquency.',
+  identityMatch: { confidence: 0.95, identifiers: [
+    { field: 'Name', subjectValue: 'Daniel R. Okafor', recordValue: 'Daniel Okafor', match: true }] },
+  threshold: { rule: 'Delinquent debt > $500', met: true, detail: 'Met; later resolved.' },
+  priorAdjudication: { previouslyAdjudicated: false, reference: null },
+  documents: [],
+  history: [
+    { state: 'NEW', date: '2025-10-12', actor: 'System', note: null },
+    { state: 'IDENTITY_CONFIRMED', date: '2025-10-20', actor: 'R. Chen (Analyst)', note: null },
+    { state: 'VALIDATED', date: '2025-10-28', actor: 'R. Chen (Analyst)', note: null },
+    { state: 'ADJUDICATED', date: '2025-11-20', actor: 'R. Chen (Analyst)',
+      note: 'No action - resolved delinquency' },
+  ],
+};
 
 export const CASE_001 = {
   subject: { ...SUBJECTS[0], ssn: '923-04-4821', dob: '1988-03-14',

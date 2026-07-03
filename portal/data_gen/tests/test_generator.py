@@ -104,6 +104,25 @@ def test_timeline_standard(out):
                     f"{sid}: {a.id} adjudicated but no timeline event"
 
 
+def test_alert_phase_history(out):
+    """Every alert walks its workflow: history starts at NEW on the received
+    date, ends at the alert's current state, and dates ascend."""
+    out_dir, _ = out
+    for f in sorted((out_dir / "cases").glob("*.json")):
+        case = schemas.CaseDetail.model_validate(json.loads(f.read_text(encoding="utf-8")))
+        for a in case.alerts:
+            assert a.history, f"{a.id}: no phase history"
+            assert a.history[0].state == "NEW", f"{a.id}: history must start at NEW"
+            assert a.history[0].date == a.receivedDate, \
+                f"{a.id}: first phase date != receivedDate"
+            assert a.history[-1].state == a.state, \
+                f"{a.id}: history ends at {a.history[-1].state}, alert is {a.state}"
+            dates = [p.date for p in a.history]
+            assert dates == sorted(dates), f"{a.id}: phase dates out of order"
+            for p in a.history:
+                assert p.actor, f"{a.id}: phase {p.state} has no actor"
+
+
 def test_hero1_depth(out):
     out_dir, _ = out
     case = schemas.CaseDetail.model_validate(

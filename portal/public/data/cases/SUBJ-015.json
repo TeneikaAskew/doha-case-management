@@ -342,6 +342,14 @@
           "title": "TransUnion credit-file extract",
           "url": "documents/SUBJ-015/credit-extract-20260618.json"
         }
+      ],
+      "history": [
+        {
+          "state": "NEW",
+          "date": "2026-06-18",
+          "actor": "System",
+          "note": "Alert received via TransUnion feed"
+        }
       ]
     }
   ],

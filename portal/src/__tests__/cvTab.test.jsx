@@ -3,7 +3,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { PersonaProvider } from '../state/PersonaContext.jsx';
 import { DemoProvider } from '../state/DemoContext.jsx';
-import { CASE_001 } from './fixtures.js';
+import { CASE_001, ADJUDICATED_ALERT } from './fixtures.js';
 
 vi.mock('../data/api.js', () => ({
   fetchJson: () => Promise.resolve({
@@ -73,6 +73,32 @@ describe('CVTab', () => {
     renderTab('adjudicator');
     fireEvent.click(screen.getByRole('button', { name: /new collection account/i }));
     expect(screen.queryByRole('button', { name: 'Confirm identity' })).not.toBeInTheDocument();
+  });
+
+  it('shows the phase stepper with completed and upcoming phases', () => {
+    renderTab();
+    fireEvent.click(screen.getByRole('button', { name: /new collection account/i }));
+    expect(screen.getByText('Phases')).toBeInTheDocument();
+    // completed: New (with actor); upcoming: rest of the workflow, dashed
+    expect(screen.getByText(/2026-06-20 · System/)).toBeInTheDocument();
+    expect(screen.getByText('Validated')).toBeInTheDocument();
+    expect(screen.getByText('Adjudicated')).toBeInTheDocument();
+    expect(screen.queryByText(/adjudicated by/i)).not.toBeInTheDocument();
+  });
+
+  it('names the adjudicator on adjudicated alerts', () => {
+    localStorage.setItem('demo.persona', 'analyst');
+    render(
+      <PersonaProvider><DemoProvider>
+        <MemoryRouter>
+          <CVTab caseData={{ ...CASE_001, alerts: [ADJUDICATED_ALERT] }} />
+        </MemoryRouter>
+      </DemoProvider></PersonaProvider>
+    );
+    fireEvent.click(screen.getByRole('button', { name: /resolved 30-day delinquency/i }));
+    expect(screen.getByText(/Adjudicated by/)).toBeInTheDocument();
+    expect(screen.getByText('R. Chen (Analyst)')).toBeInTheDocument();
+    expect(screen.getByText(/No action - resolved delinquency/)).toBeInTheDocument();
   });
 
   it('shows empty state when subject has no alerts', () => {

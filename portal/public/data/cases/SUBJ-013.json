@@ -353,6 +353,14 @@
           "title": "Security incident report",
           "url": "documents/SUBJ-013/incident-report-2025-0142.json"
         }
+      ],
+      "history": [
+        {
+          "state": "NEW",
+          "date": "2026-06-18",
+          "actor": "System",
+          "note": "Alert received via DISS / prior adjudications feed"
+        }
       ]
     }
   ],

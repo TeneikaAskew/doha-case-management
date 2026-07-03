@@ -13,7 +13,7 @@ describe('AppShell', () => {
     render(<App />);
     expect(screen.getByText('Personnel Vetting')).toBeInTheDocument();
     for (const label of ['Subjects', 'Dashboard', 'Case Queue', 'CV Alerts',
-      'Data Providers', 'Analytics']) {
+      'Data Providers', 'Analytics', 'Help']) {
       expect(screen.getByRole('link', { name: label })).toBeInTheDocument();
     }
   });

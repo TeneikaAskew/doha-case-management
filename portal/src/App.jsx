@@ -11,6 +11,7 @@ import CaseDetail from './pages/case/CaseDetail.jsx';
 import CVAlerts from './pages/CVAlerts.jsx';
 import DataProviders from './pages/DataProviders.jsx';
 import Analytics from './pages/Analytics.jsx';
+import Help from './pages/Help.jsx';
 import NotFound from './pages/NotFound.jsx';
 import './pages/pages.css';
 
@@ -30,6 +31,7 @@ function Gate() {
               <Route path="/alerts" element={<CVAlerts />} />
               <Route path="/providers" element={<DataProviders />} />
               <Route path="/analytics" element={<Analytics />} />
+              <Route path="/help" element={<Help />} />
               <Route path="*" element={<NotFound />} />
             </Route>
           </Routes>

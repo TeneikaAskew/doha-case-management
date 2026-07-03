@@ -1,4 +1,4 @@
-import { useParams, useSearchParams } from 'react-router-dom';
+import { Link, useParams, useSearchParams } from 'react-router-dom';
 import { getCase } from '../../data/api.js';
 import { useData } from '../../data/useData.js';
 import { usePersona } from '../../state/PersonaContext.jsx';
@@ -58,9 +58,14 @@ export default function CaseDetail() {
             {s.flaggedGuidelines.map((g) => <GuidelineChip key={g} code={g} />)}
           </div>
         </div>
-        <div className={`risk-dial risk-${band}`} title="AI triage risk score (0-100)">
-          <span className="risk-dial-value">{s.riskScore}</span>
-          <span className="risk-dial-label">AI risk</span>
+        <div className="risk-dial-wrap">
+          <div className={`risk-dial risk-${band}`} title="AI triage risk score (0-100)">
+            <span className="risk-dial-value">{s.riskScore}</span>
+            <span className="risk-dial-label">AI risk</span>
+          </div>
+          <Link className="risk-dial-caption" to="/help#scoring">
+            Based on weighted risk factors
+          </Link>
         </div>
       </div>
 

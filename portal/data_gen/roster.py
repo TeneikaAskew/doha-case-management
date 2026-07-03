@@ -113,6 +113,8 @@ def _roster_alert(idx: int, subj: dict, code: str) -> dict:
         threshold=dict(rule="Category threshold met", met=True,
                        detail="Meets CV investigative-standard threshold."),
         priorAdjudication=dict(previouslyAdjudicated=False, reference=None),
+        history=[dict(state="NEW", date="2026-06-18", actor="System",
+                      note=f"Alert received via {provider} feed")],
     )
 
 

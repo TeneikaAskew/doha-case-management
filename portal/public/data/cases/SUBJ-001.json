@@ -639,6 +639,14 @@
           "title": "TransUnion credit-file extract",
           "url": "documents/SUBJ-001/credit-extract-20260620.json"
         }
+      ],
+      "history": [
+        {
+          "state": "NEW",
+          "date": "2026-06-20",
+          "actor": "System",
+          "note": "Alert received via TransUnion CV feed"
+        }
       ]
     },
     {
@@ -682,6 +690,26 @@
         {
           "title": "CBP I-94 travel record",
           "url": "documents/SUBJ-001/travel-record-20260502.json"
+        }
+      ],
+      "history": [
+        {
+          "state": "NEW",
+          "date": "2026-05-02",
+          "actor": "System",
+          "note": "Alert received via CBP I-94 feed"
+        },
+        {
+          "state": "IDENTITY_CONFIRMED",
+          "date": "2026-05-04",
+          "actor": "R. Chen (Analyst)",
+          "note": "Passport-number match confirmed"
+        },
+        {
+          "state": "VALIDATED",
+          "date": "2026-05-06",
+          "actor": "R. Chen (Analyst)",
+          "note": "No FSO travel report on file; referred to adjudication"
         }
       ]
     }

@@ -30,6 +30,49 @@ const CATEGORY_ICONS = {
   SUITABILITY: FiUserX,
 };
 
+const PHASE_CHAIN = ['NEW', 'IDENTITY_CONFIRMED', 'VALIDATED', 'REFERRED', 'ADJUDICATED'];
+
+function AlertPhases({ alert: a, state }) {
+  const history = [...(a.history || [])];
+  if (!history.length) return null;
+  if (state !== history[history.length - 1].state) {
+    history.push({ state, date: '2026-07-02', actor: 'You (demo session)', note: null });
+  }
+  const last = history[history.length - 1].state;
+  const upcoming = (last === 'CLOSED' || last === 'ADJUDICATED')
+    ? [] : PHASE_CHAIN.slice(PHASE_CHAIN.indexOf(last) + 1);
+  const adjudicated = [...history].reverse().find((p) => p.state === 'ADJUDICATED');
+  return (
+    <div className="alert-phases">
+      <h4 className="alert-phases-h">Phases</h4>
+      <ol className="alert-stepper">
+        {history.map((p, i) => (
+          <li key={`done-${i}`} className="done">
+            <span className="alert-step-marker" aria-hidden="true" />
+            <span className="alert-step-state">{ALERT_STATE_LABELS[p.state]}</span>
+            <span className="alert-step-meta">{p.date} · {p.actor}</span>
+            {p.note && <span className="alert-step-note muted">{p.note}</span>}
+          </li>
+        ))}
+        {upcoming.map((s) => (
+          <li key={s} className="todo">
+            <span className="alert-step-marker" aria-hidden="true" />
+            <span className="alert-step-state">{ALERT_STATE_LABELS[s]}</span>
+            <span className="alert-step-meta">-</span>
+          </li>
+        ))}
+      </ol>
+      {adjudicated && (
+        <p className="alert-adjudicated">
+          Adjudicated by <strong>{adjudicated.actor}</strong> on{' '}
+          {adjudicated.date}
+          {adjudicated.note && <span className="muted"> - {adjudicated.note}</span>}
+        </p>
+      )}
+    </div>
+  );
+}
+
 function AlertBody({ alert: a, state, isAnalyst, dispositionAlert }) {
   const [openDoc, setOpenDoc] = useState(null);
 
@@ -108,6 +151,8 @@ function AlertBody({ alert: a, state, isAnalyst, dispositionAlert }) {
           ))}
         </div>
       )}
+
+      <AlertPhases alert={a} state={state} />
     </>
   );
 }
