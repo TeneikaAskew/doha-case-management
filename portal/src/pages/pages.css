@@ -20,3 +20,6 @@
 .matrix-wrap { overflow-x: auto; }
 .coverage-matrix .matrix-cell { text-align: center; color: var(--dcsa-ocean);
   font-size: var(--font-size-lg); }
+
+/* Analytics */
+.chart-card h3 { margin-bottom: var(--space-4); }
