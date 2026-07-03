@@ -10,7 +10,7 @@ export default function DocumentsTab({ caseData }) {
     return <EmptyState title="No documents" message="No documents are on file for this case." />;
   }
   return (
-    <div>
+    <div className="document-list">
       {caseData.documents.map((d, i) => (
         <div key={d.title}>
           <div className="card document-card">

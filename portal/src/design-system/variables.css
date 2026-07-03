@@ -12,6 +12,7 @@
   --dcsa-ice: #91D0E4;
   --dcsa-gold: #D4AF37;
   --dcsa-gold-light: #F5E6B8;
+  --dcsa-gold-dark: #8A6A00;  /* AA text on light tints; gold itself fails contrast */
   --dcsa-charcoal: #5B5B5A;
   --dcsa-ocean-tint-8: rgba(0, 155, 181, 0.08);
   --dcsa-ocean-tint-4: rgba(0, 155, 181, 0.04);
@@ -21,6 +22,7 @@
   --status-clear: #2E7D32;   --status-clear-bg: #E8F5E9;
   --status-alert: #C62828;   --status-alert-bg: #FFEBEE;
   --status-warning: #E65100; --status-warning-bg: #FFF3E0;
+  --status-warning-dark: #B23F00;  /* AA text variant for use on warning-bg */
   --status-info: #1565C0;    --status-info-bg: #E3F2FD;
   --status-caution: #F57F17; --status-caution-bg: #FFF8E1;
   --status-pending: var(--dcsa-gold); --status-pending-bg: #FFF8E1;

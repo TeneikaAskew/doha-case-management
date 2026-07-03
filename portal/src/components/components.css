@@ -36,14 +36,15 @@
 .severity-badge { display: inline-flex; align-items: center; justify-content: center;
   width: 36px; height: 36px; border-radius: 50%; border: 2px solid;
   font-size: var(--font-size-lg); font-weight: 700; }
-.severity-badge.level-d { border-color: var(--risk-high); color: var(--risk-high);
-  background: var(--risk-high-bg); }
-.severity-badge.level-c { border-color: var(--risk-moderate); color: var(--risk-moderate);
-  background: var(--risk-moderate-bg); }
-.severity-badge.level-b { border-color: var(--risk-low); color: var(--risk-low);
-  background: var(--risk-low-bg); }
-.severity-badge.level-a { border-color: var(--dcsa-gold); color: var(--dcsa-gold);
-  background: var(--dcsa-gold-light); }
+/* Severity ramp: distinct hues (teal, gold, orange, deep red); letter colors meet AA on their tints */
+.severity-badge.level-d { border-color: var(--status-hrh); color: var(--status-hrh);
+  background: var(--status-hrh-bg); }
+.severity-badge.level-c { border-color: var(--status-warning); color: var(--status-warning-dark);
+  background: var(--status-warning-bg); }
+.severity-badge.level-b { border-color: var(--dcsa-gold); color: var(--dcsa-gold-dark);
+  background: var(--status-pending-bg); }
+.severity-badge.level-a { border-color: var(--accent-teal); color: var(--accent-teal-dark);
+  background: var(--dcsa-ocean-tint-8); }
 
 .ai-badge { display: inline-flex; align-items: center; gap: var(--space-1);
   padding: 2px var(--space-2); border-radius: var(--radius-pill);

@@ -65,7 +65,8 @@ describe('CVTab', () => {
     renderTab('analyst');
     fireEvent.click(screen.getByRole('button', { name: /new collection account/i }));
     fireEvent.click(screen.getByRole('button', { name: 'Confirm identity' }));
-    expect(screen.getByText('Identity Confirmed')).toBeInTheDocument();
+    // state badge plus the phase stepper both show the new state
+    expect(screen.getAllByText('Identity Confirmed').length).toBeGreaterThanOrEqual(1);
     expect(screen.getByRole('button', { name: 'Validate threshold' })).toBeInTheDocument();
   });
 
@@ -98,7 +99,8 @@ describe('CVTab', () => {
     fireEvent.click(screen.getByRole('button', { name: /resolved 30-day delinquency/i }));
     expect(screen.getByText(/Adjudicated by/)).toBeInTheDocument();
     expect(screen.getByText('R. Chen (Analyst)')).toBeInTheDocument();
-    expect(screen.getByText(/No action - resolved delinquency/)).toBeInTheDocument();
+    expect(screen.getAllByText(/No action - resolved delinquency/).length)
+      .toBeGreaterThanOrEqual(1);
   });
 
   it('shows empty state when subject has no alerts', () => {

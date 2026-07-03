@@ -59,8 +59,26 @@
   min-height: calc(100vh - var(--header-height)); transition: margin-left 0.2s ease; }
 .app-sidebar.collapsed + .app-main { margin-left: 56px; }
 
+/* Responsive shell: compact header first, then icon-rail nav, then seal-only brand */
+@media (max-width: 1080px) {
+  .app-header { gap: var(--space-3); padding: 0 var(--space-4); }
+  .app-header-subtitle { display: none; }
+  .persona-switch > span { display: none; }
+}
 @media (max-width: 900px) {
-  .app-sidebar { display: none; }
-  .app-main, .app-sidebar.collapsed + .app-main { margin-left: 0; }
+  .header-btn-label { display: none; }
+  .header-reset { padding: var(--space-2); }
+  .app-header-search { max-width: none; min-width: 0; }
+  .app-sidebar, .app-sidebar.collapsed { width: 56px; }
+  .app-sidebar .sidebar-toggle { display: none; }
+  .app-sidebar a { justify-content: center; padding: 10px 0; gap: 0; }
+  .app-sidebar .sidebar-label { opacity: 0; width: 0; overflow: hidden;
+    white-space: nowrap; }
+  .app-main, .app-sidebar.collapsed + .app-main { margin-left: 56px; }
+  .page { padding: var(--space-4); }
+}
+@media (max-width: 640px) {
+  .app-header-title { display: none; }
+  .app-header-brand { gap: 0; }
   .app-header-search { display: none; }
 }

@@ -74,6 +74,7 @@
 .timeline li { display: flex; gap: var(--space-4); }
 .timeline-date { flex-shrink: 0; width: 92px; font-weight: 600;
   font-size: var(--font-size-sm); color: var(--text-secondary); }
+.document-list { display: grid; gap: var(--space-5); }
 .document-card { display: flex; justify-content: space-between; align-items: center;
   gap: var(--space-4); }
 

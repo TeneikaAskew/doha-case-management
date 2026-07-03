@@ -65,11 +65,15 @@ export default function AppShell() {
               {PERSONAS.map((p) => <option key={p.id} value={p.id}>{p.label}</option>)}
             </select>
           </label>
-          <button type="button" className="btn btn-ghost header-reset" onClick={reset}>
-            <FiRotateCcw aria-hidden="true" /> Reset demo
+          <button type="button" className="btn btn-ghost header-reset" onClick={reset}
+            aria-label="Reset demo" title="Reset demo">
+            <FiRotateCcw aria-hidden="true" />
+            <span className="header-btn-label">Reset demo</span>
           </button>
-          <button type="button" className="btn btn-ghost header-reset" onClick={signOut}>
-            <FiLogOut aria-hidden="true" /> Sign out
+          <button type="button" className="btn btn-ghost header-reset" onClick={signOut}
+            aria-label="Sign out" title="Sign out">
+            <FiLogOut aria-hidden="true" />
+            <span className="header-btn-label">Sign out</span>
           </button>
         </div>
       </header>

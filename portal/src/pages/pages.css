@@ -9,7 +9,7 @@
   font-weight: 700; }
 
 /* Dashboard */
-.dashboard-queue-title { margin-bottom: var(--space-3); display: flex;
+.dashboard-queue-title { margin: var(--space-6) 0 var(--space-3); display: flex;
   align-items: center; gap: var(--space-2); }
 
 /* Data providers */
@@ -56,7 +56,9 @@
   text-align: left; cursor: pointer; font: inherit; }
 .attention-head { display: flex; justify-content: space-between; gap: var(--space-3);
   align-items: flex-start; width: 100%; }
-.attention-card .risk-dial { width: 64px; height: 64px; border-width: 4px; gap: 0; }
+.attention-head > div:first-child { min-width: 0; }
+.attention-card .risk-dial { width: 64px; height: 64px; border-width: 4px; gap: 0;
+  flex-shrink: 0; }
 .attention-card .risk-dial-value { font-size: var(--font-size-lg); }
 .attention-card .risk-dial-label { font-size: 8px; letter-spacing: 0.3px; }
 .directory-filters { display: flex; gap: var(--space-4); align-items: flex-end;
@@ -121,5 +123,4 @@
   padding: var(--space-2) 0; }
 .faq-item:last-of-type { border-bottom: none; }
 .faq-item summary { cursor: pointer; font-weight: 600; }
-.faq-item p { margin: var(--space-2) 0 0; color: var(--text-secondary);
-  max-width: 75ch; }
+.faq-item p { margin: var(--space-2) 0 0; color: var(--text-secondary); }
