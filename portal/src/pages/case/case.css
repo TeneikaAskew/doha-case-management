@@ -15,7 +15,7 @@
 .risk-dial-wrap { display: flex; flex-direction: column; align-items: center;
   gap: var(--space-1); flex-shrink: 0; }
 .risk-dial-caption { font-size: var(--font-size-xs); color: var(--text-secondary);
-  text-align: center; max-width: 130px; line-height: 1.3; }
+  text-align: center; white-space: nowrap; line-height: 1.3; }
 .risk-dial-caption:hover { color: var(--dcsa-ocean); text-decoration: underline; }
 .risk-dial-label { font-size: 10px; font-weight: 600; text-transform: uppercase;
   letter-spacing: 0.5px; }
@@ -93,6 +93,7 @@
   border: 1px solid var(--border-light); border-left: 3px solid; }
 .condition.disqualifier { border-left-color: var(--status-alert); }
 .condition.mitigator { border-left-color: var(--status-clear); }
+.condition .status-badge { font-size: 10px; padding: 1px 7px; }
 
 /* Investigation tab */
 .coverage-list { list-style: none; display: grid; gap: var(--space-2); }
