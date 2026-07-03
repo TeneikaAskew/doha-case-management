@@ -65,7 +65,7 @@
   --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.08);
   --shadow-card-hover: 0 4px 12px rgba(0, 0, 0, 0.12);
   --shadow-dropdown: 0 4px 12px rgba(0, 21, 48, 0.08);
-  --sidebar-width: 220px; --header-height: 56px;
+  --sidebar-width: 184px; --header-height: 56px;
 
   /* KPI active (clickable) state - MAPS Material blue */
   --kpi-active: #1976D2;
