@@ -32,6 +32,14 @@ jobs:
           cache-dependency-path: portal/package-lock.json
       - run: npm ci
       - run: npm test -- --run
+      # Live chat integration: real Gemini call through answerQuestion.
+      # REQUIRE_GEMINI makes a missing/misnamed secret fail the deploy instead
+      # of silently shipping a keyless (simulated-only) bundle.
+      - name: Gemini live chat test
+        run: npx vitest run src/__tests__/geminiLive.integration.test.js
+        env:
+          VITE_GEMINI_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          REQUIRE_GEMINI: '1'
       # VITE_GEMINI_API_KEY is baked into the public bundle by design (demo).
       # The key MUST be restricted in Google Cloud: website restriction to this
       # Pages origin, API restriction to the Generative Language API, low quota.
