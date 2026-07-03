@@ -4,9 +4,14 @@ test('every page loads and the hero case walks through all tabs', async ({ page 
   await page.goto('/#/');
   await expect(page.getByText('Standard Mandatory DoD Notice and Consent')).toBeVisible();
   await expect(page.getByLabel('Access password')).toBeVisible();
-  // the access password is distributed out of band; seed the session directly
-  await page.evaluate(() => localStorage.setItem('demo.session', 'active'));
-  await page.goto('/#/');
+  const password = process.env.DEMO_ACCESS_PASSWORD; // from portal/.env, gitignored
+  if (password) {
+    await page.getByLabel('Access password').fill(password);
+    await page.getByRole('button', { name: /accept conditions and sign in/i }).click();
+  } else {
+    await page.evaluate(() => localStorage.setItem('demo.session', 'active'));
+    await page.goto('/#/');
+  }
   await expect(page.getByRole('heading', { name: 'Subjects' })).toBeVisible();
   await expect(page.getByText('Total Subjects')).toBeVisible();
   await expect(page.getByText('Vetting Pipeline')).toBeVisible();

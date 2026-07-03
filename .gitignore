@@ -41,3 +41,7 @@ doha_parsed_cases/checkpoints_archive/
 # Node
 node_modules/
 portal/dist/
+
+# Local env / secrets (keep .env.example)
+.env
+.env.local
