@@ -239,3 +239,7 @@
 /* An opened source document spans the full briefing width */
 .briefing-factor-doc-open { grid-column: 1 / -1; }
 .briefing-factor-doc-open .document-viewer { width: 100%; align-self: stretch; }
+
+/* Document expands inline under the clicked table row */
+.record-check-doc-row > td { padding: 0 0 var(--space-3); }
+.record-check-doc-row .document-viewer { margin-top: var(--space-2); }

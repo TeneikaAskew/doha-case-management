@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import {
   FiChevronDown, FiFileText, FiCheckSquare, FiColumns, FiMessageSquare, FiEdit3,
 } from 'react-icons/fi';
@@ -86,29 +86,38 @@ function RecordCheckGroup({ category, checks }) {
               </thead>
               <tbody>
                 {checks.map((c) => (
-                  <tr key={c.item} title={`${c.item} - ${c.scope}`}>
-                    <td><SourceChip provider={c.provider} /></td>
-                    <td className="record-check-date">{c.requestedDate}</td>
-                    <td className="record-check-date">
-                      {c.completedDate || 'Pending'}
-                    </td>
-                    <td className="record-check-result">{c.resultSummary}</td>
-                    <td>
-                      {c.documentUrl ? (
-                        <button type="button"
-                          className="btn btn-ghost record-check-view"
-                          onClick={() => setOpenDoc(
-                            openDoc === c.documentUrl ? null : c.documentUrl)}>
-                          <FiFileText aria-hidden="true" /> View
-                        </button>
-                      ) : <span className="muted">-</span>}
-                    </td>
-                  </tr>
+                  <Fragment key={c.item}>
+                    <tr title={`${c.item} - ${c.scope}`}>
+                      <td><SourceChip provider={c.provider} /></td>
+                      <td className="record-check-date">{c.requestedDate}</td>
+                      <td className="record-check-date">
+                        {c.completedDate || 'Pending'}
+                      </td>
+                      <td className="record-check-result">{c.resultSummary}</td>
+                      <td>
+                        {c.documentUrl ? (
+                          <button type="button"
+                            className="btn btn-ghost record-check-view"
+                            aria-expanded={openDoc === c.documentUrl}
+                            onClick={() => setOpenDoc(
+                              openDoc === c.documentUrl ? null : c.documentUrl)}>
+                            <FiFileText aria-hidden="true" /> View
+                          </button>
+                        ) : <span className="muted">-</span>}
+                      </td>
+                    </tr>
+                    {openDoc === c.documentUrl && c.documentUrl && (
+                      <tr className="record-check-doc-row">
+                        <td colSpan={5}>
+                          <DocumentViewer url={c.documentUrl} />
+                        </td>
+                      </tr>
+                    )}
+                  </Fragment>
                 ))}
               </tbody>
             </table>
           </div>
-          {openDoc && <DocumentViewer url={openDoc} />}
         </div>
       )}
     </li>

@@ -69,6 +69,18 @@ describe('InvestigationTab', () => {
     expect(screen.getByText('One SAR: structured remittances, Jan-Mar 2026.')).toBeInTheDocument();
   });
 
+  it('opens the document in an expansion row directly under the clicked source', async () => {
+    renderTab();
+    fireEvent.click(screen.getByRole('button', { name: /financial record checks/i }));
+    const viewButtons = screen.getAllByRole('button', { name: /view/i });
+    fireEvent.click(viewButtons[0]);
+    const docTitle = await screen.findByText(/Meridian Auto Finance/);
+    // the document renders inside the table, in the row after the clicked one
+    const docRow = docTitle.closest('tr');
+    expect(docRow).toHaveClass('record-check-doc-row');
+    expect(docRow.previousSibling).toContainElement(viewButtons[0]);
+  });
+
   it('cites and links the coverage-scope authorities for the record checks', () => {
     renderTab();
     expect(screen.getByRole('link', { name: /federal investigative standards/i }))
