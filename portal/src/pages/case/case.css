@@ -90,3 +90,10 @@
 .decision-form { display: flex; gap: var(--space-3); align-items: flex-end;
   flex-wrap: wrap; }
 .decision-rationale { flex: 1; min-width: 240px; }
+
+/* Continuous vetting tab */
+.cv-steps { display: grid; gap: var(--space-4); margin: var(--space-4) 0; }
+.cv-step { padding: var(--space-4); background: var(--bg-sidebar);
+  border-radius: var(--radius-sm); }
+.cv-step h4 { margin-bottom: var(--space-3); }
+.cv-actions { display: flex; gap: var(--space-3); flex-wrap: wrap; }
