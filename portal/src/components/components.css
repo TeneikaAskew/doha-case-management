@@ -76,11 +76,11 @@
   text-transform: uppercase; letter-spacing: 0.5px;
   border-bottom: 1px solid var(--border-light); white-space: nowrap; }
 .data-table th.sortable { cursor: pointer; user-select: none; }
-.data-table th.sortable:hover { background: rgba(0, 153, 216, 0.08); }
+.data-table th.sortable:hover { background: var(--dcsa-ocean-tint-8); }
 .data-table td { padding: 14px var(--space-4); border-bottom: 1px solid var(--border-light); }
 .data-table tbody tr:last-child td { border-bottom: none; }
 .data-table tbody tr.clickable { cursor: pointer; }
-.data-table tbody tr.clickable:hover { background: rgba(0, 153, 216, 0.04); }
+.data-table tbody tr.clickable:hover { background: var(--dcsa-ocean-tint-4); }
 
 .state-block { padding: var(--space-8); text-align: center; }
 .error-alert { background: var(--status-alert-bg); color: var(--status-alert);

@@ -9,6 +9,8 @@
   --dcsa-gold: #D4AF37;
   --dcsa-gold-light: #F5E6B8;
   --dcsa-charcoal: #5B5B5A;
+  --dcsa-ocean-tint-8: rgba(0, 153, 216, 0.08);
+  --dcsa-ocean-tint-4: rgba(0, 153, 216, 0.04);
 
   /* Status (USWDS-aligned) */
   --status-clear: #2E7D32;   --status-clear-bg: #E8F5E9;
