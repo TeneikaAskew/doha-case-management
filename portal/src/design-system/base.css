@@ -15,7 +15,7 @@ h1 { font-size: var(--font-size-2xl); font-weight: 700; }
 h2 { font-size: var(--font-size-xl); font-weight: 600; }
 h3 { font-size: var(--font-size-lg); font-weight: 600; }
 
-.page { padding: var(--space-6); max-width: 1280px; margin: 0 auto; }
+.page { padding: var(--space-8); max-width: 1600px; margin: 0 auto; }
 .page-header { display: flex; align-items: baseline; justify-content: space-between;
   gap: var(--space-4); margin-bottom: var(--space-5); flex-wrap: wrap; }
 .page-header p { color: var(--text-secondary); }
@@ -24,6 +24,7 @@ h3 { font-size: var(--font-size-lg); font-weight: 600; }
   border-radius: var(--radius-md); box-shadow: var(--shadow-card);
   padding: var(--space-5); }
 .card + .card { margin-top: var(--space-4); }
+.card-interactive:hover { box-shadow: var(--shadow-card-hover); }
 
 .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
   gap: var(--space-4); margin-bottom: var(--space-5); }
@@ -33,9 +34,12 @@ h3 { font-size: var(--font-size-lg); font-weight: 600; }
   font-size: var(--font-size-base); font-weight: 600; font-family: inherit;
   cursor: pointer; border: none; transition: all 0.15s; }
 .btn-primary { background: var(--dcsa-navy); color: var(--text-inverse); }
-.btn-primary:hover:not(:disabled) { background: var(--dcsa-navy-light); }
+.btn-primary:hover:not(:disabled) { background: var(--dcsa-navy-light);
+  box-shadow: 0 2px 8px rgba(0, 33, 71, 0.2); transform: translateY(-1px); }
+.btn-primary:active:not(:disabled) { transform: translateY(0); }
 .btn-secondary { background: var(--dcsa-ocean); color: var(--text-inverse); }
-.btn-secondary:hover:not(:disabled) { background: var(--dcsa-ocean-dark); }
+.btn-secondary:hover:not(:disabled) { background: var(--dcsa-ocean-dark);
+  box-shadow: 0 2px 8px rgba(0, 155, 181, 0.2); transform: translateY(-1px); }
 .btn-ghost { background: transparent; color: var(--text-secondary);
   border: 1px solid var(--border-light); }
 .btn-ghost:hover:not(:disabled) { background: var(--bg-sidebar); color: var(--text-primary); }
@@ -49,7 +53,7 @@ h3 { font-size: var(--font-size-lg); font-weight: 600; }
   border-radius: var(--radius-sm); font-size: var(--font-size-base);
   font-family: inherit; }
 .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-  outline: none; border-color: var(--dcsa-ocean);
-  box-shadow: 0 0 0 3px rgba(0, 153, 216, 0.12); }
+  outline: none; border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px rgba(0, 155, 181, 0.12); }
 
 .muted { color: var(--text-secondary); font-size: var(--font-size-sm); }

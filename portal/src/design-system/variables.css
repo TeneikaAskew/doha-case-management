@@ -2,15 +2,19 @@
   /* Brand — official DCSA Ecosystem Style Guide */
   --dcsa-navy: #002D5B;
   --dcsa-navy-light: #0A3A6B;
-  --dcsa-ocean: #0099D8;
-  --dcsa-ocean-dark: #007AB0;
+  /* MAPS accent — teal (replaces official Ocean Blue for this demo) */
+  --accent-teal: #009BB5;
+  --accent-teal-dark: #007A91;
+  /* Ocean tokens aliased to teal so existing component references pick up the new accent */
+  --dcsa-ocean: var(--accent-teal);
+  --dcsa-ocean-dark: var(--accent-teal-dark);
   --dcsa-sky: #00A6DC;
   --dcsa-ice: #91D0E4;
   --dcsa-gold: #D4AF37;
   --dcsa-gold-light: #F5E6B8;
   --dcsa-charcoal: #5B5B5A;
-  --dcsa-ocean-tint-8: rgba(0, 153, 216, 0.08);
-  --dcsa-ocean-tint-4: rgba(0, 153, 216, 0.04);
+  --dcsa-ocean-tint-8: rgba(0, 155, 181, 0.08);
+  --dcsa-ocean-tint-4: rgba(0, 155, 181, 0.04);
   --dcsa-navy-tint-4: rgba(0, 45, 91, 0.04);
 
   /* Status (USWDS-aligned) */
@@ -18,6 +22,9 @@
   --status-alert: #C62828;   --status-alert-bg: #FFEBEE;
   --status-warning: #E65100; --status-warning-bg: #FFF3E0;
   --status-info: #1565C0;    --status-info-bg: #E3F2FD;
+  --status-caution: #F57F17; --status-caution-bg: #FFF8E1;
+  --status-pending: var(--dcsa-gold); --status-pending-bg: #FFF8E1;
+  --status-hrh: #B71C1C;     --status-hrh-bg: #FFCDD2;
   --risk-high: #C62828;      --risk-high-bg: #FFEBEE;
   --risk-moderate: #E65100;  --risk-moderate-bg: #FFF3E0;
   --risk-low: #F57F17;       --risk-low-bg: #FFF8E1;
@@ -27,16 +34,21 @@
   --text-secondary: #5A6B7C;
   --text-muted: #8899AA;
   --text-inverse: #FFFFFF;
+  --text-link: var(--accent-teal);
   --border-light: #E4E7ED;
   --border-medium: #CBD2DB;
+  --border-focus: var(--accent-teal);
   --bg-page: #F6F8FA;
   --bg-card: #FFFFFF;
+  --bg-card-hover: #F8F9FA;
+  --bg-input: #FFFFFF;
   --bg-sidebar: #FAFBFC;
   --bg-table-header: #F8F9FB;
   --bg-header: #002D5B;
 
   /* Typography */
-  --font-family-primary: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-family-primary: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Cascadia Code', 'Consolas', 'JetBrains Mono', monospace;
   --font-size-xs: 11px; --font-size-sm: 13px; --font-size-base: 14px;
   --font-size-lg: 16px; --font-size-xl: 20px; --font-size-2xl: 24px;
   --font-size-3xl: 28px;
@@ -46,8 +58,9 @@
   --space-5: 20px; --space-6: 24px; --space-8: 32px; --space-10: 40px;
 
   /* Radii / shadows / layout */
-  --radius-sm: 4px; --radius-md: 8px; --radius-pill: 12px;
-  --shadow-card: 0 2px 8px rgba(0, 21, 48, 0.06);
+  --radius-sm: 4px; --radius-md: 8px; --radius-lg: 12px; --radius-pill: 12px;
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-card-hover: 0 4px 12px rgba(0, 0, 0, 0.12);
   --shadow-dropdown: 0 4px 12px rgba(0, 21, 48, 0.08);
   --sidebar-width: 220px; --header-height: 56px;
 }
