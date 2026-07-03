@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { FiShield } from 'react-icons/fi';
 import { useSession } from '../state/SessionContext.jsx';
-import { PASSWORD_SHA256, sha256Hex } from '../accessControl.js';
+import { PASSWORD_SHA256S, sha256Hex } from '../accessControl.js';
 import { REFS } from '../references.js';
 
 const REFERENCES = [
@@ -51,7 +51,7 @@ export default function SignIn() {
 
   const submit = async (e) => {
     e.preventDefault();
-    if (await sha256Hex(password) === PASSWORD_SHA256) {
+    if (PASSWORD_SHA256S.includes(await sha256Hex(password))) {
       signIn();
     } else {
       setError('Incorrect access password. Contact the demo owner for access.');
@@ -106,7 +106,7 @@ export default function SignIn() {
             onChange={(e) => { setPassword(e.target.value); setError(null); }} />
           {error && <p className="signin-error" role="alert">{error}</p>}
           <button type="submit" className="btn btn-primary signin-button">
-            <FiShield aria-hidden="true" /> Sign in with CAC/PIV (SSO)
+            <FiShield aria-hidden="true" /> Sign in with SSO
           </button>
         </form>
 

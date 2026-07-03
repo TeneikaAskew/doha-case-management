@@ -7,7 +7,7 @@ test('every page loads and the hero case walks through all tabs', async ({ page 
   const password = process.env.DEMO_ACCESS_PASSWORD; // from portal/.env, gitignored
   if (password) {
     await page.getByLabel('Access password').fill(password);
-    await page.getByRole('button', { name: /sign in with cac\/piv/i }).click();
+    await page.getByRole('button', { name: /sign in with sso/i }).click();
   } else {
     await page.evaluate(() => localStorage.setItem('demo.session', 'active'));
     await page.goto('/#/');
