@@ -1,0 +1,173 @@
+{
+  "subject": {
+    "id": "SUBJ-013",
+    "name": "Samuel K. Boateng",
+    "position": "Systems Administrator",
+    "tier": "T5",
+    "stage": "CONTINUOUS_VETTING",
+    "status": "NEEDS_REVIEW",
+    "eligibility": "TOP_SECRET",
+    "riskScore": 49,
+    "fastTrack": false,
+    "flaggedGuidelines": [
+      "K"
+    ],
+    "daysInStage": 120,
+    "cvEnrolled": true,
+    "openAlerts": 1,
+    "ssnMasked": "***-**-1481",
+    "dob": "1993-05-14",
+    "address": "113 Demo Street, Arlington, VA 22203"
+  },
+  "aiSummary": "One developed issue under Guideline K (Handling Protected Information); otherwise clear.",
+  "timeline": [
+    {
+      "date": "2026-05-01",
+      "actor": "K. Rivas",
+      "role": "FSO",
+      "event": "Case initiated in NBIS eApp",
+      "note": null
+    }
+  ],
+  "wholePerson": [
+    {
+      "factor": "Overall record",
+      "assessment": "Single-issue case"
+    }
+  ],
+  "guidelines": [
+    {
+      "code": "K",
+      "name": "Handling Protected Information",
+      "severity": "B",
+      "aiReasoning": "Single developed issue under Guideline K: One security infraction: classified document left unsecured (2025). AG ¶ 34(g) applies; mitigation AG ¶ 35(a) assessed as partial.",
+      "evidence": [
+        {
+          "provider": "Security incident reports",
+          "type": "Record check",
+          "description": "One security infraction: classified document left unsecured (2025)",
+          "date": "2026-05-15"
+        }
+      ],
+      "disqualifiers": [
+        {
+          "code": "AG ¶ 34(g)",
+          "description": "Any failure to comply with rules for the protection of classified information",
+          "evidence": "One security infraction: classified document left unsecured (2025)"
+        }
+      ],
+      "mitigators": [
+        {
+          "code": "AG ¶ 35(a)",
+          "description": "So much time has elapsed / infrequent",
+          "applicability": "PARTIAL",
+          "reasoning": "Assessed from record evidence; subject response pending."
+        }
+      ],
+      "precedents": [
+        {
+          "caseNumber": "23-01001",
+          "outcome": "DENIED",
+          "year": 2025,
+          "relevance": "DOHA hearing decision involving Guideline K (Handling Protected Information)"
+        },
+        {
+          "caseNumber": "24-01547",
+          "outcome": "DENIED",
+          "year": 2025,
+          "relevance": "DOHA hearing decision involving Guideline K (Handling Protected Information)"
+        },
+        {
+          "caseNumber": "23-01442",
+          "outcome": "GRANTED",
+          "year": 2025,
+          "relevance": "DOHA hearing decision involving Guideline K (Handling Protected Information)"
+        }
+      ]
+    }
+  ],
+  "investigation": {
+    "coverage": [
+      {
+        "item": "Automated record checks",
+        "status": "COMPLETE"
+      },
+      {
+        "item": "Tier-required fieldwork",
+        "status": "COMPLETE"
+      }
+    ],
+    "sf86Sections": [
+      {
+        "section": "Section 22",
+        "title": "Police record",
+        "subjectReport": "No police record",
+        "matchedResult": "NCIC: no record",
+        "discrepancy": false,
+        "providers": [
+          "FBI CJIS/NCIC"
+        ],
+        "guideline": null
+      }
+    ],
+    "interviews": [],
+    "roiEntries": []
+  },
+  "adjudication": {
+    "recommendation": {
+      "action": "LOI",
+      "aiSuggested": true,
+      "rationale": "Obtain subject response on the developed issue."
+    },
+    "sorDraft": null,
+    "decisions": []
+  },
+  "alerts": [
+    {
+      "id": "ALERT-313",
+      "subjectId": "SUBJ-013",
+      "subjectName": "Samuel K. Boateng",
+      "category": "SUITABILITY",
+      "severity": "MODERATE",
+      "priorityScore": 68,
+      "state": "NEW",
+      "receivedDate": "2026-06-18",
+      "provider": "LexisNexis",
+      "description": "One security infraction: classified document left unsecured (2025).",
+      "identityMatch": {
+        "confidence": 0.93,
+        "identifiers": [
+          {
+            "field": "Name",
+            "subjectValue": "Samuel K. Boateng",
+            "recordValue": "SAMUEL K. BOATENG",
+            "match": true
+          },
+          {
+            "field": "DOB",
+            "subjectValue": "1993-05-14",
+            "recordValue": "1993-05-14",
+            "match": true
+          }
+        ]
+      },
+      "threshold": {
+        "rule": "Category threshold met",
+        "met": true,
+        "detail": "Meets CV investigative-standard threshold."
+      },
+      "priorAdjudication": {
+        "previouslyAdjudicated": false,
+        "reference": null
+      }
+    }
+  ],
+  "documents": [
+    {
+      "title": "SF-86",
+      "type": "SF-86",
+      "description": "Questionnaire on file",
+      "url": null
+    }
+  ]
+}

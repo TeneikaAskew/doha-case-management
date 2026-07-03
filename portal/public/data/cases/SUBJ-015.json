@@ -1,0 +1,173 @@
+{
+  "subject": {
+    "id": "SUBJ-015",
+    "name": "Ethan C. Marsh",
+    "position": "Test Engineer",
+    "tier": "T3",
+    "stage": "CONTINUOUS_VETTING",
+    "status": "ACTION_REQUIRED",
+    "eligibility": "SECRET",
+    "riskScore": 71,
+    "fastTrack": false,
+    "flaggedGuidelines": [
+      "F"
+    ],
+    "daysInStage": 21,
+    "cvEnrolled": true,
+    "openAlerts": 1,
+    "ssnMasked": "***-**-1555",
+    "dob": "1980-07-16",
+    "address": "115 Demo Street, Arlington, VA 22205"
+  },
+  "aiSummary": "One developed issue under Guideline F (Financial Considerations); otherwise clear.",
+  "timeline": [
+    {
+      "date": "2026-05-01",
+      "actor": "K. Rivas",
+      "role": "FSO",
+      "event": "Case initiated in NBIS eApp",
+      "note": null
+    }
+  ],
+  "wholePerson": [
+    {
+      "factor": "Overall record",
+      "assessment": "Single-issue case"
+    }
+  ],
+  "guidelines": [
+    {
+      "code": "F",
+      "name": "Financial Considerations",
+      "severity": "B",
+      "aiReasoning": "Single developed issue under Guideline F: Two delinquent accounts totaling $9,800. AG ¶ 19(a) applies; mitigation AG ¶ 20(b) assessed as partial.",
+      "evidence": [
+        {
+          "provider": "TransUnion",
+          "type": "Record check",
+          "description": "Two delinquent accounts totaling $9,800",
+          "date": "2026-05-15"
+        }
+      ],
+      "disqualifiers": [
+        {
+          "code": "AG ¶ 19(a)",
+          "description": "Inability to satisfy debts",
+          "evidence": "Two delinquent accounts totaling $9,800"
+        }
+      ],
+      "mitigators": [
+        {
+          "code": "AG ¶ 20(b)",
+          "description": "Conditions largely beyond the person's control",
+          "applicability": "PARTIAL",
+          "reasoning": "Assessed from record evidence; subject response pending."
+        }
+      ],
+      "precedents": [
+        {
+          "caseNumber": "23-01864",
+          "outcome": "DENIED",
+          "year": 2026,
+          "relevance": "DOHA hearing decision involving Guideline F (Financial Considerations)"
+        },
+        {
+          "caseNumber": "24-00939",
+          "outcome": "DENIED",
+          "year": 2026,
+          "relevance": "DOHA hearing decision involving Guideline F (Financial Considerations)"
+        },
+        {
+          "caseNumber": "24-00971",
+          "outcome": "GRANTED",
+          "year": 2026,
+          "relevance": "DOHA hearing decision involving Guideline F (Financial Considerations)"
+        }
+      ]
+    }
+  ],
+  "investigation": {
+    "coverage": [
+      {
+        "item": "Automated record checks",
+        "status": "COMPLETE"
+      },
+      {
+        "item": "Tier-required fieldwork",
+        "status": "COMPLETE"
+      }
+    ],
+    "sf86Sections": [
+      {
+        "section": "Section 22",
+        "title": "Police record",
+        "subjectReport": "No police record",
+        "matchedResult": "NCIC: no record",
+        "discrepancy": false,
+        "providers": [
+          "FBI CJIS/NCIC"
+        ],
+        "guideline": null
+      }
+    ],
+    "interviews": [],
+    "roiEntries": []
+  },
+  "adjudication": {
+    "recommendation": {
+      "action": "LOI",
+      "aiSuggested": true,
+      "rationale": "Obtain subject response on the developed issue."
+    },
+    "sorDraft": null,
+    "decisions": []
+  },
+  "alerts": [
+    {
+      "id": "ALERT-315",
+      "subjectId": "SUBJ-015",
+      "subjectName": "Ethan C. Marsh",
+      "category": "FINANCIAL",
+      "severity": "MODERATE",
+      "priorityScore": 70,
+      "state": "NEW",
+      "receivedDate": "2026-06-18",
+      "provider": "TransUnion",
+      "description": "Two delinquent accounts totaling $9,800.",
+      "identityMatch": {
+        "confidence": 0.93,
+        "identifiers": [
+          {
+            "field": "Name",
+            "subjectValue": "Ethan C. Marsh",
+            "recordValue": "ETHAN C. MARSH",
+            "match": true
+          },
+          {
+            "field": "DOB",
+            "subjectValue": "1980-07-16",
+            "recordValue": "1980-07-16",
+            "match": true
+          }
+        ]
+      },
+      "threshold": {
+        "rule": "Category threshold met",
+        "met": true,
+        "detail": "Meets CV investigative-standard threshold."
+      },
+      "priorAdjudication": {
+        "previouslyAdjudicated": false,
+        "reference": null
+      }
+    }
+  ],
+  "documents": [
+    {
+      "title": "SF-86",
+      "type": "SF-86",
+      "description": "Questionnaire on file",
+      "url": null
+    }
+  ]
+}

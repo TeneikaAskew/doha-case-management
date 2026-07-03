@@ -1,0 +1,134 @@
+{
+  "subject": {
+    "id": "SUBJ-009",
+    "name": "Derek S. Nakamura",
+    "position": "Intelligence Analyst",
+    "tier": "T5",
+    "stage": "ADJUDICATION",
+    "status": "NEEDS_REVIEW",
+    "eligibility": "INTERIM",
+    "riskScore": 58,
+    "fastTrack": false,
+    "flaggedGuidelines": [
+      "H"
+    ],
+    "daysInStage": 27,
+    "cvEnrolled": false,
+    "openAlerts": 0,
+    "ssnMasked": "***-**-1333",
+    "dob": "1989-01-10",
+    "address": "109 Demo Street, Arlington, VA 22209"
+  },
+  "aiSummary": "One developed issue under Guideline H (Drug Involvement and Substance Misuse); otherwise clear.",
+  "timeline": [
+    {
+      "date": "2026-05-01",
+      "actor": "K. Rivas",
+      "role": "FSO",
+      "event": "Case initiated in NBIS eApp",
+      "note": null
+    }
+  ],
+  "wholePerson": [
+    {
+      "factor": "Overall record",
+      "assessment": "Single-issue case"
+    }
+  ],
+  "guidelines": [
+    {
+      "code": "H",
+      "name": "Drug Involvement and Substance Misuse",
+      "severity": "B",
+      "aiReasoning": "Single developed issue under Guideline H: Self-reported marijuana use x4, most recent 2024, prior to sponsorship. AG ¶ 25(a) applies; mitigation AG ¶ 26(a) assessed as partial.",
+      "evidence": [
+        {
+          "provider": "SF-86 self-report",
+          "type": "Record check",
+          "description": "Self-reported marijuana use x4, most recent 2024, prior to sponsorship",
+          "date": "2026-05-15"
+        }
+      ],
+      "disqualifiers": [
+        {
+          "code": "AG ¶ 25(a)",
+          "description": "Any substance misuse",
+          "evidence": "Self-reported marijuana use x4, most recent 2024, prior to sponsorship"
+        }
+      ],
+      "mitigators": [
+        {
+          "code": "AG ¶ 26(a)",
+          "description": "Behavior happened so long ago / unlikely to recur",
+          "applicability": "PARTIAL",
+          "reasoning": "Assessed from record evidence; subject response pending."
+        }
+      ],
+      "precedents": [
+        {
+          "caseNumber": "24-00568",
+          "outcome": "DENIED",
+          "year": 2026,
+          "relevance": "DOHA hearing decision involving Guideline H (Drug Involvement and Substance Misuse)"
+        },
+        {
+          "caseNumber": "24-01772",
+          "outcome": "DENIED",
+          "year": 2026,
+          "relevance": "DOHA hearing decision involving Guideline H (Drug Involvement and Substance Misuse)"
+        },
+        {
+          "caseNumber": "25-00721",
+          "outcome": "GRANTED",
+          "year": 2026,
+          "relevance": "DOHA hearing decision involving Guideline H (Drug Involvement and Substance Misuse)"
+        }
+      ]
+    }
+  ],
+  "investigation": {
+    "coverage": [
+      {
+        "item": "Automated record checks",
+        "status": "COMPLETE"
+      },
+      {
+        "item": "Tier-required fieldwork",
+        "status": "COMPLETE"
+      }
+    ],
+    "sf86Sections": [
+      {
+        "section": "Section 22",
+        "title": "Police record",
+        "subjectReport": "No police record",
+        "matchedResult": "NCIC: no record",
+        "discrepancy": false,
+        "providers": [
+          "FBI CJIS/NCIC"
+        ],
+        "guideline": null
+      }
+    ],
+    "interviews": [],
+    "roiEntries": []
+  },
+  "adjudication": {
+    "recommendation": {
+      "action": "LOI",
+      "aiSuggested": true,
+      "rationale": "Obtain subject response on the developed issue."
+    },
+    "sorDraft": null,
+    "decisions": []
+  },
+  "alerts": [],
+  "documents": [
+    {
+      "title": "SF-86",
+      "type": "SF-86",
+      "description": "Questionnaire on file",
+      "url": null
+    }
+  ]
+}

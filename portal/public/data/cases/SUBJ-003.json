@@ -1,0 +1,132 @@
+{
+  "subject": {
+    "id": "SUBJ-003",
+    "name": "Priya N. Shah",
+    "position": "Financial Analyst",
+    "tier": "T3",
+    "stage": "INVESTIGATION",
+    "status": "CLEAR",
+    "eligibility": "NONE",
+    "riskScore": 8,
+    "fastTrack": true,
+    "flaggedGuidelines": [],
+    "daysInStage": 22,
+    "cvEnrolled": false,
+    "openAlerts": 0,
+    "ssnMasked": "***-**-2210",
+    "dob": "1996-07-30",
+    "address": "510 Alder Grove Ln, Columbia, MD 21044"
+  },
+  "aiSummary": "Clean T3 case: all automated checks returned clear, no discrepancies between SF-86 and record sources, full coverage complete except one employment verification in progress. AI triage classifies this case as a fast-track candidate for favorable eAdjudication.",
+  "timeline": [
+    {
+      "date": "2026-06-10",
+      "actor": "K. Rivas",
+      "role": "FSO",
+      "event": "Case initiated in NBIS eApp",
+      "note": "T3 initial"
+    },
+    {
+      "date": "2026-06-14",
+      "actor": "System",
+      "role": "System",
+      "event": "Fingerprint check returned: no record",
+      "note": null
+    },
+    {
+      "date": "2026-06-28",
+      "actor": "System",
+      "role": "System",
+      "event": "AI triage: fast-track candidate",
+      "note": "Risk score 8/100"
+    }
+  ],
+  "wholePerson": [
+    {
+      "factor": "Overall record",
+      "assessment": "No adverse information across all checked sources."
+    }
+  ],
+  "guidelines": [],
+  "investigation": {
+    "coverage": [
+      {
+        "item": "Fingerprint / FBI criminal history",
+        "status": "COMPLETE"
+      },
+      {
+        "item": "Credit check",
+        "status": "COMPLETE"
+      },
+      {
+        "item": "Education verification",
+        "status": "COMPLETE"
+      },
+      {
+        "item": "Employment verification",
+        "status": "PENDING"
+      },
+      {
+        "item": "Subject interview",
+        "status": "NOT_REQUIRED"
+      }
+    ],
+    "sf86Sections": [
+      {
+        "section": "Section 22",
+        "title": "Police record",
+        "subjectReport": "No police record",
+        "matchedResult": "NCIC: no record",
+        "discrepancy": false,
+        "providers": [
+          "FBI CJIS/NCIC"
+        ],
+        "guideline": null
+      },
+      {
+        "section": "Section 20A",
+        "title": "Financial record",
+        "subjectReport": "No delinquencies",
+        "matchedResult": "All bureaus current; utilization 12%",
+        "discrepancy": false,
+        "providers": [
+          "Equifax",
+          "Experian",
+          "TransUnion"
+        ],
+        "guideline": null
+      },
+      {
+        "section": "Section 12",
+        "title": "Education",
+        "subjectReport": "B.S. Finance, University of Maryland, 2018",
+        "matchedResult": "Degree verified via clearinghouse",
+        "discrepancy": false,
+        "providers": [
+          "Education records"
+        ],
+        "guideline": null
+      }
+    ],
+    "interviews": [],
+    "roiEntries": []
+  },
+  "adjudication": {
+    "recommendation": {
+      "action": "GRANT",
+      "aiSuggested": true,
+      "rationale": "No issues developed; eligible for favorable eAdjudication on coverage completion."
+    },
+    "sorDraft": null,
+    "decisions": []
+  },
+  "alerts": [],
+  "documents": [
+    {
+      "title": "SF-86 (2026-06-10)",
+      "type": "SF-86",
+      "description": "T3 questionnaire",
+      "url": null
+    }
+  ]
+}

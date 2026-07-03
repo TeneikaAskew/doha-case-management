@@ -1,0 +1,313 @@
+{
+  "subject": {
+    "id": "SUBJ-002",
+    "name": "Marcus T. Bell",
+    "position": "Logistics Coordinator",
+    "tier": "T3",
+    "stage": "CONTINUOUS_VETTING",
+    "status": "NEEDS_REVIEW",
+    "eligibility": "SECRET",
+    "riskScore": 64,
+    "fastTrack": false,
+    "flaggedGuidelines": [
+      "J",
+      "G"
+    ],
+    "daysInStage": 9,
+    "cvEnrolled": true,
+    "openAlerts": 1,
+    "ssnMasked": "***-**-7733",
+    "dob": "1992-11-02",
+    "address": "88 Quarry Ridge Rd, Chesapeake, VA 23320"
+  },
+  "aiSummary": "CV-enrolled Secret holder with a fingerprint-verified DUI arrest on 2026-06-21 (Guideline J/G). Single incident, disposition pending; prior record clean. Analyst validation pending; recommend request for police report and command notification rather than immediate suspension.",
+  "timeline": [
+    {
+      "date": "2023-04-10",
+      "actor": "Adjudicator L. Ortiz",
+      "role": "Adjudicator",
+      "event": "Favorable adjudication — Secret granted",
+      "note": "Clean T3"
+    },
+    {
+      "date": "2023-05-01",
+      "actor": "System",
+      "role": "CV",
+      "event": "Enrolled in CV",
+      "note": null
+    },
+    {
+      "date": "2025-11-20",
+      "actor": "R. Chen",
+      "role": "Analyst",
+      "event": "Financial alert adjudicated: no action",
+      "note": "Resolved delinquency"
+    },
+    {
+      "date": "2026-06-23",
+      "actor": "System",
+      "role": "CV",
+      "event": "Rap Back criminal alert received",
+      "note": "DUI arrest 2026-06-21"
+    }
+  ],
+  "wholePerson": [
+    {
+      "factor": "Nature, extent, and seriousness of the conduct",
+      "assessment": "Single DUI arrest; serious but isolated."
+    },
+    {
+      "factor": "Frequency and recency",
+      "assessment": "First incident; very recent."
+    },
+    {
+      "factor": "Rehabilitation and behavioral changes",
+      "assessment": "Unknown — disposition pending."
+    },
+    {
+      "factor": "Likelihood of continuation or recurrence",
+      "assessment": "Indeterminate pending court outcome and any treatment."
+    }
+  ],
+  "guidelines": [
+    {
+      "code": "J",
+      "name": "Criminal Conduct",
+      "severity": "B",
+      "aiReasoning": "AG ¶ 31(b) applies on arrest evidence; adjudication should await disposition. Isolated incident weighs toward ¶ 32(a) over time.",
+      "evidence": [
+        {
+          "provider": "FBI Rap Back",
+          "type": "Arrest record",
+          "description": "DUI arrest, Chesapeake PD, 2026-06-21",
+          "date": "2026-06-23"
+        }
+      ],
+      "disqualifiers": [
+        {
+          "code": "AG ¶ 31(b)",
+          "description": "Evidence of criminal conduct regardless of whether the person was formally charged",
+          "evidence": "Fingerprint-verified arrest record"
+        }
+      ],
+      "mitigators": [
+        {
+          "code": "AG ¶ 32(a)",
+          "description": "So much time has elapsed / unlikely to recur",
+          "applicability": "NONE",
+          "reasoning": "Arrest occurred within the last two weeks."
+        }
+      ],
+      "precedents": [
+        {
+          "caseNumber": "24-00939",
+          "outcome": "DENIED",
+          "year": 2026,
+          "relevance": "DOHA hearing decision involving Guideline J (Criminal Conduct)"
+        },
+        {
+          "caseNumber": "24-02441",
+          "outcome": "DENIED",
+          "year": 2026,
+          "relevance": "DOHA hearing decision involving Guideline J (Criminal Conduct)"
+        },
+        {
+          "caseNumber": "25-00721",
+          "outcome": "GRANTED",
+          "year": 2026,
+          "relevance": "DOHA hearing decision involving Guideline J (Criminal Conduct)"
+        }
+      ]
+    },
+    {
+      "code": "G",
+      "name": "Alcohol Consumption",
+      "severity": "B",
+      "aiReasoning": "Single alcohol-related incident (AG ¶ 22(a)). No evidence yet of a pattern or diagnosis; evaluation report would inform ¶ 23(b).",
+      "evidence": [
+        {
+          "provider": "FBI Rap Back",
+          "type": "Arrest record",
+          "description": "Alcohol-related driving arrest",
+          "date": "2026-06-23"
+        }
+      ],
+      "disqualifiers": [
+        {
+          "code": "AG ¶ 22(a)",
+          "description": "Alcohol-related incident away from work",
+          "evidence": "DUI arrest 2026-06-21"
+        }
+      ],
+      "mitigators": [
+        {
+          "code": "AG ¶ 23(a)",
+          "description": "So much time has passed / no pattern",
+          "applicability": "NONE",
+          "reasoning": "Incident is current."
+        }
+      ],
+      "precedents": [
+        {
+          "caseNumber": "22-00010",
+          "outcome": "DENIED",
+          "year": 2025,
+          "relevance": "DOHA hearing decision involving Guideline G (Alcohol Consumption)"
+        },
+        {
+          "caseNumber": "22-02575",
+          "outcome": "DENIED",
+          "year": 2025,
+          "relevance": "DOHA hearing decision involving Guideline G (Alcohol Consumption)"
+        },
+        {
+          "caseNumber": "22-00468",
+          "outcome": "GRANTED",
+          "year": 2025,
+          "relevance": "DOHA hearing decision involving Guideline G (Alcohol Consumption)"
+        }
+      ]
+    }
+  ],
+  "investigation": {
+    "coverage": [
+      {
+        "item": "T3 automated record checks (2023)",
+        "status": "COMPLETE"
+      },
+      {
+        "item": "Police report retrieval (2026 arrest)",
+        "status": "PENDING"
+      }
+    ],
+    "sf86Sections": [
+      {
+        "section": "Section 22",
+        "title": "Police record",
+        "subjectReport": "No arrests reported (2023 SF-86)",
+        "matchedResult": "Accurate at submission; post-grant arrest via Rap Back 2026",
+        "discrepancy": false,
+        "providers": [
+          "FBI Rap Back"
+        ],
+        "guideline": "J"
+      }
+    ],
+    "interviews": [],
+    "roiEntries": []
+  },
+  "adjudication": {
+    "recommendation": {
+      "action": "LOI",
+      "aiSuggested": true,
+      "rationale": "Obtain police report and disposition; issue LOI for subject's account before any eligibility action."
+    },
+    "sorDraft": null,
+    "decisions": [
+      {
+        "date": "2023-04-10",
+        "adjudicator": "L. Ortiz",
+        "action": "GRANT",
+        "rationale": "Clean T3 investigation; no issues."
+      }
+    ]
+  },
+  "alerts": [
+    {
+      "id": "ALERT-201",
+      "subjectId": "SUBJ-002",
+      "subjectName": "Marcus T. Bell",
+      "category": "CRIMINAL",
+      "severity": "HIGH",
+      "priorityScore": 76,
+      "state": "NEW",
+      "receivedDate": "2026-06-23",
+      "provider": "FBI Rap Back",
+      "description": "Arrest: DUI, Chesapeake PD, 2026-06-21. Disposition pending.",
+      "identityMatch": {
+        "confidence": 0.97,
+        "identifiers": [
+          {
+            "field": "Fingerprint",
+            "subjectValue": "Enrolled (Rap Back)",
+            "recordValue": "Match",
+            "match": true
+          },
+          {
+            "field": "Name",
+            "subjectValue": "Marcus T. Bell",
+            "recordValue": "BELL, MARCUS T",
+            "match": true
+          },
+          {
+            "field": "DOB",
+            "subjectValue": "1992-11-02",
+            "recordValue": "1992-11-02",
+            "match": true
+          }
+        ]
+      },
+      "threshold": {
+        "rule": "Any arrest while CV-enrolled",
+        "met": true,
+        "detail": "Fingerprint-verified arrest notification."
+      },
+      "priorAdjudication": {
+        "previouslyAdjudicated": false,
+        "reference": null
+      }
+    },
+    {
+      "id": "ALERT-202",
+      "subjectId": "SUBJ-002",
+      "subjectName": "Marcus T. Bell",
+      "category": "FINANCIAL",
+      "severity": "LOW",
+      "priorityScore": 22,
+      "state": "ADJUDICATED",
+      "receivedDate": "2025-10-12",
+      "provider": "TransUnion",
+      "description": "30-day delinquency, $800 retail account (resolved).",
+      "identityMatch": {
+        "confidence": 0.95,
+        "identifiers": [
+          {
+            "field": "Name",
+            "subjectValue": "Marcus T. Bell",
+            "recordValue": "Marcus Bell",
+            "match": true
+          },
+          {
+            "field": "SSN (last 4)",
+            "subjectValue": "7733",
+            "recordValue": "7733",
+            "match": true
+          }
+        ]
+      },
+      "threshold": {
+        "rule": "Delinquent debt > $500",
+        "met": true,
+        "detail": "Met threshold; resolved by payment 2025-11."
+      },
+      "priorAdjudication": {
+        "previouslyAdjudicated": true,
+        "reference": "CV disposition 2025-11-20: no action"
+      }
+    }
+  ],
+  "documents": [
+    {
+      "title": "Rap Back notification",
+      "type": "Provider record",
+      "description": "FBI arrest notification 2026-06-23",
+      "url": null
+    },
+    {
+      "title": "SF-86 (2023-01-15)",
+      "type": "SF-86",
+      "description": "Original T3 questionnaire",
+      "url": null
+    }
+  ]
+}

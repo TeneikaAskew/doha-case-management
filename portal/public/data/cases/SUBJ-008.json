@@ -1,0 +1,82 @@
+{
+  "subject": {
+    "id": "SUBJ-008",
+    "name": "Hannah J. Whitmore",
+    "position": "Contracts Specialist",
+    "tier": "T2",
+    "stage": "INVESTIGATION",
+    "status": "CLEAR",
+    "eligibility": "NONE",
+    "riskScore": 11,
+    "fastTrack": true,
+    "flaggedGuidelines": [],
+    "daysInStage": 19,
+    "cvEnrolled": false,
+    "openAlerts": 0,
+    "ssnMasked": "***-**-1296",
+    "dob": "1988-09-18",
+    "address": "108 Demo Street, Arlington, VA 22208"
+  },
+  "aiSummary": "No adverse information developed; routine processing.",
+  "timeline": [
+    {
+      "date": "2026-05-01",
+      "actor": "K. Rivas",
+      "role": "FSO",
+      "event": "Case initiated in NBIS eApp",
+      "note": null
+    }
+  ],
+  "wholePerson": [
+    {
+      "factor": "Overall record",
+      "assessment": "Routine"
+    }
+  ],
+  "guidelines": [],
+  "investigation": {
+    "coverage": [
+      {
+        "item": "Automated record checks",
+        "status": "COMPLETE"
+      },
+      {
+        "item": "Tier-required fieldwork",
+        "status": "PENDING"
+      }
+    ],
+    "sf86Sections": [
+      {
+        "section": "Section 22",
+        "title": "Police record",
+        "subjectReport": "No police record",
+        "matchedResult": "NCIC: no record",
+        "discrepancy": false,
+        "providers": [
+          "FBI CJIS/NCIC"
+        ],
+        "guideline": null
+      }
+    ],
+    "interviews": [],
+    "roiEntries": []
+  },
+  "adjudication": {
+    "recommendation": {
+      "action": "GRANT",
+      "aiSuggested": true,
+      "rationale": "No issues developed."
+    },
+    "sorDraft": null,
+    "decisions": []
+  },
+  "alerts": [],
+  "documents": [
+    {
+      "title": "SF-86",
+      "type": "SF-86",
+      "description": "Questionnaire on file",
+      "url": null
+    }
+  ]
+}

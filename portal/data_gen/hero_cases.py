@@ -1,0 +1,403 @@
+"""Hand-authored deep demo cases. All identities fictional."""
+
+TODAY = "2026-07-02"
+
+
+def _subject(profile: dict) -> dict:
+    base = dict(fastTrack=False, cvEnrolled=True, openAlerts=0)
+    base.update(profile)
+    return base
+
+
+def build_hero_cases(precedent_fn) -> list[dict]:
+    return [_hero1(precedent_fn), _hero2(precedent_fn), _hero3(precedent_fn)]
+
+
+def _hero1(precedent_fn) -> dict:
+    subject = _subject(dict(
+        id="SUBJ-001", name="Daniel R. Okafor", position="Senior Systems Engineer",
+        tier="T5", stage="ADJUDICATION", status="ACTION_REQUIRED",
+        eligibility="INTERIM", riskScore=78, flaggedGuidelines=["F", "B"],
+        daysInStage=41, openAlerts=2,
+        ssnMasked="***-**-4821", dob="1988-03-14",
+        address="1427 Birch Hollow Ct, Manassas, VA 20109",
+    ))
+    alerts = [
+        dict(id="ALERT-101", subjectId="SUBJ-001", subjectName=subject["name"],
+             category="FINANCIAL", severity="HIGH", priorityScore=82, state="NEW",
+             receivedDate="2026-06-20", provider="TransUnion",
+             description="New collection account reported: $12,400 past due (auto loan).",
+             identityMatch=dict(confidence=0.96, identifiers=[
+                 dict(field="Name", subjectValue="Daniel R. Okafor",
+                      recordValue="Daniel Okafor", match=True),
+                 dict(field="DOB", subjectValue="1988-03-14",
+                      recordValue="1988-03-14", match=True),
+                 dict(field="SSN (last 4)", subjectValue="4821",
+                      recordValue="4821", match=True)]),
+             threshold=dict(rule="Delinquent debt > $5,000", met=True,
+                            detail="Past-due balance $12,400 exceeds CV threshold."),
+             priorAdjudication=dict(previouslyAdjudicated=False, reference=None)),
+        dict(id="ALERT-102", subjectId="SUBJ-001", subjectName=subject["name"],
+             category="FOREIGN_TRAVEL", severity="MODERATE", priorityScore=61,
+             state="VALIDATED", receivedDate="2026-05-02", provider="CBP I-94",
+             description="Unreported travel to Nigeria, 2026-04-11 to 2026-04-25.",
+             identityMatch=dict(confidence=0.99, identifiers=[
+                 dict(field="Passport", subjectValue="5310xxxx",
+                      recordValue="5310xxxx", match=True),
+                 dict(field="Name", subjectValue="Daniel R. Okafor",
+                      recordValue="OKAFOR, DANIEL R", match=True)]),
+             threshold=dict(rule="Unreported foreign travel (SEAD-3)", met=True,
+                            detail="No corresponding FSO travel report on file."),
+             priorAdjudication=dict(previouslyAdjudicated=False, reference=None)),
+    ]
+    return dict(
+        subject=subject,
+        aiSummary=("Significant unresolved financial concerns (Guideline F): $47,300 in "
+                   "delinquent debt across five accounts, with a new collection alert in June "
+                   "2026. Foreign influence concerns (Guideline B): three family members "
+                   "resident in Nigeria, one employed by a state-owned enterprise, plus "
+                   "unreported April 2026 travel. SF-86 understated the delinquency, raising "
+                   "candor questions. Mitigation is partial at best; whole-person factors do "
+                   "not yet resolve the doubt."),
+        timeline=[
+            dict(date="2025-09-08", actor="K. Rivas", role="FSO",
+                 event="Case initiated in NBIS eApp", note="T5 initial, interim granted"),
+            dict(date="2025-11-19", actor="S. Whitfield", role="Investigator",
+                 event="Subject interview completed",
+                 note="Subject acknowledged two delinquent accounts, attributed to 2024 job gap"),
+            dict(date="2026-01-27", actor="S. Whitfield", role="Investigator",
+                 event="ROI transmitted", note="Financial and foreign-contact issues flagged"),
+            dict(date="2026-03-15", actor="R. Chen", role="Analyst",
+                 event="Credit re-check run", note="Delinquency total revised upward"),
+            dict(date="2026-05-06", actor="R. Chen", role="Analyst",
+                 event="CV alert validated: unreported foreign travel",
+                 note="Referred to adjudication"),
+            dict(date="2026-06-20", actor="System", role="CV",
+                 event="New financial CV alert received", note=None),
+        ],
+        wholePerson=[
+            dict(factor="Nature, extent, and seriousness of the conduct",
+                 assessment="Sustained delinquency plus incomplete disclosure; serious."),
+            dict(factor="Circumstances surrounding the conduct",
+                 assessment="Six-month unemployment in 2024 contributed to initial arrears."),
+            dict(factor="Frequency and recency", assessment="Ongoing; newest alert June 2026."),
+            dict(factor="Age and maturity at the time", assessment="Adult throughout (36-38)."),
+            dict(factor="Voluntariness of participation",
+                 assessment="Debt partly circumstantial; non-disclosure voluntary."),
+            dict(factor="Rehabilitation and behavioral changes",
+                 assessment="No payment plan or counseling evidenced to date."),
+            dict(factor="Motivation", assessment="No evidence of divided loyalty; financial strain."),
+            dict(factor="Potential for pressure, coercion, or duress",
+                 assessment="Elevated: debt plus close foreign family ties."),
+            dict(factor="Likelihood of continuation or recurrence",
+                 assessment="High absent documented repayment behavior."),
+        ],
+        guidelines=[
+            dict(code="F", name="Financial Considerations", severity="C",
+                 aiReasoning=("Disqualifying conditions AG ¶ 19(a) and 19(c) are established by "
+                              "the credit record. Mitigator ¶ 20(b) applies only partially: the "
+                              "2024 job loss was beyond his control, but there is no evidence he "
+                              "acted responsibly under the circumstances since re-employment."),
+                 evidence=[
+                     dict(provider="TransUnion", type="Credit report",
+                          description="$47,300 delinquent across 5 accounts; 2 charge-offs",
+                          date="2026-03-15"),
+                     dict(provider="Equifax", type="Credit report",
+                          description="Auto loan 120+ days past due, $12,400", date="2026-06-20"),
+                     dict(provider="State & local courts", type="Civil judgment",
+                          description="Small-claims judgment $3,100 (2025), unpaid",
+                          date="2025-08-02")],
+                 disqualifiers=[
+                     dict(code="AG ¶ 19(a)", description="Inability to satisfy debts",
+                          evidence="$47,300 delinquent across five accounts"),
+                     dict(code="AG ¶ 19(c)", description="A history of not meeting financial obligations",
+                          evidence="Charge-offs 2024-2026 and unpaid 2025 judgment")],
+                 mitigators=[
+                     dict(code="AG ¶ 20(b)",
+                          description="Conditions largely beyond the person's control",
+                          applicability="PARTIAL",
+                          reasoning="Job loss was involuntary, but no responsible action "
+                                    "(payment plan, counseling) is documented since."),
+                     dict(code="AG ¶ 20(d)",
+                          description="Good-faith effort to repay overdue creditors",
+                          applicability="NONE",
+                          reasoning="No repayment evidence in file.")],
+                 precedents=precedent_fn("F")),
+            dict(code="B", name="Foreign Influence", severity="B",
+                 aiReasoning=("AG ¶ 7(a) contacts are established: mother and two siblings in "
+                              "Nigeria, one sibling employed by a state-owned oil company. "
+                              "Unreported April 2026 travel weighs against ¶ 8(a) mitigation. "
+                              "Combined with financial pressure, heightens coercion risk."),
+                 evidence=[
+                     dict(provider="SF-86 self-report", type="Foreign contacts",
+                          description="Mother and two siblings, Nigerian citizens/residents",
+                          date="2025-09-08"),
+                     dict(provider="CBP I-94", type="Travel record",
+                          description="Nigeria travel 2026-04-11 to 2026-04-25, unreported",
+                          date="2026-05-02")],
+                 disqualifiers=[
+                     dict(code="AG ¶ 7(a)",
+                          description="Contact with a foreign family member who could create "
+                                      "a risk of foreign exploitation or pressure",
+                          evidence="Sibling employed by state-owned enterprise")],
+                 mitigators=[
+                     dict(code="AG ¶ 8(a)",
+                          description="Nature of relationships makes exploitation unlikely",
+                          applicability="PARTIAL",
+                          reasoning="Contacts are familial and disclosed, but the unreported "
+                                    "travel undercuts confidence in ongoing candor.")],
+                 precedents=precedent_fn("B")),
+        ],
+        investigation=dict(
+            coverage=[
+                dict(item="Subject interview (ESI)", status="COMPLETE"),
+                dict(item="Employment coverage (10 yrs)", status="COMPLETE"),
+                dict(item="Neighborhood/reference interviews", status="COMPLETE"),
+                dict(item="Financial record checks", status="COMPLETE"),
+                dict(item="Foreign contact expansion leads", status="PENDING"),
+            ],
+            sf86Sections=[
+                dict(section="Section 20A", title="Financial record — delinquencies",
+                     subjectReport="Two delinquent accounts totaling about $9,000",
+                     matchedResult="Five delinquent accounts totaling $47,300 (TransUnion/Equifax)",
+                     discrepancy=True, providers=["TransUnion", "Equifax"], guideline="F"),
+                dict(section="Section 19", title="Foreign contacts",
+                     subjectReport="Mother and two siblings resident in Nigeria",
+                     matchedResult="Consistent with record checks; one sibling employed by "
+                                   "state-owned enterprise (not disclosed)",
+                     discrepancy=True, providers=["LexisNexis", "SEAD-5 social media"],
+                     guideline="B"),
+                dict(section="Section 18", title="Foreign travel",
+                     subjectReport="No foreign travel in last 12 months (2025 form)",
+                     matchedResult="CBP I-94 shows Nigeria travel April 2026 (post-submission, "
+                                   "unreported under SEAD-3)",
+                     discrepancy=True, providers=["CBP I-94"], guideline="B"),
+                dict(section="Section 13A", title="Employment activities",
+                     subjectReport="Employed at Meridian Defense Systems since 2019; "
+                                   "6-month gap in 2024",
+                     matchedResult="Employment verified; gap consistent with layoff records",
+                     discrepancy=False, providers=["Employment records"], guideline=None),
+            ],
+            interviews=[
+                dict(date="2025-11-19", type="Enhanced Subject Interview",
+                     interviewer="S. Whitfield",
+                     summary="Subject candid about job loss; understated debt total. Described "
+                             "family in Nigeria as 'not close', which conflicts with monthly "
+                             "remittance records."),
+                dict(date="2025-12-04", type="Reference interview", interviewer="S. Whitfield",
+                     summary="Coworker describes subject as reliable; unaware of financial stress."),
+            ],
+            roiEntries=[
+                dict(date="2026-01-27", investigator="S. Whitfield", item="Financial",
+                     text="Credit bureau data and court records establish sustained "
+                          "delinquency exceeding subject's account."),
+                dict(date="2026-01-27", investigator="S. Whitfield", item="Foreign contacts",
+                     text="Expanded lead recommended on sibling's SOE employment."),
+            ],
+        ),
+        adjudication=dict(
+            recommendation=dict(
+                action="SOR", aiSuggested=True,
+                rationale="Unmitigated F and B concerns with candor issues; propose SOR "
+                          "unless subject provides documented repayment plan and travel report."),
+            sorDraft=("STATEMENT OF REASONS (DRAFT) — Guideline F: You are indebted on five "
+                      "delinquent accounts totaling approximately $47,300, including a $12,400 "
+                      "charged-off auto loan (2026) and an unpaid $3,100 civil judgment (2025). "
+                      "Guideline B: Your mother and two siblings are citizens and residents of "
+                      "Nigeria; one sibling is employed by a state-owned enterprise. You "
+                      "traveled to Nigeria from on or about April 11 to April 25, 2026, and "
+                      "failed to report this travel as required. Guideline E cross-reference: "
+                      "your SF-86 understated your delinquent debt."),
+            decisions=[],
+        ),
+        alerts=alerts,
+        documents=[
+            dict(title="Report of Investigation (ROI)", type="ROI",
+                 description="T5 ROI transmitted 2026-01-27", url=None),
+            dict(title="SF-86 (2025-09-08)", type="SF-86",
+                 description="Questionnaire for National Security Positions", url=None),
+            dict(title="Credit reports (Mar/Jun 2026)", type="Provider record",
+                 description="TransUnion and Equifax pulls", url=None),
+        ],
+    )
+
+
+def _hero2(precedent_fn) -> dict:
+    subject = _subject(dict(
+        id="SUBJ-002", name="Marcus T. Bell", position="Logistics Coordinator",
+        tier="T3", stage="CONTINUOUS_VETTING", status="NEEDS_REVIEW",
+        eligibility="SECRET", riskScore=64, flaggedGuidelines=["J", "G"],
+        daysInStage=9, openAlerts=1,
+        ssnMasked="***-**-7733", dob="1992-11-02",
+        address="88 Quarry Ridge Rd, Chesapeake, VA 23320",
+    ))
+    alerts = [
+        dict(id="ALERT-201", subjectId="SUBJ-002", subjectName=subject["name"],
+             category="CRIMINAL", severity="HIGH", priorityScore=76, state="NEW",
+             receivedDate="2026-06-23", provider="FBI Rap Back",
+             description="Arrest: DUI, Chesapeake PD, 2026-06-21. Disposition pending.",
+             identityMatch=dict(confidence=0.97, identifiers=[
+                 dict(field="Fingerprint", subjectValue="Enrolled (Rap Back)",
+                      recordValue="Match", match=True),
+                 dict(field="Name", subjectValue="Marcus T. Bell",
+                      recordValue="BELL, MARCUS T", match=True),
+                 dict(field="DOB", subjectValue="1992-11-02",
+                      recordValue="1992-11-02", match=True)]),
+             threshold=dict(rule="Any arrest while CV-enrolled", met=True,
+                            detail="Fingerprint-verified arrest notification."),
+             priorAdjudication=dict(previouslyAdjudicated=False, reference=None)),
+        dict(id="ALERT-202", subjectId="SUBJ-002", subjectName=subject["name"],
+             category="FINANCIAL", severity="LOW", priorityScore=22, state="ADJUDICATED",
+             receivedDate="2025-10-12", provider="TransUnion",
+             description="30-day delinquency, $800 retail account (resolved).",
+             identityMatch=dict(confidence=0.95, identifiers=[
+                 dict(field="Name", subjectValue="Marcus T. Bell",
+                      recordValue="Marcus Bell", match=True),
+                 dict(field="SSN (last 4)", subjectValue="7733",
+                      recordValue="7733", match=True)]),
+             threshold=dict(rule="Delinquent debt > $500", met=True,
+                            detail="Met threshold; resolved by payment 2025-11."),
+             priorAdjudication=dict(previouslyAdjudicated=True,
+                                    reference="CV disposition 2025-11-20: no action")),
+    ]
+    return dict(
+        subject=subject,
+        aiSummary=("CV-enrolled Secret holder with a fingerprint-verified DUI arrest on "
+                    "2026-06-21 (Guideline J/G). Single incident, disposition pending; prior "
+                    "record clean. Analyst validation pending; recommend request for police "
+                    "report and command notification rather than immediate suspension."),
+        timeline=[
+            dict(date="2023-04-10", actor="Adjudicator L. Ortiz", role="Adjudicator",
+                 event="Favorable adjudication — Secret granted", note="Clean T3"),
+            dict(date="2023-05-01", actor="System", role="CV", event="Enrolled in CV", note=None),
+            dict(date="2025-11-20", actor="R. Chen", role="Analyst",
+                 event="Financial alert adjudicated: no action", note="Resolved delinquency"),
+            dict(date="2026-06-23", actor="System", role="CV",
+                 event="Rap Back criminal alert received", note="DUI arrest 2026-06-21"),
+        ],
+        wholePerson=[
+            dict(factor="Nature, extent, and seriousness of the conduct",
+                 assessment="Single DUI arrest; serious but isolated."),
+            dict(factor="Frequency and recency", assessment="First incident; very recent."),
+            dict(factor="Rehabilitation and behavioral changes",
+                 assessment="Unknown — disposition pending."),
+            dict(factor="Likelihood of continuation or recurrence",
+                 assessment="Indeterminate pending court outcome and any treatment."),
+        ],
+        guidelines=[
+            dict(code="J", name="Criminal Conduct", severity="B",
+                 aiReasoning="AG ¶ 31(b) applies on arrest evidence; adjudication should await "
+                             "disposition. Isolated incident weighs toward ¶ 32(a) over time.",
+                 evidence=[dict(provider="FBI Rap Back", type="Arrest record",
+                                description="DUI arrest, Chesapeake PD, 2026-06-21",
+                                date="2026-06-23")],
+                 disqualifiers=[dict(code="AG ¶ 31(b)",
+                                     description="Evidence of criminal conduct regardless of "
+                                                 "whether the person was formally charged",
+                                     evidence="Fingerprint-verified arrest record")],
+                 mitigators=[dict(code="AG ¶ 32(a)",
+                                  description="So much time has elapsed / unlikely to recur",
+                                  applicability="NONE",
+                                  reasoning="Arrest occurred within the last two weeks.")],
+                 precedents=precedent_fn("J")),
+            dict(code="G", name="Alcohol Consumption", severity="B",
+                 aiReasoning="Single alcohol-related incident (AG ¶ 22(a)). No evidence yet of "
+                             "a pattern or diagnosis; evaluation report would inform ¶ 23(b).",
+                 evidence=[dict(provider="FBI Rap Back", type="Arrest record",
+                                description="Alcohol-related driving arrest", date="2026-06-23")],
+                 disqualifiers=[dict(code="AG ¶ 22(a)",
+                                     description="Alcohol-related incident away from work",
+                                     evidence="DUI arrest 2026-06-21")],
+                 mitigators=[dict(code="AG ¶ 23(a)",
+                                  description="So much time has passed / no pattern",
+                                  applicability="NONE",
+                                  reasoning="Incident is current.")],
+                 precedents=precedent_fn("G")),
+        ],
+        investigation=dict(
+            coverage=[dict(item="T3 automated record checks (2023)", status="COMPLETE"),
+                      dict(item="Police report retrieval (2026 arrest)", status="PENDING")],
+            sf86Sections=[
+                dict(section="Section 22", title="Police record",
+                     subjectReport="No arrests reported (2023 SF-86)",
+                     matchedResult="Accurate at submission; post-grant arrest via Rap Back 2026",
+                     discrepancy=False, providers=["FBI Rap Back"], guideline="J"),
+            ],
+            interviews=[],
+            roiEntries=[],
+        ),
+        adjudication=dict(
+            recommendation=dict(action="LOI", aiSuggested=True,
+                                rationale="Obtain police report and disposition; issue LOI for "
+                                          "subject's account before any eligibility action."),
+            sorDraft=None,
+            decisions=[dict(date="2023-04-10", adjudicator="L. Ortiz", action="GRANT",
+                            rationale="Clean T3 investigation; no issues.")],
+        ),
+        alerts=alerts,
+        documents=[dict(title="Rap Back notification", type="Provider record",
+                        description="FBI arrest notification 2026-06-23", url=None),
+                   dict(title="SF-86 (2023-01-15)", type="SF-86",
+                        description="Original T3 questionnaire", url=None)],
+    )
+
+
+def _hero3(precedent_fn) -> dict:
+    subject = _subject(dict(
+        id="SUBJ-003", name="Priya N. Shah", position="Financial Analyst",
+        tier="T3", stage="INVESTIGATION", status="CLEAR",
+        eligibility="NONE", riskScore=8, flaggedGuidelines=[],
+        daysInStage=22, fastTrack=True, cvEnrolled=False,
+        ssnMasked="***-**-2210", dob="1996-07-30",
+        address="510 Alder Grove Ln, Columbia, MD 21044",
+    ))
+    return dict(
+        subject=subject,
+        aiSummary=("Clean T3 case: all automated checks returned clear, no discrepancies "
+                   "between SF-86 and record sources, full coverage complete except one "
+                   "employment verification in progress. AI triage classifies this case as a "
+                   "fast-track candidate for favorable eAdjudication."),
+        timeline=[
+            dict(date="2026-06-10", actor="K. Rivas", role="FSO",
+                 event="Case initiated in NBIS eApp", note="T3 initial"),
+            dict(date="2026-06-14", actor="System", role="System",
+                 event="Fingerprint check returned: no record", note=None),
+            dict(date="2026-06-28", actor="System", role="System",
+                 event="AI triage: fast-track candidate", note="Risk score 8/100"),
+        ],
+        wholePerson=[dict(factor="Overall record",
+                          assessment="No adverse information across all checked sources.")],
+        guidelines=[],
+        investigation=dict(
+            coverage=[dict(item="Fingerprint / FBI criminal history", status="COMPLETE"),
+                      dict(item="Credit check", status="COMPLETE"),
+                      dict(item="Education verification", status="COMPLETE"),
+                      dict(item="Employment verification", status="PENDING"),
+                      dict(item="Subject interview", status="NOT_REQUIRED")],
+            sf86Sections=[
+                dict(section="Section 22", title="Police record",
+                     subjectReport="No police record", matchedResult="NCIC: no record",
+                     discrepancy=False, providers=["FBI CJIS/NCIC"], guideline=None),
+                dict(section="Section 20A", title="Financial record",
+                     subjectReport="No delinquencies",
+                     matchedResult="All bureaus current; utilization 12%",
+                     discrepancy=False, providers=["Equifax", "Experian", "TransUnion"],
+                     guideline=None),
+                dict(section="Section 12", title="Education",
+                     subjectReport="B.S. Finance, University of Maryland, 2018",
+                     matchedResult="Degree verified via clearinghouse",
+                     discrepancy=False, providers=["Education records"], guideline=None),
+            ],
+            interviews=[],
+            roiEntries=[],
+        ),
+        adjudication=dict(
+            recommendation=dict(action="GRANT", aiSuggested=True,
+                                rationale="No issues developed; eligible for favorable "
+                                          "eAdjudication on coverage completion."),
+            sorDraft=None, decisions=[],
+        ),
+        alerts=[],
+        documents=[dict(title="SF-86 (2026-06-10)", type="SF-86",
+                        description="T3 questionnaire", url=None)],
+    )

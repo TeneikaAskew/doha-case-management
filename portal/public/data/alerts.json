@@ -1,0 +1,244 @@
+{
+  "alerts": [
+    {
+      "id": "ALERT-101",
+      "subjectId": "SUBJ-001",
+      "subjectName": "Daniel R. Okafor",
+      "category": "FINANCIAL",
+      "severity": "HIGH",
+      "priorityScore": 82,
+      "state": "NEW",
+      "receivedDate": "2026-06-20",
+      "provider": "TransUnion",
+      "description": "New collection account reported: $12,400 past due (auto loan).",
+      "identityMatch": {
+        "confidence": 0.96,
+        "identifiers": [
+          {
+            "field": "Name",
+            "subjectValue": "Daniel R. Okafor",
+            "recordValue": "Daniel Okafor",
+            "match": true
+          },
+          {
+            "field": "DOB",
+            "subjectValue": "1988-03-14",
+            "recordValue": "1988-03-14",
+            "match": true
+          },
+          {
+            "field": "SSN (last 4)",
+            "subjectValue": "4821",
+            "recordValue": "4821",
+            "match": true
+          }
+        ]
+      },
+      "threshold": {
+        "rule": "Delinquent debt > $5,000",
+        "met": true,
+        "detail": "Past-due balance $12,400 exceeds CV threshold."
+      },
+      "priorAdjudication": {
+        "previouslyAdjudicated": false,
+        "reference": null
+      }
+    },
+    {
+      "id": "ALERT-102",
+      "subjectId": "SUBJ-001",
+      "subjectName": "Daniel R. Okafor",
+      "category": "FOREIGN_TRAVEL",
+      "severity": "MODERATE",
+      "priorityScore": 61,
+      "state": "VALIDATED",
+      "receivedDate": "2026-05-02",
+      "provider": "CBP I-94",
+      "description": "Unreported travel to Nigeria, 2026-04-11 to 2026-04-25.",
+      "identityMatch": {
+        "confidence": 0.99,
+        "identifiers": [
+          {
+            "field": "Passport",
+            "subjectValue": "5310xxxx",
+            "recordValue": "5310xxxx",
+            "match": true
+          },
+          {
+            "field": "Name",
+            "subjectValue": "Daniel R. Okafor",
+            "recordValue": "OKAFOR, DANIEL R",
+            "match": true
+          }
+        ]
+      },
+      "threshold": {
+        "rule": "Unreported foreign travel (SEAD-3)",
+        "met": true,
+        "detail": "No corresponding FSO travel report on file."
+      },
+      "priorAdjudication": {
+        "previouslyAdjudicated": false,
+        "reference": null
+      }
+    },
+    {
+      "id": "ALERT-201",
+      "subjectId": "SUBJ-002",
+      "subjectName": "Marcus T. Bell",
+      "category": "CRIMINAL",
+      "severity": "HIGH",
+      "priorityScore": 76,
+      "state": "NEW",
+      "receivedDate": "2026-06-23",
+      "provider": "FBI Rap Back",
+      "description": "Arrest: DUI, Chesapeake PD, 2026-06-21. Disposition pending.",
+      "identityMatch": {
+        "confidence": 0.97,
+        "identifiers": [
+          {
+            "field": "Fingerprint",
+            "subjectValue": "Enrolled (Rap Back)",
+            "recordValue": "Match",
+            "match": true
+          },
+          {
+            "field": "Name",
+            "subjectValue": "Marcus T. Bell",
+            "recordValue": "BELL, MARCUS T",
+            "match": true
+          },
+          {
+            "field": "DOB",
+            "subjectValue": "1992-11-02",
+            "recordValue": "1992-11-02",
+            "match": true
+          }
+        ]
+      },
+      "threshold": {
+        "rule": "Any arrest while CV-enrolled",
+        "met": true,
+        "detail": "Fingerprint-verified arrest notification."
+      },
+      "priorAdjudication": {
+        "previouslyAdjudicated": false,
+        "reference": null
+      }
+    },
+    {
+      "id": "ALERT-202",
+      "subjectId": "SUBJ-002",
+      "subjectName": "Marcus T. Bell",
+      "category": "FINANCIAL",
+      "severity": "LOW",
+      "priorityScore": 22,
+      "state": "ADJUDICATED",
+      "receivedDate": "2025-10-12",
+      "provider": "TransUnion",
+      "description": "30-day delinquency, $800 retail account (resolved).",
+      "identityMatch": {
+        "confidence": 0.95,
+        "identifiers": [
+          {
+            "field": "Name",
+            "subjectValue": "Marcus T. Bell",
+            "recordValue": "Marcus Bell",
+            "match": true
+          },
+          {
+            "field": "SSN (last 4)",
+            "subjectValue": "7733",
+            "recordValue": "7733",
+            "match": true
+          }
+        ]
+      },
+      "threshold": {
+        "rule": "Delinquent debt > $500",
+        "met": true,
+        "detail": "Met threshold; resolved by payment 2025-11."
+      },
+      "priorAdjudication": {
+        "previouslyAdjudicated": true,
+        "reference": "CV disposition 2025-11-20: no action"
+      }
+    },
+    {
+      "id": "ALERT-313",
+      "subjectId": "SUBJ-013",
+      "subjectName": "Samuel K. Boateng",
+      "category": "SUITABILITY",
+      "severity": "MODERATE",
+      "priorityScore": 68,
+      "state": "NEW",
+      "receivedDate": "2026-06-18",
+      "provider": "LexisNexis",
+      "description": "One security infraction: classified document left unsecured (2025).",
+      "identityMatch": {
+        "confidence": 0.93,
+        "identifiers": [
+          {
+            "field": "Name",
+            "subjectValue": "Samuel K. Boateng",
+            "recordValue": "SAMUEL K. BOATENG",
+            "match": true
+          },
+          {
+            "field": "DOB",
+            "subjectValue": "1993-05-14",
+            "recordValue": "1993-05-14",
+            "match": true
+          }
+        ]
+      },
+      "threshold": {
+        "rule": "Category threshold met",
+        "met": true,
+        "detail": "Meets CV investigative-standard threshold."
+      },
+      "priorAdjudication": {
+        "previouslyAdjudicated": false,
+        "reference": null
+      }
+    },
+    {
+      "id": "ALERT-315",
+      "subjectId": "SUBJ-015",
+      "subjectName": "Ethan C. Marsh",
+      "category": "FINANCIAL",
+      "severity": "MODERATE",
+      "priorityScore": 70,
+      "state": "NEW",
+      "receivedDate": "2026-06-18",
+      "provider": "TransUnion",
+      "description": "Two delinquent accounts totaling $9,800.",
+      "identityMatch": {
+        "confidence": 0.93,
+        "identifiers": [
+          {
+            "field": "Name",
+            "subjectValue": "Ethan C. Marsh",
+            "recordValue": "ETHAN C. MARSH",
+            "match": true
+          },
+          {
+            "field": "DOB",
+            "subjectValue": "1980-07-16",
+            "recordValue": "1980-07-16",
+            "match": true
+          }
+        ]
+      },
+      "threshold": {
+        "rule": "Category threshold met",
+        "met": true,
+        "detail": "Meets CV investigative-standard threshold."
+      },
+      "priorAdjudication": {
+        "previouslyAdjudicated": false,
+        "reference": null
+      }
+    }
+  ]
+}

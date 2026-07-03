@@ -1,0 +1,245 @@
+{
+  "subjects": [
+    {
+      "id": "SUBJ-001",
+      "name": "Daniel R. Okafor",
+      "position": "Senior Systems Engineer",
+      "tier": "T5",
+      "stage": "ADJUDICATION",
+      "status": "ACTION_REQUIRED",
+      "eligibility": "INTERIM",
+      "riskScore": 78,
+      "fastTrack": false,
+      "flaggedGuidelines": [
+        "F",
+        "B"
+      ],
+      "daysInStage": 41,
+      "cvEnrolled": true,
+      "openAlerts": 2
+    },
+    {
+      "id": "SUBJ-002",
+      "name": "Marcus T. Bell",
+      "position": "Logistics Coordinator",
+      "tier": "T3",
+      "stage": "CONTINUOUS_VETTING",
+      "status": "NEEDS_REVIEW",
+      "eligibility": "SECRET",
+      "riskScore": 64,
+      "fastTrack": false,
+      "flaggedGuidelines": [
+        "J",
+        "G"
+      ],
+      "daysInStage": 9,
+      "cvEnrolled": true,
+      "openAlerts": 1
+    },
+    {
+      "id": "SUBJ-003",
+      "name": "Priya N. Shah",
+      "position": "Financial Analyst",
+      "tier": "T3",
+      "stage": "INVESTIGATION",
+      "status": "CLEAR",
+      "eligibility": "NONE",
+      "riskScore": 8,
+      "fastTrack": true,
+      "flaggedGuidelines": [],
+      "daysInStage": 22,
+      "cvEnrolled": false,
+      "openAlerts": 0
+    },
+    {
+      "id": "SUBJ-004",
+      "name": "Alicia M. Grant",
+      "position": "Software Developer",
+      "tier": "T5",
+      "stage": "INITIATION",
+      "status": "CLEAR",
+      "eligibility": "NONE",
+      "riskScore": 5,
+      "fastTrack": true,
+      "flaggedGuidelines": [],
+      "daysInStage": 3,
+      "cvEnrolled": false,
+      "openAlerts": 0
+    },
+    {
+      "id": "SUBJ-005",
+      "name": "Tomas E. Herrera",
+      "position": "Facilities Technician",
+      "tier": "T1",
+      "stage": "INITIATION",
+      "status": "CLEAR",
+      "eligibility": "NONE",
+      "riskScore": 4,
+      "fastTrack": true,
+      "flaggedGuidelines": [],
+      "daysInStage": 7,
+      "cvEnrolled": false,
+      "openAlerts": 0
+    },
+    {
+      "id": "SUBJ-006",
+      "name": "Renee L. Calloway",
+      "position": "Program Analyst",
+      "tier": "T3",
+      "stage": "INVESTIGATION",
+      "status": "NEEDS_REVIEW",
+      "eligibility": "INTERIM",
+      "riskScore": 45,
+      "fastTrack": false,
+      "flaggedGuidelines": [
+        "E"
+      ],
+      "daysInStage": 33,
+      "cvEnrolled": false,
+      "openAlerts": 0
+    },
+    {
+      "id": "SUBJ-007",
+      "name": "Victor A. Osei",
+      "position": "Network Administrator",
+      "tier": "T5",
+      "stage": "INVESTIGATION",
+      "status": "NEEDS_REVIEW",
+      "eligibility": "INTERIM",
+      "riskScore": 52,
+      "fastTrack": false,
+      "flaggedGuidelines": [
+        "M"
+      ],
+      "daysInStage": 58,
+      "cvEnrolled": false,
+      "openAlerts": 0
+    },
+    {
+      "id": "SUBJ-008",
+      "name": "Hannah J. Whitmore",
+      "position": "Contracts Specialist",
+      "tier": "T2",
+      "stage": "INVESTIGATION",
+      "status": "CLEAR",
+      "eligibility": "NONE",
+      "riskScore": 11,
+      "fastTrack": true,
+      "flaggedGuidelines": [],
+      "daysInStage": 19,
+      "cvEnrolled": false,
+      "openAlerts": 0
+    },
+    {
+      "id": "SUBJ-009",
+      "name": "Derek S. Nakamura",
+      "position": "Intelligence Analyst",
+      "tier": "T5",
+      "stage": "ADJUDICATION",
+      "status": "NEEDS_REVIEW",
+      "eligibility": "INTERIM",
+      "riskScore": 58,
+      "fastTrack": false,
+      "flaggedGuidelines": [
+        "H"
+      ],
+      "daysInStage": 27,
+      "cvEnrolled": false,
+      "openAlerts": 0
+    },
+    {
+      "id": "SUBJ-010",
+      "name": "Fatima R. Aziz",
+      "position": "Linguist",
+      "tier": "T5",
+      "stage": "ADJUDICATION",
+      "status": "CLEAR",
+      "eligibility": "INTERIM",
+      "riskScore": 14,
+      "fastTrack": false,
+      "flaggedGuidelines": [],
+      "daysInStage": 12,
+      "cvEnrolled": false,
+      "openAlerts": 0
+    },
+    {
+      "id": "SUBJ-011",
+      "name": "Gregory P. Stone",
+      "position": "Security Escort",
+      "tier": "T1",
+      "stage": "ADJUDICATION",
+      "status": "CLEAR",
+      "eligibility": "NONE",
+      "riskScore": 6,
+      "fastTrack": false,
+      "flaggedGuidelines": [],
+      "daysInStage": 8,
+      "cvEnrolled": false,
+      "openAlerts": 0
+    },
+    {
+      "id": "SUBJ-012",
+      "name": "Monica V. Reyes",
+      "position": "Supply Chain Manager",
+      "tier": "T3",
+      "stage": "CONTINUOUS_VETTING",
+      "status": "CLEAR",
+      "eligibility": "SECRET",
+      "riskScore": 10,
+      "fastTrack": false,
+      "flaggedGuidelines": [],
+      "daysInStage": 340,
+      "cvEnrolled": true,
+      "openAlerts": 0
+    },
+    {
+      "id": "SUBJ-013",
+      "name": "Samuel K. Boateng",
+      "position": "Systems Administrator",
+      "tier": "T5",
+      "stage": "CONTINUOUS_VETTING",
+      "status": "NEEDS_REVIEW",
+      "eligibility": "TOP_SECRET",
+      "riskScore": 49,
+      "fastTrack": false,
+      "flaggedGuidelines": [
+        "K"
+      ],
+      "daysInStage": 120,
+      "cvEnrolled": true,
+      "openAlerts": 1
+    },
+    {
+      "id": "SUBJ-014",
+      "name": "Laura D. Ferris",
+      "position": "Budget Analyst",
+      "tier": "T3",
+      "stage": "CONTINUOUS_VETTING",
+      "status": "CLEAR",
+      "eligibility": "SECRET",
+      "riskScore": 9,
+      "fastTrack": false,
+      "flaggedGuidelines": [],
+      "daysInStage": 510,
+      "cvEnrolled": true,
+      "openAlerts": 0
+    },
+    {
+      "id": "SUBJ-015",
+      "name": "Ethan C. Marsh",
+      "position": "Test Engineer",
+      "tier": "T3",
+      "stage": "CONTINUOUS_VETTING",
+      "status": "ACTION_REQUIRED",
+      "eligibility": "SECRET",
+      "riskScore": 71,
+      "fastTrack": false,
+      "flaggedGuidelines": [
+        "F"
+      ],
+      "daysInStage": 21,
+      "cvEnrolled": true,
+      "openAlerts": 1
+    }
+  ]
+}

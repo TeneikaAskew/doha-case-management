@@ -1,0 +1,194 @@
+{
+  "providers": [
+    {
+      "id": "fbi-cjis",
+      "name": "FBI CJIS / NCIC + Rap Back",
+      "category": "Criminal history",
+      "usedIn": [
+        "INVESTIGATION",
+        "CV"
+      ],
+      "guidelines": [
+        "J",
+        "D",
+        "G",
+        "H"
+      ],
+      "status": "HEALTHY",
+      "recordCount": 84210556,
+      "lastSync": "2026-07-02T06:00:00Z"
+    },
+    {
+      "id": "equifax",
+      "name": "Equifax",
+      "category": "Credit bureau",
+      "usedIn": [
+        "INVESTIGATION",
+        "CV"
+      ],
+      "guidelines": [
+        "F"
+      ],
+      "status": "HEALTHY",
+      "recordCount": 22483901,
+      "lastSync": "2026-07-02T06:00:00Z"
+    },
+    {
+      "id": "experian",
+      "name": "Experian",
+      "category": "Credit bureau",
+      "usedIn": [
+        "INVESTIGATION"
+      ],
+      "guidelines": [
+        "F"
+      ],
+      "status": "HEALTHY",
+      "recordCount": 21077344,
+      "lastSync": "2026-07-02T06:00:00Z"
+    },
+    {
+      "id": "transunion",
+      "name": "TransUnion",
+      "category": "Credit bureau (CV provider)",
+      "usedIn": [
+        "INVESTIGATION",
+        "CV"
+      ],
+      "guidelines": [
+        "F"
+      ],
+      "status": "HEALTHY",
+      "recordCount": 23910287,
+      "lastSync": "2026-07-02T06:00:00Z"
+    },
+    {
+      "id": "lexisnexis",
+      "name": "LexisNexis",
+      "category": "Public records",
+      "usedIn": [
+        "INVESTIGATION",
+        "CV"
+      ],
+      "guidelines": [
+        "F",
+        "J",
+        "E"
+      ],
+      "status": "HEALTHY",
+      "recordCount": 156733208,
+      "lastSync": "2026-07-02T06:00:00Z"
+    },
+    {
+      "id": "fincen",
+      "name": "FinCEN / Treasury",
+      "category": "Financial intelligence",
+      "usedIn": [
+        "CV"
+      ],
+      "guidelines": [
+        "F",
+        "B"
+      ],
+      "status": "HEALTHY",
+      "recordCount": 3402118,
+      "lastSync": "2026-07-02T06:00:00Z"
+    },
+    {
+      "id": "cbp-i94",
+      "name": "CBP I-94 Foreign Travel",
+      "category": "Border crossing records",
+      "usedIn": [
+        "INVESTIGATION",
+        "CV"
+      ],
+      "guidelines": [
+        "B",
+        "C",
+        "E"
+      ],
+      "status": "HEALTHY",
+      "recordCount": 48120022,
+      "lastSync": "2026-07-02T06:00:00Z"
+    },
+    {
+      "id": "courts",
+      "name": "State & local courts",
+      "category": "Dockets and dispositions",
+      "usedIn": [
+        "INVESTIGATION"
+      ],
+      "guidelines": [
+        "J",
+        "D",
+        "G",
+        "H",
+        "F"
+      ],
+      "status": "DEGRADED",
+      "recordCount": 9822411,
+      "lastSync": "2026-07-02T06:00:00Z"
+    },
+    {
+      "id": "dmv",
+      "name": "DMV records",
+      "category": "Driver records",
+      "usedIn": [
+        "INVESTIGATION"
+      ],
+      "guidelines": [
+        "G",
+        "J"
+      ],
+      "status": "HEALTHY",
+      "recordCount": 61208443,
+      "lastSync": "2026-07-02T06:00:00Z"
+    },
+    {
+      "id": "irs",
+      "name": "IRS / tax records",
+      "category": "Tax compliance",
+      "usedIn": [
+        "INVESTIGATION"
+      ],
+      "guidelines": [
+        "F"
+      ],
+      "status": "HEALTHY",
+      "recordCount": 1120733,
+      "lastSync": "2026-07-02T06:00:00Z"
+    },
+    {
+      "id": "sead5",
+      "name": "SEAD-5 Social media (PAEI)",
+      "category": "Publicly available electronic information",
+      "usedIn": [
+        "INVESTIGATION"
+      ],
+      "guidelines": [
+        "A",
+        "D",
+        "E",
+        "J"
+      ],
+      "status": "HEALTHY",
+      "recordCount": 448210,
+      "lastSync": "2026-07-02T06:00:00Z"
+    },
+    {
+      "id": "diss",
+      "name": "DISS / prior adjudications",
+      "category": "Eligibility and adjudication history",
+      "usedIn": [
+        "INVESTIGATION",
+        "CV"
+      ],
+      "guidelines": [
+        "E"
+      ],
+      "status": "HEALTHY",
+      "recordCount": 4211809,
+      "lastSync": "2026-07-02T06:00:00Z"
+    }
+  ]
+}

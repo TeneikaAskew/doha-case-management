@@ -1,0 +1,448 @@
+{
+  "subject": {
+    "id": "SUBJ-001",
+    "name": "Daniel R. Okafor",
+    "position": "Senior Systems Engineer",
+    "tier": "T5",
+    "stage": "ADJUDICATION",
+    "status": "ACTION_REQUIRED",
+    "eligibility": "INTERIM",
+    "riskScore": 78,
+    "fastTrack": false,
+    "flaggedGuidelines": [
+      "F",
+      "B"
+    ],
+    "daysInStage": 41,
+    "cvEnrolled": true,
+    "openAlerts": 2,
+    "ssnMasked": "***-**-4821",
+    "dob": "1988-03-14",
+    "address": "1427 Birch Hollow Ct, Manassas, VA 20109"
+  },
+  "aiSummary": "Significant unresolved financial concerns (Guideline F): $47,300 in delinquent debt across five accounts, with a new collection alert in June 2026. Foreign influence concerns (Guideline B): three family members resident in Nigeria, one employed by a state-owned enterprise, plus unreported April 2026 travel. SF-86 understated the delinquency, raising candor questions. Mitigation is partial at best; whole-person factors do not yet resolve the doubt.",
+  "timeline": [
+    {
+      "date": "2025-09-08",
+      "actor": "K. Rivas",
+      "role": "FSO",
+      "event": "Case initiated in NBIS eApp",
+      "note": "T5 initial, interim granted"
+    },
+    {
+      "date": "2025-11-19",
+      "actor": "S. Whitfield",
+      "role": "Investigator",
+      "event": "Subject interview completed",
+      "note": "Subject acknowledged two delinquent accounts, attributed to 2024 job gap"
+    },
+    {
+      "date": "2026-01-27",
+      "actor": "S. Whitfield",
+      "role": "Investigator",
+      "event": "ROI transmitted",
+      "note": "Financial and foreign-contact issues flagged"
+    },
+    {
+      "date": "2026-03-15",
+      "actor": "R. Chen",
+      "role": "Analyst",
+      "event": "Credit re-check run",
+      "note": "Delinquency total revised upward"
+    },
+    {
+      "date": "2026-05-06",
+      "actor": "R. Chen",
+      "role": "Analyst",
+      "event": "CV alert validated: unreported foreign travel",
+      "note": "Referred to adjudication"
+    },
+    {
+      "date": "2026-06-20",
+      "actor": "System",
+      "role": "CV",
+      "event": "New financial CV alert received",
+      "note": null
+    }
+  ],
+  "wholePerson": [
+    {
+      "factor": "Nature, extent, and seriousness of the conduct",
+      "assessment": "Sustained delinquency plus incomplete disclosure; serious."
+    },
+    {
+      "factor": "Circumstances surrounding the conduct",
+      "assessment": "Six-month unemployment in 2024 contributed to initial arrears."
+    },
+    {
+      "factor": "Frequency and recency",
+      "assessment": "Ongoing; newest alert June 2026."
+    },
+    {
+      "factor": "Age and maturity at the time",
+      "assessment": "Adult throughout (36-38)."
+    },
+    {
+      "factor": "Voluntariness of participation",
+      "assessment": "Debt partly circumstantial; non-disclosure voluntary."
+    },
+    {
+      "factor": "Rehabilitation and behavioral changes",
+      "assessment": "No payment plan or counseling evidenced to date."
+    },
+    {
+      "factor": "Motivation",
+      "assessment": "No evidence of divided loyalty; financial strain."
+    },
+    {
+      "factor": "Potential for pressure, coercion, or duress",
+      "assessment": "Elevated: debt plus close foreign family ties."
+    },
+    {
+      "factor": "Likelihood of continuation or recurrence",
+      "assessment": "High absent documented repayment behavior."
+    }
+  ],
+  "guidelines": [
+    {
+      "code": "F",
+      "name": "Financial Considerations",
+      "severity": "C",
+      "aiReasoning": "Disqualifying conditions AG ¶ 19(a) and 19(c) are established by the credit record. Mitigator ¶ 20(b) applies only partially: the 2024 job loss was beyond his control, but there is no evidence he acted responsibly under the circumstances since re-employment.",
+      "evidence": [
+        {
+          "provider": "TransUnion",
+          "type": "Credit report",
+          "description": "$47,300 delinquent across 5 accounts; 2 charge-offs",
+          "date": "2026-03-15"
+        },
+        {
+          "provider": "Equifax",
+          "type": "Credit report",
+          "description": "Auto loan 120+ days past due, $12,400",
+          "date": "2026-06-20"
+        },
+        {
+          "provider": "State & local courts",
+          "type": "Civil judgment",
+          "description": "Small-claims judgment $3,100 (2025), unpaid",
+          "date": "2025-08-02"
+        }
+      ],
+      "disqualifiers": [
+        {
+          "code": "AG ¶ 19(a)",
+          "description": "Inability to satisfy debts",
+          "evidence": "$47,300 delinquent across five accounts"
+        },
+        {
+          "code": "AG ¶ 19(c)",
+          "description": "A history of not meeting financial obligations",
+          "evidence": "Charge-offs 2024-2026 and unpaid 2025 judgment"
+        }
+      ],
+      "mitigators": [
+        {
+          "code": "AG ¶ 20(b)",
+          "description": "Conditions largely beyond the person's control",
+          "applicability": "PARTIAL",
+          "reasoning": "Job loss was involuntary, but no responsible action (payment plan, counseling) is documented since."
+        },
+        {
+          "code": "AG ¶ 20(d)",
+          "description": "Good-faith effort to repay overdue creditors",
+          "applicability": "NONE",
+          "reasoning": "No repayment evidence in file."
+        }
+      ],
+      "precedents": [
+        {
+          "caseNumber": "23-01864",
+          "outcome": "DENIED",
+          "year": 2026,
+          "relevance": "DOHA hearing decision involving Guideline F (Financial Considerations)"
+        },
+        {
+          "caseNumber": "24-00939",
+          "outcome": "DENIED",
+          "year": 2026,
+          "relevance": "DOHA hearing decision involving Guideline F (Financial Considerations)"
+        },
+        {
+          "caseNumber": "24-00971",
+          "outcome": "GRANTED",
+          "year": 2026,
+          "relevance": "DOHA hearing decision involving Guideline F (Financial Considerations)"
+        }
+      ]
+    },
+    {
+      "code": "B",
+      "name": "Foreign Influence",
+      "severity": "B",
+      "aiReasoning": "AG ¶ 7(a) contacts are established: mother and two siblings in Nigeria, one sibling employed by a state-owned oil company. Unreported April 2026 travel weighs against ¶ 8(a) mitigation. Combined with financial pressure, heightens coercion risk.",
+      "evidence": [
+        {
+          "provider": "SF-86 self-report",
+          "type": "Foreign contacts",
+          "description": "Mother and two siblings, Nigerian citizens/residents",
+          "date": "2025-09-08"
+        },
+        {
+          "provider": "CBP I-94",
+          "type": "Travel record",
+          "description": "Nigeria travel 2026-04-11 to 2026-04-25, unreported",
+          "date": "2026-05-02"
+        }
+      ],
+      "disqualifiers": [
+        {
+          "code": "AG ¶ 7(a)",
+          "description": "Contact with a foreign family member who could create a risk of foreign exploitation or pressure",
+          "evidence": "Sibling employed by state-owned enterprise"
+        }
+      ],
+      "mitigators": [
+        {
+          "code": "AG ¶ 8(a)",
+          "description": "Nature of relationships makes exploitation unlikely",
+          "applicability": "PARTIAL",
+          "reasoning": "Contacts are familial and disclosed, but the unreported travel undercuts confidence in ongoing candor."
+        }
+      ],
+      "precedents": [
+        {
+          "caseNumber": "24-02453",
+          "outcome": "DENIED",
+          "year": 2026,
+          "relevance": "DOHA hearing decision involving Guideline B (Foreign Influence)"
+        },
+        {
+          "caseNumber": "21-02538",
+          "outcome": "DENIED",
+          "year": 2025,
+          "relevance": "DOHA hearing decision involving Guideline B (Foreign Influence)"
+        },
+        {
+          "caseNumber": "22-02603",
+          "outcome": "GRANTED",
+          "year": 2025,
+          "relevance": "DOHA hearing decision involving Guideline B (Foreign Influence)"
+        }
+      ]
+    }
+  ],
+  "investigation": {
+    "coverage": [
+      {
+        "item": "Subject interview (ESI)",
+        "status": "COMPLETE"
+      },
+      {
+        "item": "Employment coverage (10 yrs)",
+        "status": "COMPLETE"
+      },
+      {
+        "item": "Neighborhood/reference interviews",
+        "status": "COMPLETE"
+      },
+      {
+        "item": "Financial record checks",
+        "status": "COMPLETE"
+      },
+      {
+        "item": "Foreign contact expansion leads",
+        "status": "PENDING"
+      }
+    ],
+    "sf86Sections": [
+      {
+        "section": "Section 20A",
+        "title": "Financial record — delinquencies",
+        "subjectReport": "Two delinquent accounts totaling about $9,000",
+        "matchedResult": "Five delinquent accounts totaling $47,300 (TransUnion/Equifax)",
+        "discrepancy": true,
+        "providers": [
+          "TransUnion",
+          "Equifax"
+        ],
+        "guideline": "F"
+      },
+      {
+        "section": "Section 19",
+        "title": "Foreign contacts",
+        "subjectReport": "Mother and two siblings resident in Nigeria",
+        "matchedResult": "Consistent with record checks; one sibling employed by state-owned enterprise (not disclosed)",
+        "discrepancy": true,
+        "providers": [
+          "LexisNexis",
+          "SEAD-5 social media"
+        ],
+        "guideline": "B"
+      },
+      {
+        "section": "Section 18",
+        "title": "Foreign travel",
+        "subjectReport": "No foreign travel in last 12 months (2025 form)",
+        "matchedResult": "CBP I-94 shows Nigeria travel April 2026 (post-submission, unreported under SEAD-3)",
+        "discrepancy": true,
+        "providers": [
+          "CBP I-94"
+        ],
+        "guideline": "B"
+      },
+      {
+        "section": "Section 13A",
+        "title": "Employment activities",
+        "subjectReport": "Employed at Meridian Defense Systems since 2019; 6-month gap in 2024",
+        "matchedResult": "Employment verified; gap consistent with layoff records",
+        "discrepancy": false,
+        "providers": [
+          "Employment records"
+        ],
+        "guideline": null
+      }
+    ],
+    "interviews": [
+      {
+        "date": "2025-11-19",
+        "type": "Enhanced Subject Interview",
+        "interviewer": "S. Whitfield",
+        "summary": "Subject candid about job loss; understated debt total. Described family in Nigeria as 'not close', which conflicts with monthly remittance records."
+      },
+      {
+        "date": "2025-12-04",
+        "type": "Reference interview",
+        "interviewer": "S. Whitfield",
+        "summary": "Coworker describes subject as reliable; unaware of financial stress."
+      }
+    ],
+    "roiEntries": [
+      {
+        "date": "2026-01-27",
+        "investigator": "S. Whitfield",
+        "item": "Financial",
+        "text": "Credit bureau data and court records establish sustained delinquency exceeding subject's account."
+      },
+      {
+        "date": "2026-01-27",
+        "investigator": "S. Whitfield",
+        "item": "Foreign contacts",
+        "text": "Expanded lead recommended on sibling's SOE employment."
+      }
+    ]
+  },
+  "adjudication": {
+    "recommendation": {
+      "action": "SOR",
+      "aiSuggested": true,
+      "rationale": "Unmitigated F and B concerns with candor issues; propose SOR unless subject provides documented repayment plan and travel report."
+    },
+    "sorDraft": "STATEMENT OF REASONS (DRAFT) — Guideline F: You are indebted on five delinquent accounts totaling approximately $47,300, including a $12,400 charged-off auto loan (2026) and an unpaid $3,100 civil judgment (2025). Guideline B: Your mother and two siblings are citizens and residents of Nigeria; one sibling is employed by a state-owned enterprise. You traveled to Nigeria from on or about April 11 to April 25, 2026, and failed to report this travel as required. Guideline E cross-reference: your SF-86 understated your delinquent debt.",
+    "decisions": []
+  },
+  "alerts": [
+    {
+      "id": "ALERT-101",
+      "subjectId": "SUBJ-001",
+      "subjectName": "Daniel R. Okafor",
+      "category": "FINANCIAL",
+      "severity": "HIGH",
+      "priorityScore": 82,
+      "state": "NEW",
+      "receivedDate": "2026-06-20",
+      "provider": "TransUnion",
+      "description": "New collection account reported: $12,400 past due (auto loan).",
+      "identityMatch": {
+        "confidence": 0.96,
+        "identifiers": [
+          {
+            "field": "Name",
+            "subjectValue": "Daniel R. Okafor",
+            "recordValue": "Daniel Okafor",
+            "match": true
+          },
+          {
+            "field": "DOB",
+            "subjectValue": "1988-03-14",
+            "recordValue": "1988-03-14",
+            "match": true
+          },
+          {
+            "field": "SSN (last 4)",
+            "subjectValue": "4821",
+            "recordValue": "4821",
+            "match": true
+          }
+        ]
+      },
+      "threshold": {
+        "rule": "Delinquent debt > $5,000",
+        "met": true,
+        "detail": "Past-due balance $12,400 exceeds CV threshold."
+      },
+      "priorAdjudication": {
+        "previouslyAdjudicated": false,
+        "reference": null
+      }
+    },
+    {
+      "id": "ALERT-102",
+      "subjectId": "SUBJ-001",
+      "subjectName": "Daniel R. Okafor",
+      "category": "FOREIGN_TRAVEL",
+      "severity": "MODERATE",
+      "priorityScore": 61,
+      "state": "VALIDATED",
+      "receivedDate": "2026-05-02",
+      "provider": "CBP I-94",
+      "description": "Unreported travel to Nigeria, 2026-04-11 to 2026-04-25.",
+      "identityMatch": {
+        "confidence": 0.99,
+        "identifiers": [
+          {
+            "field": "Passport",
+            "subjectValue": "5310xxxx",
+            "recordValue": "5310xxxx",
+            "match": true
+          },
+          {
+            "field": "Name",
+            "subjectValue": "Daniel R. Okafor",
+            "recordValue": "OKAFOR, DANIEL R",
+            "match": true
+          }
+        ]
+      },
+      "threshold": {
+        "rule": "Unreported foreign travel (SEAD-3)",
+        "met": true,
+        "detail": "No corresponding FSO travel report on file."
+      },
+      "priorAdjudication": {
+        "previouslyAdjudicated": false,
+        "reference": null
+      }
+    }
+  ],
+  "documents": [
+    {
+      "title": "Report of Investigation (ROI)",
+      "type": "ROI",
+      "description": "T5 ROI transmitted 2026-01-27",
+      "url": null
+    },
+    {
+      "title": "SF-86 (2025-09-08)",
+      "type": "SF-86",
+      "description": "Questionnaire for National Security Positions",
+      "url": null
+    },
+    {
+      "title": "Credit reports (Mar/Jun 2026)",
+      "type": "Provider record",
+      "description": "TransUnion and Equifax pulls",
+      "url": null
+    }
+  ]
+}

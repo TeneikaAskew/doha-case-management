@@ -1,0 +1,134 @@
+{
+  "subject": {
+    "id": "SUBJ-007",
+    "name": "Victor A. Osei",
+    "position": "Network Administrator",
+    "tier": "T5",
+    "stage": "INVESTIGATION",
+    "status": "NEEDS_REVIEW",
+    "eligibility": "INTERIM",
+    "riskScore": 52,
+    "fastTrack": false,
+    "flaggedGuidelines": [
+      "M"
+    ],
+    "daysInStage": 58,
+    "cvEnrolled": false,
+    "openAlerts": 0,
+    "ssnMasked": "***-**-1259",
+    "dob": "1987-08-17",
+    "address": "107 Demo Street, Arlington, VA 22207"
+  },
+  "aiSummary": "One developed issue under Guideline M (Use of Information Technology); otherwise clear.",
+  "timeline": [
+    {
+      "date": "2026-05-01",
+      "actor": "K. Rivas",
+      "role": "FSO",
+      "event": "Case initiated in NBIS eApp",
+      "note": null
+    }
+  ],
+  "wholePerson": [
+    {
+      "factor": "Overall record",
+      "assessment": "Single-issue case"
+    }
+  ],
+  "guidelines": [
+    {
+      "code": "M",
+      "name": "Use of Information Technology",
+      "severity": "B",
+      "aiReasoning": "Single developed issue under Guideline M: Unauthorized USB device connected to a standalone lab system. AG ¶ 40(c) applies; mitigation AG ¶ 41(a) assessed as partial.",
+      "evidence": [
+        {
+          "provider": "UAM audit logs",
+          "type": "Record check",
+          "description": "Unauthorized USB device connected to a standalone lab system",
+          "date": "2026-05-15"
+        }
+      ],
+      "disqualifiers": [
+        {
+          "code": "AG ¶ 40(c)",
+          "description": "Use of any information technology system to gain unauthorized access",
+          "evidence": "Unauthorized USB device connected to a standalone lab system"
+        }
+      ],
+      "mitigators": [
+        {
+          "code": "AG ¶ 41(a)",
+          "description": "So much time has elapsed / unusual circumstances",
+          "applicability": "PARTIAL",
+          "reasoning": "Assessed from record evidence; subject response pending."
+        }
+      ],
+      "precedents": [
+        {
+          "caseNumber": "24-02453",
+          "outcome": "DENIED",
+          "year": 2026,
+          "relevance": "DOHA hearing decision involving Guideline M (Use of Information Technology)"
+        },
+        {
+          "caseNumber": "21-02538",
+          "outcome": "DENIED",
+          "year": 2025,
+          "relevance": "DOHA hearing decision involving Guideline M (Use of Information Technology)"
+        },
+        {
+          "caseNumber": "22-00468",
+          "outcome": "GRANTED",
+          "year": 2025,
+          "relevance": "DOHA hearing decision involving Guideline M (Use of Information Technology)"
+        }
+      ]
+    }
+  ],
+  "investigation": {
+    "coverage": [
+      {
+        "item": "Automated record checks",
+        "status": "COMPLETE"
+      },
+      {
+        "item": "Tier-required fieldwork",
+        "status": "PENDING"
+      }
+    ],
+    "sf86Sections": [
+      {
+        "section": "Section 22",
+        "title": "Police record",
+        "subjectReport": "No police record",
+        "matchedResult": "NCIC: no record",
+        "discrepancy": false,
+        "providers": [
+          "FBI CJIS/NCIC"
+        ],
+        "guideline": null
+      }
+    ],
+    "interviews": [],
+    "roiEntries": []
+  },
+  "adjudication": {
+    "recommendation": {
+      "action": "LOI",
+      "aiSuggested": true,
+      "rationale": "Obtain subject response on the developed issue."
+    },
+    "sorDraft": null,
+    "decisions": []
+  },
+  "alerts": [],
+  "documents": [
+    {
+      "title": "SF-86",
+      "type": "SF-86",
+      "description": "Questionnaire on file",
+      "url": null
+    }
+  ]
+}

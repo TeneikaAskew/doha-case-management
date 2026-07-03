@@ -1,0 +1,82 @@
+{
+  "subject": {
+    "id": "SUBJ-010",
+    "name": "Fatima R. Aziz",
+    "position": "Linguist",
+    "tier": "T5",
+    "stage": "ADJUDICATION",
+    "status": "CLEAR",
+    "eligibility": "INTERIM",
+    "riskScore": 14,
+    "fastTrack": false,
+    "flaggedGuidelines": [],
+    "daysInStage": 12,
+    "cvEnrolled": false,
+    "openAlerts": 0,
+    "ssnMasked": "***-**-1370",
+    "dob": "1990-02-11",
+    "address": "110 Demo Street, Arlington, VA 22200"
+  },
+  "aiSummary": "No adverse information developed; routine processing.",
+  "timeline": [
+    {
+      "date": "2026-05-01",
+      "actor": "K. Rivas",
+      "role": "FSO",
+      "event": "Case initiated in NBIS eApp",
+      "note": null
+    }
+  ],
+  "wholePerson": [
+    {
+      "factor": "Overall record",
+      "assessment": "Routine"
+    }
+  ],
+  "guidelines": [],
+  "investigation": {
+    "coverage": [
+      {
+        "item": "Automated record checks",
+        "status": "COMPLETE"
+      },
+      {
+        "item": "Tier-required fieldwork",
+        "status": "COMPLETE"
+      }
+    ],
+    "sf86Sections": [
+      {
+        "section": "Section 22",
+        "title": "Police record",
+        "subjectReport": "No police record",
+        "matchedResult": "NCIC: no record",
+        "discrepancy": false,
+        "providers": [
+          "FBI CJIS/NCIC"
+        ],
+        "guideline": null
+      }
+    ],
+    "interviews": [],
+    "roiEntries": []
+  },
+  "adjudication": {
+    "recommendation": {
+      "action": "GRANT",
+      "aiSuggested": true,
+      "rationale": "No issues developed."
+    },
+    "sorDraft": null,
+    "decisions": []
+  },
+  "alerts": [],
+  "documents": [
+    {
+      "title": "SF-86",
+      "type": "SF-86",
+      "description": "Questionnaire on file",
+      "url": null
+    }
+  ]
+}

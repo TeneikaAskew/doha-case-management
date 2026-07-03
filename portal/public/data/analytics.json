@@ -1,0 +1,334 @@
+{
+  "corpus": {
+    "totalCases": 33610,
+    "byOutcome": {
+      "DENIED": 21084,
+      "UNKNOWN": 2734,
+      "GRANTED": 9433,
+      "REMANDED": 344,
+      "REVOKED": 15
+    },
+    "byYear": [
+      {
+        "year": 1960,
+        "granted": 346,
+        "denied": 549
+      },
+      {
+        "year": 1990,
+        "granted": 1,
+        "denied": 2
+      },
+      {
+        "year": 1992,
+        "granted": 529,
+        "denied": 704
+      },
+      {
+        "year": 1993,
+        "granted": 6,
+        "denied": 3
+      },
+      {
+        "year": 1995,
+        "granted": 4,
+        "denied": 5
+      },
+      {
+        "year": 1996,
+        "granted": 11,
+        "denied": 12
+      },
+      {
+        "year": 1997,
+        "granted": 48,
+        "denied": 117
+      },
+      {
+        "year": 1998,
+        "granted": 48,
+        "denied": 43
+      },
+      {
+        "year": 1999,
+        "granted": 7,
+        "denied": 4
+      },
+      {
+        "year": 2000,
+        "granted": 7,
+        "denied": 6
+      },
+      {
+        "year": 2001,
+        "granted": 48,
+        "denied": 59
+      },
+      {
+        "year": 2002,
+        "granted": 119,
+        "denied": 256
+      },
+      {
+        "year": 2003,
+        "granted": 305,
+        "denied": 439
+      },
+      {
+        "year": 2004,
+        "granted": 383,
+        "denied": 700
+      },
+      {
+        "year": 2005,
+        "granted": 517,
+        "denied": 814
+      },
+      {
+        "year": 2006,
+        "granted": 537,
+        "denied": 1042
+      },
+      {
+        "year": 2007,
+        "granted": 613,
+        "denied": 1271
+      },
+      {
+        "year": 2008,
+        "granted": 337,
+        "denied": 925
+      },
+      {
+        "year": 2009,
+        "granted": 283,
+        "denied": 840
+      },
+      {
+        "year": 2010,
+        "granted": 294,
+        "denied": 793
+      },
+      {
+        "year": 2011,
+        "granted": 186,
+        "denied": 626
+      },
+      {
+        "year": 2012,
+        "granted": 293,
+        "denied": 630
+      },
+      {
+        "year": 2013,
+        "granted": 330,
+        "denied": 757
+      },
+      {
+        "year": 2014,
+        "granted": 427,
+        "denied": 688
+      },
+      {
+        "year": 2015,
+        "granted": 518,
+        "denied": 993
+      },
+      {
+        "year": 2016,
+        "granted": 541,
+        "denied": 1156
+      },
+      {
+        "year": 2017,
+        "granted": 691,
+        "denied": 1578
+      },
+      {
+        "year": 2018,
+        "granted": 505,
+        "denied": 1236
+      },
+      {
+        "year": 2019,
+        "granted": 351,
+        "denied": 826
+      },
+      {
+        "year": 2020,
+        "granted": 149,
+        "denied": 423
+      },
+      {
+        "year": 2021,
+        "granted": 163,
+        "denied": 553
+      },
+      {
+        "year": 2022,
+        "granted": 258,
+        "denied": 930
+      },
+      {
+        "year": 2023,
+        "granted": 250,
+        "denied": 827
+      },
+      {
+        "year": 2024,
+        "granted": 182,
+        "denied": 687
+      },
+      {
+        "year": 2025,
+        "granted": 140,
+        "denied": 566
+      },
+      {
+        "year": 2026,
+        "granted": 3,
+        "denied": 19
+      }
+    ],
+    "byGuideline": [
+      {
+        "code": "A",
+        "name": "Allegiance to the United States",
+        "cases": 21100,
+        "deniedPct": 63.9
+      },
+      {
+        "code": "B",
+        "name": "Foreign Influence",
+        "cases": 5595,
+        "deniedPct": 53.6
+      },
+      {
+        "code": "C",
+        "name": "Foreign Preference",
+        "cases": 3450,
+        "deniedPct": 51.3
+      },
+      {
+        "code": "D",
+        "name": "Sexual Behavior",
+        "cases": 1023,
+        "deniedPct": 80.1
+      },
+      {
+        "code": "E",
+        "name": "Personal Conduct",
+        "cases": 11816,
+        "deniedPct": 78.5
+      },
+      {
+        "code": "F",
+        "name": "Financial Considerations",
+        "cases": 20847,
+        "deniedPct": 70.8
+      },
+      {
+        "code": "G",
+        "name": "Alcohol Consumption",
+        "cases": 3136,
+        "deniedPct": 73.0
+      },
+      {
+        "code": "H",
+        "name": "Drug Involvement and Substance Misuse",
+        "cases": 4706,
+        "deniedPct": 75.5
+      },
+      {
+        "code": "I",
+        "name": "Psychological Conditions",
+        "cases": 5341,
+        "deniedPct": 67.3
+      },
+      {
+        "code": "J",
+        "name": "Criminal Conduct",
+        "cases": 6152,
+        "deniedPct": 77.2
+      },
+      {
+        "code": "K",
+        "name": "Handling Protected Information",
+        "cases": 834,
+        "deniedPct": 59.3
+      },
+      {
+        "code": "L",
+        "name": "Outside Activities",
+        "cases": 246,
+        "deniedPct": 66.7
+      },
+      {
+        "code": "M",
+        "name": "Use of Information Technology",
+        "cases": 1506,
+        "deniedPct": 65.8
+      }
+    ],
+    "byCaseType": {
+      "appeal": 5637,
+      "hearing": 27973
+    }
+  },
+  "pipeline": {
+    "timeliness": [
+      {
+        "stage": "Initiation",
+        "avgDays": 18,
+        "targetDays": 25
+      },
+      {
+        "stage": "Investigation",
+        "avgDays": 73,
+        "targetDays": 90
+      },
+      {
+        "stage": "Adjudication",
+        "avgDays": 32,
+        "targetDays": 30
+      },
+      {
+        "stage": "CV alert triage",
+        "avgDays": 4,
+        "targetDays": 7
+      }
+    ],
+    "alertVolume": [
+      {
+        "category": "CRIMINAL",
+        "count": 1
+      },
+      {
+        "category": "FINANCIAL",
+        "count": 3
+      },
+      {
+        "category": "FOREIGN_TRAVEL",
+        "count": 1
+      },
+      {
+        "category": "SUITABILITY",
+        "count": 1
+      }
+    ],
+    "triageDistribution": [
+      {
+        "band": "high",
+        "count": 1
+      },
+      {
+        "band": "low",
+        "count": 8
+      },
+      {
+        "band": "moderate",
+        "count": 6
+      }
+    ]
+  }
+}
