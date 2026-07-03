@@ -163,7 +163,7 @@ export default function SubjectsHome() {
               </div>
             </div>
             <div className="subject-pills">
-              <StatusBadge variant="info">{STAGE_LABELS[s.stage]}</StatusBadge>
+              <StatusBadge variant="neutral">{STAGE_LABELS[s.stage]}</StatusBadge>
               <StatusBadge variant={STATUS_VARIANTS[s.status]}>
                 {STATUS_LABELS[s.status]}
               </StatusBadge>

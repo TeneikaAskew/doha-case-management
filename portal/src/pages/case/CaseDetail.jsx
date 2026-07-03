@@ -54,7 +54,7 @@ export default function CaseDetail() {
           </div>
           <div className="subject-pills">
             <StatusBadge variant={STATUS_VARIANTS[s.status]}>{STATUS_LABELS[s.status]}</StatusBadge>
-            <StatusBadge variant="info">{STAGE_LABELS[s.stage]}</StatusBadge>
+            <StatusBadge variant="neutral">{STAGE_LABELS[s.stage]}</StatusBadge>
             {s.flaggedGuidelines.map((g) => <GuidelineChip key={g} code={g} />)}
           </div>
         </div>

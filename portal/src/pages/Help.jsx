@@ -163,7 +163,7 @@ export default function Help() {
         <div className="legend">
           {Object.entries(STAGE_LABELS).map(([k, label]) => (
             <LegendRow key={k}
-              swatch={<StatusBadge variant="info">{label}</StatusBadge>}
+              swatch={<StatusBadge variant="neutral">{label}</StatusBadge>}
               term=""
               note={{
                 INITIATION: 'SF-86 submitted; case opened in NBIS.',
