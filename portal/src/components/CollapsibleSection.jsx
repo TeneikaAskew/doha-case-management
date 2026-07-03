@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { FiChevronDown } from 'react-icons/fi';
 import './components.css';
 
 export default function CollapsibleSection({ title, meta = null, defaultOpen = false, children }) {
@@ -8,7 +9,8 @@ export default function CollapsibleSection({ title, meta = null, defaultOpen = f
       <button type="button" className="collapsible-header" onClick={() => setOpen(!open)}>
         <span className="collapsible-title">{title}</span>
         <span className="collapsible-meta">{meta}</span>
-        <span className="collapsible-chevron">{open ? '▾' : '▸'}</span>
+        <FiChevronDown className={open ? 'collapsible-chevron open' : 'collapsible-chevron'}
+          aria-hidden="true" />
       </button>
       {open && <div className="collapsible-body">{children}</div>}
     </section>

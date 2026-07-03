@@ -1,13 +1,36 @@
+import { useState } from 'react';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
+import {
+  FiHome, FiUser, FiActivity, FiDatabase, FiBarChart2,
+  FiChevronLeft, FiChevronRight, FiSearch, FiRotateCcw,
+} from 'react-icons/fi';
 import { usePersona } from '../state/PersonaContext.jsx';
 import { useDemo } from '../state/DemoContext.jsx';
 import { PERSONAS } from '../domain.js';
 import './shell.css';
 
+const SIDEBAR_STORAGE_KEY = 'demo.sidebar';
+
+const NAV_ITEMS = [
+  { to: '/', end: true, label: 'Dashboard', Icon: FiHome },
+  { to: '/cases', label: 'Case queue', Icon: FiUser },
+  { to: '/alerts', label: 'CV alerts', Icon: FiActivity },
+  { to: '/providers', label: 'Data providers', Icon: FiDatabase },
+  { to: '/analytics', label: 'Analytics', Icon: FiBarChart2 },
+];
+
 export default function AppShell() {
   const { persona, setPersona } = usePersona();
   const { reset } = useDemo();
   const navigate = useNavigate();
+  const [collapsed, setCollapsed] = useState(
+    () => localStorage.getItem(SIDEBAR_STORAGE_KEY) === 'collapsed');
+
+  const toggleSidebar = () => {
+    const next = !collapsed;
+    localStorage.setItem(SIDEBAR_STORAGE_KEY, next ? 'collapsed' : 'expanded');
+    setCollapsed(next);
+  };
 
   const onSearch = (e) => {
     e.preventDefault();
@@ -26,6 +49,7 @@ export default function AppShell() {
           </div>
         </div>
         <form className="app-header-search" onSubmit={onSearch} role="search">
+          <FiSearch className="app-header-search-icon" aria-hidden="true" />
           <input name="q" type="search" placeholder="Search subjects…"
             aria-label="Search subjects" />
         </form>
@@ -38,16 +62,21 @@ export default function AppShell() {
             </select>
           </label>
           <button type="button" className="btn btn-ghost header-reset" onClick={reset}>
-            Reset demo
+            <FiRotateCcw aria-hidden="true" /> Reset demo
           </button>
         </div>
       </header>
-      <nav className="app-sidebar">
-        <NavLink to="/" end>Dashboard</NavLink>
-        <NavLink to="/cases">Case queue</NavLink>
-        <NavLink to="/alerts">CV alerts</NavLink>
-        <NavLink to="/providers">Data providers</NavLink>
-        <NavLink to="/analytics">Analytics</NavLink>
+      <nav className={collapsed ? 'app-sidebar collapsed' : 'app-sidebar'}>
+        <button type="button" className="sidebar-toggle" onClick={toggleSidebar}
+          aria-label="Toggle sidebar">
+          {collapsed ? <FiChevronRight /> : <FiChevronLeft />}
+        </button>
+        {NAV_ITEMS.map(({ to, end, label, Icon }) => (
+          <NavLink key={to} to={to} end={end} title={collapsed ? label : undefined}>
+            <span className="sidebar-icon" aria-hidden="true"><Icon /></span>
+            <span className="sidebar-label">{label}</span>
+          </NavLink>
+        ))}
       </nav>
       <main className="app-main">
         <Outlet />

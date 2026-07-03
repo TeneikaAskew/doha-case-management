@@ -1,7 +1,13 @@
+import { FiFileText } from 'react-icons/fi';
 import './components.css';
 
 export function Loading() {
-  return <div className="state-block muted" role="status">Loading…</div>;
+  return (
+    <div className="state-block loading-container" role="status">
+      <div className="loading-bar"><div className="loading-bar-fill" /></div>
+      <span className="loading-text">Loading…</span>
+    </div>
+  );
 }
 
 export function ErrorAlert({ message }) {
@@ -15,6 +21,7 @@ export function ErrorAlert({ message }) {
 export function EmptyState({ title, message }) {
   return (
     <div className="state-block empty-state">
+      <FiFileText className="empty-state-icon" aria-hidden="true" />
       <h3>{title}</h3>
       <p className="muted">{message}</p>
     </div>

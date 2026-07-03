@@ -29,4 +29,18 @@ describe('AppShell', () => {
     render(<App />);
     expect(screen.getByText(/page not found/i)).toBeInTheDocument();
   });
+
+  it('toggles sidebar collapse state and persists it to localStorage', () => {
+    render(<App />);
+    const toggle = screen.getByRole('button', { name: 'Toggle sidebar' });
+    const nav = screen.getByRole('link', { name: 'Dashboard' }).closest('nav');
+
+    fireEvent.click(toggle);
+    expect(localStorage.getItem('demo.sidebar')).toBe('collapsed');
+    expect(nav.className).toContain('collapsed');
+
+    fireEvent.click(toggle);
+    expect(localStorage.getItem('demo.sidebar')).toBe('expanded');
+    expect(nav.className).not.toContain('collapsed');
+  });
 });
