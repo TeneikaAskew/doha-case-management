@@ -68,15 +68,15 @@
       "date": "2026-06-10",
       "actor": "K. Rivas",
       "role": "FSO",
-      "event": "Case initiated in NBIS eApp",
-      "note": "T3 initial"
+      "event": "Case initiated",
+      "note": "T3 initial via NBIS eApp"
     },
     {
       "date": "2026-06-14",
       "actor": "System",
       "role": "System",
-      "event": "Fingerprint check returned: no record",
-      "note": null
+      "event": "Record checks completed",
+      "note": "Fingerprint, credit, and criminal-history checks — no record"
     },
     {
       "date": "2026-06-28",

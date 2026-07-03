@@ -14,9 +14,9 @@ const SIDEBAR_STORAGE_KEY = 'demo.sidebar';
 const NAV_ITEMS = [
   { to: '/', end: true, label: 'Subjects', Icon: FiUsers },
   { to: '/dashboard', label: 'Dashboard', Icon: FiHome },
-  { to: '/cases', label: 'Case queue', Icon: FiUser },
-  { to: '/alerts', label: 'CV alerts', Icon: FiActivity },
-  { to: '/providers', label: 'Data providers', Icon: FiDatabase },
+  { to: '/cases', label: 'Case Queue', Icon: FiUser },
+  { to: '/alerts', label: 'CV Alerts', Icon: FiActivity },
+  { to: '/providers', label: 'Data Providers', Icon: FiDatabase },
   { to: '/analytics', label: 'Analytics', Icon: FiBarChart2 },
 ];
 

@@ -24,13 +24,13 @@ export const STAGE_LABELS = {
   INITIATION: 'Initiation',
   INVESTIGATION: 'Investigation',
   ADJUDICATION: 'Adjudication',
-  CONTINUOUS_VETTING: 'Continuous vetting',
+  CONTINUOUS_VETTING: 'Continuous Vetting',
 };
 
 export const STATUS_LABELS = {
   CLEAR: 'Clear',
-  NEEDS_REVIEW: 'Needs review',
-  ACTION_REQUIRED: 'Action required',
+  NEEDS_REVIEW: 'Needs Review',
+  ACTION_REQUIRED: 'Action Required',
 };
 
 export const STATUS_VARIANTS = {
@@ -50,7 +50,7 @@ export const ALERT_CATEGORY_LABELS = {
   CRIMINAL: 'Criminal',
   FINANCIAL: 'Financial',
   CREDIT: 'Credit',
-  FOREIGN_TRAVEL: 'Foreign travel',
+  FOREIGN_TRAVEL: 'Foreign Travel',
   TERRORISM: 'Terrorism',
   ELIGIBILITY: 'Eligibility',
   SUITABILITY: 'Suitability',
@@ -58,11 +58,22 @@ export const ALERT_CATEGORY_LABELS = {
 
 export const ALERT_STATE_LABELS = {
   NEW: 'New',
-  IDENTITY_CONFIRMED: 'Identity confirmed',
+  IDENTITY_CONFIRMED: 'Identity Confirmed',
   VALIDATED: 'Validated',
   REFERRED: 'Referred',
   ADJUDICATED: 'Adjudicated',
   CLOSED: 'Closed',
+};
+
+// Workflow states render gray/neutral so they never read as severity colors;
+// only the favorable terminal state (adjudicated) gets a semantic color.
+export const ALERT_STATE_VARIANTS = {
+  NEW: 'neutral',
+  IDENTITY_CONFIRMED: 'neutral',
+  VALIDATED: 'neutral',
+  REFERRED: 'neutral',
+  ADJUDICATED: 'success',
+  CLOSED: 'neutral',
 };
 
 export const ALERT_TRANSITIONS = {

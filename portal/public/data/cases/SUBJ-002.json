@@ -75,6 +75,20 @@
   "aiSummary": "CV-enrolled Secret holder with a fingerprint-verified DUI arrest on 2026-06-21 (Guideline J/G). Police report retrieved 2026-06-30: single incident, BAC 0.18%, disposition pending arraignment 2026-07-14; prior record clean. Recommend LOI and command notification rather than immediate eligibility action.",
   "timeline": [
     {
+      "date": "2022-11-14",
+      "actor": "K. Rivas",
+      "role": "FSO",
+      "event": "Case initiated",
+      "note": "T3 initial via NBIS eApp"
+    },
+    {
+      "date": "2023-03-22",
+      "actor": "D. Foley",
+      "role": "Investigator",
+      "event": "ROI transmitted",
+      "note": "No issues developed"
+    },
+    {
       "date": "2023-04-10",
       "actor": "Adjudicator L. Ortiz",
       "role": "Adjudicator",
@@ -89,17 +103,24 @@
       "note": null
     },
     {
+      "date": "2025-10-12",
+      "actor": "System",
+      "role": "CV",
+      "event": "Financial alert received",
+      "note": "30-day delinquency, $800 retail account"
+    },
+    {
       "date": "2025-11-20",
       "actor": "R. Chen",
       "role": "Analyst",
-      "event": "Financial alert adjudicated: no action",
-      "note": "Resolved delinquency"
+      "event": "Financial alert adjudicated",
+      "note": "No action — resolved delinquency"
     },
     {
       "date": "2026-06-23",
       "actor": "System",
       "role": "CV",
-      "event": "Rap Back criminal alert received",
+      "event": "Criminal alert received",
       "note": "DUI arrest 2026-06-21"
     },
     {

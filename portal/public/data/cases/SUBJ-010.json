@@ -60,10 +60,31 @@
   "aiSummary": "No adverse information developed; routine processing.",
   "timeline": [
     {
-      "date": "2026-05-01",
+      "date": "2026-03-22",
       "actor": "K. Rivas",
       "role": "FSO",
-      "event": "Case initiated in NBIS eApp",
+      "event": "Case initiated",
+      "note": "SF-86 submitted via NBIS eApp"
+    },
+    {
+      "date": "2026-04-05",
+      "actor": "System",
+      "role": "System",
+      "event": "Investigation opened",
+      "note": null
+    },
+    {
+      "date": "2026-04-21",
+      "actor": "System",
+      "role": "System",
+      "event": "Record checks completed",
+      "note": null
+    },
+    {
+      "date": "2026-06-20",
+      "actor": "D. Foley",
+      "role": "Investigator",
+      "event": "ROI transmitted",
       "note": null
     }
   ],

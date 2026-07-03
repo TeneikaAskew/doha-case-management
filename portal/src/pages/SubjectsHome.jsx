@@ -78,7 +78,7 @@ export default function SubjectsHome() {
     { key: 'cvEnrolled', label: 'CV',
       render: (s) => (s.cvEnrolled ? <StatusBadge variant="success">Enrolled</StatusBadge>
         : <span className="muted">—</span>) },
-    { key: 'effectiveOpenAlerts', label: 'Open alerts', sortable: true },
+    { key: 'effectiveOpenAlerts', label: 'Alerts', sortable: true },
     { key: 'flaggedGuidelines', label: 'Guidelines',
       render: (s) => s.flaggedGuidelines.map((g) => <GuidelineChip key={g} code={g} />) },
   ];
@@ -93,23 +93,23 @@ export default function SubjectsHome() {
       </div>
 
       <div className="kpi-grid">
-        <KPICard label="Total subjects" value={subjects.length}
+        <KPICard label="Total Subjects" value={subjects.length}
           accent="var(--dcsa-navy)" />
-        <KPICard label="CV-enrolled"
+        <KPICard label="CV Subjects"
           value={subjects.filter((s) => s.cvEnrolled).length}
           accent="var(--dcsa-ocean)" />
-        <KPICard label="Initial vetting backlog"
+        <KPICard label="Initial Vetting Backlog"
           value={subjects.filter((s) => ['INITIATION', 'INVESTIGATION'].includes(s.stage)).length}
           accent="var(--dcsa-gold)" />
-        <KPICard label="Awaiting adjudication" value={stageCount('ADJUDICATION')}
+        <KPICard label="Awaiting Adjudication" value={stageCount('ADJUDICATION')}
           accent="var(--status-warning)" />
-        <KPICard label="With open alerts"
+        <KPICard label="Open Alerts"
           value={subjects.filter((s) => s.effectiveOpenAlerts > 0).length}
           accent="var(--status-alert)" />
       </div>
 
       <div className="card">
-        <h3>Vetting pipeline</h3>
+        <h3>Vetting Pipeline</h3>
         <div className="pipeline-strip">
           {STAGES.map((st) => (
             <Link key={st} className="pipeline-segment" to={`/cases?stage=${st}`}>
@@ -121,7 +121,7 @@ export default function SubjectsHome() {
       </div>
 
       <div className="card">
-        <h3>AI risk distribution</h3>
+        <h3>AI Risk Distribution</h3>
         <div className="risk-bar" role="img"
           aria-label={BANDS.map((b) => `${b.label}: ${bandCount(b.id)}`).join(', ')}>
           {BANDS.map((b) => bandCount(b.id) > 0 && (
@@ -140,7 +140,7 @@ export default function SubjectsHome() {
         </div>
       </div>
 
-      <h2 className="dashboard-queue-title">Needs attention</h2>
+      <h2 className="dashboard-queue-title">Needs Attention</h2>
       <div className="attention-grid">
         {attention.map((s) => (
           <button key={s.id} type="button" className="card card-interactive attention-card"
@@ -171,7 +171,7 @@ export default function SubjectsHome() {
         ))}
       </div>
 
-      <h2 className="dashboard-queue-title">Subject directory</h2>
+      <h2 className="dashboard-queue-title">Subject Directory</h2>
       <div className="card directory-filters">
         <label className="form-group directory-search">
           <span>Search</span>

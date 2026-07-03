@@ -4,7 +4,8 @@ import { FiFileText } from 'react-icons/fi';
 import { usePersona } from '../../state/PersonaContext.jsx';
 import { useDemo } from '../../state/DemoContext.jsx';
 import {
-  ALERT_CATEGORY_LABELS, ALERT_STATE_LABELS, ALERT_TRANSITIONS, ALERT_ACTION_LABELS,
+  ALERT_CATEGORY_LABELS, ALERT_STATE_LABELS, ALERT_STATE_VARIANTS, ALERT_TRANSITIONS,
+  ALERT_ACTION_LABELS,
 } from '../../domain.js';
 import CollapsibleSection from '../../components/CollapsibleSection.jsx';
 import ConfidenceBar from '../../components/ConfidenceBar.jsx';
@@ -13,11 +14,6 @@ import AIBadge from '../../components/AIBadge.jsx';
 import SourceChip from '../../components/SourceChip.jsx';
 import DocumentViewer from '../../components/DocumentViewer.jsx';
 import { EmptyState } from '../../components/States.jsx';
-
-const STATE_VARIANT = {
-  NEW: 'warning', IDENTITY_CONFIRMED: 'info', VALIDATED: 'info',
-  REFERRED: 'warning', ADJUDICATED: 'success', CLOSED: 'neutral',
-};
 
 function AlertBody({ alert: a, state, isAnalyst, dispositionAlert }) {
   const [openDoc, setOpenDoc] = useState(null);
@@ -120,7 +116,7 @@ export default function CVTab({ caseData }) {
           <CollapsibleSection key={a.id}
             title={`${ALERT_CATEGORY_LABELS[a.category]} — ${a.description}`}
             meta={<>
-              <StatusBadge variant={STATE_VARIANT[state]}>
+              <StatusBadge variant={ALERT_STATE_VARIANTS[state]}>
                 {ALERT_STATE_LABELS[state]}
               </StatusBadge>
               <span className="muted">{a.receivedDate}</span>

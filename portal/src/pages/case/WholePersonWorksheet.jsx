@@ -94,7 +94,7 @@ export default function WholePersonWorksheet({ caseData }) {
   return (
     <div className="card">
       <div className="worksheet-head">
-        <h3>Whole-person worksheet <AIBadge /></h3>
+        <h3>Whole-Person Worksheet <AIBadge /></h3>
         {ratings.length > 0 && (
           <div className="worksheet-tally">
             <StatusBadge variant="success">{tally('FAVORABLE')} favorable</StatusBadge>

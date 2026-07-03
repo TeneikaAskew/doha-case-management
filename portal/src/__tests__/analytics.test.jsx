@@ -33,8 +33,8 @@ describe('Analytics', () => {
   it('renders the three chart sections', async () => {
     render(<MemoryRouter><Analytics /></MemoryRouter>);
     await screen.findByText('36,700');
-    expect(screen.getByText('Cases by guideline')).toBeInTheDocument();
-    expect(screen.getByText('Outcomes by year')).toBeInTheDocument();
-    expect(screen.getByText('Pipeline timeliness')).toBeInTheDocument();
+    expect(screen.getByText('Cases by Guideline')).toBeInTheDocument();
+    expect(screen.getByText('Outcomes by Year')).toBeInTheDocument();
+    expect(screen.getByText('Pipeline Timeliness')).toBeInTheDocument();
   });
 });

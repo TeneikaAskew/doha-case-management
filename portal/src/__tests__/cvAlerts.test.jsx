@@ -41,7 +41,7 @@ beforeEach(() => {
 describe('CVAlerts', () => {
   it('renders KPI cards and the alert table', async () => {
     renderPage();
-    expect(await screen.findByText('Open alerts')).toBeInTheDocument();
+    expect(await screen.findByText('Open Alerts')).toBeInTheDocument();
     const row = screen.getByText('Daniel R. Okafor').closest('tr');
     expect(within(row).getByText('Financial')).toBeInTheDocument();
   });

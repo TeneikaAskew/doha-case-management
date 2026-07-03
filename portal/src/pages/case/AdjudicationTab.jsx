@@ -35,7 +35,7 @@ export default function AdjudicationTab({ caseData }) {
       </div>
 
       <div className="card">
-        <h3>Guideline weighing</h3>
+        <h3>Guideline Weighing</h3>
         <table className="inline-table">
           <thead>
             <tr><th>Guideline</th><th>Severity</th><th>Disqualifiers</th>
@@ -59,7 +59,7 @@ export default function AdjudicationTab({ caseData }) {
       </div>
 
       <div className="card">
-        <h3>Whole-person worksheet</h3>
+        <h3>Whole-Person Worksheet</h3>
         <ul className="whole-person-list">
           {caseData.wholePerson.map((w) => (
             <li key={w.factor}><strong>{w.factor}.</strong> {w.assessment}</li>
@@ -74,7 +74,7 @@ export default function AdjudicationTab({ caseData }) {
       )}
 
       <div className="card">
-        <h3>Decision history</h3>
+        <h3>Decision History</h3>
         {decisions.length === 0 && <p className="muted">No decisions recorded.</p>}
         <ul className="decision-list">
           {decisions.map((d, i) => (

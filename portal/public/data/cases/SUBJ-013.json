@@ -62,11 +62,39 @@
   "aiSummary": "One developed issue under Guideline K (Handling Protected Information); otherwise clear.",
   "timeline": [
     {
-      "date": "2026-05-01",
+      "date": "2025-09-28",
       "actor": "K. Rivas",
       "role": "FSO",
-      "event": "Case initiated in NBIS eApp",
+      "event": "Case initiated",
+      "note": "SF-86 submitted via NBIS eApp"
+    },
+    {
+      "date": "2026-01-26",
+      "actor": "D. Foley",
+      "role": "Investigator",
+      "event": "ROI transmitted",
       "note": null
+    },
+    {
+      "date": "2026-02-25",
+      "actor": "Adjudicator L. Ortiz",
+      "role": "Adjudicator",
+      "event": "Favorable adjudication — Top Secret granted",
+      "note": null
+    },
+    {
+      "date": "2026-03-04",
+      "actor": "System",
+      "role": "CV",
+      "event": "Enrolled in CV",
+      "note": null
+    },
+    {
+      "date": "2026-06-18",
+      "actor": "System",
+      "role": "CV",
+      "event": "Suitability alert received",
+      "note": "One security infraction: classified document left unsecured (2025)"
     }
   ],
   "wholePerson": [

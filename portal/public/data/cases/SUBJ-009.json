@@ -62,10 +62,31 @@
   "aiSummary": "One developed issue under Guideline H (Drug Involvement and Substance Misuse); otherwise clear.",
   "timeline": [
     {
-      "date": "2026-05-01",
+      "date": "2026-03-07",
       "actor": "K. Rivas",
       "role": "FSO",
-      "event": "Case initiated in NBIS eApp",
+      "event": "Case initiated",
+      "note": "SF-86 submitted via NBIS eApp"
+    },
+    {
+      "date": "2026-03-21",
+      "actor": "System",
+      "role": "System",
+      "event": "Investigation opened",
+      "note": null
+    },
+    {
+      "date": "2026-04-06",
+      "actor": "System",
+      "role": "System",
+      "event": "Record checks completed",
+      "note": null
+    },
+    {
+      "date": "2026-06-05",
+      "actor": "D. Foley",
+      "role": "Investigator",
+      "event": "ROI transmitted",
       "note": null
     }
   ],

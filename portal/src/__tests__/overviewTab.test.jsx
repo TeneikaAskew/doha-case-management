@@ -21,7 +21,7 @@ const render = (ui) => rtlRender(
 describe('OverviewTab', () => {
   it('renders a CV alert summary card with a Financial count for a subject with alerts', () => {
     render(<OverviewTab caseData={CASE_001} />);
-    expect(screen.getByText('CV alert summary')).toBeInTheDocument();
+    expect(screen.getByText('CV Alert Summary')).toBeInTheDocument();
     expect(screen.getByText('Financial')).toBeInTheDocument();
     const card = screen.getByText('Financial').closest('.alert-summary-card');
     expect(within(card).getByText('1')).toBeInTheDocument();
@@ -29,12 +29,12 @@ describe('OverviewTab', () => {
 
   it('renders no CV alert summary card for a subject with no alerts', () => {
     render(<OverviewTab caseData={{ ...CASE_001, alerts: [] }} />);
-    expect(screen.queryByText('CV alert summary')).not.toBeInTheDocument();
+    expect(screen.queryByText('CV Alert Summary')).not.toBeInTheDocument();
   });
 
   it('renders full subject information with demographics', () => {
     render(<OverviewTab caseData={CASE_001} />);
-    expect(screen.getByText('Subject information')).toBeInTheDocument();
+    expect(screen.getByText('Subject Information')).toBeInTheDocument();
     expect(screen.getByText('923-04-4821')).toBeInTheDocument();
     expect(screen.getByText('Lagos, Nigeria')).toBeInTheDocument();
     expect(screen.getByText('United States (naturalized 2003)')).toBeInTheDocument();
@@ -47,7 +47,7 @@ describe('OverviewTab', () => {
 
   it('renders address history with per-entry start and end dates', () => {
     render(<OverviewTab caseData={CASE_001} />);
-    expect(screen.getByText('Address history')).toBeInTheDocument();
+    expect(screen.getByText('Address History')).toBeInTheDocument();
     expect(screen.getByText('7605 Sudley Rd Apt 214, Manassas, VA 20109')).toBeInTheDocument();
     expect(screen.getAllByText('2019-08').length).toBeGreaterThanOrEqual(1);
     expect(screen.getAllByText('Present').length).toBeGreaterThanOrEqual(2);
@@ -56,7 +56,7 @@ describe('OverviewTab', () => {
 
   it('renders employment history with role, employer address, and dates', () => {
     render(<OverviewTab caseData={CASE_001} />);
-    expect(screen.getByText('Employment history')).toBeInTheDocument();
+    expect(screen.getByText('Employment History')).toBeInTheDocument();
     expect(screen.getByText('Sentinel Dynamics LLC')).toBeInTheDocument();
     expect(screen.getByText('Senior Systems Engineer')).toBeInTheDocument();
     expect(screen.getByText('14840 Conference Center Dr Suite 300, Chantilly, VA 20151'))
@@ -77,7 +77,7 @@ describe('OverviewTab', () => {
           event: 'First event', note: 'Financial issues flagged' },
       ] };
     const { container } = render(<OverviewTab caseData={twoEvents} />);
-    expect(screen.getByText('Case timeline')).toBeInTheDocument();
+    expect(screen.getByText('Case Timeline')).toBeInTheDocument();
     const items = container.querySelectorAll('.timeline-strip-item');
     expect(items).toHaveLength(2);
     expect(items[0].textContent).toContain('First event');

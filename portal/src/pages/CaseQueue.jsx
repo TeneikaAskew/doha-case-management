@@ -71,7 +71,7 @@ export default function CaseQueue() {
     <div className="page">
       <div className="page-header">
         <div>
-          <h1>Case queue</h1>
+          <h1>Case Queue</h1>
           <p>{rows.length} case{rows.length === 1 ? '' : 's'}{q && ` matching "${q}"`} <AIBadge /></p>
         </div>
         <div className="queue-filters">

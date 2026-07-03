@@ -62,11 +62,39 @@
   "aiSummary": "One developed issue under Guideline F (Financial Considerations); otherwise clear.",
   "timeline": [
     {
-      "date": "2026-05-01",
+      "date": "2026-01-05",
       "actor": "K. Rivas",
       "role": "FSO",
-      "event": "Case initiated in NBIS eApp",
+      "event": "Case initiated",
+      "note": "SF-86 submitted via NBIS eApp"
+    },
+    {
+      "date": "2026-05-05",
+      "actor": "D. Foley",
+      "role": "Investigator",
+      "event": "ROI transmitted",
       "note": null
+    },
+    {
+      "date": "2026-06-04",
+      "actor": "Adjudicator L. Ortiz",
+      "role": "Adjudicator",
+      "event": "Favorable adjudication — Secret granted",
+      "note": null
+    },
+    {
+      "date": "2026-06-11",
+      "actor": "System",
+      "role": "CV",
+      "event": "Enrolled in CV",
+      "note": null
+    },
+    {
+      "date": "2026-06-18",
+      "actor": "System",
+      "role": "CV",
+      "event": "Financial alert received",
+      "note": "Two delinquent accounts totaling $9,800"
     }
   ],
   "wholePerson": [

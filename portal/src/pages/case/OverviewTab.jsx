@@ -30,8 +30,6 @@ function TimelineStrip({ events }) {
           <span className="timeline-strip-date">{e.date}</span>
           <span className="timeline-strip-marker" aria-hidden="true" />
           <span className="timeline-strip-event">{e.event}</span>
-          <span className="timeline-strip-actor muted">{e.actor} ({e.role})</span>
-          {e.note && <span className="timeline-strip-note muted">{e.note}</span>}
         </li>
       ))}
     </ol>
@@ -42,7 +40,7 @@ function CaseTimelineCard({ timeline }) {
   const [detailOpen, setDetailOpen] = useState(false);
   return (
     <div className="card">
-      <h3>Case timeline</h3>
+      <h3>Case Timeline</h3>
       <TimelineStrip events={timeline} />
       <button type="button" className="btn btn-ghost timeline-detail-toggle"
         aria-expanded={detailOpen} onClick={() => setDetailOpen(!detailOpen)}>
@@ -83,12 +81,12 @@ export default function OverviewTab({ caseData }) {
   return (
     <div>
       <div className="card ai-summary">
-        <h3>Executive summary <AIBadge /></h3>
+        <h3>Executive Summary <AIBadge /></h3>
         <p>{caseData.aiSummary}</p>
       </div>
       {caseData.alerts.length > 0 && (
         <div className="card">
-          <h3>CV alert summary</h3>
+          <h3>CV Alert Summary</h3>
           <div className="alert-summary-grid">
             {Object.entries(alertCounts).map(([category, count]) => (
               <div key={category} className="alert-summary-card"
@@ -101,7 +99,7 @@ export default function OverviewTab({ caseData }) {
         </div>
       )}
       <div className="card">
-        <h3>Subject information</h3>
+        <h3>Subject Information</h3>
         <KVGrid items={[
           { label: 'Full name', value: s.name },
           { label: 'Date of birth', value: s.dob },
@@ -126,10 +124,10 @@ export default function OverviewTab({ caseData }) {
               ? s.flaggedGuidelines.map((g) => <GuidelineChip key={g} code={g} />)
               : 'None' },
         ]} />
-        <h4 className="subject-subhead">Address history</h4>
+        <h4 className="subject-subhead">Address History</h4>
         <DataTable columns={ADDRESS_COLUMNS} rows={s.addressHistory || []}
           rowKey="fromDate" />
-        <h4 className="subject-subhead">Employment history</h4>
+        <h4 className="subject-subhead">Employment History</h4>
         <DataTable columns={EMPLOYMENT_COLUMNS} rows={s.employmentHistory || []}
           rowKey="fromDate" />
       </div>

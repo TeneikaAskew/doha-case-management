@@ -40,7 +40,7 @@ describe('InvestigationTab', () => {
 
   it('renders record checks with status pills', () => {
     renderTab();
-    expect(screen.getByText('Record checks')).toBeInTheDocument();
+    expect(screen.getByText('Record Checks')).toBeInTheDocument();
     expect(screen.getByText('Subject interview (ESI)')).toBeInTheDocument();
     expect(screen.getAllByText('Complete').length).toBeGreaterThan(0);
   });

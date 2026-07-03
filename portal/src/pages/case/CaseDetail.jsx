@@ -21,7 +21,7 @@ const TABS = [
   { slug: 'guidelines', label: 'Guidelines', component: GuidelinesTab },
   { slug: 'investigation', label: 'Investigation', component: InvestigationTab },
   { slug: 'adjudication', label: 'Adjudication', component: AdjudicationTab },
-  { slug: 'continuous-vetting', label: 'Continuous vetting', component: CVTab },
+  { slug: 'continuous-vetting', label: 'Continuous Vetting', component: CVTab },
   { slug: 'documents', label: 'Documents', component: DocumentsTab },
 ];
 

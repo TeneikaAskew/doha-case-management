@@ -45,7 +45,7 @@ describe('CaseQueue', () => {
   it('renders status pills and guideline chips', async () => {
     renderQueue('/cases?q=okafor');
     await screen.findByText('Daniel R. Okafor');
-    expect(screen.getByText('Action required')).toBeInTheDocument();
+    expect(screen.getByText('Action Required')).toBeInTheDocument();
     expect(screen.getByText('F')).toBeInTheDocument();
     expect(screen.getByText('B')).toBeInTheDocument();
   });

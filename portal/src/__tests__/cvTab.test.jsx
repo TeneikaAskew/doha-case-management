@@ -65,7 +65,7 @@ describe('CVTab', () => {
     renderTab('analyst');
     fireEvent.click(screen.getByRole('button', { name: /new collection account/i }));
     fireEvent.click(screen.getByRole('button', { name: 'Confirm identity' }));
-    expect(screen.getByText('Identity confirmed')).toBeInTheDocument();
+    expect(screen.getByText('Identity Confirmed')).toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'Validate threshold' })).toBeInTheDocument();
   });
 

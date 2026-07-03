@@ -24,30 +24,30 @@ function buildKpis(personaId, subjects, alerts) {
         ? Math.round(inv.reduce((n, s) => n + s.daysInStage, 0) / inv.length) : 0;
       return {
         queue: inv,
-        title: 'Investigation workload',
+        title: 'Investigation Workload',
         kpis: [
-          { label: 'Cases in investigation', value: inv.length, accent: 'var(--dcsa-ocean)' },
-          { label: 'Pending coverage', value: inv.filter((s) => s.status !== 'CLEAR').length,
+          { label: 'Cases in Investigation', value: inv.length, accent: 'var(--dcsa-ocean)' },
+          { label: 'Pending Coverage', value: inv.filter((s) => s.status !== 'CLEAR').length,
             accent: 'var(--status-warning)' },
-          { label: 'Discrepancy flags',
+          { label: 'Discrepancy Flags',
             value: inv.filter((s) => s.flaggedGuidelines.length > 0).length,
             accent: 'var(--status-alert)' },
-          { label: 'Avg days in stage', value: avg, accent: 'var(--dcsa-gold)' },
+          { label: 'Avg Days in Stage', value: avg, accent: 'var(--dcsa-gold)' },
         ],
       };
     }
     case 'analyst':
       return {
         queue: inStage('CONTINUOUS_VETTING'),
-        title: 'Continuous vetting workload',
+        title: 'Continuous Vetting Workload',
         kpis: [
-          { label: 'Open alerts', value: openAlerts.length, accent: 'var(--status-alert)' },
-          { label: 'New alerts', value: alerts.filter((a) => a.state === 'NEW').length,
+          { label: 'Open Alerts', value: openAlerts.length, accent: 'var(--status-alert)' },
+          { label: 'New Alerts', value: alerts.filter((a) => a.state === 'NEW').length,
             accent: 'var(--status-warning)' },
-          { label: 'High severity',
+          { label: 'High Severity',
             value: openAlerts.filter((a) => a.severity === 'HIGH').length,
             accent: 'var(--risk-high)' },
-          { label: 'Subjects CV-enrolled', value: subjects.filter((s) => s.cvEnrolled).length,
+          { label: 'CV Subjects', value: subjects.filter((s) => s.cvEnrolled).length,
             accent: 'var(--dcsa-ocean)' },
         ],
       };
@@ -55,15 +55,15 @@ function buildKpis(personaId, subjects, alerts) {
       const adj = inStage('ADJUDICATION');
       return {
         queue: adj,
-        title: 'Adjudication workload',
+        title: 'Adjudication Workload',
         kpis: [
-          { label: 'Ready for decision', value: adj.length, accent: 'var(--dcsa-navy)' },
-          { label: 'Action required',
+          { label: 'Ready for Decision', value: adj.length, accent: 'var(--dcsa-navy)' },
+          { label: 'Action Required',
             value: subjects.filter((s) => s.status === 'ACTION_REQUIRED').length,
             accent: 'var(--status-alert)' },
-          { label: 'Fast-track candidates', value: subjects.filter((s) => s.fastTrack).length,
+          { label: 'Fast-Track Candidates', value: subjects.filter((s) => s.fastTrack).length,
             accent: 'var(--status-clear)' },
-          { label: 'High risk (75+)',
+          { label: 'High Risk (75+)',
             value: subjects.filter((s) => riskBand(s.riskScore) === 'high').length,
             accent: 'var(--risk-high)' },
         ],

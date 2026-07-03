@@ -1,4 +1,6 @@
 """Procedural roster of 12 lighter subjects around the 3 hero cases."""
+from datetime import date, timedelta
+
 import documents as docs
 from hero_cases import TODAY  # fixed reference date, re-exported for the generator
 
@@ -181,6 +183,64 @@ def _profile(n: int, name: str, position: str) -> dict:
     )
 
 
+ALERT_EVENT_LABELS = {
+    "CRIMINAL": "Criminal", "FINANCIAL": "Financial", "CREDIT": "Credit",
+    "FOREIGN_TRAVEL": "Foreign travel", "TERRORISM": "Terrorism",
+    "ELIGIBILITY": "Eligibility", "SUITABILITY": "Suitability",
+}
+GRANT_LABELS = {"SECRET": "Secret", "TOP_SECRET": "Top Secret", "INTERIM": "Interim"}
+
+
+def _timeline(stage: str, elig: str, days: int, alerts: list[dict]) -> list[dict]:
+    """Standard lifecycle timeline: concise source-free titles, dates derived
+    from daysInStage, one '<Category> alert received' event per alert."""
+    today = date.fromisoformat(TODAY)
+    stage_start = today - timedelta(days=days)
+    iso = date.isoformat
+    initiated = dict(actor="K. Rivas", role="FSO", event="Case initiated",
+                     note="SF-86 submitted via NBIS eApp")
+    rows = []
+    if stage == "INITIATION":
+        rows = [dict(date=iso(stage_start), **initiated)]
+    elif stage == "INVESTIGATION":
+        rows = [
+            dict(date=iso(stage_start - timedelta(days=14)), **initiated),
+            dict(date=iso(stage_start), actor="System", role="System",
+                 event="Investigation opened", note=None),
+            dict(date=iso(stage_start + timedelta(days=13)), actor="System",
+                 role="System", event="Record checks completed", note=None),
+        ]
+    elif stage == "ADJUDICATION":
+        rows = [
+            dict(date=iso(stage_start - timedelta(days=90)), **initiated),
+            dict(date=iso(stage_start - timedelta(days=76)), actor="System",
+                 role="System", event="Investigation opened", note=None),
+            dict(date=iso(stage_start - timedelta(days=60)), actor="System",
+                 role="System", event="Record checks completed", note=None),
+            dict(date=iso(stage_start), actor="D. Foley", role="Investigator",
+                 event="ROI transmitted", note=None),
+        ]
+    else:  # CONTINUOUS_VETTING — adjudicated in the past, then enrolled
+        adjudicated = stage_start - timedelta(days=7)
+        rows = [
+            dict(date=iso(adjudicated - timedelta(days=150)), **initiated),
+            dict(date=iso(adjudicated - timedelta(days=30)), actor="D. Foley",
+                 role="Investigator", event="ROI transmitted", note=None),
+            dict(date=iso(adjudicated), actor="Adjudicator L. Ortiz",
+                 role="Adjudicator",
+                 event=f"Favorable adjudication — {GRANT_LABELS[elig]} granted",
+                 note=None),
+            dict(date=iso(stage_start), actor="System", role="CV",
+                 event="Enrolled in CV", note=None),
+        ]
+    for a in alerts:
+        rows.append(dict(
+            date=a["receivedDate"], actor="System", role="CV",
+            event=f"{ALERT_EVENT_LABELS[a['category']]} alert received",
+            note=a["description"].rstrip(".")))
+    return rows
+
+
 def build_roster_cases(precedent_fn) -> list[dict]:
     cases = []
     for row in ROSTER:
@@ -229,8 +289,7 @@ def build_roster_cases(precedent_fn) -> list[dict]:
                        if clean else
                        f"One developed issue under Guideline {codes[0]} "
                        f"({GUIDELINE_TEMPLATES[codes[0]]['name']}); otherwise clear."),
-            timeline=[dict(date="2026-05-01", actor="K. Rivas", role="FSO",
-                           event="Case initiated in NBIS eApp", note=None)],
+            timeline=_timeline(stage, elig, days, alerts),
             wholePerson=_whole_person(clean, codes[0] if codes else None,
                                       alerts[0]["id"] if alerts else None, doc_ref),
             guidelines=[_guideline_card(c, precedent_fn) for c in codes],

@@ -62,10 +62,24 @@
   "aiSummary": "One developed issue under Guideline E (Personal Conduct); otherwise clear.",
   "timeline": [
     {
-      "date": "2026-05-01",
+      "date": "2026-05-16",
       "actor": "K. Rivas",
       "role": "FSO",
-      "event": "Case initiated in NBIS eApp",
+      "event": "Case initiated",
+      "note": "SF-86 submitted via NBIS eApp"
+    },
+    {
+      "date": "2026-05-30",
+      "actor": "System",
+      "role": "System",
+      "event": "Investigation opened",
+      "note": null
+    },
+    {
+      "date": "2026-06-12",
+      "actor": "System",
+      "role": "System",
+      "event": "Record checks completed",
       "note": null
     }
   ],

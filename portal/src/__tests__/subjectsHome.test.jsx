@@ -25,14 +25,14 @@ beforeEach(() => localStorage.clear());
 describe('SubjectsHome', () => {
   it('shows subject-population KPIs', async () => {
     renderHome();
-    expect(await screen.findByText('Total subjects')).toBeInTheDocument();
-    const total = screen.getByText('Total subjects').closest('.kpi-card');
+    expect(await screen.findByText('Total Subjects')).toBeInTheDocument();
+    const total = screen.getByText('Total Subjects').closest('.kpi-card');
     expect(total).toHaveTextContent('3');
-    const cv = screen.getByText('CV-enrolled').closest('.kpi-card');
+    const cv = screen.getByText('CV Subjects').closest('.kpi-card');
     expect(cv).toHaveTextContent('2');
-    const backlog = screen.getByText('Initial vetting backlog').closest('.kpi-card');
+    const backlog = screen.getByText('Initial Vetting Backlog').closest('.kpi-card');
     expect(backlog).toHaveTextContent('1'); // SUBJ-003 in INVESTIGATION
-    const withAlerts = screen.getByText('With open alerts').closest('.kpi-card');
+    const withAlerts = screen.getByText('Open Alerts').closest('.kpi-card');
     expect(withAlerts).toHaveTextContent('1'); // ALERT-101 (SUBJ-001) is NEW
   });
 
@@ -42,8 +42,8 @@ describe('SubjectsHome', () => {
       worksheetRatings: {},
     }));
     renderHome();
-    expect(await screen.findByText('With open alerts')).toBeInTheDocument();
-    expect(screen.getByText('With open alerts').closest('.kpi-card'))
+    expect(await screen.findByText('Open Alerts')).toBeInTheDocument();
+    expect(screen.getByText('Open Alerts').closest('.kpi-card'))
       .toHaveTextContent('0');
   });
 
@@ -56,7 +56,7 @@ describe('SubjectsHome', () => {
 
   it('directory search filters subjects', async () => {
     renderHome();
-    await screen.findByText('Total subjects');
+    await screen.findByText('Total Subjects');
     fireEvent.change(screen.getByLabelText('Search subjects in directory'),
       { target: { value: 'shah' } });
     const table = screen.getByRole('table');
@@ -66,7 +66,7 @@ describe('SubjectsHome', () => {
 
   it('renders the vetting pipeline with stage counts', async () => {
     renderHome();
-    expect(await screen.findByText('Vetting pipeline')).toBeInTheDocument();
+    expect(await screen.findByText('Vetting Pipeline')).toBeInTheDocument();
     const seg = screen.getByRole('link', { name: '1 Adjudication' });
     expect(seg.getAttribute('href')).toContain('/cases?stage=ADJUDICATION');
   });

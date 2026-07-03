@@ -65,6 +65,45 @@ def test_every_subject_profile_is_complete(out):
                 f"{s.id}: incomplete employment entry"
 
 
+ALERT_EVENT_LABELS = {
+    "CRIMINAL": "Criminal", "FINANCIAL": "Financial", "CREDIT": "Credit",
+    "FOREIGN_TRAVEL": "Foreign travel", "TERRORISM": "Terrorism",
+    "ELIGIBILITY": "Eligibility", "SUITABILITY": "Suitability",
+}
+PROVIDER_WORDS = ("Rap Back", "TransUnion", "Equifax", "Experian", "FinCEN",
+                  "CBP", "LexisNexis", "NCIC", "NBIS", "eApp", "DISS")
+
+
+def test_timeline_standard(out):
+    """Every case: full lifecycle timeline, ascending dates, source-free event
+    titles, and a '<Category> alert received' event per alert (plus
+    'adjudicated' when the alert reached that state)."""
+    out_dir, _ = out
+    for f in sorted((out_dir / "cases").glob("*.json")):
+        case = schemas.CaseDetail.model_validate(json.loads(f.read_text(encoding="utf-8")))
+        sid = case.subject.id
+        timeline = case.timeline
+        assert timeline, f"{sid}: empty timeline"
+        dates = [e.date for e in timeline]
+        assert dates == sorted(dates), f"{sid}: timeline out of order"
+        assert any(e.event == "Case initiated" for e in timeline), \
+            f"{sid}: missing 'Case initiated'"
+        for e in timeline:
+            for word in PROVIDER_WORDS:
+                assert word not in e.event, \
+                    f"{sid}: source '{word}' leaked into event title '{e.event}'"
+        events = [e.event for e in timeline]
+        for a in case.alerts:
+            label = ALERT_EVENT_LABELS[a.category]
+            received = [e for e in timeline
+                        if e.event == f"{label} alert received"]
+            assert any(e.date == a.receivedDate for e in received), \
+                f"{sid}: no '{label} alert received' on {a.receivedDate} for {a.id}"
+            if a.state == "ADJUDICATED":
+                assert f"{label} alert adjudicated" in events, \
+                    f"{sid}: {a.id} adjudicated but no timeline event"
+
+
 def test_hero1_depth(out):
     out_dir, _ = out
     case = schemas.CaseDetail.model_validate(

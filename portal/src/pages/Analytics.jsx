@@ -32,19 +32,19 @@ export default function Analytics() {
       </div>
 
       <div className="kpi-grid">
-        <KPICard label="Total DOHA cases" value={fmt(corpus.totalCases)}
+        <KPICard label="Total DOHA Cases" value={fmt(corpus.totalCases)}
           accent="var(--dcsa-navy)" />
         <KPICard label="Granted" value={fmt(corpus.byOutcome.GRANTED ?? 0)}
           accent="var(--status-clear)" />
         <KPICard label="Denied" value={fmt(corpus.byOutcome.DENIED ?? 0)}
           accent="var(--status-alert)" />
-        <KPICard label="Hearings / appeals"
+        <KPICard label="Hearings / Appeals"
           value={`${fmt(corpus.byCaseType.hearing ?? 0)} / ${fmt(corpus.byCaseType.appeal ?? 0)}`}
           accent="var(--dcsa-gold)" />
       </div>
 
       <div className="card chart-card">
-        <h3>Cases by guideline</h3>
+        <h3>Cases by Guideline</h3>
         <ResponsiveContainer width="100%" height={280}>
           <BarChart data={corpus.byGuideline}>
             <CartesianGrid strokeDasharray="3 3" stroke="var(--border-light)" vertical={false} />
@@ -57,7 +57,7 @@ export default function Analytics() {
       </div>
 
       <div className="card chart-card">
-        <h3>Outcomes by year</h3>
+        <h3>Outcomes by Year</h3>
         <ResponsiveContainer width="100%" height={280}>
           <LineChart data={corpus.byYear}>
             <CartesianGrid strokeDasharray="3 3" stroke="var(--border-light)" vertical={false} />
@@ -74,7 +74,7 @@ export default function Analytics() {
       </div>
 
       <div className="card chart-card">
-        <h3>Pipeline timeliness</h3>
+        <h3>Pipeline Timeliness</h3>
         <ResponsiveContainer width="100%" height={280}>
           <BarChart data={pipeline.timeliness}>
             <CartesianGrid strokeDasharray="3 3" stroke="var(--border-light)" vertical={false} />

@@ -3,7 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import { getAlerts } from '../data/api.js';
 import { useData } from '../data/useData.js';
 import { useDemo } from '../state/DemoContext.jsx';
-import { ALERT_CATEGORY_LABELS, ALERT_STATE_LABELS } from '../domain.js';
+import {
+  ALERT_CATEGORY_LABELS, ALERT_STATE_LABELS, ALERT_STATE_VARIANTS,
+} from '../domain.js';
 import KPICard from '../components/KPICard.jsx';
 import DataTable from '../components/DataTable.jsx';
 import StatusBadge from '../components/StatusBadge.jsx';
@@ -11,10 +13,6 @@ import AIBadge from '../components/AIBadge.jsx';
 import { Loading, ErrorAlert, EmptyState } from '../components/States.jsx';
 
 const SEVERITY_VARIANT = { HIGH: 'error', MODERATE: 'warning', LOW: 'info' };
-const STATE_VARIANT = {
-  NEW: 'warning', IDENTITY_CONFIRMED: 'info', VALIDATED: 'info',
-  REFERRED: 'warning', ADJUDICATED: 'success', CLOSED: 'neutral',
-};
 
 export default function CVAlerts() {
   const navigate = useNavigate();
@@ -57,7 +55,7 @@ export default function CVAlerts() {
       render: (a) => <StatusBadge variant={SEVERITY_VARIANT[a.severity]}>{a.severity}</StatusBadge> },
     { key: 'priorityScore', label: 'AI priority', sortable: true },
     { key: 'state', label: 'State',
-      render: (a) => <StatusBadge variant={STATE_VARIANT[a.state]}>{ALERT_STATE_LABELS[a.state]}</StatusBadge> },
+      render: (a) => <StatusBadge variant={ALERT_STATE_VARIANTS[a.state]}>{ALERT_STATE_LABELS[a.state]}</StatusBadge> },
     { key: 'receivedDate', label: 'Received', sortable: true },
   ];
 
@@ -65,7 +63,7 @@ export default function CVAlerts() {
     <div className="page">
       <div className="page-header">
         <div>
-          <h1>CV alerts</h1>
+          <h1>CV Alerts</h1>
           <p>Continuous vetting alert inbox <AIBadge /></p>
         </div>
         <label className="form-group">
@@ -79,12 +77,12 @@ export default function CVAlerts() {
         </label>
       </div>
       <div className="kpi-grid">
-        <KPICard label="Open alerts" value={open.length} accent="var(--status-alert)"
+        <KPICard label="Open Alerts" value={open.length} accent="var(--status-alert)"
           onClick={() => toggleKpi('OPEN')} active={kpiFilter === 'OPEN'} />
         <KPICard label="New" value={all.filter((a) => a.state === 'NEW').length}
           accent="var(--status-warning)"
           onClick={() => toggleKpi('NEW')} active={kpiFilter === 'NEW'} />
-        <KPICard label="High severity"
+        <KPICard label="High Severity"
           value={open.filter((a) => a.severity === 'HIGH').length}
           accent="var(--risk-high)"
           onClick={() => toggleKpi('HIGH')} active={kpiFilter === 'HIGH'} />

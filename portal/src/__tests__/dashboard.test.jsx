@@ -26,20 +26,20 @@ beforeEach(() => localStorage.clear());
 describe('Dashboard', () => {
   it('adjudicator sees decision-focused KPIs and adjudication queue', async () => {
     renderDash('adjudicator');
-    expect(await screen.findByText('Ready for decision')).toBeInTheDocument();
+    expect(await screen.findByText('Ready for Decision')).toBeInTheDocument();
     expect(screen.getByText('Daniel R. Okafor')).toBeInTheDocument();
     expect(screen.queryByText('Priya N. Shah')).not.toBeInTheDocument();
   });
 
   it('analyst sees alert-focused KPIs', async () => {
     renderDash('analyst');
-    expect(await screen.findByText('Open alerts')).toBeInTheDocument();
-    expect(screen.getByText('New alerts')).toBeInTheDocument();
+    expect(await screen.findByText('Open Alerts')).toBeInTheDocument();
+    expect(screen.getByText('New Alerts')).toBeInTheDocument();
   });
 
   it('investigator sees investigation queue', async () => {
     renderDash('investigator');
-    expect(await screen.findByText('Cases in investigation')).toBeInTheDocument();
+    expect(await screen.findByText('Cases in Investigation')).toBeInTheDocument();
     expect(screen.getByText('Priya N. Shah')).toBeInTheDocument();
   });
 
@@ -47,8 +47,8 @@ describe('Dashboard', () => {
     localStorage.setItem('demo.state',
       JSON.stringify({ alertStates: { 'ALERT-101': 'CLOSED' }, decisions: {}, roiEntries: {} }));
     renderDash('analyst');
-    expect(await screen.findByText('Open alerts')).toBeInTheDocument();
-    const openCard = screen.getByText('Open alerts').closest('.kpi-card');
+    expect(await screen.findByText('Open Alerts')).toBeInTheDocument();
+    const openCard = screen.getByText('Open Alerts').closest('.kpi-card');
     expect(openCard).toHaveTextContent('0');
   });
 });

@@ -72,14 +72,14 @@ export default function InvestigationTab({ caseData }) {
   return (
     <div>
       <div className="card">
-        <h3>Record checks</h3>
+        <h3>Record Checks</h3>
         <ul className="record-check-list">
           {inv.recordChecks.map((c) => <RecordCheckRow key={c.item} check={c} />)}
         </ul>
       </div>
 
       <div className="card">
-        <h3>SF-86 review — self-report vs record checks</h3>
+        <h3>SF-86 Review — Self-Report vs Record Checks</h3>
         {inv.sf86Sections.map((s) => (
           <div key={s.section} className={`sf86-section ${s.discrepancy ? 'flagged' : ''}`}>
             <div className="sf86-heading">
@@ -116,7 +116,7 @@ export default function InvestigationTab({ caseData }) {
       )}
 
       <div className="card">
-        <h3>Report of Investigation entries</h3>
+        <h3>Report of Investigation Entries</h3>
         {roiEntries.length === 0 && <p className="muted">No ROI entries yet.</p>}
         <ul className="roi-list">
           {roiEntries.map((r, i) => (

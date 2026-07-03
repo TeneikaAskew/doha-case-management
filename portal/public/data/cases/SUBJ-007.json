@@ -62,10 +62,24 @@
   "aiSummary": "One developed issue under Guideline M (Use of Information Technology); otherwise clear.",
   "timeline": [
     {
-      "date": "2026-05-01",
+      "date": "2026-04-21",
       "actor": "K. Rivas",
       "role": "FSO",
-      "event": "Case initiated in NBIS eApp",
+      "event": "Case initiated",
+      "note": "SF-86 submitted via NBIS eApp"
+    },
+    {
+      "date": "2026-05-05",
+      "actor": "System",
+      "role": "System",
+      "event": "Investigation opened",
+      "note": null
+    },
+    {
+      "date": "2026-05-18",
+      "actor": "System",
+      "role": "System",
+      "event": "Record checks completed",
       "note": null
     }
   ],

@@ -30,7 +30,7 @@ describe('CaseDetail', () => {
   it('renders subject header with pills and risk score', async () => {
     renderCase();
     expect(await screen.findByText('Daniel R. Okafor')).toBeInTheDocument();
-    expect(screen.getByText('Action required')).toBeInTheDocument();
+    expect(screen.getByText('Action Required')).toBeInTheDocument();
     expect(screen.getByText('1988-03-14')).toBeInTheDocument();
     expect(screen.getByText('923-04-4821')).toBeInTheDocument();
     expect(screen.getByText(/Eligibility: Interim/)).toBeInTheDocument();

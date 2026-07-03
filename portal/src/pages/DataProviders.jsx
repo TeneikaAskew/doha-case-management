@@ -19,7 +19,7 @@ export default function DataProviders() {
     <div className="page">
       <div className="page-header">
         <div>
-          <h1>Data providers</h1>
+          <h1>Data Providers</h1>
           <p>Record sources feeding investigations and continuous vetting</p>
         </div>
       </div>
@@ -43,7 +43,7 @@ export default function DataProviders() {
       </div>
 
       <div className="card">
-        <h3 id="coverage-matrix-title">Provider → guideline coverage</h3>
+        <h3 id="coverage-matrix-title">Provider → Guideline Coverage</h3>
         <div className="matrix-wrap">
           <table className="inline-table coverage-matrix" aria-labelledby="coverage-matrix-title">
             <thead>
