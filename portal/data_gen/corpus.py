@@ -87,7 +87,7 @@ def corpus_analytics(df: pd.DataFrame | None) -> dict:
     outcomes = Counter(df["outcome"].fillna("UNKNOWN"))
     years = df["date"].map(extract_year)
     by_year = []
-    for y in sorted({int(v) for v in years.dropna().unique() if 2016 <= v <= 2026}):
+    for y in sorted({int(v) for v in years.dropna().unique()}):
         mask = years == y
         by_year.append(dict(year=int(y),
                             granted=int((df.loc[mask, "outcome"] == "GRANTED").sum()),
