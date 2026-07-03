@@ -1,7 +1,7 @@
 import { createContext, useContext, useState } from 'react';
 import { ALERT_TRANSITIONS } from '../domain.js';
 
-const EMPTY = { alertStates: {}, decisions: {}, roiEntries: {} };
+const EMPTY = { alertStates: {}, decisions: {}, roiEntries: {}, worksheetRatings: {} };
 const DemoContext = createContext(null);
 
 function load() {
@@ -34,11 +34,24 @@ export function DemoProvider({ children }) {
       [bucket]: { ...demo[bucket], [caseId]: [...(demo[bucket][caseId] || []), entry] },
     });
 
+  const setWorksheetRating = (caseId, factorIndex, rating, note) =>
+    persist({
+      ...demo,
+      worksheetRatings: {
+        ...demo.worksheetRatings,
+        [caseId]: {
+          ...(demo.worksheetRatings[caseId] || {}),
+          [factorIndex]: { rating, note },
+        },
+      },
+    });
+
   const value = {
     demo,
     dispositionAlert,
     recordDecision: (caseId, d) => appendTo('decisions', caseId, d),
     addRoiEntry: (caseId, e) => appendTo('roiEntries', caseId, e),
+    setWorksheetRating,
     reset: () => persist(EMPTY),
   };
   return <DemoContext.Provider value={value}>{children}</DemoContext.Provider>;

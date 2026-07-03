@@ -2,6 +2,7 @@ import KVGrid from '../../components/KVGrid.jsx';
 import AIBadge from '../../components/AIBadge.jsx';
 import GuidelineChip from '../../components/GuidelineChip.jsx';
 import DataTable from '../../components/DataTable.jsx';
+import WholePersonWorksheet from './WholePersonWorksheet.jsx';
 import { ALERT_CATEGORY_LABELS } from '../../domain.js';
 
 const fmtRange = (row) => `${row.fromDate} — ${row.toDate || 'Present'}`;
@@ -83,14 +84,7 @@ export default function OverviewTab({ caseData }) {
         <DataTable columns={EMPLOYMENT_COLUMNS} rows={s.employmentHistory || []}
           rowKey="fromDate" />
       </div>
-      <div className="card">
-        <h3>Whole-person snapshot</h3>
-        <ul className="whole-person-list">
-          {caseData.wholePerson.map((w) => (
-            <li key={w.factor}><strong>{w.factor}.</strong> {w.assessment}</li>
-          ))}
-        </ul>
-      </div>
+      <WholePersonWorksheet caseData={caseData} />
       <div className="card">
         <h3>Case timeline</h3>
         <ol className="timeline">

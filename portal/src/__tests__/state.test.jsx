@@ -28,6 +28,17 @@ describe('DemoContext', () => {
     ).toThrow();
   });
 
+  it('persists worksheet ratings per case and factor', () => {
+    const { result } = renderHook(() => useDemo(), { wrapper });
+    act(() => result.current.setWorksheetRating('SUBJ-001', 2, 'CONCERN', 'Recent.'));
+    expect(result.current.demo.worksheetRatings['SUBJ-001'][2])
+      .toEqual({ rating: 'CONCERN', note: 'Recent.' });
+    expect(JSON.parse(localStorage.getItem('demo.state'))
+      .worksheetRatings['SUBJ-001'][2].rating).toBe('CONCERN');
+    act(() => result.current.reset());
+    expect(result.current.demo.worksheetRatings).toEqual({});
+  });
+
   it('records decisions and roi entries per case, and resets', () => {
     const { result } = renderHook(() => useDemo(), { wrapper });
     act(() => result.current.recordDecision('SUBJ-001',

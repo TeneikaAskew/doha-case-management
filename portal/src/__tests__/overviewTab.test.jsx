@@ -1,7 +1,22 @@
-import { describe, it, expect } from 'vitest';
-import { render, screen, within } from '@testing-library/react';
-import OverviewTab from '../pages/case/OverviewTab.jsx';
+import { describe, it, expect, vi } from 'vitest';
+import { render as rtlRender, screen, within } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
+import { PersonaProvider } from '../state/PersonaContext.jsx';
+import { DemoProvider } from '../state/DemoContext.jsx';
 import { CASE_001 } from './fixtures.js';
+
+vi.mock('../data/api.js', () => ({
+  fetchJson: () => Promise.resolve({}),
+  getProviders: () => Promise.resolve([]),
+}));
+
+import OverviewTab from '../pages/case/OverviewTab.jsx';
+
+const render = (ui) => rtlRender(
+  <PersonaProvider><DemoProvider>
+    <MemoryRouter>{ui}</MemoryRouter>
+  </DemoProvider></PersonaProvider>
+);
 
 describe('OverviewTab', () => {
   it('renders a CV alert summary card with a Financial count for a subject with alerts', () => {
