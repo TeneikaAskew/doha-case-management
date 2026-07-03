@@ -21,10 +21,11 @@ import { REFS } from '../references.js';
 const STAGES = ['INITIATION', 'INVESTIGATION', 'ADJUDICATION', 'CONTINUOUS_VETTING'];
 const STATUS_RANK = { ACTION_REQUIRED: 0, NEEDS_REVIEW: 1, CLEAR: 2 };
 const BANDS = [
-  // moderate fill uses the dark warning variant so white segment text meets AA
-  { id: 'low', label: 'Low (<40)', color: 'var(--risk-low)' },
-  { id: 'moderate', label: 'Moderate (40-74)', color: 'var(--status-warning-dark)' },
-  { id: 'high', label: 'High (75+)', color: 'var(--risk-high)' },
+  // light tint fills with dark hue ink: lighter look, AA text, badge-consistent
+  { id: 'low', label: 'Low (<40)', bg: 'var(--risk-low-bg)', ink: 'var(--risk-low)' },
+  { id: 'moderate', label: 'Moderate (40-74)',
+    bg: 'var(--risk-moderate-bg)', ink: 'var(--status-warning-dark)' },
+  { id: 'high', label: 'High (75+)', bg: 'var(--risk-high-bg)', ink: 'var(--risk-high)' },
 ];
 
 export default function SubjectsHome() {
@@ -132,14 +133,14 @@ export default function SubjectsHome() {
           aria-label={BANDS.map((b) => `${b.label}: ${bandCount(b.id)}`).join(', ')}>
           {BANDS.map((b) => bandCount(b.id) > 0 && (
             <div key={b.id} className="risk-bar-segment"
-              style={{ flex: bandCount(b.id), '--band-color': b.color }}>
+              style={{ flex: bandCount(b.id), '--band-bg': b.bg, '--band-ink': b.ink }}>
               {bandCount(b.id)}
             </div>
           ))}
         </div>
         <div className="risk-bar-legend">
           {BANDS.map((b) => (
-            <span key={b.id} className="risk-bar-key" style={{ '--band-color': b.color }}>
+            <span key={b.id} className="risk-bar-key" style={{ '--band-ink': b.ink }}>
               {b.label}: {bandCount(b.id)}
             </span>
           ))}
