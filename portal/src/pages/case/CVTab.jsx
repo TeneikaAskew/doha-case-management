@@ -10,6 +10,7 @@ import CollapsibleSection from '../../components/CollapsibleSection.jsx';
 import ConfidenceBar from '../../components/ConfidenceBar.jsx';
 import StatusBadge from '../../components/StatusBadge.jsx';
 import AIBadge from '../../components/AIBadge.jsx';
+import SourceChip from '../../components/SourceChip.jsx';
 import DocumentViewer from '../../components/DocumentViewer.jsx';
 import { EmptyState } from '../../components/States.jsx';
 
@@ -19,12 +20,13 @@ const STATE_VARIANT = {
 };
 
 function AlertBody({ alert: a, state, isAnalyst, dispositionAlert }) {
-  const [docOpen, setDocOpen] = useState(false);
+  const [openDoc, setOpenDoc] = useState(null);
 
   return (
     <>
       <p className="muted">
-        Provider: {a.provider} · Severity: {a.severity} · AI priority {a.priorityScore}
+        <SourceChip provider={a.provider} />
+        {' '}· Severity: {a.severity} · AI priority {a.priorityScore}
         {' '}<AIBadge />
       </p>
 
@@ -70,12 +72,17 @@ function AlertBody({ alert: a, state, isAnalyst, dispositionAlert }) {
         </div>
       </div>
 
-      {a.documentUrl && (
+      {(a.documents || []).length > 0 && (
         <>
-          <button type="button" className="btn btn-ghost" onClick={() => setDocOpen(!docOpen)}>
-            <FiFileText aria-hidden="true" /> Source document
-          </button>
-          {docOpen && <DocumentViewer url={a.documentUrl} />}
+          <div className="cv-actions">
+            {a.documents.map((d) => (
+              <button key={d.url} type="button" className="btn btn-ghost"
+                onClick={() => setOpenDoc(openDoc === d.url ? null : d.url)}>
+                <FiFileText aria-hidden="true" /> Source document: {d.title}
+              </button>
+            ))}
+          </div>
+          {openDoc && <DocumentViewer url={openDoc} />}
         </>
       )}
 
