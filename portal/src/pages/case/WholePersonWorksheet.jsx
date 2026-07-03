@@ -13,6 +13,20 @@ const RATINGS = [
   { id: 'CONCERN', label: 'Concern', variant: 'error' },
 ];
 
+const SHORT_LABELS = {
+  'Nature, extent, and seriousness of the conduct': 'Nature & seriousness',
+  'Circumstances surrounding the conduct': 'Circumstances',
+  'Frequency and recency of the conduct': 'Frequency & recency',
+  "Individual's age and maturity at the time of the conduct": 'Age & maturity',
+  'Extent to which participation is voluntary': 'Voluntariness',
+  'Presence or absence of rehabilitation and other permanent behavioral changes':
+    'Rehabilitation',
+  'Motivation for the conduct': 'Motivation',
+  'Potential for pressure, coercion, exploitation, or duress':
+    'Pressure / duress potential',
+  'Likelihood of continuation or recurrence': 'Likelihood of recurrence',
+};
+
 function EvidenceChips({ evidence, onOpenDoc }) {
   const [, setParams] = useSearchParams();
   const jump = (ev) => {
@@ -40,46 +54,53 @@ function FactorRow({ factor, index, caseId, canRate }) {
   const saved = demo.worksheetRatings[caseId]?.[index];
   const [note, setNote] = useState(saved?.note || '');
   const savedRating = saved && RATINGS.find((r) => r.id === saved.rating);
+  const dot = (saved?.rating || factor.aiRating || 'NEUTRAL').toLowerCase();
+  const label = SHORT_LABELS[factor.factor] || factor.factor;
 
   return (
-    <li className="worksheet-factor">
-      <button type="button" className="record-check-header" aria-expanded={open}
-        onClick={() => setOpen(!open)}>
-        <span className="record-check-item">{factor.factor}</span>
-        {savedRating && (
-          <StatusBadge variant={savedRating.variant}>{savedRating.label}</StatusBadge>
+    <li className="briefing-factor">
+      <span className={`briefing-dot rating-${dot}`} aria-hidden="true" />
+      <div className="briefing-factor-body">
+        {canRate ? (
+          <button type="button" className="briefing-factor-toggle" aria-expanded={open}
+            aria-label={factor.factor} title={factor.factor}
+            onClick={() => setOpen(!open)}>
+            <span className="briefing-factor-label">{label}</span>
+            {savedRating && (
+              <StatusBadge variant={savedRating.variant}>{savedRating.label}</StatusBadge>
+            )}
+            <FiChevronDown
+              className={open ? 'collapsible-chevron open' : 'collapsible-chevron'}
+              aria-hidden="true" />
+          </button>
+        ) : (
+          <span className="briefing-factor-label" title={factor.factor}>{label}</span>
         )}
-        <FiChevronDown className={open ? 'collapsible-chevron open' : 'collapsible-chevron'}
-          aria-hidden="true" />
-      </button>
-      {open && (
-        <div className="record-check-body">
-          <p>{factor.assessment} <AIBadge /></p>
-          <EvidenceChips evidence={factor.evidence || []}
-            onOpenDoc={(url) => setDocUrl(docUrl === url ? null : url)} />
-          {docUrl && <DocumentViewer url={docUrl} />}
-          {canRate && (
-            <div className="worksheet-rating">
-              <div className="worksheet-rating-buttons" role="group"
-                aria-label={`Assessment for ${factor.factor}`}>
-                {RATINGS.map((r) => (
-                  <button key={r.id} type="button"
-                    className={`btn ${saved?.rating === r.id ? 'btn-secondary' : 'btn-ghost'}`}
-                    onClick={() => setWorksheetRating(caseId, index, r.id, note)}>
-                    {r.label}
-                  </button>
-                ))}
-              </div>
-              <label className="form-group">
-                <span>Adjudicator note</span>
-                <textarea aria-label={`Note for ${factor.factor}`} rows={2} value={note}
-                  onChange={(e) => setNote(e.target.value)}
-                  onBlur={() => saved && setWorksheetRating(caseId, index, saved.rating, note)} />
-              </label>
+        <p className="briefing-assessment">{factor.assessment}</p>
+        <EvidenceChips evidence={factor.evidence || []}
+          onOpenDoc={(url) => setDocUrl(docUrl === url ? null : url)} />
+        {docUrl && <DocumentViewer url={docUrl} />}
+        {open && canRate && (
+          <div className="worksheet-rating">
+            <div className="worksheet-rating-buttons" role="group"
+              aria-label={`Assessment for ${factor.factor}`}>
+              {RATINGS.map((r) => (
+                <button key={r.id} type="button"
+                  className={`btn ${saved?.rating === r.id ? 'btn-secondary' : 'btn-ghost'}`}
+                  onClick={() => setWorksheetRating(caseId, index, r.id, note)}>
+                  {r.label}
+                </button>
+              ))}
             </div>
-          )}
-        </div>
-      )}
+            <label className="form-group">
+              <span>Adjudicator note</span>
+              <textarea aria-label={`Note for ${factor.factor}`} rows={2} value={note}
+                onChange={(e) => setNote(e.target.value)}
+                onBlur={() => saved && setWorksheetRating(caseId, index, saved.rating, note)} />
+            </label>
+          </div>
+        )}
+      </div>
     </li>
   );
 }
@@ -88,25 +109,34 @@ export default function WholePersonWorksheet({ caseData }) {
   const { persona } = usePersona();
   const { demo } = useDemo();
   const caseId = caseData.subject.id;
+  const canRate = persona.id === 'adjudicator';
   const ratings = Object.values(demo.worksheetRatings[caseId] || {});
   const tally = (id) => ratings.filter((r) => r.rating === id).length;
 
   return (
     <div className="card">
       <div className="worksheet-head">
-        <h3>Whole-Person Worksheet <AIBadge /></h3>
-        {ratings.length > 0 && (
+        <h3>Whole-Person Briefing <AIBadge /></h3>
+        {ratings.length > 0 ? (
           <div className="worksheet-tally">
             <StatusBadge variant="success">{tally('FAVORABLE')} favorable</StatusBadge>
             <StatusBadge variant="neutral">{tally('NEUTRAL')} neutral</StatusBadge>
             <StatusBadge variant="error">{tally('CONCERN')} concern</StatusBadge>
           </div>
+        ) : canRate && (
+          <span className="briefing-head-note">Expand a factor to rate it</span>
         )}
       </div>
-      <ul className="record-check-list">
+      {caseData.wholePersonSummary && (
+        <div className="briefing-bluf">
+          <div className="briefing-bluf-label">Bottom line</div>
+          <p>{caseData.wholePersonSummary}</p>
+        </div>
+      )}
+      <ul className="briefing-grid">
         {caseData.wholePerson.map((f, i) => (
           <FactorRow key={f.factor} factor={f} index={i} caseId={caseId}
-            canRate={persona.id === 'adjudicator'} />
+            canRate={canRate} />
         ))}
       </ul>
     </div>

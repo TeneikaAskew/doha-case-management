@@ -99,8 +99,6 @@
 
 .sf86-section { padding: var(--space-4); border: 1px solid var(--border-light);
   border-radius: var(--radius-sm); margin-bottom: var(--space-3); }
-.sf86-section.flagged { border-color: var(--status-alert);
-  background: var(--status-alert-bg); }
 .sf86-heading { display: flex; align-items: center; gap: var(--space-2);
   margin-bottom: var(--space-3); flex-wrap: wrap; }
 .sf86-compare { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-5); }
@@ -145,11 +143,52 @@
 .record-check-item { flex: 1; font-weight: 600; }
 .record-check-body { padding: 0 0 var(--space-4); display: flex;
   flex-direction: column; gap: var(--space-3); align-items: flex-start; }
+.record-check-meta { display: flex; align-items: center; flex-wrap: wrap;
+  gap: var(--space-2) var(--space-5); }
+.record-check-dates { display: inline-flex; align-items: center; gap: var(--space-2);
+  font-size: var(--font-size-sm); color: var(--text-primary);
+  font-variant-numeric: tabular-nums; }
+.record-check-lbl { font-size: var(--font-size-xs); font-weight: 700;
+  letter-spacing: 0.5px; text-transform: uppercase; color: var(--text-muted); }
+.record-check-arrow { color: var(--text-muted); }
+.record-check-cell { display: flex; flex-direction: column; gap: 2px; }
 
-/* Whole-person worksheet */
+/* Whole-person briefing */
 .worksheet-head { display: flex; justify-content: space-between; align-items: center;
   gap: var(--space-3); flex-wrap: wrap; }
 .worksheet-tally { display: flex; gap: var(--space-2); }
+.briefing-head-note { font-size: var(--font-size-xs); color: var(--text-muted); }
+.briefing-bluf { border-left: 4px solid var(--dcsa-gold); background: var(--dcsa-navy-tint-4);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: var(--space-3) var(--space-4); margin: var(--space-3) 0 var(--space-2); }
+.briefing-bluf-label { font-size: var(--font-size-xs); font-weight: 700;
+  letter-spacing: 1px; text-transform: uppercase; color: var(--dcsa-navy);
+  margin-bottom: var(--space-1); }
+.briefing-bluf p { margin: 0; }
+.briefing-grid { list-style: none; display: grid; grid-template-columns: 1fr 1fr;
+  column-gap: var(--space-8); }
+.briefing-factor { display: flex; gap: var(--space-3); padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--border-light); }
+.briefing-grid .briefing-factor:nth-last-child(-n+2) { border-bottom: none; }
+@media (max-width: 900px) {
+  .briefing-grid { grid-template-columns: 1fr; }
+  .briefing-grid .briefing-factor:nth-last-child(2) { border-bottom: 1px solid var(--border-light); }
+}
+.briefing-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
+  margin-top: 4px; }
+.briefing-dot.rating-concern { background: var(--status-alert); }
+.briefing-dot.rating-favorable { background: var(--status-clear); }
+.briefing-dot.rating-neutral { background: var(--border-medium); }
+.briefing-dot.rating-pending { background: var(--dcsa-gold); }
+.briefing-factor-body { flex: 1; display: flex; flex-direction: column;
+  gap: var(--space-2); align-items: flex-start; }
+.briefing-factor-toggle { display: flex; align-items: center; gap: var(--space-2);
+  background: none; border: none; padding: 0; cursor: pointer; font: inherit;
+  text-align: left; }
+.briefing-factor-label { font-size: var(--font-size-xs); font-weight: 700;
+  letter-spacing: 0.6px; text-transform: uppercase; color: var(--text-secondary); }
+.briefing-assessment { margin: 0; font-size: var(--font-size-sm);
+  color: var(--text-primary); }
 .worksheet-evidence { display: flex; flex-wrap: wrap; gap: var(--space-2); }
 .evidence-chip { display: inline-flex; align-items: center; gap: var(--space-1);
   padding: var(--space-1) var(--space-2); border-radius: var(--radius-pill);
@@ -160,3 +199,6 @@
 .worksheet-rating { display: flex; flex-direction: column; gap: var(--space-2);
   width: 100%; }
 .worksheet-rating-buttons { display: flex; gap: var(--space-2); }
+
+.section-ref { margin-top: var(--space-3); padding-top: var(--space-3);
+  border-top: 1px solid var(--border-light); font-size: var(--font-size-xs); }

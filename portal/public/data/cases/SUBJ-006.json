@@ -33,13 +33,13 @@
     "addressHistory": [
       {
         "address": "286 Larkspur Ct, Arlington, VA 22204",
-        "fromDate": "2022-07",
+        "fromDate": "2022-07-10",
         "toDate": null
       },
       {
         "address": "402 Waverly Row Apt 8, Springfield, VA 22153",
-        "fromDate": "209-02",
-        "toDate": "2022-07"
+        "fromDate": "2009-02-22",
+        "toDate": "2022-07-10"
       }
     ],
     "employmentHistory": [
@@ -47,15 +47,15 @@
         "employer": "Clearwater Mission Systems",
         "title": "Program Analyst",
         "address": "5875 Trinity Pkwy Suite 300, Centreville, VA 20120",
-        "fromDate": "2020-09",
+        "fromDate": "2020-09-16",
         "toDate": null
       },
       {
         "employer": "Ardent Federal Systems",
         "title": "Associate Program Analyst",
         "address": "2101 Wilson Blvd Suite 900, Arlington, VA 22201",
-        "fromDate": "209-02",
-        "toDate": "2020-09"
+        "fromDate": "2009-02-22",
+        "toDate": "2020-09-16"
       }
     ]
   },
@@ -83,12 +83,12 @@
       "note": null
     }
   ],
-  "wholePersonSummary": "",
+  "wholePersonSummary": "Single developed issue under Guideline E (Personal Conduct). The remaining whole-person factors show no additional adverse information; assess the flagged conduct on its own weight.",
   "wholePerson": [
     {
       "factor": "Nature, extent, and seriousness of the conduct",
       "assessment": "Single developed issue: Employment application omitted a 2022 termination for cause.",
-      "aiRating": "NEUTRAL",
+      "aiRating": "CONCERN",
       "evidence": []
     },
     {

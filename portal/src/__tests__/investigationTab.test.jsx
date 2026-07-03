@@ -45,6 +45,13 @@ describe('InvestigationTab', () => {
     expect(screen.getAllByText('Complete').length).toBeGreaterThan(0);
   });
 
+  it('cites the coverage-scope authority for the record checks', () => {
+    renderTab();
+    expect(screen.getByText(/Federal Investigative Standards/)).toBeInTheDocument();
+    expect(screen.getByText(/SEAD 3/)).toBeInTheDocument();
+    expect(screen.getByText(/\(T5\)/)).toBeInTheDocument(); // subject's tier
+  });
+
   it('expands a record check to show provider, scope, and result', () => {
     renderTab();
     fireEvent.click(screen.getByRole('button', { name: /financial record checks/i }));

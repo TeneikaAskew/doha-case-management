@@ -36,26 +36,29 @@ export const CASE_001 = {
     address: '1427 Birch Hollow Ct, Manassas, VA 20109',
     addressHistory: [
       { address: '1427 Birch Hollow Ct, Manassas, VA 20109',
-        fromDate: '2019-08', toDate: null },
+        fromDate: '2019-08-10', toDate: null },
       { address: '7605 Sudley Rd Apt 214, Manassas, VA 20109',
-        fromDate: '2014-06', toDate: '2019-08' },
+        fromDate: '2014-06-21', toDate: '2019-08-10' },
     ],
     employmentHistory: [
       { employer: 'Sentinel Dynamics LLC', title: 'Senior Systems Engineer',
         address: '14840 Conference Center Dr Suite 300, Chantilly, VA 20151',
-        fromDate: '2018-02', toDate: null },
+        fromDate: '2018-02-05', toDate: null },
       { employer: 'Praxis Federal Solutions', title: 'Systems Engineer',
         address: '11951 Freedom Dr Suite 900, Reston, VA 20190',
-        fromDate: '2013-01', toDate: '2018-02' },
+        fromDate: '2013-01-14', toDate: '2018-01-26' },
     ] },
   aiSummary: 'Significant unresolved financial concerns under Guideline F.',
   timeline: [
     { date: '2026-01-27', actor: 'S. Whitfield', role: 'Investigator',
       event: 'ROI transmitted', note: 'Financial issues flagged' },
   ],
+  wholePersonSummary: 'Sustained delinquency compounded by incomplete disclosure; '
+    + 'mitigation is thin and repayment behavior is undocumented.',
   wholePerson: [
     { factor: 'Nature, extent, and seriousness of the conduct',
       assessment: 'Sustained delinquency; serious.',
+      aiRating: 'CONCERN',
       evidence: [
         { type: 'ALERT', ref: 'ALERT-101', label: 'New collection account alert' },
         { type: 'DOCUMENT', ref: 'documents/SUBJ-001/credit-extract-20260620.json',
@@ -63,6 +66,7 @@ export const CASE_001 = {
       ] },
     { factor: 'Frequency and recency of the conduct',
       assessment: 'Ongoing; newest alert June 2026.',
+      aiRating: 'CONCERN',
       evidence: [{ type: 'RECORD_CHECK', ref: 'Financial record checks',
         label: 'Financial record checks' }] },
   ],

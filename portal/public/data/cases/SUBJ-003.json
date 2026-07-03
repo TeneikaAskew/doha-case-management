@@ -31,18 +31,18 @@
     "addressHistory": [
       {
         "address": "510 Alder Grove Ln, Columbia, MD 21044",
-        "fromDate": "2022-07",
+        "fromDate": "2022-07-16",
         "toDate": null
       },
       {
         "address": "3901 Falls Rd Apt 316, Baltimore, MD 21211",
-        "fromDate": "2018-08",
-        "toDate": "2022-07"
+        "fromDate": "2018-08-04",
+        "toDate": "2022-07-16"
       },
       {
         "address": "12 Coventry Ct, Edison, NJ 08820",
-        "fromDate": "1996-07",
-        "toDate": "2018-08"
+        "fromDate": "1996-07-22",
+        "toDate": "2018-08-04"
       }
     ],
     "employmentHistory": [
@@ -50,15 +50,15 @@
         "employer": "Chesapeake Analytics Group",
         "title": "Financial Analyst",
         "address": "10960 Grantchester Way Suite 520, Columbia, MD 21044",
-        "fromDate": "2022-06",
+        "fromDate": "2022-06-13",
         "toDate": null
       },
       {
         "employer": "T. Rowe Price",
         "title": "Junior Financial Analyst",
         "address": "100 E Pratt St, Baltimore, MD 21202",
-        "fromDate": "2018-07",
-        "toDate": "2022-06"
+        "fromDate": "2018-07-09",
+        "toDate": "2022-06-03"
       }
     ]
   },
@@ -86,12 +86,12 @@
       "note": "Risk score 8/100"
     }
   ],
-  "wholePersonSummary": "",
+  "wholePersonSummary": "No adverse information across any checked source; credit, criminal-history, and education checks all returned clean. Strong fast-track candidate - the only open item is a routine employment verification.",
   "wholePerson": [
     {
       "factor": "Nature, extent, and seriousness of the conduct",
-      "assessment": "No adverse information across all checked sources.",
-      "aiRating": "NEUTRAL",
+      "assessment": "No adverse information across all checked sources. Credit, criminal-history, and education checks all returned clean.",
+      "aiRating": "FAVORABLE",
       "evidence": [
         {
           "type": "DOCUMENT",

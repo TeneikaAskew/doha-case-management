@@ -49,9 +49,9 @@ describe('OverviewTab', () => {
     render(<OverviewTab caseData={CASE_001} />);
     expect(screen.getByText('Address History')).toBeInTheDocument();
     expect(screen.getByText('7605 Sudley Rd Apt 214, Manassas, VA 20109')).toBeInTheDocument();
-    expect(screen.getAllByText('2019-08').length).toBeGreaterThanOrEqual(1);
+    expect(screen.getAllByText('2019-08-10').length).toBeGreaterThanOrEqual(1);
     expect(screen.getAllByText('Present').length).toBeGreaterThanOrEqual(2);
-    expect(screen.getAllByText('2014-06').length).toBeGreaterThanOrEqual(1);
+    expect(screen.getAllByText('2014-06-21').length).toBeGreaterThanOrEqual(1);
   });
 
   it('renders employment history with role, employer address, and dates', () => {
@@ -64,8 +64,8 @@ describe('OverviewTab', () => {
     expect(screen.getByText('Praxis Federal Solutions')).toBeInTheDocument();
     expect(screen.getByText('11951 Freedom Dr Suite 900, Reston, VA 20190'))
       .toBeInTheDocument();
-    expect(screen.getByText('2013-01')).toBeInTheDocument();
-    expect(screen.getAllByText('2018-02').length).toBeGreaterThanOrEqual(1);
+    expect(screen.getByText('2013-01-14')).toBeInTheDocument();
+    expect(screen.getAllByText('2018-02-05').length).toBeGreaterThanOrEqual(1);
   });
 
   it('renders a horizontal timeline strip with events in date order', () => {

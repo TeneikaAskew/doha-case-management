@@ -124,6 +124,7 @@ def _whole_person(clean: bool, code, alert_id, doc_ref) -> list[dict]:
         if clean:
             rows.append(dict(
                 factor=factor, evidence=[],
+                aiRating="FAVORABLE" if i == 0 else "NEUTRAL",
                 assessment=("No adverse information across all checked sources."
                             if i == 0 else
                             "Not applicable - no adverse information developed.")))
@@ -136,9 +137,20 @@ def _whole_person(clean: bool, code, alert_id, doc_ref) -> list[dict]:
                 evidence.append(dict(type="DOCUMENT", ref=doc_ref[0], label=doc_ref[1]))
         rows.append(dict(
             factor=factor, evidence=evidence,
+            aiRating="CONCERN" if i == 0 else "NEUTRAL",
             assessment=(f"Single developed issue: {issue}." if i == 0 else
                         "Single-issue case; no additional adverse factors developed.")))
     return rows
+
+
+def _whole_person_summary(clean: bool, code) -> str:
+    if clean:
+        return ("No adverse information developed across the nine whole-person "
+                "factors; routine processing.")
+    name = GUIDELINE_TEMPLATES[code]["name"]
+    return (f"Single developed issue under Guideline {code} ({name}). The remaining "
+            "whole-person factors show no additional adverse information; assess "
+            "the flagged conduct on its own weight.")
 
 
 def _profile(n: int, name: str, position: str) -> dict:
@@ -153,9 +165,9 @@ def _profile(n: int, name: str, position: str) -> dict:
     address = f"{100 + n * 31 % 800} {STREETS[n % len(STREETS)]}, {city} {zip_}"
     prior_address = (f"{300 + n * 17 % 600} {STREETS[(n + 5) % len(STREETS)]} "
                      f"Apt {2 + n % 9}, {prior_city} {prior_zip}")
-    moved = f"20{16 + n % 7}-0{1 + n % 9}"
-    prior_from = f"20{9 + n % 6}-0{1 + (n + 4) % 9}"
-    hired = f"20{14 + n % 8}-0{1 + (n + 2) % 9}"
+    moved = f"20{16 + n % 7}-0{1 + n % 9}-{10 + (n * 3) % 18}"
+    prior_from = f"20{9 + n % 6:02d}-0{1 + (n + 4) % 9}-{10 + (n * 5) % 18}"
+    hired = f"20{14 + n % 8}-0{1 + (n + 2) % 9}-{10 + (n * 7) % 18}"
     cur_employer, cur_emp_addr = CURRENT_EMPLOYERS[n % len(CURRENT_EMPLOYERS)]
     prior_employer, prior_emp_addr = PRIOR_EMPLOYERS[n % len(PRIOR_EMPLOYERS)]
     return dict(
@@ -290,6 +302,8 @@ def build_roster_cases(precedent_fn) -> list[dict]:
                        f"One developed issue under Guideline {codes[0]} "
                        f"({GUIDELINE_TEMPLATES[codes[0]]['name']}); otherwise clear."),
             timeline=_timeline(stage, elig, days, alerts),
+            wholePersonSummary=_whole_person_summary(clean,
+                                                     codes[0] if codes else None),
             wholePerson=_whole_person(clean, codes[0] if codes else None,
                                       alerts[0]["id"] if alerts else None, doc_ref),
             guidelines=[_guideline_card(c, precedent_fn) for c in codes],

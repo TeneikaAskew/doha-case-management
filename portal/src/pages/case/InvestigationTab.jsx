@@ -6,7 +6,6 @@ import StatusBadge from '../../components/StatusBadge.jsx';
 import GuidelineChip from '../../components/GuidelineChip.jsx';
 import SourceChip from '../../components/SourceChip.jsx';
 import DocumentViewer from '../../components/DocumentViewer.jsx';
-import KVGrid from '../../components/KVGrid.jsx';
 
 const CHECK_VARIANT = { COMPLETE: 'success', PENDING: 'warning', NOT_REQUIRED: 'neutral' };
 const CHECK_LABEL = { COMPLETE: 'Complete', PENDING: 'Pending', NOT_REQUIRED: 'Not required' };
@@ -28,13 +27,24 @@ function RecordCheckRow({ check }) {
       </button>
       {open && (
         <div className="record-check-body">
-          <SourceChip provider={check.provider} />
-          <KVGrid items={[
-            { label: 'Requested', value: check.requestedDate },
-            { label: 'Completed', value: check.completedDate || 'Pending' },
-            { label: 'What was checked', value: check.scope },
-            { label: 'Result', value: check.resultSummary },
-          ]} />
+          <div className="record-check-meta">
+            <SourceChip provider={check.provider} />
+            <span className="record-check-dates">
+              <span className="record-check-lbl">Requested</span>
+              <span>{check.requestedDate}</span>
+              <span className="record-check-arrow" aria-hidden="true">→</span>
+              <span className="record-check-lbl">Completed</span>
+              <span>{check.completedDate || 'Pending'}</span>
+            </span>
+          </div>
+          <div className="record-check-cell">
+            <span className="record-check-lbl">What was checked</span>
+            <span>{check.scope}</span>
+          </div>
+          <div className="record-check-cell">
+            <span className="record-check-lbl">Result</span>
+            <span>{check.resultSummary}</span>
+          </div>
           {check.documentUrl && (
             <>
               <button type="button" className="btn btn-ghost"
@@ -76,6 +86,11 @@ export default function InvestigationTab({ caseData }) {
         <ul className="record-check-list">
           {inv.recordChecks.map((c) => <RecordCheckRow key={c.item} check={c} />)}
         </ul>
+        <p className="muted section-ref">
+          Coverage scope per the Federal Investigative Standards for tiered
+          background investigations ({caseData.subject.tier}); subject reporting
+          obligations per SEAD 3.
+        </p>
       </div>
 
       <div className="card">

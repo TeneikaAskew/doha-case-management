@@ -34,18 +34,18 @@
     "addressHistory": [
       {
         "address": "1427 Birch Hollow Ct, Manassas, VA 20109",
-        "fromDate": "2019-08",
+        "fromDate": "2019-08-10",
         "toDate": null
       },
       {
         "address": "7605 Sudley Rd Apt 214, Manassas, VA 20109",
-        "fromDate": "2014-06",
-        "toDate": "2019-08"
+        "fromDate": "2014-06-21",
+        "toDate": "2019-08-10"
       },
       {
         "address": "2201 Wilson Blvd Apt 903, Arlington, VA 22201",
-        "fromDate": "2010-05",
-        "toDate": "2014-06"
+        "fromDate": "2010-05-15",
+        "toDate": "2014-06-21"
       }
     ],
     "employmentHistory": [
@@ -53,22 +53,22 @@
         "employer": "Sentinel Dynamics LLC",
         "title": "Senior Systems Engineer",
         "address": "14840 Conference Center Dr Suite 300, Chantilly, VA 20151",
-        "fromDate": "2018-02",
+        "fromDate": "2018-02-05",
         "toDate": null
       },
       {
         "employer": "Praxis Federal Solutions",
         "title": "Systems Engineer",
         "address": "11951 Freedom Dr Suite 900, Reston, VA 20190",
-        "fromDate": "2013-01",
-        "toDate": "2018-02"
+        "fromDate": "2013-01-14",
+        "toDate": "2018-01-26"
       },
       {
         "employer": "George Mason University",
         "title": "Research Assistant",
         "address": "4400 University Dr, Fairfax, VA 22030",
-        "fromDate": "2010-08",
-        "toDate": "2012-12"
+        "fromDate": "2010-08-30",
+        "toDate": "2012-12-14"
       }
     ]
   },
@@ -124,12 +124,12 @@
       "note": "New collection account: $12,400 past due (auto loan)"
     }
   ],
-  "wholePersonSummary": "",
+  "wholePersonSummary": "Sustained financial delinquency ($47,300 across five accounts) compounded by incomplete SF-86 disclosure and unreported foreign travel. Mitigation is thin: the 2024 job loss explains how the debt began but not the continued non-payment since re-employment. Duress exposure is elevated — delinquent debt plus close foreign family ties — and with no documented repayment behavior, the whole-person picture currently weighs against restoring eligibility.",
   "wholePerson": [
     {
       "factor": "Nature, extent, and seriousness of the conduct",
-      "assessment": "Sustained delinquency plus incomplete disclosure; serious.",
-      "aiRating": "NEUTRAL",
+      "assessment": "Sustained delinquency across five accounts totaling $47,300, with two charge-offs and an unpaid 2025 judgment. Incomplete disclosure on the SF-86 compounds the underlying financial issue; serious.",
+      "aiRating": "CONCERN",
       "evidence": [
         {
           "type": "ALERT",
@@ -145,7 +145,7 @@
     },
     {
       "factor": "Circumstances surrounding the conduct",
-      "assessment": "Six-month unemployment in 2024 contributed to initial arrears.",
+      "assessment": "Six-month unemployment in 2024 contributed to the initial arrears. Delinquency has persisted since re-employment, which limits how far circumstances mitigate.",
       "aiRating": "NEUTRAL",
       "evidence": [
         {
@@ -157,8 +157,8 @@
     },
     {
       "factor": "Frequency and recency of the conduct",
-      "assessment": "Ongoing; newest alert June 2026.",
-      "aiRating": "NEUTRAL",
+      "assessment": "Ongoing and current — the newest collection alert is June 2026. This is a continuing condition, not a discrete past event.",
+      "aiRating": "CONCERN",
       "evidence": [
         {
           "type": "ALERT",
@@ -169,14 +169,14 @@
     },
     {
       "factor": "Individual's age and maturity at the time of the conduct",
-      "assessment": "Adult throughout (36-38).",
+      "assessment": "Adult throughout the period at issue (ages 36-38). Age and maturity neither mitigate nor aggravate.",
       "aiRating": "NEUTRAL",
       "evidence": []
     },
     {
       "factor": "Extent to which participation is voluntary",
-      "assessment": "Debt partly circumstantial; non-disclosure voluntary.",
-      "aiRating": "NEUTRAL",
+      "assessment": "The debt is partly circumstantial, but the Section 20A non-disclosure was a voluntary choice. Voluntariness weighs on the candor issue more than the debt itself.",
+      "aiRating": "CONCERN",
       "evidence": [
         {
           "type": "DOCUMENT",
@@ -187,8 +187,8 @@
     },
     {
       "factor": "Presence or absence of rehabilitation and other permanent behavioral changes",
-      "assessment": "No payment plan or counseling evidenced to date.",
-      "aiRating": "NEUTRAL",
+      "assessment": "No payment plan, credit counseling, or repayment activity evidenced to date. Rehabilitation cannot yet be credited.",
+      "aiRating": "CONCERN",
       "evidence": [
         {
           "type": "RECORD_CHECK",
@@ -199,7 +199,7 @@
     },
     {
       "factor": "Motivation for the conduct",
-      "assessment": "No evidence of divided loyalty; financial strain.",
+      "assessment": "No evidence of divided loyalty; the remittance pattern reads as family financial support under strain. Motivation appears economic, not ideological.",
       "aiRating": "NEUTRAL",
       "evidence": [
         {
@@ -211,8 +211,8 @@
     },
     {
       "factor": "Potential for pressure, coercion, exploitation, or duress",
-      "assessment": "Elevated: debt plus close foreign family ties and unreported travel.",
-      "aiRating": "NEUTRAL",
+      "assessment": "Elevated. Significant delinquent debt combined with close foreign family ties and unreported travel creates classic leverage conditions.",
+      "aiRating": "CONCERN",
       "evidence": [
         {
           "type": "ALERT",
@@ -228,8 +228,8 @@
     },
     {
       "factor": "Likelihood of continuation or recurrence",
-      "assessment": "High absent documented repayment behavior.",
-      "aiRating": "NEUTRAL",
+      "assessment": "High absent documented repayment behavior. The June 2026 alert shows the financial pattern is still active.",
+      "aiRating": "CONCERN",
       "evidence": [
         {
           "type": "RECORD_CHECK",

@@ -5,6 +5,7 @@ import { ADJ_ACTION_LABELS } from '../../domain.js';
 import CollapsibleSection from '../../components/CollapsibleSection.jsx';
 import SeverityBadge from '../../components/SeverityBadge.jsx';
 import AIBadge from '../../components/AIBadge.jsx';
+import WholePersonWorksheet from './WholePersonWorksheet.jsx';
 
 export default function AdjudicationTab({ caseData }) {
   const { persona } = usePersona();
@@ -58,14 +59,7 @@ export default function AdjudicationTab({ caseData }) {
         </table>
       </div>
 
-      <div className="card">
-        <h3>Whole-Person Worksheet</h3>
-        <ul className="whole-person-list">
-          {caseData.wholePerson.map((w) => (
-            <li key={w.factor}><strong>{w.factor}.</strong> {w.assessment}</li>
-          ))}
-        </ul>
-      </div>
+      <WholePersonWorksheet caseData={caseData} />
 
       {adj.sorDraft && (
         <CollapsibleSection title="Statement of Reasons - draft" meta={<AIBadge />}>

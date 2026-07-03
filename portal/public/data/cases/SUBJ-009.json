@@ -33,13 +33,13 @@
     "addressHistory": [
       {
         "address": "379 Saddlebrook Ln, Fairfax, VA 22031",
-        "fromDate": "2018-01",
+        "fromDate": "2018-01-19",
         "toDate": null
       },
       {
         "address": "453 Mill Race Dr Apt 2, Silver Spring, MD 20902",
-        "fromDate": "2012-05",
-        "toDate": "2018-01"
+        "fromDate": "2012-05-19",
+        "toDate": "2018-01-19"
       }
     ],
     "employmentHistory": [
@@ -47,15 +47,15 @@
         "employer": "Meridian National Services",
         "title": "Intelligence Analyst",
         "address": "8280 Greensboro Dr Suite 550, McLean, VA 22102",
-        "fromDate": "2015-03",
+        "fromDate": "2015-03-19",
         "toDate": null
       },
       {
         "employer": "Dominion Applied Research",
         "title": "Associate Intelligence Analyst",
         "address": "2214 Rock Hill Rd Suite 600, Herndon, VA 20170",
-        "fromDate": "2012-05",
-        "toDate": "2015-03"
+        "fromDate": "2012-05-19",
+        "toDate": "2015-03-19"
       }
     ]
   },
@@ -90,12 +90,12 @@
       "note": null
     }
   ],
-  "wholePersonSummary": "",
+  "wholePersonSummary": "Single developed issue under Guideline H (Drug Involvement and Substance Misuse). The remaining whole-person factors show no additional adverse information; assess the flagged conduct on its own weight.",
   "wholePerson": [
     {
       "factor": "Nature, extent, and seriousness of the conduct",
       "assessment": "Single developed issue: Self-reported marijuana use x4, most recent 2024, prior to sponsorship.",
-      "aiRating": "NEUTRAL",
+      "aiRating": "CONCERN",
       "evidence": []
     },
     {

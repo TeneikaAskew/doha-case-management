@@ -28,30 +28,28 @@ function renderSheet(personaId = 'adjudicator') {
 beforeEach(() => localStorage.clear());
 
 describe('WholePersonWorksheet', () => {
-  it('renders each factor as an expandable row with its assessment', () => {
+  it('shows the bottom-line summary and each factor assessment up front', () => {
     renderSheet();
-    fireEvent.click(screen.getByRole('button',
-      { name: /nature, extent, and seriousness/i }));
+    expect(screen.getByText('Bottom line')).toBeInTheDocument();
+    expect(screen.getByText(/Sustained delinquency compounded by incomplete/))
+      .toBeInTheDocument();
+    expect(screen.getByText('Nature & seriousness')).toBeInTheDocument();
     expect(screen.getByText(/Sustained delinquency; serious\./)).toBeInTheDocument();
   });
 
-  it('shows evidence chips linking alerts and record checks', () => {
+  it('shows evidence chips without expanding a factor', () => {
     renderSheet();
-    fireEvent.click(screen.getByRole('button',
-      { name: /nature, extent, and seriousness/i }));
     expect(screen.getByText('New collection account alert')).toBeInTheDocument();
   });
 
   it('opens document evidence inline', async () => {
     renderSheet();
     fireEvent.click(screen.getByRole('button',
-      { name: /nature, extent, and seriousness/i }));
-    fireEvent.click(screen.getByRole('button',
       { name: /TransUnion credit-file extract/i }));
     expect(await screen.findByText(/Meridian Auto Finance/)).toBeInTheDocument();
   });
 
-  it('adjudicator can rate a factor and the tally updates', () => {
+  it('adjudicator expands a factor, rates it, and the tally updates', () => {
     renderSheet('adjudicator');
     fireEvent.click(screen.getByRole('button',
       { name: /nature, extent, and seriousness/i }));
@@ -63,8 +61,8 @@ describe('WholePersonWorksheet', () => {
 
   it('non-adjudicator personas see no rating controls', () => {
     renderSheet('investigator');
-    fireEvent.click(screen.getByRole('button',
-      { name: /nature, extent, and seriousness/i }));
+    expect(screen.queryByRole('button',
+      { name: /nature, extent, and seriousness/i })).not.toBeInTheDocument();
     expect(screen.queryByRole('button', { name: 'Concern' })).not.toBeInTheDocument();
   });
 });

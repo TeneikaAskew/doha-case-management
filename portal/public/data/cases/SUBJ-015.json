@@ -33,13 +33,13 @@
     "addressHistory": [
       {
         "address": "565 Bright Leaf Way, Fairfax, VA 22031",
-        "fromDate": "2017-07",
+        "fromDate": "2017-07-19",
         "toDate": null
       },
       {
         "address": "555 Glen Forest Dr Apt 8, Silver Spring, MD 20902",
-        "fromDate": "2012-02",
-        "toDate": "2017-07"
+        "fromDate": "2012-02-13",
+        "toDate": "2017-07-19"
       }
     ],
     "employmentHistory": [
@@ -47,15 +47,15 @@
         "employer": "Summit Bridge Partners",
         "title": "Test Engineer",
         "address": "12015 Lee Jackson Memorial Hwy, Fairfax, VA 22033",
-        "fromDate": "2021-09",
+        "fromDate": "2021-09-25",
         "toDate": null
       },
       {
         "employer": "Dominion Applied Research",
         "title": "Associate Test Engineer",
         "address": "2214 Rock Hill Rd Suite 600, Herndon, VA 20170",
-        "fromDate": "2012-02",
-        "toDate": "2021-09"
+        "fromDate": "2012-02-13",
+        "toDate": "2021-09-25"
       }
     ]
   },
@@ -97,12 +97,12 @@
       "note": "Two delinquent accounts totaling $9,800"
     }
   ],
-  "wholePersonSummary": "",
+  "wholePersonSummary": "Single developed issue under Guideline F (Financial Considerations). The remaining whole-person factors show no additional adverse information; assess the flagged conduct on its own weight.",
   "wholePerson": [
     {
       "factor": "Nature, extent, and seriousness of the conduct",
       "assessment": "Single developed issue: Two delinquent accounts totaling $9,800.",
-      "aiRating": "NEUTRAL",
+      "aiRating": "CONCERN",
       "evidence": [
         {
           "type": "ALERT",

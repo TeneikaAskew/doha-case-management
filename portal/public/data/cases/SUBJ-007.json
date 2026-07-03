@@ -33,13 +33,13 @@
     "addressHistory": [
       {
         "address": "317 Weatherby Rd, Alexandria, VA 22310",
-        "fromDate": "2016-08",
+        "fromDate": "2016-08-13",
         "toDate": null
       },
       {
         "address": "419 Cedarfield Ln Apt 9, Fairfax, VA 22031",
-        "fromDate": "2010-03",
-        "toDate": "2016-08"
+        "fromDate": "2010-03-27",
+        "toDate": "2016-08-13"
       }
     ],
     "employmentHistory": [
@@ -47,15 +47,15 @@
         "employer": "Summit Bridge Partners",
         "title": "Network Administrator",
         "address": "12015 Lee Jackson Memorial Hwy, Fairfax, VA 22033",
-        "fromDate": "2021-01",
+        "fromDate": "2021-01-23",
         "toDate": null
       },
       {
         "employer": "Blue Ridge Integration",
         "title": "Associate Network Administrator",
         "address": "110 Thomas Johnson Dr, Frederick, MD 21702",
-        "fromDate": "2010-03",
-        "toDate": "2021-01"
+        "fromDate": "2010-03-27",
+        "toDate": "2021-01-23"
       }
     ]
   },
@@ -83,12 +83,12 @@
       "note": null
     }
   ],
-  "wholePersonSummary": "",
+  "wholePersonSummary": "Single developed issue under Guideline M (Use of Information Technology). The remaining whole-person factors show no additional adverse information; assess the flagged conduct on its own weight.",
   "wholePerson": [
     {
       "factor": "Nature, extent, and seriousness of the conduct",
       "assessment": "Single developed issue: Unauthorized USB device connected to a standalone lab system.",
-      "aiRating": "NEUTRAL",
+      "aiRating": "CONCERN",
       "evidence": []
     },
     {

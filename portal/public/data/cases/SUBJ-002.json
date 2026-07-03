@@ -34,18 +34,18 @@
     "addressHistory": [
       {
         "address": "88 Quarry Ridge Rd, Chesapeake, VA 23320",
-        "fromDate": "2021-03",
+        "fromDate": "2021-03-27",
         "toDate": null
       },
       {
         "address": "414 Kempsville Crossing Ln, Virginia Beach, VA 23464",
-        "fromDate": "2016-09",
-        "toDate": "2021-03"
+        "fromDate": "2016-09-03",
+        "toDate": "2021-03-27"
       },
       {
         "address": "1108 Colley Ave Apt 2B, Norfolk, VA 23517",
-        "fromDate": "2012-06",
-        "toDate": "2016-09"
+        "fromDate": "2012-06-16",
+        "toDate": "2016-09-03"
       }
     ],
     "employmentHistory": [
@@ -53,22 +53,22 @@
         "employer": "Tidewater Defense Logistics",
         "title": "Logistics Coordinator",
         "address": "1401 Precon Dr Suite 210, Chesapeake, VA 23320",
-        "fromDate": "2019-04",
+        "fromDate": "2019-04-08",
         "toDate": null
       },
       {
         "employer": "Port of Virginia",
         "title": "Warehouse Operations Specialist",
         "address": "600 World Trade Center, Norfolk, VA 23510",
-        "fromDate": "2014-10",
-        "toDate": "2019-04"
+        "fromDate": "2014-10-20",
+        "toDate": "2019-04-05"
       },
       {
         "employer": "U.S. Navy (enlisted)",
         "title": "Logistics Specialist (LS2)",
         "address": "1530 Gilbert St, Naval Station Norfolk, VA 23511",
-        "fromDate": "2010-08",
-        "toDate": "2014-09"
+        "fromDate": "2010-08-09",
+        "toDate": "2014-09-30"
       }
     ]
   },
@@ -131,12 +131,12 @@
       "note": "Chesapeake PD report 26-044812"
     }
   ],
-  "wholePersonSummary": "",
+  "wholePersonSummary": "Serious but isolated alcohol incident by a subject with an otherwise clean record who self-reported promptly to his FSO. Rehabilitation and recurrence cannot be assessed until the court disposition and any treatment evidence arrive; consider holding final adjudication open until the disposition is received.",
   "wholePerson": [
     {
       "factor": "Nature, extent, and seriousness of the conduct",
-      "assessment": "Single DUI arrest with elevated BAC (0.18%); serious but isolated.",
-      "aiRating": "NEUTRAL",
+      "assessment": "Single DUI arrest with elevated BAC (0.18%), roughly twice the legal limit. Serious on its face, but an isolated event in an otherwise clean record.",
+      "aiRating": "CONCERN",
       "evidence": [
         {
           "type": "ALERT",
@@ -152,7 +152,7 @@
     },
     {
       "factor": "Circumstances surrounding the conduct",
-      "assessment": "Off-duty, single-vehicle stop; no accident or injury.",
+      "assessment": "Off-duty, single-vehicle stop with no accident, injury, or property damage. Subject was cooperative per the arresting officer's narrative.",
       "aiRating": "NEUTRAL",
       "evidence": [
         {
@@ -164,8 +164,8 @@
     },
     {
       "factor": "Frequency and recency of the conduct",
-      "assessment": "First incident; very recent (2026-06-21).",
-      "aiRating": "NEUTRAL",
+      "assessment": "First alcohol-related incident on record; no prior arrests. Very recent (2026-06-21), which limits the time-based mitigator for now.",
+      "aiRating": "CONCERN",
       "evidence": [
         {
           "type": "DOCUMENT",
@@ -176,20 +176,20 @@
     },
     {
       "factor": "Individual's age and maturity at the time of the conduct",
-      "assessment": "Age 33 at incident; fully accountable adult.",
+      "assessment": "Age 33 at the time of the incident; a fully accountable adult. Neither mitigating nor aggravating.",
       "aiRating": "NEUTRAL",
       "evidence": []
     },
     {
       "factor": "Extent to which participation is voluntary",
-      "assessment": "Conduct voluntary.",
+      "assessment": "Conduct was voluntary; no indication of coercion or third-party involvement.",
       "aiRating": "NEUTRAL",
       "evidence": []
     },
     {
       "factor": "Presence or absence of rehabilitation and other permanent behavioral changes",
-      "assessment": "Unknown - disposition pending; no treatment enrollment evidenced yet.",
-      "aiRating": "NEUTRAL",
+      "assessment": "Unknown - court disposition pending and no treatment or counseling enrollment evidenced yet. Any court-ordered alcohol evaluation will inform this factor.",
+      "aiRating": "PENDING",
       "evidence": [
         {
           "type": "RECORD_CHECK",
@@ -200,8 +200,8 @@
     },
     {
       "factor": "Motivation for the conduct",
-      "assessment": "No indication of underlying pattern; single-night lapse per report.",
-      "aiRating": "NEUTRAL",
+      "assessment": "No indication of an underlying pattern; the report reads as a single-night lapse after a social event. The resolved 2025 financial alert is unrelated.",
+      "aiRating": "FAVORABLE",
       "evidence": [
         {
           "type": "DOCUMENT",
@@ -212,14 +212,14 @@
     },
     {
       "factor": "Potential for pressure, coercion, exploitation, or duress",
-      "assessment": "Low; incident already self-reported to FSO.",
-      "aiRating": "NEUTRAL",
+      "assessment": "Low. Subject self-reported the arrest to his FSO within 48 hours, which removes concealment leverage and demonstrates candor.",
+      "aiRating": "FAVORABLE",
       "evidence": []
     },
     {
       "factor": "Likelihood of continuation or recurrence",
-      "assessment": "Indeterminate pending court outcome and any treatment.",
-      "aiRating": "NEUTRAL",
+      "assessment": "Indeterminate pending the court outcome and any treatment conditions. Re-score this factor when the disposition arrives.",
+      "aiRating": "PENDING",
       "evidence": [
         {
           "type": "RECORD_CHECK",
