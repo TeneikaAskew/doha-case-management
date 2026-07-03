@@ -31,8 +31,16 @@ describe('CaseDetail', () => {
     renderCase();
     expect(await screen.findByText('Daniel R. Okafor')).toBeInTheDocument();
     expect(screen.getByText('Action required')).toBeInTheDocument();
-    expect(screen.getByText('***-**-4821')).toBeInTheDocument();
+    expect(screen.getByText('923-04-4821')).toBeInTheDocument();
+    expect(screen.getByText(/DOB 1988-03-14/)).toBeInTheDocument();
+    expect(screen.getByText(/Eligibility: Interim/)).toBeInTheDocument();
     expect(screen.getByText('78')).toBeInTheDocument();
+  });
+
+  it('does not render redundant eligibility or CV enrolled pills', async () => {
+    renderCase();
+    await screen.findByText('Daniel R. Okafor');
+    expect(screen.queryByText('CV enrolled')).not.toBeInTheDocument();
   });
 
   it('defaults the active tab to the persona preference (adjudicator)', async () => {

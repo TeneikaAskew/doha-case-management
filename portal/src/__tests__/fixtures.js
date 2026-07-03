@@ -22,7 +22,8 @@ export const ALERTS = [
       { field: 'Name', subjectValue: 'Daniel R. Okafor', recordValue: 'Daniel Okafor', match: true }] },
     threshold: { rule: 'Delinquent debt > $5,000', met: true, detail: 'Exceeds threshold.' },
     priorAdjudication: { previouslyAdjudicated: false, reference: null },
-    documentUrl: 'documents/doha-record.json' },
+    documents: [{ title: 'TransUnion credit-file extract',
+      url: 'documents/SUBJ-001/credit-extract-20260620.json' }] },
 ];
 
 export const CASE_001 = {
@@ -50,7 +51,17 @@ export const CASE_001 = {
       event: 'ROI transmitted', note: 'Financial issues flagged' },
   ],
   wholePerson: [
-    { factor: 'Frequency and recency', assessment: 'Ongoing; newest alert June 2026.' },
+    { factor: 'Nature, extent, and seriousness of the conduct',
+      assessment: 'Sustained delinquency; serious.',
+      evidence: [
+        { type: 'ALERT', ref: 'ALERT-101', label: 'New collection account alert' },
+        { type: 'DOCUMENT', ref: 'documents/SUBJ-001/credit-extract-20260620.json',
+          label: 'TransUnion credit-file extract' },
+      ] },
+    { factor: 'Frequency and recency of the conduct',
+      assessment: 'Ongoing; newest alert June 2026.',
+      evidence: [{ type: 'RECORD_CHECK', ref: 'Financial record checks',
+        label: 'Financial record checks' }] },
   ],
   guidelines: [
     { code: 'F', name: 'Financial Considerations', severity: 'C',
@@ -66,7 +77,23 @@ export const CASE_001 = {
         sourceUrl: 'https://doha.example/2021-ISCR-Hearing-Decisions/FileId/111111/' }] },
   ],
   investigation: {
-    coverage: [{ item: 'Subject interview (ESI)', status: 'COMPLETE' }],
+    recordChecks: [
+      { item: 'Subject interview (ESI)', status: 'COMPLETE',
+        provider: 'DCSA field operations', requestedDate: '2025-10-02',
+        completedDate: '2025-11-19',
+        scope: 'Enhanced subject interview covering financial issues',
+        resultSummary: 'Subject understated total debt.', documentUrl: null },
+      { item: 'Financial record checks', status: 'COMPLETE',
+        provider: 'TransUnion', requestedDate: '2026-03-10',
+        completedDate: '2026-03-15',
+        scope: 'Tri-bureau credit re-check plus civil judgment search',
+        resultSummary: '$47,300 delinquent across five accounts.',
+        documentUrl: 'documents/SUBJ-001/credit-extract-20260620.json' },
+      { item: 'Foreign contact expansion leads', status: 'PENDING',
+        provider: 'DCSA field operations', requestedDate: '2026-02-01',
+        completedDate: null, scope: 'Expanded lead on sibling employment',
+        resultSummary: 'Lead open.', documentUrl: null },
+    ],
     sf86Sections: [
       { section: 'Section 20A', title: 'Financial record — delinquencies',
         subjectReport: 'Two delinquent accounts totaling about $9,000',

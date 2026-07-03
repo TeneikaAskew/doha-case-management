@@ -1,7 +1,22 @@
 import KVGrid from '../../components/KVGrid.jsx';
 import AIBadge from '../../components/AIBadge.jsx';
 import GuidelineChip from '../../components/GuidelineChip.jsx';
+import DataTable from '../../components/DataTable.jsx';
 import { ALERT_CATEGORY_LABELS } from '../../domain.js';
+
+const fmtRange = (row) => `${row.fromDate} — ${row.toDate || 'Present'}`;
+
+const ADDRESS_COLUMNS = [
+  { key: 'address', label: 'Address' },
+  { key: 'fromDate', label: 'Period', render: fmtRange },
+];
+
+const EMPLOYMENT_COLUMNS = [
+  { key: 'employer', label: 'Employer' },
+  { key: 'title', label: 'Title' },
+  { key: 'location', label: 'Location' },
+  { key: 'fromDate', label: 'Period', render: fmtRange },
+];
 
 function alertAccent(category) {
   if (category === 'TERRORISM') return 'var(--status-hrh)';
@@ -37,10 +52,23 @@ export default function OverviewTab({ caseData }) {
         </div>
       )}
       <div className="card">
-        <h3>Subject</h3>
+        <h3>Subject information</h3>
         <KVGrid items={[
+          { label: 'Full name', value: s.name },
           { label: 'Date of birth', value: s.dob },
-          { label: 'Address', value: s.address },
+          { label: 'Place of birth', value: s.placeOfBirth },
+          { label: 'SSN', value: s.ssn },
+          { label: 'Citizenship', value: s.citizenship },
+          { label: 'Gender', value: s.gender },
+          { label: 'Race', value: s.race },
+          { label: 'Height', value: s.height },
+          { label: 'Weight', value: s.weight },
+          { label: 'Eye color', value: s.eyeColor },
+          { label: 'Hair color', value: s.hairColor },
+          { label: 'Marital status', value: s.maritalStatus },
+          { label: 'Phone', value: s.phone },
+          { label: 'Email', value: s.email },
+          { label: 'Current address', value: s.address },
           { label: 'Tier', value: s.tier },
           { label: 'Days in stage', value: s.daysInStage },
           { label: 'Flagged guidelines',
@@ -48,6 +76,12 @@ export default function OverviewTab({ caseData }) {
               ? s.flaggedGuidelines.map((g) => <GuidelineChip key={g} code={g} />)
               : 'None' },
         ]} />
+        <h4 className="subject-subhead">Address history</h4>
+        <DataTable columns={ADDRESS_COLUMNS} rows={s.addressHistory || []}
+          rowKey="fromDate" />
+        <h4 className="subject-subhead">Employment history</h4>
+        <DataTable columns={EMPLOYMENT_COLUMNS} rows={s.employmentHistory || []}
+          rowKey="fromDate" />
       </div>
       <div className="card">
         <h3>Whole-person snapshot</h3>

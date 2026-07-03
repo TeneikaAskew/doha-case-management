@@ -3,7 +3,7 @@ import { getCase } from '../../data/api.js';
 import { useData } from '../../data/useData.js';
 import { usePersona } from '../../state/PersonaContext.jsx';
 import {
-  STAGE_LABELS, STATUS_LABELS, STATUS_VARIANTS, ELIGIBILITY_LABELS, riskBand, maskSsn,
+  STAGE_LABELS, STATUS_LABELS, STATUS_VARIANTS, ELIGIBILITY_LABELS, riskBand,
 } from '../../domain.js';
 import StatusBadge from '../../components/StatusBadge.jsx';
 import GuidelineChip from '../../components/GuidelineChip.jsx';
@@ -45,14 +45,13 @@ export default function CaseDetail() {
       <div className="card subject-header">
         <div className="subject-main">
           <h1>{s.name}</h1>
-          <p className="muted">{s.position} · {s.tier} · SSN <span>{maskSsn(s.ssn)}</span></p>
+          <p className="muted">
+            {s.position} · {s.tier} · DOB {s.dob} · SSN <span>{s.ssn}</span>
+            {' '}· Eligibility: {ELIGIBILITY_LABELS[s.eligibility]}
+          </p>
           <div className="subject-pills">
             <StatusBadge variant={STATUS_VARIANTS[s.status]}>{STATUS_LABELS[s.status]}</StatusBadge>
             <StatusBadge variant="info">{STAGE_LABELS[s.stage]}</StatusBadge>
-            <StatusBadge variant="neutral">
-              Eligibility: {ELIGIBILITY_LABELS[s.eligibility]}
-            </StatusBadge>
-            {s.cvEnrolled && <StatusBadge variant="success">CV enrolled</StatusBadge>}
             {s.flaggedGuidelines.map((g) => <GuidelineChip key={g} code={g} />)}
           </div>
         </div>

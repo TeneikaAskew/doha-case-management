@@ -1,12 +1,54 @@
 import { useState } from 'react';
+import { FiChevronDown, FiFileText } from 'react-icons/fi';
 import { usePersona } from '../../state/PersonaContext.jsx';
 import { useDemo } from '../../state/DemoContext.jsx';
 import StatusBadge from '../../components/StatusBadge.jsx';
 import GuidelineChip from '../../components/GuidelineChip.jsx';
+import SourceChip from '../../components/SourceChip.jsx';
+import DocumentViewer from '../../components/DocumentViewer.jsx';
+import KVGrid from '../../components/KVGrid.jsx';
 
-const COVERAGE_VARIANT = { COMPLETE: 'success', PENDING: 'warning', NOT_REQUIRED: 'neutral' };
-const COVERAGE_LABEL = { COMPLETE: 'Complete', PENDING: 'Pending', NOT_REQUIRED: 'Not required' };
+const CHECK_VARIANT = { COMPLETE: 'success', PENDING: 'warning', NOT_REQUIRED: 'neutral' };
+const CHECK_LABEL = { COMPLETE: 'Complete', PENDING: 'Pending', NOT_REQUIRED: 'Not required' };
 const ROI_ITEMS = ['Financial', 'Foreign contacts', 'Employment', 'Criminal', 'General'];
+
+function RecordCheckRow({ check }) {
+  const [open, setOpen] = useState(false);
+  const [docOpen, setDocOpen] = useState(false);
+  return (
+    <li className="record-check">
+      <button type="button" className="record-check-header" onClick={() => setOpen(!open)}
+        aria-expanded={open}>
+        <span className="record-check-item">{check.item}</span>
+        <StatusBadge variant={CHECK_VARIANT[check.status]}>
+          {CHECK_LABEL[check.status]}
+        </StatusBadge>
+        <FiChevronDown className={open ? 'collapsible-chevron open' : 'collapsible-chevron'}
+          aria-hidden="true" />
+      </button>
+      {open && (
+        <div className="record-check-body">
+          <SourceChip provider={check.provider} />
+          <KVGrid items={[
+            { label: 'Requested', value: check.requestedDate },
+            { label: 'Completed', value: check.completedDate || 'Pending' },
+            { label: 'What was checked', value: check.scope },
+            { label: 'Result', value: check.resultSummary },
+          ]} />
+          {check.documentUrl && (
+            <>
+              <button type="button" className="btn btn-ghost"
+                onClick={() => setDocOpen(!docOpen)}>
+                <FiFileText aria-hidden="true" /> View document
+              </button>
+              {docOpen && <DocumentViewer url={check.documentUrl} />}
+            </>
+          )}
+        </div>
+      )}
+    </li>
+  );
+}
 
 export default function InvestigationTab({ caseData }) {
   const { persona } = usePersona();
@@ -30,16 +72,9 @@ export default function InvestigationTab({ caseData }) {
   return (
     <div>
       <div className="card">
-        <h3>Coverage checklist</h3>
-        <ul className="coverage-list">
-          {inv.coverage.map((c) => (
-            <li key={c.item}>
-              <span>{c.item}</span>
-              <StatusBadge variant={COVERAGE_VARIANT[c.status]}>
-                {COVERAGE_LABEL[c.status]}
-              </StatusBadge>
-            </li>
-          ))}
+        <h3>Record checks</h3>
+        <ul className="record-check-list">
+          {inv.recordChecks.map((c) => <RecordCheckRow key={c.item} check={c} />)}
         </ul>
       </div>
 

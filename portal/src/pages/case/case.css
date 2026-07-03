@@ -36,6 +36,8 @@
 .alert-count { font-size: 24px; font-weight: 700; color: var(--text-primary); }
 .alert-type { font-size: 13px; font-weight: 500; color: var(--text-secondary);
   margin-top: var(--space-1); }
+.subject-subhead { margin: var(--space-5) 0 var(--space-2); font-size: var(--font-size-sm);
+  text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-secondary); }
 .whole-person-list { list-style: none; display: grid; gap: var(--space-2); }
 .timeline { list-style: none; display: grid; gap: var(--space-3); }
 .timeline li { display: flex; gap: var(--space-4); }
@@ -106,3 +108,14 @@
   border-radius: var(--radius-sm); }
 .cv-step h4 { margin-bottom: var(--space-3); }
 .cv-actions { display: flex; gap: var(--space-3); flex-wrap: wrap; }
+
+/* Record checks */
+.record-check-list { list-style: none; }
+.record-check { border-bottom: 1px solid var(--border-light); }
+.record-check:last-child { border-bottom: none; }
+.record-check-header { display: flex; align-items: center; gap: var(--space-3);
+  width: 100%; padding: var(--space-3) 0; background: none; border: none;
+  cursor: pointer; font: inherit; text-align: left; }
+.record-check-item { flex: 1; font-weight: 600; }
+.record-check-body { padding: 0 0 var(--space-4); display: flex;
+  flex-direction: column; gap: var(--space-3); align-items: flex-start; }

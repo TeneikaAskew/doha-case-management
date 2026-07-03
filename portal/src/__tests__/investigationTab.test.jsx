@@ -1,15 +1,29 @@
-import { describe, it, expect, beforeEach } from 'vitest';
+import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
 import { PersonaProvider } from '../state/PersonaContext.jsx';
 import { DemoProvider } from '../state/DemoContext.jsx';
-import InvestigationTab from '../pages/case/InvestigationTab.jsx';
 import { CASE_001 } from './fixtures.js';
+
+vi.mock('../data/api.js', () => ({
+  fetchJson: () => Promise.resolve({
+    docType: 'CREDIT_REPORT',
+    title: 'Credit-file extract — Meridian Auto Finance',
+    provider: 'TransUnion', receivedDate: '2026-06-20', subjectId: 'SUBJ-001',
+    fields: [{ label: 'Balance', value: '$12,400' }], sections: [], transactions: [],
+  }),
+  getProviders: () => Promise.resolve([
+    { id: 'transunion', name: 'TransUnion', category: 'Credit bureau (CV provider)' },
+  ]),
+}));
+
+import InvestigationTab from '../pages/case/InvestigationTab.jsx';
 
 function renderTab(personaId = 'investigator') {
   localStorage.setItem('demo.persona', personaId);
   return render(
     <PersonaProvider><DemoProvider>
-      <InvestigationTab caseData={CASE_001} />
+      <MemoryRouter><InvestigationTab caseData={CASE_001} /></MemoryRouter>
     </DemoProvider></PersonaProvider>
   );
 }
@@ -24,10 +38,36 @@ describe('InvestigationTab', () => {
     expect(screen.getByText('Discrepancy')).toBeInTheDocument();
   });
 
-  it('renders coverage checklist with status pills', () => {
+  it('renders record checks with status pills', () => {
     renderTab();
+    expect(screen.getByText('Record checks')).toBeInTheDocument();
     expect(screen.getByText('Subject interview (ESI)')).toBeInTheDocument();
-    expect(screen.getByText('Complete')).toBeInTheDocument();
+    expect(screen.getAllByText('Complete').length).toBeGreaterThan(0);
+  });
+
+  it('expands a record check to show provider, scope, and result', () => {
+    renderTab();
+    fireEvent.click(screen.getByRole('button', { name: /financial record checks/i }));
+    expect(screen.getByText('Tri-bureau credit re-check plus civil judgment search'))
+      .toBeInTheDocument();
+    expect(screen.getByText('$47,300 delinquent across five accounts.'))
+      .toBeInTheDocument();
+    expect(screen.getByText('TransUnion')).toBeInTheDocument();
+  });
+
+  it('opens the linked source document from an expanded record check', async () => {
+    renderTab();
+    fireEvent.click(screen.getByRole('button', { name: /financial record checks/i }));
+    fireEvent.click(screen.getByRole('button', { name: /view document/i }));
+    expect(await screen.findByText(/Credit-file extract — Meridian Auto Finance/))
+      .toBeInTheDocument();
+  });
+
+  it('checks without a document show no view button when expanded', () => {
+    renderTab();
+    fireEvent.click(screen.getByRole('button', { name: /subject interview/i }));
+    expect(screen.queryByRole('button', { name: /view document/i }))
+      .not.toBeInTheDocument();
   });
 
   it('investigator can add an ROI entry; it appears in the list', () => {
