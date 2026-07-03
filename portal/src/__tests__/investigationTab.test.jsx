@@ -8,7 +8,7 @@ import { CASE_001 } from './fixtures.js';
 vi.mock('../data/api.js', () => ({
   fetchJson: () => Promise.resolve({
     docType: 'CREDIT_REPORT',
-    title: 'Credit-file extract - Meridian Auto Finance',
+    title: 'Meridian Auto Finance',
     provider: 'TransUnion', receivedDate: '2026-06-20', subjectId: 'SUBJ-001',
     fields: [{ label: 'Balance', value: '$12,400' }], sections: [], transactions: [],
   }),
@@ -50,7 +50,8 @@ describe('InvestigationTab', () => {
   it('renders record checks grouped by category with status pills', () => {
     renderTab();
     expect(screen.getByText('Record Checks')).toBeInTheDocument();
-    expect(screen.getByText('Subject interview')).toBeInTheDocument();
+    // role disambiguates the category header from the ROI form's item option
+    expect(screen.getByRole('button', { name: /subject interview/i })).toBeInTheDocument();
     expect(screen.getByText('Financial record checks')).toBeInTheDocument();
     expect(screen.getByText('Foreign travel & contacts')).toBeInTheDocument();
     // provider-specific checks live inside categories, not as top-level rows
@@ -58,13 +59,14 @@ describe('InvestigationTab', () => {
     expect(screen.getAllByText('Complete').length).toBeGreaterThan(0);
   });
 
-  it('groups multiple sources under one category', () => {
+  it('groups multiple sources as table rows under one category', () => {
     renderTab();
     fireEvent.click(screen.getByRole('button', { name: /financial record checks/i }));
-    expect(screen.getByText('Tri-bureau credit re-check')).toBeInTheDocument();
-    expect(screen.getByText('SAR registry query')).toBeInTheDocument();
+    expect(screen.getByText('Source')).toBeInTheDocument();
     expect(screen.getByText('TransUnion')).toBeInTheDocument();
     expect(screen.getByText('FinCEN / Treasury')).toBeInTheDocument();
+    expect(screen.getByText('$47,300 delinquent across five accounts.')).toBeInTheDocument();
+    expect(screen.getByText('One SAR: structured remittances, Jan-Mar 2026.')).toBeInTheDocument();
   });
 
   it('cites and links the coverage-scope authorities for the record checks', () => {
@@ -76,11 +78,11 @@ describe('InvestigationTab', () => {
     expect(screen.getByText(/\(T5\)/)).toBeInTheDocument(); // subject's tier
   });
 
-  it('expands a record check to show provider, scope, and result', () => {
+  it('expands a record check to show source dates and result', () => {
     renderTab();
     fireEvent.click(screen.getByRole('button', { name: /financial record checks/i }));
-    expect(screen.getByText('Tri-bureau credit re-check plus civil judgment search'))
-      .toBeInTheDocument();
+    expect(screen.getByText('2026-03-10')).toBeInTheDocument();
+    expect(screen.getByText('2026-03-15')).toBeInTheDocument();
     expect(screen.getByText('$47,300 delinquent across five accounts.'))
       .toBeInTheDocument();
     expect(screen.getByText('TransUnion')).toBeInTheDocument();
@@ -89,15 +91,15 @@ describe('InvestigationTab', () => {
   it('opens the linked source document from an expanded record check', async () => {
     renderTab();
     fireEvent.click(screen.getByRole('button', { name: /financial record checks/i }));
-    fireEvent.click(screen.getByRole('button', { name: /view document/i }));
-    expect(await screen.findByText(/Credit-file extract - Meridian Auto Finance/))
+    fireEvent.click(screen.getByRole('button', { name: 'View' }));
+    expect(await screen.findByText(/Meridian Auto Finance/))
       .toBeInTheDocument();
   });
 
   it('checks without a document show no view button when expanded', () => {
     renderTab();
     fireEvent.click(screen.getByRole('button', { name: /subject interview/i }));
-    expect(screen.queryByRole('button', { name: /view document/i }))
+    expect(screen.queryByRole('button', { name: 'View' }))
       .not.toBeInTheDocument();
   });
 

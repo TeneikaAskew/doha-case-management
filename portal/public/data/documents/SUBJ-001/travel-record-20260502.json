@@ -1,6 +1,7 @@
 {
   "docType": "TRAVEL_RECORD",
-  "title": "I-94 border crossing record - Nigeria",
+  "title": "I-94 crossing record - Nigeria",
+  "reference": "Nigeria, returned 2026-04-25 (IAD)",
   "provider": "CBP I-94 Foreign Travel",
   "receivedDate": "2026-05-02",
   "subjectId": "SUBJ-001",
@@ -11,7 +12,7 @@
     },
     {
       "label": "Travel document",
-      "value": "5310xxxx"
+      "value": "531048291"
     },
     {
       "label": "Carrier",

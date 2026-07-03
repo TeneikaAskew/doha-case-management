@@ -262,7 +262,26 @@
       }
     ],
     "interviews": [],
-    "roiEntries": []
+    "roiEntries": [
+      {
+        "date": "2026-05-15",
+        "investigator": "M. Delgado",
+        "item": "General",
+        "text": "Automated record checks complete - NCIC criminal history, tri-bureau credit, and DMV. One item of adverse information developed; see coverage entry below."
+      },
+      {
+        "date": "2026-05-28",
+        "investigator": "M. Delgado",
+        "item": "Criminal",
+        "text": "Self-reported marijuana use x4, most recent 2024, prior to sponsorship; corroborated by SF-86 self-report records. Documentation placed in file; subject response to be obtained before adjudicative action."
+      },
+      {
+        "date": "2026-06-01",
+        "investigator": "M. Delgado",
+        "item": "General",
+        "text": "Tier-scoped fieldwork complete; no additional issues developed. Coverage certified for adjudication."
+      }
+    ]
   },
   "adjudication": {
     "recommendation": {

@@ -27,9 +27,9 @@
             "match": true
           },
           {
-            "field": "SSN (last 4)",
-            "subjectValue": "4821",
-            "recordValue": "4821",
+            "field": "SSN",
+            "subjectValue": "923-04-4821",
+            "recordValue": "923-04-4821",
             "match": true
           }
         ]
@@ -66,8 +66,8 @@
         "identifiers": [
           {
             "field": "Passport",
-            "subjectValue": "5310xxxx",
-            "recordValue": "5310xxxx",
+            "subjectValue": "531048291",
+            "recordValue": "531048291",
             "match": true
           },
           {
@@ -169,9 +169,9 @@
             "match": true
           },
           {
-            "field": "SSN (last 4)",
-            "subjectValue": "7733",
-            "recordValue": "7733",
+            "field": "SSN",
+            "subjectValue": "917-38-7733",
+            "recordValue": "917-38-7733",
             "match": true
           }
         ]

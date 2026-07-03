@@ -15,12 +15,14 @@ const DOC_FIXTURE = {
 
 const POLICE_FIXTURE = {
   docType: 'POLICE_REPORT',
-  title: 'Arrest report 26-044812 - Chesapeake Police Department',
+  title: 'Arrest report 26-044812',
+  reference: 'Report 26-044812, Chesapeake Police Department',
   provider: 'State & local courts',
   receivedDate: '2026-06-30',
   subjectId: 'SUBJ-002',
   fields: [
     { label: 'Agency', value: 'Chesapeake Police Department' },
+    { label: 'Report number', value: '26-044812' },
     { label: 'Charges', value: 'DUI - 1st offense (VA 18.2-266)' },
   ],
   sections: [{ heading: 'Officer narrative', body: 'Vehicle observed varying speed.' }],
@@ -29,7 +31,8 @@ const POLICE_FIXTURE = {
 
 const SAR_FIXTURE = {
   docType: 'SAR',
-  title: 'Suspicious Activity Report SAR-2026-0415-88231',
+  title: 'SAR-2026-0415-88231',
+  reference: 'SAR-2026-0415-88231, First Commonwealth Bank',
   provider: 'FinCEN / Treasury',
   receivedDate: '2026-04-16',
   subjectId: 'SUBJ-001',
@@ -66,15 +69,27 @@ describe('DocumentViewer', () => {
         'https://doha.ogc.osd.mil/Industrial-Security-Program/Industrial-Security-Clearance-Decisions/ISCR-Hearing-Decisions/2026-ISCR-Hearing-Decisions');
   });
 
-  it('renders a typed police report with provider stamp, fields, and narrative', async () => {
+  it('renders a typed police report as a one-line label with fields and narrative', async () => {
     render(<MemoryRouter>
       <DocumentViewer url="documents/SUBJ-002/police-report.json" />
     </MemoryRouter>);
-    expect(await screen.findByText(/Arrest report 26-044812/)).toBeInTheDocument();
-    expect(screen.getByText('Chesapeake Police Department')).toBeInTheDocument();
-    expect(screen.getByText('Officer narrative')).toBeInTheDocument();
-    expect(screen.getByText(/Received via State & local courts · 2026-06-30/))
+    expect(await screen.findByText('Report 26-044812, Chesapeake Police Department'))
       .toBeInTheDocument();
+    expect(screen.getByText('Police report')).toBeInTheDocument();       // type pill
+    expect(screen.getByText('2026-06-30')).toBeInTheDocument();          // received date
+    expect(screen.getByText('State & local courts')).toBeInTheDocument(); // source chip
+    expect(screen.getByText('Officer narrative')).toBeInTheDocument();
+  });
+
+  it('drops fields that duplicate the header, provider, or received date', async () => {
+    render(<MemoryRouter>
+      <DocumentViewer url="documents/SUBJ-002/police-report.json" />
+    </MemoryRouter>);
+    await screen.findByText('Report 26-044812, Chesapeake Police Department');
+    // report number and agency both appear in the header reference
+    expect(screen.queryByText('Report number')).not.toBeInTheDocument();
+    expect(screen.queryByText('Agency')).not.toBeInTheDocument();
+    expect(screen.getByText(/DUI - 1st offense/)).toBeInTheDocument();   // kept
   });
 
   it('renders SAR transactions as a table', async () => {

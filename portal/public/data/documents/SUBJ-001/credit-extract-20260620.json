@@ -1,6 +1,7 @@
 {
   "docType": "CREDIT_REPORT",
-  "title": "Credit-file extract - Meridian Auto Finance",
+  "title": "Meridian Auto Finance",
+  "reference": "Meridian Auto Finance, auto loan",
   "provider": "TransUnion",
   "receivedDate": "2026-06-20",
   "subjectId": "SUBJ-001",
@@ -15,7 +16,7 @@
     },
     {
       "label": "Account number",
-      "value": "****3308"
+      "value": "2048133308"
     },
     {
       "label": "Account type",

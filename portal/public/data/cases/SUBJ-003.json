@@ -246,7 +246,32 @@
       }
     ],
     "interviews": [],
-    "roiEntries": []
+    "roiEntries": [
+      {
+        "date": "2026-06-14",
+        "investigator": "M. Delgado",
+        "item": "Financial",
+        "text": "Tri-bureau credit check complete: all eight open accounts current, utilization 12%, no collections, judgments, or liens. SF-86 Section 20A response consistent with bureau data."
+      },
+      {
+        "date": "2026-06-20",
+        "investigator": "M. Delgado",
+        "item": "Education",
+        "text": "B.S. Finance, University of Maryland (2018), verified through the degree clearinghouse. No discrepancies with the SF-86 education entries."
+      },
+      {
+        "date": "2026-06-28",
+        "investigator": "M. Delgado",
+        "item": "Employment",
+        "text": "Current-employer verification pending response from employer of record; second request transmitted 2026-06-26. All other coverage items complete."
+      },
+      {
+        "date": "2026-06-28",
+        "investigator": "M. Delgado",
+        "item": "General",
+        "text": "No adverse information developed across completed coverage. AI triage risk score 8/100; recommend fast-track eAdjudication once employment verification posts."
+      }
+    ]
   },
   "adjudication": {
     "recommendation": {

@@ -50,7 +50,7 @@ def _hero1(precedent_fn) -> dict:
     ))
     cu_url, cu_doc = docs.credit_extract(
         "SUBJ-001", "credit-extract-20260620", bureau="TransUnion",
-        account_name="Meridian Auto Finance", account_masked="****3308",
+        account_name="Meridian Auto Finance", account_number="2048133308",
         account_type="Auto loan", balance="$12,400", past_due="$12,400",
         days_past_due="120+", date_reported="2026-06-20",
         payment_status="Charged off / collection",
@@ -60,7 +60,7 @@ def _hero1(precedent_fn) -> dict:
         received="2026-06-20")
     trv_url, trv_doc = docs.travel_record(
         "SUBJ-001", "travel-record-20260502", traveler="OKAFOR, DANIEL R",
-        document_number="5310xxxx", carrier="Lufthansa LH 568",
+        document_number="531048291", carrier="Lufthansa LH 568",
         departure="2026-04-11 (IAD)", arrival="2026-04-12 (LOS)",
         destination="Nigeria", returned="2026-04-25 (IAD)",
         received="2026-05-02")
@@ -101,8 +101,8 @@ def _hero1(precedent_fn) -> dict:
                       recordValue="Daniel Okafor", match=True),
                  dict(field="DOB", subjectValue="1988-03-14",
                       recordValue="1988-03-14", match=True),
-                 dict(field="SSN (last 4)", subjectValue="4821",
-                      recordValue="4821", match=True)]),
+                 dict(field="SSN", subjectValue="923-04-4821",
+                      recordValue="923-04-4821", match=True)]),
              threshold=dict(rule="Delinquent debt > $5,000", met=True,
                             detail="Past-due balance $12,400 exceeds CV threshold."),
              priorAdjudication=dict(previouslyAdjudicated=False, reference=None),
@@ -112,8 +112,8 @@ def _hero1(precedent_fn) -> dict:
              state="VALIDATED", receivedDate="2026-05-02", provider="CBP I-94",
              description="Unreported travel to Nigeria, 2026-04-11 to 2026-04-25.",
              identityMatch=dict(confidence=0.99, identifiers=[
-                 dict(field="Passport", subjectValue="5310xxxx",
-                      recordValue="5310xxxx", match=True),
+                 dict(field="Passport", subjectValue="531048291",
+                      recordValue="531048291", match=True),
                  dict(field="Name", subjectValue="Daniel R. Okafor",
                       recordValue="OKAFOR, DANIEL R", match=True)]),
              threshold=dict(rule="Unreported foreign travel (SEAD-3)", met=True,
@@ -403,11 +403,51 @@ def _hero1(precedent_fn) -> dict:
                              "the FSO as required under SEAD-3."),
             ],
             roiEntries=[
+                dict(date="2026-01-27", investigator="S. Whitfield",
+                     item="Subject interview",
+                     text="Enhanced Subject Interview conducted 2025-11-19 under "
+                          "oath. Subject's account of the delinquency (~$9,000) is "
+                          "materially inconsistent with bureau records ($47,300); "
+                          "his characterization of foreign family contact is "
+                          "inconsistent with remittance activity. Transcript and "
+                          "summary placed in file."),
                 dict(date="2026-01-27", investigator="S. Whitfield", item="Financial",
-                     text="Credit bureau data and court records establish sustained "
-                          "delinquency exceeding subject's account."),
-                dict(date="2026-01-27", investigator="S. Whitfield", item="Foreign contacts",
-                     text="Expanded lead recommended on sibling's SOE employment."),
+                     text="Tri-bureau credit data and state court records establish "
+                          "sustained delinquency across five accounts totaling "
+                          "$47,300, including two charge-offs and an unpaid 2025 "
+                          "small-claims judgment of $3,100. Delinquency has "
+                          "continued after re-employment in early 2025."),
+                dict(date="2026-01-27", investigator="S. Whitfield",
+                     item="Foreign contacts",
+                     text="Subject's mother and two siblings are resident in Lagos, "
+                          "Nigeria. One sibling's employment with a state-owned "
+                          "enterprise was developed through record checks and was "
+                          "not disclosed on the SF-86. Expanded lead recommended "
+                          "on the sibling's SOE role and subject's contact "
+                          "frequency."),
+                dict(date="2026-01-27", investigator="S. Whitfield", item="Employment",
+                     text="Employment verified: Sentinel Dynamics LLC, 2018-02 to "
+                          "present, Senior Systems Engineer. The 2024 six-month "
+                          "gap is corroborated by employer records as an "
+                          "involuntary layoff; rehired at a comparable grade."),
+                dict(date="2026-01-27", investigator="J. Ramos", item="References",
+                     text="Supervisor and neighborhood interviews favorable: "
+                          "dependable, stable household, no conduct or substance "
+                          "indicators. All sources unaware of financial stress; "
+                          "no source corroborated or contradicted foreign-contact "
+                          "reporting."),
+                dict(date="2026-03-18", investigator="S. Whitfield", item="Financial",
+                     text="Supplemental credit re-check completed at adjudicator "
+                          "request. Delinquency total revised upward after a new "
+                          "collection placement; figures reconciled across "
+                          "TransUnion and Equifax and forwarded to adjudication."),
+                dict(date="2026-05-06", investigator="S. Whitfield",
+                     item="Foreign travel",
+                     text="CBP I-94 arrival/departure pair validated for travel to "
+                          "Nigeria, 2026-04-11 to 2026-04-25. No foreign-travel "
+                          "report on file with the FSO as required by SEAD-3. "
+                          "Coworker follow-up corroborates the trip; item referred "
+                          "to adjudication with the travel record attached."),
             ],
         ),
         adjudication=dict(
@@ -501,7 +541,7 @@ def _hero2(precedent_fn) -> dict:
         received="2026-06-30")
     cr_url, cr_doc = docs.credit_extract(
         "SUBJ-002", "credit-extract-20251012", bureau="TransUnion",
-        account_name="Harbor Home Retail Card", account_masked="****5527",
+        account_name="Harbor Home Retail Card", account_number="6045117720935527",
         account_type="Revolving retail", balance="$800", past_due="$800",
         days_past_due="30", date_reported="2025-10-12",
         payment_status="30 days past due (subsequently paid 2025-11)",
@@ -540,8 +580,8 @@ def _hero2(precedent_fn) -> dict:
              identityMatch=dict(confidence=0.95, identifiers=[
                  dict(field="Name", subjectValue="Marcus T. Bell",
                       recordValue="Marcus Bell", match=True),
-                 dict(field="SSN (last 4)", subjectValue="7733",
-                      recordValue="7733", match=True)]),
+                 dict(field="SSN", subjectValue="917-38-7733",
+                      recordValue="917-38-7733", match=True)]),
              threshold=dict(rule="Delinquent debt > $500", met=True,
                             detail="Met threshold; resolved by payment 2025-11."),
              priorAdjudication=dict(previouslyAdjudicated=True,
@@ -708,7 +748,20 @@ def _hero2(precedent_fn) -> dict:
                      discrepancy=False, providers=["FBI Rap Back"], guideline="J"),
             ],
             interviews=[],
-            roiEntries=[],
+            roiEntries=[
+                dict(date="2026-06-30", investigator="S. Whitfield", item="Criminal",
+                     text="Chesapeake PD report 26-044812 obtained and validated "
+                          "against the Rap Back notification. Single-vehicle stop, "
+                          "BAC 0.18%, no accident or injury; subject cooperative. "
+                          "Court disposition monitoring established with first "
+                          "hearing expected August 2026."),
+                dict(date="2026-07-01", investigator="S. Whitfield", item="General",
+                     text="Subject self-reported the arrest to his FSO within 48 "
+                          "hours, corroborated by the FSO's incident entry. Prior "
+                          "record is clean, including the resolved 2025 retail "
+                          "delinquency. Case held pending disposition and any "
+                          "court-ordered alcohol evaluation."),
+            ],
         ),
         adjudication=dict(
             recommendation=dict(action="LOI", aiSuggested=True,
@@ -774,7 +827,7 @@ def _hero3(precedent_fn) -> dict:
         received="2026-06-10")
     cr_url, cr_doc = docs.credit_extract(
         "SUBJ-003", "credit-extract-20260614", bureau="Equifax",
-        account_name="Summary - all open accounts", account_masked="(8 accounts)",
+        account_name="Summary - all open accounts", account_number="(8 accounts)",
         account_type="Tri-bureau summary", balance="$14,900", past_due="$0",
         days_past_due="0", date_reported="2026-06-14",
         payment_status="All accounts current; utilization 12%",
@@ -864,7 +917,26 @@ def _hero3(precedent_fn) -> dict:
                      discrepancy=False, providers=["Education records"], guideline=None),
             ],
             interviews=[],
-            roiEntries=[],
+            roiEntries=[
+                dict(date="2026-06-14", investigator="M. Delgado", item="Financial",
+                     text="Tri-bureau credit check complete: all eight open "
+                          "accounts current, utilization 12%, no collections, "
+                          "judgments, or liens. SF-86 Section 20A response "
+                          "consistent with bureau data."),
+                dict(date="2026-06-20", investigator="M. Delgado", item="Education",
+                     text="B.S. Finance, University of Maryland (2018), verified "
+                          "through the degree clearinghouse. No discrepancies "
+                          "with the SF-86 education entries."),
+                dict(date="2026-06-28", investigator="M. Delgado", item="Employment",
+                     text="Current-employer verification pending response from "
+                          "employer of record; second request transmitted "
+                          "2026-06-26. All other coverage items complete."),
+                dict(date="2026-06-28", investigator="M. Delgado", item="General",
+                     text="No adverse information developed across completed "
+                          "coverage. AI triage risk score 8/100; recommend "
+                          "fast-track eAdjudication once employment verification "
+                          "posts."),
+            ],
         ),
         adjudication=dict(
             recommendation=dict(action="GRANT", aiSuggested=True,

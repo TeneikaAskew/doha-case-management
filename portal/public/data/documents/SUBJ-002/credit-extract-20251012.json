@@ -1,6 +1,7 @@
 {
   "docType": "CREDIT_REPORT",
-  "title": "Credit-file extract - Harbor Home Retail Card",
+  "title": "Harbor Home Retail Card",
+  "reference": "Harbor Home Retail Card, revolving retail",
   "provider": "TransUnion",
   "receivedDate": "2025-10-12",
   "subjectId": "SUBJ-002",
@@ -15,7 +16,7 @@
     },
     {
       "label": "Account number",
-      "value": "****5527"
+      "value": "6045117720935527"
     },
     {
       "label": "Account type",

@@ -1,5 +1,7 @@
 import { useState } from 'react';
-import { FiChevronDown, FiFileText } from 'react-icons/fi';
+import {
+  FiChevronDown, FiFileText, FiCheckSquare, FiColumns, FiMessageSquare, FiEdit3,
+} from 'react-icons/fi';
 import { usePersona } from '../../state/PersonaContext.jsx';
 import { useDemo } from '../../state/DemoContext.jsx';
 import StatusBadge from '../../components/StatusBadge.jsx';
@@ -11,7 +13,8 @@ import { REFS } from '../../references.js';
 
 const CHECK_VARIANT = { COMPLETE: 'success', PENDING: 'warning', NOT_REQUIRED: 'neutral' };
 const CHECK_LABEL = { COMPLETE: 'Complete', PENDING: 'Pending', NOT_REQUIRED: 'Not required' };
-const ROI_ITEMS = ['Financial', 'Foreign contacts', 'Employment', 'Criminal', 'General'];
+const ROI_ITEMS = ['Financial', 'Foreign contacts', 'Foreign travel', 'Employment',
+  'Education', 'References', 'Subject interview', 'Criminal', 'General'];
 
 const CHECK_CATEGORY_LABELS = {
   CRIMINAL: 'Criminal record checks',
@@ -56,44 +59,9 @@ function groupChecks(checks) {
     (a, b) => CATEGORY_ORDER.indexOf(a[0]) - CATEGORY_ORDER.indexOf(b[0]));
 }
 
-function RecordCheckDetail({ check, showItem }) {
-  const [docOpen, setDocOpen] = useState(false);
-  return (
-    <div className="record-check-detail">
-      {showItem && <span className="record-check-subitem">{check.item}</span>}
-      <div className="record-check-meta">
-        <SourceChip provider={check.provider} />
-        <span className="record-check-dates">
-          <span className="record-check-lbl">Requested</span>
-          <span>{check.requestedDate}</span>
-          <span className="record-check-arrow" aria-hidden="true">→</span>
-          <span className="record-check-lbl">Completed</span>
-          <span>{check.completedDate || 'Pending'}</span>
-        </span>
-      </div>
-      <div className="record-check-cell">
-        <span className="record-check-lbl">What was checked</span>
-        <span>{check.scope}</span>
-      </div>
-      <div className="record-check-cell">
-        <span className="record-check-lbl">Result</span>
-        <span>{check.resultSummary}</span>
-      </div>
-      {check.documentUrl && (
-        <>
-          <button type="button" className="btn btn-ghost"
-            onClick={() => setDocOpen(!docOpen)}>
-            <FiFileText aria-hidden="true" /> View document
-          </button>
-          {docOpen && <DocumentViewer url={check.documentUrl} />}
-        </>
-      )}
-    </div>
-  );
-}
-
 function RecordCheckGroup({ category, checks }) {
   const [open, setOpen] = useState(false);
+  const [openDoc, setOpenDoc] = useState(null);
   const status = rollupStatus(checks);
   return (
     <li className="record-check">
@@ -110,9 +78,37 @@ function RecordCheckGroup({ category, checks }) {
       </button>
       {open && (
         <div className="record-check-body">
-          {checks.map((c) => (
-            <RecordCheckDetail key={c.item} check={c} showItem={checks.length > 1} />
-          ))}
+          <div className="record-check-table-wrap">
+            <table className="inline-table">
+              <thead>
+                <tr><th>Source</th><th>Requested</th><th>Completed</th>
+                  <th>Result</th><th>Document</th></tr>
+              </thead>
+              <tbody>
+                {checks.map((c) => (
+                  <tr key={c.item} title={`${c.item} - ${c.scope}`}>
+                    <td><SourceChip provider={c.provider} /></td>
+                    <td className="record-check-date">{c.requestedDate}</td>
+                    <td className="record-check-date">
+                      {c.completedDate || 'Pending'}
+                    </td>
+                    <td className="record-check-result">{c.resultSummary}</td>
+                    <td>
+                      {c.documentUrl ? (
+                        <button type="button"
+                          className="btn btn-ghost record-check-view"
+                          onClick={() => setOpenDoc(
+                            openDoc === c.documentUrl ? null : c.documentUrl)}>
+                          <FiFileText aria-hidden="true" /> View
+                        </button>
+                      ) : <span className="muted">-</span>}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          {openDoc && <DocumentViewer url={openDoc} />}
         </div>
       )}
     </li>
@@ -141,7 +137,7 @@ export default function InvestigationTab({ caseData }) {
   return (
     <div>
       <div className="card">
-        <h3>Record Checks</h3>
+        <h3><FiCheckSquare className="section-icon" aria-hidden="true" />Record Checks</h3>
         <ul className="record-check-list">
           {groupChecks(inv.recordChecks).map(([category, checks]) => (
             <RecordCheckGroup key={category} category={category} checks={checks} />
@@ -156,7 +152,7 @@ export default function InvestigationTab({ caseData }) {
       </div>
 
       <div className="card">
-        <h3>SF-86 Review - Self-Report vs Record Checks</h3>
+        <h3><FiColumns className="section-icon" aria-hidden="true" />SF-86 Review - Self-Report vs Record Checks</h3>
         {inv.sf86Sections.map((s) => (
           <div key={s.section} className={`sf86-section ${s.discrepancy ? 'flagged' : ''}`}>
             <div className="sf86-heading">
@@ -185,7 +181,7 @@ export default function InvestigationTab({ caseData }) {
 
       {inv.interviews.length > 0 && (
         <div className="card">
-          <h3>Interviews</h3>
+          <h3><FiMessageSquare className="section-icon" aria-hidden="true" />Interviews</h3>
           <ul className="interview-ledger">
             {inv.interviews.map((iv, i) => (
               <li key={i} className="interview-row">
@@ -208,13 +204,18 @@ export default function InvestigationTab({ caseData }) {
       )}
 
       <div className="card">
-        <h3>Report of Investigation Entries</h3>
+        <h3><FiEdit3 className="section-icon" aria-hidden="true" />Report of Investigation Entries</h3>
         {roiEntries.length === 0 && <p className="muted">No ROI entries yet.</p>}
-        <ul className="roi-list">
+        <ul className="interview-ledger roi-ledger">
           {roiEntries.map((r, i) => (
-            <li key={i}>
-              <span className="muted">{r.date} · {r.investigator} · {r.item}</span>
-              <p>{r.text}</p>
+            <li key={i} className="interview-row">
+              <span className="interview-date">{r.date}</span>
+              <span className="interview-rail" aria-hidden="true" />
+              <div className="interview-who">
+                <div className="interview-type">{r.item}</div>
+                <div className="interview-interviewer">{r.investigator}</div>
+              </div>
+              <blockquote className="interview-quote">{r.text}</blockquote>
             </li>
           ))}
         </ul>

@@ -255,7 +255,26 @@
       }
     ],
     "interviews": [],
-    "roiEntries": []
+    "roiEntries": [
+      {
+        "date": "2026-05-15",
+        "investigator": "M. Delgado",
+        "item": "General",
+        "text": "Automated record checks complete - NCIC criminal history, tri-bureau credit, and DMV. One item of adverse information developed; see coverage entry below."
+      },
+      {
+        "date": "2026-05-28",
+        "investigator": "M. Delgado",
+        "item": "Employment",
+        "text": "Employment application omitted a 2022 termination for cause; corroborated by Employment records records. Documentation placed in file; subject response to be obtained before adjudicative action."
+      },
+      {
+        "date": "2026-06-01",
+        "investigator": "M. Delgado",
+        "item": "General",
+        "text": "Tier-scoped fieldwork in progress; interviews and local records outstanding. No additional issues developed to date."
+      }
+    ]
   },
   "adjudication": {
     "recommendation": {

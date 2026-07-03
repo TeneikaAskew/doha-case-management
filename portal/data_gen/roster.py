@@ -143,6 +143,38 @@ def _whole_person(clean: bool, code, alert_id, doc_ref) -> list[dict]:
     return rows
 
 
+ROI_ITEM_BY_CODE = {"F": "Financial", "E": "Employment", "H": "Criminal",
+                    "K": "General", "M": "General"}
+
+
+def _roi_entries(clean: bool, code, stage: str) -> list[dict]:
+    """Standard ROI coverage entries mirroring the record-check results."""
+    entries = [dict(
+        date="2026-05-15", investigator="M. Delgado", item="General",
+        text="Automated record checks complete - NCIC criminal history, "
+             "tri-bureau credit, and DMV. "
+             + ("No adverse information developed; all sources returned clear."
+                if clean else
+                "One item of adverse information developed; see coverage entry "
+                "below."))]
+    if not clean:
+        t = GUIDELINE_TEMPLATES[code]
+        entries.append(dict(
+            date="2026-05-28", investigator="M. Delgado",
+            item=ROI_ITEM_BY_CODE.get(code, "General"),
+            text=f"{t['evidence']}; corroborated by {t['provider']} records. "
+                 "Documentation placed in file; subject response to be obtained "
+                 "before adjudicative action."))
+    entries.append(dict(
+        date="2026-06-01", investigator="M. Delgado", item="General",
+        text=("Tier-scoped fieldwork complete; no additional issues developed. "
+              "Coverage certified for adjudication."
+              if stage != "INVESTIGATION" else
+              "Tier-scoped fieldwork in progress; interviews and local records "
+              "outstanding. No additional issues developed to date.")))
+    return entries
+
+
 def _whole_person_summary(clean: bool, code) -> str:
     if clean:
         return ("No adverse information developed across the nine whole-person "
@@ -313,7 +345,7 @@ def build_roster_cases(precedent_fn) -> list[dict]:
             url, doc = docs.credit_extract(
                 subj["id"], "credit-extract-20260618", bureau="TransUnion",
                 account_name="Two delinquent accounts (summary)",
-                account_masked="(2 accounts)", account_type="Installment/revolving",
+                account_number="(2 accounts)", account_type="Installment/revolving",
                 balance="$9,800", past_due="$9,800", days_past_due="90+",
                 date_reported="2026-06-18",
                 payment_status="Delinquent - reported via CV credit monitoring",
@@ -353,7 +385,9 @@ def build_roster_cases(precedent_fn) -> list[dict]:
                     section="Section 22", title="Police record",
                     subjectReport="No police record", matchedResult="NCIC: no record",
                     discrepancy=False, providers=["FBI CJIS/NCIC"], guideline=None)],
-                interviews=[], roiEntries=[]),
+                interviews=[],
+                roiEntries=_roi_entries(clean, codes[0] if codes else None,
+                                        stage)),
             adjudication=dict(
                 recommendation=dict(
                     action="GRANT" if clean else "LOI", aiSuggested=True,

@@ -1,6 +1,7 @@
 {
   "docType": "SAR",
-  "title": "Suspicious Activity Report SAR-2026-0415-88231",
+  "title": "SAR-2026-0415-88231",
+  "reference": "SAR-2026-0415-88231, First Commonwealth Bank",
   "provider": "FinCEN / Treasury",
   "receivedDate": "2026-04-16",
   "subjectId": "SUBJ-001",

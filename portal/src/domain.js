@@ -101,8 +101,6 @@ export const ADJ_ACTION_LABELS = {
   DENY: 'Deny / revoke',
 };
 
-export const maskSsn = (ssn) => `***-**-${(ssn || '').slice(-4)}`;
-
 export function riskBand(score) {
   if (score >= 75) return 'high';
   if (score >= 40) return 'moderate';

@@ -153,6 +153,7 @@ def test_typed_documents_exist_and_validate(out):
             json.loads(f.read_text(encoding="utf-8")))
         assert doc.subjectId == f.parent.name
         assert doc.fields
+        assert doc.reference, f"{f.name}: missing reference"
 
 
 def test_every_alert_document_and_record_check_resolves(out):

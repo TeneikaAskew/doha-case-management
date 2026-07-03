@@ -17,11 +17,11 @@ def doc_url(subject_id: str, slug: str) -> str:
     return f"documents/{subject_id}/{slug}.json"
 
 
-def _doc(subject_id, slug, doc_type, title, provider, received, fields,
+def _doc(subject_id, slug, doc_type, title, reference, provider, received, fields,
          sections=None, transactions=None):
     return doc_url(subject_id, slug), dict(
-        docType=doc_type, title=title, provider=provider, receivedDate=received,
-        subjectId=subject_id,
+        docType=doc_type, title=title, reference=reference, provider=provider,
+        receivedDate=received, subjectId=subject_id,
         fields=[dict(label=k, value=v) for k, v in fields],
         sections=[dict(heading=h, body=b) for h, b in (sections or [])],
         transactions=[dict(date=d, type=t, amount=a) for d, t, a in (transactions or [])],
@@ -33,7 +33,9 @@ def police_report(subject_id, slug, *, agency, report_number, incident_date,
                   narrative, received):
     return _doc(
         subject_id, slug, "POLICE_REPORT",
-        f"Arrest report {report_number} - {agency}", "State & local courts", received,
+        f"Arrest report {report_number}",
+        f"Report {report_number}, {agency}",
+        "State & local courts", received,
         [("Agency", agency), ("Report number", report_number),
          ("Incident date", incident_date), ("Location", location),
          ("Charges", "; ".join(charges)), ("Arresting officer", officer),
@@ -41,14 +43,16 @@ def police_report(subject_id, slug, *, agency, report_number, incident_date,
         sections=[("Officer narrative", narrative)])
 
 
-def credit_extract(subject_id, slug, *, bureau, account_name, account_masked,
+def credit_extract(subject_id, slug, *, bureau, account_name, account_number,
                    account_type, balance, past_due, days_past_due, date_reported,
                    payment_status, history, received):
     return _doc(
         subject_id, slug, "CREDIT_REPORT",
-        f"Credit-file extract - {account_name}", bureau, received,
+        account_name,
+        f"{account_name}, {account_type.lower()}",
+        bureau, received,
         [("Bureau", bureau), ("Account", account_name),
-         ("Account number", account_masked), ("Account type", account_type),
+         ("Account number", account_number), ("Account type", account_type),
          ("Balance", balance), ("Past due", past_due),
          ("Days past due", days_past_due), ("Date reported", date_reported),
          ("Payment status", payment_status)],
@@ -59,7 +63,9 @@ def sar(subject_id, slug, *, institution, sar_number, filing_date, period,
         total_amount, narrative, transactions, received):
     return _doc(
         subject_id, slug, "SAR",
-        f"Suspicious Activity Report {sar_number}", "FinCEN / Treasury", received,
+        sar_number,
+        f"{sar_number}, {institution}",
+        "FinCEN / Treasury", received,
         [("Filing institution", institution), ("SAR number", sar_number),
          ("Filing date", filing_date), ("Activity period", period),
          ("Total amount", total_amount),
@@ -71,8 +77,9 @@ def rapback(subject_id, slug, *, notification_id, trigger_event, arrest_date,
             agency, ori, charges, received):
     return _doc(
         subject_id, slug, "RAPBACK_NOTIFICATION",
-        f"Rap Back notification {notification_id}", "FBI CJIS / NCIC + Rap Back",
-        received,
+        notification_id,
+        f"{notification_id}, {agency}",
+        "FBI CJIS / NCIC + Rap Back", received,
         [("Notification ID", notification_id), ("Trigger event", trigger_event),
          ("Arrest date", arrest_date), ("Agency", agency), ("ORI", ori),
          ("Fingerprint match", "Positive (enrolled)"),
@@ -87,7 +94,9 @@ def sf86_excerpt(subject_id, slug, *, form_version, submitted, section, question
                  response, received):
     return _doc(
         subject_id, slug, "SF86_EXCERPT",
-        f"SF-86 excerpt - {section}", "DISS / prior adjudications", received,
+        section,
+        section,
+        "DISS / prior adjudications", received,
         [("Form version", form_version), ("Submitted", submitted),
          ("Section", section), ("Question", question)],
         sections=[("Subject response", response)])
@@ -97,8 +106,9 @@ def travel_record(subject_id, slug, *, traveler, document_number, carrier,
                   departure, arrival, destination, returned, received):
     return _doc(
         subject_id, slug, "TRAVEL_RECORD",
-        f"I-94 border crossing record - {destination}", "CBP I-94 Foreign Travel",
-        received,
+        f"I-94 crossing record - {destination}",
+        f"{destination}, returned {returned}",
+        "CBP I-94 Foreign Travel", received,
         [("Traveler", traveler), ("Travel document", document_number),
          ("Carrier", carrier), ("Departure", departure), ("Arrival abroad", arrival),
          ("Destination", destination), ("Return to U.S.", returned)],
@@ -112,8 +122,9 @@ def incident_report(subject_id, slug, *, incident_id, date, facility, category,
                     summary, received):
     return _doc(
         subject_id, slug, "INCIDENT_REPORT",
-        f"Security incident report {incident_id}", "DISS / prior adjudications",
-        received,
+        incident_id,
+        f"{incident_id}, {facility}",
+        "DISS / prior adjudications", received,
         [("Incident ID", incident_id), ("Date", date), ("Facility", facility),
          ("Category", category)],
         sections=[("Incident summary", summary)])

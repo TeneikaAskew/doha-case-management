@@ -1,6 +1,7 @@
 {
   "docType": "CREDIT_REPORT",
-  "title": "Credit-file extract - Summary - all open accounts",
+  "title": "Summary - all open accounts",
+  "reference": "Summary - all open accounts, tri-bureau summary",
   "provider": "Equifax",
   "receivedDate": "2026-06-14",
   "subjectId": "SUBJ-003",

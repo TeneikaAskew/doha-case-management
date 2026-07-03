@@ -55,35 +55,45 @@ function DohaDocumentView({ doc }) {
 function GeneratedDocumentView({ doc }) {
   return (
     <div className="document-viewer">
-      <div className="document-viewer-head">
-        <div>
-          <h4>{doc.title}</h4>
-          <p className="muted">{DOC_TYPE_LABELS[doc.docType] || doc.docType}</p>
+      <div className="document-viewer-head document-viewer-head-line">
+        <div className="document-head-line">
+          <span className="document-type-pill">
+            {DOC_TYPE_LABELS[doc.docType] || doc.docType}
+          </span>
+          <span className="document-ref">{doc.reference || doc.title}</span>
         </div>
-        <SourceChip provider={doc.provider} />
+        <div className="document-head-right">
+          <SourceChip provider={doc.provider} />
+          <span className="document-date">{doc.receivedDate}</span>
+        </div>
       </div>
-      <p className="muted document-received">
-        Received via {doc.provider} · {doc.receivedDate}
-      </p>
-      <KVGrid items={doc.fields.map((f) => ({ label: f.label, value: f.value }))} />
-      {doc.transactions.length > 0 && (
-        <table className="inline-table">
-          <thead><tr><th>Date</th><th>Type</th><th>Amount</th></tr></thead>
-          <tbody>
-            {doc.transactions.map((t) => (
-              <tr key={`${t.date}-${t.amount}`}>
-                <td>{t.date}</td><td>{t.type}</td><td>{t.amount}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
-      {doc.sections.map((s) => (
-        <div key={s.heading} className="document-section">
-          <h5>{s.heading}</h5>
-          <p>{s.body}</p>
-        </div>
-      ))}
+      <div className="document-viewer-content">
+        <KVGrid items={doc.fields
+          .filter((f) => {
+            const header = `${doc.title} ${doc.reference || ''}`.toLowerCase();
+            return !((header.includes(f.value.toLowerCase()) && f.value.length >= 5)
+              || f.value === doc.provider || f.value === doc.receivedDate);
+          })
+          .map((f) => ({ label: f.label, value: f.value }))} />
+        {doc.transactions.length > 0 && (
+          <table className="inline-table">
+            <thead><tr><th>Date</th><th>Type</th><th>Amount</th></tr></thead>
+            <tbody>
+              {doc.transactions.map((t) => (
+                <tr key={`${t.date}-${t.amount}`}>
+                  <td>{t.date}</td><td>{t.type}</td><td>{t.amount}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+        {doc.sections.map((s) => (
+          <div key={s.heading} className="document-section">
+            <h5>{s.heading}</h5>
+            <p>{s.body}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

@@ -27,12 +27,12 @@ test('every page loads and the hero case walks through all tabs', async ({ page 
   await expect(page.getByText('923-04-4821').first()).toBeVisible();
 
   // Record-check drill-down: checks are grouped by category; Bell's police
-  // report lives inside the Investigative fieldwork group.
+  // report is a source row inside the Criminal record checks group.
   await page.goto('/#/cases/SUBJ-002?tab=investigation');
-  await page.getByRole('button', { name: /investigative fieldwork/i }).click();
-  await expect(page.getByText(/police report retrieval/i).first()).toBeVisible();
-  await page.getByRole('button', { name: /view document/i }).click();
-  await expect(page.getByText(/Arrest report 26-044812/)).toBeVisible();
+  await page.getByRole('button', { name: /criminal record checks/i }).click();
+  await expect(page.getByText('State & local courts').first()).toBeVisible();
+  await page.getByRole('button', { name: 'View' }).click();
+  await expect(page.getByText(/Report 26-044812, Chesapeake Police Department/)).toBeVisible();
 
   await page.goto('/#/alerts');
   await expect(page.getByRole('heading', { name: 'CV Alerts' })).toBeVisible();

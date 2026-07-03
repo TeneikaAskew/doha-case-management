@@ -7,7 +7,7 @@ import { CASE_001 } from './fixtures.js';
 
 vi.mock('../data/api.js', () => ({
   fetchJson: () => Promise.resolve({
-    docType: 'CREDIT_REPORT', title: 'Credit-file extract - Meridian Auto Finance',
+    docType: 'CREDIT_REPORT', title: 'Meridian Auto Finance',
     provider: 'TransUnion', receivedDate: '2026-06-20', subjectId: 'SUBJ-001',
     fields: [{ label: 'Balance', value: '$12,400' }], sections: [], transactions: [],
   }),

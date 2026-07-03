@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { FiChevronDown, FiFileText } from 'react-icons/fi';
+import { FiChevronDown, FiFileText, FiUserCheck } from 'react-icons/fi';
 import { usePersona } from '../../state/PersonaContext.jsx';
 import { useDemo } from '../../state/DemoContext.jsx';
 import AIBadge from '../../components/AIBadge.jsx';
@@ -60,7 +60,7 @@ function FactorRow({ factor, index, caseId, canRate }) {
   const label = SHORT_LABELS[factor.factor] || factor.factor;
 
   return (
-    <li className="briefing-factor">
+    <li className={`briefing-factor ${docUrl ? 'briefing-factor-doc-open' : ''}`}>
       <span className={`briefing-dot rating-${dot}`} aria-hidden="true" />
       <div className="briefing-factor-body">
         {canRate ? (
@@ -118,7 +118,7 @@ export default function WholePersonWorksheet({ caseData }) {
   return (
     <div className="card">
       <div className="worksheet-head">
-        <h3>Whole-Person Briefing <AIBadge /></h3>
+        <h3><FiUserCheck className="section-icon" aria-hidden="true" />Whole-Person Briefing <AIBadge /></h3>
         {ratings.length > 0 ? (
           <div className="worksheet-tally">
             <StatusBadge variant="success">{tally('FAVORABLE')} favorable</StatusBadge>

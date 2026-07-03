@@ -111,7 +111,7 @@
 /* Interviews - chronological testimony ledger */
 .interview-ledger { list-style: none; margin: 0; padding: 0; }
 .interview-row { display: grid; grid-template-columns: 92px 22px 190px 1fr;
-  column-gap: var(--space-3); padding: var(--space-3) 0;
+  column-gap: var(--space-4); padding: var(--space-3) 0;
   border-bottom: 1px solid var(--border-light); }
 .interview-row:last-child { border-bottom: none; }
 .interview-date { font-size: var(--font-size-sm); font-weight: 700;
@@ -137,7 +137,7 @@
 .interview-interviewer { font-size: var(--font-size-sm); color: var(--text-muted);
   margin-top: var(--space-1); }
 .interview-quote { margin: 0; border-left: 3px solid var(--dcsa-gold);
-  padding-left: var(--space-3); font-size: var(--font-size-sm);
+  padding-left: var(--space-5); font-size: var(--font-size-sm);
   color: var(--text-primary); }
 .interview-mark { background: var(--status-alert-bg); color: var(--status-alert);
   padding: 0 3px; border-radius: 3px; }
@@ -146,8 +146,7 @@
   .interview-rail { display: none; }
 }
 
-.roi-list { list-style: none; display: grid; gap: var(--space-3);
-  margin-bottom: var(--space-4); }
+.roi-ledger { margin-bottom: var(--space-4); }
 .roi-form { display: flex; gap: var(--space-3); align-items: flex-end; flex-wrap: wrap; }
 .roi-entry-field { flex: 1; min-width: 240px; }
 
@@ -179,22 +178,16 @@
   width: 100%; padding: var(--space-3) 0; background: none; border: none;
   cursor: pointer; font: inherit; text-align: left; }
 .record-check-item { flex: 1; font-weight: 600; }
-.record-check-body { padding: 0 0 var(--space-4); display: flex;
+.record-check-body { padding: 0 0 var(--space-4) var(--space-5); display: flex;
   flex-direction: column; gap: var(--space-3); align-items: flex-start; }
-.record-check-meta { display: flex; align-items: center; flex-wrap: wrap;
-  gap: var(--space-2) var(--space-5); }
-.record-check-dates { display: inline-flex; align-items: center; gap: var(--space-2);
-  font-size: var(--font-size-sm); color: var(--text-primary);
-  font-variant-numeric: tabular-nums; }
-.record-check-lbl { font-size: var(--font-size-xs); font-weight: 700;
-  letter-spacing: 0.5px; text-transform: uppercase; color: var(--text-muted); }
-.record-check-arrow { color: var(--text-muted); }
-.record-check-cell { display: flex; flex-direction: column; gap: 2px; }
-.record-check-detail { display: flex; flex-direction: column; gap: var(--space-3);
-  align-items: flex-start; width: 100%; }
-.record-check-detail + .record-check-detail { border-top: 1px dashed var(--border-light);
-  padding-top: var(--space-3); }
-.record-check-subitem { font-weight: 600; font-size: var(--font-size-sm); }
+.record-check-table-wrap { width: 100%; overflow-x: auto; }
+.record-check-table-wrap .inline-table th,
+.record-check-table-wrap .inline-table td {
+  padding: var(--space-2) var(--space-4) var(--space-2) 0; }
+.record-check-date { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.record-check-result { min-width: 260px; }
+.record-check-view { padding: 2px var(--space-2); min-height: 0;
+  font-size: var(--font-size-sm); white-space: nowrap; }
 
 /* Whole-person briefing */
 .worksheet-head { display: flex; justify-content: space-between; align-items: center;
@@ -242,3 +235,6 @@
 .worksheet-rating { display: flex; flex-direction: column; gap: var(--space-2);
   width: 100%; }
 .worksheet-rating-buttons { display: flex; gap: var(--space-2); }
+
+/* An opened source document spans the full briefing width */
+.briefing-factor-doc-open { grid-column: 1 / -1; }

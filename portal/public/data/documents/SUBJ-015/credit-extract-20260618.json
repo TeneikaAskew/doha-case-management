@@ -1,6 +1,7 @@
 {
   "docType": "CREDIT_REPORT",
-  "title": "Credit-file extract - Two delinquent accounts (summary)",
+  "title": "Two delinquent accounts (summary)",
+  "reference": "Two delinquent accounts (summary), installment/revolving",
   "provider": "TransUnion",
   "receivedDate": "2026-06-18",
   "subjectId": "SUBJ-015",

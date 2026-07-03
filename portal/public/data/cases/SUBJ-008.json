@@ -189,7 +189,20 @@
       }
     ],
     "interviews": [],
-    "roiEntries": []
+    "roiEntries": [
+      {
+        "date": "2026-05-15",
+        "investigator": "M. Delgado",
+        "item": "General",
+        "text": "Automated record checks complete - NCIC criminal history, tri-bureau credit, and DMV. No adverse information developed; all sources returned clear."
+      },
+      {
+        "date": "2026-06-01",
+        "investigator": "M. Delgado",
+        "item": "General",
+        "text": "Tier-scoped fieldwork in progress; interviews and local records outstanding. No additional issues developed to date."
+      }
+    ]
   },
   "adjudication": {
     "recommendation": {

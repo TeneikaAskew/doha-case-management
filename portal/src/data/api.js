@@ -3,7 +3,8 @@ const cache = new Map();
 export async function fetchJson(path) {
   if (cache.has(path)) return cache.get(path);
   const url = `${import.meta.env.BASE_URL}data/${path}`;
-  const res = await fetch(url);
+  // no-store: demo data regenerates often; never serve a stale HTTP-cached copy
+  const res = await fetch(url, { cache: 'no-store' });
   if (!res.ok) throw new Error(`Failed to load ${path} (HTTP ${res.status})`);
   const data = await res.json();
   cache.set(path, data);

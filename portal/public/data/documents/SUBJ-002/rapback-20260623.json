@@ -1,6 +1,7 @@
 {
   "docType": "RAPBACK_NOTIFICATION",
-  "title": "Rap Back notification NGI-RB-2026-174403",
+  "title": "NGI-RB-2026-174403",
+  "reference": "NGI-RB-2026-174403, Chesapeake Police Department, VA",
   "provider": "FBI CJIS / NCIC + Rap Back",
   "receivedDate": "2026-06-23",
   "subjectId": "SUBJ-002",

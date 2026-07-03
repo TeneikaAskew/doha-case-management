@@ -278,9 +278,10 @@ class DocTransaction(BaseModel):
 
 
 class GeneratedDocument(BaseModel):
-    docType: DocType
-    title: str
-    provider: str
+    docType: DocType       # the document type; UI renders DOC_TYPE_LABELS[docType]
+    title: str             # full display title for lists and buttons
+    reference: str         # the specific record: account, report number, destination
+    provider: str          # the source the document came through
     receivedDate: str
     subjectId: str
     fields: list[DocField]

@@ -396,7 +396,20 @@
       }
     ],
     "interviews": [],
-    "roiEntries": []
+    "roiEntries": [
+      {
+        "date": "2026-06-30",
+        "investigator": "S. Whitfield",
+        "item": "Criminal",
+        "text": "Chesapeake PD report 26-044812 obtained and validated against the Rap Back notification. Single-vehicle stop, BAC 0.18%, no accident or injury; subject cooperative. Court disposition monitoring established with first hearing expected August 2026."
+      },
+      {
+        "date": "2026-07-01",
+        "investigator": "S. Whitfield",
+        "item": "General",
+        "text": "Subject self-reported the arrest to his FSO within 48 hours, corroborated by the FSO's incident entry. Prior record is clean, including the resolved 2025 retail delinquency. Case held pending disposition and any court-ordered alcohol evaluation."
+      }
+    ]
   },
   "adjudication": {
     "recommendation": {
@@ -490,9 +503,9 @@
             "match": true
           },
           {
-            "field": "SSN (last 4)",
-            "subjectValue": "7733",
-            "recordValue": "7733",
+            "field": "SSN",
+            "subjectValue": "917-38-7733",
+            "recordValue": "917-38-7733",
             "match": true
           }
         ]

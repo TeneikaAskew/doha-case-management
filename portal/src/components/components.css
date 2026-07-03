@@ -115,21 +115,36 @@
   background: var(--bg-card); margin-top: var(--space-4); }
 .document-viewer-head { display: flex; justify-content: space-between; align-items: flex-start;
   gap: var(--space-3); padding: var(--space-4) var(--space-5); border-bottom: 1px solid var(--border-light);
-  background: var(--bg-table-header); }
+  background: var(--dcsa-gold-light); }
 .document-viewer-body { max-height: 560px; overflow-y: auto; padding: var(--space-6);
   white-space: pre-wrap; font-family: var(--font-family-primary); font-size: var(--font-size-sm);
   line-height: 1.6; margin: 0; }
 .document-viewer-source { padding: var(--space-3) var(--space-5); border-top: 1px solid var(--border-light); }
+.document-viewer-head-line { align-items: center; }
+.document-head-line { display: flex; align-items: center; gap: var(--space-3);
+  flex-wrap: wrap; flex: 1; min-width: 0; }
+.document-type-pill { font-size: var(--font-size-xs); font-weight: 700;
+  letter-spacing: 0.6px; text-transform: uppercase; color: var(--text-inverse);
+  background: var(--dcsa-navy); border-radius: var(--radius-sm);
+  padding: 2px var(--space-2); white-space: nowrap; }
+.document-ref { font-size: var(--font-size-lg); font-weight: 700; }
+.document-head-right { display: flex; align-items: center; gap: var(--space-3); }
+.document-date { font-size: var(--font-size-sm); color: var(--text-secondary);
+  font-variant-numeric: tabular-nums; white-space: nowrap; }
 
 .source-chip { display: inline-flex; align-items: center; gap: var(--space-1);
   padding: var(--space-1) var(--space-2); border-radius: var(--radius-pill);
   font-size: var(--font-size-xs); font-weight: 600; background: var(--bg-sidebar);
   color: var(--text-secondary); border: 1px solid var(--border-medium); }
 .source-chip-link:hover { color: var(--dcsa-ocean); border-color: var(--dcsa-ocean); }
-.document-received { margin: var(--space-2) 0 var(--space-3); }
+.document-viewer-content { padding: var(--space-4) var(--space-5) var(--space-5); }
+.document-received { margin: 0 0 var(--space-3); }
 .document-section { margin-top: var(--space-4); }
 .document-section h5 { font-size: var(--font-size-sm); text-transform: uppercase;
   letter-spacing: 0.5px; color: var(--text-secondary); margin-bottom: var(--space-1); }
 
 .section-ref { margin-top: var(--space-3); padding-top: var(--space-3);
   border-top: 1px solid var(--border-light); font-size: var(--font-size-xs); }
+.document-eyebrow { font-size: var(--font-size-xs); font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.6px; color: var(--text-secondary);
+  margin-bottom: 2px; }

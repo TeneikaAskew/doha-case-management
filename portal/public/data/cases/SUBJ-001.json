@@ -540,14 +540,44 @@
       {
         "date": "2026-01-27",
         "investigator": "S. Whitfield",
+        "item": "Subject interview",
+        "text": "Enhanced Subject Interview conducted 2025-11-19 under oath. Subject's account of the delinquency (~$9,000) is materially inconsistent with bureau records ($47,300); his characterization of foreign family contact is inconsistent with remittance activity. Transcript and summary placed in file."
+      },
+      {
+        "date": "2026-01-27",
+        "investigator": "S. Whitfield",
         "item": "Financial",
-        "text": "Credit bureau data and court records establish sustained delinquency exceeding subject's account."
+        "text": "Tri-bureau credit data and state court records establish sustained delinquency across five accounts totaling $47,300, including two charge-offs and an unpaid 2025 small-claims judgment of $3,100. Delinquency has continued after re-employment in early 2025."
       },
       {
         "date": "2026-01-27",
         "investigator": "S. Whitfield",
         "item": "Foreign contacts",
-        "text": "Expanded lead recommended on sibling's SOE employment."
+        "text": "Subject's mother and two siblings are resident in Lagos, Nigeria. One sibling's employment with a state-owned enterprise was developed through record checks and was not disclosed on the SF-86. Expanded lead recommended on the sibling's SOE role and subject's contact frequency."
+      },
+      {
+        "date": "2026-01-27",
+        "investigator": "S. Whitfield",
+        "item": "Employment",
+        "text": "Employment verified: Sentinel Dynamics LLC, 2018-02 to present, Senior Systems Engineer. The 2024 six-month gap is corroborated by employer records as an involuntary layoff; rehired at a comparable grade."
+      },
+      {
+        "date": "2026-01-27",
+        "investigator": "J. Ramos",
+        "item": "References",
+        "text": "Supervisor and neighborhood interviews favorable: dependable, stable household, no conduct or substance indicators. All sources unaware of financial stress; no source corroborated or contradicted foreign-contact reporting."
+      },
+      {
+        "date": "2026-03-18",
+        "investigator": "S. Whitfield",
+        "item": "Financial",
+        "text": "Supplemental credit re-check completed at adjudicator request. Delinquency total revised upward after a new collection placement; figures reconciled across TransUnion and Equifax and forwarded to adjudication."
+      },
+      {
+        "date": "2026-05-06",
+        "investigator": "S. Whitfield",
+        "item": "Foreign travel",
+        "text": "CBP I-94 arrival/departure pair validated for travel to Nigeria, 2026-04-11 to 2026-04-25. No foreign-travel report on file with the FSO as required by SEAD-3. Coworker follow-up corroborates the trip; item referred to adjudication with the travel record attached."
       }
     ]
   },
@@ -588,9 +618,9 @@
             "match": true
           },
           {
-            "field": "SSN (last 4)",
-            "subjectValue": "4821",
-            "recordValue": "4821",
+            "field": "SSN",
+            "subjectValue": "923-04-4821",
+            "recordValue": "923-04-4821",
             "match": true
           }
         ]
@@ -627,8 +657,8 @@
         "identifiers": [
           {
             "field": "Passport",
-            "subjectValue": "5310xxxx",
-            "recordValue": "5310xxxx",
+            "subjectValue": "531048291",
+            "recordValue": "531048291",
             "match": true
           },
           {
