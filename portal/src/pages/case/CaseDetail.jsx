@@ -50,7 +50,7 @@ export default function CaseDetail() {
             <span>{s.dob}</span>
             <span>{s.ssn}</span>
             <span>Eligibility: {ELIGIBILITY_LABELS[s.eligibility]}</span>
-            <span>{s.tier}</span>
+            <span className="subject-tier">{s.tier}</span>
           </div>
           <div className="subject-pills">
             <StatusBadge variant={STATUS_VARIANTS[s.status]}>{STATUS_LABELS[s.status]}</StatusBadge>
