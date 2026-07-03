@@ -58,3 +58,26 @@ def test_corpus_analytics_shape(tiny_df):
 def test_corpus_analytics_fallback():
     stats = corpus.corpus_analytics(None)
     schemas.CorpusStats.model_validate(stats)
+
+
+def test_get_source_document_fallback_without_corpus():
+    doc = corpus.get_source_document(None)
+    validated = schemas.SourceDocument.model_validate(doc)
+    assert validated.fullText
+    assert len(validated.fullText) > 200
+
+
+def test_get_source_document_picks_real_record():
+    df = pd.DataFrame([
+        dict(case_number="20-01001", date="March 5, 2021", outcome="DENIED",
+             guidelines=["F", "B"], case_type="hearing",
+             full_text="x" * 2500, judge="Smith", source_url=None),
+        dict(case_number="19-02002", date="July 12, 2019", outcome="GRANTED",
+             guidelines=["F"], case_type="hearing",
+             full_text="y" * 100, judge=None, source_url=None),
+    ])
+    doc = corpus.get_source_document(df)
+    validated = schemas.SourceDocument.model_validate(doc)
+    assert validated.caseNumber == "20-01001"
+    assert validated.judge == "Smith"
+    assert len(validated.fullText) == 2500

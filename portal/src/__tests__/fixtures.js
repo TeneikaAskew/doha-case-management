@@ -21,7 +21,8 @@ export const ALERTS = [
     identityMatch: { confidence: 0.96, identifiers: [
       { field: 'Name', subjectValue: 'Daniel R. Okafor', recordValue: 'Daniel Okafor', match: true }] },
     threshold: { rule: 'Delinquent debt > $5,000', met: true, detail: 'Exceeds threshold.' },
-    priorAdjudication: { previouslyAdjudicated: false, reference: null } },
+    priorAdjudication: { previouslyAdjudicated: false, reference: null },
+    documentUrl: 'documents/doha-record.json' },
 ];
 
 export const CASE_001 = {
@@ -68,5 +69,5 @@ export const CASE_001 = {
   },
   alerts: ALERTS,
   documents: [{ title: 'Report of Investigation (ROI)', type: 'ROI',
-    description: 'T5 ROI transmitted 2026-01-27', url: null }],
+    description: 'T5 ROI transmitted 2026-01-27', url: 'documents/doha-record.json' }],
 };

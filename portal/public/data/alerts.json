@@ -42,7 +42,8 @@
       "priorAdjudication": {
         "previouslyAdjudicated": false,
         "reference": null
-      }
+      },
+      "documentUrl": "documents/doha-record.json"
     },
     {
       "id": "ALERT-102",
@@ -80,7 +81,8 @@
       "priorAdjudication": {
         "previouslyAdjudicated": false,
         "reference": null
-      }
+      },
+      "documentUrl": "documents/doha-record.json"
     },
     {
       "id": "ALERT-201",
@@ -124,7 +126,8 @@
       "priorAdjudication": {
         "previouslyAdjudicated": false,
         "reference": null
-      }
+      },
+      "documentUrl": "documents/doha-record.json"
     },
     {
       "id": "ALERT-202",
@@ -162,7 +165,8 @@
       "priorAdjudication": {
         "previouslyAdjudicated": true,
         "reference": "CV disposition 2025-11-20: no action"
-      }
+      },
+      "documentUrl": "documents/doha-record.json"
     },
     {
       "id": "ALERT-313",
@@ -200,7 +204,8 @@
       "priorAdjudication": {
         "previouslyAdjudicated": false,
         "reference": null
-      }
+      },
+      "documentUrl": "documents/doha-record.json"
     },
     {
       "id": "ALERT-315",
@@ -238,7 +243,8 @@
       "priorAdjudication": {
         "previouslyAdjudicated": false,
         "reference": null
-      }
+      },
+      "documentUrl": "documents/doha-record.json"
     }
   ]
 }

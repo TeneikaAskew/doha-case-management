@@ -384,7 +384,8 @@
       "priorAdjudication": {
         "previouslyAdjudicated": false,
         "reference": null
-      }
+      },
+      "documentUrl": "documents/doha-record.json"
     },
     {
       "id": "ALERT-102",
@@ -422,7 +423,8 @@
       "priorAdjudication": {
         "previouslyAdjudicated": false,
         "reference": null
-      }
+      },
+      "documentUrl": "documents/doha-record.json"
     }
   ],
   "documents": [
@@ -430,19 +432,19 @@
       "title": "Report of Investigation (ROI)",
       "type": "ROI",
       "description": "T5 ROI transmitted 2026-01-27",
-      "url": null
+      "url": "documents/doha-record.json"
     },
     {
       "title": "SF-86 (2025-09-08)",
       "type": "SF-86",
       "description": "Questionnaire for National Security Positions",
-      "url": null
+      "url": "documents/doha-record.json"
     },
     {
       "title": "Credit reports (Mar/Jun 2026)",
       "type": "Provider record",
       "description": "TransUnion and Equifax pulls",
-      "url": null
+      "url": "documents/doha-record.json"
     }
   ]
 }

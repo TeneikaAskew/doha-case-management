@@ -11,6 +11,8 @@ PARQUET_PATHS = [
     REPO_ROOT / "doha_parsed_cases" / "all_cases_2.parquet",
 ]
 COLUMNS = ["case_number", "date", "outcome", "guidelines", "case_type"]
+FULL_COLUMNS = ["case_number", "date", "outcome", "case_type", "guidelines",
+                "full_text", "judge", "source_url"]
 
 GUIDELINE_NAMES = {
     "A": "Allegiance to the United States", "B": "Foreign Influence",
@@ -30,6 +32,33 @@ FALLBACK_PRECEDENTS = {
     for code in GUIDELINE_NAMES
 }
 
+FALLBACK_SOURCE_DOCUMENT = dict(
+    caseNumber="ISCR 20-01000",
+    title="Sample DOHA decision (offline placeholder)",
+    caseType="hearing",
+    date="January 1, 2021",
+    outcome="DENIED",
+    judge=None,
+    sourceUrl=None,
+    fullText=(
+        "DEPARTMENT OF DEFENSE\n"
+        "DEFENSE OFFICE OF HEARINGS AND APPEALS\n\n"
+        "This is an offline placeholder decision used when the underlying DOHA case "
+        "corpus (doha_parsed_cases/all_cases_*.parquet) is not present in this "
+        "environment. It stands in for a real hearing decision so the document "
+        "viewer has representative content to render during a demo.\n\n"
+        "In a real case, this section would summarize the Statement of Reasons, "
+        "the government's evidence under the relevant Adjudicative Guidelines, "
+        "and the applicant's response, including any mitigating evidence offered "
+        "at hearing regarding the security concerns raised.\n\n"
+        "Based on the placeholder record above, and applying the whole-person "
+        "concept, it is not clearly consistent with the interests of national "
+        "security to grant Applicant eligibility for access to classified "
+        "information in this offline sample. Eligibility for access to classified "
+        "information is denied."
+    ),
+)
+
 FALLBACK_CORPUS_STATS = dict(
     totalCases=36700,
     byOutcome={"DENIED": 19800, "GRANTED": 13200, "OTHER": 3700},
@@ -43,6 +72,14 @@ FALLBACK_CORPUS_STATS = dict(
 
 def load_corpus() -> pd.DataFrame | None:
     frames = [pd.read_parquet(p, columns=COLUMNS) for p in PARQUET_PATHS if p.exists()]
+    if not frames:
+        return None
+    return pd.concat(frames, ignore_index=True)
+
+
+def load_full_corpus() -> pd.DataFrame | None:
+    """Like load_corpus, but includes full_text/judge/source_url for the document viewer."""
+    frames = [pd.read_parquet(p, columns=FULL_COLUMNS) for p in PARQUET_PATHS if p.exists()]
     if not frames:
         return None
     return pd.concat(frames, ignore_index=True)
@@ -79,6 +116,40 @@ def find_precedents(df: pd.DataFrame | None, code: str, limit: int = 3) -> list[
                        f"({GUIDELINE_NAMES[code]})")
         for r in picks.itertuples()
     ]
+
+
+def get_source_document(df: pd.DataFrame | None) -> dict:
+    """Pick one real DOHA record (with full_text) to back the demo's document viewer.
+
+    Deterministic: Guideline F, DENIED/GRANTED outcome, full_text long enough to be
+    representative; newest year first, then case_number, matching find_precedents'
+    ordering. Falls back to a small synthetic placeholder when the corpus (or a
+    full_text column) is unavailable.
+    """
+    if df is None or "full_text" not in df.columns:
+        return dict(FALLBACK_SOURCE_DOCUMENT)
+    full_text = df["full_text"].fillna("").astype(str)
+    hits = df[df["guidelines"].apply(_has_guideline, code="F")
+              & df["outcome"].isin(["DENIED", "GRANTED"])
+              & (full_text.str.len() > 2000)]
+    if hits.empty:
+        return dict(FALLBACK_SOURCE_DOCUMENT)
+    hits = hits.assign(_year=hits["date"].map(extract_year)).sort_values(
+        ["_year", "case_number"], ascending=[False, True], na_position="last")
+    row = hits.iloc[0]
+    judge = getattr(row, "judge", None)
+    source_url = getattr(row, "source_url", None)
+    return dict(
+        caseNumber=str(row.case_number),
+        title=f"DOHA {row.case_type} decision {row.case_number}",
+        caseType=str(row.case_type),
+        date=str(row.date),
+        outcome=str(row.outcome),
+        judge=str(judge) if judge is not None and not pd.isna(judge) and str(judge).strip() else None,
+        sourceUrl=str(source_url) if source_url is not None and not pd.isna(source_url)
+                  and str(source_url).strip() else None,
+        fullText=str(row.full_text)[:60_000],
+    )
 
 
 def corpus_analytics(df: pd.DataFrame | None) -> dict:

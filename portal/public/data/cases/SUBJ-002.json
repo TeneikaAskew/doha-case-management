@@ -255,7 +255,8 @@
       "priorAdjudication": {
         "previouslyAdjudicated": false,
         "reference": null
-      }
+      },
+      "documentUrl": "documents/doha-record.json"
     },
     {
       "id": "ALERT-202",
@@ -293,7 +294,8 @@
       "priorAdjudication": {
         "previouslyAdjudicated": true,
         "reference": "CV disposition 2025-11-20: no action"
-      }
+      },
+      "documentUrl": "documents/doha-record.json"
     }
   ],
   "documents": [
@@ -301,13 +303,13 @@
       "title": "Rap Back notification",
       "type": "Provider record",
       "description": "FBI arrest notification 2026-06-23",
-      "url": null
+      "url": "documents/doha-record.json"
     },
     {
       "title": "SF-86 (2023-01-15)",
       "type": "SF-86",
       "description": "Original T3 questionnaire",
-      "url": null
+      "url": "documents/doha-record.json"
     }
   ]
 }

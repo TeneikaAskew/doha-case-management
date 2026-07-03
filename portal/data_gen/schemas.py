@@ -183,6 +183,7 @@ class CVAlert(BaseModel):
     identityMatch: IdentityMatch
     threshold: Threshold
     priorAdjudication: PriorAdjudication
+    documentUrl: Optional[str] = None
 
 
 class Document(BaseModel):
@@ -190,6 +191,17 @@ class Document(BaseModel):
     type: str
     description: str
     url: Optional[str] = None
+
+
+class SourceDocument(BaseModel):
+    caseNumber: str
+    title: str
+    caseType: str
+    date: str
+    outcome: str
+    judge: Optional[str] = None
+    sourceUrl: Optional[str] = None
+    fullText: str
 
 
 class CaseDetail(BaseModel):

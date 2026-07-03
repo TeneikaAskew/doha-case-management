@@ -159,7 +159,8 @@
       "priorAdjudication": {
         "previouslyAdjudicated": false,
         "reference": null
-      }
+      },
+      "documentUrl": "documents/doha-record.json"
     }
   ],
   "documents": [
@@ -167,7 +168,7 @@
       "title": "SF-86",
       "type": "SF-86",
       "description": "Questionnaire on file",
-      "url": null
+      "url": "documents/doha-record.json"
     }
   ]
 }

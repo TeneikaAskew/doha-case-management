@@ -30,6 +30,7 @@ describe('CVTab', () => {
     expect(screen.getByText('96%')).toBeInTheDocument();
     expect(screen.getByText('Delinquent debt > $5,000')).toBeInTheDocument();
     expect(screen.getByText(/not previously adjudicated/i)).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /source document/i })).toBeInTheDocument();
   });
 
   it('analyst dispositions an alert through a legal transition', () => {

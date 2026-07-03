@@ -110,3 +110,13 @@
   0% { transform: translateX(-100%); }
   100% { transform: translateX(400%); }
 }
+
+.document-viewer { border: 1px solid var(--border-light); border-radius: var(--radius-md);
+  background: var(--bg-card); margin-top: var(--space-4); }
+.document-viewer-head { display: flex; justify-content: space-between; align-items: flex-start;
+  gap: var(--space-3); padding: var(--space-4) var(--space-5); border-bottom: 1px solid var(--border-light);
+  background: var(--bg-table-header); }
+.document-viewer-body { max-height: 560px; overflow-y: auto; padding: var(--space-6);
+  white-space: pre-wrap; font-family: var(--font-family-primary); font-size: var(--font-size-sm);
+  line-height: 1.6; margin: 0; }
+.document-viewer-source { padding: var(--space-3) var(--space-5); border-top: 1px solid var(--border-light); }

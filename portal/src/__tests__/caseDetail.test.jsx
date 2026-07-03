@@ -49,6 +49,7 @@ describe('CaseDetail', () => {
     expect(screen.getByText(/Significant unresolved financial concerns/)).toBeInTheDocument();
     fireEvent.click(screen.getByRole('tab', { name: 'Documents' }));
     expect(screen.getByText('Report of Investigation (ROI)')).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /view document/i })).toBeInTheDocument();
   });
 
   it('shows an error state for unknown case ids', async () => {

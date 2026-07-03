@@ -51,6 +51,7 @@ def risk_band(score: int) -> str:
 def main(out_dir: Path = DEFAULT_OUT) -> dict:
     out_dir = Path(out_dir)
     (out_dir / "cases").mkdir(parents=True, exist_ok=True)
+    (out_dir / "documents").mkdir(parents=True, exist_ok=True)
 
     df = corpus.load_corpus()
     _precedent_cache = {}
@@ -62,6 +63,17 @@ def main(out_dir: Path = DEFAULT_OUT) -> dict:
 
     cases = build_hero_cases(precedents) + build_roster_cases(precedents)
 
+    # One real DOHA record, reused for every case document and CV alert source.
+    df_full = corpus.load_full_corpus()
+    doc = corpus.get_source_document(df_full)
+    source_document = schemas.SourceDocument.model_validate(doc)
+    DOC_URL = "documents/doha-record.json"
+    for c in cases:
+        for d in c["documents"]:
+            d.update(url=DOC_URL)
+        for a in c["alerts"]:
+            a.update(documentUrl=DOC_URL)
+
     validated_cases = [schemas.CaseDetail.model_validate(c) for c in cases]
     subjects = [schemas.SubjectSummary.model_validate(c["subject"]) for c in cases]
     all_alerts = [a for c in validated_cases for a in c.alerts]
@@ -70,6 +82,7 @@ def main(out_dir: Path = DEFAULT_OUT) -> dict:
         path.write_text(json.dumps(model, indent=2, ensure_ascii=False) + "\n",
                         encoding="utf-8")
 
+    dump(source_document.model_dump(), out_dir / "documents" / "doha-record.json")
     dump(schemas.SubjectsFile(subjects=subjects).model_dump(), out_dir / "subjects.json")
     for c in validated_cases:
         dump(c.model_dump(), out_dir / "cases" / f"{c.subject.id}.json")

@@ -62,6 +62,29 @@ def test_alerts_and_providers_and_analytics_validate(out):
         json.loads((out_dir / "analytics.json").read_text(encoding="utf-8")))
 
 
+def test_source_document_validates(out):
+    out_dir, _ = out
+    data = json.loads((out_dir / "documents" / "doha-record.json").read_text(encoding="utf-8"))
+    schemas.SourceDocument.model_validate(data)
+
+
+def test_every_document_and_alert_points_to_source_document(out):
+    out_dir, _ = out
+    doc_url = "documents/doha-record.json"
+    case_files = sorted((out_dir / "cases").glob("*.json"))
+    for f in case_files:
+        case = schemas.CaseDetail.model_validate(json.loads(f.read_text(encoding="utf-8")))
+        for d in case.documents:
+            assert d.url == doc_url
+        for a in case.alerts:
+            assert a.documentUrl == doc_url
+    alerts = schemas.AlertsFile.model_validate(
+        json.loads((out_dir / "alerts.json").read_text(encoding="utf-8")))
+    assert alerts.alerts
+    for a in alerts.alerts:
+        assert a.documentUrl == doc_url
+
+
 def test_deterministic(tmp_path):
     a, b = tmp_path / "a", tmp_path / "b"
     gen.main(a)
