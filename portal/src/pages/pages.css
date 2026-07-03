@@ -7,3 +7,6 @@
 .risk-cell { font-weight: 700; color: var(--risk-color); }
 .fast-track { font-size: var(--font-size-xs); color: var(--status-clear);
   font-weight: 700; }
+
+/* Dashboard */
+.dashboard-queue-title { margin-bottom: var(--space-3); }
