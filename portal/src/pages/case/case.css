@@ -77,3 +77,16 @@
   margin-bottom: var(--space-4); }
 .roi-form { display: flex; gap: var(--space-3); align-items: flex-end; flex-wrap: wrap; }
 .roi-entry-field { flex: 1; min-width: 240px; }
+
+/* Adjudication tab */
+.recommendation-panel { border-left: 4px solid var(--dcsa-gold); }
+.recommendation-action { font-size: var(--font-size-xl); font-weight: 700;
+  color: var(--dcsa-navy); margin-bottom: var(--space-2); }
+.sor-draft { white-space: pre-wrap; font-family: inherit;
+  background: var(--bg-sidebar); padding: var(--space-4);
+  border-radius: var(--radius-sm); font-size: var(--font-size-sm); }
+.decision-list { list-style: none; display: grid; gap: var(--space-3);
+  margin-bottom: var(--space-4); }
+.decision-form { display: flex; gap: var(--space-3); align-items: flex-end;
+  flex-wrap: wrap; }
+.decision-rationale { flex: 1; min-width: 240px; }
