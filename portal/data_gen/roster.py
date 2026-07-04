@@ -318,7 +318,7 @@ def _timeline(stage: str, elig: str, days: int, alerts: list[dict]) -> list[dict
     return rows
 
 
-def _record_checks(stage: str, codes: list, doc_ref) -> list[dict]:
+def _record_checks(n: int, tier: str, stage: str, codes: list, doc_ref) -> list[dict]:
     """Category-first record checks: one entry per category, source in context."""
     clean = not codes
     issue = None if clean else GUIDELINE_TEMPLATES[codes[0]]["evidence"]
@@ -330,7 +330,7 @@ def _record_checks(stage: str, codes: list, doc_ref) -> list[dict]:
              scope="NGI fingerprint submission, NCIC query, DMV",
              resultSummary="No criminal record.", documentUrl=None),
         dict(item="Credit check", category="FINANCIAL", status="COMPLETE",
-             provider="TransUnion",
+             provider=["TransUnion", "Equifax", "Experian"][n % 3],
              requestedDate="2026-05-02", completedDate="2026-05-15",
              scope="Tri-bureau credit pull",
              resultSummary=(issue + "." if financial_issue else
@@ -346,6 +346,29 @@ def _record_checks(stage: str, codes: list, doc_ref) -> list[dict]:
                             else "Fieldwork in progress."),
              documentUrl=None),
     ]
+    checks.append(dict(
+        item="Driver record check", category="CRIMINAL", status="COMPLETE",
+        provider="DMV records",
+        requestedDate="2026-05-02", completedDate="2026-05-15",
+        scope="State driver history and license status",
+        resultSummary="Valid license; no violations on record.",
+        documentUrl=None))
+    if stage != "INITIATION":
+        checks.append(dict(
+            item="Tax compliance check", category="FINANCIAL", status="COMPLETE",
+            provider="IRS / tax records",
+            requestedDate="2026-05-02", completedDate="2026-05-20",
+            scope="Federal return filing status and lien search",
+            resultSummary="Returns filed; no liens or levies.",
+            documentUrl=None))
+    if tier == "T5":
+        checks.append(dict(
+            item="Social media review (PAEI)", category="SECURITY",
+            status="COMPLETE", provider="SEAD-5 Social media (PAEI)",
+            requestedDate="2026-05-02", completedDate="2026-05-25",
+            scope="Publicly available electronic information sweep",
+            resultSummary="No publicly available adverse information.",
+            documentUrl=None))
     if codes and not financial_issue:
         checks.append(dict(
             item="Security & conduct records", category="SECURITY",
@@ -422,7 +445,7 @@ def build_roster_cases(precedent_fn) -> list[dict]:
                                       alerts[0]["id"] if alerts else None, doc_ref),
             guidelines=[_guideline_card(c, precedent_fn) for c in codes],
             investigation=dict(
-                recordChecks=_record_checks(stage, codes, doc_ref),
+                recordChecks=_record_checks(n, tier, stage, codes, doc_ref),
                 sf86Sections=[dict(
                     section="Section 22", title="Police record",
                     subjectReport="No police record", matchedResult="NCIC: no record",

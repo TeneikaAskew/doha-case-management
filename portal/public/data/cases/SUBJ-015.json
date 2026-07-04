@@ -302,6 +302,28 @@
         "scope": "Tier-scoped interviews and local records",
         "resultSummary": "Fieldwork complete.",
         "documentUrl": null
+      },
+      {
+        "item": "Driver record check",
+        "category": "CRIMINAL",
+        "status": "COMPLETE",
+        "provider": "DMV records",
+        "requestedDate": "2026-05-02",
+        "completedDate": "2026-05-15",
+        "scope": "State driver history and license status",
+        "resultSummary": "Valid license; no violations on record.",
+        "documentUrl": null
+      },
+      {
+        "item": "Tax compliance check",
+        "category": "FINANCIAL",
+        "status": "COMPLETE",
+        "provider": "IRS / tax records",
+        "requestedDate": "2026-05-02",
+        "completedDate": "2026-05-20",
+        "scope": "Federal return filing status and lien search",
+        "resultSummary": "Returns filed; no liens or levies.",
+        "documentUrl": null
       }
     ],
     "sf86Sections": [

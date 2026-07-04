@@ -142,7 +142,7 @@
         "item": "Credit check",
         "category": "FINANCIAL",
         "status": "COMPLETE",
-        "provider": "TransUnion",
+        "provider": "Experian",
         "requestedDate": "2026-05-02",
         "completedDate": "2026-05-15",
         "scope": "Tri-bureau credit pull",
@@ -158,6 +158,17 @@
         "completedDate": "2026-06-01",
         "scope": "Tier-scoped interviews and local records",
         "resultSummary": "Fieldwork complete.",
+        "documentUrl": null
+      },
+      {
+        "item": "Driver record check",
+        "category": "CRIMINAL",
+        "status": "COMPLETE",
+        "provider": "DMV records",
+        "requestedDate": "2026-05-02",
+        "completedDate": "2026-05-15",
+        "scope": "State driver history and license status",
+        "resultSummary": "Valid license; no violations on record.",
         "documentUrl": null
       }
     ],

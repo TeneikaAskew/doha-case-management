@@ -182,6 +182,42 @@
           "status": "COMPLETE",
           "completedDate": "2026-06-14",
           "documentUrl": "documents/SUBJ-003/credit-extract-20260614.json"
+        },
+        {
+          "caseId": "SUBJ-004",
+          "subjectName": "Alicia M. Grant",
+          "item": "Credit check",
+          "category": "FINANCIAL",
+          "status": "COMPLETE",
+          "completedDate": "2026-05-15",
+          "documentUrl": null
+        },
+        {
+          "caseId": "SUBJ-007",
+          "subjectName": "Victor A. Osei",
+          "item": "Credit check",
+          "category": "FINANCIAL",
+          "status": "COMPLETE",
+          "completedDate": "2026-05-15",
+          "documentUrl": null
+        },
+        {
+          "caseId": "SUBJ-010",
+          "subjectName": "Fatima R. Aziz",
+          "item": "Credit check",
+          "category": "FINANCIAL",
+          "status": "COMPLETE",
+          "completedDate": "2026-05-15",
+          "documentUrl": null
+        },
+        {
+          "caseId": "SUBJ-013",
+          "subjectName": "Samuel K. Boateng",
+          "item": "Credit check",
+          "category": "FINANCIAL",
+          "status": "COMPLETE",
+          "completedDate": "2026-05-15",
+          "documentUrl": null
         }
       ],
       "documents": [
@@ -224,7 +260,44 @@
     },
     "experian": {
       "alertIds": [],
-      "recordChecks": [],
+      "recordChecks": [
+        {
+          "caseId": "SUBJ-005",
+          "subjectName": "Tomas E. Herrera",
+          "item": "Credit check",
+          "category": "FINANCIAL",
+          "status": "COMPLETE",
+          "completedDate": "2026-05-15",
+          "documentUrl": null
+        },
+        {
+          "caseId": "SUBJ-008",
+          "subjectName": "Hannah J. Whitmore",
+          "item": "Credit check",
+          "category": "FINANCIAL",
+          "status": "COMPLETE",
+          "completedDate": "2026-05-15",
+          "documentUrl": null
+        },
+        {
+          "caseId": "SUBJ-011",
+          "subjectName": "Gregory P. Stone",
+          "item": "Credit check",
+          "category": "FINANCIAL",
+          "status": "COMPLETE",
+          "completedDate": "2026-05-15",
+          "documentUrl": null
+        },
+        {
+          "caseId": "SUBJ-014",
+          "subjectName": "Laura D. Ferris",
+          "item": "Credit check",
+          "category": "FINANCIAL",
+          "status": "COMPLETE",
+          "completedDate": "2026-05-15",
+          "documentUrl": null
+        }
+      ],
       "documents": []
     },
     "transunion": {
@@ -256,44 +329,8 @@
           "documentUrl": null
         },
         {
-          "caseId": "SUBJ-004",
-          "subjectName": "Alicia M. Grant",
-          "item": "Credit check",
-          "category": "FINANCIAL",
-          "status": "COMPLETE",
-          "completedDate": "2026-05-15",
-          "documentUrl": null
-        },
-        {
-          "caseId": "SUBJ-005",
-          "subjectName": "Tomas E. Herrera",
-          "item": "Credit check",
-          "category": "FINANCIAL",
-          "status": "COMPLETE",
-          "completedDate": "2026-05-15",
-          "documentUrl": null
-        },
-        {
           "caseId": "SUBJ-006",
           "subjectName": "Renee L. Calloway",
-          "item": "Credit check",
-          "category": "FINANCIAL",
-          "status": "COMPLETE",
-          "completedDate": "2026-05-15",
-          "documentUrl": null
-        },
-        {
-          "caseId": "SUBJ-007",
-          "subjectName": "Victor A. Osei",
-          "item": "Credit check",
-          "category": "FINANCIAL",
-          "status": "COMPLETE",
-          "completedDate": "2026-05-15",
-          "documentUrl": null
-        },
-        {
-          "caseId": "SUBJ-008",
-          "subjectName": "Hannah J. Whitmore",
           "item": "Credit check",
           "category": "FINANCIAL",
           "status": "COMPLETE",
@@ -310,44 +347,8 @@
           "documentUrl": null
         },
         {
-          "caseId": "SUBJ-010",
-          "subjectName": "Fatima R. Aziz",
-          "item": "Credit check",
-          "category": "FINANCIAL",
-          "status": "COMPLETE",
-          "completedDate": "2026-05-15",
-          "documentUrl": null
-        },
-        {
-          "caseId": "SUBJ-011",
-          "subjectName": "Gregory P. Stone",
-          "item": "Credit check",
-          "category": "FINANCIAL",
-          "status": "COMPLETE",
-          "completedDate": "2026-05-15",
-          "documentUrl": null
-        },
-        {
           "caseId": "SUBJ-012",
           "subjectName": "Monica V. Reyes",
-          "item": "Credit check",
-          "category": "FINANCIAL",
-          "status": "COMPLETE",
-          "completedDate": "2026-05-15",
-          "documentUrl": null
-        },
-        {
-          "caseId": "SUBJ-013",
-          "subjectName": "Samuel K. Boateng",
-          "item": "Credit check",
-          "category": "FINANCIAL",
-          "status": "COMPLETE",
-          "completedDate": "2026-05-15",
-          "documentUrl": null
-        },
-        {
-          "caseId": "SUBJ-014",
-          "subjectName": "Laura D. Ferris",
           "item": "Credit check",
           "category": "FINANCIAL",
           "status": "COMPLETE",
@@ -598,17 +599,263 @@
     },
     "dmv": {
       "alertIds": [],
-      "recordChecks": [],
+      "recordChecks": [
+        {
+          "caseId": "SUBJ-004",
+          "subjectName": "Alicia M. Grant",
+          "item": "Driver record check",
+          "category": "CRIMINAL",
+          "status": "COMPLETE",
+          "completedDate": "2026-05-15",
+          "documentUrl": null
+        },
+        {
+          "caseId": "SUBJ-005",
+          "subjectName": "Tomas E. Herrera",
+          "item": "Driver record check",
+          "category": "CRIMINAL",
+          "status": "COMPLETE",
+          "completedDate": "2026-05-15",
+          "documentUrl": null
+        },
+        {
+          "caseId": "SUBJ-006",
+          "subjectName": "Renee L. Calloway",
+          "item": "Driver record check",
+          "category": "CRIMINAL",
+          "status": "COMPLETE",
+          "completedDate": "2026-05-15",
+          "documentUrl": null
+        },
+        {
+          "caseId": "SUBJ-007",
+          "subjectName": "Victor A. Osei",
+          "item": "Driver record check",
+          "category": "CRIMINAL",
+          "status": "COMPLETE",
+          "completedDate": "2026-05-15",
+          "documentUrl": null
+        },
+        {
+          "caseId": "SUBJ-008",
+          "subjectName": "Hannah J. Whitmore",
+          "item": "Driver record check",
+          "category": "CRIMINAL",
+          "status": "COMPLETE",
+          "completedDate": "2026-05-15",
+          "documentUrl": null
+        },
+        {
+          "caseId": "SUBJ-009",
+          "subjectName": "Derek S. Nakamura",
+          "item": "Driver record check",
+          "category": "CRIMINAL",
+          "status": "COMPLETE",
+          "completedDate": "2026-05-15",
+          "documentUrl": null
+        },
+        {
+          "caseId": "SUBJ-010",
+          "subjectName": "Fatima R. Aziz",
+          "item": "Driver record check",
+          "category": "CRIMINAL",
+          "status": "COMPLETE",
+          "completedDate": "2026-05-15",
+          "documentUrl": null
+        },
+        {
+          "caseId": "SUBJ-011",
+          "subjectName": "Gregory P. Stone",
+          "item": "Driver record check",
+          "category": "CRIMINAL",
+          "status": "COMPLETE",
+          "completedDate": "2026-05-15",
+          "documentUrl": null
+        },
+        {
+          "caseId": "SUBJ-012",
+          "subjectName": "Monica V. Reyes",
+          "item": "Driver record check",
+          "category": "CRIMINAL",
+          "status": "COMPLETE",
+          "completedDate": "2026-05-15",
+          "documentUrl": null
+        },
+        {
+          "caseId": "SUBJ-013",
+          "subjectName": "Samuel K. Boateng",
+          "item": "Driver record check",
+          "category": "CRIMINAL",
+          "status": "COMPLETE",
+          "completedDate": "2026-05-15",
+          "documentUrl": null
+        },
+        {
+          "caseId": "SUBJ-014",
+          "subjectName": "Laura D. Ferris",
+          "item": "Driver record check",
+          "category": "CRIMINAL",
+          "status": "COMPLETE",
+          "completedDate": "2026-05-15",
+          "documentUrl": null
+        },
+        {
+          "caseId": "SUBJ-015",
+          "subjectName": "Ethan C. Marsh",
+          "item": "Driver record check",
+          "category": "CRIMINAL",
+          "status": "COMPLETE",
+          "completedDate": "2026-05-15",
+          "documentUrl": null
+        }
+      ],
       "documents": []
     },
     "irs": {
       "alertIds": [],
-      "recordChecks": [],
+      "recordChecks": [
+        {
+          "caseId": "SUBJ-006",
+          "subjectName": "Renee L. Calloway",
+          "item": "Tax compliance check",
+          "category": "FINANCIAL",
+          "status": "COMPLETE",
+          "completedDate": "2026-05-20",
+          "documentUrl": null
+        },
+        {
+          "caseId": "SUBJ-007",
+          "subjectName": "Victor A. Osei",
+          "item": "Tax compliance check",
+          "category": "FINANCIAL",
+          "status": "COMPLETE",
+          "completedDate": "2026-05-20",
+          "documentUrl": null
+        },
+        {
+          "caseId": "SUBJ-008",
+          "subjectName": "Hannah J. Whitmore",
+          "item": "Tax compliance check",
+          "category": "FINANCIAL",
+          "status": "COMPLETE",
+          "completedDate": "2026-05-20",
+          "documentUrl": null
+        },
+        {
+          "caseId": "SUBJ-009",
+          "subjectName": "Derek S. Nakamura",
+          "item": "Tax compliance check",
+          "category": "FINANCIAL",
+          "status": "COMPLETE",
+          "completedDate": "2026-05-20",
+          "documentUrl": null
+        },
+        {
+          "caseId": "SUBJ-010",
+          "subjectName": "Fatima R. Aziz",
+          "item": "Tax compliance check",
+          "category": "FINANCIAL",
+          "status": "COMPLETE",
+          "completedDate": "2026-05-20",
+          "documentUrl": null
+        },
+        {
+          "caseId": "SUBJ-011",
+          "subjectName": "Gregory P. Stone",
+          "item": "Tax compliance check",
+          "category": "FINANCIAL",
+          "status": "COMPLETE",
+          "completedDate": "2026-05-20",
+          "documentUrl": null
+        },
+        {
+          "caseId": "SUBJ-012",
+          "subjectName": "Monica V. Reyes",
+          "item": "Tax compliance check",
+          "category": "FINANCIAL",
+          "status": "COMPLETE",
+          "completedDate": "2026-05-20",
+          "documentUrl": null
+        },
+        {
+          "caseId": "SUBJ-013",
+          "subjectName": "Samuel K. Boateng",
+          "item": "Tax compliance check",
+          "category": "FINANCIAL",
+          "status": "COMPLETE",
+          "completedDate": "2026-05-20",
+          "documentUrl": null
+        },
+        {
+          "caseId": "SUBJ-014",
+          "subjectName": "Laura D. Ferris",
+          "item": "Tax compliance check",
+          "category": "FINANCIAL",
+          "status": "COMPLETE",
+          "completedDate": "2026-05-20",
+          "documentUrl": null
+        },
+        {
+          "caseId": "SUBJ-015",
+          "subjectName": "Ethan C. Marsh",
+          "item": "Tax compliance check",
+          "category": "FINANCIAL",
+          "status": "COMPLETE",
+          "completedDate": "2026-05-20",
+          "documentUrl": null
+        }
+      ],
       "documents": []
     },
     "sead5": {
       "alertIds": [],
-      "recordChecks": [],
+      "recordChecks": [
+        {
+          "caseId": "SUBJ-004",
+          "subjectName": "Alicia M. Grant",
+          "item": "Social media review (PAEI)",
+          "category": "SECURITY",
+          "status": "COMPLETE",
+          "completedDate": "2026-05-25",
+          "documentUrl": null
+        },
+        {
+          "caseId": "SUBJ-007",
+          "subjectName": "Victor A. Osei",
+          "item": "Social media review (PAEI)",
+          "category": "SECURITY",
+          "status": "COMPLETE",
+          "completedDate": "2026-05-25",
+          "documentUrl": null
+        },
+        {
+          "caseId": "SUBJ-009",
+          "subjectName": "Derek S. Nakamura",
+          "item": "Social media review (PAEI)",
+          "category": "SECURITY",
+          "status": "COMPLETE",
+          "completedDate": "2026-05-25",
+          "documentUrl": null
+        },
+        {
+          "caseId": "SUBJ-010",
+          "subjectName": "Fatima R. Aziz",
+          "item": "Social media review (PAEI)",
+          "category": "SECURITY",
+          "status": "COMPLETE",
+          "completedDate": "2026-05-25",
+          "documentUrl": null
+        },
+        {
+          "caseId": "SUBJ-013",
+          "subjectName": "Samuel K. Boateng",
+          "item": "Social media review (PAEI)",
+          "category": "SECURITY",
+          "status": "COMPLETE",
+          "completedDate": "2026-05-25",
+          "documentUrl": null
+        }
+      ],
       "documents": []
     },
     "diss": {

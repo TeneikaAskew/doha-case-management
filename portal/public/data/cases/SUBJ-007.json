@@ -211,7 +211,7 @@
         "item": "Credit check",
         "category": "FINANCIAL",
         "status": "COMPLETE",
-        "provider": "TransUnion",
+        "provider": "Equifax",
         "requestedDate": "2026-05-02",
         "completedDate": "2026-05-15",
         "scope": "Tri-bureau credit pull",
@@ -227,6 +227,39 @@
         "completedDate": null,
         "scope": "Tier-scoped interviews and local records",
         "resultSummary": "Fieldwork in progress.",
+        "documentUrl": null
+      },
+      {
+        "item": "Driver record check",
+        "category": "CRIMINAL",
+        "status": "COMPLETE",
+        "provider": "DMV records",
+        "requestedDate": "2026-05-02",
+        "completedDate": "2026-05-15",
+        "scope": "State driver history and license status",
+        "resultSummary": "Valid license; no violations on record.",
+        "documentUrl": null
+      },
+      {
+        "item": "Tax compliance check",
+        "category": "FINANCIAL",
+        "status": "COMPLETE",
+        "provider": "IRS / tax records",
+        "requestedDate": "2026-05-02",
+        "completedDate": "2026-05-20",
+        "scope": "Federal return filing status and lien search",
+        "resultSummary": "Returns filed; no liens or levies.",
+        "documentUrl": null
+      },
+      {
+        "item": "Social media review (PAEI)",
+        "category": "SECURITY",
+        "status": "COMPLETE",
+        "provider": "SEAD-5 Social media (PAEI)",
+        "requestedDate": "2026-05-02",
+        "completedDate": "2026-05-25",
+        "scope": "Publicly available electronic information sweep",
+        "resultSummary": "No publicly available adverse information.",
         "documentUrl": null
       },
       {

@@ -340,5 +340,6 @@ def test_provider_activity_file(out):
                 assert (out_dir / rc.documentUrl).is_file()
         for d in act.documents:
             assert (out_dir / d.url).is_file()
-    # investigation-only providers still deliver record checks somewhere
-    assert parsed.providers["transunion"].recordChecks
+    # every provider has demo activity: alerts, record checks, or documents
+    for pid, act in parsed.providers.items():
+        assert act.alertIds or act.recordChecks or act.documents,             f"{pid} has no activity to show"
