@@ -10,20 +10,31 @@ beforeEach(() => {
 describe('Landing page', () => {
   it('shows the landing to signed-out visitors, not the SSO card or app shell', () => {
     render(<App />);
-    expect(screen.getByRole('heading',
-      { name: 'One Person. One File. Every Fact Sourced.' })).toBeInTheDocument();
+    const heading = screen.getByRole('heading', { level: 1 });
+    expect(heading.textContent).toMatch(/with confidence/i);
     expect(screen.queryByText('About This Demo')).not.toBeInTheDocument();
-    expect(screen.queryByRole('link', { name: 'Subjects' })).not.toBeInTheDocument();
+    // "Subjects" also appears as a footer nav-column link on the landing page
+    // itself, so check for the app shell's own header brand instead.
+    expect(screen.queryByText('Personnel Vetting')).not.toBeInTheDocument();
   });
 
-  it('renders stats, capabilities, personas, and the demo disclaimer', () => {
+  it('renders stats, John Smith, and the demo disclaimer', () => {
     render(<App />);
+    expect(screen.getByText('Vetting at scale')).toBeInTheDocument();
     expect(screen.getByText('33,610')).toBeInTheDocument();
-    expect(screen.getByText('Real DOHA Decisions')).toBeInTheDocument();
-    expect(screen.getByText('Whole-Person File')).toBeInTheDocument();
-    expect(screen.getByText('AI Assists. People Decide.')).toBeInTheDocument();
-    expect(screen.getByText('Adjudicator')).toBeInTheDocument();
+    expect(screen.getByText('13')).toBeInTheDocument();
+    expect(screen.getByText('12')).toBeInTheDocument();
+    expect(screen.getByText('John Smith')).toBeInTheDocument();
     expect(screen.getByText(/all identities are fictional/i)).toBeInTheDocument();
+  });
+
+  it('persona tabs switch panels', () => {
+    render(<App />);
+    // Investigator panel shows by default
+    expect(screen.getByText(/coverage that doesn't make you choose/i)).toBeInTheDocument();
+    fireEvent.click(screen.getByRole('tab', { name: 'Analyst' }));
+    expect(screen.getByText('Alerts that arrive validated, not just detected')).toBeInTheDocument();
+    expect(screen.queryByText(/coverage that doesn't make you choose/i)).not.toBeInTheDocument();
   });
 
   it('Sign In reveals the SSO card and Back returns to the landing', () => {
@@ -31,14 +42,16 @@ describe('Landing page', () => {
     fireEvent.click(screen.getAllByRole('button', { name: /sign in/i })[0]);
     expect(screen.getByText('About This Demo')).toBeInTheDocument();
     fireEvent.click(screen.getByRole('button', { name: /back to overview/i }));
-    expect(screen.getByRole('heading',
-      { name: 'One Person. One File. Every Fact Sourced.' })).toBeInTheDocument();
+    const heading = screen.getByRole('heading', { level: 1 });
+    expect(heading.textContent).toMatch(/with confidence/i);
   });
 
   it('signed-in sessions bypass the landing entirely', () => {
     localStorage.setItem('demo.session', 'active');
     render(<App />);
-    expect(screen.queryByRole('heading',
-      { name: 'One Person. One File. Every Fact Sourced.' })).not.toBeInTheDocument();
+    const headings = screen.queryAllByRole('heading', { level: 1 })
+      .filter((h) => /with confidence/i.test(h.textContent));
+    expect(headings).toHaveLength(0);
+    expect(screen.queryByText('About This Demo')).not.toBeInTheDocument();
   });
 });

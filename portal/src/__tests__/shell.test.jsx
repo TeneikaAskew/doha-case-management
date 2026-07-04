@@ -49,8 +49,7 @@ describe('AppShell', () => {
   it('signs out via the header button and returns to the landing page', () => {
     render(<App />);
     fireEvent.click(screen.getByRole('button', { name: 'Sign out' }));
-    expect(screen.getByRole('heading',
-      { name: 'One Person. One File. Every Fact Sourced.' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 1 }).textContent).toMatch(/with confidence/i);
     expect(localStorage.getItem('demo.session')).toBeNull();
   });
 });

@@ -2,6 +2,8 @@ import { test, expect } from '@playwright/test';
 
 test('every page loads and the hero case walks through all tabs', async ({ page }) => {
   await page.goto('/#/');
+  await expect(page.getByRole('heading', { level: 1 })).toContainText('with confidence');
+  await page.getByRole('button', { name: 'Sign in to explore' }).first().click();
   await expect(page.getByText('About This Demo')).toBeVisible();
   await expect(page.getByLabel('Access password')).toBeVisible();
   const password = process.env.DEMO_ACCESS_PASSWORD; // from portal/.env, gitignored
@@ -65,5 +67,5 @@ test('every page loads and the hero case walks through all tabs', async ({ page 
   await expect(page.getByRole('heading', { name: 'Analytics' })).toBeVisible();
 
   await page.getByRole('button', { name: 'Sign out' }).click();
-  await expect(page.getByText('About This Demo')).toBeVisible();
+  await expect(page.getByRole('heading', { level: 1 })).toContainText('with confidence');
 });

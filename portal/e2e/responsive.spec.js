@@ -47,15 +47,23 @@ for (const vp of VIEWPORTS) {
   });
 }
 
-test('sign-in screen has no horizontal overflow at phone width', async ({ browser }) => {
+test('landing and sign-in screens have no horizontal overflow at phone width', async ({ browser }) => {
   const context = await browser.newContext({ viewport: { width: 375, height: 812 } });
   const page = await context.newPage();
   await page.goto('/');
-  await page.waitForSelector('.signin-card');
-  const overflow = await page.evaluate(() => {
+  await page.waitForSelector('.landing');
+  let overflow = await page.evaluate(() => {
     const doc = document.documentElement;
     return doc.scrollWidth - doc.clientWidth;
   });
-  expect(overflow).toBeLessThanOrEqual(1);
+  expect(overflow, 'landing page overflows').toBeLessThanOrEqual(1);
+
+  await page.getByRole('button', { name: 'Sign in' }).first().click();
+  await page.waitForSelector('.signin-card');
+  overflow = await page.evaluate(() => {
+    const doc = document.documentElement;
+    return doc.scrollWidth - doc.clientWidth;
+  });
+  expect(overflow, 'sign-in screen overflows').toBeLessThanOrEqual(1);
   await context.close();
 });
