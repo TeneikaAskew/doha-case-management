@@ -343,3 +343,17 @@ def test_provider_activity_file(out):
     # every provider has demo activity: alerts, record checks, or documents
     for pid, act in parsed.providers.items():
         assert act.alertIds or act.recordChecks or act.documents,             f"{pid} has no activity to show"
+
+
+def test_provider_health_fields(out):
+    out_dir, _ = out
+    providers = schemas.ProvidersFile.model_validate(
+        json.loads((out_dir / "providers.json").read_text(encoding="utf-8"))).providers
+    for p in providers:
+        assert 90.0 <= p.uptimePct <= 100.0, f"{p.id}: uptime {p.uptimePct}"
+        assert p.syncCadence, f"{p.id}: blank syncCadence"
+        assert p.recordsGrowthQtr.startswith("+"), f"{p.id}: growth format"
+        assert 0.0 <= p.matchErrorRate <= 10.0, f"{p.id}: error rate"
+    degraded = next(p for p in providers if p.status == "DEGRADED")
+    healthy_min = min(p.uptimePct for p in providers if p.status == "HEALTHY")
+    assert degraded.uptimePct < healthy_min, "degraded provider should have worst uptime"

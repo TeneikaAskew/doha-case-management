@@ -43,6 +43,22 @@ PROVIDERS = [
      ["INVESTIGATION", "CV"], ["E"], "HEALTHY", 4211809),
 ]
 
+# providerId -> (uptimePct, syncCadence, recordsGrowthQtr, matchErrorRate)
+PROVIDER_HEALTH = {
+    "fbi-cjis": (99.98, "Continuous (Rap Back push)", "+0.6% this quarter", 0.3),
+    "equifax": (99.95, "Nightly 06:00Z", "+0.9% this quarter", 0.7),
+    "experian": (99.93, "Nightly 06:00Z", "+0.8% this quarter", 0.9),
+    "transunion": (99.97, "Nightly 06:00Z", "+1.1% this quarter", 0.8),
+    "lexisnexis": (99.9, "Nightly 04:30Z", "+1.4% this quarter", 1.2),
+    "fincen": (99.99, "Daily 12:00Z", "+2.3% this quarter", 0.2),
+    "cbp-i94": (99.96, "Hourly", "+1.8% this quarter", 0.5),
+    "courts": (97.1, "Weekly Mon 06:00Z", "+0.4% this quarter", 3.6),
+    "dmv": (99.88, "Nightly 05:00Z", "+0.5% this quarter", 1.1),
+    "irs": (99.94, "Weekly Fri 06:00Z", "+0.3% this quarter", 0.6),
+    "sead5": (99.8, "On request", "+4.2% this quarter", 2.4),
+    "diss": (99.99, "Continuous (event push)", "+1.0% this quarter", 0.4),
+}
+
 TIMELINESS = [("Initiation", 18, 25), ("Investigation", 73, 90),
               ("Adjudication", 32, 30), ("CV alert triage", 4, 7)]
 
@@ -176,7 +192,10 @@ def main(out_dir: Path = DEFAULT_OUT) -> dict:
 
     providers = [schemas.ProviderInfo(
         id=pid, name=name, category=cat, usedIn=used, guidelines=gls,
-        status=status, recordCount=count, lastSync=f"{TODAY}T06:00:00Z")
+        status=status, recordCount=count, lastSync=f"{TODAY}T06:00:00Z",
+        uptimePct=PROVIDER_HEALTH[pid][0], syncCadence=PROVIDER_HEALTH[pid][1],
+        recordsGrowthQtr=PROVIDER_HEALTH[pid][2],
+        matchErrorRate=PROVIDER_HEALTH[pid][3])
         for pid, name, cat, used, gls, status, count in PROVIDERS]
     dump(schemas.ProvidersFile(providers=providers).model_dump(), out_dir / "providers.json")
 

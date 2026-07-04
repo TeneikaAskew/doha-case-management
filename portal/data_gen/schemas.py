@@ -323,6 +323,10 @@ class ProviderInfo(BaseModel):
     status: Literal["HEALTHY", "DEGRADED", "OFFLINE"]
     recordCount: int = Field(ge=0)
     lastSync: str
+    uptimePct: float = Field(ge=0.0, le=100.0)
+    syncCadence: str          # e.g. "Nightly 06:00Z"
+    recordsGrowthQtr: str     # e.g. "+1.1% this quarter"
+    matchErrorRate: float = Field(ge=0.0, le=100.0)  # identifier-mismatch percent
 
 
 class YearStat(BaseModel):

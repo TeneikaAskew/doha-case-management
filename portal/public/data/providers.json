@@ -16,7 +16,11 @@
       ],
       "status": "HEALTHY",
       "recordCount": 84210556,
-      "lastSync": "2026-07-02T06:00:00Z"
+      "lastSync": "2026-07-02T06:00:00Z",
+      "uptimePct": 99.98,
+      "syncCadence": "Continuous (Rap Back push)",
+      "recordsGrowthQtr": "+0.6% this quarter",
+      "matchErrorRate": 0.3
     },
     {
       "id": "equifax",
@@ -31,7 +35,11 @@
       ],
       "status": "HEALTHY",
       "recordCount": 22483901,
-      "lastSync": "2026-07-02T06:00:00Z"
+      "lastSync": "2026-07-02T06:00:00Z",
+      "uptimePct": 99.95,
+      "syncCadence": "Nightly 06:00Z",
+      "recordsGrowthQtr": "+0.9% this quarter",
+      "matchErrorRate": 0.7
     },
     {
       "id": "experian",
@@ -45,7 +53,11 @@
       ],
       "status": "HEALTHY",
       "recordCount": 21077344,
-      "lastSync": "2026-07-02T06:00:00Z"
+      "lastSync": "2026-07-02T06:00:00Z",
+      "uptimePct": 99.93,
+      "syncCadence": "Nightly 06:00Z",
+      "recordsGrowthQtr": "+0.8% this quarter",
+      "matchErrorRate": 0.9
     },
     {
       "id": "transunion",
@@ -60,7 +72,11 @@
       ],
       "status": "HEALTHY",
       "recordCount": 23910287,
-      "lastSync": "2026-07-02T06:00:00Z"
+      "lastSync": "2026-07-02T06:00:00Z",
+      "uptimePct": 99.97,
+      "syncCadence": "Nightly 06:00Z",
+      "recordsGrowthQtr": "+1.1% this quarter",
+      "matchErrorRate": 0.8
     },
     {
       "id": "lexisnexis",
@@ -77,7 +93,11 @@
       ],
       "status": "HEALTHY",
       "recordCount": 156733208,
-      "lastSync": "2026-07-02T06:00:00Z"
+      "lastSync": "2026-07-02T06:00:00Z",
+      "uptimePct": 99.9,
+      "syncCadence": "Nightly 04:30Z",
+      "recordsGrowthQtr": "+1.4% this quarter",
+      "matchErrorRate": 1.2
     },
     {
       "id": "fincen",
@@ -92,7 +112,11 @@
       ],
       "status": "HEALTHY",
       "recordCount": 3402118,
-      "lastSync": "2026-07-02T06:00:00Z"
+      "lastSync": "2026-07-02T06:00:00Z",
+      "uptimePct": 99.99,
+      "syncCadence": "Daily 12:00Z",
+      "recordsGrowthQtr": "+2.3% this quarter",
+      "matchErrorRate": 0.2
     },
     {
       "id": "cbp-i94",
@@ -109,7 +133,11 @@
       ],
       "status": "HEALTHY",
       "recordCount": 48120022,
-      "lastSync": "2026-07-02T06:00:00Z"
+      "lastSync": "2026-07-02T06:00:00Z",
+      "uptimePct": 99.96,
+      "syncCadence": "Hourly",
+      "recordsGrowthQtr": "+1.8% this quarter",
+      "matchErrorRate": 0.5
     },
     {
       "id": "courts",
@@ -127,7 +155,11 @@
       ],
       "status": "DEGRADED",
       "recordCount": 9822411,
-      "lastSync": "2026-07-02T06:00:00Z"
+      "lastSync": "2026-07-02T06:00:00Z",
+      "uptimePct": 97.1,
+      "syncCadence": "Weekly Mon 06:00Z",
+      "recordsGrowthQtr": "+0.4% this quarter",
+      "matchErrorRate": 3.6
     },
     {
       "id": "dmv",
@@ -142,7 +174,11 @@
       ],
       "status": "HEALTHY",
       "recordCount": 61208443,
-      "lastSync": "2026-07-02T06:00:00Z"
+      "lastSync": "2026-07-02T06:00:00Z",
+      "uptimePct": 99.88,
+      "syncCadence": "Nightly 05:00Z",
+      "recordsGrowthQtr": "+0.5% this quarter",
+      "matchErrorRate": 1.1
     },
     {
       "id": "irs",
@@ -156,7 +192,11 @@
       ],
       "status": "HEALTHY",
       "recordCount": 1120733,
-      "lastSync": "2026-07-02T06:00:00Z"
+      "lastSync": "2026-07-02T06:00:00Z",
+      "uptimePct": 99.94,
+      "syncCadence": "Weekly Fri 06:00Z",
+      "recordsGrowthQtr": "+0.3% this quarter",
+      "matchErrorRate": 0.6
     },
     {
       "id": "sead5",
@@ -173,7 +213,11 @@
       ],
       "status": "HEALTHY",
       "recordCount": 448210,
-      "lastSync": "2026-07-02T06:00:00Z"
+      "lastSync": "2026-07-02T06:00:00Z",
+      "uptimePct": 99.8,
+      "syncCadence": "On request",
+      "recordsGrowthQtr": "+4.2% this quarter",
+      "matchErrorRate": 2.4
     },
     {
       "id": "diss",
@@ -188,7 +232,11 @@
       ],
       "status": "HEALTHY",
       "recordCount": 4211809,
-      "lastSync": "2026-07-02T06:00:00Z"
+      "lastSync": "2026-07-02T06:00:00Z",
+      "uptimePct": 99.99,
+      "syncCadence": "Continuous (event push)",
+      "recordsGrowthQtr": "+1.0% this quarter",
+      "matchErrorRate": 0.4
     }
   ]
 }
