@@ -4,44 +4,60 @@ import { useSession } from '../state/SessionContext.jsx';
 import { PASSWORD_SHA256S, sha256Hex } from '../accessControl.js';
 import { REFS } from '../references.js';
 
-const REFERENCES = [
-  ['DOHA Industrial Security Clearance Decisions', REFS.DOHA_DECISIONS,
-   'Data source: real published hearing and Appeal Board decisions power the '
-   + 'precedent citations, outcome analytics, and sample decision document'],
-  ['Defense Office of Hearings and Appeals (DOHA)', REFS.DOHA,
-   'The DoD appeals body whose published decisions this demo draws from'],
-  ['DOE Office of Hearings and Appeals - Security Cases', REFS.DOE_OHA_CASES,
-   'Department of Energy clearance decisions (10 CFR 710), a parallel corpus'],
-  ['SEAD 4 - National Security Adjudicative Guidelines', REFS.SEAD4,
-   'The 13 guidelines (A-M) and whole-person factors used in case analysis'],
-  ['SEAD 3 - Reporting Requirements', REFS.SEAD3,
-   'Unofficial foreign-travel reporting behind the travel alerts'],
-  ['SEAD 6 - Continuous Evaluation', REFS.SEAD6,
-   'Policy basis for the continuous-vetting workflow'],
-  ['DCSA Background Investigations', REFS.FIS,
-   'Tiered investigation coverage reflected in record checks'],
-  ['DCSA Continuous Vetting', REFS.DCSA_CV,
-   'CV enrollment and alert categories'],
-  ['DCSA Personnel Vetting', REFS.DCSA_PV,
-   'Mission context and terminology'],
-  ['Standard Form 86 (OPM)', REFS.SF86,
-   'Subject self-report sections compared against record checks'],
-  ['SEAD 8 - Temporary Eligibility', REFS.SEAD8,
-   'Interim eligibility shown on in-process subjects'],
-  ['Federal Personnel Vetting Guidelines', REFS.FPVG,
-   'Federal vetting standards and terminology'],
-  ['Trusted Workforce 2.0 Policy Index', REFS.TW_INDEX,
-   'Policy framework for the modernized vetting model'],
-  ['DoDI 5200.02 - DoD Personnel Security Program', REFS.DODI_520002,
-   'Program-level requirements for personnel security'],
-  ['DoD Suitability Guide for Employees', REFS.SUITABILITY,
-   'Suitability adjudication concepts'],
-  ['CDSE Training Toolkits', REFS.CDSE,
-   'Security training resources informing workflow depictions'],
-  ['CDSE Personnel Vetting Toolkit', REFS.CDSE_PV,
-   'Vetting policy and procedure references'],
-  ['CDSE Adjudicator Toolkit', REFS.CDSE_ADJ,
-   'Adjudicator-facing resources behind the adjudication tab'],
+const REFERENCE_GROUPS = [
+  ['Data Sources', [
+    ['DOHA Industrial Security Clearance Decisions', REFS.DOHA_DECISIONS,
+     'Data source: real published hearing and Appeal Board decisions power the '
+     + 'precedent citations, outcome analytics, and sample decision document'],
+    ['Defense Office of Hearings and Appeals (DOHA)', REFS.DOHA,
+     'The DoD appeals body whose published decisions this demo draws from'],
+    ['DOE Office of Hearings and Appeals - Security Cases', REFS.DOE_OHA_CASES,
+     'Department of Energy clearance decisions (10 CFR 710), a parallel corpus'],
+  ]],
+  ['Policy Directives', [
+    ['SEAD 3 - Reporting Requirements', REFS.SEAD3,
+     'Self-reporting obligations behind the unreported-travel alerts'],
+    ['SEAD 4 - National Security Adjudicative Guidelines', REFS.SEAD4,
+     'The 13 guidelines (A-M) and whole-person factors used in case analysis'],
+    ['SEAD 6 - Continuous Evaluation', REFS.SEAD6,
+     'Policy basis for the continuous-vetting workflow'],
+    ['SEAD 8 - Temporary Eligibility', REFS.SEAD8,
+     'Interim eligibility shown on in-process subjects'],
+    ['Federal Personnel Vetting Guidelines', REFS.FPVG,
+     'Federal vetting standards and terminology'],
+    ['Trusted Workforce 2.0 Policy Index', REFS.TW_INDEX,
+     'Policy framework for the modernized vetting model'],
+    ['DoDI 5200.02 - DoD Personnel Security Program', REFS.DODI_520002,
+     'Program-level requirements for personnel security'],
+    ['DoD Suitability Guide for Employees', REFS.SUITABILITY,
+     'Suitability adjudication concepts'],
+  ]],
+  ['Standard Forms (OPM)', [
+    ['Federal Investigation Forms (index)', REFS.OPM_FORMS,
+     'All OPM investigative questionnaires and release forms'],
+    ['SF-85 - Questionnaire for Non-Sensitive Positions', REFS.SF85,
+     'Self-report form for T1 low-risk positions'],
+    ['SF-85P - Questionnaire for Public Trust Positions', REFS.SF85P,
+     'Self-report form for T2/T4 public trust positions'],
+    ['SF-86 - Questionnaire for National Security Positions', REFS.SF86,
+     'Subject self-report sections compared against record checks (T3/T5)'],
+  ]],
+  ['DCSA Mission', [
+    ['DCSA Personnel Vetting', REFS.DCSA_PV,
+     'Mission context and terminology'],
+    ['DCSA Background Investigations', REFS.FIS,
+     'Tiered investigation coverage reflected in record checks'],
+    ['DCSA Continuous Vetting', REFS.DCSA_CV,
+     'CV enrollment and alert categories'],
+  ]],
+  ['Training', [
+    ['CDSE Training Toolkits', REFS.CDSE,
+     'Security training resources informing workflow depictions'],
+    ['CDSE Personnel Vetting Toolkit', REFS.CDSE_PV,
+     'Vetting policy and procedure references'],
+    ['CDSE Adjudicator Toolkit', REFS.CDSE_ADJ,
+     'Adjudicator-facing resources behind the adjudication tab'],
+  ]],
 ];
 
 export default function SignIn() {
@@ -125,14 +141,19 @@ export default function SignIn() {
             <thead>
               <tr><th>Resource</th><th>Role in this demo</th></tr>
             </thead>
-            <tbody>
-              {REFERENCES.map(([name, url, role]) => (
-                <tr key={name}>
-                  <td><a href={url} target="_blank" rel="noreferrer">{name}</a></td>
-                  <td>{role}</td>
+            {REFERENCE_GROUPS.map(([group, rows]) => (
+              <tbody key={group}>
+                <tr className="signin-refs-group">
+                  <th colSpan={2}>{group}</th>
                 </tr>
-              ))}
-            </tbody>
+                {rows.map(([name, url, role]) => (
+                  <tr key={name}>
+                    <td><a href={url} target="_blank" rel="noreferrer">{name}</a></td>
+                    <td>{role}</td>
+                  </tr>
+                ))}
+              </tbody>
+            ))}
           </table>
         </div>
       </div>

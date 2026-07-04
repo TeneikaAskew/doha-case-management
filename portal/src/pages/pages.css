@@ -202,3 +202,6 @@
   .legend-guidelines .legend-row { grid-template-columns: 44px 1fr;
     align-items: center; }
 }
+.signin-refs-group th { padding: var(--space-3) 0 var(--space-1); text-align: left;
+  font-size: var(--font-size-xs); font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.6px; color: var(--dcsa-navy); border-bottom: none; }
