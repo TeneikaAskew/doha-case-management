@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FiShield } from 'react-icons/fi';
+import { FiShield, FiArrowLeft } from 'react-icons/fi';
 import { useSession } from '../state/SessionContext.jsx';
 import { PASSWORD_SHA256S, sha256Hex } from '../accessControl.js';
 import { REFS } from '../references.js';
@@ -92,7 +92,7 @@ const REFERENCE_GROUPS = [
   ]],
 ];
 
-export default function SignIn() {
+export default function SignIn({ onBack }) {
   const { signIn } = useSession();
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
@@ -109,6 +109,11 @@ export default function SignIn() {
   return (
     <div className="signin-screen">
       <div className="signin-card">
+        {onBack && (
+          <button type="button" className="btn btn-ghost signin-back" onClick={onBack}>
+            <FiArrowLeft aria-hidden="true" /> Back to overview
+          </button>
+        )}
         <div className="signin-header">
           <img className="signin-seal" src={`${import.meta.env.BASE_URL}dcsa-seal.png`}
             alt="DCSA seal" />

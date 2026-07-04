@@ -18,9 +18,13 @@ beforeEach(() => {
 const typePassword = (value) =>
   fireEvent.change(screen.getByLabelText('Access password'), { target: { value } });
 
+const openSignIn = () =>
+  fireEvent.click(screen.getAllByRole('button', { name: /sign in/i })[0]);
+
 describe('Sign-in gate', () => {
   it('renders the consent banner and password field when signed out, with no app shell', () => {
     render(<App />);
+    openSignIn();
     expect(screen.getByText('About This Demo')).toBeInTheDocument();
     expect(screen.getByLabelText('Access password')).toBeInTheDocument();
     expect(screen.queryByRole('link', { name: 'Subjects' })).not.toBeInTheDocument();
@@ -29,6 +33,7 @@ describe('Sign-in gate', () => {
 
   it('rejects a wrong password and stays gated', async () => {
     render(<App />);
+    openSignIn();
     typePassword('wrong-password');
     fireEvent.click(screen.getByRole('button', { name: /sign in with sso/i }));
     expect(await screen.findByRole('alert')).toHaveTextContent(/incorrect access password/i);
@@ -38,6 +43,7 @@ describe('Sign-in gate', () => {
 
   it('signs in with the correct password and persists the session', async () => {
     render(<App />);
+    openSignIn();
     typePassword('test-pass');
     fireEvent.click(screen.getByRole('button', { name: /sign in with sso/i }));
     expect(await screen.findByRole('link', { name: 'Subjects' })).toBeInTheDocument();

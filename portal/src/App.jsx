@@ -1,8 +1,10 @@
+import { useState, useEffect } from 'react';
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import { SessionProvider, useSession } from './state/SessionContext.jsx';
 import { PersonaProvider } from './state/PersonaContext.jsx';
 import { DemoProvider } from './state/DemoContext.jsx';
 import AppShell from './layouts/AppShell.jsx';
+import Landing from './pages/Landing.jsx';
 import SignIn from './pages/SignIn.jsx';
 import SubjectsHome from './pages/SubjectsHome.jsx';
 import Dashboard from './pages/Dashboard.jsx';
@@ -18,7 +20,17 @@ import './pages/pages.css';
 
 function Gate() {
   const { signedIn } = useSession();
-  if (!signedIn) return <SignIn />;
+  const [preAuthView, setPreAuthView] = useState('landing');
+  // Gate never unmounts, so reset the pre-auth view while signed in;
+  // signing out then always lands on the marketing page, not the SSO card.
+  useEffect(() => {
+    if (signedIn) setPreAuthView('landing');
+  }, [signedIn]);
+  if (!signedIn) {
+    return preAuthView === 'landing'
+      ? <Landing onSignIn={() => setPreAuthView('signin')} />
+      : <SignIn onBack={() => setPreAuthView('landing')} />;
+  }
   return (
     <PersonaProvider>
       <DemoProvider>

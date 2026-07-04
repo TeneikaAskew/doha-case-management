@@ -132,31 +132,30 @@ function AlertBody({ alert: a, state, isAnalyst, dispositionAlert }) {
         </div>
       </div>
 
-      {(a.documents || []).length > 0 && (
-        <>
+      {/* one row: workflow actions left, source documents right */}
+      {(isAnalyst && ALERT_TRANSITIONS[state].length > 0)
+        || (a.documents || []).length > 0 ? (
           <div className="cv-actions">
-            {a.documents.map((d) => (
-              <button key={d.url} type="button" className="btn btn-ghost"
-                onClick={() => setOpenDoc(openDoc === d.url ? null : d.url)}>
-                <FiFileText aria-hidden="true" /> Source document: {d.title}
+            {isAnalyst && ALERT_TRANSITIONS[state].map((next) => (
+              <button key={next} type="button"
+                className={next === 'CLOSED' ? 'btn btn-ghost' : 'btn btn-secondary'}
+                onClick={() => dispositionAlert(a.id, next, a.state)}>
+                {ALERT_ACTION_LABELS[next]}
               </button>
             ))}
+            {(a.documents || []).length > 0 && (
+              <div className="cv-doc-buttons">
+                {a.documents.map((d) => (
+                  <button key={d.url} type="button" className="btn btn-ghost"
+                    onClick={() => setOpenDoc(openDoc === d.url ? null : d.url)}>
+                    <FiFileText aria-hidden="true" /> Source document: {d.title}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
-          {openDoc && <DocumentViewer url={openDoc} />}
-        </>
-      )}
-
-      {isAnalyst && ALERT_TRANSITIONS[state].length > 0 && (
-        <div className="cv-actions">
-          {ALERT_TRANSITIONS[state].map((next) => (
-            <button key={next} type="button"
-              className={next === 'CLOSED' ? 'btn btn-ghost' : 'btn btn-secondary'}
-              onClick={() => dispositionAlert(a.id, next, a.state)}>
-              {ALERT_ACTION_LABELS[next]}
-            </button>
-          ))}
-        </div>
-      )}
+        ) : null}
+      {openDoc && <DocumentViewer url={openDoc} />}
 
       <AlertPhases alert={a} state={state} />
     </>

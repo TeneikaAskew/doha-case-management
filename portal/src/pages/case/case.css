@@ -217,7 +217,10 @@
 .cv-step { padding: var(--space-4); background: var(--bg-sidebar);
   border-radius: var(--radius-sm); }
 .cv-step h4 { margin-bottom: var(--space-3); }
-.cv-actions { display: flex; gap: var(--space-3); flex-wrap: wrap; }
+.cv-actions { display: flex; gap: var(--space-3); flex-wrap: wrap;
+  align-items: center; }
+.cv-doc-buttons { display: flex; gap: var(--space-3); flex-wrap: wrap;
+  margin-left: auto; }
 .identity-field { white-space: nowrap; font-weight: 600; }
 .identity-score { margin-left: var(--space-2); font-size: var(--font-size-xs);
   font-weight: 700; color: var(--text-muted); font-variant-numeric: tabular-nums; }

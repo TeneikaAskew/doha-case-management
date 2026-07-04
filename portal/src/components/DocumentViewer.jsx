@@ -55,7 +55,8 @@ function DohaDocumentView({ doc }) {
   const [summary, setSummary] = useState(null);
   const [showText, setShowText] = useState(false);
   const ruling = rulingSentence(doc);
-  const pdfSrc = doc.pdfUrl ? `${import.meta.env.BASE_URL}${doc.pdfUrl}` : null;
+  // pdfUrl is relative to the data root, like every fetchJson path
+  const pdfSrc = doc.pdfUrl ? `${import.meta.env.BASE_URL}data/${doc.pdfUrl}` : null;
 
   useEffect(() => {
     let mounted = true;

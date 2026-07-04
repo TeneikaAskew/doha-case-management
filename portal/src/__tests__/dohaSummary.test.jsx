@@ -77,7 +77,9 @@ describe('DohaDocumentView', () => {
     await screen.findByText('Guidelines at Issue');
     const obj = container.querySelector('object[type="application/pdf"]');
     expect(obj).toBeTruthy();
-    expect(obj.getAttribute('data')).toContain('documents/doha/pdf/23-01864.pdf');
+    // must carry the data/ prefix like every other public data asset, or the
+    // SPA fallback serves index.html into the pane
+    expect(obj.getAttribute('data')).toContain('data/documents/doha/pdf/23-01864.pdf');
     // extracted text still reachable behind a toggle
     fireEvent.click(screen.getByRole('button', { name: /extracted text/i }));
     expect(screen.getByText(/DEFENSE OFFICE OF HEARINGS AND APPEALS/))
