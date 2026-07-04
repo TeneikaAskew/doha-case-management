@@ -316,7 +316,9 @@
 .landing .footer h5 { color: var(--text-inverse); font-size: 11.5px; font-weight: 700;
   letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 18px; }
 .landing .footer ul { list-style: none; padding: 0; display: grid; gap: 12px; }
-.landing .footer a:hover { color: var(--text-inverse); }
+.landing .footer a:hover,
+.landing .footer .landing-section-link:hover { color: var(--text-inverse); }
+.landing .footer .landing-section-link { text-align: left; }
 .landing .footer-legal { margin-top: 56px; padding-top: 24px;
   border-top: 1px solid rgba(255,255,255,0.14); font-size: 13px;
   color: var(--l-ink-3); display: flex; justify-content: space-between;

@@ -54,4 +54,11 @@ describe('Landing page', () => {
     expect(headings).toHaveLength(0);
     expect(screen.queryByText('About This Demo')).not.toBeInTheDocument();
   });
+
+  it('footer section links never touch the URL hash the HashRouter reads', () => {
+    render(<App />);
+    window.location.hash = '#/';
+    fireEvent.click(screen.getByRole('button', { name: 'Case Queue' }));
+    expect(window.location.hash).toBe('#/');
+  });
 });

@@ -419,15 +419,15 @@ export default function Landing({ onSignIn }) {
             </div>
 
             {PERSONA_TABS.map((tab) => activeTab === tab.id && (
-              <div key={tab.id} id={tab.id} role="tabpanel" aria-labelledby={`tab-${tab.id}`}
-                className="panel active">
+              <Reveal key={tab.id} id={tab.id} role="tabpanel"
+                aria-labelledby={`tab-${tab.id}`} className="panel active">
                 <div>
                   <h2>{tab.headline}</h2>
                   <p>{tab.body}</p>
                   <SignInBtn onSignIn={onSignIn}>Sign in to explore</SignInBtn>
                 </div>
                 <PersonaAppShot id={tab.id} />
-              </div>
+              </Reveal>
             ))}
           </div>
         </section>
@@ -543,7 +543,7 @@ export default function Landing({ onSignIn }) {
                 <h5>{title}</h5>
                 <ul>
                   {links.map(([label, targetId]) => (
-                    <li key={label}><a href={`#${targetId}`}>{label}</a></li>
+                    <li key={label}><SectionLink id={targetId}>{label}</SectionLink></li>
                   ))}
                 </ul>
               </div>
