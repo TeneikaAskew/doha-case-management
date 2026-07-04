@@ -101,6 +101,15 @@ export const ADJ_ACTION_LABELS = {
   DENY: 'Deny / revoke',
 };
 
+// The demo's fixed reference date (matches data_gen TODAY).
+export const DEMO_TODAY = '2026-07-02';
+
+// Demo heuristic: which adjudicative guideline an alert category speaks to.
+export const ALERT_CATEGORY_GUIDELINE = {
+  CRIMINAL: 'J', FINANCIAL: 'F', CREDIT: 'F', FOREIGN_TRAVEL: 'B',
+  TERRORISM: 'A', ELIGIBILITY: 'E', SUITABILITY: 'E',
+};
+
 export function riskBand(score) {
   if (score >= 75) return 'high';
   if (score >= 40) return 'moderate';
