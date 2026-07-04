@@ -116,7 +116,7 @@ export default function ProviderDetail() {
         <StatusBadge variant={STATUS_VARIANT[p.status]}>{p.status}</StatusBadge>
       </div>
 
-      <div className="card">
+      <div className="card provider-stats">
         <KVGrid items={[
           { label: 'Records', value: p.recordCount.toLocaleString('en-US') },
           { label: 'Last sync', value: p.lastSync.slice(0, 10) },
