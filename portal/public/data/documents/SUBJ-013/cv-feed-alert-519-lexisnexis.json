@@ -1,0 +1,33 @@
+{
+  "docType": "PUBLIC_RECORD",
+  "title": "Public record refresh",
+  "reference": "Public record refresh, Fairfax County Circuit Court",
+  "provider": "LexisNexis",
+  "receivedDate": "2026-04-08",
+  "subjectId": "SUBJ-013",
+  "fields": [
+    {
+      "label": "Record type",
+      "value": "Public record refresh"
+    },
+    {
+      "label": "Court / source",
+      "value": "Fairfax County Circuit Court"
+    },
+    {
+      "label": "Filed",
+      "value": "2026-04-08"
+    },
+    {
+      "label": "Status",
+      "value": "Recorded"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Record detail",
+      "body": "Public record refresh - no new adverse items."
+    }
+  ],
+  "transactions": []
+}

@@ -10,6 +10,7 @@
       "state": "NEW",
       "receivedDate": "2026-06-20",
       "provider": "TransUnion",
+      "providerId": "transunion",
       "description": "New collection account reported: $12,400 past due (auto loan).",
       "identityMatch": {
         "confidence": 0.96,
@@ -92,6 +93,7 @@
       "state": "VALIDATED",
       "receivedDate": "2026-05-02",
       "provider": "CBP I-94",
+      "providerId": "cbp-i94",
       "description": "Unreported travel to Nigeria, 2026-04-11 to 2026-04-25.",
       "identityMatch": {
         "confidence": 0.99,
@@ -156,6 +158,285 @@
       ]
     },
     {
+      "id": "ALERT-504",
+      "subjectId": "SUBJ-001",
+      "subjectName": "Daniel R. Okafor",
+      "category": "FINANCIAL",
+      "severity": "LOW",
+      "priorityScore": 32,
+      "state": "NEW",
+      "receivedDate": "2025-09-25",
+      "provider": "TransUnion",
+      "providerId": "transunion",
+      "description": "30-day delinquency reported on retail account.",
+      "identityMatch": {
+        "confidence": 0.98,
+        "identifiers": [
+          {
+            "field": "Name",
+            "subjectValue": "Daniel R. Okafor",
+            "recordValue": "DANIEL R. OKAFOR",
+            "match": true,
+            "score": 0.95
+          },
+          {
+            "field": "DOB",
+            "subjectValue": "1988-03-14",
+            "recordValue": "1988-03-14",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "SSN",
+            "subjectValue": "923-04-4821",
+            "recordValue": "923-04-4821",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "Phone",
+            "subjectValue": "(703) 555-0142",
+            "recordValue": "703-555-0142",
+            "match": true,
+            "score": 0.98
+          },
+          {
+            "field": "Email",
+            "subjectValue": "d.okafor88@example.com",
+            "recordValue": "dokafor04@mailhost.example",
+            "match": false,
+            "score": 0.25
+          },
+          {
+            "field": "Address",
+            "subjectValue": "1427 Birch Hollow Ct, Manassas, VA 20109",
+            "recordValue": "7605 SUDLEY RD APT 214, MANASSAS, VA 20109",
+            "match": false,
+            "score": 0.57
+          }
+        ]
+      },
+      "threshold": {
+        "rule": "Delinquent debt > $500",
+        "met": true,
+        "detail": "Meets CV investigative-standard threshold."
+      },
+      "priorAdjudication": {
+        "previouslyAdjudicated": false,
+        "reference": null
+      },
+      "documents": [
+        {
+          "title": "CV monitoring extract",
+          "url": "documents/SUBJ-001/cv-feed-alert-504-transunion.json"
+        }
+      ],
+      "history": [
+        {
+          "state": "NEW",
+          "date": "2025-09-25",
+          "actor": "System",
+          "note": "Alert received via CV feed"
+        }
+      ]
+    },
+    {
+      "id": "ALERT-510",
+      "subjectId": "SUBJ-001",
+      "subjectName": "Daniel R. Okafor",
+      "category": "CRIMINAL",
+      "severity": "HIGH",
+      "priorityScore": 77,
+      "state": "ADJUDICATED",
+      "receivedDate": "2025-12-12",
+      "provider": "FBI CJIS / NCIC + Rap Back",
+      "providerId": "fbi-cjis",
+      "description": "Fingerprint-verified arrest notification - trespass.",
+      "identityMatch": {
+        "confidence": 0.94,
+        "identifiers": [
+          {
+            "field": "Name",
+            "subjectValue": "Daniel R. Okafor",
+            "recordValue": "DANIEL R. OKAFOR",
+            "match": true,
+            "score": 0.97
+          },
+          {
+            "field": "DOB",
+            "subjectValue": "1988-03-14",
+            "recordValue": "1988-03-14",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "SSN",
+            "subjectValue": "923-04-4821",
+            "recordValue": "923-04-4821",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "Phone",
+            "subjectValue": "(703) 555-0142",
+            "recordValue": "703-555-0142",
+            "match": true,
+            "score": 0.98
+          },
+          {
+            "field": "Email",
+            "subjectValue": "d.okafor88@example.com",
+            "recordValue": "dokafor10@mailhost.example",
+            "match": false,
+            "score": 0.33
+          },
+          {
+            "field": "Address",
+            "subjectValue": "1427 Birch Hollow Ct, Manassas, VA 20109",
+            "recordValue": "1427 BIRCH HOLLOW CT, MANASSAS, VA 20109-1070",
+            "match": true,
+            "score": 0.9
+          }
+        ]
+      },
+      "threshold": {
+        "rule": "Any arrest while CV-enrolled",
+        "met": true,
+        "detail": "Meets CV investigative-standard threshold."
+      },
+      "priorAdjudication": {
+        "previouslyAdjudicated": false,
+        "reference": null
+      },
+      "documents": [
+        {
+          "title": "NGI-RB-I-CJIS",
+          "url": "documents/SUBJ-001/cv-feed-alert-510-fbi-cjis.json"
+        }
+      ],
+      "history": [
+        {
+          "state": "NEW",
+          "date": "2025-12-12",
+          "actor": "System",
+          "note": "Alert received via CV feed"
+        },
+        {
+          "state": "IDENTITY_CONFIRMED",
+          "date": "2025-12-15",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "VALIDATED",
+          "date": "2025-12-20",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "REFERRED",
+          "date": "2025-12-26",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "ADJUDICATED",
+          "date": "2026-01-02",
+          "actor": "L. Ortiz (Adjudicator)",
+          "note": "No action - resolved on review"
+        }
+      ]
+    },
+    {
+      "id": "ALERT-516",
+      "subjectId": "SUBJ-001",
+      "subjectName": "Daniel R. Okafor",
+      "category": "FINANCIAL",
+      "severity": "HIGH",
+      "priorityScore": 76,
+      "state": "CLOSED",
+      "receivedDate": "2026-02-28",
+      "provider": "FinCEN / Treasury",
+      "providerId": "fincen",
+      "description": "SAR filed - wire activity inconsistent with stated income.",
+      "identityMatch": {
+        "confidence": 0.95,
+        "identifiers": [
+          {
+            "field": "Name",
+            "subjectValue": "Daniel R. Okafor",
+            "recordValue": "DANIEL R. OKAFOR",
+            "match": true,
+            "score": 0.95
+          },
+          {
+            "field": "DOB",
+            "subjectValue": "1988-03-14",
+            "recordValue": "1988-03-14",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "SSN",
+            "subjectValue": "923-04-4821",
+            "recordValue": "923-04-4821",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "Phone",
+            "subjectValue": "(703) 555-0142",
+            "recordValue": "703-555-0142",
+            "match": true,
+            "score": 0.98
+          },
+          {
+            "field": "Email",
+            "subjectValue": "d.okafor88@example.com",
+            "recordValue": "dokafor16@mailhost.example",
+            "match": false,
+            "score": 0.25
+          },
+          {
+            "field": "Address",
+            "subjectValue": "1427 Birch Hollow Ct, Manassas, VA 20109",
+            "recordValue": "7605 SUDLEY RD APT 214, MANASSAS, VA 20109",
+            "match": false,
+            "score": 0.57
+          }
+        ]
+      },
+      "threshold": {
+        "rule": "Any SAR naming the subject",
+        "met": true,
+        "detail": "Meets CV investigative-standard threshold."
+      },
+      "priorAdjudication": {
+        "previouslyAdjudicated": false,
+        "reference": null
+      },
+      "documents": [
+        {
+          "title": "SAR-20260228-CEN",
+          "url": "documents/SUBJ-001/cv-feed-alert-516-fincen.json"
+        }
+      ],
+      "history": [
+        {
+          "state": "NEW",
+          "date": "2026-02-28",
+          "actor": "System",
+          "note": "Alert received via CV feed"
+        },
+        {
+          "state": "CLOSED",
+          "date": "2026-03-03",
+          "actor": "R. Chen (Analyst)",
+          "note": "False positive - identifiers do not resolve to subject"
+        }
+      ]
+    },
+    {
       "id": "ALERT-201",
       "subjectId": "SUBJ-002",
       "subjectName": "Marcus T. Bell",
@@ -165,6 +446,7 @@
       "state": "NEW",
       "receivedDate": "2026-06-23",
       "provider": "FBI Rap Back",
+      "providerId": "fbi-cjis",
       "description": "Arrest: DUI, Chesapeake PD, 2026-06-21. Disposition pending.",
       "identityMatch": {
         "confidence": 0.97,
@@ -251,6 +533,7 @@
       "state": "ADJUDICATED",
       "receivedDate": "2025-10-12",
       "provider": "TransUnion",
+      "providerId": "transunion",
       "description": "30-day delinquency, $800 retail account (resolved).",
       "identityMatch": {
         "confidence": 0.95,
@@ -342,6 +625,695 @@
       ]
     },
     {
+      "id": "ALERT-505",
+      "subjectId": "SUBJ-002",
+      "subjectName": "Marcus T. Bell",
+      "category": "FOREIGN_TRAVEL",
+      "severity": "MODERATE",
+      "priorityScore": 57,
+      "state": "ADJUDICATED",
+      "receivedDate": "2025-10-08",
+      "provider": "CBP I-94",
+      "providerId": "cbp-i94",
+      "description": "Unreported foreign travel - 5-day trip.",
+      "identityMatch": {
+        "confidence": 0.94,
+        "identifiers": [
+          {
+            "field": "Name",
+            "subjectValue": "Marcus T. Bell",
+            "recordValue": "MARCUS T. BELL",
+            "match": true,
+            "score": 0.96
+          },
+          {
+            "field": "DOB",
+            "subjectValue": "1992-11-02",
+            "recordValue": "1992-11-02",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "SSN",
+            "subjectValue": "917-38-7733",
+            "recordValue": "917-38-7733",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "Phone",
+            "subjectValue": "(757) 555-0186",
+            "recordValue": "757-555-0186",
+            "match": true,
+            "score": 0.98
+          },
+          {
+            "field": "Email",
+            "subjectValue": "mtbell92@example.com",
+            "recordValue": "mbell05@mailhost.example",
+            "match": false,
+            "score": 0.29
+          },
+          {
+            "field": "Address",
+            "subjectValue": "88 Quarry Ridge Rd, Chesapeake, VA 23320",
+            "recordValue": "88 QUARRY RIDGE RD, CHESAPEAKE, VA 23320-1035",
+            "match": true,
+            "score": 0.9
+          }
+        ]
+      },
+      "threshold": {
+        "rule": "Unreported foreign travel (SEAD-3)",
+        "met": true,
+        "detail": "Meets CV investigative-standard threshold."
+      },
+      "priorAdjudication": {
+        "previouslyAdjudicated": false,
+        "reference": null
+      },
+      "documents": [
+        {
+          "title": "I-94 crossing record - Mexico",
+          "url": "documents/SUBJ-002/cv-feed-alert-505-cbp-i94.json"
+        }
+      ],
+      "history": [
+        {
+          "state": "NEW",
+          "date": "2025-10-08",
+          "actor": "System",
+          "note": "Alert received via CV feed"
+        },
+        {
+          "state": "IDENTITY_CONFIRMED",
+          "date": "2025-10-11",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "VALIDATED",
+          "date": "2025-10-16",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "REFERRED",
+          "date": "2025-10-22",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "ADJUDICATED",
+          "date": "2025-10-29",
+          "actor": "L. Ortiz (Adjudicator)",
+          "note": "No action - resolved on review"
+        }
+      ]
+    },
+    {
+      "id": "ALERT-511",
+      "subjectId": "SUBJ-002",
+      "subjectName": "Marcus T. Bell",
+      "category": "FINANCIAL",
+      "severity": "MODERATE",
+      "priorityScore": 56,
+      "state": "NEW",
+      "receivedDate": "2025-12-25",
+      "provider": "TransUnion",
+      "providerId": "transunion",
+      "description": "Collection account update - balance sold to new servicer.",
+      "identityMatch": {
+        "confidence": 0.95,
+        "identifiers": [
+          {
+            "field": "Name",
+            "subjectValue": "Marcus T. Bell",
+            "recordValue": "MARCUS T. BELL",
+            "match": true,
+            "score": 0.98
+          },
+          {
+            "field": "DOB",
+            "subjectValue": "1992-11-02",
+            "recordValue": "1992-11-02",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "SSN",
+            "subjectValue": "917-38-7733",
+            "recordValue": "917-38-7733",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "Phone",
+            "subjectValue": "(757) 555-0186",
+            "recordValue": "757-555-0186",
+            "match": true,
+            "score": 0.98
+          },
+          {
+            "field": "Email",
+            "subjectValue": "mtbell92@example.com",
+            "recordValue": "mbell11@mailhost.example",
+            "match": false,
+            "score": 0.37
+          },
+          {
+            "field": "Address",
+            "subjectValue": "88 Quarry Ridge Rd, Chesapeake, VA 23320",
+            "recordValue": "88 QUARRY RIDGE RD, CHESAPEAKE, VA 23320-1077",
+            "match": true,
+            "score": 0.92
+          }
+        ]
+      },
+      "threshold": {
+        "rule": "Delinquent debt > $500",
+        "met": true,
+        "detail": "Meets CV investigative-standard threshold."
+      },
+      "priorAdjudication": {
+        "previouslyAdjudicated": false,
+        "reference": null
+      },
+      "documents": [
+        {
+          "title": "CV monitoring extract",
+          "url": "documents/SUBJ-002/cv-feed-alert-511-transunion.json"
+        }
+      ],
+      "history": [
+        {
+          "state": "NEW",
+          "date": "2025-12-25",
+          "actor": "System",
+          "note": "Alert received via CV feed"
+        }
+      ]
+    },
+    {
+      "id": "ALERT-517",
+      "subjectId": "SUBJ-002",
+      "subjectName": "Marcus T. Bell",
+      "category": "CRIMINAL",
+      "severity": "LOW",
+      "priorityScore": 31,
+      "state": "ADJUDICATED",
+      "receivedDate": "2026-03-13",
+      "provider": "FBI CJIS / NCIC + Rap Back",
+      "providerId": "fbi-cjis",
+      "description": "Record expungement notification.",
+      "identityMatch": {
+        "confidence": 0.96,
+        "identifiers": [
+          {
+            "field": "Name",
+            "subjectValue": "Marcus T. Bell",
+            "recordValue": "MARCUS T. BELL",
+            "match": true,
+            "score": 0.96
+          },
+          {
+            "field": "DOB",
+            "subjectValue": "1992-11-02",
+            "recordValue": "1992-11-02",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "SSN",
+            "subjectValue": "917-38-7733",
+            "recordValue": "917-38-7733",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "Phone",
+            "subjectValue": "(757) 555-0186",
+            "recordValue": "757-555-0186",
+            "match": true,
+            "score": 0.98
+          },
+          {
+            "field": "Email",
+            "subjectValue": "mtbell92@example.com",
+            "recordValue": "mbell17@mailhost.example",
+            "match": false,
+            "score": 0.29
+          },
+          {
+            "field": "Address",
+            "subjectValue": "88 Quarry Ridge Rd, Chesapeake, VA 23320",
+            "recordValue": "88 QUARRY RIDGE RD, CHESAPEAKE, VA 23320-1119",
+            "match": true,
+            "score": 0.93
+          }
+        ]
+      },
+      "threshold": {
+        "rule": "Any disposition change while CV-enrolled",
+        "met": true,
+        "detail": "Meets CV investigative-standard threshold."
+      },
+      "priorAdjudication": {
+        "previouslyAdjudicated": false,
+        "reference": null
+      },
+      "documents": [
+        {
+          "title": "NGI-RB-I-CJIS",
+          "url": "documents/SUBJ-002/cv-feed-alert-517-fbi-cjis.json"
+        }
+      ],
+      "history": [
+        {
+          "state": "NEW",
+          "date": "2026-03-13",
+          "actor": "System",
+          "note": "Alert received via CV feed"
+        },
+        {
+          "state": "IDENTITY_CONFIRMED",
+          "date": "2026-03-16",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "VALIDATED",
+          "date": "2026-03-21",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "REFERRED",
+          "date": "2026-03-27",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "ADJUDICATED",
+          "date": "2026-04-03",
+          "actor": "L. Ortiz (Adjudicator)",
+          "note": "No action - resolved on review"
+        }
+      ]
+    },
+    {
+      "id": "ALERT-500",
+      "subjectId": "SUBJ-012",
+      "subjectName": "Monica V. Reyes",
+      "category": "CREDIT",
+      "severity": "LOW",
+      "priorityScore": 28,
+      "state": "ADJUDICATED",
+      "receivedDate": "2025-08-04",
+      "provider": "Equifax",
+      "providerId": "equifax",
+      "description": "Credit utilization exceeded 90% on revolving accounts.",
+      "identityMatch": {
+        "confidence": 0.94,
+        "identifiers": [
+          {
+            "field": "Name",
+            "subjectValue": "Monica V. Reyes",
+            "recordValue": "MONICA V. REYES",
+            "match": true,
+            "score": 0.95
+          },
+          {
+            "field": "DOB",
+            "subjectValue": "1992-04-13",
+            "recordValue": "1992-04-13",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "SSN",
+            "subjectValue": "932-14-1444",
+            "recordValue": "932-14-1444",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "Phone",
+            "subjectValue": "(703) 555-0112",
+            "recordValue": "703-555-0112",
+            "match": true,
+            "score": 0.98
+          },
+          {
+            "field": "Email",
+            "subjectValue": "monica.reyes@contractor.example",
+            "recordValue": "mreyes00@mailhost.example",
+            "match": false,
+            "score": 0.25
+          },
+          {
+            "field": "Address",
+            "subjectValue": "472 Cedarfield Ln, Arlington, VA 22204",
+            "recordValue": "504 FOXHALL PL APT 5, SPRINGFIELD, VA 22153",
+            "match": false,
+            "score": 0.57
+          }
+        ]
+      },
+      "threshold": {
+        "rule": "Utilization > 90% on any revolving account",
+        "met": true,
+        "detail": "Meets CV investigative-standard threshold."
+      },
+      "priorAdjudication": {
+        "previouslyAdjudicated": false,
+        "reference": null
+      },
+      "documents": [
+        {
+          "title": "CV monitoring extract",
+          "url": "documents/SUBJ-012/cv-feed-alert-500-equifax.json"
+        }
+      ],
+      "history": [
+        {
+          "state": "NEW",
+          "date": "2025-08-04",
+          "actor": "System",
+          "note": "Alert received via CV feed"
+        },
+        {
+          "state": "IDENTITY_CONFIRMED",
+          "date": "2025-08-07",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "VALIDATED",
+          "date": "2025-08-12",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "REFERRED",
+          "date": "2025-08-18",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "ADJUDICATED",
+          "date": "2025-08-25",
+          "actor": "L. Ortiz (Adjudicator)",
+          "note": "No action - resolved on review"
+        }
+      ]
+    },
+    {
+      "id": "ALERT-506",
+      "subjectId": "SUBJ-012",
+      "subjectName": "Monica V. Reyes",
+      "category": "ELIGIBILITY",
+      "severity": "LOW",
+      "priorityScore": 34,
+      "state": "VALIDATED",
+      "receivedDate": "2025-10-21",
+      "provider": "DISS / prior adjudications",
+      "providerId": "diss",
+      "description": "Incident report filed - badge left unattended in common area.",
+      "identityMatch": {
+        "confidence": 0.95,
+        "identifiers": [
+          {
+            "field": "Name",
+            "subjectValue": "Monica V. Reyes",
+            "recordValue": "MONICA V. REYES",
+            "match": true,
+            "score": 0.97
+          },
+          {
+            "field": "DOB",
+            "subjectValue": "1992-04-13",
+            "recordValue": "1992-04-13",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "SSN",
+            "subjectValue": "932-14-1444",
+            "recordValue": "932-14-1444",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "Phone",
+            "subjectValue": "(703) 555-0112",
+            "recordValue": "703-555-0112",
+            "match": true,
+            "score": 0.98
+          },
+          {
+            "field": "Email",
+            "subjectValue": "monica.reyes@contractor.example",
+            "recordValue": "mreyes06@mailhost.example",
+            "match": false,
+            "score": 0.33
+          },
+          {
+            "field": "Address",
+            "subjectValue": "472 Cedarfield Ln, Arlington, VA 22204",
+            "recordValue": "472 CEDARFIELD LN, ARLINGTON, VA 22204-1042",
+            "match": true,
+            "score": 0.92
+          }
+        ]
+      },
+      "threshold": {
+        "rule": "Any incident report while CV-enrolled",
+        "met": true,
+        "detail": "Meets CV investigative-standard threshold."
+      },
+      "priorAdjudication": {
+        "previouslyAdjudicated": false,
+        "reference": null
+      },
+      "documents": [
+        {
+          "title": "SIR-20251021",
+          "url": "documents/SUBJ-012/cv-feed-alert-506-diss.json"
+        }
+      ],
+      "history": [
+        {
+          "state": "NEW",
+          "date": "2025-10-21",
+          "actor": "System",
+          "note": "Alert received via CV feed"
+        },
+        {
+          "state": "IDENTITY_CONFIRMED",
+          "date": "2025-10-24",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "VALIDATED",
+          "date": "2025-10-29",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        }
+      ]
+    },
+    {
+      "id": "ALERT-512",
+      "subjectId": "SUBJ-012",
+      "subjectName": "Monica V. Reyes",
+      "category": "FOREIGN_TRAVEL",
+      "severity": "LOW",
+      "priorityScore": 33,
+      "state": "ADJUDICATED",
+      "receivedDate": "2026-01-07",
+      "provider": "CBP I-94",
+      "providerId": "cbp-i94",
+      "description": "Border crossing pair matched - reported vacation travel.",
+      "identityMatch": {
+        "confidence": 0.96,
+        "identifiers": [
+          {
+            "field": "Name",
+            "subjectValue": "Monica V. Reyes",
+            "recordValue": "MONICA V. REYES",
+            "match": true,
+            "score": 0.95
+          },
+          {
+            "field": "DOB",
+            "subjectValue": "1992-04-13",
+            "recordValue": "1992-04-13",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "SSN",
+            "subjectValue": "932-14-1444",
+            "recordValue": "932-14-1444",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "Phone",
+            "subjectValue": "(703) 555-0112",
+            "recordValue": "703-555-0112",
+            "match": true,
+            "score": 0.98
+          },
+          {
+            "field": "Email",
+            "subjectValue": "monica.reyes@contractor.example",
+            "recordValue": "mreyes12@mailhost.example",
+            "match": false,
+            "score": 0.25
+          },
+          {
+            "field": "Address",
+            "subjectValue": "472 Cedarfield Ln, Arlington, VA 22204",
+            "recordValue": "504 FOXHALL PL APT 5, SPRINGFIELD, VA 22153",
+            "match": false,
+            "score": 0.57
+          }
+        ]
+      },
+      "threshold": {
+        "rule": "Unreported foreign travel (SEAD-3)",
+        "met": true,
+        "detail": "Meets CV investigative-standard threshold."
+      },
+      "priorAdjudication": {
+        "previouslyAdjudicated": false,
+        "reference": null
+      },
+      "documents": [
+        {
+          "title": "I-94 crossing record - Mexico",
+          "url": "documents/SUBJ-012/cv-feed-alert-512-cbp-i94.json"
+        }
+      ],
+      "history": [
+        {
+          "state": "NEW",
+          "date": "2026-01-07",
+          "actor": "System",
+          "note": "Alert received via CV feed"
+        },
+        {
+          "state": "IDENTITY_CONFIRMED",
+          "date": "2026-01-10",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "VALIDATED",
+          "date": "2026-01-15",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "REFERRED",
+          "date": "2026-01-21",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "ADJUDICATED",
+          "date": "2026-01-28",
+          "actor": "L. Ortiz (Adjudicator)",
+          "note": "No action - resolved on review"
+        }
+      ]
+    },
+    {
+      "id": "ALERT-518",
+      "subjectId": "SUBJ-012",
+      "subjectName": "Monica V. Reyes",
+      "category": "FINANCIAL",
+      "severity": "LOW",
+      "priorityScore": 32,
+      "state": "NEW",
+      "receivedDate": "2026-03-26",
+      "provider": "TransUnion",
+      "providerId": "transunion",
+      "description": "Delinquency cured - account returned to current.",
+      "identityMatch": {
+        "confidence": 0.97,
+        "identifiers": [
+          {
+            "field": "Name",
+            "subjectValue": "Monica V. Reyes",
+            "recordValue": "MONICA V. REYES",
+            "match": true,
+            "score": 0.97
+          },
+          {
+            "field": "DOB",
+            "subjectValue": "1992-04-13",
+            "recordValue": "1992-04-13",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "SSN",
+            "subjectValue": "932-14-1444",
+            "recordValue": "932-14-1444",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "Phone",
+            "subjectValue": "(703) 555-0112",
+            "recordValue": "703-555-0112",
+            "match": true,
+            "score": 0.98
+          },
+          {
+            "field": "Email",
+            "subjectValue": "monica.reyes@contractor.example",
+            "recordValue": "mreyes18@mailhost.example",
+            "match": false,
+            "score": 0.33
+          },
+          {
+            "field": "Address",
+            "subjectValue": "472 Cedarfield Ln, Arlington, VA 22204",
+            "recordValue": "472 CEDARFIELD LN, ARLINGTON, VA 22204-1126",
+            "match": true,
+            "score": 0.95
+          }
+        ]
+      },
+      "threshold": {
+        "rule": "Delinquent debt > $500",
+        "met": true,
+        "detail": "Meets CV investigative-standard threshold."
+      },
+      "priorAdjudication": {
+        "previouslyAdjudicated": false,
+        "reference": null
+      },
+      "documents": [
+        {
+          "title": "CV monitoring extract",
+          "url": "documents/SUBJ-012/cv-feed-alert-518-transunion.json"
+        }
+      ],
+      "history": [
+        {
+          "state": "NEW",
+          "date": "2026-03-26",
+          "actor": "System",
+          "note": "Alert received via CV feed"
+        }
+      ]
+    },
+    {
       "id": "ALERT-313",
       "subjectId": "SUBJ-013",
       "subjectName": "Samuel K. Boateng",
@@ -351,6 +1323,7 @@
       "state": "NEW",
       "receivedDate": "2026-06-18",
       "provider": "DISS / prior adjudications",
+      "providerId": "diss",
       "description": "One security infraction: classified document left unsecured (2025).",
       "identityMatch": {
         "confidence": 0.93,
@@ -424,6 +1397,820 @@
       ]
     },
     {
+      "id": "ALERT-501",
+      "subjectId": "SUBJ-013",
+      "subjectName": "Samuel K. Boateng",
+      "category": "FINANCIAL",
+      "severity": "HIGH",
+      "priorityScore": 75,
+      "state": "ADJUDICATED",
+      "receivedDate": "2025-08-17",
+      "provider": "FinCEN / Treasury",
+      "providerId": "fincen",
+      "description": "SAR filed - structured cash deposits under reporting threshold.",
+      "identityMatch": {
+        "confidence": 0.95,
+        "identifiers": [
+          {
+            "field": "Name",
+            "subjectValue": "Samuel K. Boateng",
+            "recordValue": "SAMUEL K. BOATENG",
+            "match": true,
+            "score": 0.96
+          },
+          {
+            "field": "DOB",
+            "subjectValue": "1993-05-14",
+            "recordValue": "1993-05-14",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "SSN",
+            "subjectValue": "933-21-1481",
+            "recordValue": "933-21-1481",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "Phone",
+            "subjectValue": "(703) 555-0113",
+            "recordValue": "703-555-0113",
+            "match": true,
+            "score": 0.98
+          },
+          {
+            "field": "Email",
+            "subjectValue": "samuel.boateng@contractor.example",
+            "recordValue": "sboateng01@mailhost.example",
+            "match": false,
+            "score": 0.29
+          },
+          {
+            "field": "Address",
+            "subjectValue": "503 Halstead Ct, Alexandria, VA 22310",
+            "recordValue": "503 HALSTEAD CT, ALEXANDRIA, VA 22310-1007",
+            "match": true,
+            "score": 0.92
+          }
+        ]
+      },
+      "threshold": {
+        "rule": "Any SAR naming the subject",
+        "met": true,
+        "detail": "Meets CV investigative-standard threshold."
+      },
+      "priorAdjudication": {
+        "previouslyAdjudicated": false,
+        "reference": null
+      },
+      "documents": [
+        {
+          "title": "SAR-20250817-CEN",
+          "url": "documents/SUBJ-013/cv-feed-alert-501-fincen.json"
+        }
+      ],
+      "history": [
+        {
+          "state": "NEW",
+          "date": "2025-08-17",
+          "actor": "System",
+          "note": "Alert received via CV feed"
+        },
+        {
+          "state": "IDENTITY_CONFIRMED",
+          "date": "2025-08-20",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "VALIDATED",
+          "date": "2025-08-25",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "REFERRED",
+          "date": "2025-08-31",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "ADJUDICATED",
+          "date": "2025-09-07",
+          "actor": "L. Ortiz (Adjudicator)",
+          "note": "No action - resolved on review"
+        }
+      ]
+    },
+    {
+      "id": "ALERT-507",
+      "subjectId": "SUBJ-013",
+      "subjectName": "Samuel K. Boateng",
+      "category": "CREDIT",
+      "severity": "MODERATE",
+      "priorityScore": 52,
+      "state": "ADJUDICATED",
+      "receivedDate": "2025-11-03",
+      "provider": "Equifax",
+      "providerId": "equifax",
+      "description": "New tradeline dispute filed by subject.",
+      "identityMatch": {
+        "confidence": 0.96,
+        "identifiers": [
+          {
+            "field": "Name",
+            "subjectValue": "Samuel K. Boateng",
+            "recordValue": "SAMUEL K. BOATENG",
+            "match": true,
+            "score": 0.98
+          },
+          {
+            "field": "DOB",
+            "subjectValue": "1993-05-14",
+            "recordValue": "1993-05-14",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "SSN",
+            "subjectValue": "933-21-1481",
+            "recordValue": "933-21-1481",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "Phone",
+            "subjectValue": "(703) 555-0113",
+            "recordValue": "703-555-0113",
+            "match": true,
+            "score": 0.98
+          },
+          {
+            "field": "Email",
+            "subjectValue": "samuel.boateng@contractor.example",
+            "recordValue": "sboateng07@mailhost.example",
+            "match": false,
+            "score": 0.37
+          },
+          {
+            "field": "Address",
+            "subjectValue": "503 Halstead Ct, Alexandria, VA 22310",
+            "recordValue": "503 HALSTEAD CT, ALEXANDRIA, VA 22310-1049",
+            "match": true,
+            "score": 0.93
+          }
+        ]
+      },
+      "threshold": {
+        "rule": "Any disputed tradeline",
+        "met": true,
+        "detail": "Meets CV investigative-standard threshold."
+      },
+      "priorAdjudication": {
+        "previouslyAdjudicated": false,
+        "reference": null
+      },
+      "documents": [
+        {
+          "title": "CV monitoring extract",
+          "url": "documents/SUBJ-013/cv-feed-alert-507-equifax.json"
+        }
+      ],
+      "history": [
+        {
+          "state": "NEW",
+          "date": "2025-11-03",
+          "actor": "System",
+          "note": "Alert received via CV feed"
+        },
+        {
+          "state": "IDENTITY_CONFIRMED",
+          "date": "2025-11-06",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "VALIDATED",
+          "date": "2025-11-11",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "REFERRED",
+          "date": "2025-11-17",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "ADJUDICATED",
+          "date": "2025-11-24",
+          "actor": "L. Ortiz (Adjudicator)",
+          "note": "No action - resolved on review"
+        }
+      ]
+    },
+    {
+      "id": "ALERT-513",
+      "subjectId": "SUBJ-013",
+      "subjectName": "Samuel K. Boateng",
+      "category": "ELIGIBILITY",
+      "severity": "MODERATE",
+      "priorityScore": 58,
+      "state": "VALIDATED",
+      "receivedDate": "2026-01-20",
+      "provider": "DISS / prior adjudications",
+      "providerId": "diss",
+      "description": "Eligibility review flag - incident pattern review requested.",
+      "identityMatch": {
+        "confidence": 0.97,
+        "identifiers": [
+          {
+            "field": "Name",
+            "subjectValue": "Samuel K. Boateng",
+            "recordValue": "SAMUEL K. BOATENG",
+            "match": true,
+            "score": 0.96
+          },
+          {
+            "field": "DOB",
+            "subjectValue": "1993-05-14",
+            "recordValue": "1993-05-14",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "SSN",
+            "subjectValue": "933-21-1481",
+            "recordValue": "933-21-1481",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "Phone",
+            "subjectValue": "(703) 555-0113",
+            "recordValue": "703-555-0113",
+            "match": true,
+            "score": 0.98
+          },
+          {
+            "field": "Email",
+            "subjectValue": "samuel.boateng@contractor.example",
+            "recordValue": "sboateng13@mailhost.example",
+            "match": false,
+            "score": 0.29
+          },
+          {
+            "field": "Address",
+            "subjectValue": "503 Halstead Ct, Alexandria, VA 22310",
+            "recordValue": "503 HALSTEAD CT, ALEXANDRIA, VA 22310-1091",
+            "match": true,
+            "score": 0.95
+          }
+        ]
+      },
+      "threshold": {
+        "rule": "Two or more incidents in 24 months",
+        "met": true,
+        "detail": "Meets CV investigative-standard threshold."
+      },
+      "priorAdjudication": {
+        "previouslyAdjudicated": false,
+        "reference": null
+      },
+      "documents": [
+        {
+          "title": "SIR-20260120",
+          "url": "documents/SUBJ-013/cv-feed-alert-513-diss.json"
+        }
+      ],
+      "history": [
+        {
+          "state": "NEW",
+          "date": "2026-01-20",
+          "actor": "System",
+          "note": "Alert received via CV feed"
+        },
+        {
+          "state": "IDENTITY_CONFIRMED",
+          "date": "2026-01-23",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "VALIDATED",
+          "date": "2026-01-28",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        }
+      ]
+    },
+    {
+      "id": "ALERT-519",
+      "subjectId": "SUBJ-013",
+      "subjectName": "Samuel K. Boateng",
+      "category": "SUITABILITY",
+      "severity": "LOW",
+      "priorityScore": 33,
+      "state": "ADJUDICATED",
+      "receivedDate": "2026-04-08",
+      "provider": "LexisNexis",
+      "providerId": "lexisnexis",
+      "description": "Public record refresh - no new adverse items.",
+      "identityMatch": {
+        "confidence": 0.98,
+        "identifiers": [
+          {
+            "field": "Name",
+            "subjectValue": "Samuel K. Boateng",
+            "recordValue": "SAMUEL K. BOATENG",
+            "match": true,
+            "score": 0.98
+          },
+          {
+            "field": "DOB",
+            "subjectValue": "1993-05-14",
+            "recordValue": "1993-05-14",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "SSN",
+            "subjectValue": "933-21-1481",
+            "recordValue": "933-21-1481",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "Phone",
+            "subjectValue": "(703) 555-0113",
+            "recordValue": "703-555-0113",
+            "match": true,
+            "score": 0.98
+          },
+          {
+            "field": "Email",
+            "subjectValue": "samuel.boateng@contractor.example",
+            "recordValue": "sboateng19@mailhost.example",
+            "match": false,
+            "score": 0.37
+          },
+          {
+            "field": "Address",
+            "subjectValue": "503 Halstead Ct, Alexandria, VA 22310",
+            "recordValue": "503 HALSTEAD CT, ALEXANDRIA, VA 22310-1133",
+            "match": true,
+            "score": 0.96
+          }
+        ]
+      },
+      "threshold": {
+        "rule": "Scheduled public-records sweep",
+        "met": true,
+        "detail": "Meets CV investigative-standard threshold."
+      },
+      "priorAdjudication": {
+        "previouslyAdjudicated": false,
+        "reference": null
+      },
+      "documents": [
+        {
+          "title": "Public record refresh",
+          "url": "documents/SUBJ-013/cv-feed-alert-519-lexisnexis.json"
+        }
+      ],
+      "history": [
+        {
+          "state": "NEW",
+          "date": "2026-04-08",
+          "actor": "System",
+          "note": "Alert received via CV feed"
+        },
+        {
+          "state": "IDENTITY_CONFIRMED",
+          "date": "2026-04-11",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "VALIDATED",
+          "date": "2026-04-16",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "REFERRED",
+          "date": "2026-04-22",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "ADJUDICATED",
+          "date": "2026-04-29",
+          "actor": "L. Ortiz (Adjudicator)",
+          "note": "No action - resolved on review"
+        }
+      ]
+    },
+    {
+      "id": "ALERT-502",
+      "subjectId": "SUBJ-014",
+      "subjectName": "Laura D. Ferris",
+      "category": "SUITABILITY",
+      "severity": "MODERATE",
+      "priorityScore": 54,
+      "state": "CLOSED",
+      "receivedDate": "2025-08-30",
+      "provider": "LexisNexis",
+      "providerId": "lexisnexis",
+      "description": "Civil judgment filed - unpaid homeowners association assessment.",
+      "identityMatch": {
+        "confidence": 0.96,
+        "identifiers": [
+          {
+            "field": "Name",
+            "subjectValue": "Laura D. Ferris",
+            "recordValue": "LAURA D. FERRIS",
+            "match": true,
+            "score": 0.97
+          },
+          {
+            "field": "DOB",
+            "subjectValue": "1994-06-15",
+            "recordValue": "1994-06-15",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "SSN",
+            "subjectValue": "934-28-1518",
+            "recordValue": "934-28-1518",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "Phone",
+            "subjectValue": "(703) 555-0114",
+            "recordValue": "703-555-0114",
+            "match": true,
+            "score": 0.98
+          },
+          {
+            "field": "Email",
+            "subjectValue": "laura.ferris@contractor.example",
+            "recordValue": "lferris02@mailhost.example",
+            "match": false,
+            "score": 0.33
+          },
+          {
+            "field": "Address",
+            "subjectValue": "534 Mill Race Dr, Springfield, VA 22153",
+            "recordValue": "534 MILL RACE DR, SPRINGFIELD, VA 22153-1014",
+            "match": true,
+            "score": 0.93
+          }
+        ]
+      },
+      "threshold": {
+        "rule": "Civil judgment > $1,000",
+        "met": true,
+        "detail": "Meets CV investigative-standard threshold."
+      },
+      "priorAdjudication": {
+        "previouslyAdjudicated": false,
+        "reference": null
+      },
+      "documents": [
+        {
+          "title": "Civil judgment filed",
+          "url": "documents/SUBJ-014/cv-feed-alert-502-lexisnexis.json"
+        }
+      ],
+      "history": [
+        {
+          "state": "NEW",
+          "date": "2025-08-30",
+          "actor": "System",
+          "note": "Alert received via CV feed"
+        },
+        {
+          "state": "CLOSED",
+          "date": "2025-09-02",
+          "actor": "R. Chen (Analyst)",
+          "note": "False positive - identifiers do not resolve to subject"
+        }
+      ]
+    },
+    {
+      "id": "ALERT-508",
+      "subjectId": "SUBJ-014",
+      "subjectName": "Laura D. Ferris",
+      "category": "SUITABILITY",
+      "severity": "LOW",
+      "priorityScore": 29,
+      "state": "ADJUDICATED",
+      "receivedDate": "2025-11-16",
+      "provider": "LexisNexis",
+      "providerId": "lexisnexis",
+      "description": "Professional license lapse - engineering certification expired.",
+      "identityMatch": {
+        "confidence": 0.97,
+        "identifiers": [
+          {
+            "field": "Name",
+            "subjectValue": "Laura D. Ferris",
+            "recordValue": "LAURA D. FERRIS",
+            "match": true,
+            "score": 0.95
+          },
+          {
+            "field": "DOB",
+            "subjectValue": "1994-06-15",
+            "recordValue": "1994-06-15",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "SSN",
+            "subjectValue": "934-28-1518",
+            "recordValue": "934-28-1518",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "Phone",
+            "subjectValue": "(703) 555-0114",
+            "recordValue": "703-555-0114",
+            "match": true,
+            "score": 0.98
+          },
+          {
+            "field": "Email",
+            "subjectValue": "laura.ferris@contractor.example",
+            "recordValue": "lferris08@mailhost.example",
+            "match": false,
+            "score": 0.25
+          },
+          {
+            "field": "Address",
+            "subjectValue": "534 Mill Race Dr, Springfield, VA 22153",
+            "recordValue": "538 WEATHERBY RD APT 7, WOODBRIDGE, VA 22192",
+            "match": false,
+            "score": 0.57
+          }
+        ]
+      },
+      "threshold": {
+        "rule": "Any professional license action",
+        "met": true,
+        "detail": "Meets CV investigative-standard threshold."
+      },
+      "priorAdjudication": {
+        "previouslyAdjudicated": false,
+        "reference": null
+      },
+      "documents": [
+        {
+          "title": "Professional license lapse",
+          "url": "documents/SUBJ-014/cv-feed-alert-508-lexisnexis.json"
+        }
+      ],
+      "history": [
+        {
+          "state": "NEW",
+          "date": "2025-11-16",
+          "actor": "System",
+          "note": "Alert received via CV feed"
+        },
+        {
+          "state": "IDENTITY_CONFIRMED",
+          "date": "2025-11-19",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "VALIDATED",
+          "date": "2025-11-24",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "REFERRED",
+          "date": "2025-11-30",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "ADJUDICATED",
+          "date": "2025-12-07",
+          "actor": "L. Ortiz (Adjudicator)",
+          "note": "No action - resolved on review"
+        }
+      ]
+    },
+    {
+      "id": "ALERT-514",
+      "subjectId": "SUBJ-014",
+      "subjectName": "Laura D. Ferris",
+      "category": "SUITABILITY",
+      "severity": "MODERATE",
+      "priorityScore": 52,
+      "state": "ADJUDICATED",
+      "receivedDate": "2026-02-02",
+      "provider": "LexisNexis",
+      "providerId": "lexisnexis",
+      "description": "Eviction record - unlawful detainer filing.",
+      "identityMatch": {
+        "confidence": 0.98,
+        "identifiers": [
+          {
+            "field": "Name",
+            "subjectValue": "Laura D. Ferris",
+            "recordValue": "LAURA D. FERRIS",
+            "match": true,
+            "score": 0.97
+          },
+          {
+            "field": "DOB",
+            "subjectValue": "1994-06-15",
+            "recordValue": "1994-06-15",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "SSN",
+            "subjectValue": "934-28-1518",
+            "recordValue": "934-28-1518",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "Phone",
+            "subjectValue": "(703) 555-0114",
+            "recordValue": "703-555-0114",
+            "match": true,
+            "score": 0.98
+          },
+          {
+            "field": "Email",
+            "subjectValue": "laura.ferris@contractor.example",
+            "recordValue": "lferris14@mailhost.example",
+            "match": false,
+            "score": 0.33
+          },
+          {
+            "field": "Address",
+            "subjectValue": "534 Mill Race Dr, Springfield, VA 22153",
+            "recordValue": "534 MILL RACE DR, SPRINGFIELD, VA 22153-1098",
+            "match": true,
+            "score": 0.96
+          }
+        ]
+      },
+      "threshold": {
+        "rule": "Any eviction filing",
+        "met": true,
+        "detail": "Meets CV investigative-standard threshold."
+      },
+      "priorAdjudication": {
+        "previouslyAdjudicated": false,
+        "reference": null
+      },
+      "documents": [
+        {
+          "title": "Eviction record",
+          "url": "documents/SUBJ-014/cv-feed-alert-514-lexisnexis.json"
+        }
+      ],
+      "history": [
+        {
+          "state": "NEW",
+          "date": "2026-02-02",
+          "actor": "System",
+          "note": "Alert received via CV feed"
+        },
+        {
+          "state": "IDENTITY_CONFIRMED",
+          "date": "2026-02-05",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "VALIDATED",
+          "date": "2026-02-10",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "REFERRED",
+          "date": "2026-02-16",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "ADJUDICATED",
+          "date": "2026-02-23",
+          "actor": "L. Ortiz (Adjudicator)",
+          "note": "No action - resolved on review"
+        }
+      ]
+    },
+    {
+      "id": "ALERT-520",
+      "subjectId": "SUBJ-014",
+      "subjectName": "Laura D. Ferris",
+      "category": "CREDIT",
+      "severity": "MODERATE",
+      "priorityScore": 58,
+      "state": "VALIDATED",
+      "receivedDate": "2026-04-21",
+      "provider": "Equifax",
+      "providerId": "equifax",
+      "description": "New account opened - hard inquiry cluster.",
+      "identityMatch": {
+        "confidence": 0.94,
+        "identifiers": [
+          {
+            "field": "Name",
+            "subjectValue": "Laura D. Ferris",
+            "recordValue": "LAURA D. FERRIS",
+            "match": true,
+            "score": 0.95
+          },
+          {
+            "field": "DOB",
+            "subjectValue": "1994-06-15",
+            "recordValue": "1994-06-15",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "SSN",
+            "subjectValue": "934-28-1518",
+            "recordValue": "934-28-1518",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "Phone",
+            "subjectValue": "(703) 555-0114",
+            "recordValue": "703-555-0114",
+            "match": true,
+            "score": 0.98
+          },
+          {
+            "field": "Email",
+            "subjectValue": "laura.ferris@contractor.example",
+            "recordValue": "lferris20@mailhost.example",
+            "match": false,
+            "score": 0.25
+          },
+          {
+            "field": "Address",
+            "subjectValue": "534 Mill Race Dr, Springfield, VA 22153",
+            "recordValue": "538 WEATHERBY RD APT 7, WOODBRIDGE, VA 22192",
+            "match": false,
+            "score": 0.57
+          }
+        ]
+      },
+      "threshold": {
+        "rule": "3+ hard inquiries in 30 days",
+        "met": true,
+        "detail": "Meets CV investigative-standard threshold."
+      },
+      "priorAdjudication": {
+        "previouslyAdjudicated": false,
+        "reference": null
+      },
+      "documents": [
+        {
+          "title": "CV monitoring extract",
+          "url": "documents/SUBJ-014/cv-feed-alert-520-equifax.json"
+        }
+      ],
+      "history": [
+        {
+          "state": "NEW",
+          "date": "2026-04-21",
+          "actor": "System",
+          "note": "Alert received via CV feed"
+        },
+        {
+          "state": "IDENTITY_CONFIRMED",
+          "date": "2026-04-24",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "VALIDATED",
+          "date": "2026-04-29",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        }
+      ]
+    },
+    {
       "id": "ALERT-315",
       "subjectId": "SUBJ-015",
       "subjectName": "Ethan C. Marsh",
@@ -433,6 +2220,7 @@
       "state": "NEW",
       "receivedDate": "2026-06-18",
       "provider": "TransUnion",
+      "providerId": "transunion",
       "description": "Two delinquent accounts totaling $9,800.",
       "identityMatch": {
         "confidence": 0.93,
@@ -502,6 +2290,416 @@
           "date": "2026-06-18",
           "actor": "System",
           "note": "Alert received via TransUnion feed"
+        }
+      ]
+    },
+    {
+      "id": "ALERT-503",
+      "subjectId": "SUBJ-015",
+      "subjectName": "Ethan C. Marsh",
+      "category": "CRIMINAL",
+      "severity": "MODERATE",
+      "priorityScore": 55,
+      "state": "ADJUDICATED",
+      "receivedDate": "2025-09-12",
+      "provider": "FBI CJIS / NCIC + Rap Back",
+      "providerId": "fbi-cjis",
+      "description": "Disposition update - prior charge dismissed.",
+      "identityMatch": {
+        "confidence": 0.97,
+        "identifiers": [
+          {
+            "field": "Name",
+            "subjectValue": "Ethan C. Marsh",
+            "recordValue": "ETHAN C. MARSH",
+            "match": true,
+            "score": 0.98
+          },
+          {
+            "field": "DOB",
+            "subjectValue": "1980-07-16",
+            "recordValue": "1980-07-16",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "SSN",
+            "subjectValue": "935-35-1555",
+            "recordValue": "935-35-1555",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "Phone",
+            "subjectValue": "(703) 555-0115",
+            "recordValue": "703-555-0115",
+            "match": true,
+            "score": 0.98
+          },
+          {
+            "field": "Email",
+            "subjectValue": "ethan.marsh@contractor.example",
+            "recordValue": "emarsh03@mailhost.example",
+            "match": false,
+            "score": 0.37
+          },
+          {
+            "field": "Address",
+            "subjectValue": "565 Bright Leaf Way, Fairfax, VA 22031",
+            "recordValue": "565 BRIGHT LEAF WAY, FAIRFAX, VA 22031-1021",
+            "match": true,
+            "score": 0.95
+          }
+        ]
+      },
+      "threshold": {
+        "rule": "Any disposition change while CV-enrolled",
+        "met": true,
+        "detail": "Meets CV investigative-standard threshold."
+      },
+      "priorAdjudication": {
+        "previouslyAdjudicated": false,
+        "reference": null
+      },
+      "documents": [
+        {
+          "title": "NGI-RB-I-CJIS",
+          "url": "documents/SUBJ-015/cv-feed-alert-503-fbi-cjis.json"
+        }
+      ],
+      "history": [
+        {
+          "state": "NEW",
+          "date": "2025-09-12",
+          "actor": "System",
+          "note": "Alert received via CV feed"
+        },
+        {
+          "state": "IDENTITY_CONFIRMED",
+          "date": "2025-09-15",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "VALIDATED",
+          "date": "2025-09-20",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "REFERRED",
+          "date": "2025-09-26",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "ADJUDICATED",
+          "date": "2025-10-03",
+          "actor": "L. Ortiz (Adjudicator)",
+          "note": "No action - resolved on review"
+        }
+      ]
+    },
+    {
+      "id": "ALERT-509",
+      "subjectId": "SUBJ-015",
+      "subjectName": "Ethan C. Marsh",
+      "category": "FINANCIAL",
+      "severity": "MODERATE",
+      "priorityScore": 54,
+      "state": "CLOSED",
+      "receivedDate": "2025-11-29",
+      "provider": "FinCEN / Treasury",
+      "providerId": "fincen",
+      "description": "Currency transaction report cluster - three reports in 60 days.",
+      "identityMatch": {
+        "confidence": 0.98,
+        "identifiers": [
+          {
+            "field": "Name",
+            "subjectValue": "Ethan C. Marsh",
+            "recordValue": "ETHAN C. MARSH",
+            "match": true,
+            "score": 0.96
+          },
+          {
+            "field": "DOB",
+            "subjectValue": "1980-07-16",
+            "recordValue": "1980-07-16",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "SSN",
+            "subjectValue": "935-35-1555",
+            "recordValue": "935-35-1555",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "Phone",
+            "subjectValue": "(703) 555-0115",
+            "recordValue": "703-555-0115",
+            "match": true,
+            "score": 0.98
+          },
+          {
+            "field": "Email",
+            "subjectValue": "ethan.marsh@contractor.example",
+            "recordValue": "emarsh09@mailhost.example",
+            "match": false,
+            "score": 0.29
+          },
+          {
+            "field": "Address",
+            "subjectValue": "565 Bright Leaf Way, Fairfax, VA 22031",
+            "recordValue": "565 BRIGHT LEAF WAY, FAIRFAX, VA 22031-1063",
+            "match": true,
+            "score": 0.96
+          }
+        ]
+      },
+      "threshold": {
+        "rule": "3+ currency transaction reports in 90 days",
+        "met": true,
+        "detail": "Meets CV investigative-standard threshold."
+      },
+      "priorAdjudication": {
+        "previouslyAdjudicated": false,
+        "reference": null
+      },
+      "documents": [
+        {
+          "title": "SAR-20251129-CEN",
+          "url": "documents/SUBJ-015/cv-feed-alert-509-fincen.json"
+        }
+      ],
+      "history": [
+        {
+          "state": "NEW",
+          "date": "2025-11-29",
+          "actor": "System",
+          "note": "Alert received via CV feed"
+        },
+        {
+          "state": "CLOSED",
+          "date": "2025-12-02",
+          "actor": "R. Chen (Analyst)",
+          "note": "False positive - identifiers do not resolve to subject"
+        }
+      ]
+    },
+    {
+      "id": "ALERT-515",
+      "subjectId": "SUBJ-015",
+      "subjectName": "Ethan C. Marsh",
+      "category": "CREDIT",
+      "severity": "LOW",
+      "priorityScore": 29,
+      "state": "ADJUDICATED",
+      "receivedDate": "2026-02-15",
+      "provider": "Equifax",
+      "providerId": "equifax",
+      "description": "Address change reported by furnisher.",
+      "identityMatch": {
+        "confidence": 0.94,
+        "identifiers": [
+          {
+            "field": "Name",
+            "subjectValue": "Ethan C. Marsh",
+            "recordValue": "ETHAN C. MARSH",
+            "match": true,
+            "score": 0.98
+          },
+          {
+            "field": "DOB",
+            "subjectValue": "1980-07-16",
+            "recordValue": "1980-07-16",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "SSN",
+            "subjectValue": "935-35-1555",
+            "recordValue": "935-35-1555",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "Phone",
+            "subjectValue": "(703) 555-0115",
+            "recordValue": "703-555-0115",
+            "match": true,
+            "score": 0.98
+          },
+          {
+            "field": "Email",
+            "subjectValue": "ethan.marsh@contractor.example",
+            "recordValue": "emarsh15@mailhost.example",
+            "match": false,
+            "score": 0.37
+          },
+          {
+            "field": "Address",
+            "subjectValue": "565 Bright Leaf Way, Fairfax, VA 22031",
+            "recordValue": "565 BRIGHT LEAF WAY, FAIRFAX, VA 22031-1105",
+            "match": true,
+            "score": 0.9
+          }
+        ]
+      },
+      "threshold": {
+        "rule": "Identity-relevant record change",
+        "met": true,
+        "detail": "Meets CV investigative-standard threshold."
+      },
+      "priorAdjudication": {
+        "previouslyAdjudicated": false,
+        "reference": null
+      },
+      "documents": [
+        {
+          "title": "CV monitoring extract",
+          "url": "documents/SUBJ-015/cv-feed-alert-515-equifax.json"
+        }
+      ],
+      "history": [
+        {
+          "state": "NEW",
+          "date": "2026-02-15",
+          "actor": "System",
+          "note": "Alert received via CV feed"
+        },
+        {
+          "state": "IDENTITY_CONFIRMED",
+          "date": "2026-02-18",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "VALIDATED",
+          "date": "2026-02-23",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "REFERRED",
+          "date": "2026-03-01",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "ADJUDICATED",
+          "date": "2026-03-08",
+          "actor": "L. Ortiz (Adjudicator)",
+          "note": "No action - resolved on review"
+        }
+      ]
+    },
+    {
+      "id": "ALERT-521",
+      "subjectId": "SUBJ-015",
+      "subjectName": "Ethan C. Marsh",
+      "category": "FINANCIAL",
+      "severity": "MODERATE",
+      "priorityScore": 52,
+      "state": "ADJUDICATED",
+      "receivedDate": "2026-05-04",
+      "provider": "FinCEN / Treasury",
+      "providerId": "fincen",
+      "description": "Currency transaction report - single cash transaction over $10,000.",
+      "identityMatch": {
+        "confidence": 0.95,
+        "identifiers": [
+          {
+            "field": "Name",
+            "subjectValue": "Ethan C. Marsh",
+            "recordValue": "ETHAN C. MARSH",
+            "match": true,
+            "score": 0.96
+          },
+          {
+            "field": "DOB",
+            "subjectValue": "1980-07-16",
+            "recordValue": "1980-07-16",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "SSN",
+            "subjectValue": "935-35-1555",
+            "recordValue": "935-35-1555",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "Phone",
+            "subjectValue": "(703) 555-0115",
+            "recordValue": "703-555-0115",
+            "match": true,
+            "score": 0.98
+          },
+          {
+            "field": "Email",
+            "subjectValue": "ethan.marsh@contractor.example",
+            "recordValue": "emarsh21@mailhost.example",
+            "match": false,
+            "score": 0.29
+          },
+          {
+            "field": "Address",
+            "subjectValue": "565 Bright Leaf Way, Fairfax, VA 22031",
+            "recordValue": "565 BRIGHT LEAF WAY, FAIRFAX, VA 22031-1147",
+            "match": true,
+            "score": 0.92
+          }
+        ]
+      },
+      "threshold": {
+        "rule": "Any currency transaction report naming the subject",
+        "met": true,
+        "detail": "Meets CV investigative-standard threshold."
+      },
+      "priorAdjudication": {
+        "previouslyAdjudicated": false,
+        "reference": null
+      },
+      "documents": [
+        {
+          "title": "SAR-20260504-CEN",
+          "url": "documents/SUBJ-015/cv-feed-alert-521-fincen.json"
+        }
+      ],
+      "history": [
+        {
+          "state": "NEW",
+          "date": "2026-05-04",
+          "actor": "System",
+          "note": "Alert received via CV feed"
+        },
+        {
+          "state": "IDENTITY_CONFIRMED",
+          "date": "2026-05-07",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "VALIDATED",
+          "date": "2026-05-12",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "REFERRED",
+          "date": "2026-05-18",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "ADJUDICATED",
+          "date": "2026-05-25",
+          "actor": "L. Ortiz (Adjudicator)",
+          "note": "No action - resolved on review"
         }
       ]
     }

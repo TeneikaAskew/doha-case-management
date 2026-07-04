@@ -1,0 +1,33 @@
+{
+  "docType": "PUBLIC_RECORD",
+  "title": "Eviction record",
+  "reference": "Eviction record, Fairfax County Circuit Court",
+  "provider": "LexisNexis",
+  "receivedDate": "2026-02-02",
+  "subjectId": "SUBJ-014",
+  "fields": [
+    {
+      "label": "Record type",
+      "value": "Eviction record"
+    },
+    {
+      "label": "Court / source",
+      "value": "Fairfax County Circuit Court"
+    },
+    {
+      "label": "Filed",
+      "value": "2026-02-02"
+    },
+    {
+      "label": "Status",
+      "value": "Recorded"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Record detail",
+      "body": "Eviction record - unlawful detainer filing."
+    }
+  ],
+  "transactions": []
+}

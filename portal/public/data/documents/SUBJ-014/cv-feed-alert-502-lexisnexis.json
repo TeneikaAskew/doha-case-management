@@ -1,0 +1,33 @@
+{
+  "docType": "PUBLIC_RECORD",
+  "title": "Civil judgment filed",
+  "reference": "Civil judgment filed, Fairfax County Circuit Court",
+  "provider": "LexisNexis",
+  "receivedDate": "2025-08-30",
+  "subjectId": "SUBJ-014",
+  "fields": [
+    {
+      "label": "Record type",
+      "value": "Civil judgment filed"
+    },
+    {
+      "label": "Court / source",
+      "value": "Fairfax County Circuit Court"
+    },
+    {
+      "label": "Filed",
+      "value": "2025-08-30"
+    },
+    {
+      "label": "Status",
+      "value": "Recorded"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Record detail",
+      "body": "Civil judgment filed - unpaid homeowners association assessment."
+    }
+  ],
+  "transactions": []
+}

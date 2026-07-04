@@ -15,7 +15,7 @@
     ],
     "daysInStage": 9,
     "cvEnrolled": true,
-    "openAlerts": 1,
+    "openAlerts": 2,
     "ssn": "917-38-7733",
     "dob": "1992-11-02",
     "placeOfBirth": "Norfolk, Virginia",
@@ -103,6 +103,13 @@
       "note": null
     },
     {
+      "date": "2025-10-08",
+      "actor": "System",
+      "role": "CV",
+      "event": "Foreign travel alert received",
+      "note": "Unreported foreign travel - 5-day trip"
+    },
+    {
       "date": "2025-10-12",
       "actor": "System",
       "role": "CV",
@@ -110,11 +117,39 @@
       "note": "30-day delinquency, $800 retail account"
     },
     {
+      "date": "2025-10-29",
+      "actor": "R. Chen",
+      "role": "Analyst",
+      "event": "Foreign travel alert adjudicated",
+      "note": "No action - resolved on review"
+    },
+    {
       "date": "2025-11-20",
       "actor": "R. Chen",
       "role": "Analyst",
       "event": "Financial alert adjudicated",
       "note": "No action - resolved delinquency"
+    },
+    {
+      "date": "2025-12-25",
+      "actor": "System",
+      "role": "CV",
+      "event": "Financial alert received",
+      "note": "Collection account update - balance sold to new servicer"
+    },
+    {
+      "date": "2026-03-13",
+      "actor": "System",
+      "role": "CV",
+      "event": "Criminal alert received",
+      "note": "Record expungement notification"
+    },
+    {
+      "date": "2026-04-03",
+      "actor": "R. Chen",
+      "role": "Analyst",
+      "event": "Criminal alert adjudicated",
+      "note": "No action - resolved on review"
     },
     {
       "date": "2026-06-23",
@@ -438,6 +473,7 @@
       "state": "NEW",
       "receivedDate": "2026-06-23",
       "provider": "FBI Rap Back",
+      "providerId": "fbi-cjis",
       "description": "Arrest: DUI, Chesapeake PD, 2026-06-21. Disposition pending.",
       "identityMatch": {
         "confidence": 0.97,
@@ -524,6 +560,7 @@
       "state": "ADJUDICATED",
       "receivedDate": "2025-10-12",
       "provider": "TransUnion",
+      "providerId": "transunion",
       "description": "30-day delinquency, $800 retail account (resolved).",
       "identityMatch": {
         "confidence": 0.95,
@@ -611,6 +648,303 @@
           "date": "2025-11-20",
           "actor": "R. Chen (Analyst)",
           "note": "No action - resolved delinquency"
+        }
+      ]
+    },
+    {
+      "id": "ALERT-505",
+      "subjectId": "SUBJ-002",
+      "subjectName": "Marcus T. Bell",
+      "category": "FOREIGN_TRAVEL",
+      "severity": "MODERATE",
+      "priorityScore": 57,
+      "state": "ADJUDICATED",
+      "receivedDate": "2025-10-08",
+      "provider": "CBP I-94",
+      "providerId": "cbp-i94",
+      "description": "Unreported foreign travel - 5-day trip.",
+      "identityMatch": {
+        "confidence": 0.94,
+        "identifiers": [
+          {
+            "field": "Name",
+            "subjectValue": "Marcus T. Bell",
+            "recordValue": "MARCUS T. BELL",
+            "match": true,
+            "score": 0.96
+          },
+          {
+            "field": "DOB",
+            "subjectValue": "1992-11-02",
+            "recordValue": "1992-11-02",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "SSN",
+            "subjectValue": "917-38-7733",
+            "recordValue": "917-38-7733",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "Phone",
+            "subjectValue": "(757) 555-0186",
+            "recordValue": "757-555-0186",
+            "match": true,
+            "score": 0.98
+          },
+          {
+            "field": "Email",
+            "subjectValue": "mtbell92@example.com",
+            "recordValue": "mbell05@mailhost.example",
+            "match": false,
+            "score": 0.29
+          },
+          {
+            "field": "Address",
+            "subjectValue": "88 Quarry Ridge Rd, Chesapeake, VA 23320",
+            "recordValue": "88 QUARRY RIDGE RD, CHESAPEAKE, VA 23320-1035",
+            "match": true,
+            "score": 0.9
+          }
+        ]
+      },
+      "threshold": {
+        "rule": "Unreported foreign travel (SEAD-3)",
+        "met": true,
+        "detail": "Meets CV investigative-standard threshold."
+      },
+      "priorAdjudication": {
+        "previouslyAdjudicated": false,
+        "reference": null
+      },
+      "documents": [
+        {
+          "title": "I-94 crossing record - Mexico",
+          "url": "documents/SUBJ-002/cv-feed-alert-505-cbp-i94.json"
+        }
+      ],
+      "history": [
+        {
+          "state": "NEW",
+          "date": "2025-10-08",
+          "actor": "System",
+          "note": "Alert received via CV feed"
+        },
+        {
+          "state": "IDENTITY_CONFIRMED",
+          "date": "2025-10-11",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "VALIDATED",
+          "date": "2025-10-16",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "REFERRED",
+          "date": "2025-10-22",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "ADJUDICATED",
+          "date": "2025-10-29",
+          "actor": "L. Ortiz (Adjudicator)",
+          "note": "No action - resolved on review"
+        }
+      ]
+    },
+    {
+      "id": "ALERT-511",
+      "subjectId": "SUBJ-002",
+      "subjectName": "Marcus T. Bell",
+      "category": "FINANCIAL",
+      "severity": "MODERATE",
+      "priorityScore": 56,
+      "state": "NEW",
+      "receivedDate": "2025-12-25",
+      "provider": "TransUnion",
+      "providerId": "transunion",
+      "description": "Collection account update - balance sold to new servicer.",
+      "identityMatch": {
+        "confidence": 0.95,
+        "identifiers": [
+          {
+            "field": "Name",
+            "subjectValue": "Marcus T. Bell",
+            "recordValue": "MARCUS T. BELL",
+            "match": true,
+            "score": 0.98
+          },
+          {
+            "field": "DOB",
+            "subjectValue": "1992-11-02",
+            "recordValue": "1992-11-02",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "SSN",
+            "subjectValue": "917-38-7733",
+            "recordValue": "917-38-7733",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "Phone",
+            "subjectValue": "(757) 555-0186",
+            "recordValue": "757-555-0186",
+            "match": true,
+            "score": 0.98
+          },
+          {
+            "field": "Email",
+            "subjectValue": "mtbell92@example.com",
+            "recordValue": "mbell11@mailhost.example",
+            "match": false,
+            "score": 0.37
+          },
+          {
+            "field": "Address",
+            "subjectValue": "88 Quarry Ridge Rd, Chesapeake, VA 23320",
+            "recordValue": "88 QUARRY RIDGE RD, CHESAPEAKE, VA 23320-1077",
+            "match": true,
+            "score": 0.92
+          }
+        ]
+      },
+      "threshold": {
+        "rule": "Delinquent debt > $500",
+        "met": true,
+        "detail": "Meets CV investigative-standard threshold."
+      },
+      "priorAdjudication": {
+        "previouslyAdjudicated": false,
+        "reference": null
+      },
+      "documents": [
+        {
+          "title": "CV monitoring extract",
+          "url": "documents/SUBJ-002/cv-feed-alert-511-transunion.json"
+        }
+      ],
+      "history": [
+        {
+          "state": "NEW",
+          "date": "2025-12-25",
+          "actor": "System",
+          "note": "Alert received via CV feed"
+        }
+      ]
+    },
+    {
+      "id": "ALERT-517",
+      "subjectId": "SUBJ-002",
+      "subjectName": "Marcus T. Bell",
+      "category": "CRIMINAL",
+      "severity": "LOW",
+      "priorityScore": 31,
+      "state": "ADJUDICATED",
+      "receivedDate": "2026-03-13",
+      "provider": "FBI CJIS / NCIC + Rap Back",
+      "providerId": "fbi-cjis",
+      "description": "Record expungement notification.",
+      "identityMatch": {
+        "confidence": 0.96,
+        "identifiers": [
+          {
+            "field": "Name",
+            "subjectValue": "Marcus T. Bell",
+            "recordValue": "MARCUS T. BELL",
+            "match": true,
+            "score": 0.96
+          },
+          {
+            "field": "DOB",
+            "subjectValue": "1992-11-02",
+            "recordValue": "1992-11-02",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "SSN",
+            "subjectValue": "917-38-7733",
+            "recordValue": "917-38-7733",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "Phone",
+            "subjectValue": "(757) 555-0186",
+            "recordValue": "757-555-0186",
+            "match": true,
+            "score": 0.98
+          },
+          {
+            "field": "Email",
+            "subjectValue": "mtbell92@example.com",
+            "recordValue": "mbell17@mailhost.example",
+            "match": false,
+            "score": 0.29
+          },
+          {
+            "field": "Address",
+            "subjectValue": "88 Quarry Ridge Rd, Chesapeake, VA 23320",
+            "recordValue": "88 QUARRY RIDGE RD, CHESAPEAKE, VA 23320-1119",
+            "match": true,
+            "score": 0.93
+          }
+        ]
+      },
+      "threshold": {
+        "rule": "Any disposition change while CV-enrolled",
+        "met": true,
+        "detail": "Meets CV investigative-standard threshold."
+      },
+      "priorAdjudication": {
+        "previouslyAdjudicated": false,
+        "reference": null
+      },
+      "documents": [
+        {
+          "title": "NGI-RB-I-CJIS",
+          "url": "documents/SUBJ-002/cv-feed-alert-517-fbi-cjis.json"
+        }
+      ],
+      "history": [
+        {
+          "state": "NEW",
+          "date": "2026-03-13",
+          "actor": "System",
+          "note": "Alert received via CV feed"
+        },
+        {
+          "state": "IDENTITY_CONFIRMED",
+          "date": "2026-03-16",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "VALIDATED",
+          "date": "2026-03-21",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "REFERRED",
+          "date": "2026-03-27",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "ADJUDICATED",
+          "date": "2026-04-03",
+          "actor": "L. Ortiz (Adjudicator)",
+          "note": "No action - resolved on review"
         }
       ]
     }

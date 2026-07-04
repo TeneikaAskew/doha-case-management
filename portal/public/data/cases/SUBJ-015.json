@@ -62,6 +62,27 @@
   "aiSummary": "One developed issue under Guideline F (Financial Considerations); otherwise clear.",
   "timeline": [
     {
+      "date": "2025-09-12",
+      "actor": "System",
+      "role": "CV",
+      "event": "Criminal alert received",
+      "note": "Disposition update - prior charge dismissed"
+    },
+    {
+      "date": "2025-10-03",
+      "actor": "R. Chen",
+      "role": "Analyst",
+      "event": "Criminal alert adjudicated",
+      "note": "No action - resolved on review"
+    },
+    {
+      "date": "2025-11-29",
+      "actor": "System",
+      "role": "CV",
+      "event": "Financial alert received",
+      "note": "Currency transaction report cluster - three reports in 60 days"
+    },
+    {
       "date": "2026-01-05",
       "actor": "K. Rivas",
       "role": "FSO",
@@ -69,11 +90,39 @@
       "note": "SF-86 submitted via NBIS eApp"
     },
     {
+      "date": "2026-02-15",
+      "actor": "System",
+      "role": "CV",
+      "event": "Credit alert received",
+      "note": "Address change reported by furnisher"
+    },
+    {
+      "date": "2026-03-08",
+      "actor": "R. Chen",
+      "role": "Analyst",
+      "event": "Credit alert adjudicated",
+      "note": "No action - resolved on review"
+    },
+    {
+      "date": "2026-05-04",
+      "actor": "System",
+      "role": "CV",
+      "event": "Financial alert received",
+      "note": "Currency transaction report - single cash transaction over $10,000"
+    },
+    {
       "date": "2026-05-05",
       "actor": "D. Foley",
       "role": "Investigator",
       "event": "ROI transmitted",
       "note": null
+    },
+    {
+      "date": "2026-05-25",
+      "actor": "R. Chen",
+      "role": "Analyst",
+      "event": "Financial alert adjudicated",
+      "note": "No action - resolved on review"
     },
     {
       "date": "2026-06-04",
@@ -310,6 +359,7 @@
       "state": "NEW",
       "receivedDate": "2026-06-18",
       "provider": "TransUnion",
+      "providerId": "transunion",
       "description": "Two delinquent accounts totaling $9,800.",
       "identityMatch": {
         "confidence": 0.93,
@@ -379,6 +429,416 @@
           "date": "2026-06-18",
           "actor": "System",
           "note": "Alert received via TransUnion feed"
+        }
+      ]
+    },
+    {
+      "id": "ALERT-503",
+      "subjectId": "SUBJ-015",
+      "subjectName": "Ethan C. Marsh",
+      "category": "CRIMINAL",
+      "severity": "MODERATE",
+      "priorityScore": 55,
+      "state": "ADJUDICATED",
+      "receivedDate": "2025-09-12",
+      "provider": "FBI CJIS / NCIC + Rap Back",
+      "providerId": "fbi-cjis",
+      "description": "Disposition update - prior charge dismissed.",
+      "identityMatch": {
+        "confidence": 0.97,
+        "identifiers": [
+          {
+            "field": "Name",
+            "subjectValue": "Ethan C. Marsh",
+            "recordValue": "ETHAN C. MARSH",
+            "match": true,
+            "score": 0.98
+          },
+          {
+            "field": "DOB",
+            "subjectValue": "1980-07-16",
+            "recordValue": "1980-07-16",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "SSN",
+            "subjectValue": "935-35-1555",
+            "recordValue": "935-35-1555",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "Phone",
+            "subjectValue": "(703) 555-0115",
+            "recordValue": "703-555-0115",
+            "match": true,
+            "score": 0.98
+          },
+          {
+            "field": "Email",
+            "subjectValue": "ethan.marsh@contractor.example",
+            "recordValue": "emarsh03@mailhost.example",
+            "match": false,
+            "score": 0.37
+          },
+          {
+            "field": "Address",
+            "subjectValue": "565 Bright Leaf Way, Fairfax, VA 22031",
+            "recordValue": "565 BRIGHT LEAF WAY, FAIRFAX, VA 22031-1021",
+            "match": true,
+            "score": 0.95
+          }
+        ]
+      },
+      "threshold": {
+        "rule": "Any disposition change while CV-enrolled",
+        "met": true,
+        "detail": "Meets CV investigative-standard threshold."
+      },
+      "priorAdjudication": {
+        "previouslyAdjudicated": false,
+        "reference": null
+      },
+      "documents": [
+        {
+          "title": "NGI-RB-I-CJIS",
+          "url": "documents/SUBJ-015/cv-feed-alert-503-fbi-cjis.json"
+        }
+      ],
+      "history": [
+        {
+          "state": "NEW",
+          "date": "2025-09-12",
+          "actor": "System",
+          "note": "Alert received via CV feed"
+        },
+        {
+          "state": "IDENTITY_CONFIRMED",
+          "date": "2025-09-15",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "VALIDATED",
+          "date": "2025-09-20",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "REFERRED",
+          "date": "2025-09-26",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "ADJUDICATED",
+          "date": "2025-10-03",
+          "actor": "L. Ortiz (Adjudicator)",
+          "note": "No action - resolved on review"
+        }
+      ]
+    },
+    {
+      "id": "ALERT-509",
+      "subjectId": "SUBJ-015",
+      "subjectName": "Ethan C. Marsh",
+      "category": "FINANCIAL",
+      "severity": "MODERATE",
+      "priorityScore": 54,
+      "state": "CLOSED",
+      "receivedDate": "2025-11-29",
+      "provider": "FinCEN / Treasury",
+      "providerId": "fincen",
+      "description": "Currency transaction report cluster - three reports in 60 days.",
+      "identityMatch": {
+        "confidence": 0.98,
+        "identifiers": [
+          {
+            "field": "Name",
+            "subjectValue": "Ethan C. Marsh",
+            "recordValue": "ETHAN C. MARSH",
+            "match": true,
+            "score": 0.96
+          },
+          {
+            "field": "DOB",
+            "subjectValue": "1980-07-16",
+            "recordValue": "1980-07-16",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "SSN",
+            "subjectValue": "935-35-1555",
+            "recordValue": "935-35-1555",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "Phone",
+            "subjectValue": "(703) 555-0115",
+            "recordValue": "703-555-0115",
+            "match": true,
+            "score": 0.98
+          },
+          {
+            "field": "Email",
+            "subjectValue": "ethan.marsh@contractor.example",
+            "recordValue": "emarsh09@mailhost.example",
+            "match": false,
+            "score": 0.29
+          },
+          {
+            "field": "Address",
+            "subjectValue": "565 Bright Leaf Way, Fairfax, VA 22031",
+            "recordValue": "565 BRIGHT LEAF WAY, FAIRFAX, VA 22031-1063",
+            "match": true,
+            "score": 0.96
+          }
+        ]
+      },
+      "threshold": {
+        "rule": "3+ currency transaction reports in 90 days",
+        "met": true,
+        "detail": "Meets CV investigative-standard threshold."
+      },
+      "priorAdjudication": {
+        "previouslyAdjudicated": false,
+        "reference": null
+      },
+      "documents": [
+        {
+          "title": "SAR-20251129-CEN",
+          "url": "documents/SUBJ-015/cv-feed-alert-509-fincen.json"
+        }
+      ],
+      "history": [
+        {
+          "state": "NEW",
+          "date": "2025-11-29",
+          "actor": "System",
+          "note": "Alert received via CV feed"
+        },
+        {
+          "state": "CLOSED",
+          "date": "2025-12-02",
+          "actor": "R. Chen (Analyst)",
+          "note": "False positive - identifiers do not resolve to subject"
+        }
+      ]
+    },
+    {
+      "id": "ALERT-515",
+      "subjectId": "SUBJ-015",
+      "subjectName": "Ethan C. Marsh",
+      "category": "CREDIT",
+      "severity": "LOW",
+      "priorityScore": 29,
+      "state": "ADJUDICATED",
+      "receivedDate": "2026-02-15",
+      "provider": "Equifax",
+      "providerId": "equifax",
+      "description": "Address change reported by furnisher.",
+      "identityMatch": {
+        "confidence": 0.94,
+        "identifiers": [
+          {
+            "field": "Name",
+            "subjectValue": "Ethan C. Marsh",
+            "recordValue": "ETHAN C. MARSH",
+            "match": true,
+            "score": 0.98
+          },
+          {
+            "field": "DOB",
+            "subjectValue": "1980-07-16",
+            "recordValue": "1980-07-16",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "SSN",
+            "subjectValue": "935-35-1555",
+            "recordValue": "935-35-1555",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "Phone",
+            "subjectValue": "(703) 555-0115",
+            "recordValue": "703-555-0115",
+            "match": true,
+            "score": 0.98
+          },
+          {
+            "field": "Email",
+            "subjectValue": "ethan.marsh@contractor.example",
+            "recordValue": "emarsh15@mailhost.example",
+            "match": false,
+            "score": 0.37
+          },
+          {
+            "field": "Address",
+            "subjectValue": "565 Bright Leaf Way, Fairfax, VA 22031",
+            "recordValue": "565 BRIGHT LEAF WAY, FAIRFAX, VA 22031-1105",
+            "match": true,
+            "score": 0.9
+          }
+        ]
+      },
+      "threshold": {
+        "rule": "Identity-relevant record change",
+        "met": true,
+        "detail": "Meets CV investigative-standard threshold."
+      },
+      "priorAdjudication": {
+        "previouslyAdjudicated": false,
+        "reference": null
+      },
+      "documents": [
+        {
+          "title": "CV monitoring extract",
+          "url": "documents/SUBJ-015/cv-feed-alert-515-equifax.json"
+        }
+      ],
+      "history": [
+        {
+          "state": "NEW",
+          "date": "2026-02-15",
+          "actor": "System",
+          "note": "Alert received via CV feed"
+        },
+        {
+          "state": "IDENTITY_CONFIRMED",
+          "date": "2026-02-18",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "VALIDATED",
+          "date": "2026-02-23",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "REFERRED",
+          "date": "2026-03-01",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "ADJUDICATED",
+          "date": "2026-03-08",
+          "actor": "L. Ortiz (Adjudicator)",
+          "note": "No action - resolved on review"
+        }
+      ]
+    },
+    {
+      "id": "ALERT-521",
+      "subjectId": "SUBJ-015",
+      "subjectName": "Ethan C. Marsh",
+      "category": "FINANCIAL",
+      "severity": "MODERATE",
+      "priorityScore": 52,
+      "state": "ADJUDICATED",
+      "receivedDate": "2026-05-04",
+      "provider": "FinCEN / Treasury",
+      "providerId": "fincen",
+      "description": "Currency transaction report - single cash transaction over $10,000.",
+      "identityMatch": {
+        "confidence": 0.95,
+        "identifiers": [
+          {
+            "field": "Name",
+            "subjectValue": "Ethan C. Marsh",
+            "recordValue": "ETHAN C. MARSH",
+            "match": true,
+            "score": 0.96
+          },
+          {
+            "field": "DOB",
+            "subjectValue": "1980-07-16",
+            "recordValue": "1980-07-16",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "SSN",
+            "subjectValue": "935-35-1555",
+            "recordValue": "935-35-1555",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "Phone",
+            "subjectValue": "(703) 555-0115",
+            "recordValue": "703-555-0115",
+            "match": true,
+            "score": 0.98
+          },
+          {
+            "field": "Email",
+            "subjectValue": "ethan.marsh@contractor.example",
+            "recordValue": "emarsh21@mailhost.example",
+            "match": false,
+            "score": 0.29
+          },
+          {
+            "field": "Address",
+            "subjectValue": "565 Bright Leaf Way, Fairfax, VA 22031",
+            "recordValue": "565 BRIGHT LEAF WAY, FAIRFAX, VA 22031-1147",
+            "match": true,
+            "score": 0.92
+          }
+        ]
+      },
+      "threshold": {
+        "rule": "Any currency transaction report naming the subject",
+        "met": true,
+        "detail": "Meets CV investigative-standard threshold."
+      },
+      "priorAdjudication": {
+        "previouslyAdjudicated": false,
+        "reference": null
+      },
+      "documents": [
+        {
+          "title": "SAR-20260504-CEN",
+          "url": "documents/SUBJ-015/cv-feed-alert-521-fincen.json"
+        }
+      ],
+      "history": [
+        {
+          "state": "NEW",
+          "date": "2026-05-04",
+          "actor": "System",
+          "note": "Alert received via CV feed"
+        },
+        {
+          "state": "IDENTITY_CONFIRMED",
+          "date": "2026-05-07",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "VALIDATED",
+          "date": "2026-05-12",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "REFERRED",
+          "date": "2026-05-18",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "ADJUDICATED",
+          "date": "2026-05-25",
+          "actor": "L. Ortiz (Adjudicator)",
+          "note": "No action - resolved on review"
         }
       ]
     }

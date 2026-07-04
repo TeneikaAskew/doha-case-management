@@ -12,7 +12,9 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 import corpus
+import cv_feed
 import schemas
+from documents import PROVIDER_IDS
 from hero_cases import build_hero_cases, TODAY
 from roster import build_roster_cases
 
@@ -63,6 +65,14 @@ def main(out_dir: Path = DEFAULT_OUT) -> dict:
         return _precedent_cache[code]
 
     cases = build_hero_cases(precedents) + build_roster_cases(precedents)
+    cv_feed.extend_cases(cases)
+
+    # Canonical provider ids + computed open-alert counts.
+    for c in cases:
+        for a in c["alerts"]:
+            a.setdefault("providerId", PROVIDER_IDS[a["provider"]])
+        c["subject"]["openAlerts"] = sum(
+            1 for a in c["alerts"] if a["state"] not in ("ADJUDICATED", "CLOSED"))
 
     # One real DOHA record kept for reference; typed per-subject documents
     # are authored in hero_cases/roster and written below.
@@ -129,6 +139,31 @@ def main(out_dir: Path = DEFAULT_OUT) -> dict:
     for c in validated_cases:
         dump(c.model_dump(), out_dir / "cases" / f"{c.subject.id}.json")
     dump(schemas.AlertsFile(alerts=all_alerts).model_dump(), out_dir / "alerts.json")
+
+    # Per-provider activity index: alerts received, record checks and
+    # documents delivered - powers the provider drill-down pages.
+    by_subject_name = {c.subject.id: c.subject.name for c in validated_cases}
+    activity = {pid: schemas.ProviderActivity() for pid, _, *_ in PROVIDERS}
+    for c in validated_cases:
+        for a in c.alerts:
+            activity[a.providerId].alertIds.append(a.id)
+        for rc in c.investigation.recordChecks:
+            rc_pid = PROVIDER_IDS.get(rc.provider)
+            if rc_pid:
+                activity[rc_pid].recordChecks.append(schemas.ProviderCheckRef(
+                    caseId=c.subject.id, subjectName=c.subject.name,
+                    item=rc.item, category=rc.category, status=rc.status,
+                    completedDate=rc.completedDate, documentUrl=rc.documentUrl))
+    for url, d in source_documents.items():
+        gd = schemas.GeneratedDocument.model_validate(d)
+        doc_pid = PROVIDER_IDS.get(gd.provider)
+        if doc_pid:
+            activity[doc_pid].documents.append(schemas.ProviderDocRef(
+                caseId=gd.subjectId,
+                subjectName=by_subject_name[gd.subjectId],
+                title=gd.title, url=url, receivedDate=gd.receivedDate))
+    dump(schemas.ProviderActivityFile(providers=activity).model_dump(),
+         out_dir / "provider-activity.json")
 
     precedent_case_numbers = {
         p.caseNumber for c in validated_cases for g in c.guidelines for p in g.precedents

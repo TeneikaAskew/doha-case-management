@@ -33,7 +33,7 @@ def test_cv_alert_valid():
     alert = schemas.CVAlert.model_validate(dict(
         id="ALERT-001", subjectId="SUBJ-001", subjectName="Test Person",
         category="FINANCIAL", severity="MODERATE", priorityScore=64, state="NEW",
-        receivedDate="2026-06-20", provider="TransUnion",
+        receivedDate="2026-06-20", provider="TransUnion", providerId="transunion",
         description="New delinquent account reported, $12,400 past due.",
         identityMatch=dict(confidence=0.94, identifiers=[
             dict(field="Name", subjectValue="Test Person", recordValue="Test Person", match=True),

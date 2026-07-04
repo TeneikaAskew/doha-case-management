@@ -1,0 +1,53 @@
+{
+  "docType": "CREDIT_REPORT",
+  "title": "CV monitoring extract",
+  "reference": "CV monitoring extract, consumer file",
+  "provider": "TransUnion",
+  "receivedDate": "2025-09-25",
+  "subjectId": "SUBJ-001",
+  "fields": [
+    {
+      "label": "Bureau",
+      "value": "TransUnion"
+    },
+    {
+      "label": "Account",
+      "value": "CV monitoring extract"
+    },
+    {
+      "label": "Account number",
+      "value": "(monitored file)"
+    },
+    {
+      "label": "Account type",
+      "value": "Consumer file"
+    },
+    {
+      "label": "Balance",
+      "value": "-"
+    },
+    {
+      "label": "Past due",
+      "value": "-"
+    },
+    {
+      "label": "Days past due",
+      "value": "-"
+    },
+    {
+      "label": "Date reported",
+      "value": "2025-09-25"
+    },
+    {
+      "label": "Payment status",
+      "value": "30-day delinquency reported on retail account"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Account history summary",
+      "body": "30-day delinquency reported on retail account. Reported through scheduled CV credit monitoring; full tradeline detail retained in bureau file."
+    }
+  ],
+  "transactions": []
+}

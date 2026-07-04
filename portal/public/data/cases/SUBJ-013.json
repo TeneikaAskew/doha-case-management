@@ -14,7 +14,7 @@
     ],
     "daysInStage": 120,
     "cvEnrolled": true,
-    "openAlerts": 1,
+    "openAlerts": 2,
     "ssn": "933-21-1481",
     "dob": "1993-05-14",
     "placeOfBirth": "Baltimore, MD",
@@ -62,11 +62,46 @@
   "aiSummary": "One developed issue under Guideline K (Handling Protected Information); otherwise clear.",
   "timeline": [
     {
+      "date": "2025-08-17",
+      "actor": "System",
+      "role": "CV",
+      "event": "Financial alert received",
+      "note": "SAR filed - structured cash deposits under reporting threshold"
+    },
+    {
+      "date": "2025-09-07",
+      "actor": "R. Chen",
+      "role": "Analyst",
+      "event": "Financial alert adjudicated",
+      "note": "No action - resolved on review"
+    },
+    {
       "date": "2025-09-28",
       "actor": "K. Rivas",
       "role": "FSO",
       "event": "Case initiated",
       "note": "SF-86 submitted via NBIS eApp"
+    },
+    {
+      "date": "2025-11-03",
+      "actor": "System",
+      "role": "CV",
+      "event": "Credit alert received",
+      "note": "New tradeline dispute filed by subject"
+    },
+    {
+      "date": "2025-11-24",
+      "actor": "R. Chen",
+      "role": "Analyst",
+      "event": "Credit alert adjudicated",
+      "note": "No action - resolved on review"
+    },
+    {
+      "date": "2026-01-20",
+      "actor": "System",
+      "role": "CV",
+      "event": "Eligibility alert received",
+      "note": "Eligibility review flag - incident pattern review requested"
     },
     {
       "date": "2026-01-26",
@@ -88,6 +123,20 @@
       "role": "CV",
       "event": "Enrolled in CV",
       "note": null
+    },
+    {
+      "date": "2026-04-08",
+      "actor": "System",
+      "role": "CV",
+      "event": "Suitability alert received",
+      "note": "Public record refresh - no new adverse items"
+    },
+    {
+      "date": "2026-04-29",
+      "actor": "R. Chen",
+      "role": "Analyst",
+      "event": "Suitability alert adjudicated",
+      "note": "No action - resolved on review"
     },
     {
       "date": "2026-06-18",
@@ -321,6 +370,7 @@
       "state": "NEW",
       "receivedDate": "2026-06-18",
       "provider": "DISS / prior adjudications",
+      "providerId": "diss",
       "description": "One security infraction: classified document left unsecured (2025).",
       "identityMatch": {
         "confidence": 0.93,
@@ -390,6 +440,422 @@
           "date": "2026-06-18",
           "actor": "System",
           "note": "Alert received via DISS / prior adjudications feed"
+        }
+      ]
+    },
+    {
+      "id": "ALERT-501",
+      "subjectId": "SUBJ-013",
+      "subjectName": "Samuel K. Boateng",
+      "category": "FINANCIAL",
+      "severity": "HIGH",
+      "priorityScore": 75,
+      "state": "ADJUDICATED",
+      "receivedDate": "2025-08-17",
+      "provider": "FinCEN / Treasury",
+      "providerId": "fincen",
+      "description": "SAR filed - structured cash deposits under reporting threshold.",
+      "identityMatch": {
+        "confidence": 0.95,
+        "identifiers": [
+          {
+            "field": "Name",
+            "subjectValue": "Samuel K. Boateng",
+            "recordValue": "SAMUEL K. BOATENG",
+            "match": true,
+            "score": 0.96
+          },
+          {
+            "field": "DOB",
+            "subjectValue": "1993-05-14",
+            "recordValue": "1993-05-14",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "SSN",
+            "subjectValue": "933-21-1481",
+            "recordValue": "933-21-1481",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "Phone",
+            "subjectValue": "(703) 555-0113",
+            "recordValue": "703-555-0113",
+            "match": true,
+            "score": 0.98
+          },
+          {
+            "field": "Email",
+            "subjectValue": "samuel.boateng@contractor.example",
+            "recordValue": "sboateng01@mailhost.example",
+            "match": false,
+            "score": 0.29
+          },
+          {
+            "field": "Address",
+            "subjectValue": "503 Halstead Ct, Alexandria, VA 22310",
+            "recordValue": "503 HALSTEAD CT, ALEXANDRIA, VA 22310-1007",
+            "match": true,
+            "score": 0.92
+          }
+        ]
+      },
+      "threshold": {
+        "rule": "Any SAR naming the subject",
+        "met": true,
+        "detail": "Meets CV investigative-standard threshold."
+      },
+      "priorAdjudication": {
+        "previouslyAdjudicated": false,
+        "reference": null
+      },
+      "documents": [
+        {
+          "title": "SAR-20250817-CEN",
+          "url": "documents/SUBJ-013/cv-feed-alert-501-fincen.json"
+        }
+      ],
+      "history": [
+        {
+          "state": "NEW",
+          "date": "2025-08-17",
+          "actor": "System",
+          "note": "Alert received via CV feed"
+        },
+        {
+          "state": "IDENTITY_CONFIRMED",
+          "date": "2025-08-20",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "VALIDATED",
+          "date": "2025-08-25",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "REFERRED",
+          "date": "2025-08-31",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "ADJUDICATED",
+          "date": "2025-09-07",
+          "actor": "L. Ortiz (Adjudicator)",
+          "note": "No action - resolved on review"
+        }
+      ]
+    },
+    {
+      "id": "ALERT-507",
+      "subjectId": "SUBJ-013",
+      "subjectName": "Samuel K. Boateng",
+      "category": "CREDIT",
+      "severity": "MODERATE",
+      "priorityScore": 52,
+      "state": "ADJUDICATED",
+      "receivedDate": "2025-11-03",
+      "provider": "Equifax",
+      "providerId": "equifax",
+      "description": "New tradeline dispute filed by subject.",
+      "identityMatch": {
+        "confidence": 0.96,
+        "identifiers": [
+          {
+            "field": "Name",
+            "subjectValue": "Samuel K. Boateng",
+            "recordValue": "SAMUEL K. BOATENG",
+            "match": true,
+            "score": 0.98
+          },
+          {
+            "field": "DOB",
+            "subjectValue": "1993-05-14",
+            "recordValue": "1993-05-14",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "SSN",
+            "subjectValue": "933-21-1481",
+            "recordValue": "933-21-1481",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "Phone",
+            "subjectValue": "(703) 555-0113",
+            "recordValue": "703-555-0113",
+            "match": true,
+            "score": 0.98
+          },
+          {
+            "field": "Email",
+            "subjectValue": "samuel.boateng@contractor.example",
+            "recordValue": "sboateng07@mailhost.example",
+            "match": false,
+            "score": 0.37
+          },
+          {
+            "field": "Address",
+            "subjectValue": "503 Halstead Ct, Alexandria, VA 22310",
+            "recordValue": "503 HALSTEAD CT, ALEXANDRIA, VA 22310-1049",
+            "match": true,
+            "score": 0.93
+          }
+        ]
+      },
+      "threshold": {
+        "rule": "Any disputed tradeline",
+        "met": true,
+        "detail": "Meets CV investigative-standard threshold."
+      },
+      "priorAdjudication": {
+        "previouslyAdjudicated": false,
+        "reference": null
+      },
+      "documents": [
+        {
+          "title": "CV monitoring extract",
+          "url": "documents/SUBJ-013/cv-feed-alert-507-equifax.json"
+        }
+      ],
+      "history": [
+        {
+          "state": "NEW",
+          "date": "2025-11-03",
+          "actor": "System",
+          "note": "Alert received via CV feed"
+        },
+        {
+          "state": "IDENTITY_CONFIRMED",
+          "date": "2025-11-06",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "VALIDATED",
+          "date": "2025-11-11",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "REFERRED",
+          "date": "2025-11-17",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "ADJUDICATED",
+          "date": "2025-11-24",
+          "actor": "L. Ortiz (Adjudicator)",
+          "note": "No action - resolved on review"
+        }
+      ]
+    },
+    {
+      "id": "ALERT-513",
+      "subjectId": "SUBJ-013",
+      "subjectName": "Samuel K. Boateng",
+      "category": "ELIGIBILITY",
+      "severity": "MODERATE",
+      "priorityScore": 58,
+      "state": "VALIDATED",
+      "receivedDate": "2026-01-20",
+      "provider": "DISS / prior adjudications",
+      "providerId": "diss",
+      "description": "Eligibility review flag - incident pattern review requested.",
+      "identityMatch": {
+        "confidence": 0.97,
+        "identifiers": [
+          {
+            "field": "Name",
+            "subjectValue": "Samuel K. Boateng",
+            "recordValue": "SAMUEL K. BOATENG",
+            "match": true,
+            "score": 0.96
+          },
+          {
+            "field": "DOB",
+            "subjectValue": "1993-05-14",
+            "recordValue": "1993-05-14",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "SSN",
+            "subjectValue": "933-21-1481",
+            "recordValue": "933-21-1481",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "Phone",
+            "subjectValue": "(703) 555-0113",
+            "recordValue": "703-555-0113",
+            "match": true,
+            "score": 0.98
+          },
+          {
+            "field": "Email",
+            "subjectValue": "samuel.boateng@contractor.example",
+            "recordValue": "sboateng13@mailhost.example",
+            "match": false,
+            "score": 0.29
+          },
+          {
+            "field": "Address",
+            "subjectValue": "503 Halstead Ct, Alexandria, VA 22310",
+            "recordValue": "503 HALSTEAD CT, ALEXANDRIA, VA 22310-1091",
+            "match": true,
+            "score": 0.95
+          }
+        ]
+      },
+      "threshold": {
+        "rule": "Two or more incidents in 24 months",
+        "met": true,
+        "detail": "Meets CV investigative-standard threshold."
+      },
+      "priorAdjudication": {
+        "previouslyAdjudicated": false,
+        "reference": null
+      },
+      "documents": [
+        {
+          "title": "SIR-20260120",
+          "url": "documents/SUBJ-013/cv-feed-alert-513-diss.json"
+        }
+      ],
+      "history": [
+        {
+          "state": "NEW",
+          "date": "2026-01-20",
+          "actor": "System",
+          "note": "Alert received via CV feed"
+        },
+        {
+          "state": "IDENTITY_CONFIRMED",
+          "date": "2026-01-23",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "VALIDATED",
+          "date": "2026-01-28",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        }
+      ]
+    },
+    {
+      "id": "ALERT-519",
+      "subjectId": "SUBJ-013",
+      "subjectName": "Samuel K. Boateng",
+      "category": "SUITABILITY",
+      "severity": "LOW",
+      "priorityScore": 33,
+      "state": "ADJUDICATED",
+      "receivedDate": "2026-04-08",
+      "provider": "LexisNexis",
+      "providerId": "lexisnexis",
+      "description": "Public record refresh - no new adverse items.",
+      "identityMatch": {
+        "confidence": 0.98,
+        "identifiers": [
+          {
+            "field": "Name",
+            "subjectValue": "Samuel K. Boateng",
+            "recordValue": "SAMUEL K. BOATENG",
+            "match": true,
+            "score": 0.98
+          },
+          {
+            "field": "DOB",
+            "subjectValue": "1993-05-14",
+            "recordValue": "1993-05-14",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "SSN",
+            "subjectValue": "933-21-1481",
+            "recordValue": "933-21-1481",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "Phone",
+            "subjectValue": "(703) 555-0113",
+            "recordValue": "703-555-0113",
+            "match": true,
+            "score": 0.98
+          },
+          {
+            "field": "Email",
+            "subjectValue": "samuel.boateng@contractor.example",
+            "recordValue": "sboateng19@mailhost.example",
+            "match": false,
+            "score": 0.37
+          },
+          {
+            "field": "Address",
+            "subjectValue": "503 Halstead Ct, Alexandria, VA 22310",
+            "recordValue": "503 HALSTEAD CT, ALEXANDRIA, VA 22310-1133",
+            "match": true,
+            "score": 0.96
+          }
+        ]
+      },
+      "threshold": {
+        "rule": "Scheduled public-records sweep",
+        "met": true,
+        "detail": "Meets CV investigative-standard threshold."
+      },
+      "priorAdjudication": {
+        "previouslyAdjudicated": false,
+        "reference": null
+      },
+      "documents": [
+        {
+          "title": "Public record refresh",
+          "url": "documents/SUBJ-013/cv-feed-alert-519-lexisnexis.json"
+        }
+      ],
+      "history": [
+        {
+          "state": "NEW",
+          "date": "2026-04-08",
+          "actor": "System",
+          "note": "Alert received via CV feed"
+        },
+        {
+          "state": "IDENTITY_CONFIRMED",
+          "date": "2026-04-11",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "VALIDATED",
+          "date": "2026-04-16",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "REFERRED",
+          "date": "2026-04-22",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "ADJUDICATED",
+          "date": "2026-04-29",
+          "actor": "L. Ortiz (Adjudicator)",
+          "note": "No action - resolved on review"
         }
       ]
     }

@@ -1,0 +1,45 @@
+{
+  "docType": "TRAVEL_RECORD",
+  "title": "I-94 crossing record - Mexico",
+  "reference": "Mexico, returned 2025-10-08",
+  "provider": "CBP I-94 Foreign Travel",
+  "receivedDate": "2025-10-08",
+  "subjectId": "SUBJ-002",
+  "fields": [
+    {
+      "label": "Traveler",
+      "value": "(subject of record)"
+    },
+    {
+      "label": "Travel document",
+      "value": "(on file)"
+    },
+    {
+      "label": "Carrier",
+      "value": "United UA 1204"
+    },
+    {
+      "label": "Departure",
+      "value": "2025-10-08 (IAD)"
+    },
+    {
+      "label": "Arrival abroad",
+      "value": "2025-10-08 (MEX)"
+    },
+    {
+      "label": "Destination",
+      "value": "Mexico"
+    },
+    {
+      "label": "Return to U.S.",
+      "value": "2025-10-08"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Record detail",
+      "body": "Arrival/departure record pair matched by travel-document number. No corresponding foreign-travel report on file with the FSO (SEAD-3 reporting requirement)."
+    }
+  ],
+  "transactions": []
+}

@@ -15,7 +15,7 @@
     ],
     "daysInStage": 41,
     "cvEnrolled": true,
-    "openAlerts": 2,
+    "openAlerts": 3,
     "ssn": "923-04-4821",
     "dob": "1988-03-14",
     "placeOfBirth": "Lagos, Nigeria",
@@ -82,6 +82,13 @@
       "note": "T5 initial via NBIS eApp; interim granted"
     },
     {
+      "date": "2025-09-25",
+      "actor": "System",
+      "role": "CV",
+      "event": "Financial alert received",
+      "note": "30-day delinquency reported on retail account"
+    },
+    {
       "date": "2025-11-19",
       "actor": "S. Whitfield",
       "role": "Investigator",
@@ -89,11 +96,32 @@
       "note": "Subject acknowledged two delinquent accounts, attributed to 2024 job gap"
     },
     {
+      "date": "2025-12-12",
+      "actor": "System",
+      "role": "CV",
+      "event": "Criminal alert received",
+      "note": "Fingerprint-verified arrest notification - trespass"
+    },
+    {
+      "date": "2026-01-02",
+      "actor": "R. Chen",
+      "role": "Analyst",
+      "event": "Criminal alert adjudicated",
+      "note": "No action - resolved on review"
+    },
+    {
       "date": "2026-01-27",
       "actor": "S. Whitfield",
       "role": "Investigator",
       "event": "ROI transmitted",
       "note": "Financial and foreign-contact issues flagged"
+    },
+    {
+      "date": "2026-02-28",
+      "actor": "System",
+      "role": "CV",
+      "event": "Financial alert received",
+      "note": "SAR filed - wire activity inconsistent with stated income"
     },
     {
       "date": "2026-03-15",
@@ -601,6 +629,7 @@
       "state": "NEW",
       "receivedDate": "2026-06-20",
       "provider": "TransUnion",
+      "providerId": "transunion",
       "description": "New collection account reported: $12,400 past due (auto loan).",
       "identityMatch": {
         "confidence": 0.96,
@@ -683,6 +712,7 @@
       "state": "VALIDATED",
       "receivedDate": "2026-05-02",
       "provider": "CBP I-94",
+      "providerId": "cbp-i94",
       "description": "Unreported travel to Nigeria, 2026-04-11 to 2026-04-25.",
       "identityMatch": {
         "confidence": 0.99,
@@ -743,6 +773,285 @@
           "date": "2026-05-06",
           "actor": "R. Chen (Analyst)",
           "note": "No FSO travel report on file; referred to adjudication"
+        }
+      ]
+    },
+    {
+      "id": "ALERT-504",
+      "subjectId": "SUBJ-001",
+      "subjectName": "Daniel R. Okafor",
+      "category": "FINANCIAL",
+      "severity": "LOW",
+      "priorityScore": 32,
+      "state": "NEW",
+      "receivedDate": "2025-09-25",
+      "provider": "TransUnion",
+      "providerId": "transunion",
+      "description": "30-day delinquency reported on retail account.",
+      "identityMatch": {
+        "confidence": 0.98,
+        "identifiers": [
+          {
+            "field": "Name",
+            "subjectValue": "Daniel R. Okafor",
+            "recordValue": "DANIEL R. OKAFOR",
+            "match": true,
+            "score": 0.95
+          },
+          {
+            "field": "DOB",
+            "subjectValue": "1988-03-14",
+            "recordValue": "1988-03-14",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "SSN",
+            "subjectValue": "923-04-4821",
+            "recordValue": "923-04-4821",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "Phone",
+            "subjectValue": "(703) 555-0142",
+            "recordValue": "703-555-0142",
+            "match": true,
+            "score": 0.98
+          },
+          {
+            "field": "Email",
+            "subjectValue": "d.okafor88@example.com",
+            "recordValue": "dokafor04@mailhost.example",
+            "match": false,
+            "score": 0.25
+          },
+          {
+            "field": "Address",
+            "subjectValue": "1427 Birch Hollow Ct, Manassas, VA 20109",
+            "recordValue": "7605 SUDLEY RD APT 214, MANASSAS, VA 20109",
+            "match": false,
+            "score": 0.57
+          }
+        ]
+      },
+      "threshold": {
+        "rule": "Delinquent debt > $500",
+        "met": true,
+        "detail": "Meets CV investigative-standard threshold."
+      },
+      "priorAdjudication": {
+        "previouslyAdjudicated": false,
+        "reference": null
+      },
+      "documents": [
+        {
+          "title": "CV monitoring extract",
+          "url": "documents/SUBJ-001/cv-feed-alert-504-transunion.json"
+        }
+      ],
+      "history": [
+        {
+          "state": "NEW",
+          "date": "2025-09-25",
+          "actor": "System",
+          "note": "Alert received via CV feed"
+        }
+      ]
+    },
+    {
+      "id": "ALERT-510",
+      "subjectId": "SUBJ-001",
+      "subjectName": "Daniel R. Okafor",
+      "category": "CRIMINAL",
+      "severity": "HIGH",
+      "priorityScore": 77,
+      "state": "ADJUDICATED",
+      "receivedDate": "2025-12-12",
+      "provider": "FBI CJIS / NCIC + Rap Back",
+      "providerId": "fbi-cjis",
+      "description": "Fingerprint-verified arrest notification - trespass.",
+      "identityMatch": {
+        "confidence": 0.94,
+        "identifiers": [
+          {
+            "field": "Name",
+            "subjectValue": "Daniel R. Okafor",
+            "recordValue": "DANIEL R. OKAFOR",
+            "match": true,
+            "score": 0.97
+          },
+          {
+            "field": "DOB",
+            "subjectValue": "1988-03-14",
+            "recordValue": "1988-03-14",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "SSN",
+            "subjectValue": "923-04-4821",
+            "recordValue": "923-04-4821",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "Phone",
+            "subjectValue": "(703) 555-0142",
+            "recordValue": "703-555-0142",
+            "match": true,
+            "score": 0.98
+          },
+          {
+            "field": "Email",
+            "subjectValue": "d.okafor88@example.com",
+            "recordValue": "dokafor10@mailhost.example",
+            "match": false,
+            "score": 0.33
+          },
+          {
+            "field": "Address",
+            "subjectValue": "1427 Birch Hollow Ct, Manassas, VA 20109",
+            "recordValue": "1427 BIRCH HOLLOW CT, MANASSAS, VA 20109-1070",
+            "match": true,
+            "score": 0.9
+          }
+        ]
+      },
+      "threshold": {
+        "rule": "Any arrest while CV-enrolled",
+        "met": true,
+        "detail": "Meets CV investigative-standard threshold."
+      },
+      "priorAdjudication": {
+        "previouslyAdjudicated": false,
+        "reference": null
+      },
+      "documents": [
+        {
+          "title": "NGI-RB-I-CJIS",
+          "url": "documents/SUBJ-001/cv-feed-alert-510-fbi-cjis.json"
+        }
+      ],
+      "history": [
+        {
+          "state": "NEW",
+          "date": "2025-12-12",
+          "actor": "System",
+          "note": "Alert received via CV feed"
+        },
+        {
+          "state": "IDENTITY_CONFIRMED",
+          "date": "2025-12-15",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "VALIDATED",
+          "date": "2025-12-20",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "REFERRED",
+          "date": "2025-12-26",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "ADJUDICATED",
+          "date": "2026-01-02",
+          "actor": "L. Ortiz (Adjudicator)",
+          "note": "No action - resolved on review"
+        }
+      ]
+    },
+    {
+      "id": "ALERT-516",
+      "subjectId": "SUBJ-001",
+      "subjectName": "Daniel R. Okafor",
+      "category": "FINANCIAL",
+      "severity": "HIGH",
+      "priorityScore": 76,
+      "state": "CLOSED",
+      "receivedDate": "2026-02-28",
+      "provider": "FinCEN / Treasury",
+      "providerId": "fincen",
+      "description": "SAR filed - wire activity inconsistent with stated income.",
+      "identityMatch": {
+        "confidence": 0.95,
+        "identifiers": [
+          {
+            "field": "Name",
+            "subjectValue": "Daniel R. Okafor",
+            "recordValue": "DANIEL R. OKAFOR",
+            "match": true,
+            "score": 0.95
+          },
+          {
+            "field": "DOB",
+            "subjectValue": "1988-03-14",
+            "recordValue": "1988-03-14",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "SSN",
+            "subjectValue": "923-04-4821",
+            "recordValue": "923-04-4821",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "Phone",
+            "subjectValue": "(703) 555-0142",
+            "recordValue": "703-555-0142",
+            "match": true,
+            "score": 0.98
+          },
+          {
+            "field": "Email",
+            "subjectValue": "d.okafor88@example.com",
+            "recordValue": "dokafor16@mailhost.example",
+            "match": false,
+            "score": 0.25
+          },
+          {
+            "field": "Address",
+            "subjectValue": "1427 Birch Hollow Ct, Manassas, VA 20109",
+            "recordValue": "7605 SUDLEY RD APT 214, MANASSAS, VA 20109",
+            "match": false,
+            "score": 0.57
+          }
+        ]
+      },
+      "threshold": {
+        "rule": "Any SAR naming the subject",
+        "met": true,
+        "detail": "Meets CV investigative-standard threshold."
+      },
+      "priorAdjudication": {
+        "previouslyAdjudicated": false,
+        "reference": null
+      },
+      "documents": [
+        {
+          "title": "SAR-20260228-CEN",
+          "url": "documents/SUBJ-001/cv-feed-alert-516-fincen.json"
+        }
+      ],
+      "history": [
+        {
+          "state": "NEW",
+          "date": "2026-02-28",
+          "actor": "System",
+          "note": "Alert received via CV feed"
+        },
+        {
+          "state": "CLOSED",
+          "date": "2026-03-03",
+          "actor": "R. Chen (Analyst)",
+          "note": "False positive - identifiers do not resolve to subject"
         }
       ]
     }

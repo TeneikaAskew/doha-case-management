@@ -1,0 +1,33 @@
+{
+  "docType": "INCIDENT_REPORT",
+  "title": "SIR-20251021",
+  "reference": "SIR-20251021, Contractor facility, Chantilly VA",
+  "provider": "DISS / prior adjudications",
+  "receivedDate": "2025-10-21",
+  "subjectId": "SUBJ-012",
+  "fields": [
+    {
+      "label": "Incident ID",
+      "value": "SIR-20251021"
+    },
+    {
+      "label": "Date",
+      "value": "2025-10-21"
+    },
+    {
+      "label": "Facility",
+      "value": "Contractor facility, Chantilly VA"
+    },
+    {
+      "label": "Category",
+      "value": "Security incident"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Incident summary",
+      "body": "Incident report filed - badge left unattended in common area. Entered in DISS by the facility security officer; no compromise determined."
+    }
+  ],
+  "transactions": []
+}

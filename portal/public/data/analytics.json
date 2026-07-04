@@ -275,20 +275,28 @@
     ],
     "alertVolume": [
       {
+        "category": "CREDIT",
+        "count": 4
+      },
+      {
         "category": "CRIMINAL",
-        "count": 1
+        "count": 4
+      },
+      {
+        "category": "ELIGIBILITY",
+        "count": 2
       },
       {
         "category": "FINANCIAL",
-        "count": 3
+        "count": 10
       },
       {
         "category": "FOREIGN_TRAVEL",
-        "count": 1
+        "count": 3
       },
       {
         "category": "SUITABILITY",
-        "count": 1
+        "count": 5
       }
     ],
     "triageDistribution": [

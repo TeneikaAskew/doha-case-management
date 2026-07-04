@@ -12,7 +12,7 @@
     "flaggedGuidelines": [],
     "daysInStage": 340,
     "cvEnrolled": true,
-    "openAlerts": 0,
+    "openAlerts": 2,
     "ssn": "932-14-1444",
     "dob": "1992-04-13",
     "placeOfBirth": "Richmond, VA",
@@ -86,6 +86,48 @@
       "role": "CV",
       "event": "Enrolled in CV",
       "note": null
+    },
+    {
+      "date": "2025-08-04",
+      "actor": "System",
+      "role": "CV",
+      "event": "Credit alert received",
+      "note": "Credit utilization exceeded 90% on revolving accounts"
+    },
+    {
+      "date": "2025-08-25",
+      "actor": "R. Chen",
+      "role": "Analyst",
+      "event": "Credit alert adjudicated",
+      "note": "No action - resolved on review"
+    },
+    {
+      "date": "2025-10-21",
+      "actor": "System",
+      "role": "CV",
+      "event": "Eligibility alert received",
+      "note": "Incident report filed - badge left unattended in common area"
+    },
+    {
+      "date": "2026-01-07",
+      "actor": "System",
+      "role": "CV",
+      "event": "Foreign travel alert received",
+      "note": "Border crossing pair matched - reported vacation travel"
+    },
+    {
+      "date": "2026-01-28",
+      "actor": "R. Chen",
+      "role": "Analyst",
+      "event": "Foreign travel alert adjudicated",
+      "note": "No action - resolved on review"
+    },
+    {
+      "date": "2026-03-26",
+      "actor": "System",
+      "role": "CV",
+      "event": "Financial alert received",
+      "note": "Delinquency cured - account returned to current"
     }
   ],
   "wholePersonSummary": "No adverse information developed across the nine whole-person factors; routine processing.",
@@ -220,7 +262,400 @@
     "sorDraft": null,
     "decisions": []
   },
-  "alerts": [],
+  "alerts": [
+    {
+      "id": "ALERT-500",
+      "subjectId": "SUBJ-012",
+      "subjectName": "Monica V. Reyes",
+      "category": "CREDIT",
+      "severity": "LOW",
+      "priorityScore": 28,
+      "state": "ADJUDICATED",
+      "receivedDate": "2025-08-04",
+      "provider": "Equifax",
+      "providerId": "equifax",
+      "description": "Credit utilization exceeded 90% on revolving accounts.",
+      "identityMatch": {
+        "confidence": 0.94,
+        "identifiers": [
+          {
+            "field": "Name",
+            "subjectValue": "Monica V. Reyes",
+            "recordValue": "MONICA V. REYES",
+            "match": true,
+            "score": 0.95
+          },
+          {
+            "field": "DOB",
+            "subjectValue": "1992-04-13",
+            "recordValue": "1992-04-13",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "SSN",
+            "subjectValue": "932-14-1444",
+            "recordValue": "932-14-1444",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "Phone",
+            "subjectValue": "(703) 555-0112",
+            "recordValue": "703-555-0112",
+            "match": true,
+            "score": 0.98
+          },
+          {
+            "field": "Email",
+            "subjectValue": "monica.reyes@contractor.example",
+            "recordValue": "mreyes00@mailhost.example",
+            "match": false,
+            "score": 0.25
+          },
+          {
+            "field": "Address",
+            "subjectValue": "472 Cedarfield Ln, Arlington, VA 22204",
+            "recordValue": "504 FOXHALL PL APT 5, SPRINGFIELD, VA 22153",
+            "match": false,
+            "score": 0.57
+          }
+        ]
+      },
+      "threshold": {
+        "rule": "Utilization > 90% on any revolving account",
+        "met": true,
+        "detail": "Meets CV investigative-standard threshold."
+      },
+      "priorAdjudication": {
+        "previouslyAdjudicated": false,
+        "reference": null
+      },
+      "documents": [
+        {
+          "title": "CV monitoring extract",
+          "url": "documents/SUBJ-012/cv-feed-alert-500-equifax.json"
+        }
+      ],
+      "history": [
+        {
+          "state": "NEW",
+          "date": "2025-08-04",
+          "actor": "System",
+          "note": "Alert received via CV feed"
+        },
+        {
+          "state": "IDENTITY_CONFIRMED",
+          "date": "2025-08-07",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "VALIDATED",
+          "date": "2025-08-12",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "REFERRED",
+          "date": "2025-08-18",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "ADJUDICATED",
+          "date": "2025-08-25",
+          "actor": "L. Ortiz (Adjudicator)",
+          "note": "No action - resolved on review"
+        }
+      ]
+    },
+    {
+      "id": "ALERT-506",
+      "subjectId": "SUBJ-012",
+      "subjectName": "Monica V. Reyes",
+      "category": "ELIGIBILITY",
+      "severity": "LOW",
+      "priorityScore": 34,
+      "state": "VALIDATED",
+      "receivedDate": "2025-10-21",
+      "provider": "DISS / prior adjudications",
+      "providerId": "diss",
+      "description": "Incident report filed - badge left unattended in common area.",
+      "identityMatch": {
+        "confidence": 0.95,
+        "identifiers": [
+          {
+            "field": "Name",
+            "subjectValue": "Monica V. Reyes",
+            "recordValue": "MONICA V. REYES",
+            "match": true,
+            "score": 0.97
+          },
+          {
+            "field": "DOB",
+            "subjectValue": "1992-04-13",
+            "recordValue": "1992-04-13",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "SSN",
+            "subjectValue": "932-14-1444",
+            "recordValue": "932-14-1444",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "Phone",
+            "subjectValue": "(703) 555-0112",
+            "recordValue": "703-555-0112",
+            "match": true,
+            "score": 0.98
+          },
+          {
+            "field": "Email",
+            "subjectValue": "monica.reyes@contractor.example",
+            "recordValue": "mreyes06@mailhost.example",
+            "match": false,
+            "score": 0.33
+          },
+          {
+            "field": "Address",
+            "subjectValue": "472 Cedarfield Ln, Arlington, VA 22204",
+            "recordValue": "472 CEDARFIELD LN, ARLINGTON, VA 22204-1042",
+            "match": true,
+            "score": 0.92
+          }
+        ]
+      },
+      "threshold": {
+        "rule": "Any incident report while CV-enrolled",
+        "met": true,
+        "detail": "Meets CV investigative-standard threshold."
+      },
+      "priorAdjudication": {
+        "previouslyAdjudicated": false,
+        "reference": null
+      },
+      "documents": [
+        {
+          "title": "SIR-20251021",
+          "url": "documents/SUBJ-012/cv-feed-alert-506-diss.json"
+        }
+      ],
+      "history": [
+        {
+          "state": "NEW",
+          "date": "2025-10-21",
+          "actor": "System",
+          "note": "Alert received via CV feed"
+        },
+        {
+          "state": "IDENTITY_CONFIRMED",
+          "date": "2025-10-24",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "VALIDATED",
+          "date": "2025-10-29",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        }
+      ]
+    },
+    {
+      "id": "ALERT-512",
+      "subjectId": "SUBJ-012",
+      "subjectName": "Monica V. Reyes",
+      "category": "FOREIGN_TRAVEL",
+      "severity": "LOW",
+      "priorityScore": 33,
+      "state": "ADJUDICATED",
+      "receivedDate": "2026-01-07",
+      "provider": "CBP I-94",
+      "providerId": "cbp-i94",
+      "description": "Border crossing pair matched - reported vacation travel.",
+      "identityMatch": {
+        "confidence": 0.96,
+        "identifiers": [
+          {
+            "field": "Name",
+            "subjectValue": "Monica V. Reyes",
+            "recordValue": "MONICA V. REYES",
+            "match": true,
+            "score": 0.95
+          },
+          {
+            "field": "DOB",
+            "subjectValue": "1992-04-13",
+            "recordValue": "1992-04-13",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "SSN",
+            "subjectValue": "932-14-1444",
+            "recordValue": "932-14-1444",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "Phone",
+            "subjectValue": "(703) 555-0112",
+            "recordValue": "703-555-0112",
+            "match": true,
+            "score": 0.98
+          },
+          {
+            "field": "Email",
+            "subjectValue": "monica.reyes@contractor.example",
+            "recordValue": "mreyes12@mailhost.example",
+            "match": false,
+            "score": 0.25
+          },
+          {
+            "field": "Address",
+            "subjectValue": "472 Cedarfield Ln, Arlington, VA 22204",
+            "recordValue": "504 FOXHALL PL APT 5, SPRINGFIELD, VA 22153",
+            "match": false,
+            "score": 0.57
+          }
+        ]
+      },
+      "threshold": {
+        "rule": "Unreported foreign travel (SEAD-3)",
+        "met": true,
+        "detail": "Meets CV investigative-standard threshold."
+      },
+      "priorAdjudication": {
+        "previouslyAdjudicated": false,
+        "reference": null
+      },
+      "documents": [
+        {
+          "title": "I-94 crossing record - Mexico",
+          "url": "documents/SUBJ-012/cv-feed-alert-512-cbp-i94.json"
+        }
+      ],
+      "history": [
+        {
+          "state": "NEW",
+          "date": "2026-01-07",
+          "actor": "System",
+          "note": "Alert received via CV feed"
+        },
+        {
+          "state": "IDENTITY_CONFIRMED",
+          "date": "2026-01-10",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "VALIDATED",
+          "date": "2026-01-15",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "REFERRED",
+          "date": "2026-01-21",
+          "actor": "R. Chen (Analyst)",
+          "note": null
+        },
+        {
+          "state": "ADJUDICATED",
+          "date": "2026-01-28",
+          "actor": "L. Ortiz (Adjudicator)",
+          "note": "No action - resolved on review"
+        }
+      ]
+    },
+    {
+      "id": "ALERT-518",
+      "subjectId": "SUBJ-012",
+      "subjectName": "Monica V. Reyes",
+      "category": "FINANCIAL",
+      "severity": "LOW",
+      "priorityScore": 32,
+      "state": "NEW",
+      "receivedDate": "2026-03-26",
+      "provider": "TransUnion",
+      "providerId": "transunion",
+      "description": "Delinquency cured - account returned to current.",
+      "identityMatch": {
+        "confidence": 0.97,
+        "identifiers": [
+          {
+            "field": "Name",
+            "subjectValue": "Monica V. Reyes",
+            "recordValue": "MONICA V. REYES",
+            "match": true,
+            "score": 0.97
+          },
+          {
+            "field": "DOB",
+            "subjectValue": "1992-04-13",
+            "recordValue": "1992-04-13",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "SSN",
+            "subjectValue": "932-14-1444",
+            "recordValue": "932-14-1444",
+            "match": true,
+            "score": 1.0
+          },
+          {
+            "field": "Phone",
+            "subjectValue": "(703) 555-0112",
+            "recordValue": "703-555-0112",
+            "match": true,
+            "score": 0.98
+          },
+          {
+            "field": "Email",
+            "subjectValue": "monica.reyes@contractor.example",
+            "recordValue": "mreyes18@mailhost.example",
+            "match": false,
+            "score": 0.33
+          },
+          {
+            "field": "Address",
+            "subjectValue": "472 Cedarfield Ln, Arlington, VA 22204",
+            "recordValue": "472 CEDARFIELD LN, ARLINGTON, VA 22204-1126",
+            "match": true,
+            "score": 0.95
+          }
+        ]
+      },
+      "threshold": {
+        "rule": "Delinquent debt > $500",
+        "met": true,
+        "detail": "Meets CV investigative-standard threshold."
+      },
+      "priorAdjudication": {
+        "previouslyAdjudicated": false,
+        "reference": null
+      },
+      "documents": [
+        {
+          "title": "CV monitoring extract",
+          "url": "documents/SUBJ-012/cv-feed-alert-518-transunion.json"
+        }
+      ],
+      "history": [
+        {
+          "state": "NEW",
+          "date": "2026-03-26",
+          "actor": "System",
+          "note": "Alert received via CV feed"
+        }
+      ]
+    }
+  ],
   "documents": [
     {
       "title": "DOHA decision 22-02395",

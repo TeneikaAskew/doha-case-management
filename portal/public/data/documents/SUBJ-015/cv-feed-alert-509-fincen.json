@@ -1,0 +1,57 @@
+{
+  "docType": "SAR",
+  "title": "SAR-20251129-CEN",
+  "reference": "SAR-20251129-CEN, First Commonwealth Bank",
+  "provider": "FinCEN / Treasury",
+  "receivedDate": "2025-11-29",
+  "subjectId": "SUBJ-015",
+  "fields": [
+    {
+      "label": "Filing institution",
+      "value": "First Commonwealth Bank"
+    },
+    {
+      "label": "SAR number",
+      "value": "SAR-20251129-CEN"
+    },
+    {
+      "label": "Filing date",
+      "value": "2025-11-29"
+    },
+    {
+      "label": "Activity period",
+      "value": "2025-11-29"
+    },
+    {
+      "label": "Total amount",
+      "value": "$18,400"
+    },
+    {
+      "label": "Transaction count",
+      "value": "3"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Narrative",
+      "body": "Currency transaction report cluster - three reports in 60 days. Referred through the financial-intelligence CV feed for personnel-security review."
+    }
+  ],
+  "transactions": [
+    {
+      "date": "2025-11-29",
+      "type": "Cash deposit",
+      "amount": "$6,200"
+    },
+    {
+      "date": "2025-11-29",
+      "type": "Cash deposit",
+      "amount": "$6,100"
+    },
+    {
+      "date": "2025-11-29",
+      "type": "Cash deposit",
+      "amount": "$6,100"
+    }
+  ]
+}

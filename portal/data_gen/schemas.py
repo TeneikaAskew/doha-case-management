@@ -20,7 +20,8 @@ RecordCheckCategory = Literal["CRIMINAL", "FINANCIAL", "FOREIGN", "EMPLOYMENT",
                               "SECURITY", "FIELDWORK"]
 AdjAction = Literal["GRANT", "GRANT_WITH_EXCEPTION", "LOI", "SOR", "DENY"]
 DocType = Literal["POLICE_REPORT", "CREDIT_REPORT", "SAR", "RAPBACK_NOTIFICATION",
-                  "SF86_EXCERPT", "TRAVEL_RECORD", "INCIDENT_REPORT", "ROI"]
+                  "SF86_EXCERPT", "TRAVEL_RECORD", "INCIDENT_REPORT", "ROI",
+                  "PUBLIC_RECORD"]
 EvidenceType = Literal["ALERT", "RECORD_CHECK", "DOCUMENT"]
 
 

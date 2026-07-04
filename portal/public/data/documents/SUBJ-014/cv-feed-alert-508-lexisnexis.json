@@ -1,0 +1,33 @@
+{
+  "docType": "PUBLIC_RECORD",
+  "title": "Professional license lapse",
+  "reference": "Professional license lapse, Fairfax County Circuit Court",
+  "provider": "LexisNexis",
+  "receivedDate": "2025-11-16",
+  "subjectId": "SUBJ-014",
+  "fields": [
+    {
+      "label": "Record type",
+      "value": "Professional license lapse"
+    },
+    {
+      "label": "Court / source",
+      "value": "Fairfax County Circuit Court"
+    },
+    {
+      "label": "Filed",
+      "value": "2025-11-16"
+    },
+    {
+      "label": "Status",
+      "value": "Recorded"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Record detail",
+      "body": "Professional license lapse - engineering certification expired."
+    }
+  ],
+  "transactions": []
+}

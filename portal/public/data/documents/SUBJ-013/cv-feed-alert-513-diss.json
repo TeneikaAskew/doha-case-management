@@ -1,0 +1,33 @@
+{
+  "docType": "INCIDENT_REPORT",
+  "title": "SIR-20260120",
+  "reference": "SIR-20260120, Contractor facility, Chantilly VA",
+  "provider": "DISS / prior adjudications",
+  "receivedDate": "2026-01-20",
+  "subjectId": "SUBJ-013",
+  "fields": [
+    {
+      "label": "Incident ID",
+      "value": "SIR-20260120"
+    },
+    {
+      "label": "Date",
+      "value": "2026-01-20"
+    },
+    {
+      "label": "Facility",
+      "value": "Contractor facility, Chantilly VA"
+    },
+    {
+      "label": "Category",
+      "value": "Security incident"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Incident summary",
+      "body": "Eligibility review flag - incident pattern review requested. Entered in DISS by the facility security officer; no compromise determined."
+    }
+  ],
+  "transactions": []
+}

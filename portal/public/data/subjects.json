@@ -16,7 +16,7 @@
       ],
       "daysInStage": 41,
       "cvEnrolled": true,
-      "openAlerts": 2
+      "openAlerts": 3
     },
     {
       "id": "SUBJ-002",
@@ -34,7 +34,7 @@
       ],
       "daysInStage": 9,
       "cvEnrolled": true,
-      "openAlerts": 1
+      "openAlerts": 2
     },
     {
       "id": "SUBJ-003",
@@ -190,7 +190,7 @@
       "flaggedGuidelines": [],
       "daysInStage": 340,
       "cvEnrolled": true,
-      "openAlerts": 0
+      "openAlerts": 2
     },
     {
       "id": "SUBJ-013",
@@ -207,7 +207,7 @@
       ],
       "daysInStage": 120,
       "cvEnrolled": true,
-      "openAlerts": 1
+      "openAlerts": 2
     },
     {
       "id": "SUBJ-014",
@@ -222,7 +222,7 @@
       "flaggedGuidelines": [],
       "daysInStage": 510,
       "cvEnrolled": true,
-      "openAlerts": 0
+      "openAlerts": 1
     },
     {
       "id": "SUBJ-015",

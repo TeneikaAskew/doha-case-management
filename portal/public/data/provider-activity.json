@@ -1,0 +1,788 @@
+{
+  "providers": {
+    "fbi-cjis": {
+      "alertIds": [
+        "ALERT-510",
+        "ALERT-201",
+        "ALERT-517",
+        "ALERT-503"
+      ],
+      "recordChecks": [
+        {
+          "caseId": "SUBJ-002",
+          "subjectName": "Marcus T. Bell",
+          "item": "Criminal history baseline (2023)",
+          "category": "CRIMINAL",
+          "status": "COMPLETE",
+          "completedDate": "2023-03-20",
+          "documentUrl": null
+        },
+        {
+          "caseId": "SUBJ-003",
+          "subjectName": "Priya N. Shah",
+          "item": "Fingerprint / FBI criminal history",
+          "category": "CRIMINAL",
+          "status": "COMPLETE",
+          "completedDate": "2026-06-14",
+          "documentUrl": null
+        },
+        {
+          "caseId": "SUBJ-004",
+          "subjectName": "Alicia M. Grant",
+          "item": "Criminal history check",
+          "category": "CRIMINAL",
+          "status": "COMPLETE",
+          "completedDate": "2026-05-15",
+          "documentUrl": null
+        },
+        {
+          "caseId": "SUBJ-005",
+          "subjectName": "Tomas E. Herrera",
+          "item": "Criminal history check",
+          "category": "CRIMINAL",
+          "status": "COMPLETE",
+          "completedDate": "2026-05-15",
+          "documentUrl": null
+        },
+        {
+          "caseId": "SUBJ-006",
+          "subjectName": "Renee L. Calloway",
+          "item": "Criminal history check",
+          "category": "CRIMINAL",
+          "status": "COMPLETE",
+          "completedDate": "2026-05-15",
+          "documentUrl": null
+        },
+        {
+          "caseId": "SUBJ-007",
+          "subjectName": "Victor A. Osei",
+          "item": "Criminal history check",
+          "category": "CRIMINAL",
+          "status": "COMPLETE",
+          "completedDate": "2026-05-15",
+          "documentUrl": null
+        },
+        {
+          "caseId": "SUBJ-008",
+          "subjectName": "Hannah J. Whitmore",
+          "item": "Criminal history check",
+          "category": "CRIMINAL",
+          "status": "COMPLETE",
+          "completedDate": "2026-05-15",
+          "documentUrl": null
+        },
+        {
+          "caseId": "SUBJ-009",
+          "subjectName": "Derek S. Nakamura",
+          "item": "Criminal history check",
+          "category": "CRIMINAL",
+          "status": "COMPLETE",
+          "completedDate": "2026-05-15",
+          "documentUrl": null
+        },
+        {
+          "caseId": "SUBJ-010",
+          "subjectName": "Fatima R. Aziz",
+          "item": "Criminal history check",
+          "category": "CRIMINAL",
+          "status": "COMPLETE",
+          "completedDate": "2026-05-15",
+          "documentUrl": null
+        },
+        {
+          "caseId": "SUBJ-011",
+          "subjectName": "Gregory P. Stone",
+          "item": "Criminal history check",
+          "category": "CRIMINAL",
+          "status": "COMPLETE",
+          "completedDate": "2026-05-15",
+          "documentUrl": null
+        },
+        {
+          "caseId": "SUBJ-012",
+          "subjectName": "Monica V. Reyes",
+          "item": "Criminal history check",
+          "category": "CRIMINAL",
+          "status": "COMPLETE",
+          "completedDate": "2026-05-15",
+          "documentUrl": null
+        },
+        {
+          "caseId": "SUBJ-013",
+          "subjectName": "Samuel K. Boateng",
+          "item": "Criminal history check",
+          "category": "CRIMINAL",
+          "status": "COMPLETE",
+          "completedDate": "2026-05-15",
+          "documentUrl": null
+        },
+        {
+          "caseId": "SUBJ-014",
+          "subjectName": "Laura D. Ferris",
+          "item": "Criminal history check",
+          "category": "CRIMINAL",
+          "status": "COMPLETE",
+          "completedDate": "2026-05-15",
+          "documentUrl": null
+        },
+        {
+          "caseId": "SUBJ-015",
+          "subjectName": "Ethan C. Marsh",
+          "item": "Criminal history check",
+          "category": "CRIMINAL",
+          "status": "COMPLETE",
+          "completedDate": "2026-05-15",
+          "documentUrl": null
+        }
+      ],
+      "documents": [
+        {
+          "caseId": "SUBJ-001",
+          "subjectName": "Daniel R. Okafor",
+          "title": "NGI-RB-I-CJIS",
+          "url": "documents/SUBJ-001/cv-feed-alert-510-fbi-cjis.json",
+          "receivedDate": "2025-12-12"
+        },
+        {
+          "caseId": "SUBJ-002",
+          "subjectName": "Marcus T. Bell",
+          "title": "NGI-RB-2026-174403",
+          "url": "documents/SUBJ-002/rapback-20260623.json",
+          "receivedDate": "2026-06-23"
+        },
+        {
+          "caseId": "SUBJ-002",
+          "subjectName": "Marcus T. Bell",
+          "title": "NGI-RB-I-CJIS",
+          "url": "documents/SUBJ-002/cv-feed-alert-517-fbi-cjis.json",
+          "receivedDate": "2026-03-13"
+        },
+        {
+          "caseId": "SUBJ-015",
+          "subjectName": "Ethan C. Marsh",
+          "title": "NGI-RB-I-CJIS",
+          "url": "documents/SUBJ-015/cv-feed-alert-503-fbi-cjis.json",
+          "receivedDate": "2025-09-12"
+        }
+      ]
+    },
+    "equifax": {
+      "alertIds": [
+        "ALERT-500",
+        "ALERT-507",
+        "ALERT-520",
+        "ALERT-515"
+      ],
+      "recordChecks": [
+        {
+          "caseId": "SUBJ-003",
+          "subjectName": "Priya N. Shah",
+          "item": "Credit check",
+          "category": "FINANCIAL",
+          "status": "COMPLETE",
+          "completedDate": "2026-06-14",
+          "documentUrl": "documents/SUBJ-003/credit-extract-20260614.json"
+        }
+      ],
+      "documents": [
+        {
+          "caseId": "SUBJ-003",
+          "subjectName": "Priya N. Shah",
+          "title": "Summary - all open accounts",
+          "url": "documents/SUBJ-003/credit-extract-20260614.json",
+          "receivedDate": "2026-06-14"
+        },
+        {
+          "caseId": "SUBJ-012",
+          "subjectName": "Monica V. Reyes",
+          "title": "CV monitoring extract",
+          "url": "documents/SUBJ-012/cv-feed-alert-500-equifax.json",
+          "receivedDate": "2025-08-04"
+        },
+        {
+          "caseId": "SUBJ-013",
+          "subjectName": "Samuel K. Boateng",
+          "title": "CV monitoring extract",
+          "url": "documents/SUBJ-013/cv-feed-alert-507-equifax.json",
+          "receivedDate": "2025-11-03"
+        },
+        {
+          "caseId": "SUBJ-014",
+          "subjectName": "Laura D. Ferris",
+          "title": "CV monitoring extract",
+          "url": "documents/SUBJ-014/cv-feed-alert-520-equifax.json",
+          "receivedDate": "2026-04-21"
+        },
+        {
+          "caseId": "SUBJ-015",
+          "subjectName": "Ethan C. Marsh",
+          "title": "CV monitoring extract",
+          "url": "documents/SUBJ-015/cv-feed-alert-515-equifax.json",
+          "receivedDate": "2026-02-15"
+        }
+      ]
+    },
+    "experian": {
+      "alertIds": [],
+      "recordChecks": [],
+      "documents": []
+    },
+    "transunion": {
+      "alertIds": [
+        "ALERT-101",
+        "ALERT-504",
+        "ALERT-202",
+        "ALERT-511",
+        "ALERT-518",
+        "ALERT-315"
+      ],
+      "recordChecks": [
+        {
+          "caseId": "SUBJ-001",
+          "subjectName": "Daniel R. Okafor",
+          "item": "Tri-bureau credit re-check",
+          "category": "FINANCIAL",
+          "status": "COMPLETE",
+          "completedDate": "2026-03-15",
+          "documentUrl": "documents/SUBJ-001/credit-extract-20260620.json"
+        },
+        {
+          "caseId": "SUBJ-002",
+          "subjectName": "Marcus T. Bell",
+          "item": "Credit baseline (2023)",
+          "category": "FINANCIAL",
+          "status": "COMPLETE",
+          "completedDate": "2023-03-20",
+          "documentUrl": null
+        },
+        {
+          "caseId": "SUBJ-004",
+          "subjectName": "Alicia M. Grant",
+          "item": "Credit check",
+          "category": "FINANCIAL",
+          "status": "COMPLETE",
+          "completedDate": "2026-05-15",
+          "documentUrl": null
+        },
+        {
+          "caseId": "SUBJ-005",
+          "subjectName": "Tomas E. Herrera",
+          "item": "Credit check",
+          "category": "FINANCIAL",
+          "status": "COMPLETE",
+          "completedDate": "2026-05-15",
+          "documentUrl": null
+        },
+        {
+          "caseId": "SUBJ-006",
+          "subjectName": "Renee L. Calloway",
+          "item": "Credit check",
+          "category": "FINANCIAL",
+          "status": "COMPLETE",
+          "completedDate": "2026-05-15",
+          "documentUrl": null
+        },
+        {
+          "caseId": "SUBJ-007",
+          "subjectName": "Victor A. Osei",
+          "item": "Credit check",
+          "category": "FINANCIAL",
+          "status": "COMPLETE",
+          "completedDate": "2026-05-15",
+          "documentUrl": null
+        },
+        {
+          "caseId": "SUBJ-008",
+          "subjectName": "Hannah J. Whitmore",
+          "item": "Credit check",
+          "category": "FINANCIAL",
+          "status": "COMPLETE",
+          "completedDate": "2026-05-15",
+          "documentUrl": null
+        },
+        {
+          "caseId": "SUBJ-009",
+          "subjectName": "Derek S. Nakamura",
+          "item": "Credit check",
+          "category": "FINANCIAL",
+          "status": "COMPLETE",
+          "completedDate": "2026-05-15",
+          "documentUrl": null
+        },
+        {
+          "caseId": "SUBJ-010",
+          "subjectName": "Fatima R. Aziz",
+          "item": "Credit check",
+          "category": "FINANCIAL",
+          "status": "COMPLETE",
+          "completedDate": "2026-05-15",
+          "documentUrl": null
+        },
+        {
+          "caseId": "SUBJ-011",
+          "subjectName": "Gregory P. Stone",
+          "item": "Credit check",
+          "category": "FINANCIAL",
+          "status": "COMPLETE",
+          "completedDate": "2026-05-15",
+          "documentUrl": null
+        },
+        {
+          "caseId": "SUBJ-012",
+          "subjectName": "Monica V. Reyes",
+          "item": "Credit check",
+          "category": "FINANCIAL",
+          "status": "COMPLETE",
+          "completedDate": "2026-05-15",
+          "documentUrl": null
+        },
+        {
+          "caseId": "SUBJ-013",
+          "subjectName": "Samuel K. Boateng",
+          "item": "Credit check",
+          "category": "FINANCIAL",
+          "status": "COMPLETE",
+          "completedDate": "2026-05-15",
+          "documentUrl": null
+        },
+        {
+          "caseId": "SUBJ-014",
+          "subjectName": "Laura D. Ferris",
+          "item": "Credit check",
+          "category": "FINANCIAL",
+          "status": "COMPLETE",
+          "completedDate": "2026-05-15",
+          "documentUrl": null
+        },
+        {
+          "caseId": "SUBJ-015",
+          "subjectName": "Ethan C. Marsh",
+          "item": "Credit check",
+          "category": "FINANCIAL",
+          "status": "COMPLETE",
+          "completedDate": "2026-05-15",
+          "documentUrl": "documents/SUBJ-015/credit-extract-20260618.json"
+        }
+      ],
+      "documents": [
+        {
+          "caseId": "SUBJ-001",
+          "subjectName": "Daniel R. Okafor",
+          "title": "Meridian Auto Finance",
+          "url": "documents/SUBJ-001/credit-extract-20260620.json",
+          "receivedDate": "2026-06-20"
+        },
+        {
+          "caseId": "SUBJ-001",
+          "subjectName": "Daniel R. Okafor",
+          "title": "CV monitoring extract",
+          "url": "documents/SUBJ-001/cv-feed-alert-504-transunion.json",
+          "receivedDate": "2025-09-25"
+        },
+        {
+          "caseId": "SUBJ-002",
+          "subjectName": "Marcus T. Bell",
+          "title": "Harbor Home Retail Card",
+          "url": "documents/SUBJ-002/credit-extract-20251012.json",
+          "receivedDate": "2025-10-12"
+        },
+        {
+          "caseId": "SUBJ-002",
+          "subjectName": "Marcus T. Bell",
+          "title": "CV monitoring extract",
+          "url": "documents/SUBJ-002/cv-feed-alert-511-transunion.json",
+          "receivedDate": "2025-12-25"
+        },
+        {
+          "caseId": "SUBJ-012",
+          "subjectName": "Monica V. Reyes",
+          "title": "CV monitoring extract",
+          "url": "documents/SUBJ-012/cv-feed-alert-518-transunion.json",
+          "receivedDate": "2026-03-26"
+        },
+        {
+          "caseId": "SUBJ-015",
+          "subjectName": "Ethan C. Marsh",
+          "title": "Two delinquent accounts (summary)",
+          "url": "documents/SUBJ-015/credit-extract-20260618.json",
+          "receivedDate": "2026-06-18"
+        }
+      ]
+    },
+    "lexisnexis": {
+      "alertIds": [
+        "ALERT-519",
+        "ALERT-502",
+        "ALERT-508",
+        "ALERT-514"
+      ],
+      "recordChecks": [
+        {
+          "caseId": "SUBJ-003",
+          "subjectName": "Priya N. Shah",
+          "item": "Education verification",
+          "category": "EDUCATION",
+          "status": "COMPLETE",
+          "completedDate": "2026-06-20",
+          "documentUrl": null
+        },
+        {
+          "caseId": "SUBJ-003",
+          "subjectName": "Priya N. Shah",
+          "item": "Employment verification",
+          "category": "EMPLOYMENT",
+          "status": "PENDING",
+          "completedDate": null,
+          "documentUrl": null
+        }
+      ],
+      "documents": [
+        {
+          "caseId": "SUBJ-013",
+          "subjectName": "Samuel K. Boateng",
+          "title": "Public record refresh",
+          "url": "documents/SUBJ-013/cv-feed-alert-519-lexisnexis.json",
+          "receivedDate": "2026-04-08"
+        },
+        {
+          "caseId": "SUBJ-014",
+          "subjectName": "Laura D. Ferris",
+          "title": "Civil judgment filed",
+          "url": "documents/SUBJ-014/cv-feed-alert-502-lexisnexis.json",
+          "receivedDate": "2025-08-30"
+        },
+        {
+          "caseId": "SUBJ-014",
+          "subjectName": "Laura D. Ferris",
+          "title": "Professional license lapse",
+          "url": "documents/SUBJ-014/cv-feed-alert-508-lexisnexis.json",
+          "receivedDate": "2025-11-16"
+        },
+        {
+          "caseId": "SUBJ-014",
+          "subjectName": "Laura D. Ferris",
+          "title": "Eviction record",
+          "url": "documents/SUBJ-014/cv-feed-alert-514-lexisnexis.json",
+          "receivedDate": "2026-02-02"
+        }
+      ]
+    },
+    "fincen": {
+      "alertIds": [
+        "ALERT-516",
+        "ALERT-501",
+        "ALERT-509",
+        "ALERT-521"
+      ],
+      "recordChecks": [
+        {
+          "caseId": "SUBJ-001",
+          "subjectName": "Daniel R. Okafor",
+          "item": "SAR registry query",
+          "category": "FINANCIAL",
+          "status": "COMPLETE",
+          "completedDate": "2026-04-16",
+          "documentUrl": "documents/SUBJ-001/sar-20260415.json"
+        }
+      ],
+      "documents": [
+        {
+          "caseId": "SUBJ-001",
+          "subjectName": "Daniel R. Okafor",
+          "title": "SAR-2026-0415-88231",
+          "url": "documents/SUBJ-001/sar-20260415.json",
+          "receivedDate": "2026-04-16"
+        },
+        {
+          "caseId": "SUBJ-001",
+          "subjectName": "Daniel R. Okafor",
+          "title": "SAR-20260228-CEN",
+          "url": "documents/SUBJ-001/cv-feed-alert-516-fincen.json",
+          "receivedDate": "2026-02-28"
+        },
+        {
+          "caseId": "SUBJ-013",
+          "subjectName": "Samuel K. Boateng",
+          "title": "SAR-20250817-CEN",
+          "url": "documents/SUBJ-013/cv-feed-alert-501-fincen.json",
+          "receivedDate": "2025-08-17"
+        },
+        {
+          "caseId": "SUBJ-015",
+          "subjectName": "Ethan C. Marsh",
+          "title": "SAR-20251129-CEN",
+          "url": "documents/SUBJ-015/cv-feed-alert-509-fincen.json",
+          "receivedDate": "2025-11-29"
+        },
+        {
+          "caseId": "SUBJ-015",
+          "subjectName": "Ethan C. Marsh",
+          "title": "SAR-20260504-CEN",
+          "url": "documents/SUBJ-015/cv-feed-alert-521-fincen.json",
+          "receivedDate": "2026-05-04"
+        }
+      ]
+    },
+    "cbp-i94": {
+      "alertIds": [
+        "ALERT-102",
+        "ALERT-505",
+        "ALERT-512"
+      ],
+      "recordChecks": [
+        {
+          "caseId": "SUBJ-001",
+          "subjectName": "Daniel R. Okafor",
+          "item": "Border-crossing records",
+          "category": "FOREIGN",
+          "status": "COMPLETE",
+          "completedDate": "2026-05-02",
+          "documentUrl": "documents/SUBJ-001/travel-record-20260502.json"
+        }
+      ],
+      "documents": [
+        {
+          "caseId": "SUBJ-001",
+          "subjectName": "Daniel R. Okafor",
+          "title": "I-94 crossing record - Nigeria",
+          "url": "documents/SUBJ-001/travel-record-20260502.json",
+          "receivedDate": "2026-05-02"
+        },
+        {
+          "caseId": "SUBJ-002",
+          "subjectName": "Marcus T. Bell",
+          "title": "I-94 crossing record - Mexico",
+          "url": "documents/SUBJ-002/cv-feed-alert-505-cbp-i94.json",
+          "receivedDate": "2025-10-08"
+        },
+        {
+          "caseId": "SUBJ-012",
+          "subjectName": "Monica V. Reyes",
+          "title": "I-94 crossing record - Mexico",
+          "url": "documents/SUBJ-012/cv-feed-alert-512-cbp-i94.json",
+          "receivedDate": "2026-01-07"
+        }
+      ]
+    },
+    "courts": {
+      "alertIds": [],
+      "recordChecks": [
+        {
+          "caseId": "SUBJ-002",
+          "subjectName": "Marcus T. Bell",
+          "item": "Police report retrieval (2026 arrest)",
+          "category": "CRIMINAL",
+          "status": "COMPLETE",
+          "completedDate": "2026-06-30",
+          "documentUrl": "documents/SUBJ-002/police-report-26-044812.json"
+        },
+        {
+          "caseId": "SUBJ-002",
+          "subjectName": "Marcus T. Bell",
+          "item": "Court disposition monitoring",
+          "category": "CRIMINAL",
+          "status": "PENDING",
+          "completedDate": null,
+          "documentUrl": null
+        }
+      ],
+      "documents": [
+        {
+          "caseId": "SUBJ-002",
+          "subjectName": "Marcus T. Bell",
+          "title": "Arrest report 26-044812",
+          "url": "documents/SUBJ-002/police-report-26-044812.json",
+          "receivedDate": "2026-06-30"
+        }
+      ]
+    },
+    "dmv": {
+      "alertIds": [],
+      "recordChecks": [],
+      "documents": []
+    },
+    "irs": {
+      "alertIds": [],
+      "recordChecks": [],
+      "documents": []
+    },
+    "sead5": {
+      "alertIds": [],
+      "recordChecks": [],
+      "documents": []
+    },
+    "diss": {
+      "alertIds": [
+        "ALERT-506",
+        "ALERT-313",
+        "ALERT-513"
+      ],
+      "recordChecks": [
+        {
+          "caseId": "SUBJ-006",
+          "subjectName": "Renee L. Calloway",
+          "item": "Security & conduct records",
+          "category": "SECURITY",
+          "status": "COMPLETE",
+          "completedDate": "2026-06-18",
+          "documentUrl": null
+        },
+        {
+          "caseId": "SUBJ-007",
+          "subjectName": "Victor A. Osei",
+          "item": "Security & conduct records",
+          "category": "SECURITY",
+          "status": "COMPLETE",
+          "completedDate": "2026-06-18",
+          "documentUrl": null
+        },
+        {
+          "caseId": "SUBJ-009",
+          "subjectName": "Derek S. Nakamura",
+          "item": "Security & conduct records",
+          "category": "SECURITY",
+          "status": "COMPLETE",
+          "completedDate": "2026-06-18",
+          "documentUrl": null
+        },
+        {
+          "caseId": "SUBJ-013",
+          "subjectName": "Samuel K. Boateng",
+          "item": "Security & conduct records",
+          "category": "SECURITY",
+          "status": "COMPLETE",
+          "completedDate": "2026-06-18",
+          "documentUrl": "documents/SUBJ-013/incident-report-2025-0142.json"
+        }
+      ],
+      "documents": [
+        {
+          "caseId": "SUBJ-001",
+          "subjectName": "Daniel R. Okafor",
+          "title": "Section 20A - Financial record",
+          "url": "documents/SUBJ-001/sf86-section20a.json",
+          "receivedDate": "2025-09-08"
+        },
+        {
+          "caseId": "SUBJ-002",
+          "subjectName": "Marcus T. Bell",
+          "title": "Section 22 - Police record",
+          "url": "documents/SUBJ-002/sf86-section22.json",
+          "receivedDate": "2023-01-15"
+        },
+        {
+          "caseId": "SUBJ-003",
+          "subjectName": "Priya N. Shah",
+          "title": "Section 20A - Financial record",
+          "url": "documents/SUBJ-003/sf86-section20a.json",
+          "receivedDate": "2026-06-10"
+        },
+        {
+          "caseId": "SUBJ-004",
+          "subjectName": "Alicia M. Grant",
+          "title": "Section 22 - Police record",
+          "url": "documents/SUBJ-004/sf86-section22.json",
+          "receivedDate": "2026-04-15"
+        },
+        {
+          "caseId": "SUBJ-005",
+          "subjectName": "Tomas E. Herrera",
+          "title": "Section 22 - Police record",
+          "url": "documents/SUBJ-005/sf86-section22.json",
+          "receivedDate": "2026-04-15"
+        },
+        {
+          "caseId": "SUBJ-006",
+          "subjectName": "Renee L. Calloway",
+          "title": "Section 22 - Police record",
+          "url": "documents/SUBJ-006/sf86-section22.json",
+          "receivedDate": "2026-04-15"
+        },
+        {
+          "caseId": "SUBJ-007",
+          "subjectName": "Victor A. Osei",
+          "title": "Section 22 - Police record",
+          "url": "documents/SUBJ-007/sf86-section22.json",
+          "receivedDate": "2026-04-15"
+        },
+        {
+          "caseId": "SUBJ-008",
+          "subjectName": "Hannah J. Whitmore",
+          "title": "Section 22 - Police record",
+          "url": "documents/SUBJ-008/sf86-section22.json",
+          "receivedDate": "2026-04-15"
+        },
+        {
+          "caseId": "SUBJ-009",
+          "subjectName": "Derek S. Nakamura",
+          "title": "Section 22 - Police record",
+          "url": "documents/SUBJ-009/sf86-section22.json",
+          "receivedDate": "2026-04-15"
+        },
+        {
+          "caseId": "SUBJ-010",
+          "subjectName": "Fatima R. Aziz",
+          "title": "Section 22 - Police record",
+          "url": "documents/SUBJ-010/sf86-section22.json",
+          "receivedDate": "2026-04-15"
+        },
+        {
+          "caseId": "SUBJ-011",
+          "subjectName": "Gregory P. Stone",
+          "title": "Section 22 - Police record",
+          "url": "documents/SUBJ-011/sf86-section22.json",
+          "receivedDate": "2026-04-15"
+        },
+        {
+          "caseId": "SUBJ-012",
+          "subjectName": "Monica V. Reyes",
+          "title": "Section 22 - Police record",
+          "url": "documents/SUBJ-012/sf86-section22.json",
+          "receivedDate": "2026-04-15"
+        },
+        {
+          "caseId": "SUBJ-012",
+          "subjectName": "Monica V. Reyes",
+          "title": "SIR-20251021",
+          "url": "documents/SUBJ-012/cv-feed-alert-506-diss.json",
+          "receivedDate": "2025-10-21"
+        },
+        {
+          "caseId": "SUBJ-013",
+          "subjectName": "Samuel K. Boateng",
+          "title": "SIR-2025-0142",
+          "url": "documents/SUBJ-013/incident-report-2025-0142.json",
+          "receivedDate": "2026-06-18"
+        },
+        {
+          "caseId": "SUBJ-013",
+          "subjectName": "Samuel K. Boateng",
+          "title": "Section 22 - Police record",
+          "url": "documents/SUBJ-013/sf86-section22.json",
+          "receivedDate": "2026-04-15"
+        },
+        {
+          "caseId": "SUBJ-013",
+          "subjectName": "Samuel K. Boateng",
+          "title": "SIR-20260120",
+          "url": "documents/SUBJ-013/cv-feed-alert-513-diss.json",
+          "receivedDate": "2026-01-20"
+        },
+        {
+          "caseId": "SUBJ-014",
+          "subjectName": "Laura D. Ferris",
+          "title": "Section 22 - Police record",
+          "url": "documents/SUBJ-014/sf86-section22.json",
+          "receivedDate": "2026-04-15"
+        },
+        {
+          "caseId": "SUBJ-015",
+          "subjectName": "Ethan C. Marsh",
+          "title": "Section 22 - Police record",
+          "url": "documents/SUBJ-015/sf86-section22.json",
+          "receivedDate": "2026-04-15"
+        }
+      ]
+    }
+  }
+}

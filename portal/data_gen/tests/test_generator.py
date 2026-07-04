@@ -132,7 +132,8 @@ def test_hero1_depth(out):
     assert case.adjudication.sorDraft
     assert any(s.discrepancy for s in case.investigation.sf86Sections)
     assert all(g.precedents for g in case.guidelines)
-    assert len(case.alerts) == 2
+    # two authored hero alerts; the procedural CV feed may add more
+    assert len([a for a in case.alerts if a.id.startswith("ALERT-1")]) == 2
 
 
 def test_alerts_and_providers_and_analytics_validate(out):

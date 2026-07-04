@@ -155,6 +155,18 @@ def roi(subject_id, slug, *, case_ref, inv_type, opened, transmitted, lead,
                   for e in entries])
 
 
+def public_record(subject_id, slug, *, record_type, source, filed, status,
+                  detail, received):
+    return _doc(
+        subject_id, slug, "PUBLIC_RECORD",
+        record_type,
+        f"{record_type}, {source}",
+        "LexisNexis", received,
+        [("Record type", record_type), ("Court / source", source),
+         ("Filed", filed), ("Status", status)],
+        sections=[("Record detail", detail)])
+
+
 def incident_report(subject_id, slug, *, incident_id, date, facility, category,
                     summary, received):
     return _doc(

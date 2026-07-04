@@ -1,0 +1,53 @@
+{
+  "docType": "CREDIT_REPORT",
+  "title": "CV monitoring extract",
+  "reference": "CV monitoring extract, consumer file",
+  "provider": "TransUnion",
+  "receivedDate": "2025-12-25",
+  "subjectId": "SUBJ-002",
+  "fields": [
+    {
+      "label": "Bureau",
+      "value": "TransUnion"
+    },
+    {
+      "label": "Account",
+      "value": "CV monitoring extract"
+    },
+    {
+      "label": "Account number",
+      "value": "(monitored file)"
+    },
+    {
+      "label": "Account type",
+      "value": "Consumer file"
+    },
+    {
+      "label": "Balance",
+      "value": "-"
+    },
+    {
+      "label": "Past due",
+      "value": "-"
+    },
+    {
+      "label": "Days past due",
+      "value": "-"
+    },
+    {
+      "label": "Date reported",
+      "value": "2025-12-25"
+    },
+    {
+      "label": "Payment status",
+      "value": "Collection account update - balance sold to new servicer"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Account history summary",
+      "body": "Collection account update - balance sold to new servicer. Reported through scheduled CV credit monitoring; full tradeline detail retained in bureau file."
+    }
+  ],
+  "transactions": []
+}

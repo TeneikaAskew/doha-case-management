@@ -1,0 +1,53 @@
+{
+  "docType": "CREDIT_REPORT",
+  "title": "CV monitoring extract",
+  "reference": "CV monitoring extract, consumer file",
+  "provider": "Equifax",
+  "receivedDate": "2025-08-04",
+  "subjectId": "SUBJ-012",
+  "fields": [
+    {
+      "label": "Bureau",
+      "value": "Equifax"
+    },
+    {
+      "label": "Account",
+      "value": "CV monitoring extract"
+    },
+    {
+      "label": "Account number",
+      "value": "(monitored file)"
+    },
+    {
+      "label": "Account type",
+      "value": "Consumer file"
+    },
+    {
+      "label": "Balance",
+      "value": "-"
+    },
+    {
+      "label": "Past due",
+      "value": "-"
+    },
+    {
+      "label": "Days past due",
+      "value": "-"
+    },
+    {
+      "label": "Date reported",
+      "value": "2025-08-04"
+    },
+    {
+      "label": "Payment status",
+      "value": "Credit utilization exceeded 90% on revolving accounts"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Account history summary",
+      "body": "Credit utilization exceeded 90% on revolving accounts. Reported through scheduled CV credit monitoring; full tradeline detail retained in bureau file."
+    }
+  ],
+  "transactions": []
+}
