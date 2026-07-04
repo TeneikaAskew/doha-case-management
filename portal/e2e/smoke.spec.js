@@ -50,6 +50,12 @@ test('every page loads and the hero case walks through all tabs', async ({ page 
   await expect(page.getByRole('heading', { name: 'Alerts from Data Providers' })).toBeVisible();
   await page.goto('/#/providers');
   await expect(page.getByRole('heading', { name: 'FBI CJIS / NCIC + Rap Back' })).toBeVisible();
+  // Provider drill-down: card -> KPI band -> alert row -> case CV tab
+  await page.getByRole('button', { name: /^TransUnion/ }).click();
+  await expect(page.getByText('Alerts Received')).toBeVisible();
+  await expect(page.getByText('Record Checks Delivered')).toBeVisible();
+  await page.getByRole('cell', { name: 'Marcus T. Bell' }).first().click();
+  await expect(page).toHaveURL(/continuous-vetting/);
   await page.goto('/#/analytics');
   await expect(page.getByRole('heading', { name: 'Analytics' })).toBeVisible();
 
