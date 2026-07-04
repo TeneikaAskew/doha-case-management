@@ -16,3 +16,5 @@ export const getCase = (id) => fetchJson(`cases/${id}.json`);
 export const getAlerts = () => fetchJson('alerts.json').then((d) => d.alerts);
 export const getProviders = () => fetchJson('providers.json').then((d) => d.providers);
 export const getAnalytics = () => fetchJson('analytics.json');
+export const getProviderActivity = () =>
+  fetchJson('provider-activity.json').then((d) => d.providers);

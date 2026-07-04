@@ -25,6 +25,13 @@ export const REFS = {
   // esd.whs.mil blocks non-browser requests (HTTP 403 to curl); loads in a browser.
   DODD_52206: 'https://www.esd.whs.mil/Portals/54/Documents/DD/issuances/dodd/522006p.pdf',
   EO_12968: 'https://www.federalregister.gov/documents/1995/08/07/95-19654/access-to-classified-information',
+  // E.O. 10865 (1960): root authority for the DOHA industrial program
+  EO_10865: 'https://www.archives.gov/federal-register/codification/executive-order/10865.html',
+  // dcsa.mil, justice.gov, and le.fbi.gov block non-browser requests (403); load in a browser.
+  NBIS: 'https://www.dcsa.mil/Systems-Applications/National-Background-Investigation-Services-NBIS/',
+  RAPBACK: 'https://le.fbi.gov/science-and-lab/biometrics-and-fingerprints/biometrics/next-generation-identification-ngi',
+  FCRA: 'https://www.consumerfinance.gov/compliance/compliance-resources/other-applicable-requirements/fair-credit-reporting-act/',
+  PRIVACY_ACT: 'https://www.justice.gov/opcl/privacy-act-1974',
   CFR_147: 'https://www.ecfr.gov/current/title-32/subtitle-A/chapter-I/subchapter-D/part-147',
   SUITABILITY: 'https://www.dcpas.osd.mil/sites/default/files/2021-04/Suitability_Guide_for_Employees.pdf',
   CDSE: 'https://www.cdse.edu/Training/Toolkits/',

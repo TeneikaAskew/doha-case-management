@@ -197,6 +197,8 @@ export default function CVTab({ caseData }) {
       })}
       <SectionRef>
         Continuous vetting under <RefLink href={REFS.SEAD6}>SEAD 6</RefLink>;
+        prior-adjudication checks honor{' '}
+        <RefLink href={REFS.SEAD7}>SEAD 7, Reciprocity</RefLink>;
         enrollment and automated checks per{' '}
         <RefLink href={REFS.DCSA_CV}>DCSA Continuous Vetting</RefLink>.
       </SectionRef>

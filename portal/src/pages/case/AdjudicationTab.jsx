@@ -103,7 +103,9 @@ export default function AdjudicationTab({ caseData }) {
         <SectionRef>
           Adjudication standards per <RefLink href={REFS.SEAD4}>SEAD 4</RefLink>;
           LOI/SOR due process for contractor cases administered by{' '}
-          <RefLink href={REFS.DOHA}>DOHA</RefLink>.
+          <RefLink href={REFS.DOHA}>DOHA</RefLink> under{' '}
+          <RefLink href={REFS.DODD_52206}>DoDD 5220.6</RefLink> and{' '}
+          <RefLink href={REFS.EO_10865}>E.O. 10865</RefLink>.
         </SectionRef>
       </div>
     </div>

@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { FiFileText } from 'react-icons/fi';
 import { EmptyState } from '../../components/States.jsx';
 import DocumentViewer from '../../components/DocumentViewer.jsx';
+import SectionRef, { RefLink } from '../../components/SectionRef.jsx';
+import { REFS } from '../../references.js';
 
 export default function DocumentsTab({ caseData }) {
   const [openIndex, setOpenIndex] = useState(null);
@@ -30,6 +32,13 @@ export default function DocumentsTab({ caseData }) {
           {openIndex === i && <DocumentViewer url={d.url} />}
         </div>
       ))}
+      <SectionRef>
+        DOHA precedent decisions from the published{' '}
+        <RefLink href={REFS.DOHA_DECISIONS}>Industrial Security Clearance
+        Decisions</RefLink>, issued under{' '}
+        <RefLink href={REFS.DODD_52206}>DoDD 5220.6</RefLink> and{' '}
+        <RefLink href={REFS.EO_10865}>E.O. 10865</RefLink>.
+      </SectionRef>
     </div>
   );
 }

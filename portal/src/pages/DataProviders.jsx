@@ -77,7 +77,11 @@ export default function DataProviders() {
       <SectionRef>
         Automated record checks per the{' '}
         <RefLink href={REFS.FIS}>Federal Investigative Standards</RefLink> and{' '}
-        <RefLink href={REFS.DCSA_CV}>DCSA Continuous Vetting</RefLink>.
+        <RefLink href={REFS.DCSA_CV}>DCSA Continuous Vetting</RefLink>; social
+        media checks per <RefLink href={REFS.SEAD5}>SEAD 5</RefLink>; criminal
+        arrest subscriptions via <RefLink href={REFS.RAPBACK}>FBI NGI Rap
+        Back</RefLink>; consumer credit reports governed by the{' '}
+        <RefLink href={REFS.FCRA}>Fair Credit Reporting Act</RefLink>.
       </SectionRef>
     </div>
   );

@@ -47,11 +47,18 @@ const REFERENCE_GROUPS = [
   ['Legal Authorities', [
     ['Executive Order 12968 - Access to Classified Information', REFS.EO_12968,
      'Executive-order foundation for eligibility and access determinations'],
+    ['Executive Order 10865 - Safeguarding Classified Information Within '
+     + 'Industry', REFS.EO_10865,
+     'Root authority for the DOHA industrial program and its published decisions'],
     ['32 CFR Part 147 - Adjudicative Guidelines', REFS.CFR_147,
      'Codified adjudicative guidelines that preceded SEAD 4'],
     ['DoD Directive 5220.6 - Defense Industrial Personnel Security '
      + 'Clearance Review Program', REFS.DODD_52206,
      'Hearing and appeal procedures behind the DOHA precedent decisions'],
+    ['Fair Credit Reporting Act (FCRA)', REFS.FCRA,
+     'Governs the consumer credit reports used in financial record checks'],
+    ['Privacy Act of 1974', REFS.PRIVACY_ACT,
+     'Protections for the personal records a vetting system maintains'],
   ]],
   ['Standard Forms (OPM)', [
     ['Federal Investigation Forms (index)', REFS.OPM_FORMS,

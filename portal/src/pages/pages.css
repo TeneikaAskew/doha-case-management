@@ -106,6 +106,9 @@
   flex-shrink: 0; }
 .attention-card .risk-dial-value { font-size: var(--font-size-lg); }
 .attention-card .risk-dial-label { font-size: 8px; letter-spacing: 0.3px; }
+.attention-card .status-badge { font-size: 10px; padding: 1px 8px;
+  letter-spacing: 0.2px; }
+.attention-card .guideline-chip { width: 18px; height: 18px; font-size: 10px; }
 .directory-filters { display: flex; gap: var(--space-4); align-items: flex-end;
   flex-wrap: wrap; margin-bottom: var(--space-4); }
 .directory-search { min-width: 240px; }
@@ -205,3 +208,12 @@
 .signin-refs-group th { padding: var(--space-3) 0 var(--space-1); text-align: left;
   font-size: var(--font-size-xs); font-weight: 700; text-transform: uppercase;
   letter-spacing: 0.6px; color: var(--dcsa-navy); border-bottom: none; }
+
+/* Provider detail */
+.provider-back { display: inline-flex; align-items: center; gap: var(--space-2);
+  font-size: var(--font-size-sm); font-weight: 600; margin-bottom: var(--space-3); }
+.provider-alerts-head { display: flex; justify-content: space-between;
+  align-items: flex-end; gap: var(--space-4); flex-wrap: wrap;
+  margin-bottom: var(--space-3); }
+.provider-doc-count { display: inline-flex; align-items: center; gap: var(--space-1);
+  margin-left: var(--space-3); font-size: var(--font-size-sm); font-weight: 400; }

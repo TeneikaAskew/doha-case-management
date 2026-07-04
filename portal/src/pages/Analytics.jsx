@@ -375,7 +375,9 @@ function AdjudicationTab({ subjects, timeliness }) {
         </div>
       </div>
       <SectionRef>
-        Adjudication standards per <RefLink href={REFS.SEAD4}>SEAD 4</RefLink>.
+        Adjudication standards per <RefLink href={REFS.SEAD4}>SEAD 4</RefLink>;
+        interim eligibility per <RefLink href={REFS.SEAD8}>SEAD 8, Temporary
+        Eligibility</RefLink>.
       </SectionRef>
     </>
   );
