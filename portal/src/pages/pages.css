@@ -220,3 +220,4 @@
 .provider-card { text-align: left; font: inherit; cursor: pointer; }
 .provider-activity-line { font-size: var(--font-size-sm); font-weight: 600;
   color: var(--dcsa-ocean); }
+.card + .kpi-grid { margin-top: var(--space-4); }
