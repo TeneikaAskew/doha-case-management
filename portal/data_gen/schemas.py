@@ -244,6 +244,7 @@ class CVAlert(BaseModel):
     state: AlertState
     receivedDate: str
     provider: str
+    providerId: str  # canonical providers.json id; UI joins on this, never on names
     description: str
     identityMatch: IdentityMatch
     threshold: Threshold
@@ -394,3 +395,31 @@ class AlertsFile(BaseModel):
 
 class ProvidersFile(BaseModel):
     providers: list[ProviderInfo]
+
+
+class ProviderCheckRef(BaseModel):
+    caseId: str
+    subjectName: str
+    item: str
+    category: RecordCheckCategory
+    status: CoverageStatus
+    completedDate: Optional[str] = None
+    documentUrl: Optional[str] = None
+
+
+class ProviderDocRef(BaseModel):
+    caseId: str
+    subjectName: str
+    title: str
+    url: str
+    receivedDate: str
+
+
+class ProviderActivity(BaseModel):
+    alertIds: list[str] = []
+    recordChecks: list[ProviderCheckRef] = []
+    documents: list[ProviderDocRef] = []
+
+
+class ProviderActivityFile(BaseModel):
+    providers: dict[str, ProviderActivity]

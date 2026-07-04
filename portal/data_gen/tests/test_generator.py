@@ -283,3 +283,61 @@ def test_no_em_dashes_or_mojibake_in_generated_data(out):
         text = f.read_text(encoding="utf-8")
         for ch in banned:
             assert ch not in text, f"{f.name} contains banned dash {ch!r}"
+
+
+def test_every_alert_has_canonical_provider_id(out):
+    out_dir, _ = out
+    ids = {p.id for p in schemas.ProvidersFile.model_validate(
+        json.loads((out_dir / "providers.json").read_text(encoding="utf-8"))).providers}
+    alerts = schemas.AlertsFile.model_validate(
+        json.loads((out_dir / "alerts.json").read_text(encoding="utf-8"))).alerts
+    for a in alerts:
+        assert a.providerId in ids, f"{a.id}: bad providerId {a.providerId}"
+
+
+def test_cv_providers_have_rich_alert_coverage(out):
+    """Every CV-capable provider holds >= 3 alerts; investigation-only ones 0."""
+    out_dir, _ = out
+    providers = schemas.ProvidersFile.model_validate(
+        json.loads((out_dir / "providers.json").read_text(encoding="utf-8"))).providers
+    alerts = schemas.AlertsFile.model_validate(
+        json.loads((out_dir / "alerts.json").read_text(encoding="utf-8"))).alerts
+    by_provider = {}
+    for a in alerts:
+        by_provider[a.providerId] = by_provider.get(a.providerId, 0) + 1
+    for p in providers:
+        if "CV" in p.usedIn:
+            assert by_provider.get(p.id, 0) >= 3, f"{p.id}: {by_provider.get(p.id, 0)} alerts"
+        else:
+            assert by_provider.get(p.id, 0) == 0, f"{p.id} is INV-only but has alerts"
+
+
+def test_open_alerts_is_computed(out):
+    out_dir, _ = out
+    for f in sorted((out_dir / "cases").glob("*.json")):
+        case = schemas.CaseDetail.model_validate(json.loads(f.read_text(encoding="utf-8")))
+        open_n = sum(1 for a in case.alerts
+                     if a.state not in ("ADJUDICATED", "CLOSED"))
+        assert case.subject.openAlerts == open_n, f"{case.subject.id}"
+
+
+def test_provider_activity_file(out):
+    out_dir, _ = out
+    data = json.loads((out_dir / "provider-activity.json").read_text(encoding="utf-8"))
+    parsed = schemas.ProviderActivityFile.model_validate(data)
+    ids = {p.id for p in schemas.ProvidersFile.model_validate(
+        json.loads((out_dir / "providers.json").read_text(encoding="utf-8"))).providers}
+    alerts = {a.id for a in schemas.AlertsFile.model_validate(
+        json.loads((out_dir / "alerts.json").read_text(encoding="utf-8"))).alerts}
+    assert set(parsed.providers) == ids  # every provider present, even if empty
+    for pid, act in parsed.providers.items():
+        for aid in act.alertIds:
+            assert aid in alerts, f"{pid}: unknown alert {aid}"
+        for rc in act.recordChecks:
+            assert (out_dir / "cases" / f"{rc.caseId}.json").is_file()
+            if rc.documentUrl:
+                assert (out_dir / rc.documentUrl).is_file()
+        for d in act.documents:
+            assert (out_dir / d.url).is_file()
+    # investigation-only providers still deliver record checks somewhere
+    assert parsed.providers["transunion"].recordChecks

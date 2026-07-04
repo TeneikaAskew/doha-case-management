@@ -13,6 +13,27 @@ WHOLE_PERSON_FACTORS = [
 ]
 
 
+# Display string (as used in alert/check/document data) -> providers.json id.
+# Single source of truth for provider identity; mirrors the UI SourceChip aliases.
+PROVIDER_IDS = {
+    "FBI CJIS / NCIC + Rap Back": "fbi-cjis",
+    "FBI Rap Back": "fbi-cjis",
+    "FBI CJIS/NCIC": "fbi-cjis",
+    "Equifax": "equifax",
+    "Experian": "experian",
+    "TransUnion": "transunion",
+    "LexisNexis": "lexisnexis",
+    "FinCEN / Treasury": "fincen",
+    "CBP I-94 Foreign Travel": "cbp-i94",
+    "CBP I-94": "cbp-i94",
+    "State & local courts": "courts",
+    "DMV records": "dmv",
+    "IRS / tax records": "irs",
+    "SEAD-5 Social media (PAEI)": "sead5",
+    "DISS / prior adjudications": "diss",
+}
+
+
 def doc_url(subject_id: str, slug: str) -> str:
     return f"documents/{subject_id}/{slug}.json"
 
