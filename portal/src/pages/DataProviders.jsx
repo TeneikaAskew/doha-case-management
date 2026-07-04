@@ -1,5 +1,6 @@
+import { useNavigate } from 'react-router-dom';
 import { FiGrid, FiDatabase, FiCheck } from 'react-icons/fi';
-import { getProviders } from '../data/api.js';
+import { getAlerts, getProviderActivity, getProviders } from '../data/api.js';
 import { useData } from '../data/useData.js';
 import { GUIDELINES } from '../domain.js';
 import StatusBadge from '../components/StatusBadge.jsx';
@@ -11,10 +12,18 @@ const STATUS_VARIANT = { HEALTHY: 'success', DEGRADED: 'warning', OFFLINE: 'erro
 const USED_IN_LABEL = { INVESTIGATION: 'Investigation', CV: 'Continuous vetting' };
 
 export default function DataProviders() {
+  const navigate = useNavigate();
   const { data: providers, loading, error } = useData(getProviders);
+  const alertsQ = useData(getAlerts);
+  const activityQ = useData(getProviderActivity);
 
-  if (loading) return <Loading />;
+  if (loading || alertsQ.loading || activityQ.loading) return <Loading />;
   if (error) return <div className="page"><ErrorAlert message={error} /></div>;
+
+  const counts = (id) => ({
+    alerts: (alertsQ.data || []).filter((a) => a.providerId === id).length,
+    checks: activityQ.data?.[id]?.recordChecks.length || 0,
+  });
 
   const codes = Object.keys(GUIDELINES);
 
@@ -29,7 +38,9 @@ export default function DataProviders() {
 
       <div className="provider-grid">
         {providers.map((p) => (
-          <div key={p.id} className="card provider-card">
+          <button key={p.id} type="button"
+            className="card card-interactive provider-card"
+            onClick={() => navigate(`/providers/${p.id}`)}>
             <div className="provider-card-head">
               <h3><FiDatabase className="section-icon" aria-hidden="true" />{p.name}</h3>
               <StatusBadge variant={STATUS_VARIANT[p.status]}>{p.status}</StatusBadge>
@@ -41,7 +52,10 @@ export default function DataProviders() {
             </div>
             <p><strong>{p.recordCount.toLocaleString('en-US')}</strong>
               <span className="muted"> records, last sync {p.lastSync.slice(0, 10)}</span></p>
-          </div>
+            <p className="muted provider-activity-line">
+              {counts(p.id).alerts} alerts · {counts(p.id).checks} record checks
+            </p>
+          </button>
         ))}
       </div>
 

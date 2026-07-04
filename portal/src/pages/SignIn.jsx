@@ -77,6 +77,10 @@ const REFERENCE_GROUPS = [
      'Tiered investigation coverage reflected in record checks'],
     ['DCSA Continuous Vetting', REFS.DCSA_CV,
      'CV enrollment and alert categories'],
+    ['NBIS - National Background Investigation Services', REFS.NBIS,
+     'The eApp intake system case timelines reference'],
+    ['FBI Next Generation Identification (Rap Back)', REFS.RAPBACK,
+     'Arrest-notification subscriptions behind the criminal CV alerts'],
   ]],
   ['Training', [
     ['CDSE Training Toolkits', REFS.CDSE,
