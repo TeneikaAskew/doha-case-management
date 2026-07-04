@@ -18,6 +18,7 @@ if (!globalThis.crypto?.subtle) {
 // jsdom does not implement scrolling; keep test output free of
 // "Not implemented: window.scrollTo" noise from the Gate's scroll reset.
 window.scrollTo = () => {};
+Element.prototype.scrollIntoView = () => {};
 
 // Stub ResizeObserver for recharts ResponsiveContainer in jsdom
 global.ResizeObserver = class ResizeObserver {
