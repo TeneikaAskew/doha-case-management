@@ -1,8 +1,12 @@
 // Authoritative sources the demo's content is derived from. URLs verified 2026-07-03.
 export const REFS = {
+  SEAD1: 'https://www.dni.gov/files/NCSC/documents/Regulations/SEAD_1.pdf',
   SEAD3: 'https://www.dni.gov/files/NCSC/documents/Regulations/SEAD-3-Reporting-U.pdf',
   SEAD4: 'https://www.dni.gov/files/NCSC/documents/Regulations/SEAD-4-Adjudicative-Guidelines-U.pdf',
+  SEAD5: 'https://www.dni.gov/files/NCSC/documents/Regulations/SEAD_5.pdf',
   SEAD6: 'https://www.dni.gov/files/NCSC/documents/Regulations/SEAD-6-continuous%20evaluation-U.pdf',
+  SEAD7: 'https://www.dni.gov/files/NCSC/documents/Regulations/SEAD-7_BI_ReciprocityU.pdf',
+  SEAD9: 'https://www.dni.gov/files/NCSC/documents/Regulations/06-02-22_ODNI_Document_SEAD-9_22-00284_U_SIGNED-FINAL.pdf',
   FIS: 'https://www.dcsa.mil/Personnel-Vetting/Background-Investigations/',
   DCSA_CV: 'https://www.dcsa.mil/Personnel-Vetting/Continuous-Vetting/',
   DCSA_PV: 'https://www.dcsa.mil/Personnel-Vetting/',
