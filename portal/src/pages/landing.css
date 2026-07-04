@@ -242,15 +242,84 @@
   letter-spacing: -0.03em; }
 .landing .stats .lede { margin: 14px auto 0; color: var(--l-ink-2); max-width: 76ch;
   font-size: 17px; }
-.landing .stats-panel { margin-top: 32px; border-radius: 24px;
+/* Metrics explorer: tabs + count-up cluster + animated viz */
+.landing .mx-tabs { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;
+  margin: 34px 0 26px; }
+.landing .mx-tab { border: 1px solid var(--l-line); background: var(--l-panel-a);
+  border-radius: 999px; padding: 10px 20px; font-family: inherit;
+  font-size: 14.5px; font-weight: 700; color: var(--l-ink-2); cursor: pointer;
+  transition: all .2s ease; min-height: 44px; }
+.landing .mx-tab:hover { color: var(--l-ink); transform: translateY(-1px); }
+.landing .mx-tab[aria-selected="true"] { background: var(--l-navy); color: var(--text-inverse);
+  border-color: var(--l-navy); }
+.landing .mx-tab:focus-visible { outline: 2px solid var(--l-teal); outline-offset: 2px; }
+.landing .mx-panel { display: none; grid-template-columns: 1.05fr 0.95fr; gap: 32px;
+  align-items: stretch; border-radius: 24px; border: 1px solid var(--l-line);
   background: linear-gradient(180deg, var(--l-panel-a) 0%, var(--l-panel-b) 100%);
-  border: 1px solid var(--l-line);
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
-  padding: 40px 36px; }
-.landing .stat b { display: block; font-size: clamp(44px, 5.6vw, 64px); font-weight: 800;
-  letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
-.landing .stat span { display: block; margin: 10px auto 0; color: var(--l-ink-2);
-  font-size: 15px; max-width: 24ch; }
+  padding: 40px 44px; text-align: left; }
+.landing .mx-panel.active { display: grid; animation: landing-mx-in .45s ease; }
+@keyframes landing-mx-in { from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; } }
+.landing .mx-big b { display: block; font-size: clamp(48px, 6vw, 76px); font-weight: 800;
+  letter-spacing: -0.035em; font-variant-numeric: tabular-nums;
+  color: var(--l-ink); line-height: 1; }
+.landing .mx-big span { display: block; margin-top: 10px; color: var(--l-ink-2);
+  font-size: 16px; max-width: 30ch; }
+.landing .mx-side { display: flex; gap: 40px; margin-top: 30px; }
+.landing .mx-small b { display: block; font-size: 26px; font-weight: 800;
+  font-variant-numeric: tabular-nums; }
+.landing .mx-small span { display: block; margin-top: 3px; color: var(--l-ink-3);
+  font-size: 13.5px; max-width: 18ch; }
+.landing .mx-viz { background: var(--l-panel-a); border: 1px solid var(--l-line);
+  border-radius: 16px; padding: 24px; display: flex; flex-direction: column;
+  justify-content: center; gap: 14px; box-shadow: var(--l-card-shadow); }
+.landing .mx-viz-note { margin: 4px 0 0; font-size: 12px; color: var(--l-ink-3);
+  text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+.landing .mx-bar-row { display: grid; grid-template-columns: 76px 1fr; gap: 12px;
+  align-items: center; font-size: 13px; font-weight: 600; color: var(--l-ink-2); }
+.landing .mx-bar-track { height: 12px; background: var(--l-tint); border-radius: 6px;
+  overflow: hidden; }
+.landing .mx-bar-fill { display: block; height: 100%; border-radius: 6px;
+  background: var(--l-teal); width: 0; }
+.landing .active .mx-bar-fill { animation: landing-mx-grow .9s ease forwards; }
+.landing .mx-panel .mx-bar-row:nth-child(2) .mx-bar-fill { animation-delay: .12s; }
+.landing .mx-panel .mx-bar-row:nth-child(3) .mx-bar-fill { animation-delay: .24s; }
+.landing .mx-panel .mx-bar-row:nth-child(4) .mx-bar-fill { animation-delay: .36s; }
+@keyframes landing-mx-grow { to { width: var(--w); } }
+.landing .mx-fill-gold { background: var(--l-gold); }
+.landing .mx-fill-deep { background: var(--l-navy); }
+.landing .mx-fill-clear { background: var(--l-clear); }
+.landing .mx-tick-row { display: flex; align-items: center; gap: 10px;
+  font-size: 14.5px; font-weight: 600; color: var(--l-ink); opacity: 0; }
+.landing .active .mx-tick-row { animation: landing-mx-tick .5s ease forwards; }
+.landing .mx-panel .mx-tick-row:nth-child(1) { animation-delay: .1s; }
+.landing .mx-panel .mx-tick-row:nth-child(2) { animation-delay: .3s; }
+.landing .mx-panel .mx-tick-row:nth-child(3) { animation-delay: .5s; }
+@keyframes landing-mx-tick { from { opacity: 0; transform: translateX(-8px); }
+  to { opacity: 1; transform: none; } }
+.landing .mx-tick-row svg { width: 15px; height: 15px; color: var(--l-clear); flex-shrink: 0; }
+.landing .mx-tick-row em { margin-left: auto; font-style: normal; font-size: 12px;
+  font-weight: 700; padding: 2px 10px; border-radius: 999px;
+  color: var(--l-warn); background: var(--l-warn-tint); }
+.landing .mx-tick-row .mx-em-clear { color: var(--l-clear); background: var(--l-clear-tint); }
+.landing .mx-matrix { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px;
+  align-content: center; }
+.landing .mx-matrix span { aspect-ratio: 1; border-radius: 6px; background: var(--l-tint);
+  opacity: 0; }
+.landing .mx-matrix span.on { background: var(--l-teal); }
+.landing .active .mx-matrix span { animation: landing-mx-pop .4s ease forwards; }
+.landing .mx-matrix span:nth-child(3n) { animation-delay: .1s; }
+.landing .mx-matrix span:nth-child(3n + 1) { animation-delay: .25s; }
+.landing .mx-matrix span:nth-child(3n + 2) { animation-delay: .4s; }
+@keyframes landing-mx-pop { from { opacity: 0; transform: scale(0.5); }
+  to { opacity: 1; transform: scale(1); } }
+.landing .mx-matrix .mx-viz-note { grid-column: 1 / -1; }
+@media (prefers-reduced-motion: reduce) {
+  .landing .mx-panel.active { animation: none; }
+  .landing .active .mx-bar-fill { animation: none; width: var(--w); }
+  .landing .active .mx-tick-row { animation: none; opacity: 1; }
+  .landing .active .mx-matrix span { animation: none; opacity: 1; }
+}
 
 /* ---------- CTA band with case vignette ---------- */
 /* Blends downward into the footer: bottom stop matches --l-footer-ground */
@@ -353,7 +422,8 @@
   .landing .gt-step::before { display: none; }
   .landing .landing-split { grid-template-columns: 1fr; gap: 40px; }
   .landing .panel { grid-template-columns: 1fr; gap: 40px; }
-  .landing .stats-panel { grid-template-columns: 1fr; padding: 56px 32px; gap: 44px; }
+  .landing .mx-panel { grid-template-columns: 1fr; padding: 32px 28px; gap: 28px; }
+  .landing .mx-side { flex-wrap: wrap; gap: 24px; }
   .landing .footer-grid { grid-template-columns: 1fr 1fr; }
   .landing .cta-in { grid-template-columns: 1fr; gap: 48px; }
   .landing .case-stack { min-height: 460px; }

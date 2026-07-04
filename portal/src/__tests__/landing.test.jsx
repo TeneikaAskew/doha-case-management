@@ -22,10 +22,38 @@ describe('Landing page', () => {
     render(<App />);
     expect(screen.getByText('Vetting at scale')).toBeInTheDocument();
     expect(screen.getByText('33,610')).toBeInTheDocument();
-    expect(screen.getByText('13')).toBeInTheDocument();
-    expect(screen.getByText('12')).toBeInTheDocument();
     expect(screen.getByText('John Smith')).toBeInTheDocument();
     expect(screen.getByText(/all identities are fictional/i)).toBeInTheDocument();
+  });
+
+  it('metrics explorer tabs render with The Corpus selected', () => {
+    render(<App />);
+    const corpusTab = screen.getByRole('tab', { name: 'The Corpus' });
+    expect(corpusTab).toHaveAttribute('aria-selected', 'true');
+    expect(screen.getByText('33,610')).toBeInTheDocument();
+    expect(screen.getByText(/real doha decisions behind every precedent and trend/i))
+      .toBeInTheDocument();
+  });
+
+  it('clicking The Checks shows its metrics and hides the corpus big-stat label', () => {
+    render(<App />);
+    fireEvent.click(screen.getByRole('tab', { name: 'The Checks' }));
+    expect(screen.getByText('12')).toBeInTheDocument();
+    expect(screen.getByText(/data providers mapped to every guideline they inform/i))
+      .toBeInTheDocument();
+    expect(screen.queryByText(/real doha decisions behind every precedent and trend/i))
+      .not.toBeInTheDocument();
+  });
+
+  it('metrics explorer tab clicks set aria-selected correctly', () => {
+    render(<App />);
+    const corpusTab = screen.getByRole('tab', { name: 'The Corpus' });
+    const checksTab = screen.getByRole('tab', { name: 'The Checks' });
+    expect(corpusTab).toHaveAttribute('aria-selected', 'true');
+    expect(checksTab).toHaveAttribute('aria-selected', 'false');
+    fireEvent.click(checksTab);
+    expect(checksTab).toHaveAttribute('aria-selected', 'true');
+    expect(corpusTab).toHaveAttribute('aria-selected', 'false');
   });
 
   it('persona tabs switch panels', () => {

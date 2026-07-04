@@ -55,10 +55,80 @@ const AI_BULLETS = [
   'Ask the Case answers only from the case file, with citations.',
 ];
 
-const STATS = [
-  { value: 33610, label: 'real DOHA decisions behind precedents and analytics' },
-  { value: 13, label: 'SEAD-4 guidelines covered, A through M' },
-  { value: 12, label: 'data providers mapped to every guideline they inform' },
+const MX_PANELS = [
+  {
+    id: 'mx-corpus',
+    tab: 'The Corpus',
+    big: { value: 33610, label: 'real DOHA decisions behind every precedent and trend' },
+    side: [
+      { value: 27973, label: 'hearing decisions' },
+      { value: 5637, label: 'Appeal Board decisions' },
+    ],
+    viz: {
+      type: 'bars',
+      rows: [
+        { label: 'Hearings', pct: 100, fillClass: '' },
+        { label: 'Appeals', pct: 20, fillClass: 'mx-fill-gold' },
+        { label: 'Denied', pct: 63, fillClass: 'mx-fill-deep' },
+        { label: 'Granted', pct: 28, fillClass: 'mx-fill-clear' },
+      ],
+      note: 'Published outcomes, 1996 to 2026',
+    },
+  },
+  {
+    id: 'mx-file',
+    tab: 'The File',
+    big: { value: 9, label: 'whole-person factors, each tied to its evidence' },
+    side: [
+      { value: 7, label: 'tabs in every case file' },
+      { value: 15, label: 'subjects in the demo population' },
+    ],
+    viz: {
+      type: 'ticks',
+      rows: [
+        { text: 'Frequency and recency', em: 'Concern', emClear: false },
+        { text: 'Rehabilitation', em: 'Favorable', emClear: true },
+        { text: 'Voluntariness', em: 'Favorable', emClear: true },
+      ],
+      note: 'Worksheet ratings, adjudicator only',
+    },
+  },
+  {
+    id: 'mx-checks',
+    tab: 'The Checks',
+    big: { value: 12, label: 'data providers mapped to every guideline they inform' },
+    side: [
+      { value: 13, label: 'SEAD-4 guidelines, A through M' },
+      { value: 8, label: 'source document types' },
+    ],
+    viz: {
+      type: 'matrix',
+      cells: [
+        false, true, false, true, true, false, true,
+        true, false, true, false, true, true, false,
+        false, true, true, false, true, false, true,
+      ],
+      note: 'Provider to guideline coverage',
+    },
+  },
+  {
+    id: 'mx-alerts',
+    tab: 'The Alerts',
+    big: { value: 3, label: 'validation steps before any alert reaches a decision maker' },
+    side: [
+      { value: 7, label: 'alert categories monitored' },
+      { value: 100, label: 'percent human decisions' },
+    ],
+    viz: {
+      type: 'ticks',
+      rows: [
+        { text: 'Identity match', em: '96% confidence', emClear: true },
+        { text: 'Investigative threshold', em: 'Met', emClear: true },
+        { text: 'Prior adjudication', em: 'None found', emClear: true },
+      ],
+      note: 'The analyst three-step, every alert',
+    },
+  },
 ];
 
 const FOOTER_COLUMNS = [
@@ -307,9 +377,91 @@ function PersonaAppShot({ id }) {
   );
 }
 
+function MxBarsContent({ rows }) {
+  return rows.map((row) => (
+    <div className="mx-bar-row" key={row.label}>
+      <span className="mx-bar-label">{row.label}</span>
+      <span className="mx-bar-track">
+        <span className={`mx-bar-fill${row.fillClass ? ` ${row.fillClass}` : ''}`}
+          style={{ '--w': `${row.pct}%` }} />
+      </span>
+    </div>
+  ));
+}
+
+function MxTicksContent({ rows }) {
+  return rows.map((row) => (
+    <div className="mx-tick-row" key={row.text}>
+      <FiCheck aria-hidden="true" />
+      {row.text} <em className={row.emClear ? 'mx-em-clear' : ''}>{row.em}</em>
+    </div>
+  ));
+}
+
+function MxMatrixContent({ cells }) {
+  return cells.map((on, i) => (
+    // eslint-disable-next-line react/no-array-index-key
+    <span key={i} className={on ? 'on' : ''} />
+  ));
+}
+
+// Shared mx-viz wrapper for all three viz shapes (bars / ticks / matrix), so the
+// decorative-container markup (aria-hidden, note paragraph) lives in one place.
+function MxViz({ viz }) {
+  const isMatrix = viz.type === 'matrix';
+  return (
+    <div className={`mx-viz${isMatrix ? ' mx-matrix' : ''}`} aria-hidden="true">
+      {viz.type === 'bars' && <MxBarsContent rows={viz.rows} />}
+      {viz.type === 'ticks' && <MxTicksContent rows={viz.rows} />}
+      {isMatrix && <MxMatrixContent cells={viz.cells} />}
+      <p className="mx-viz-note">{viz.note}</p>
+    </div>
+  );
+}
+
+function MxPanel({ panel }) {
+  return (
+    <div className="mx-panel active" id={panel.id} role="tabpanel"
+      aria-labelledby={`mx-tab-${panel.id}`}>
+      <div className="mx-metrics">
+        <div className="mx-big">
+          <CountUp value={panel.big.value} />
+          <span>{panel.big.label}</span>
+        </div>
+        <div className="mx-side">
+          {panel.side.map((s) => (
+            <div className="mx-small" key={s.label}>
+              <CountUp value={s.value} />
+              <span>{s.label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+      <MxViz viz={panel.viz} />
+    </div>
+  );
+}
+
 export default function Landing({ onSignIn }) {
   const word = useRotatingWord(ROTATE_WORDS, 2400);
   const [activeTab, setActiveTab] = useState(PERSONA_TABS[0].id);
+  const [mxIndex, setMxIndex] = useState(0);
+  const mxTouchedRef = useRef(false);
+  const mxHoveringRef = useRef(false);
+
+  useEffect(() => {
+    if (prefersReducedMotion()) return undefined;
+    const id = setInterval(() => {
+      if (mxTouchedRef.current || mxHoveringRef.current) return;
+      setMxIndex((i) => (i + 1) % MX_PANELS.length);
+    }, 6000);
+    return () => clearInterval(id);
+  }, []);
+
+  function handleMxTabClick(index) {
+    mxTouchedRef.current = true;
+    setMxIndex(index);
+  }
 
   // Checkr-style pill: size to the current word and animate the width change.
   // A hidden measurer span shares the word's font so offsetWidth is exact.
@@ -472,7 +624,9 @@ export default function Landing({ onSignIn }) {
           </div>
         </Reveal>
 
-        <Reveal as="section" className="stats-band" id="scale">
+        <Reveal as="section" className="stats-band" id="scale"
+          onMouseEnter={() => { mxHoveringRef.current = true; }}
+          onMouseLeave={() => { mxHoveringRef.current = false; }}>
           <div className="wrap stats">
             <h2>Vetting at scale</h2>
             <p className="lede">
@@ -480,14 +634,18 @@ export default function Landing({ onSignIn }) {
               precedents and AI-driven analytics. The people are fictional; the
               case law is not.
             </p>
-            <div className="stats-panel">
-              {STATS.map(({ value, label }) => (
-                <div key={label} className="stat">
-                  <CountUp value={value} />
-                  <span>{label}</span>
-                </div>
+            <div className="mx-tabs" role="tablist" aria-label="Metrics">
+              {MX_PANELS.map((panel, i) => (
+                <button key={panel.id} type="button" role="tab" className="mx-tab"
+                  id={`mx-tab-${panel.id}`} aria-selected={mxIndex === i}
+                  aria-controls={panel.id} onClick={() => handleMxTabClick(i)}>
+                  {panel.tab}
+                </button>
               ))}
             </div>
+            {MX_PANELS.map((panel, i) => mxIndex === i && (
+              <MxPanel key={panel.id} panel={panel} />
+            ))}
           </div>
         </Reveal>
 
