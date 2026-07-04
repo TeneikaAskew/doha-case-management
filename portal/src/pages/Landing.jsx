@@ -5,7 +5,7 @@ import './landing.css';
 
 const IMG_BASE = import.meta.env.BASE_URL + 'img/landing/';
 
-const ROTATE_WORDS = ['people', 'alerts', 'records', 'histories'];
+const ROTATE_WORDS = ['people', 'alerts', 'records'];
 
 const NAV_LINKS = [
   { id: 'platform', label: 'Platform' },
@@ -456,20 +456,22 @@ export default function Landing({ onSignIn }) {
           </div>
         </Reveal>
 
-        <Reveal as="section" className="stats wrap" id="scale">
-          <h2>Vetting at scale</h2>
-          <p className="lede">
-            Aegis draws on the real, published DOHA decision corpus for
-            precedents and AI-driven analytics. The people are fictional; the
-            case law is not.
-          </p>
-          <div className="stats-panel">
-            {STATS.map(({ value, label }) => (
-              <div key={label} className="stat">
-                <CountUp value={value} />
-                <span>{label}</span>
-              </div>
-            ))}
+        <Reveal as="section" className="stats-band" id="scale">
+          <div className="wrap stats">
+            <h2>Vetting at scale</h2>
+            <p className="lede">
+              Aegis draws on the real, published DOHA decision corpus for
+              precedents and AI-driven analytics. The people are fictional; the
+              case law is not.
+            </p>
+            <div className="stats-panel">
+              {STATS.map(({ value, label }) => (
+                <div key={label} className="stat">
+                  <CountUp value={value} />
+                  <span>{label}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </Reveal>
 

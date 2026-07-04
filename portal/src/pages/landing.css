@@ -89,7 +89,7 @@
 .landing .pill-word { display: inline-flex; align-items: center; justify-content: center;
   vertical-align: baseline; background: var(--l-panel-a); border-radius: 18px;
   box-shadow: var(--l-card-shadow); padding: 0.02em 0.38em 0.06em;
-  min-width: 9.6ch; position: relative; top: -0.02em; }
+  min-width: 7.1ch; position: relative; top: -0.02em; }
 .landing .pill-word .word { display: inline-block; animation: landing-wordfade 0.45s ease;
   color: var(--l-teal-dark); }
 @keyframes landing-wordfade { from { opacity: 0; transform: translateY(10px); }
@@ -207,8 +207,8 @@
 .landing .risk.lo { color: var(--l-teal-dark); }
 
 /* ---------- AI section ---------- */
-.landing .ai-section { background: var(--l-tint); border-top: 1px solid var(--l-line);
-  border-bottom: 1px solid var(--l-line); padding: 72px 0; }
+.landing .ai-section { background: var(--l-ground);
+  border-top: 1px solid var(--l-line); padding: 72px 0; }
 .landing .landing-split { display: grid; grid-template-columns: 1fr 1.05fr;
   gap: 56px; align-items: center; }
 .landing .landing-split h2 { font-size: clamp(28px, 3.6vw, 40px); font-weight: 800;
@@ -232,6 +232,8 @@
 .landing .lc-note { font-size: 12.5px; color: var(--l-ink-3); }
 
 /* ---------- Stats ---------- */
+.landing .stats-band { background: var(--l-tint);
+  border-top: 1px solid var(--l-line); border-bottom: 1px solid var(--l-line); }
 .landing .stats { padding: 64px 0 72px; text-align: center; }
 .landing .stats h2 { font-size: clamp(30px, 4vw, 44px); font-weight: 800;
   letter-spacing: -0.03em; }
@@ -248,7 +250,9 @@
   font-size: 15px; max-width: 24ch; }
 
 /* ---------- CTA band with case vignette ---------- */
-.landing .cta-band { background: linear-gradient(160deg, var(--l-navy) 0%, var(--l-navy-2) 100%);
+/* Blends downward into the footer: bottom stop matches --l-footer-ground */
+.landing .cta-band { background: linear-gradient(180deg,
+    var(--l-navy-2) 0%, var(--l-navy) 42%, var(--l-footer-ground) 100%);
   color: var(--text-inverse); padding: 88px 0; }
 .landing .cta-in { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 64px;
   align-items: center; }
