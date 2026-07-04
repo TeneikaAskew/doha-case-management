@@ -212,11 +212,9 @@
 /* Provider detail */
 .provider-back { display: inline-flex; align-items: center; gap: var(--space-2);
   font-size: var(--font-size-sm); font-weight: 600; margin-bottom: var(--space-3); }
-.provider-alerts-head { display: flex; justify-content: flex-start;
-  align-items: center; gap: var(--space-5); flex-wrap: wrap;
+.provider-alerts-head { display: flex; justify-content: space-between;
+  align-items: flex-end; gap: var(--space-4); flex-wrap: wrap;
   margin-bottom: var(--space-3); }
-.provider-alerts-head .form-group { flex-direction: row; align-items: center;
-  gap: var(--space-2); }
 .provider-doc-count { display: inline-flex; align-items: center; gap: var(--space-1);
   margin-left: var(--space-3); font-size: var(--font-size-sm); font-weight: 400; }
 .provider-card { text-align: left; font: inherit; cursor: pointer; }
@@ -225,3 +223,7 @@
 .card + .kpi-grid { margin-top: var(--space-4); }
 .provider-stats .kv-grid dd { font-size: var(--font-size-2xl); font-weight: 700;
   font-variant-numeric: tabular-nums; line-height: 1.2; }
+.provider-usedin-pills { display: inline-flex; gap: var(--space-2);
+  white-space: nowrap; }
+@media (max-width: 700px) { .provider-usedin-pills { flex-wrap: wrap;
+  white-space: normal; } }

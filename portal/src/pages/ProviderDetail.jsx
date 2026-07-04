@@ -121,8 +121,12 @@ export default function ProviderDetail() {
           { label: 'Records', value: p.recordCount.toLocaleString('en-US') },
           { label: 'Last sync', value: p.lastSync.slice(0, 10) },
           { label: 'Used in',
-            value: p.usedIn.map((u) => (
-              <StatusBadge key={u} variant="neutral">{USED_IN_LABEL[u]}</StatusBadge>)) },
+            value: (
+              <span className="provider-usedin-pills">
+                {p.usedIn.map((u) => (
+                  <StatusBadge key={u} variant="neutral">{USED_IN_LABEL[u]}</StatusBadge>))}
+              </span>
+            ) },
           { label: 'Guidelines covered',
             value: p.guidelines.map((g) => <GuidelineChip key={g} code={g} />) },
         ]} />
