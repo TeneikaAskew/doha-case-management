@@ -24,7 +24,8 @@ describe.skipIf(!KEY && !REQUIRED)('Gemini live integration', () => {
     expect(KEY, 'REQUIRE_GEMINI is set but VITE_GEMINI_API_KEY is missing').toBeTruthy();
     const res = await answerQuestion(loadCase(),
       'How much delinquent debt does the subject have?', { apiKey: KEY });
-    expect(res.engine).toBe('gemini');
+    expect(res.engine, `fell back to local: ${res.error || 'no error captured'}`)
+      .toBe('gemini');
     expect(res.answer.length).toBeGreaterThan(20);
     expect(res.answer).toMatch(/47,300|47300/);
     expect(res.citations.length).toBeGreaterThanOrEqual(1);
@@ -40,7 +41,8 @@ describe.skipIf(!KEY && !REQUIRED)('Gemini live integration', () => {
     ];
     const res = await answerQuestion(caseData, 'what else should I look at?',
       { apiKey: KEY, history });
-    expect(res.engine).toBe('gemini');
+    expect(res.engine, `fell back to local: ${res.error || 'no error captured'}`)
+      .toBe('gemini');
     expect(res.answer.length).toBeGreaterThan(20);
   }, 60_000);
 });

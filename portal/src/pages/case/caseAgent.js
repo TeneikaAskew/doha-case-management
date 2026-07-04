@@ -56,12 +56,16 @@ export async function answerQuestion(caseData, question, options = {}) {
         generationConfig: { temperature: 0.2, maxOutputTokens: 512 },
       }),
     });
-    if (!res.ok) throw new Error(`Gemini HTTP ${res.status}`);
+    if (!res.ok) {
+      const body = await res.text().catch(() => '');
+      throw new Error(`Gemini HTTP ${res.status}: ${body.slice(0, 300)}`);
+    }
     const data = await res.json();
     const text = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim();
     if (!text) throw new Error('Gemini returned no text');
     return { answer: text, citations: local.citations, engine: 'gemini' };
-  } catch {
-    return { ...local, engine: 'local' };
+  } catch (err) {
+    // fall back to the composed local answer; keep the reason for diagnostics
+    return { ...local, engine: 'local', error: String(err?.message || err) };
   }
 }

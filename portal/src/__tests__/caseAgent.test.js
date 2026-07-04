@@ -38,11 +38,26 @@ describe('answerQuestion', () => {
     expect(fetchImpl).not.toHaveBeenCalled();
   });
 
+  it('reports the HTTP status and body when Gemini rejects the call', async () => {
+    const fetchImpl = vi.fn(() => Promise.resolve({
+      ok: false,
+      status: 403,
+      text: () => Promise.resolve('{"error":{"message":"API key not valid"}}'),
+    }));
+    const res = await answerQuestion(CASE_001, 'How much delinquent debt?', {
+      apiKey: 'test-key', fetchImpl,
+    });
+    expect(res.engine).toBe('local');
+    expect(res.error).toContain('403');
+    expect(res.error).toContain('API key not valid');
+  });
+
   it('falls back to the local answer when the Gemini call fails', async () => {
     const fetchImpl = vi.fn(() => Promise.reject(new Error('network down')));
     const res = await answerQuestion(CASE_001, 'How much delinquent debt?', {
       apiKey: 'test-key', fetchImpl,
     });
+    expect(res.error).toContain('network down');
     expect(res.engine).toBe('local');
     expect(res.answer).toMatch(/\$47,300/);
   });
