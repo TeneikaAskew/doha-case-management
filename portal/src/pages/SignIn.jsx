@@ -62,7 +62,8 @@ export default function SignIn() {
     <div className="signin-screen">
       <div className="signin-card">
         <div className="signin-header">
-          <div className="signin-seal" aria-hidden="true">DCSA</div>
+          <img className="signin-seal" src={`${import.meta.env.BASE_URL}dcsa-seal.png`}
+            alt="DCSA seal" />
           <div>
             <div className="signin-app-name">Personnel Vetting</div>
             <div className="signin-app-subtitle">Case Management Demo</div>
