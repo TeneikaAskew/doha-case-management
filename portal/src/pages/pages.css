@@ -125,7 +125,7 @@
 .signin-back { align-self: flex-start; }
 .signin-header { display: flex; align-items: center; gap: var(--space-4); }
 .signin-seal { display: block; flex-shrink: 0; width: 56px; height: 56px;
-  object-fit: contain; }
+  color: var(--dcsa-navy); --shield-check: var(--dcsa-gold); }
 .signin-app-name { font-size: var(--font-size-xl); font-weight: 700; color: var(--text-primary); }
 .signin-app-subtitle { font-size: var(--font-size-sm); color: var(--text-secondary); }
 .signin-consent h2 { font-size: var(--font-size-base); margin-bottom: var(--space-2); }

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { FiShield, FiArrowLeft } from 'react-icons/fi';
 import { useSession } from '../state/SessionContext.jsx';
 import { PASSWORD_SHA256S, sha256Hex } from '../accessControl.js';
+import ShieldMark from '../components/ShieldMark.jsx';
 import { REFS } from '../references.js';
 
 const REFERENCE_GROUPS = [
@@ -115,8 +116,7 @@ export default function SignIn({ onBack }) {
           </button>
         )}
         <div className="signin-header">
-          <img className="signin-seal" src={`${import.meta.env.BASE_URL}dcsa-seal.png`}
-            alt="DCSA seal" />
+          <ShieldMark className="signin-seal" />
           <div>
             <div className="signin-app-name">Personnel Vetting</div>
             <div className="signin-app-subtitle">Case Management Demo</div>

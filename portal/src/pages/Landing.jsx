@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
-import { FiShield, FiArrowRight, FiCheck, FiZap } from 'react-icons/fi';
+import { FiArrowRight, FiCheck, FiZap } from 'react-icons/fi';
+import ShieldMark from '../components/ShieldMark.jsx';
 import { REFS } from '../references.js';
 import './landing.css';
 
@@ -481,7 +482,7 @@ export default function Landing({ onSignIn }) {
       <header className="nav">
         <div className="wrap nav-in">
           <span className="brand">
-            <FiShield aria-hidden="true" /> Aegis <small>Vetting demo</small>
+            <ShieldMark title="" /> Aegis <small>Vetting demo</small>
           </span>
           <nav className="nav-links" aria-label="Landing sections">
             {NAV_LINKS.map(({ id, label }) => (
@@ -708,7 +709,7 @@ export default function Landing({ onSignIn }) {
         <div className="wrap">
           <div className="footer-grid">
             <div>
-              <span className="brand"><FiShield aria-hidden="true" /> Aegis</span>
+              <span className="brand"><ShieldMark title="" /> Aegis</span>
               <p className="footer-about">
                 Personnel vetting, end to end. A demonstration platform for the
                 Trusted Workforce 2.0 lifecycle.

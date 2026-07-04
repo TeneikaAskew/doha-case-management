@@ -6,6 +6,7 @@ import {
 } from 'react-icons/fi';
 import { usePersona } from '../state/PersonaContext.jsx';
 import { useDemo } from '../state/DemoContext.jsx';
+import ShieldMark from '../components/ShieldMark.jsx';
 import { useSession } from '../state/SessionContext.jsx';
 import { PERSONAS } from '../domain.js';
 import './shell.css';
@@ -46,7 +47,7 @@ export default function AppShell() {
     <div className="app">
       <header className="app-header">
         <div className="app-header-brand">
-          <img className="app-header-seal" src={`${import.meta.env.BASE_URL}dcsa-seal.png`} alt="DCSA seal" />
+          <ShieldMark className="app-header-seal" />
           <div>
             <div className="app-header-title">Personnel Vetting</div>
             <div className="app-header-subtitle">Case management demo</div>
