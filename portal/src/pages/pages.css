@@ -233,3 +233,5 @@
   .provider-stats .kv-grid { grid-template-columns: repeat(2, auto);
     row-gap: var(--space-4); }
 }
+.provider-alerts-head .form-group { flex-direction: row; align-items: center;
+  gap: var(--space-2); }
