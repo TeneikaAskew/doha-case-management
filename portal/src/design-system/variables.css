@@ -17,6 +17,8 @@
   --dcsa-ocean-tint-8: rgba(0, 155, 181, 0.08);
   --dcsa-ocean-tint-4: rgba(0, 155, 181, 0.04);
   --dcsa-navy-tint-4: rgba(0, 45, 91, 0.04);
+  --dcsa-gold-tint-14: rgba(212, 175, 55, 0.14);
+  --accent-teal-tint-12: rgba(0, 155, 181, 0.12);
 
   /* Status (USWDS-aligned) */
   --status-clear: #2E7D32;   --status-clear-bg: #E8F5E9;
