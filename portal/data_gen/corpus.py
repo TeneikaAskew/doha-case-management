@@ -149,22 +149,42 @@ def build_case_links(df: pd.DataFrame | None, case_numbers: list[str]) -> list[d
     ]
 
 
-def get_source_document(df: pd.DataFrame | None) -> dict:
+def clean_decision_text(text: str) -> str:
+    """Make scraped decision text readable: drop the OCR junk that precedes
+    the standard header, and collapse blank-line runs."""
+    i = text.find("DEPARTMENT OF DEFENSE")
+    if i > 0:
+        text = text[i:]
+    text = re.sub(r"[ \t]+\n", "\n", text)
+    text = re.sub(r"\n{3,}", "\n\n", text)
+    return text.strip()
+
+
+def get_source_document(df: pd.DataFrame | None, code: str | None = "F",
+                        exclude: set | frozenset = frozenset(),
+                        prefer_outcome: str | None = None) -> dict:
     """Pick one real DOHA record (with full_text) to back the demo's document viewer.
 
-    Deterministic: Guideline F, DENIED/GRANTED outcome, full_text long enough to be
-    representative; newest year first, then case_number, matching find_precedents'
-    ordering. Falls back to a small synthetic placeholder when the corpus (or a
-    full_text column) is unavailable.
+    Deterministic: filtered to `code` when given, DENIED/GRANTED outcome,
+    full_text long enough to be representative; newest year first, then
+    case_number, matching find_precedents' ordering. `exclude` skips case
+    numbers already assigned elsewhere; `prefer_outcome` narrows to that
+    outcome when any such rows exist. Falls back to a small synthetic
+    placeholder when the corpus (or a full_text column) is unavailable.
     """
     if df is None or "full_text" not in df.columns:
         return dict(FALLBACK_SOURCE_DOCUMENT)
     full_text = df["full_text"].fillna("").astype(str)
-    hits = df[df["guidelines"].apply(_has_guideline, code="F")
-              & df["outcome"].isin(["DENIED", "GRANTED"])
-              & (full_text.str.len() > 2000)]
+    mask = (df["outcome"].isin(["DENIED", "GRANTED"])
+            & (full_text.str.len() > 2000)
+            & ~df["case_number"].astype(str).isin(list(exclude)))
+    if code:
+        mask &= df["guidelines"].apply(_has_guideline, code=code)
+    hits = df[mask]
     if hits.empty:
         return dict(FALLBACK_SOURCE_DOCUMENT)
+    if prefer_outcome is not None and (hits["outcome"] == prefer_outcome).any():
+        hits = hits[hits["outcome"] == prefer_outcome]
     hits = hits.assign(_year=hits["date"].map(extract_year)).sort_values(
         ["_year", "case_number"], ascending=[False, True], na_position="last")
     row = hits.iloc[0]
@@ -179,7 +199,7 @@ def get_source_document(df: pd.DataFrame | None) -> dict:
         judge=str(judge) if judge is not None and not pd.isna(judge) and str(judge).strip() else None,
         sourceUrl=str(source_url) if source_url is not None and not pd.isna(source_url)
                   and str(source_url).strip() else None,
-        fullText=str(row.full_text)[:60_000],
+        fullText=clean_decision_text(str(row.full_text))[:60_000],
     )
 
 

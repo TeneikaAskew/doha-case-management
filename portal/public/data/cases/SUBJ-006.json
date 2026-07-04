@@ -288,6 +288,12 @@
   "alerts": [],
   "documents": [
     {
+      "title": "DOHA decision 24-00278",
+      "type": "DOHA precedent",
+      "description": "Published DOHA appeal decision (Denied) - Guideline E precedent",
+      "url": "documents/doha/24-00278.json"
+    },
+    {
       "title": "SF-86 excerpt - Section 22",
       "type": "SF-86",
       "description": "Police-record response, submitted 2026-04-15",

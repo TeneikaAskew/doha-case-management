@@ -396,6 +396,12 @@
   ],
   "documents": [
     {
+      "title": "DOHA decision 23-01001",
+      "type": "DOHA precedent",
+      "description": "Published DOHA hearing decision (Denied) - Guideline K precedent",
+      "url": "documents/doha/23-01001.json"
+    },
+    {
       "title": "SF-86 excerpt - Section 22",
       "type": "SF-86",
       "description": "Police-record response, submitted 2026-04-15",

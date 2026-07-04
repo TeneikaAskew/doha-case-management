@@ -4,6 +4,7 @@ Usage: python portal/data_gen/generate_demo_data.py [--out portal/public/data]
 """
 import argparse
 import json
+import re
 import sys
 from collections import Counter
 from pathlib import Path
@@ -73,6 +74,34 @@ def main(out_dir: Path = DEFAULT_OUT) -> dict:
     for c in cases:
         source_documents.update(c.pop("sourceDocuments", {}))
 
+    # Every case's Documents tab leads with a real DOHA decision - a distinct
+    # one per case, matched to the case's primary flagged guideline (clean
+    # cases get a granted decision). Offline fallback shares doha-record.json.
+    used_numbers = set()
+    doha_documents = {}
+    for c in cases:
+        codes = c["subject"]["flaggedGuidelines"]
+        code = codes[0] if codes else None
+        pick = corpus.get_source_document(
+            df_full, code=code, exclude=used_numbers,
+            prefer_outcome="DENIED" if code else "GRANTED")
+        sd = schemas.SourceDocument.model_validate(pick)
+        if df_full is None:
+            url = "documents/doha-record.json"
+        else:
+            used_numbers.add(sd.caseNumber)
+            slug = re.sub(r"[^A-Za-z0-9]+", "-", sd.caseNumber).strip("-").lower()
+            url = f"documents/doha/{slug}.json"
+            doha_documents[url] = sd
+        c["documents"].insert(0, dict(
+            title=f"DOHA decision {sd.caseNumber}",
+            type="DOHA precedent",
+            description=(f"Published DOHA {sd.caseType} decision "
+                         f"({sd.outcome.title()}) - "
+                         + (f"Guideline {code} precedent" if code
+                            else "reference precedent")),
+            url=url))
+
     validated_cases = [schemas.CaseDetail.model_validate(c) for c in cases]
     subjects = [schemas.SubjectSummary.model_validate(c["subject"]) for c in cases]
     all_alerts = [a for c in validated_cases for a in c.alerts]
@@ -82,6 +111,10 @@ def main(out_dir: Path = DEFAULT_OUT) -> dict:
                         encoding="utf-8")
 
     dump(source_document.model_dump(), out_dir / "documents" / "doha-record.json")
+    for url, sd in doha_documents.items():
+        path = out_dir / url
+        path.parent.mkdir(parents=True, exist_ok=True)
+        dump(sd.model_dump(), path)
     for url, d in source_documents.items():
         gd = schemas.GeneratedDocument.model_validate(d)
         path = out_dir / url
@@ -96,6 +129,7 @@ def main(out_dir: Path = DEFAULT_OUT) -> dict:
         p.caseNumber for c in validated_cases for g in c.guidelines for p in g.precedents
     }
     precedent_case_numbers.add(source_document.caseNumber)
+    precedent_case_numbers.update(used_numbers)
     case_links = corpus.build_case_links(df, sorted(precedent_case_numbers))
     case_links_file = schemas.CaseLinksFile(links=case_links)
     dump(case_links_file.model_dump(), out_dir / "case-links.json")

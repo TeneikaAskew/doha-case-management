@@ -152,6 +152,30 @@ def test_source_document_validates(out):
     schemas.SourceDocument.model_validate(data)
 
 
+def test_every_case_leads_with_its_own_doha_decision(out):
+    """Each case's Documents tab starts with a real DOHA decision - and when
+    the corpus is available, every case gets a different one, matched to the
+    case's primary flagged guideline."""
+    out_dir, result = out
+    numbers = {}
+    for case_file in sorted((out_dir / "cases").glob("*.json")):
+        case = schemas.CaseDetail.model_validate(
+            json.loads(case_file.read_text(encoding="utf-8")))
+        first = case.documents[0]
+        assert first.url.startswith("documents/doha"), \
+            f"{case_file.name} does not lead with a DOHA decision"
+        record = schemas.SourceDocument.model_validate(
+            json.loads((out_dir / first.url).read_text(encoding="utf-8")))
+        assert record.caseNumber in first.title
+        # decision text is cleaned: opens with the standard header, not OCR junk
+        assert record.fullText.startswith("DEPARTMENT OF DEFENSE") \
+            or "DEPARTMENT OF DEFENSE" not in record.fullText, case_file.name
+        numbers[case.subject.id] = record.caseNumber
+    if (out_dir / "documents" / "doha").exists():  # corpus present
+        assert len(set(numbers.values())) == len(numbers), \
+            f"duplicate DOHA decisions across cases: {numbers}"
+
+
 def _load_case(out_dir, subj_id):
     return schemas.CaseDetail.model_validate(
         json.loads((out_dir / "cases" / f"{subj_id}.json").read_text(encoding="utf-8")))
@@ -253,7 +277,8 @@ def test_no_em_dashes_or_mojibake_in_generated_data(out):
     out_dir, _ = out
     banned = ["—", "–", "â€"]  # em dash, en dash, mojibake prefix
     for f in sorted(out_dir.rglob("*.json")):
-        if f.name == "doha-record.json":
+        # verbatim texts of real DOHA decisions are exempt
+        if f.name == "doha-record.json" or f.parent.name == "doha":
             continue
         text = f.read_text(encoding="utf-8")
         for ch in banned:

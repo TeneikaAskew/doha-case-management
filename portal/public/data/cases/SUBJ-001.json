@@ -749,6 +749,12 @@
   ],
   "documents": [
     {
+      "title": "DOHA decision 23-01864",
+      "type": "DOHA precedent",
+      "description": "Published DOHA hearing decision (Denied) - Guideline F precedent",
+      "url": "documents/doha/23-01864.json"
+    },
+    {
       "title": "Report of Investigation (ROI)",
       "type": "ROI",
       "description": "T5 ROI transmitted 2026-01-27",

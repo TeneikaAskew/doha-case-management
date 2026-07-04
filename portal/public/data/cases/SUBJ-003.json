@@ -285,6 +285,12 @@
   "alerts": [],
   "documents": [
     {
+      "title": "DOHA decision 24-00971",
+      "type": "DOHA precedent",
+      "description": "Published DOHA hearing decision (Granted) - reference precedent",
+      "url": "documents/doha/24-00971.json"
+    },
+    {
       "title": "SF-86 excerpt - Section 20A",
       "type": "SF-86",
       "description": "T3 questionnaire excerpt",

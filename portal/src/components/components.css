@@ -156,6 +156,20 @@
   align-items: start; background: var(--bg-sidebar);
   border-radius: 0 0 var(--radius-md) var(--radius-md); }
 @media (max-width: 900px) { .document-split { grid-template-columns: 1fr; } }
+/* DOHA decision: full text is the wide "pdf" pane, summary is the sidebar */
+.document-split.doha-split { grid-template-columns: 1fr minmax(280px, 360px); }
+@media (max-width: 900px) { .document-split.doha-split { grid-template-columns: 1fr; } }
+.doha-split .document-viewer-body { margin: 0; background: #FFFDF7; color: #1B2A3A;
+  border: 1px solid var(--border-medium); box-shadow: 0 2px 6px rgba(0, 21, 48, 0.12); }
+.doha-summary { font-size: var(--font-size-sm); line-height: 1.6;
+  white-space: pre-wrap; }
+.doha-split .document-viewer-body { white-space: pre-wrap; }
+.doha-guidelines { display: flex; gap: var(--space-2); flex-wrap: wrap;
+  margin-bottom: var(--space-3); }
+.doha-ruling { margin: 0 0 var(--space-3); padding-left: var(--space-3);
+  border-left: 3px solid var(--dcsa-gold); font-size: var(--font-size-sm);
+  line-height: 1.6; color: var(--text-primary); }
+.document-context .document-context-h + .document-context-h { margin-top: var(--space-4); }
 .document-paper { background: #FFFDF7; color: #1B2A3A;
   border: 1px solid var(--border-medium); box-shadow: 0 2px 6px rgba(0, 21, 48, 0.12);
   padding: var(--space-5) var(--space-5) var(--space-4);

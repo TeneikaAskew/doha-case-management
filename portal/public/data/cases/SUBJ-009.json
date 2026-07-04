@@ -295,6 +295,12 @@
   "alerts": [],
   "documents": [
     {
+      "title": "DOHA decision 24-00568",
+      "type": "DOHA precedent",
+      "description": "Published DOHA hearing decision (Denied) - Guideline H precedent",
+      "url": "documents/doha/24-00568.json"
+    },
+    {
       "title": "SF-86 excerpt - Section 22",
       "type": "SF-86",
       "description": "Police-record response, submitted 2026-04-15",

@@ -101,6 +101,16 @@ def test_corpus_analytics_fallback():
     schemas.CorpusStats.model_validate(stats)
 
 
+def test_clean_decision_text_strips_ocr_junk():
+    raw = ("~~, iit~ ~ ; 'l'~ .$' - ~ ') VO\n\n\n____________ ____________\n"
+           "DEPARTMENT OF DEFENSE\nDEFENSE OFFICE OF HEARINGS AND APPEALS\n"
+           "\n\n\n\nIn the matter of: Applicant for Security Clearance\n")
+    cleaned = corpus.clean_decision_text(raw)
+    assert cleaned.startswith("DEPARTMENT OF DEFENSE")
+    assert "\n\n\n" not in cleaned
+    assert "iit~" not in cleaned
+
+
 def test_get_source_document_fallback_without_corpus():
     doc = corpus.get_source_document(None)
     validated = schemas.SourceDocument.model_validate(doc)

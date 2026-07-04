@@ -1,8 +1,12 @@
+import { useEffect, useState } from 'react';
 import { useData } from '../data/useData.js';
 import { fetchJson } from '../data/api.js';
+import { summarizeDecision, rulingSentence } from '../pages/case/caseAgent.js';
 import StatusBadge from './StatusBadge.jsx';
 import KVGrid from './KVGrid.jsx';
 import SourceChip from './SourceChip.jsx';
+import AIBadge from './AIBadge.jsx';
+import GuidelineChip from './GuidelineChip.jsx';
 import { Loading, ErrorAlert } from './States.jsx';
 import './components.css';
 
@@ -38,7 +42,26 @@ const listingUrl = (u) => {
   return i > 0 ? u.slice(0, i) : null;
 };
 
+// guideline letters actually cited in the decision text, in SEAD-4 order
+function guidelinesAtIssue(doc) {
+  const found = new Set();
+  for (const m of (doc.fullText || '').matchAll(/Guideline ([A-M])\b/g)) {
+    found.add(m[1]);
+  }
+  return [...found].sort();
+}
+
 function DohaDocumentView({ doc }) {
+  const [summary, setSummary] = useState(null);
+  const ruling = rulingSentence(doc);
+
+  useEffect(() => {
+    let mounted = true;
+    setSummary(null);
+    summarizeDecision(doc).then((s) => { if (mounted) setSummary(s); });
+    return () => { mounted = false; };
+  }, [doc.caseNumber]);
+
   return (
     <div className="document-viewer">
       <div className="document-viewer-head">
@@ -51,7 +74,43 @@ function DohaDocumentView({ doc }) {
         </div>
         <StatusBadge variant={OUTCOME_VARIANT[doc.outcome] || 'neutral'}>{doc.outcome}</StatusBadge>
       </div>
-      <pre className="document-viewer-body">{doc.fullText}</pre>
+      <div className="document-split doha-split">
+        <pre className="document-viewer-body">{doc.fullText}</pre>
+        <div className="document-context">
+          <h5 className="document-context-h">Guidelines at Issue</h5>
+          <div className="doha-guidelines">
+            {guidelinesAtIssue(doc).map((g) => <GuidelineChip key={g} code={g} />)}
+            {guidelinesAtIssue(doc).length === 0 && (
+              <span className="muted">None cited by letter.</span>
+            )}
+          </div>
+          {ruling && (
+            <>
+              <h5 className="document-context-h">Ruling</h5>
+              <blockquote className="doha-ruling">{ruling}</blockquote>
+            </>
+          )}
+          <h5 className="document-context-h">AI Summary <AIBadge /></h5>
+          {summary ? (
+            <>
+              {/* the local extract just repeats the ruling shown above */}
+              {!(summary.engine === 'local' && ruling) && (
+                <p className="doha-summary">{summary.summary}</p>
+              )}
+              <p className="muted document-context-note">
+                {summary.engine === 'gemini'
+                  ? (summary.cached
+                    ? 'Gemini summary, stored from an earlier run.'
+                    : 'Gemini summary - stored for reuse.')
+                  : 'Enable Gemini for a narrative summary; the ruling above is '
+                    + 'extracted from the decision.'}
+              </p>
+            </>
+          ) : (
+            <p className="muted">Summarizing decision…</p>
+          )}
+        </div>
+      </div>
       {doc.sourceUrl && (
         <p className="muted document-viewer-source">
           Source: <a href={doc.sourceUrl} target="_blank" rel="noreferrer">{doc.sourceUrl}</a>

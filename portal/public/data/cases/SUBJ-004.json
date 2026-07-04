@@ -202,6 +202,12 @@
   "alerts": [],
   "documents": [
     {
+      "title": "DOHA decision 25-00259",
+      "type": "DOHA precedent",
+      "description": "Published DOHA hearing decision (Granted) - reference precedent",
+      "url": "documents/doha/25-00259.json"
+    },
+    {
       "title": "SF-86 excerpt - Section 22",
       "type": "SF-86",
       "description": "Police-record response, submitted 2026-04-15",

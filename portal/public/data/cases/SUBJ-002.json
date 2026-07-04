@@ -617,6 +617,12 @@
   ],
   "documents": [
     {
+      "title": "DOHA decision 24-00939",
+      "type": "DOHA precedent",
+      "description": "Published DOHA hearing decision (Denied) - Guideline J precedent",
+      "url": "documents/doha/24-00939.json"
+    },
+    {
       "title": "Rap Back notification",
       "type": "Provider record",
       "description": "FBI arrest notification 2026-06-23",
