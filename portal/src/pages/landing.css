@@ -300,9 +300,9 @@
 .landing .cs-qbody { display: flex; gap: 12px; align-items: flex-start; }
 .landing .cs-avatar { display: inline-flex; align-items: center; justify-content: center;
   width: 34px; height: 34px; border-radius: 50%; flex-shrink: 0;
-  background: linear-gradient(135deg, var(--l-gold), var(--status-caution));
-  color: var(--l-footer-ground); font-weight: 800; font-size: 12.5px; }
-.landing .cs-qtext { margin: 0; font-style: italic; font-size: 13px; color: var(--text-secondary); }
+  background: var(--l-navy); color: var(--text-inverse);
+  font-weight: 800; font-size: 12.5px; }
+.landing .cs-qtext { margin: 0; font-style: italic; font-size: 13px; color: var(--l-ink); }
 .landing .cs-atitle { font-weight: 800; font-size: 13.5px; margin-bottom: 10px; }
 .landing .cs-steps { list-style: none; padding: 0; margin: 0 0 12px; display: grid;
   gap: 6px; font-size: 13px; color: var(--text-secondary); }
