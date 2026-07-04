@@ -9,9 +9,23 @@ import ConfidenceBar from '../components/ConfidenceBar.jsx';
 import CollapsibleSection from '../components/CollapsibleSection.jsx';
 import KVGrid from '../components/KVGrid.jsx';
 import DataTable from '../components/DataTable.jsx';
+import Toggle from '../components/Toggle.jsx';
 import { EmptyState } from '../components/States.jsx';
 
 describe('primitives', () => {
+  it('Toggle renders as a switch, fires onChange, and supports disabled', () => {
+    const onChange = vi.fn();
+    const { rerender } = render(
+      <Toggle checked={false} onChange={onChange} label="Use Gemini" />);
+    const input = screen.getByRole('switch', { name: 'Use Gemini' });
+    expect(input).not.toBeChecked();
+    fireEvent.click(input);
+    expect(onChange).toHaveBeenCalledTimes(1);
+    rerender(<Toggle checked disabled onChange={onChange} label="Use Gemini" />);
+    expect(screen.getByRole('switch', { name: 'Use Gemini' })).toBeChecked();
+    expect(screen.getByRole('switch', { name: 'Use Gemini' })).toBeDisabled();
+  });
+
   it('StatusBadge applies variant class', () => {
     render(<StatusBadge variant="success">Clear</StatusBadge>);
     expect(screen.getByText('Clear').className).toContain('success');

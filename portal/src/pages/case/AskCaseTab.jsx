@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { FiMessageCircle, FiSend, FiFileText, FiCornerUpRight } from 'react-icons/fi';
 import AIBadge from '../../components/AIBadge.jsx';
 import DocumentViewer from '../../components/DocumentViewer.jsx';
+import Toggle from '../../components/Toggle.jsx';
 import { useDemo } from '../../state/DemoContext.jsx';
 import { answerQuestion, configuredApiKey } from './caseAgent.js';
 import { exampleQuestions } from './caseAssistant.js';
@@ -31,6 +32,7 @@ export default function AskCaseTab({ caseData }) {
   const messages = demo.askThreads[caseId] || [];
   const [input, setInput] = useState('');
   const [busy, setBusy] = useState(false);
+  const [draft, setDraft] = useState(null); // streamed text of the pending answer
   const [docUrl, setDocUrl] = useState(null);
   const keyConfigured = Boolean(configuredApiKey());
   const [useGemini, setUseGemini] = useState(
@@ -43,6 +45,16 @@ export default function AskCaseTab({ caseData }) {
     return next;
   });
 
+  // typewriter reveal for non-streamed (local) answers; instant in tests
+  const typeOut = async (text) => {
+    if (import.meta.env.MODE === 'test') return;
+    for (let i = 0; i < text.length; i += 6) {
+      setDraft(text.slice(0, i + 6));
+      // eslint-disable-next-line no-await-in-loop
+      await new Promise((r) => { setTimeout(r, 12); });
+    }
+  };
+
   const ask = async (question) => {
     const q = question.trim();
     if (!q || busy) return;
@@ -52,10 +64,15 @@ export default function AskCaseTab({ caseData }) {
     const res = await answerQuestion(caseData, q, {
       history: messages,
       apiKey: useGemini ? configuredApiKey() : '',
+      onChunk: (t) => setDraft(t), // live Gemini stream types as it arrives
     });
+    if (!res.streamed) await typeOut(res.answer);
     addAskMessage(caseId, {
-      role: 'assistant', text: res.answer, citations: res.citations, engine: res.engine,
+      role: 'assistant', text: res.answer, citations: res.citations,
+      engine: res.engine, error: res.error,
+      wantedGemini: useGemini && keyConfigured,
     });
+    setDraft(null);
     setBusy(false);
   };
 
@@ -65,11 +82,8 @@ export default function AskCaseTab({ caseData }) {
         <h3><FiMessageCircle className="section-icon" aria-hidden="true" />
           Ask the Case <AIBadge /></h3>
         <div className="ask-controls">
-          <label className="ask-toggle">
-            <input type="checkbox" aria-label="Use Gemini" checked={useGemini}
-              disabled={!keyConfigured} onChange={toggleGemini} />
-            Use Gemini
-          </label>
+          <Toggle checked={useGemini} disabled={!keyConfigured}
+            onChange={toggleGemini} label="Use Gemini" />
           {keyConfigured
             ? <span className="ask-engine">{useGemini ? 'Gemini, case-grounded' : 'Simulated retrieval'}</span>
             : <span className="ask-engine">Simulated - set VITE_GEMINI_API_KEY to enable Gemini</span>}
@@ -98,10 +112,24 @@ export default function AskCaseTab({ caseData }) {
                 <CitationChips citations={m.citations || []}
                   onOpenDoc={(url) => setDocUrl(docUrl === url ? null : url)} />
               )}
+              {m.role === 'assistant' && m.wantedGemini && m.engine === 'local'
+                && m.error && (
+                <p className="ask-fallback-note">
+                  Gemini unavailable ({m.error.split(':')[0]}) - answered from
+                  local retrieval.
+                </p>
+              )}
             </div>
           </div>
         ))}
-        {busy && <p className="muted ask-busy">Searching the case file…</p>}
+        {draft && (
+          <div className="ask-msg assistant">
+            <div className="ask-bubble">
+              <p>{draft}<span className="ask-caret" aria-hidden="true" /></p>
+            </div>
+          </div>
+        )}
+        {busy && !draft && <p className="muted ask-busy">Searching the case file…</p>}
         {docUrl && <DocumentViewer url={docUrl} />}
       </div>
 

@@ -12,6 +12,7 @@ import {
   STAGE_LABELS, ELIGIBILITY_LABELS, ALERT_CATEGORY_LABELS, riskBand,
 } from '../domain.js';
 import KPICard from '../components/KPICard.jsx';
+import Toggle from '../components/Toggle.jsx';
 import { Loading, ErrorAlert } from '../components/States.jsx';
 import SectionRef, { RefLink } from '../components/SectionRef.jsx';
 import { REFS } from '../references.js';
@@ -188,11 +189,9 @@ function FilterPanel({ filters, setFilters, matching, total }) {
           </div>
           <div className="an-filter-group">
             <h6>Continuous vetting</h6>
-            <label>
-              <input type="checkbox" checked={filters.cvOnly}
-                onChange={() => setFilters((f) => ({ ...f, cvOnly: !f.cvOnly }))} />
-              {' '}Enrolled only
-            </label>
+            <Toggle checked={filters.cvOnly}
+              onChange={() => setFilters((f) => ({ ...f, cvOnly: !f.cvOnly }))}
+              label="Enrolled only" />
           </div>
         </div>
       )}

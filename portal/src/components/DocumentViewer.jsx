@@ -53,7 +53,9 @@ function guidelinesAtIssue(doc) {
 
 function DohaDocumentView({ doc }) {
   const [summary, setSummary] = useState(null);
+  const [showText, setShowText] = useState(false);
   const ruling = rulingSentence(doc);
+  const pdfSrc = doc.pdfUrl ? `${import.meta.env.BASE_URL}${doc.pdfUrl}` : null;
 
   useEffect(() => {
     let mounted = true;
@@ -75,7 +77,25 @@ function DohaDocumentView({ doc }) {
         <StatusBadge variant={OUTCOME_VARIANT[doc.outcome] || 'neutral'}>{doc.outcome}</StatusBadge>
       </div>
       <div className="document-split doha-split">
-        <pre className="document-viewer-body">{doc.fullText}</pre>
+        <div className="doha-doc-pane">
+          {pdfSrc && (
+            <button type="button" className="btn btn-ghost doha-view-toggle"
+              onClick={() => setShowText(!showText)}>
+              {showText ? 'View PDF' : 'View extracted text'}
+            </button>
+          )}
+          {pdfSrc && !showText ? (
+            <object className="doha-pdf" data={pdfSrc} type="application/pdf"
+              aria-label={`PDF of ${doc.title}`}>
+              <p className="muted doha-pdf-fallback">
+                This browser cannot preview PDFs inline.{' '}
+                <a href={pdfSrc} target="_blank" rel="noreferrer">Open the PDF</a>.
+              </p>
+            </object>
+          ) : (
+            <pre className="document-viewer-body">{doc.fullText}</pre>
+          )}
+        </div>
         <div className="document-context">
           <h5 className="document-context-h">Guidelines at Issue</h5>
           <div className="doha-guidelines">

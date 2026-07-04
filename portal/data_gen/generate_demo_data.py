@@ -92,6 +92,11 @@ def main(out_dir: Path = DEFAULT_OUT) -> dict:
             used_numbers.add(sd.caseNumber)
             slug = re.sub(r"[^A-Za-z0-9]+", "-", sd.caseNumber).strip("-").lower()
             url = f"documents/doha/{slug}.json"
+            # original decision PDF, when scripts/fetch_doha_pdfs.mjs has
+            # downloaded it (committed under the output tree)
+            pdf_rel = f"documents/doha/pdf/{slug}.pdf"
+            if (out_dir / pdf_rel).exists():
+                sd = sd.model_copy(update={"pdfUrl": pdf_rel})
             doha_documents[url] = sd
         c["documents"].insert(0, dict(
             title=f"DOHA decision {sd.caseNumber}",

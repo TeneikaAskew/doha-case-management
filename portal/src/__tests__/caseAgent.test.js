@@ -77,11 +77,48 @@ describe('answerQuestion', () => {
     expect(prompt).toContain('How much delinquent debt does the subject have?');
   });
 
-  it('does not call Gemini for questions with no case-file matches', async () => {
-    const fetchImpl = vi.fn();
-    const res = await answerQuestion(CASE_001, 'What is the subject favorite color?', {
+  it('grounds zero-hit questions with the case digest instead of refusing', async () => {
+    const fetchImpl = vi.fn(() => geminiOk('This case centers on unresolved debt.'));
+    const res = await answerQuestion(CASE_001, 'what would this case prove?', {
       apiKey: 'test-key', fetchImpl,
     });
+    expect(res.engine).toBe('gemini');
+    expect(res.answer).toBe('This case centers on unresolved debt.');
+    const prompt = JSON.stringify(JSON.parse(fetchImpl.mock.calls[0][1].body));
+    expect(prompt).toContain('Case digest');
+    expect(prompt).toContain('Daniel R. Okafor');
+  });
+
+  it('streams chunks through onChunk and assembles the full answer', async () => {
+    const sse = (t) => `data: ${JSON.stringify({
+      candidates: [{ content: { parts: [{ text: t }] } }],
+    })}\n\n`;
+    const enc = new TextEncoder();
+    const stream = new ReadableStream({
+      start(c) {
+        c.enqueue(enc.encode(sse('The subject ')));
+        c.enqueue(enc.encode(sse('owes $47,300.')));
+        c.close();
+      },
+    });
+    const fetchImpl = vi.fn(() => Promise.resolve({ ok: true, body: stream }));
+    const chunks = [];
+    const res = await answerQuestion(CASE_001, 'How much delinquent debt?', {
+      apiKey: 'test-key', fetchImpl, onChunk: (t) => chunks.push(t),
+    });
+    expect(fetchImpl.mock.calls[0][0]).toContain('streamGenerateContent');
+    expect(res.engine).toBe('gemini');
+    expect(res.answer).toBe('The subject owes $47,300.');
+    expect(chunks.length).toBeGreaterThanOrEqual(2);
+    expect(chunks[chunks.length - 1]).toBe('The subject owes $47,300.');
+  });
+
+  it('does not call Gemini when no key is configured even for zero-hit questions', async () => {
+    const fetchImpl = vi.fn();
+    const res = await answerQuestion(CASE_001, 'What is the subject favorite color?', {
+      apiKey: '', fetchImpl,
+    });
+    expect(res.engine).toBe('local');
     expect(res.answer).toMatch(/couldn't find/i);
     expect(fetchImpl).not.toHaveBeenCalled();
   });

@@ -45,6 +45,27 @@ describe('askCase', () => {
     expect(res.answer).toMatch(/understated the debt total/i);
   });
 
+  it('answers broad overview questions with the case summary', () => {
+    const res = askCase(CASE_001, 'what do you know?');
+    expect(res.answer).not.toMatch(/couldn't find/i);
+    expect(res.answer).toMatch(/Guideline F/i);
+    expect(res.citations.some((c) => c.label === 'AI case summary')).toBe(true);
+  });
+
+  it('offers meaningful example questions on clean cases too', () => {
+    const clean = {
+      ...CASE_001,
+      guidelines: [],
+      alerts: [],
+      wholePersonSummary: 'No adverse information developed.',
+      investigation: { ...CASE_001.investigation, interviews: [] },
+    };
+    const qs = exampleQuestions(clean);
+    expect(qs.length).toBeGreaterThanOrEqual(4);
+    expect(qs.join(' ')).toMatch(/record checks/i);
+    expect(qs.join(' ')).toMatch(/whole-person/i);
+  });
+
   it('treats "what else?" as a follow-up: same topic, new passages', () => {
     const first = askCase(CASE_001, 'How much delinquent debt does the subject have?');
     const history = [

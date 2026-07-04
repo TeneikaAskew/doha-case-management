@@ -23,6 +23,12 @@ const SYNONYMS = {
   alcohol: ['alcohol', 'dui', 'bac'],
   family: ['family', 'siblings', 'mother', 'foreign', 'contacts'],
   recommendation: ['recommendation', 'recommend', 'sor', 'loi', 'adjudication'],
+  // broad overview asks route to the case-level summaries
+  know: ['summary', 'concerns', 'recommendation'],
+  overview: ['summary', 'concerns', 'recommendation'],
+  summarize: ['summary', 'concerns', 'recommendation'],
+  happening: ['summary', 'concerns', 'alert'],
+  situation: ['summary', 'concerns'],
   decision: ['recommendation', 'adjudication', 'decisions'],
   risk: ['risk', 'concern', 'guideline'],
   alert: ['alert', 'alerts', 'cv'],
@@ -211,6 +217,14 @@ export function exampleQuestions(caseData) {
   if (caseData.alerts?.length) qs.push('What alerts are open and where did they come from?');
   if (caseData.adjudication?.recommendation) {
     qs.push('What action does the AI recommend and why?');
+  }
+  // clean cases have no guideline/interview/alert hooks - ask about the
+  // evidence that cleared them instead
+  if (caseData.investigation?.recordChecks?.length) {
+    qs.push('What record checks were run and what did they find?');
+  }
+  if (caseData.wholePersonSummary) {
+    qs.push('What is the whole-person bottom line?');
   }
   qs.push('What documents are on file for this case?');
   return qs.slice(0, 5);

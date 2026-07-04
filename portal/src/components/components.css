@@ -164,6 +164,29 @@
 .doha-summary { font-size: var(--font-size-sm); line-height: 1.6;
   white-space: pre-wrap; }
 .doha-split .document-viewer-body { white-space: pre-wrap; }
+.doha-doc-pane { min-width: 0; }
+.doha-view-toggle { margin-bottom: var(--space-2); }
+.doha-pdf { width: 100%; height: 680px; border: 1px solid var(--border-medium);
+  border-radius: var(--radius-sm); background: #FFFFFF; }
+.doha-pdf-fallback { padding: var(--space-4); }
+
+/* Toggle switch */
+.toggle { display: inline-flex; align-items: center; gap: var(--space-2);
+  cursor: pointer; font-size: var(--font-size-sm); font-weight: 600;
+  color: var(--text-primary); }
+.toggle input { position: absolute; opacity: 0; width: 0; height: 0; }
+.toggle-track { width: 38px; height: 22px; border-radius: 11px; flex-shrink: 0;
+  background: var(--border-medium); position: relative;
+  transition: background 0.15s ease; }
+.toggle-thumb { position: absolute; top: 2px; left: 2px; width: 18px; height: 18px;
+  border-radius: 50%; background: #FFFFFF;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); transition: left 0.15s ease; }
+.toggle input:checked + .toggle-track { background: var(--status-clear); }
+.toggle input:checked + .toggle-track .toggle-thumb { left: 18px; }
+.toggle input:focus-visible + .toggle-track { outline: 2px solid var(--border-focus);
+  outline-offset: 2px; }
+.toggle-disabled { cursor: not-allowed; color: var(--text-muted); }
+.toggle input:disabled + .toggle-track { opacity: 0.45; }
 .doha-guidelines { display: flex; gap: var(--space-2); flex-wrap: wrap;
   margin-bottom: var(--space-3); }
 .doha-ruling { margin: 0 0 var(--space-3); padding-left: var(--space-3);

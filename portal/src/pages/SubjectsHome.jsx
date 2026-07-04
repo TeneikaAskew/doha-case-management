@@ -14,6 +14,7 @@ import DataTable from '../components/DataTable.jsx';
 import StatusBadge from '../components/StatusBadge.jsx';
 import GuidelineChip from '../components/GuidelineChip.jsx';
 import AIBadge from '../components/AIBadge.jsx';
+import Toggle from '../components/Toggle.jsx';
 import { Loading, ErrorAlert } from '../components/States.jsx';
 import SectionRef, { RefLink } from '../components/SectionRef.jsx';
 import { REFS } from '../references.js';
@@ -200,14 +201,14 @@ export default function SubjectsHome() {
             {STAGES.map((st) => <option key={st} value={st}>{STAGE_LABELS[st]}</option>)}
           </select>
         </label>
-        <label className="directory-check">
-          <input type="checkbox" checked={cvOnly}
-            onChange={(e) => setCvOnly(e.target.checked)} /> CV-enrolled only
-        </label>
-        <label className="directory-check">
-          <input type="checkbox" checked={alertsOnly}
-            onChange={(e) => setAlertsOnly(e.target.checked)} /> Has open alerts
-        </label>
+        <div className="directory-check">
+          <Toggle checked={cvOnly} onChange={(e) => setCvOnly(e.target.checked)}
+            label="CV-enrolled only" />
+        </div>
+        <div className="directory-check">
+          <Toggle checked={alertsOnly} onChange={(e) => setAlertsOnly(e.target.checked)}
+            label="Has open alerts" />
+        </div>
       </div>
       <DataTable columns={columns} rows={directory} rowKey="id"
         onRowClick={(s) => navigate(`/cases/${s.id}`)} />

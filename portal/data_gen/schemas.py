@@ -267,6 +267,7 @@ class SourceDocument(BaseModel):
     outcome: str
     judge: Optional[str] = None
     sourceUrl: Optional[str] = None
+    pdfUrl: Optional[str] = None  # app-relative path to the downloaded PDF
     fullText: str
 
 

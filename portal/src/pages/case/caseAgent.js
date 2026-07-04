@@ -6,27 +6,50 @@
    public static deploy works with no key and nothing to leak. */
 import { retrieve, askCase } from './caseAssistant.js';
 
-export const GEMINI_MODEL = 'gemini-2.0-flash';
-const ENDPOINT = 'https://generativelanguage.googleapis.com/v1beta/models/'
-  + `${GEMINI_MODEL}:generateContent`;
+// gemini-2.0-flash no longer has a free tier (429, limit: 0); 2.5-flash does
+export const GEMINI_MODEL = 'gemini-2.5-flash';
+const BASE = 'https://generativelanguage.googleapis.com/v1beta/models/';
+const ENDPOINT = `${BASE}${GEMINI_MODEL}:generateContent`;
+const STREAM_ENDPOINT = `${BASE}${GEMINI_MODEL}:streamGenerateContent?alt=sse`;
 
 export const configuredApiKey = () => import.meta.env?.VITE_GEMINI_API_KEY || '';
 
+/** Compact always-included grounding: who the subject is and where the case
+    stands, so broad questions get real answers even with no keyword hits. */
+export function caseDigest(caseData) {
+  const s = caseData.subject;
+  const flagged = (caseData.guidelines || [])
+    .map((g) => `${g.code} (${g.name}, severity ${g.severity})`).join(', ');
+  const rec = caseData.adjudication?.recommendation;
+  return [
+    `Subject: ${s.name} (${s.id}), ${s.position}, tier ${s.tier}, `
+      + `stage ${s.stage}, status ${s.status}, eligibility ${s.eligibility}, `
+      + `AI risk score ${s.riskScore}/100.`,
+    caseData.aiSummary && `Case summary: ${caseData.aiSummary}`,
+    caseData.wholePersonSummary
+      && `Whole-person bottom line: ${caseData.wholePersonSummary}`,
+    flagged && `Flagged guidelines: ${flagged}`,
+    rec && `AI recommendation: ${rec.action} - ${rec.rationale}`,
+  ].filter(Boolean).join('\n');
+}
+
 function buildPrompt(caseData, question, passages, history) {
-  const context = passages
-    .map((p, i) => `[${i + 1}] ${p.label}\n${p.text}`)
-    .join('\n\n');
+  const context = passages.length
+    ? passages.map((p, i) => `[${i + 1}] ${p.label}\n${p.text}`).join('\n\n')
+    : '(no passage matched the question directly - answer from the digest, '
+      + 'or say what the case file does not cover)';
   const thread = (history || []).slice(-6)
     .map((m) => `${m.role}: ${m.text}`)
     .join('\n');
   return [
     'You are a case-file assistant inside a personnel-vetting demo. Answer the',
-    'analyst\'s question using ONLY the numbered case-file passages below.',
-    'Quote figures and dates exactly. If the passages do not answer the',
-    'question, say so plainly. Keep the answer under 120 words. Do not invent',
-    'facts, identities, or documents.',
+    'analyst\'s question using ONLY the case digest and numbered case-file',
+    'passages below. Quote figures and dates exactly. If the material does',
+    'not answer the question, say so plainly. Keep the answer under 120',
+    'words. Do not invent facts, identities, or documents.',
     '',
-    `Subject: ${caseData.subject.name} (${caseData.subject.id})`,
+    'Case digest:',
+    caseDigest(caseData),
     '',
     ...(thread ? ['Conversation so far:', thread, ''] : []),
     'Case-file passages:',
@@ -34,6 +57,38 @@ function buildPrompt(caseData, question, passages, history) {
     '',
     `Question: ${question}`,
   ].join('\n');
+}
+
+/** Read an SSE stream from streamGenerateContent, invoking onChunk with the
+    accumulated text after every parsed event. */
+async function readSseAnswer(res, onChunk) {
+  const reader = res.body.getReader();
+  const decoder = new TextDecoder();
+  let buffer = '';
+  let text = '';
+  for (;;) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    buffer += decoder.decode(value, { stream: true });
+    const lines = buffer.split('\n');
+    buffer = lines.pop();
+    for (const line of lines) {
+      if (!line.startsWith('data:')) continue;
+      const payload = line.slice(5).trim();
+      if (!payload || payload === '[DONE]') continue;
+      try {
+        const data = JSON.parse(payload);
+        const part = data.candidates?.[0]?.content?.parts?.[0]?.text;
+        if (part) {
+          text += part;
+          onChunk(text);
+        }
+      } catch {
+        // SSE events are line-delimited; an unparseable data line is skipped
+      }
+    }
+  }
+  return text.trim();
 }
 
 const SUMMARY_CACHE_KEY = 'demo.dohaSummaries';
@@ -119,10 +174,13 @@ export async function answerQuestion(caseData, question, options = {}) {
 
   const passages = retrieve(caseData, question, { history });
   const local = askCase(caseData, question, { history });
-  if (!passages.length || !apiKey) return { ...local, engine: 'local' };
+  // no key: deterministic local mode. With a key, Gemini answers everything -
+  // zero-hit questions are grounded by the case digest instead of refused.
+  if (!apiKey) return { ...local, engine: 'local' };
 
   try {
-    const res = await fetchImpl(ENDPOINT, {
+    const streaming = typeof options.onChunk === 'function';
+    const res = await fetchImpl(streaming ? STREAM_ENDPOINT : ENDPOINT, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'x-goog-api-key': apiKey },
       body: JSON.stringify({
@@ -136,10 +194,16 @@ export async function answerQuestion(caseData, question, options = {}) {
       const body = await res.text().catch(() => '');
       throw new Error(`Gemini HTTP ${res.status}: ${body.slice(0, 300)}`);
     }
-    const data = await res.json();
-    const text = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim();
+    let text;
+    if (streaming) {
+      text = await readSseAnswer(res, options.onChunk);
+    } else {
+      const data = await res.json();
+      text = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim();
+    }
     if (!text) throw new Error('Gemini returned no text');
-    return { answer: text, citations: local.citations, engine: 'gemini' };
+    const citations = passages.length ? local.citations : [];
+    return { answer: text, citations, engine: 'gemini', streamed: streaming };
   } catch (err) {
     // fall back to the composed local answer; keep the reason for diagnostics
     return { ...local, engine: 'local', error: String(err?.message || err) };

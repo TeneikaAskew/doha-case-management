@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { summarizeDecision } from '../pages/case/caseAgent.js';
 
 const RECORD = {
@@ -20,7 +20,11 @@ const geminiOk = (text) => Promise.resolve({
 });
 
 vi.mock('../data/api.js', () => ({
-  fetchJson: () => Promise.resolve(RECORD),
+  fetchJson: (url) => Promise.resolve(
+    url.includes('with-pdf')
+      ? { ...RECORD, pdfUrl: 'documents/doha/pdf/23-01864.pdf' }
+      : RECORD,
+  ),
 }));
 
 import DocumentViewer from '../components/DocumentViewer.jsx';
@@ -66,6 +70,18 @@ describe('DohaDocumentView', () => {
       .toBeInTheDocument();
     expect(await screen.findByText('Stored Gemini summary.')).toBeInTheDocument();
     expect(screen.getByText(/AI summary/i)).toBeInTheDocument();
+  });
+
+  it('embeds the original PDF when one is available, with a text toggle', async () => {
+    const { container } = render(<DocumentViewer url="documents/doha/with-pdf.json" />);
+    await screen.findByText('Guidelines at Issue');
+    const obj = container.querySelector('object[type="application/pdf"]');
+    expect(obj).toBeTruthy();
+    expect(obj.getAttribute('data')).toContain('documents/doha/pdf/23-01864.pdf');
+    // extracted text still reachable behind a toggle
+    fireEvent.click(screen.getByRole('button', { name: /extracted text/i }));
+    expect(screen.getByText(/DEFENSE OFFICE OF HEARINGS AND APPEALS/))
+      .toBeInTheDocument();
   });
 
   it('structures the sidebar: guidelines at issue and the formal ruling', async () => {
