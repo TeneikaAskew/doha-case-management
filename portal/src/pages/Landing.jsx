@@ -311,6 +311,19 @@ export default function Landing({ onSignIn }) {
   const word = useRotatingWord(ROTATE_WORDS, 2400);
   const [activeTab, setActiveTab] = useState(PERSONA_TABS[0].id);
 
+  // Checkr-style pill: size to the current word and animate the width change.
+  // A hidden measurer span shares the word's font so offsetWidth is exact.
+  const pillRef = useRef(null);
+  const measureRef = useRef(null);
+  useEffect(() => {
+    const pill = pillRef.current;
+    const measure = measureRef.current;
+    if (!pill || !measure) return;
+    measure.textContent = word;
+    const w = measure.offsetWidth;
+    if (w > 0) pill.style.width = `${w}px`; // jsdom reports 0; keep auto width there
+  }, [word]);
+
   return (
     <div className="landing">
       <header className="nav">
@@ -331,7 +344,10 @@ export default function Landing({ onSignIn }) {
         <section className="hero wrap">
           <span className="eyebrow">Trusted Workforce 2.0 demo</span>
           <h1>
-            Vet <span className="pill-word"><span className="word" key={word}>{word}</span></span> with confidence
+            Vet <span className="pill-word" ref={pillRef}>
+              <span className="word" key={word}>{word}</span>
+              <span className="word word-measure" ref={measureRef} aria-hidden="true" />
+            </span> with confidence
           </h1>
           <p className="sub">
             The AI-assisted personnel vetting platform for high-stakes trust

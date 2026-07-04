@@ -88,8 +88,11 @@
 @media (min-width: 760px) { .landing .hero h1 { white-space: nowrap; } }
 .landing .pill-word { display: inline-flex; align-items: center; justify-content: center;
   vertical-align: baseline; background: var(--l-panel-a); border-radius: 18px;
-  box-shadow: var(--l-card-shadow); padding: 0.02em 0.38em 0.06em;
-  min-width: 7.1ch; position: relative; top: -0.02em; }
+  box-shadow: var(--l-card-shadow); padding: 0.02em 0.26em 0.06em;
+  position: relative; top: -0.02em; overflow: hidden;
+  transition: width 0.35s ease; box-sizing: content-box; }
+.landing .pill-word .word-measure { position: absolute; visibility: hidden;
+  white-space: nowrap; pointer-events: none; animation: none; }
 .landing .pill-word .word { display: inline-block; animation: landing-wordfade 0.45s ease;
   color: var(--l-teal-dark); }
 @keyframes landing-wordfade { from { opacity: 0; transform: translateY(10px); }
