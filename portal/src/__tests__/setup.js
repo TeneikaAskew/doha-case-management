@@ -15,6 +15,10 @@ if (!globalThis.crypto?.subtle) {
   Object.defineProperty(globalThis, 'crypto', { value: webcrypto });
 }
 
+// jsdom does not implement scrolling; keep test output free of
+// "Not implemented: window.scrollTo" noise from the Gate's scroll reset.
+window.scrollTo = () => {};
+
 // Stub ResizeObserver for recharts ResponsiveContainer in jsdom
 global.ResizeObserver = class ResizeObserver {
   constructor(callback) {}

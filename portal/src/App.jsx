@@ -26,6 +26,11 @@ function Gate() {
   useEffect(() => {
     if (signedIn) setPreAuthView('landing');
   }, [signedIn]);
+  // Swapping pre-auth views keeps the scroll position (same document), so a
+  // click on a low-page CTA would open the SSO card mid-scroll. Reset to top.
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [preAuthView, signedIn]);
   if (!signedIn) {
     return preAuthView === 'landing'
       ? <Landing onSignIn={() => setPreAuthView('signin')} />
