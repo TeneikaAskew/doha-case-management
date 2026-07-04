@@ -15,8 +15,12 @@ const REFERENCE_GROUPS = [
      'Department of Energy clearance decisions (10 CFR 710), a parallel corpus'],
   ]],
   ['Policy Directives', [
+    ['NCSC Security Executive Agent Policy (source index)', REFS.NCSC_POLICY,
+     'Official ODNI index of all Security Executive Agent directives'],
     ['SEAD 1 - Security Executive Agent Authorities', REFS.SEAD1,
      'Foundational authorities for the federal vetting enterprise'],
+    ['SEAD 2 - Use of Polygraph', REFS.SEAD2,
+     'Polygraph in personnel security vetting (not yet depicted in the demo)'],
     ['SEAD 3 - Reporting Requirements', REFS.SEAD3,
      'Self-reporting obligations behind the unreported-travel alerts'],
     ['SEAD 4 - National Security Adjudicative Guidelines', REFS.SEAD4,
@@ -39,6 +43,15 @@ const REFERENCE_GROUPS = [
      'Program-level requirements for personnel security'],
     ['DoD Suitability Guide for Employees', REFS.SUITABILITY,
      'Suitability adjudication concepts'],
+  ]],
+  ['Legal Authorities', [
+    ['Executive Order 12968 - Access to Classified Information', REFS.EO_12968,
+     'Executive-order foundation for eligibility and access determinations'],
+    ['32 CFR Part 147 - Adjudicative Guidelines', REFS.CFR_147,
+     'Codified adjudicative guidelines that preceded SEAD 4'],
+    ['DoD Directive 5220.6 - Defense Industrial Personnel Security '
+     + 'Clearance Review Program', REFS.DODD_52206,
+     'Hearing and appeal procedures behind the DOHA precedent decisions'],
   ]],
   ['Standard Forms (OPM)', [
     ['Federal Investigation Forms (index)', REFS.OPM_FORMS,

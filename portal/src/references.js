@@ -1,6 +1,8 @@
 // Authoritative sources the demo's content is derived from. URLs verified 2026-07-03.
 export const REFS = {
+  NCSC_POLICY: 'https://www.dni.gov/index.php/ncsc-how-we-work/ncsc-security-executive-agent/ncsc-policy',
   SEAD1: 'https://www.dni.gov/files/NCSC/documents/Regulations/SEAD_1.pdf',
+  SEAD2: 'https://www.dni.gov/files/NCSC/documents/Regulations/Security-Executive-Agent-Directive-2-20201005.pdf',
   SEAD3: 'https://www.dni.gov/files/NCSC/documents/Regulations/SEAD-3-Reporting-U.pdf',
   SEAD4: 'https://www.dni.gov/files/NCSC/documents/Regulations/SEAD-4-Adjudicative-Guidelines-U.pdf',
   SEAD5: 'https://www.dni.gov/files/NCSC/documents/Regulations/SEAD_5.pdf',
@@ -20,6 +22,10 @@ export const REFS = {
   FPVG: 'https://www.dni.gov/files/NCSC/documents/Regulations/Federal_Personnel_Vetting_Guidelines_10FEB2022-15Jul22.pdf',
   TW_INDEX: 'https://assets.performance.gov/files/Trusted_Workforce_Policy_Index.pdf',
   DODI_520002: 'https://www.esd.whs.mil/Portals/54/Documents/DD/issuances/dodi/520002p.pdf',
+  // esd.whs.mil blocks non-browser requests (HTTP 403 to curl); loads in a browser.
+  DODD_52206: 'https://www.esd.whs.mil/Portals/54/Documents/DD/issuances/dodd/522006p.pdf',
+  EO_12968: 'https://www.federalregister.gov/documents/1995/08/07/95-19654/access-to-classified-information',
+  CFR_147: 'https://www.ecfr.gov/current/title-32/subtitle-A/chapter-I/subchapter-D/part-147',
   SUITABILITY: 'https://www.dcpas.osd.mil/sites/default/files/2021-04/Suitability_Guide_for_Employees.pdf',
   CDSE: 'https://www.cdse.edu/Training/Toolkits/',
   CDSE_PV: 'https://www.cdse.edu/Training/Toolkits/Personnel-Vetting-Toolkit/#personnel-vetting-policy',
