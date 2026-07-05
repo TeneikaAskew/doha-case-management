@@ -149,11 +149,13 @@ export async function summarizeDecision(record, options = {}) {
       headers: { 'Content-Type': 'application/json', 'x-goog-api-key': apiKey },
       body: JSON.stringify({
         contents: [{ parts: [{ text: prompt }] }],
-        // 2.5-flash counts hidden reasoning against maxOutputTokens; cap the
-        // thinking spend and leave ample room for the visible answer.
+        // The prompt can carry up to ~6k tokens of decision text, so give the
+        // model room to reason over it; 2.5-flash bills thinking against
+        // maxOutputTokens, so cap the thinking spend and still leave ~1k for
+        // the visible <110-word summary.
         generationConfig: {
-          temperature: 0.2, maxOutputTokens: 2048,
-          thinkingConfig: { thinkingBudget: 1024 },
+          temperature: 0.2, maxOutputTokens: 3072,
+          thinkingConfig: { thinkingBudget: 2048 },
         },
       }),
     });

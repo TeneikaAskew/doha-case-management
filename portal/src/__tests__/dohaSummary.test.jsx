@@ -41,6 +41,14 @@ describe('summarizeDecision', () => {
     expect(stored['23-01864'].summary).toBe('Denied over unresolved delinquent debt.');
   });
 
+  it('caps thinking spend and leaves headroom for the visible summary', async () => {
+    const fetchImpl = vi.fn(() => geminiOk('Short summary.'));
+    await summarizeDecision(RECORD, { apiKey: 'k', fetchImpl });
+    const body = JSON.parse(fetchImpl.mock.calls[0][1].body);
+    expect(body.generationConfig.maxOutputTokens).toBe(3072);
+    expect(body.generationConfig.thinkingConfig).toEqual({ thinkingBudget: 2048 });
+  });
+
   it('serves the stored summary without calling Gemini again', async () => {
     const fetchImpl = vi.fn(() => geminiOk('First run.'));
     await summarizeDecision(RECORD, { apiKey: 'k', fetchImpl });
