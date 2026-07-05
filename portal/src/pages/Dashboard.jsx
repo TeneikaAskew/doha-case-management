@@ -122,7 +122,9 @@ export default function Dashboard() {
       <SectionRef>
         Workload stages per{' '}
         <RefLink href={REFS.DCSA_PV}>DCSA Personnel Vetting (Trusted Workforce
-        2.0)</RefLink>.
+        2.0)</RefLink>. Change the &quot;Viewing as&quot; role in the header to
+        see the cases and KPIs for each stage: Investigator (investigation),
+        Analyst (continuous vetting), Adjudicator (adjudication).
       </SectionRef>
     </div>
   );
