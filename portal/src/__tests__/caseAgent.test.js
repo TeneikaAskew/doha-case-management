@@ -123,3 +123,33 @@ describe('answerQuestion', () => {
     expect(fetchImpl).not.toHaveBeenCalled();
   });
 });
+
+describe('answerQuestion - thinking budget and truncation', () => {
+  it('disables Gemini thinking so the token budget goes to visible text', async () => {
+    const fetchImpl = vi.fn(() => geminiOk('Short answer.'));
+    await answerQuestion(CASE_001, 'How much delinquent debt?', {
+      apiKey: 'test-key', fetchImpl,
+    });
+    const body = JSON.parse(fetchImpl.mock.calls[0][1].body);
+    expect(body.generationConfig.thinkingConfig).toEqual({ thinkingBudget: 0 });
+  });
+
+  it('marks answers cut off by MAX_TOKENS instead of presenting them as complete', async () => {
+    const fetchImpl = vi.fn(() => Promise.resolve({
+      ok: true,
+      json: () => Promise.resolve({
+        candidates: [{
+          content: { parts: [{ text: 'dependable with a' }] },
+          finishReason: 'MAX_TOKENS',
+        }],
+      }),
+    }));
+    const res = await answerQuestion(CASE_001, 'Summarize the interviews', {
+      apiKey: 'test-key', fetchImpl,
+    });
+    expect(res.engine).toBe('gemini');
+    expect(res.truncated).toBe(true);
+    expect(res.answer.endsWith('…')).toBe(true);
+  });
+});
+

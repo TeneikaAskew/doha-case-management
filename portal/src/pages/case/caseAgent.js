@@ -66,6 +66,7 @@ async function readSseAnswer(res, onChunk) {
   const decoder = new TextDecoder();
   let buffer = '';
   let text = '';
+  let finishReason = null;
   for (;;) {
     const { done, value } = await reader.read();
     if (done) break;
@@ -78,17 +79,19 @@ async function readSseAnswer(res, onChunk) {
       if (!payload || payload === '[DONE]') continue;
       try {
         const data = JSON.parse(payload);
-        const part = data.candidates?.[0]?.content?.parts?.[0]?.text;
+        const candidate = data.candidates?.[0];
+        const part = candidate?.content?.parts?.[0]?.text;
         if (part) {
           text += part;
           onChunk(text);
         }
+        if (candidate?.finishReason) finishReason = candidate.finishReason;
       } catch {
         // SSE events are line-delimited; an unparseable data line is skipped
       }
     }
   }
-  return text.trim();
+  return { text: text.trim(), finishReason };
 }
 
 const SUMMARY_CACHE_KEY = 'demo.dohaSummaries';
@@ -143,7 +146,12 @@ export async function summarizeDecision(record, options = {}) {
       headers: { 'Content-Type': 'application/json', 'x-goog-api-key': apiKey },
       body: JSON.stringify({
         contents: [{ parts: [{ text: prompt }] }],
-        generationConfig: { temperature: 0.2, maxOutputTokens: 512 },
+        // thinkingBudget 0: 2.5-flash otherwise spends the output budget on
+        // hidden reasoning tokens and truncates the visible answer.
+        generationConfig: {
+          temperature: 0.2, maxOutputTokens: 512,
+          thinkingConfig: { thinkingBudget: 0 },
+        },
       }),
     });
     if (!res.ok) {
@@ -187,7 +195,10 @@ export async function answerQuestion(caseData, question, options = {}) {
         contents: [{
           parts: [{ text: buildPrompt(caseData, question, passages, history) }],
         }],
-        generationConfig: { temperature: 0.2, maxOutputTokens: 512 },
+        generationConfig: {
+          temperature: 0.2, maxOutputTokens: 512,
+          thinkingConfig: { thinkingBudget: 0 },
+        },
       }),
     });
     if (!res.ok) {
@@ -195,15 +206,22 @@ export async function answerQuestion(caseData, question, options = {}) {
       throw new Error(`Gemini HTTP ${res.status}: ${body.slice(0, 300)}`);
     }
     let text;
+    let finishReason;
     if (streaming) {
-      text = await readSseAnswer(res, options.onChunk);
+      ({ text, finishReason } = await readSseAnswer(res, options.onChunk));
     } else {
       const data = await res.json();
-      text = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim();
+      const candidate = data.candidates?.[0];
+      text = candidate?.content?.parts?.[0]?.text?.trim();
+      finishReason = candidate?.finishReason;
     }
     if (!text) throw new Error('Gemini returned no text');
+    const truncated = finishReason === 'MAX_TOKENS';
+    if (truncated) text += '…';
     const citations = passages.length ? local.citations : [];
-    return { answer: text, citations, engine: 'gemini', streamed: streaming };
+    return {
+      answer: text, citations, engine: 'gemini', streamed: streaming, truncated,
+    };
   } catch (err) {
     // fall back to the composed local answer; keep the reason for diagnostics
     return { ...local, engine: 'local', error: String(err?.message || err) };
