@@ -201,9 +201,13 @@ export async function answerQuestion(caseData, question, options = {}) {
         contents: [{
           parts: [{ text: buildPrompt(caseData, question, grounding, history) }],
         }],
+        // The whole case now grounds the answer (up to ~4k input tokens for
+        // the richest case), so give the model room to reason across all of
+        // it; 2.5-flash bills thinking against maxOutputTokens, so cap the
+        // thinking spend and still leave ~1k for the visible <120-word answer.
         generationConfig: {
-          temperature: 0.2, maxOutputTokens: 2048,
-          thinkingConfig: { thinkingBudget: 1024 },
+          temperature: 0.2, maxOutputTokens: 3072,
+          thinkingConfig: { thinkingBudget: 2048 },
         },
       }),
     });

@@ -143,8 +143,8 @@ describe('answerQuestion - thinking budget and truncation', () => {
       apiKey: 'test-key', fetchImpl,
     });
     const body = JSON.parse(fetchImpl.mock.calls[0][1].body);
-    expect(body.generationConfig.maxOutputTokens).toBe(2048);
-    expect(body.generationConfig.thinkingConfig).toEqual({ thinkingBudget: 1024 });
+    expect(body.generationConfig.maxOutputTokens).toBe(3072);
+    expect(body.generationConfig.thinkingConfig).toEqual({ thinkingBudget: 2048 });
   });
 
   it('marks answers cut off by MAX_TOKENS instead of presenting them as complete', async () => {
