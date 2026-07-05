@@ -146,11 +146,11 @@ export async function summarizeDecision(record, options = {}) {
       headers: { 'Content-Type': 'application/json', 'x-goog-api-key': apiKey },
       body: JSON.stringify({
         contents: [{ parts: [{ text: prompt }] }],
-        // thinkingBudget 0: 2.5-flash otherwise spends the output budget on
-        // hidden reasoning tokens and truncates the visible answer.
+        // 2.5-flash counts hidden reasoning against maxOutputTokens; cap the
+        // thinking spend and leave ample room for the visible answer.
         generationConfig: {
-          temperature: 0.2, maxOutputTokens: 512,
-          thinkingConfig: { thinkingBudget: 0 },
+          temperature: 0.2, maxOutputTokens: 2048,
+          thinkingConfig: { thinkingBudget: 1024 },
         },
       }),
     });
@@ -196,8 +196,8 @@ export async function answerQuestion(caseData, question, options = {}) {
           parts: [{ text: buildPrompt(caseData, question, passages, history) }],
         }],
         generationConfig: {
-          temperature: 0.2, maxOutputTokens: 512,
-          thinkingConfig: { thinkingBudget: 0 },
+          temperature: 0.2, maxOutputTokens: 2048,
+          thinkingConfig: { thinkingBudget: 1024 },
         },
       }),
     });

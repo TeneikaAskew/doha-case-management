@@ -125,13 +125,14 @@ describe('answerQuestion', () => {
 });
 
 describe('answerQuestion - thinking budget and truncation', () => {
-  it('disables Gemini thinking so the token budget goes to visible text', async () => {
+  it('caps thinking spend and leaves headroom for the visible answer', async () => {
     const fetchImpl = vi.fn(() => geminiOk('Short answer.'));
     await answerQuestion(CASE_001, 'How much delinquent debt?', {
       apiKey: 'test-key', fetchImpl,
     });
     const body = JSON.parse(fetchImpl.mock.calls[0][1].body);
-    expect(body.generationConfig.thinkingConfig).toEqual({ thinkingBudget: 0 });
+    expect(body.generationConfig.maxOutputTokens).toBe(2048);
+    expect(body.generationConfig.thinkingConfig).toEqual({ thinkingBudget: 1024 });
   });
 
   it('marks answers cut off by MAX_TOKENS instead of presenting them as complete', async () => {
