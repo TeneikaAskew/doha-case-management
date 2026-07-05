@@ -11,6 +11,10 @@
   border-color: var(--status-info); }
 .status-badge.neutral { background: var(--bg-sidebar); color: var(--text-secondary);
   border-color: var(--border-medium); }
+/* An open-alert count is informational, not inherently bad: neutral gray
+   ground with DCSA blue text instead of a red severity color. */
+.status-badge.alerts { background: var(--bg-sidebar); color: var(--dcsa-navy);
+  border-color: var(--border-medium); }
 
 .kpi-card { background: var(--bg-card); border: 1px solid var(--border-light);
   border-radius: var(--radius-md); padding: var(--space-4) var(--space-5);

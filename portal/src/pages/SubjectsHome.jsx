@@ -174,7 +174,7 @@ export default function SubjectsHome() {
                 {STATUS_LABELS[s.status]}
               </StatusBadge>
               {s.effectiveOpenAlerts > 0 && (
-                <StatusBadge variant="error">
+                <StatusBadge variant="alerts">
                   {s.effectiveOpenAlerts} open alert{s.effectiveOpenAlerts > 1 ? 's' : ''}
                 </StatusBadge>
               )}
