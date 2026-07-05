@@ -59,3 +59,37 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v5
+
+  # Mirrors the build to Cloudflare Pages (doha-case-management.pages.dev).
+  # Skipped until the CLOUDFLARE_API_TOKEN secret exists ("Cloudflare Pages:
+  # Edit" permission, created at dash.cloudflare.com -> My Profile -> API Tokens).
+  deploy-cloudflare:
+    if: ${{ github.event_name != 'pull_request' }}
+    runs-on: ubuntu-latest
+    env:
+      CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+    defaults:
+      run:
+        working-directory: portal
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: portal/package-lock.json
+      - run: npm ci
+      - run: npm run build
+        env:
+          VITE_GEMINI_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+      - name: Deploy to Cloudflare Pages
+        if: ${{ env.CF_TOKEN != '' }}
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: portal
+          command: pages deploy dist --project-name doha-case-management --branch vetting-portal
+      - name: Note when skipped
+        if: ${{ env.CF_TOKEN == '' }}
+        run: echo "CLOUDFLARE_API_TOKEN secret not set - skipped Cloudflare deploy."
