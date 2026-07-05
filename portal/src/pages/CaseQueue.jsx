@@ -11,6 +11,7 @@ import StatusBadge from '../components/StatusBadge.jsx';
 import GuidelineChip from '../components/GuidelineChip.jsx';
 import AIBadge from '../components/AIBadge.jsx';
 import { Loading, ErrorAlert, EmptyState } from '../components/States.jsx';
+import SectionRef from '../components/SectionRef.jsx';
 
 const PERSONA_STAGE = {
   investigator: 'INVESTIGATION',
@@ -98,6 +99,11 @@ export default function CaseQueue() {
         ? <EmptyState title="No cases" message="No cases match the current filters." />
         : <DataTable columns={columns} rows={rows} rowKey="id"
             onRowClick={(s) => navigate(`/cases/${s.id}`)} />}
+      <SectionRef>
+        The stage filter follows the &quot;Viewing as&quot; role in the header:
+        Investigator opens on Investigation, Analyst on Continuous Vetting,
+        Adjudicator on Adjudication. Pick any stage above to override.
+      </SectionRef>
     </div>
   );
 }

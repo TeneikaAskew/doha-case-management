@@ -217,6 +217,8 @@ export default function ProviderDetail() {
         Continuous vetting under <RefLink href={REFS.SEAD6}>SEAD 6</RefLink>;
         record checks per the{' '}
         <RefLink href={REFS.FIS}>Federal Investigative Standards</RefLink>.
+        With Triage on, the Analyst role (&quot;Viewing as&quot; in the header)
+        can disposition alerts inline.
       </SectionRef>
     </div>
   );

@@ -9,6 +9,7 @@ import {
 import StatusBadge from '../../components/StatusBadge.jsx';
 import GuidelineChip from '../../components/GuidelineChip.jsx';
 import { Loading, ErrorAlert } from '../../components/States.jsx';
+import SectionRef from '../../components/SectionRef.jsx';
 import OverviewTab from './OverviewTab.jsx';
 import GuidelinesTab from './GuidelinesTab.jsx';
 import InvestigationTab from './InvestigationTab.jsx';
@@ -84,6 +85,12 @@ export default function CaseDetail() {
       </div>
 
       <TabBody caseData={caseData} />
+      <SectionRef>
+        The &quot;Viewing as&quot; role sets the opening tab and unlocks its
+        actions: Investigator adds ROI entries on Investigation, Analyst
+        dispositions alerts on Continuous Vetting, Adjudicator rates
+        whole-person factors and records decisions on Adjudication.
+      </SectionRef>
     </div>
   );
 }
