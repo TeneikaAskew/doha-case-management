@@ -63,6 +63,20 @@ python -m pytest data_gen/tests -v        # Data generator (pytest)
 
 Design spec: `docs/superpowers/specs/2026-07-02-vetting-case-management-design.md`.
 
+### Deploying
+
+The build is fully static (`base: './'`), so it runs on any static host.
+
+- **GitHub Pages** (automatic): every push to `vetting-portal` or `main` runs
+  `.github/workflows/deploy-pages.yml` and publishes to
+  https://teneikaaskew.github.io/doha-case-management/.
+- **Cloudflare Pages** (Git integration): connect the repo in the Cloudflare
+  dashboard with these build settings - framework preset `Vite` (or None),
+  root directory `portal`, build command `npm run build`, output directory
+  `dist`, production branch `vetting-portal`. Optional build environment
+  variables: `VITE_GEMINI_API_KEY` (enables the live Ask the Case agent) and
+  `VITE_ACCESS_PASSWORD_HASHES` (overrides the built-in access-code hashes).
+
 ### Demo Data Provenance
 
 The portal mixes two clearly separated data layers:
