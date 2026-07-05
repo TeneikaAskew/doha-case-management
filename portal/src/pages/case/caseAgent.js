@@ -1,10 +1,12 @@
-/* Case Q&A agent. RAG over the case file: the deterministic retriever in
-   caseAssistant.js selects grounding passages; when a Gemini API key is
-   configured (VITE_GEMINI_API_KEY - same key as the sead4_llm analyzer)
-   Gemini generates the answer from those passages ONLY. Without a key, or
-   if the call fails, the retrieved passages answer directly - so the
-   public static deploy works with no key and nothing to leak. */
-import { retrieve, askCase } from './caseAssistant.js';
+/* Case Q&A agent. The whole case file grounds Gemini: buildCorpus() flattens
+   every part of the case into labeled passages and all of them are sent as
+   context, so the model answers from the complete record rather than a
+   keyword-matched slice (VITE_GEMINI_API_KEY - same key as the sead4_llm
+   analyzer). The deterministic retriever still runs to pick the citation
+   chips and to compose the local answer. Without a key, or if the call
+   fails, the retrieved passages answer directly - so the public static
+   deploy works with no key and nothing to leak. */
+import { retrieve, askCase, buildCorpus } from './caseAssistant.js';
 
 // gemini-2.0-flash no longer has a free tier (429, limit: 0); 2.5-flash does
 export const GEMINI_MODEL = 'gemini-2.5-flash';
@@ -42,17 +44,18 @@ function buildPrompt(caseData, question, passages, history) {
     .map((m) => `${m.role}: ${m.text}`)
     .join('\n');
   return [
-    'You are a case-file assistant inside a personnel-vetting demo. Answer the',
-    'analyst\'s question using ONLY the case digest and numbered case-file',
-    'passages below. Quote figures and dates exactly. If the material does',
-    'not answer the question, say so plainly. Keep the answer under 120',
-    'words. Do not invent facts, identities, or documents.',
+    'You are a case-file assistant inside a personnel-vetting demo. The digest',
+    'and numbered passages below are the COMPLETE case file. Answer the',
+    'analyst\'s question using ONLY that material. Quote figures and dates',
+    'exactly. If the case file does not answer the question, say so plainly.',
+    'Keep the answer under 120 words. Do not invent facts, identities, or',
+    'documents.',
     '',
     'Case digest:',
     caseDigest(caseData),
     '',
     ...(thread ? ['Conversation so far:', thread, ''] : []),
-    'Case-file passages:',
+    'Complete case file:',
     context,
     '',
     `Question: ${question}`,
@@ -182,8 +185,11 @@ export async function answerQuestion(caseData, question, options = {}) {
 
   const passages = retrieve(caseData, question, { history });
   const local = askCase(caseData, question, { history });
+  // Ground Gemini in the entire case file, not just the top matches, so no
+  // relevant detail is left out; retrieval above still selects the citations.
+  const grounding = buildCorpus(caseData);
   // no key: deterministic local mode. With a key, Gemini answers everything -
-  // zero-hit questions are grounded by the case digest instead of refused.
+  // zero-hit questions are grounded by the full case file instead of refused.
   if (!apiKey) return { ...local, engine: 'local' };
 
   try {
@@ -193,7 +199,7 @@ export async function answerQuestion(caseData, question, options = {}) {
       headers: { 'Content-Type': 'application/json', 'x-goog-api-key': apiKey },
       body: JSON.stringify({
         contents: [{
-          parts: [{ text: buildPrompt(caseData, question, passages, history) }],
+          parts: [{ text: buildPrompt(caseData, question, grounding, history) }],
         }],
         generationConfig: {
           temperature: 0.2, maxOutputTokens: 2048,

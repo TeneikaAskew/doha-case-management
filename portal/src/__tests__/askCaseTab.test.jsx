@@ -70,20 +70,58 @@ describe('AskCaseTab', () => {
     expect(screen.getByText(/VITE_GEMINI_API_KEY/)).toBeInTheDocument();
   });
 
-  it('clears the conversation from the trash button', async () => {
+  it('deletes a conversation from the sidebar and returns to the empty state', async () => {
     renderTab();
-    expect(screen.queryByRole('button', { name: /clear conversation/i }))
-      .not.toBeInTheDocument();
     fireEvent.change(screen.getByLabelText(/ask about this case/i),
       { target: { value: 'How much delinquent debt does he have?' } });
     fireEvent.click(screen.getByRole('button', { name: /^ask$/i }));
     await screen.findByText(/\$47,300/);
-    fireEvent.click(screen.getByRole('button', { name: /clear conversation/i }));
+    // the first turn creates a conversation listed in the sidebar
+    fireEvent.click(screen.getByRole('button', { name: /delete conversation 1/i }));
     expect(screen.queryByText(/\$47,300/)).not.toBeInTheDocument();
-    expect(screen.queryByRole('button', { name: /clear conversation/i }))
-      .not.toBeInTheDocument();
     // empty state returns
     expect(screen.getByText(/Why is this case flagged under Guideline F/))
       .toBeInTheDocument();
+  });
+
+  it('keeps separate threads for separate conversations', async () => {
+    renderTab();
+    fireEvent.change(screen.getByLabelText(/ask about this case/i),
+      { target: { value: 'How much delinquent debt does he have?' } });
+    fireEvent.click(screen.getByRole('button', { name: /^ask$/i }));
+    await screen.findByText(/\$47,300/);
+
+    // start a fresh conversation - its thread is empty
+    fireEvent.click(screen.getByRole('button', { name: /new conversation/i }));
+    expect(screen.queryByText(/\$47,300/)).not.toBeInTheDocument();
+    expect(screen.getByText(/Why is this case flagged under Guideline F/))
+      .toBeInTheDocument();
+
+    // switching back to the first conversation restores its answer
+    fireEvent.click(screen.getByRole('button', { name: /^conversation 1$/i }));
+    expect(screen.getByText(/\$47,300/)).toBeInTheDocument();
+  });
+
+  it('renames a conversation from the sidebar', async () => {
+    renderTab();
+    fireEvent.change(screen.getByLabelText(/ask about this case/i),
+      { target: { value: 'How much delinquent debt does he have?' } });
+    fireEvent.click(screen.getByRole('button', { name: /^ask$/i }));
+    await screen.findByText(/\$47,300/);
+    fireEvent.click(screen.getByRole('button', { name: /rename conversation 1/i }));
+    const field = screen.getByLabelText(/rename conversation/i);
+    fireEvent.change(field, { target: { value: 'Finances' } });
+    fireEvent.submit(field);
+    expect(screen.getByRole('button', { name: /^finances$/i })).toBeInTheDocument();
+  });
+
+  it('collapses and expands the conversation panel', () => {
+    renderTab();
+    expect(screen.getByRole('button', { name: /new conversation/i })).toBeInTheDocument();
+    fireEvent.click(screen.getByRole('button', { name: /hide conversations/i }));
+    expect(screen.queryByRole('button', { name: /new conversation/i }))
+      .not.toBeInTheDocument();
+    fireEvent.click(screen.getByRole('button', { name: /show conversations/i }));
+    expect(screen.getByRole('button', { name: /new conversation/i })).toBeInTheDocument();
   });
 });

@@ -28,6 +28,18 @@ describe('answerQuestion', () => {
     expect(prompt).toContain('$47,300'); // grounding passage made it into the request
   });
 
+  it('grounds Gemini with the whole case file, not just the top matches', async () => {
+    const fetchImpl = vi.fn(() => geminiOk('Answer.'));
+    await answerQuestion(CASE_001, 'How much delinquent debt?', {
+      apiKey: 'test-key', fetchImpl,
+    });
+    const prompt = JSON.stringify(JSON.parse(fetchImpl.mock.calls[0][1].body));
+    // employment history is unrelated to a debt question and would not be
+    // retrieved by keyword, yet full-case grounding still sends it
+    expect(prompt).toContain('Sentinel Dynamics LLC');
+    expect(prompt).toContain('Lagos, Nigeria');
+  });
+
   it('answers locally without any network call when no key is configured', async () => {
     const fetchImpl = vi.fn();
     const res = await answerQuestion(CASE_001, 'How much delinquent debt?', {
