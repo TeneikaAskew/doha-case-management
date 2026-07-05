@@ -157,20 +157,26 @@ const AUTHORITIES_LINKS = [
   ['Trusted Workforce 2.0', REFS.TW_INDEX],
 ];
 
-// jsdom (tests) has no matchMedia; treat that, and any thrown access, as "no preference".
+// Deliberately ignores the OS prefers-reduced-motion setting: the landing page
+// always animates (enterprise Windows images often ship with animations off,
+// which froze the hero for those visitors). Original check kept for reference:
+// function prefersReducedMotion() {
+//   if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') return false;
+//   try {
+//     return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+//   } catch {
+//     return false;
+//   }
+// }
 function prefersReducedMotion() {
-  if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') return false;
-  try {
-    return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  } catch {
-    return false;
-  }
+  return false;
 }
 
+// Rotates regardless of the motion preference: reduced motion strips the
+// slide/fade via .landing-reduced CSS, so the swap is instant instead of frozen.
 function useRotatingWord(words, intervalMs) {
   const [index, setIndex] = useState(0);
   useEffect(() => {
-    if (prefersReducedMotion()) return undefined;
     const id = setInterval(() => setIndex((i) => (i + 1) % words.length), intervalMs);
     return () => clearInterval(id);
   }, [words, intervalMs]);
@@ -451,7 +457,6 @@ export default function Landing({ onSignIn }) {
   const mxHoveringRef = useRef(false);
 
   useEffect(() => {
-    if (prefersReducedMotion()) return undefined;
     const id = setInterval(() => {
       if (mxTouchedRef.current || mxHoveringRef.current) return;
       setMxIndex((i) => (i + 1) % MX_PANELS.length);
@@ -477,8 +482,10 @@ export default function Landing({ onSignIn }) {
     if (w > 0) pill.style.width = `${w}px`; // jsdom reports 0; keep auto width there
   }, [word]);
 
+  const reduced = prefersReducedMotion();
+
   return (
-    <div className="landing">
+    <div className={`landing${reduced ? ' landing-reduced' : ''}`}>
       <header className="nav">
         <div className="wrap nav-in">
           <span className="brand">

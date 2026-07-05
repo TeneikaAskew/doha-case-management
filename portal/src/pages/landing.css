@@ -314,12 +314,13 @@
 @keyframes landing-mx-pop { from { opacity: 0; transform: scale(0.5); }
   to { opacity: 1; transform: scale(1); } }
 .landing .mx-matrix .mx-viz-note { grid-column: 1 / -1; }
+/* Landing always animates (deliberate; see Landing.jsx note).
 @media (prefers-reduced-motion: reduce) {
   .landing .mx-panel.active { animation: none; }
   .landing .active .mx-bar-fill { animation: none; width: var(--w); }
   .landing .active .mx-tick-row { animation: none; opacity: 1; }
   .landing .active .mx-matrix span { animation: none; opacity: 1; }
-}
+} */
 
 /* ---------- CTA band with case vignette ---------- */
 /* Blends downward into the footer: bottom stop matches --l-footer-ground */
@@ -404,12 +405,13 @@
 .landing .rv { opacity: 0; transform: translateY(18px);
   transition: opacity .55s ease, transform .55s ease; }
 .landing .rv.in { opacity: 1; transform: none; }
+/* Landing always animates (deliberate; see Landing.jsx note).
 @media (prefers-reduced-motion: reduce) {
   .landing .rv { opacity: 1; transform: none; transition: none; }
   .landing .pill-word .word { animation: none; }
   .landing .btn, .landing .btn:hover { transform: none; transition: none; }
   .landing .cs-card { animation: none; }
-}
+} */
 
 /* ---------- Responsive ---------- */
 @media (max-width: 980px) {
@@ -433,3 +435,9 @@
   .landing .hero-ctas { flex-direction: column; align-items: center; }
   .landing .tabs { gap: 18px; }
 }
+
+/* Reduced motion: content still changes, but instantly - no slides or fades.
+   The width-growing bar animation gets its end state directly. */
+.landing-reduced *, .landing-reduced *::before, .landing-reduced *::after {
+  animation: none !important; transition: none !important; }
+.landing-reduced .mx-bar-fill { width: var(--w); }

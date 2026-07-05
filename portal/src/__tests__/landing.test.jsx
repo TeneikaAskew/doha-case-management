@@ -1,5 +1,5 @@
-import { describe, it, expect, beforeEach } from 'vitest';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { describe, it, expect, beforeEach, vi } from 'vitest';
+import { render, screen, fireEvent, act } from '@testing-library/react';
 import App from '../App.jsx';
 
 beforeEach(() => {
@@ -90,3 +90,26 @@ describe('Landing page', () => {
     expect(window.location.hash).toBe('#/');
   });
 });
+
+describe('Landing page motion', () => {
+  it('rotates the hero word even when the OS asks for reduced motion', () => {
+    vi.useFakeTimers();
+    const original = window.matchMedia;
+    window.matchMedia = (query) => ({
+      matches: query.includes('prefers-reduced-motion'),
+      media: query, onchange: null,
+      addEventListener() {}, removeEventListener() {},
+      addListener() {}, removeListener() {}, dispatchEvent: () => false,
+    });
+    try {
+      render(<App />);
+      expect(document.querySelector('.pill-word .word').textContent).toBe('people');
+      act(() => { vi.advanceTimersByTime(2500); });
+      expect(document.querySelector('.pill-word .word').textContent).toBe('alerts');
+    } finally {
+      window.matchMedia = original;
+      vi.useRealTimers();
+    }
+  });
+});
+
