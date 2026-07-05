@@ -9,7 +9,7 @@
     "preview": "vite preview",
     "test": "vitest run",
     "test:e2e": "playwright test",
-    "deploy:cf": "npm run build && wrangler pages deploy dist --project-name doha-case-management --branch vetting-portal"
+    "deploy:cf": "npm run build && npx wrangler pages deploy dist --project-name doha-case-management --branch vetting-portal"
   },
   "dependencies": {
     "@fontsource/inter": "^5.2.8",
