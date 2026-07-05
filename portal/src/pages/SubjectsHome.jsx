@@ -163,9 +163,9 @@ export default function SubjectsHome() {
                 <strong>{s.name}</strong>
                 <div className="muted">{s.position}</div>
               </div>
-              <div className={`risk-dial risk-${riskBand(s.riskScore)} risk-dial-sm`}>
+              <div className={`risk-dial risk-${riskBand(s.riskScore)} risk-dial-sm`}
+                aria-label={`AI risk score ${s.riskScore} of 100`}>
                 <span className="risk-dial-value">{s.riskScore}</span>
-                <span className="risk-dial-label">AI risk</span>
               </div>
             </div>
             <div className="subject-pills">
