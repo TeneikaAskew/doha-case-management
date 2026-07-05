@@ -69,4 +69,21 @@ describe('AskCaseTab', () => {
     expect(toggle).toBeDisabled();
     expect(screen.getByText(/VITE_GEMINI_API_KEY/)).toBeInTheDocument();
   });
+
+  it('clears the conversation from the trash button', async () => {
+    renderTab();
+    expect(screen.queryByRole('button', { name: /clear conversation/i }))
+      .not.toBeInTheDocument();
+    fireEvent.change(screen.getByLabelText(/ask about this case/i),
+      { target: { value: 'How much delinquent debt does he have?' } });
+    fireEvent.click(screen.getByRole('button', { name: /^ask$/i }));
+    await screen.findByText(/\$47,300/);
+    fireEvent.click(screen.getByRole('button', { name: /clear conversation/i }));
+    expect(screen.queryByText(/\$47,300/)).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: /clear conversation/i }))
+      .not.toBeInTheDocument();
+    // empty state returns
+    expect(screen.getByText(/Why is this case flagged under Guideline F/))
+      .toBeInTheDocument();
+  });
 });

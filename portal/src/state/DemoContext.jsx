@@ -59,6 +59,10 @@ export function DemoProvider({ children }) {
     recordDecision: (caseId, d) => appendTo('decisions', caseId, d),
     addRoiEntry: (caseId, e) => appendTo('roiEntries', caseId, e),
     addAskMessage: (caseId, m) => appendTo('askThreads', caseId, m),
+    clearAskThread: (caseId) => persist({
+      ...demo,
+      askThreads: { ...demo.askThreads, [caseId]: [] },
+    }),
     setWorksheetRating,
     reset: () => persist(EMPTY),
   };

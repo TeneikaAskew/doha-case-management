@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { FiMessageCircle, FiSend, FiFileText, FiCornerUpRight } from 'react-icons/fi';
+import {
+  FiMessageCircle, FiSend, FiFileText, FiCornerUpRight, FiTrash2,
+} from 'react-icons/fi';
 import AIBadge from '../../components/AIBadge.jsx';
 import DocumentViewer from '../../components/DocumentViewer.jsx';
 import Toggle from '../../components/Toggle.jsx';
@@ -27,7 +29,7 @@ function CitationChips({ citations, onOpenDoc }) {
 }
 
 export default function AskCaseTab({ caseData }) {
-  const { demo, addAskMessage } = useDemo();
+  const { demo, addAskMessage, clearAskThread } = useDemo();
   const caseId = caseData.subject.id;
   const messages = demo.askThreads[caseId] || [];
   const [input, setInput] = useState('');
@@ -84,9 +86,18 @@ export default function AskCaseTab({ caseData }) {
         <div className="ask-controls">
           <Toggle checked={useGemini} disabled={!keyConfigured}
             onChange={toggleGemini} label="Use Gemini" />
-          {keyConfigured
-            ? <span className="ask-engine">{useGemini ? 'Gemini, case-grounded' : 'Simulated retrieval'}</span>
-            : <span className="ask-engine">Simulated - set VITE_GEMINI_API_KEY to enable Gemini</span>}
+          {!keyConfigured && (
+            <span className="ask-engine">
+              Simulated - set VITE_GEMINI_API_KEY to enable Gemini
+            </span>
+          )}
+          {messages.length > 0 && (
+            <button type="button" className="ask-clear" title="Clear conversation"
+              aria-label="Clear conversation" disabled={busy}
+              onClick={() => clearAskThread(caseId)}>
+              <FiTrash2 aria-hidden="true" />
+            </button>
+          )}
         </div>
       </div>
 
