@@ -22,7 +22,8 @@
   gap: var(--space-2); min-height: 44px; }
 .provider-card-head h3 { line-height: 1.3; }
 .provider-card-head .status-badge { flex-shrink: 0; white-space: nowrap; }
-.provider-category { margin: var(--space-1) 0 0; font-size: var(--font-size-sm); }
+.provider-category { margin: var(--space-1) 0 var(--space-2);
+  font-size: var(--font-size-sm); }
 .provider-pills { display: flex; flex-wrap: wrap; gap: var(--space-2); margin: 0;
   min-height: 22px; }
 .provider-pills .status-badge { font-size: 10px; padding: 1px 8px;
@@ -33,7 +34,8 @@
 .provider-sync { display: inline-flex; align-items: center; gap: var(--space-1);
   font-size: var(--font-size-sm); white-space: nowrap; }
 .provider-sync svg { color: var(--dcsa-ocean); }
-.provider-card > p:last-child { margin-top: auto; padding-top: var(--space-2); }
+.provider-sync-row { margin-top: auto; padding-top: var(--space-3); }
+.provider-card > p:last-child { padding-top: var(--space-1); }
 .matrix-wrap { overflow-x: auto; }
 .coverage-matrix .matrix-cell { text-align: center; color: var(--dcsa-ocean);
   font-size: var(--font-size-lg); }
