@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { FiGrid, FiDatabase, FiCheck } from 'react-icons/fi';
+import { FiGrid, FiDatabase, FiCheck, FiRefreshCw } from 'react-icons/fi';
 import { getAlerts, getProviderActivity, getProviders } from '../data/api.js';
 import { useData } from '../data/useData.js';
 import { GUIDELINES } from '../domain.js';
@@ -50,8 +50,15 @@ export default function DataProviders() {
               {p.usedIn.map((u) => (
                 <StatusBadge key={u} variant="neutral">{USED_IN_LABEL[u]}</StatusBadge>))}
             </div>
-            <p><strong>{p.recordCount.toLocaleString('en-US')}</strong>
-              <span className="muted"> records, last sync {p.lastSync.slice(0, 10)}</span></p>
+            <div className="provider-sync-row">
+              <p><strong>{p.recordCount.toLocaleString('en-US')}</strong>
+                <span className="muted"> records</span></p>
+              <span className="muted provider-sync"
+                aria-label={`Last sync ${p.lastSync.slice(0, 10)}`}
+                title="Last sync">
+                <FiRefreshCw aria-hidden="true" />{p.lastSync.slice(0, 10)}
+              </span>
+            </div>
             <p className="muted provider-activity-line">
               {counts(p.id).alerts} alerts · {counts(p.id).checks} record checks
             </p>

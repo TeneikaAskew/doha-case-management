@@ -24,6 +24,12 @@
 .provider-card-head .status-badge { flex-shrink: 0; white-space: nowrap; }
 .provider-pills { display: flex; flex-wrap: wrap; gap: var(--space-2); margin: 0;
   min-height: 26px; }
+.provider-sync-row { display: flex; justify-content: space-between;
+  align-items: baseline; gap: var(--space-2); flex-wrap: wrap; }
+.provider-sync-row p { margin: 0; }
+.provider-sync { display: inline-flex; align-items: center; gap: var(--space-1);
+  font-size: var(--font-size-sm); white-space: nowrap; }
+.provider-sync svg { color: var(--dcsa-ocean); }
 .provider-card > p:last-child { margin-top: auto; padding-top: var(--space-2); }
 .matrix-wrap { overflow-x: auto; }
 .coverage-matrix .matrix-cell { text-align: center; color: var(--dcsa-ocean);
