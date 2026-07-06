@@ -57,7 +57,7 @@ export default function CaseQueue() {
     { key: 'stage', label: 'Stage', sortable: true, render: (s) => STAGE_LABELS[s.stage] },
     { key: 'status', label: 'Status',
       render: (s) => <StatusBadge variant={STATUS_VARIANTS[s.status]}>{STATUS_LABELS[s.status]}</StatusBadge> },
-    { key: 'riskScore', label: 'AI risk', sortable: true,
+    { key: 'riskScore', label: 'Risk score', sortable: true,
       render: (s) => (
         <span className="risk-cell" style={{ '--risk-color': RISK_ACCENT[riskBand(s.riskScore)] }}>
           {s.riskScore}{s.fastTrack && <span className="fast-track" title="AI fast-track candidate"> FT</span>}

@@ -85,7 +85,7 @@ export default function SubjectsHome() {
     { key: 'stage', label: 'Stage', render: (s) => STAGE_LABELS[s.stage] },
     { key: 'status', label: 'Status',
       render: (s) => <StatusBadge variant={STATUS_VARIANTS[s.status]}>{STATUS_LABELS[s.status]}</StatusBadge> },
-    { key: 'riskScore', label: 'AI risk', sortable: true },
+    { key: 'riskScore', label: 'Risk score', sortable: true },
     { key: 'cvEnrolled', label: 'CV',
       render: (s) => (s.cvEnrolled ? <StatusBadge variant="success">Enrolled</StatusBadge>
         : <span className="muted">-</span>) },
@@ -164,7 +164,7 @@ export default function SubjectsHome() {
                 <div className="muted">{s.position}</div>
               </div>
               <div className={`risk-dial risk-${riskBand(s.riskScore)} risk-dial-sm`}
-                aria-label={`AI risk score ${s.riskScore} of 100`}>
+                aria-label={`Risk score ${s.riskScore} of 100`}>
                 <span className="risk-dial-value">{s.riskScore}</span>
               </div>
             </div>

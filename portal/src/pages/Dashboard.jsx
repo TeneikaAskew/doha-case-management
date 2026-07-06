@@ -98,7 +98,7 @@ export default function Dashboard() {
     { key: 'stage', label: 'Stage', render: (s) => STAGE_LABELS[s.stage] },
     { key: 'status', label: 'Status',
       render: (s) => <StatusBadge variant={STATUS_VARIANTS[s.status]}>{STATUS_LABELS[s.status]}</StatusBadge> },
-    { key: 'riskScore', label: 'AI risk', sortable: true },
+    { key: 'riskScore', label: 'Risk score', sortable: true },
     { key: 'flaggedGuidelines', label: 'Guidelines',
       render: (s) => s.flaggedGuidelines.map((g) => <GuidelineChip key={g} code={g} />) },
   ];

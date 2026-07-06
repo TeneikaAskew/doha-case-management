@@ -13,11 +13,11 @@ import SectionRef, { RefLink } from '../components/SectionRef.jsx';
 import { REFS } from '../references.js';
 
 const PAGES = [
-  ['Subjects', 'The home page. Population KPIs, the vetting pipeline, AI risk '
+  ['Subjects', 'The home page. Population KPIs, the vetting pipeline, risk score '
     + 'distribution, subjects needing attention, and a searchable directory.'],
   ['Dashboard', 'Persona-aware workload: each role (Investigator, Analyst, '
     + 'Adjudicator) sees its own KPIs and queue.'],
-  ['Case Queue', 'Every case with stage, status, AI risk, and flagged guidelines. '
+  ['Case Queue', 'Every case with stage, status, risk score, and flagged guidelines. '
     + 'Filter by stage or guideline; search from the header.'],
   ['Case detail', 'The whole-person hub: Overview (identity, worksheet, timeline), '
     + 'Guidelines (SEAD-4 analysis with precedents), Investigation (record checks, '
@@ -50,7 +50,7 @@ const FAQ = [
    + 'deterministically (900-series SSNs are never issued; phones use the 555 '
    + 'range). The only real data is the DOHA decision corpus behind Analytics '
    + 'and the precedent links on the Guidelines tab.'],
-  ['What does the AI risk score mean?',
+  ['What does the risk score mean?',
    'A 0-100 triage score computed from flagged guidelines, alert counts, and '
    + 'severity. It prioritizes work; it never decides. Every screen that shows '
    + 'AI output carries the AI-assisted badge, and decision authority stays '
@@ -122,7 +122,7 @@ export default function Help() {
       <div className="card" id="scoring">
         <h3><FiSliders className="section-icon" aria-hidden="true" />How Scoring Works</h3>
         <p>
-          Every subject carries an <strong>AI risk score (0-100)</strong>,
+          Every subject carries an AI-computed <strong>risk score (0-100)</strong>,
           computed from flagged SEAD-4 guidelines, open alert counts, and alert
           severity. It is a triage aid - it orders the queue and flags cases for
           attention, and a human makes every decision. CV alerts carry a

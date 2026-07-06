@@ -26,7 +26,7 @@ export function caseDigest(caseData) {
   return [
     `Subject: ${s.name} (${s.id}), ${s.position}, tier ${s.tier}, `
       + `stage ${s.stage}, status ${s.status}, eligibility ${s.eligibility}, `
-      + `AI risk score ${s.riskScore}/100.`,
+      + `Risk score ${s.riskScore}/100.`,
     caseData.aiSummary && `Case summary: ${caseData.aiSummary}`,
     caseData.wholePersonSummary
       && `Whole-person bottom line: ${caseData.wholePersonSummary}`,

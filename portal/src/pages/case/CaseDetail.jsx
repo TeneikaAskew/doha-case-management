@@ -65,7 +65,7 @@ export default function CaseDetail() {
         <div className="risk-dial-wrap">
           <div className={`risk-dial risk-${band}`} title="AI triage risk score (0-100)">
             <span className="risk-dial-value">{s.riskScore}</span>
-            <span className="risk-dial-label">AI risk</span>
+            <span className="risk-dial-label">Risk score</span>
           </div>
           <Link className="risk-dial-caption" to="/help#scoring">
             Based on weighted risk factors

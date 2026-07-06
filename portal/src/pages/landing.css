@@ -355,7 +355,8 @@
   justify-content: center; width: 58px; height: 58px; border-radius: 50%;
   border: 4px solid var(--status-warning); color: var(--status-warning-dark);
   background: var(--status-warning-bg); font-weight: 800; font-size: 17px; flex-shrink: 0; }
-.landing .cs-dial span { font-size: 7.5px; letter-spacing: 0.04em; text-transform: uppercase; }
+.landing .cs-dial span { font-size: 6.5px; letter-spacing: 0.04em;
+  text-transform: uppercase; white-space: nowrap; }
 .landing .cs-pills { display: flex; gap: 8px; align-items: center; margin-top: 12px; }
 .landing .cs-pill { font-size: 10px; font-weight: 700; letter-spacing: 0.05em;
   text-transform: uppercase; border-radius: 999px; padding: 3px 10px;

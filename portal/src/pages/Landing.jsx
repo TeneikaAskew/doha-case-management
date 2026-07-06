@@ -294,7 +294,7 @@ function PersonaAppShot({ id }) {
         </div>
         <table className="table">
           <thead>
-            <tr><th>Subject</th><th>Stage</th><th>Status</th><th>AI risk</th></tr>
+            <tr><th>Subject</th><th>Stage</th><th>Status</th><th>Risk score</th></tr>
           </thead>
           <tbody>
             <tr>
@@ -676,7 +676,7 @@ export default function Landing({ onSignIn }) {
                     <div className="cs-name">John Smith</div>
                     <div className="cs-role">Systems Analyst - T5</div>
                   </div>
-                  <div className="cs-dial">62<span>AI risk</span></div>
+                  <div className="cs-dial">62<span>Risk score</span></div>
                 </div>
                 <div className="cs-pills">
                   <span className="cs-pill cs-warn">Needs review</span>

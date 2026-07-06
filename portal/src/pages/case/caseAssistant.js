@@ -99,7 +99,7 @@ export function buildCorpus(caseData) {
   add('Subject profile', 'overview',
     `${s.name}, ${s.position}, tier ${s.tier}, eligibility ${s.eligibility}. `
     + `Born ${s.dob} in ${s.placeOfBirth || ''}. Lives at ${s.address || ''}. `
-    + `AI risk score ${s.riskScore}.`);
+    + `Risk score ${s.riskScore}.`);
   (s.employmentHistory || []).forEach((e) => (
     add('Employment history', 'overview',
       `Employment: ${e.title} at ${e.employer} from ${e.fromDate} to ${e.toDate || 'present'}.`)
