@@ -42,10 +42,12 @@ export default function DataProviders() {
             className="card card-interactive provider-card"
             onClick={() => navigate(`/providers/${p.id}`)}>
             <div className="provider-card-head">
-              <h3><FiDatabase className="section-icon" aria-hidden="true" />{p.name}</h3>
+              <div>
+                <h3><FiDatabase className="section-icon" aria-hidden="true" />{p.name}</h3>
+                <p className="muted provider-category">{p.category}</p>
+              </div>
               <StatusBadge variant={STATUS_VARIANT[p.status]}>{p.status}</StatusBadge>
             </div>
-            <p className="muted">{p.category}</p>
             <div className="provider-pills">
               {p.usedIn.map((u) => (
                 <StatusBadge key={u} variant="neutral">{USED_IN_LABEL[u]}</StatusBadge>))}
