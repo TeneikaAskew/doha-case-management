@@ -132,7 +132,7 @@ export default function SubjectsHome() {
       </div>
 
       <div className="card">
-        <h3><FiPieChart className="section-icon" aria-hidden="true" />AI Risk Distribution</h3>
+        <h3><FiPieChart className="section-icon" aria-hidden="true" />Risk Score Distribution</h3>
         <div className="risk-bar" role="img"
           aria-label={BANDS.map((b) => `${b.label}: ${bandCount(b.id)}`).join(', ')}>
           {BANDS.map((b) => bandCount(b.id) > 0 && (
