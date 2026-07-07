@@ -6,7 +6,8 @@ export default function HealthKpis({ provider: p }) {
   return (
     <div className="kpi-grid kpi-grid-six">
       <KPICard label="Records" value={p.recordCount.toLocaleString('en-US')}
-        accent="var(--dcsa-ocean)" subtitle={p.recordsGrowthQtr} />
+        accent="var(--dcsa-ocean)" subtitle={p.recordsGrowthQtr}
+        trend={p.recordsGrowthQtr.startsWith('+') ? 'up' : 'down'} />
       <KPICard label="Match Error Rate" value={`${p.matchErrorRate}%`}
         accent={p.matchErrorRate >= 2 ? 'var(--status-warning)' : 'var(--dcsa-gold)'}
         subtitle="identifier mismatches" />
@@ -21,7 +22,8 @@ export default function HealthKpis({ provider: p }) {
           <KPICard label="Findings Past Year"
             value={n.findings12mo.toLocaleString('en-US')}
             accent="var(--status-warning)"
-            subtitle={`auto-clear ${n.autoClearPct}%`} />
+            subtitle={`auto-clear ${n.autoClearPct}%`}
+            progressPct={n.autoClearPct} />
           <KPICard label="Median Turnaround"
             value={`${n.medianTurnaroundDays}d`}
             accent="var(--dcsa-gold)" subtitle="request to delivery, days" />

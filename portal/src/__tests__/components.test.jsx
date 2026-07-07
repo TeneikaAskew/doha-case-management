@@ -38,6 +38,14 @@ describe('primitives', () => {
     expect(screen.getByText('3 overdue')).toBeInTheDocument();
   });
 
+  it('KPICard shows a trend arrow and a progress bar when asked', () => {
+    render(<KPICard label="Records" value="1,000" subtitle="+0.6% this quarter"
+      trend="up" progressPct={55} />);
+    expect(screen.getByLabelText('increasing')).toBeInTheDocument();
+    const bar = screen.getByRole('img', { name: '55% of 100' });
+    expect(bar.querySelector('.kpi-progress-fill').style.width).toBe('55%');
+  });
+
   it('KPICard with onClick renders as a button and fires', () => {
     const onClick = vi.fn();
     render(<KPICard label="Open alerts" value={5} onClick={onClick} />);

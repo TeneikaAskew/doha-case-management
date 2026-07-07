@@ -215,6 +215,8 @@ function OverviewTab({ subjects }) {
           value={`${subjects.length
             ? Math.round((count(subjects, (s) => s.fastTrack) / subjects.length) * 100) : 0}%`}
           subtitle={`${count(subjects, (s) => s.fastTrack)} of ${subjects.length}`}
+          progressPct={subjects.length
+            ? (count(subjects, (s) => s.fastTrack) / subjects.length) * 100 : 0}
           accent="var(--dcsa-ocean)" />
       </div>
       <div className="card">

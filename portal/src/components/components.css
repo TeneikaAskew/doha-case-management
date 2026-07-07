@@ -26,7 +26,15 @@
    even when a longer label wraps */
 .kpi-value { font-size: var(--font-size-3xl); font-weight: 700;
   color: var(--text-primary); margin-top: auto; }
-.kpi-subtitle { font-size: var(--font-size-xs); color: var(--text-muted); }
+.kpi-subtitle { font-size: var(--font-size-xs); color: var(--text-muted);
+  display: flex; align-items: center; gap: var(--space-1); }
+.kpi-trend { font-size: 13px; flex-shrink: 0; }
+.kpi-trend-up { color: var(--status-clear); }
+.kpi-trend-down { color: var(--status-alert); }
+.kpi-progress { height: 4px; border-radius: var(--radius-pill);
+  background: var(--border-light); margin-top: var(--space-2); overflow: hidden; }
+.kpi-progress-fill { display: block; height: 100%;
+  border-radius: var(--radius-pill); background: var(--kpi-accent); }
 
 .kpi-clickable { width: 100%; text-align: left; font-family: inherit;
   cursor: pointer; transition: box-shadow 0.15s, border-color 0.15s; }
