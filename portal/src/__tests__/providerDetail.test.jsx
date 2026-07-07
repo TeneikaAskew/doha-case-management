@@ -130,7 +130,7 @@ describe('ProviderDetail - default (health) view', () => {
     // (1000+1200+900) vs (900*3) = +14.8%, with an upward trend arrow
     expect(checks).toHaveTextContent('+14.8% vs prior quarter');
     expect(within(checks).getByLabelText('increasing')).toBeInTheDocument();
-    expect(screen.getByText('Findings Past Year').closest('.kpi-card'))
+    expect(screen.getByText('Alerts Past Year').closest('.kpi-card'))
       .toHaveTextContent('auto-clear 76%');
     expect(screen.getByText('Median Turnaround').closest('.kpi-card'))
       .toHaveTextContent('1d');

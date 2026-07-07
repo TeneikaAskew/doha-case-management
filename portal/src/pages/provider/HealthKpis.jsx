@@ -37,7 +37,7 @@ export default function HealthKpis({ provider: p }) {
             accent="var(--dcsa-ocean)"
             subtitle={checksTrend ? checksTrend.label : 'network-wide deliveries'}
             trend={checksTrend?.dir} />
-          <KPICard label="Findings Past Year"
+          <KPICard label="Alerts Past Year"
             value={n.findings12mo.toLocaleString('en-US')}
             accent="var(--status-warning)"
             subtitle={`auto-clear ${n.autoClearPct}%`}
