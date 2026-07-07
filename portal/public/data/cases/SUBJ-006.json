@@ -59,7 +59,7 @@
       }
     ]
   },
-  "aiSummary": "One developed issue under Guideline E (Personal Conduct); otherwise clear.",
+  "aiSummary": "Employment verification surfaced a job application that omitted a 2022 termination for cause (Guideline E); every other source returned clear. The AG ¶ 16(a) candor concern turns on intent, which is unresolved. Fieldwork continues under an interim determination; recommend LOI for the subject's account before adjudicative action.",
   "timeline": [
     {
       "date": "2026-05-16",
@@ -145,7 +145,7 @@
       "code": "E",
       "name": "Personal Conduct",
       "severity": "B",
-      "aiReasoning": "Single developed issue under Guideline E: Employment application omitted a 2022 termination for cause. AG ¶ 16(a) applies; mitigation AG ¶ 17(c) assessed as partial.",
+      "aiReasoning": "The 2022 termination for cause was omitted from the employment application and surfaced through employer records on 2026-05-15. AG ¶ 16(a) applies to the omission; ¶ 17(c) is at best partial because the underlying conduct is minor but the omission is recent and unexplained. The subject interview should establish intent before adjudicative weight is assigned.",
       "evidence": [
         {
           "provider": "Employment records",

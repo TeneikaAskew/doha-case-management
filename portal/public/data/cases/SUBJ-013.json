@@ -59,7 +59,7 @@
       }
     ]
   },
-  "aiSummary": "One developed issue under Guideline K (Handling Protected Information); otherwise clear.",
+  "aiSummary": "Top Secret holder with one security infraction: a classified document left unsecured in 2025, resurfaced as a suitability alert on 2026-06-18 (Guideline K). A 2025 SAR and a tradeline dispute were previously adjudicated no-action; an eligibility pattern review is open. AG ¶ 34(g) applies with 35(a) partial; recommend LOI for the subject's account before any eligibility action.",
   "timeline": [
     {
       "date": "2025-08-17",
@@ -219,7 +219,7 @@
       "code": "K",
       "name": "Handling Protected Information",
       "severity": "B",
-      "aiReasoning": "Single developed issue under Guideline K: One security infraction: classified document left unsecured (2025). AG ¶ 34(g) applies; mitigation AG ¶ 35(a) assessed as partial.",
+      "aiReasoning": "A classified document left unsecured in 2025 is documented in the security incident report; AG ¶ 34(g) applies. A single infraction with no compromise determined weighs toward ¶ 35(a), assessed partial pending the subject's account and any pattern evidence from the open 2026 eligibility review.",
       "evidence": [
         {
           "provider": "Security incident reports",

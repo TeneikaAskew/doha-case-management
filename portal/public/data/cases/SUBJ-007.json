@@ -59,7 +59,7 @@
       }
     ]
   },
-  "aiSummary": "One developed issue under Guideline M (Use of Information Technology); otherwise clear.",
+  "aiSummary": "UAM audit logs recorded an unauthorized USB device on a standalone lab system (Guideline M); no exfiltration identified. Remaining T5 coverage is clear to date, with fieldwork and the subject interview outstanding. Interim access continues; recommend LOI so the subject can address intent and policy awareness.",
   "timeline": [
     {
       "date": "2026-04-21",
@@ -145,7 +145,7 @@
       "code": "M",
       "name": "Use of Information Technology",
       "severity": "B",
-      "aiReasoning": "Single developed issue under Guideline M: Unauthorized USB device connected to a standalone lab system. AG ¶ 40(c) applies; mitigation AG ¶ 41(a) assessed as partial.",
+      "aiReasoning": "UAM audit logs place an unauthorized USB device on a standalone lab system; AG ¶ 40(c) applies. No exfiltration was identified and the system is isolated, which leaves ¶ 41(a) partially available. Whether this was a misunderstanding of policy or deliberate circumvention should be resolved in the subject interview.",
       "evidence": [
         {
           "provider": "UAM audit logs",

@@ -51,32 +51,128 @@ PRIOR_EMPLOYERS = [
     ("Chesapeake Mission Services", "1420 Spring Hill Rd Suite 210, McLean, VA 22102"),
 ]
 
+# Hand-authored executive summaries, keyed by subject number. Every case gets
+# concrete, case-grounded detail (facts, dates, amounts, posture, next step),
+# clean cases included.
+SUMMARIES = {
+    4: "Clean T5 initial vetting for a software developer, initiated this week "
+       "via NBIS eApp. SF-86 validated with no discrepancies, fingerprints "
+       "enrolled, and automated checks (NCIC, tri-bureau credit, DMV) returned "
+       "clear. Risk score 5 makes this a fast-track candidate for favorable "
+       "eAdjudication once tier coverage completes.",
+    5: "T1 case for a facilities technician, one week into initiation. "
+       "Automated checks returned clear: no criminal record, all accounts "
+       "current, valid driver license. No foreign contacts or travel reported. "
+       "Routine processing toward a T1 suitability determination.",
+    6: "Employment verification surfaced a job application that omitted a 2022 "
+       "termination for cause (Guideline E); every other source returned "
+       "clear. The AG ¶ 16(a) candor concern turns on intent, which is "
+       "unresolved. Fieldwork continues under an interim determination; "
+       "recommend LOI for the subject's account before adjudicative action.",
+    7: "UAM audit logs recorded an unauthorized USB device on a standalone lab "
+       "system (Guideline M); no exfiltration identified. Remaining T5 "
+       "coverage is clear to date, with fieldwork and the subject interview "
+       "outstanding. Interim access continues; recommend LOI so the subject "
+       "can address intent and policy awareness.",
+    8: "Clean T2 case in week three of investigation. Automated record checks "
+       "complete with no adverse information and no SF-86 discrepancies; tier "
+       "fieldwork in progress. On pace for favorable eAdjudication at "
+       "coverage completion.",
+    9: "Single developed issue: self-reported marijuana use on four occasions, "
+       "most recent in 2024 before sponsorship (Guideline H). Disclosure and "
+       "abstinence weigh toward mitigation, but recency keeps AG ¶ 26(a) "
+       "partial. ROI is complete and otherwise clear; recommend LOI for a "
+       "signed statement of intent before decision.",
+    10: "Clean T5 ROI awaiting adjudication: coverage certified, automated "
+        "checks and the SEAD-5 social media review returned no adverse "
+        "information, no SF-86 discrepancies. Interim eligibility in place; "
+        "favorable final determination recommended.",
+    11: "Clean T1 determination ready for decision: criminal, credit, and "
+        "driver checks all clear and coverage certified. Risk score 6; "
+        "favorable adjudication recommended as routine.",
+    12: "CV-enrolled Secret holder, 11 months in monitoring. Four low-severity "
+        "alerts in that span: high credit utilization and reported vacation "
+        "travel both adjudicated no-action, an unattended badge incident "
+        "validated and documented, and a cured delinquency pending routine "
+        "closure. Nothing met an investigative threshold; eligibility "
+        "unaffected.",
+    13: "Top Secret holder with one security infraction: a classified document "
+        "left unsecured in 2025, resurfaced as a suitability alert on "
+        "2026-06-18 (Guideline K). A 2025 SAR and a tradeline dispute were "
+        "previously adjudicated no-action; an eligibility pattern review is "
+        "open. AG ¶ 34(g) applies with 35(a) partial; recommend LOI for the "
+        "subject's account before any eligibility action.",
+    14: "CV-enrolled Secret holder with 17 months of monitoring history. Four "
+        "suitability and credit alerts (HOA judgment, lapsed certification, an "
+        "unlawful detainer filing, and a hard-inquiry cluster) were each "
+        "validated or adjudicated without eligibility action. Profile remains "
+        "clear; continue standard monitoring.",
+    15: "CV credit monitoring reported two delinquent accounts totaling $9,800 "
+        "on 2026-06-18: first delinquent 2026-02, no payment activity since "
+        "2026-03 (Guideline F). Prior currency-transaction reports and a "
+        "dismissed charge were adjudicated no-action. AG ¶ 19(a) applies with "
+        "20(b) partial; recommend LOI for a subject response and documented "
+        "repayment plan before eligibility action.",
+}
+
 GUIDELINE_TEMPLATES = {
     "E": dict(name="Personal Conduct", severity="B", provider="Employment records",
               evidence="Employment application omitted a 2022 termination for cause",
               dq=("AG ¶ 16(a)", "Deliberate omission of relevant facts from any personnel "
                   "security questionnaire"),
-              mit=("AG ¶ 17(c)", "The offense is so minor or infrequent", "PARTIAL")),
+              mit=("AG ¶ 17(c)", "The offense is so minor or infrequent", "PARTIAL"),
+              reasoning="The 2022 termination for cause was omitted from the "
+                        "employment application and surfaced through employer "
+                        "records on 2026-05-15. AG ¶ 16(a) applies to the "
+                        "omission; ¶ 17(c) is at best partial because the "
+                        "underlying conduct is minor but the omission is recent "
+                        "and unexplained. The subject interview should establish "
+                        "intent before adjudicative weight is assigned."),
     "M": dict(name="Use of Information Technology", severity="B", provider="UAM audit logs",
               evidence="Unauthorized USB device connected to a standalone lab system",
               dq=("AG ¶ 40(c)", "Use of any information technology system to gain unauthorized "
                   "access"),
-              mit=("AG ¶ 41(a)", "So much time has elapsed / unusual circumstances", "PARTIAL")),
+              mit=("AG ¶ 41(a)", "So much time has elapsed / unusual circumstances", "PARTIAL"),
+              reasoning="UAM audit logs place an unauthorized USB device on a "
+                        "standalone lab system; AG ¶ 40(c) applies. No "
+                        "exfiltration was identified and the system is isolated, "
+                        "which leaves ¶ 41(a) partially available. Whether this "
+                        "was a misunderstanding of policy or deliberate "
+                        "circumvention should be resolved in the subject "
+                        "interview."),
     "H": dict(name="Drug Involvement and Substance Misuse", severity="B",
               provider="SF-86 self-report",
               evidence="Self-reported marijuana use x4, most recent 2024, prior to sponsorship",
               dq=("AG ¶ 25(a)", "Any substance misuse"),
-              mit=("AG ¶ 26(a)", "Behavior happened so long ago / unlikely to recur", "PARTIAL")),
+              mit=("AG ¶ 26(a)", "Behavior happened so long ago / unlikely to recur", "PARTIAL"),
+              reasoning="Self-reported marijuana use on four occasions, most "
+                        "recent in 2024 and prior to sponsorship, establishes "
+                        "AG ¶ 25(a). Voluntary disclosure and abstinence since "
+                        "weigh toward ¶ 26(a), but recency keeps the mitigator "
+                        "partial. A signed statement of intent with automatic "
+                        "revocation consent would strengthen mitigation."),
     "K": dict(name="Handling Protected Information", severity="B",
               provider="Security incident reports",
               evidence="One security infraction: classified document left unsecured (2025)",
               dq=("AG ¶ 34(g)", "Any failure to comply with rules for the protection of "
                   "classified information"),
-              mit=("AG ¶ 35(a)", "So much time has elapsed / infrequent", "PARTIAL")),
+              mit=("AG ¶ 35(a)", "So much time has elapsed / infrequent", "PARTIAL"),
+              reasoning="A classified document left unsecured in 2025 is "
+                        "documented in the security incident report; AG ¶ 34(g) "
+                        "applies. A single infraction with no compromise "
+                        "determined weighs toward ¶ 35(a), assessed partial "
+                        "pending the subject's account and any pattern evidence "
+                        "from the open 2026 eligibility review."),
     "F": dict(name="Financial Considerations", severity="B", provider="TransUnion",
               evidence="Two delinquent accounts totaling $9,800",
               dq=("AG ¶ 19(a)", "Inability to satisfy debts"),
-              mit=("AG ¶ 20(b)", "Conditions largely beyond the person's control", "PARTIAL")),
+              mit=("AG ¶ 20(b)", "Conditions largely beyond the person's control", "PARTIAL"),
+              reasoning="Two delinquent accounts totaling $9,800, first "
+                        "delinquent 2026-02 with no payment activity since "
+                        "2026-03, establish AG ¶ 19(a). Mitigation ¶ 20(b) is "
+                        "partial: no triggering hardship is documented and there "
+                        "is no evidence yet of responsible action. A documented "
+                        "repayment plan would shift the assessment."),
 }
 
 
@@ -84,9 +180,7 @@ def _guideline_card(code: str, precedent_fn) -> dict:
     t = GUIDELINE_TEMPLATES[code]
     return dict(
         code=code, name=t["name"], severity=t["severity"],
-        aiReasoning=f"Single developed issue under Guideline {code}: {t['evidence']}. "
-                    f"{t['dq'][0]} applies; mitigation {t['mit'][0]} assessed as "
-                    f"{t['mit'][2].lower()}.",
+        aiReasoning=t["reasoning"],
         evidence=[dict(provider=t["provider"], type="Record check",
                        description=t["evidence"], date="2026-05-15")],
         disqualifiers=[dict(code=t["dq"][0], description=t["dq"][1], evidence=t["evidence"])],
@@ -434,10 +528,7 @@ def build_roster_cases(precedent_fn) -> list[dict]:
 
         cases.append(dict(
             subject=subj,
-            aiSummary=("No adverse information developed; routine processing."
-                       if clean else
-                       f"One developed issue under Guideline {codes[0]} "
-                       f"({GUIDELINE_TEMPLATES[codes[0]]['name']}); otherwise clear."),
+            aiSummary=SUMMARIES[n],
             timeline=_timeline(stage, elig, days, alerts),
             wholePersonSummary=_whole_person_summary(clean,
                                                      codes[0] if codes else None),

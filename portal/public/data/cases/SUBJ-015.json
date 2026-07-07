@@ -59,7 +59,7 @@
       }
     ]
   },
-  "aiSummary": "One developed issue under Guideline F (Financial Considerations); otherwise clear.",
+  "aiSummary": "CV credit monitoring reported two delinquent accounts totaling $9,800 on 2026-06-18: first delinquent 2026-02, no payment activity since 2026-03 (Guideline F). Prior currency-transaction reports and a dismissed charge were adjudicated no-action. AG ¶ 19(a) applies with 20(b) partial; recommend LOI for a subject response and documented repayment plan before eligibility action.",
   "timeline": [
     {
       "date": "2025-09-12",
@@ -219,7 +219,7 @@
       "code": "F",
       "name": "Financial Considerations",
       "severity": "B",
-      "aiReasoning": "Single developed issue under Guideline F: Two delinquent accounts totaling $9,800. AG ¶ 19(a) applies; mitigation AG ¶ 20(b) assessed as partial.",
+      "aiReasoning": "Two delinquent accounts totaling $9,800, first delinquent 2026-02 with no payment activity since 2026-03, establish AG ¶ 19(a). Mitigation ¶ 20(b) is partial: no triggering hardship is documented and there is no evidence yet of responsible action. A documented repayment plan would shift the assessment.",
       "evidence": [
         {
           "provider": "TransUnion",
