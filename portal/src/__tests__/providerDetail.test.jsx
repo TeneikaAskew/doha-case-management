@@ -12,7 +12,7 @@ const PROVIDERS = [
     recordsGrowthQtr: '+1.1% this quarter', matchErrorRate: 0.8,
     network: {
       coveredSubjects: 1150000, checks12mo: 3100, findings12mo: 170,
-      autoClearPct: 76, medianTurnaroundDays: 1,
+      autoClearPct: 76, medianTurnaroundDays: 1.2,
       findingsByGuideline: { F: 170 },
       monthly: [
         { month: '2026-02', checks: 900, findings: 45, high: 9, moderate: 18, low: 18 },
@@ -29,7 +29,7 @@ const PROVIDERS = [
     recordsGrowthQtr: '+0.5% this quarter', matchErrorRate: 1.1,
     network: {
       coveredSubjects: 1800000, checks12mo: 2000, findings12mo: 60,
-      autoClearPct: 88, medianTurnaroundDays: 2,
+      autoClearPct: 88, medianTurnaroundDays: 2.84,
       findingsByGuideline: { G: 38, J: 22 },
       monthly: [
         { month: '2026-06', checks: 1000, findings: 30, high: 2, moderate: 8, low: 20 },
@@ -133,7 +133,7 @@ describe('ProviderDetail - default (health) view', () => {
     expect(screen.getByText('Alerts Past Year').closest('.kpi-card'))
       .toHaveTextContent('auto-clear 76%');
     expect(screen.getByText('Median Turnaround').closest('.kpi-card'))
-      .toHaveTextContent('1d');
+      .toHaveTextContent('1.2d');
   });
 
   it('keeps the alerts table with its category filter', async () => {

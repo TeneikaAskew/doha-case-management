@@ -330,7 +330,7 @@ class ProviderNetworkStats(BaseModel):
     checks12mo: int = Field(ge=0)
     findings12mo: int = Field(ge=0)
     autoClearPct: float = Field(ge=0.0, le=100.0)
-    medianTurnaroundDays: int = Field(ge=0)
+    medianTurnaroundDays: float = Field(ge=0.0)
     findingsByGuideline: dict[GuidelineCode, int]
     monthly: list[ProviderMonthlyStat]
 

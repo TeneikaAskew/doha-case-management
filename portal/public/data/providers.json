@@ -26,7 +26,7 @@
         "checks12mo": 492000,
         "findings12mo": 10331,
         "autoClearPct": 55.0,
-        "medianTurnaroundDays": 1,
+        "medianTurnaroundDays": 0.8,
         "findingsByGuideline": {
           "J": 5372,
           "D": 1653,
@@ -156,7 +156,7 @@
         "checks12mo": 1158000,
         "findings12mo": 55584,
         "autoClearPct": 78.5,
-        "medianTurnaroundDays": 1,
+        "medianTurnaroundDays": 1.3,
         "findingsByGuideline": {
           "F": 55584
         },
@@ -282,7 +282,7 @@
         "checks12mo": 458400,
         "findings12mo": 18795,
         "autoClearPct": 81.0,
-        "medianTurnaroundDays": 1,
+        "medianTurnaroundDays": 1.4,
         "findingsByGuideline": {
           "F": 18795
         },
@@ -409,7 +409,7 @@
         "checks12mo": 1113600,
         "findings12mo": 57907,
         "autoClearPct": 76.0,
-        "medianTurnaroundDays": 1,
+        "medianTurnaroundDays": 1.2,
         "findingsByGuideline": {
           "F": 57907
         },
@@ -538,7 +538,7 @@
         "checks12mo": 655200,
         "findings12mo": 21624,
         "autoClearPct": 70.5,
-        "medianTurnaroundDays": 2,
+        "medianTurnaroundDays": 2.4,
         "findingsByGuideline": {
           "F": 9515,
           "J": 8217,
@@ -667,7 +667,7 @@
         "checks12mo": 220800,
         "findings12mo": 3532,
         "autoClearPct": 48.0,
-        "medianTurnaroundDays": 3,
+        "medianTurnaroundDays": 3.6,
         "findingsByGuideline": {
           "F": 2543,
           "B": 989
@@ -797,7 +797,7 @@
         "checks12mo": 795600,
         "findings12mo": 19094,
         "autoClearPct": 83.5,
-        "medianTurnaroundDays": 1,
+        "medianTurnaroundDays": 1.1,
         "findingsByGuideline": {
           "B": 7828,
           "C": 6874,
@@ -929,7 +929,7 @@
         "checks12mo": 140913,
         "findings12mo": 9583,
         "autoClearPct": 41.0,
-        "medianTurnaroundDays": 9,
+        "medianTurnaroundDays": 8.7,
         "findingsByGuideline": {
           "J": 4025,
           "D": 1246,
@@ -1060,7 +1060,7 @@
         "checks12mo": 406800,
         "findings12mo": 12609,
         "autoClearPct": 88.0,
-        "medianTurnaroundDays": 2,
+        "medianTurnaroundDays": 2.84,
         "findingsByGuideline": {
           "G": 7944,
           "J": 4665
@@ -1187,7 +1187,7 @@
         "checks12mo": 112800,
         "findings12mo": 6092,
         "autoClearPct": 64.0,
-        "medianTurnaroundDays": 6,
+        "medianTurnaroundDays": 6.3,
         "findingsByGuideline": {
           "F": 6092
         },
@@ -1316,7 +1316,7 @@
         "checks12mo": 57600,
         "findings12mo": 4550,
         "autoClearPct": 37.5,
-        "medianTurnaroundDays": 5,
+        "medianTurnaroundDays": 4.75,
         "findingsByGuideline": {
           "A": 410,
           "D": 1228,
@@ -1446,7 +1446,7 @@
         "checks12mo": 258000,
         "findings12mo": 3095,
         "autoClearPct": 69.0,
-        "medianTurnaroundDays": 1,
+        "medianTurnaroundDays": 0.9,
         "findingsByGuideline": {
           "E": 3095
         },
