@@ -157,8 +157,12 @@ describe('ProviderDetail - triage mode', () => {
     expect(screen.getByText('Oldest Open').closest('.kpi-card')).toHaveTextContent('12d');
     expect(screen.getByText('Median Days To Adjudicate').closest('.kpi-card'))
       .toHaveTextContent('39d');
-    expect(screen.getByText('Alerts Received').closest('.kpi-card')).toHaveTextContent('2');
-    expect(screen.getByText('Adjudicated / Closed').closest('.kpi-card')).toHaveTextContent('1');
+    const received = screen.getByText('Alerts Received').closest('.kpi-card');
+    expect(received).toHaveTextContent('2');
+    expect(received).toHaveTextContent('170 network-wide past year');
+    const closed = screen.getByText('Adjudicated / Closed').closest('.kpi-card');
+    expect(closed).toHaveTextContent('1');
+    expect(closed).toHaveTextContent('auto-clear 76% upstream');
     expect(screen.queryByText('Match Error Rate')).not.toBeInTheDocument();
   });
 

@@ -149,7 +149,8 @@ export default function ProviderDetail() {
       </div>
 
       {triageOn ? (
-        <TriageQueue alerts={alerts} isAnalyst={persona.id === 'analyst'}
+        <TriageQueue alerts={alerts} network={p.network}
+          isAnalyst={persona.id === 'analyst'}
           dispositionAlert={dispositionAlert} />
       ) : (
         <>

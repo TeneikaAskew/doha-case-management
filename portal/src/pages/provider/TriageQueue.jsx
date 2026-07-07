@@ -30,7 +30,7 @@ export function triageStats(alerts) {
   return { open, oldestOpen, medianTta };
 }
 
-export default function TriageQueue({ alerts, isAnalyst, dispositionAlert }) {
+export default function TriageQueue({ alerts, network, isAnalyst, dispositionAlert }) {
   const navigate = useNavigate();
   const { open, oldestOpen, medianTta } = triageStats(alerts);
   const done = alerts.filter((a) => !isOpen(a.state));
@@ -57,9 +57,13 @@ export default function TriageQueue({ alerts, isAnalyst, dispositionAlert }) {
           value={medianTta === null ? '-' : `${medianTta}d`}
           accent="var(--dcsa-ocean)" />
         <KPICard label="Alerts Received" value={alerts.length}
-          accent="var(--dcsa-navy)" />
+          accent="var(--dcsa-navy)"
+          subtitle={network
+            && `${network.findings12mo.toLocaleString('en-US')} network-wide past year`} />
         <KPICard label="Adjudicated / Closed" value={done.length}
-          accent="var(--status-clear)" />
+          accent="var(--status-clear)"
+          subtitle={network && `auto-clear ${network.autoClearPct}% upstream`}
+          progressPct={network?.autoClearPct} />
       </div>
 
       <div className="card">
