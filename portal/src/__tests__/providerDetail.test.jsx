@@ -92,14 +92,15 @@ describe('ProviderDetail - default (health) view', () => {
   it('leads with source-health KPIs, not alert KPIs', async () => {
     renderPage();
     expect(await screen.findByRole('heading', { name: 'TransUnion' })).toBeInTheDocument();
-    // 'Status' also appears as a table column header; take the KPI instance
-    expect(screen.getAllByText('Status')[0].closest('.kpi-card')).toHaveTextContent('HEALTHY');
-    expect(screen.getByText('uptime 99.97%')).toBeInTheDocument();
-    expect(screen.getByText('Last Sync').closest('.kpi-card')).toHaveTextContent('2026-07-02');
-    expect(screen.getByText('Nightly 06:00Z')).toBeInTheDocument();
+    // status is a header badge, last sync a header line - not KPI cards
+    expect(screen.getByText('HEALTHY')).toBeInTheDocument();
+    expect(screen.queryByText('Last Sync')).not.toBeInTheDocument();
+    const sync = screen.getByLabelText('Last sync 2026-07-02');
+    expect(sync).toHaveAttribute('title', 'Nightly 06:00Z');
     expect(screen.getByText('23,910,287')).toBeInTheDocument();
     expect(screen.getByText('+1.1% this quarter')).toBeInTheDocument();
     expect(screen.getByText('Match Error Rate').closest('.kpi-card')).toHaveTextContent('0.8%');
+    expect(screen.queryByText('uptime 99.97%')).not.toBeInTheDocument();
     expect(screen.queryByText('Alerts Received')).not.toBeInTheDocument();
     expect(screen.queryByText('Open Alerts')).not.toBeInTheDocument();
   });
@@ -205,8 +206,9 @@ describe('ProviderDetail - investigation-only providers', () => {
     expect(screen.getByText(/feeds investigations, not continuous vetting/i))
       .toBeInTheDocument();
     expect(screen.getByText('Driver record check')).toBeInTheDocument();
-    // health KPIs still lead
-    expect(screen.getByText('uptime 99.88%')).toBeInTheDocument();
+    // health KPIs still lead; sync sits in the header
+    expect(screen.getByText('Match Error Rate')).toBeInTheDocument();
+    expect(screen.getByLabelText('Last sync 2026-07-02')).toBeInTheDocument();
     // network charts render even though no demo alert points at this source
     expect(screen.getByText('Finding Volume by Month')).toBeInTheDocument();
     const yieldCard = screen.getByText('Guideline Yield').closest('.card');

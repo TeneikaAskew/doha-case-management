@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { FiArrowLeft, FiActivity, FiCheckSquare } from 'react-icons/fi';
+import { FiArrowLeft, FiActivity, FiCheckSquare, FiRefreshCw } from 'react-icons/fi';
 import { getAlerts, getProviderActivity, getProviders } from '../data/api.js';
 import { useData } from '../data/useData.js';
 import { useDemo } from '../state/DemoContext.jsx';
@@ -128,17 +128,23 @@ export default function ProviderDetail() {
           </p>
         </div>
         <div className="provider-header-right">
-          <StatusBadge variant={STATUS_VARIANT[p.status]}>{p.status}</StatusBadge>
-          {isCv && (
-            <button type="button" role="switch" aria-checked={triage}
-              className={`triage-switch ${triage ? 'on' : ''}`}
-              onClick={toggleTriage}>
-              <span className="triage-switch-label">Triage</span>
-              <span className="triage-switch-track" aria-hidden="true">
-                <span className="triage-switch-thumb" />
-              </span>
-            </button>
-          )}
+          <div className="provider-header-top">
+            <StatusBadge variant={STATUS_VARIANT[p.status]}>{p.status}</StatusBadge>
+            {isCv && (
+              <button type="button" role="switch" aria-checked={triage}
+                className={`triage-switch ${triage ? 'on' : ''}`}
+                onClick={toggleTriage}>
+                <span className="triage-switch-label">Triage</span>
+                <span className="triage-switch-track" aria-hidden="true">
+                  <span className="triage-switch-thumb" />
+                </span>
+              </button>
+            )}
+          </div>
+          <span className="muted provider-sync" title={p.syncCadence}
+            aria-label={`Last sync ${p.lastSync.slice(0, 10)}`}>
+            <FiRefreshCw aria-hidden="true" />{p.lastSync.slice(0, 10)}
+          </span>
         </div>
       </div>
 
