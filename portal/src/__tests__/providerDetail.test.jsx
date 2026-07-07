@@ -9,12 +9,29 @@ const PROVIDERS = [
     usedIn: ['INVESTIGATION', 'CV'], guidelines: ['F'], status: 'HEALTHY',
     recordCount: 23910287, lastSync: '2026-07-02T06:00:00Z',
     uptimePct: 99.97, syncCadence: 'Nightly 06:00Z',
-    recordsGrowthQtr: '+1.1% this quarter', matchErrorRate: 0.8 },
+    recordsGrowthQtr: '+1.1% this quarter', matchErrorRate: 0.8,
+    network: {
+      coveredSubjects: 1150000, checks12mo: 3100, findings12mo: 170,
+      autoClearPct: 76, medianTurnaroundDays: 1,
+      findingsByGuideline: { F: 170 },
+      monthly: [
+        { month: '2026-05', checks: 1000, findings: 50, high: 10, moderate: 20, low: 20 },
+        { month: '2026-06', checks: 1200, findings: 80, high: 20, moderate: 30, low: 30 },
+        { month: '2026-07', checks: 900, findings: 40, high: 5, moderate: 15, low: 20 },
+      ] } },
   { id: 'dmv', name: 'DMV records', category: 'Driver records',
     usedIn: ['INVESTIGATION'], guidelines: ['G', 'J'], status: 'HEALTHY',
     recordCount: 61208443, lastSync: '2026-07-02T06:00:00Z',
     uptimePct: 99.88, syncCadence: 'Nightly 05:00Z',
-    recordsGrowthQtr: '+0.5% this quarter', matchErrorRate: 1.1 },
+    recordsGrowthQtr: '+0.5% this quarter', matchErrorRate: 1.1,
+    network: {
+      coveredSubjects: 1800000, checks12mo: 2000, findings12mo: 60,
+      autoClearPct: 88, medianTurnaroundDays: 2,
+      findingsByGuideline: { G: 38, J: 22 },
+      monthly: [
+        { month: '2026-06', checks: 1000, findings: 30, high: 2, moderate: 8, low: 20 },
+        { month: '2026-07', checks: 1000, findings: 30, high: 2, moderate: 8, low: 20 },
+      ] } },
 ];
 const ALERTS = [
   { id: 'ALERT-1', subjectId: 'SUBJ-001', subjectName: 'Daniel R. Okafor',
@@ -87,16 +104,29 @@ describe('ProviderDetail - default (health) view', () => {
     expect(screen.queryByText('Open Alerts')).not.toBeInTheDocument();
   });
 
-  it('renders the volume and guideline-yield charts from the alerts', async () => {
+  it('renders network-wide volume and guideline-yield charts', async () => {
     renderPage();
     await screen.findByRole('heading', { name: 'TransUnion' });
     expect(screen.getByText('Alert Volume by Month')).toBeInTheDocument();
     const volume = screen.getByRole('img', { name: /alerts per month/i });
-    expect(volume.getAttribute('aria-label')).toContain('2026-06: 1');
-    expect(volume.getAttribute('aria-label')).toContain('2025-10: 1');
+    expect(volume.getAttribute('aria-label')).toContain('2026-06: 80');
+    expect(volume.getAttribute('aria-label')).toContain('2026-07: 40');
     const yieldCard = screen.getByText('Guideline Yield').closest('.card');
-    expect(within(yieldCard).getByTitle(/Financial Considerations: 2 alerts/))
+    expect(within(yieldCard).getByTitle(/Financial Considerations: 170 findings/))
       .toBeInTheDocument();
+  });
+
+  it('shows the network KPI row from provider stats, without any case data', async () => {
+    renderPage();
+    await screen.findByRole('heading', { name: 'TransUnion' });
+    expect(screen.getByText('Covered Subjects').closest('.kpi-card'))
+      .toHaveTextContent('1,150,000');
+    expect(screen.getByText('Checks Past Year').closest('.kpi-card'))
+      .toHaveTextContent('3,100');
+    expect(screen.getByText('Findings Past Year').closest('.kpi-card'))
+      .toHaveTextContent('auto-clear 76%');
+    expect(screen.getByText('Median Turnaround').closest('.kpi-card'))
+      .toHaveTextContent('1d');
   });
 
   it('keeps the alerts table with its category filter', async () => {
@@ -118,7 +148,7 @@ describe('ProviderDetail - triage mode', () => {
     expect(screen.getByText('Open Alerts').closest('.kpi-card')).toHaveTextContent('1');
     expect(screen.getByText('High Severity Open').closest('.kpi-card')).toHaveTextContent('1');
     expect(screen.getByText('Oldest Open').closest('.kpi-card')).toHaveTextContent('12d');
-    expect(screen.getByText('Median Time To Adjudicate').closest('.kpi-card'))
+    expect(screen.getByText('Median Days To Adjudicate').closest('.kpi-card'))
       .toHaveTextContent('39d');
     expect(screen.getByText('Alerts Received').closest('.kpi-card')).toHaveTextContent('2');
     expect(screen.getByText('Adjudicated / Closed').closest('.kpi-card')).toHaveTextContent('1');
@@ -177,6 +207,11 @@ describe('ProviderDetail - investigation-only providers', () => {
     expect(screen.getByText('Driver record check')).toBeInTheDocument();
     // health KPIs still lead
     expect(screen.getByText('uptime 99.88%')).toBeInTheDocument();
+    // network charts render even though no demo alert points at this source
+    expect(screen.getByText('Finding Volume by Month')).toBeInTheDocument();
+    const yieldCard = screen.getByText('Guideline Yield').closest('.card');
+    expect(within(yieldCard).getByTitle(/Alcohol Consumption: 38 findings/))
+      .toBeInTheDocument();
   });
 
   it('unknown provider id shows an error', async () => {

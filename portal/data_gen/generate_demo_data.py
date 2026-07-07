@@ -62,6 +62,76 @@ PROVIDER_HEALTH = {
 TIMELINESS = [("Initiation", 18, 25), ("Investigation", 73, 90),
               ("Adjudication", 32, 30), ("CV alert triage", 4, 7)]
 
+# Network-wide activity per source: the whole vetted population, not the demo
+# cases. Hand-authored and deterministic; MONTH_SHAPE adds seasonal texture
+# around each monthly base volume.
+MONTH_SHAPE = [0.94, 0.99, 1.03, 0.97, 1.01, 1.06, 0.95, 0.92, 1.04, 1.08,
+               1.02, 0.99]
+
+# providerId -> (coveredSubjects, monthlyChecksBase, findingRatePct,
+#                highPct, moderatePct, autoClearPct, medianTurnaroundDays,
+#                {guideline: weightPct summing to 100})
+PROVIDER_NETWORK = {
+    "fbi-cjis": (3600000, 41000, 2.1, 22, 41, 55.0, 1,
+                 {"J": 52, "D": 16, "G": 19, "H": 13}),
+    "equifax": (1150000, 96500, 4.8, 12, 33, 78.5, 1, {"F": 100}),
+    "experian": (480000, 38200, 4.1, 11, 30, 81.0, 1, {"F": 100}),
+    "transunion": (1150000, 92800, 5.2, 13, 34, 76.0, 1, {"F": 100}),
+    "lexisnexis": (2400000, 54600, 3.3, 9, 28, 70.5, 2,
+                   {"F": 44, "J": 38, "E": 18}),
+    "fincen": (3600000, 18400, 1.6, 34, 41, 48.0, 3, {"F": 72, "B": 28}),
+    "cbp-i94": (3600000, 66300, 2.4, 8, 27, 83.5, 1,
+                {"B": 41, "C": 36, "E": 23}),
+    "courts": (940000, 12700, 6.8, 19, 39, 41.0, 9,
+               {"J": 42, "D": 13, "G": 17, "H": 9, "F": 19}),
+    "dmv": (1800000, 33900, 3.1, 7, 24, 88.0, 2, {"G": 63, "J": 37}),
+    "irs": (620000, 9400, 5.4, 15, 36, 64.0, 6, {"F": 100}),
+    "sead5": (210000, 4800, 7.9, 17, 34, 37.5, 5,
+              {"A": 9, "D": 27, "E": 41, "J": 23}),
+    "diss": (2900000, 21500, 1.2, 21, 33, 69.0, 1, {"E": 100}),
+}
+
+
+def trailing_months(today: str, n: int = 12) -> list[str]:
+    y, m = int(today[:4]), int(today[5:7])
+    months = []
+    for _ in range(n):
+        months.append(f"{y:04d}-{m:02d}")
+        m -= 1
+        if m == 0:
+            m, y = 12, y - 1
+    return list(reversed(months))
+
+
+def build_network_stats(pid: str, status: str) -> "schemas.ProviderNetworkStats":
+    covered, base, rate, hi, mod, auto_clear, turnaround, weights = \
+        PROVIDER_NETWORK[pid]
+    monthly = []
+    for i, month in enumerate(trailing_months(TODAY)):
+        checks = round(base * MONTH_SHAPE[i])
+        # a DEGRADED source visibly under-delivers in its most recent months
+        if status == "DEGRADED" and i >= 10:
+            checks = round(checks * 0.55)
+        findings = round(checks * rate / 100)
+        high = round(findings * hi / 100)
+        moderate = round(findings * mod / 100)
+        monthly.append(schemas.ProviderMonthlyStat(
+            month=month, checks=checks, findings=findings, high=high,
+            moderate=moderate, low=findings - high - moderate))
+    findings_total = sum(m.findings for m in monthly)
+    by_guideline = {code: round(findings_total * w / 100)
+                    for code, w in weights.items()}
+    top = max(by_guideline, key=by_guideline.get)
+    by_guideline[top] += findings_total - sum(by_guideline.values())
+    return schemas.ProviderNetworkStats(
+        coveredSubjects=covered,
+        checks12mo=sum(m.checks for m in monthly),
+        findings12mo=findings_total,
+        autoClearPct=auto_clear,
+        medianTurnaroundDays=turnaround,
+        findingsByGuideline=by_guideline,
+        monthly=monthly)
+
 
 def risk_band(score: int) -> str:
     return "high" if score >= 75 else "moderate" if score >= 40 else "low"
@@ -195,7 +265,8 @@ def main(out_dir: Path = DEFAULT_OUT) -> dict:
         status=status, recordCount=count, lastSync=f"{TODAY}T06:00:00Z",
         uptimePct=PROVIDER_HEALTH[pid][0], syncCadence=PROVIDER_HEALTH[pid][1],
         recordsGrowthQtr=PROVIDER_HEALTH[pid][2],
-        matchErrorRate=PROVIDER_HEALTH[pid][3])
+        matchErrorRate=PROVIDER_HEALTH[pid][3],
+        network=build_network_stats(pid, status))
         for pid, name, cat, used, gls, status, count in PROVIDERS]
     dump(schemas.ProvidersFile(providers=providers).model_dump(), out_dir / "providers.json")
 

@@ -357,3 +357,24 @@ def test_provider_health_fields(out):
     degraded = next(p for p in providers if p.status == "DEGRADED")
     healthy_min = min(p.uptimePct for p in providers if p.status == "HEALTHY")
     assert degraded.uptimePct < healthy_min, "degraded provider should have worst uptime"
+
+def test_provider_network_stats(out):
+    out_dir, _ = out
+    providers = schemas.ProvidersFile.model_validate(
+        json.loads((out_dir / "providers.json").read_text(encoding="utf-8"))).providers
+    for p in providers:
+        n = p.network
+        assert len(n.monthly) == 12, f"{p.id}: expected 12 months"
+        assert n.monthly[-1].month == "2026-07", f"{p.id}: last month"
+        assert n.checks12mo == sum(m.checks for m in n.monthly), p.id
+        assert n.findings12mo == sum(m.findings for m in n.monthly), p.id
+        for m in n.monthly:
+            assert m.high + m.moderate + m.low == m.findings, f"{p.id} {m.month}"
+        assert set(n.findingsByGuideline) <= set(p.guidelines), p.id
+        assert sum(n.findingsByGuideline.values()) == n.findings12mo, p.id
+        assert all(v > 0 for v in n.findingsByGuideline.values()), p.id
+        assert n.findings12mo > 0 and n.checks12mo > n.findings12mo, p.id
+    # the degraded source under-delivers in its most recent months
+    degraded = next(p for p in providers if p.status == "DEGRADED")
+    last, prior = degraded.network.monthly[-1], degraded.network.monthly[-4]
+    assert last.checks < prior.checks * 0.7, "degraded dip missing"

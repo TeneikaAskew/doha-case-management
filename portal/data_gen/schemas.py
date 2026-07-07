@@ -314,6 +314,27 @@ class CaseDetail(BaseModel):
     documents: list[Document]
 
 
+class ProviderMonthlyStat(BaseModel):
+    month: str                       # YYYY-MM
+    checks: int = Field(ge=0)        # checks delivered network-wide
+    findings: int = Field(ge=0)      # derogatory findings / CV alerts raised
+    high: int = Field(ge=0)          # severity split; sums to findings
+    moderate: int = Field(ge=0)
+    low: int = Field(ge=0)
+
+
+class ProviderNetworkStats(BaseModel):
+    """Population-wide activity for a source - the whole vetted population,
+    independent of the handful of demo cases."""
+    coveredSubjects: int = Field(ge=0)
+    checks12mo: int = Field(ge=0)
+    findings12mo: int = Field(ge=0)
+    autoClearPct: float = Field(ge=0.0, le=100.0)
+    medianTurnaroundDays: int = Field(ge=0)
+    findingsByGuideline: dict[GuidelineCode, int]
+    monthly: list[ProviderMonthlyStat]
+
+
 class ProviderInfo(BaseModel):
     id: str
     name: str
@@ -327,6 +348,7 @@ class ProviderInfo(BaseModel):
     syncCadence: str          # e.g. "Nightly 06:00Z"
     recordsGrowthQtr: str     # e.g. "+1.1% this quarter"
     matchErrorRate: float = Field(ge=0.0, le=100.0)  # identifier-mismatch percent
+    network: ProviderNetworkStats
 
 
 class YearStat(BaseModel):

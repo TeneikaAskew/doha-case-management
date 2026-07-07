@@ -20,7 +20,118 @@
       "uptimePct": 99.98,
       "syncCadence": "Continuous (Rap Back push)",
       "recordsGrowthQtr": "+0.6% this quarter",
-      "matchErrorRate": 0.3
+      "matchErrorRate": 0.3,
+      "network": {
+        "coveredSubjects": 3600000,
+        "checks12mo": 492000,
+        "findings12mo": 10331,
+        "autoClearPct": 55.0,
+        "medianTurnaroundDays": 1,
+        "findingsByGuideline": {
+          "J": 5372,
+          "D": 1653,
+          "G": 1963,
+          "H": 1343
+        },
+        "monthly": [
+          {
+            "month": "2025-08",
+            "checks": 38540,
+            "findings": 809,
+            "high": 178,
+            "moderate": 332,
+            "low": 299
+          },
+          {
+            "month": "2025-09",
+            "checks": 40590,
+            "findings": 852,
+            "high": 187,
+            "moderate": 349,
+            "low": 316
+          },
+          {
+            "month": "2025-10",
+            "checks": 42230,
+            "findings": 887,
+            "high": 195,
+            "moderate": 364,
+            "low": 328
+          },
+          {
+            "month": "2025-11",
+            "checks": 39770,
+            "findings": 835,
+            "high": 184,
+            "moderate": 342,
+            "low": 309
+          },
+          {
+            "month": "2025-12",
+            "checks": 41410,
+            "findings": 870,
+            "high": 191,
+            "moderate": 357,
+            "low": 322
+          },
+          {
+            "month": "2026-01",
+            "checks": 43460,
+            "findings": 913,
+            "high": 201,
+            "moderate": 374,
+            "low": 338
+          },
+          {
+            "month": "2026-02",
+            "checks": 38950,
+            "findings": 818,
+            "high": 180,
+            "moderate": 335,
+            "low": 303
+          },
+          {
+            "month": "2026-03",
+            "checks": 37720,
+            "findings": 792,
+            "high": 174,
+            "moderate": 325,
+            "low": 293
+          },
+          {
+            "month": "2026-04",
+            "checks": 42640,
+            "findings": 895,
+            "high": 197,
+            "moderate": 367,
+            "low": 331
+          },
+          {
+            "month": "2026-05",
+            "checks": 44280,
+            "findings": 930,
+            "high": 205,
+            "moderate": 381,
+            "low": 344
+          },
+          {
+            "month": "2026-06",
+            "checks": 41820,
+            "findings": 878,
+            "high": 193,
+            "moderate": 360,
+            "low": 325
+          },
+          {
+            "month": "2026-07",
+            "checks": 40590,
+            "findings": 852,
+            "high": 187,
+            "moderate": 349,
+            "low": 316
+          }
+        ]
+      }
     },
     {
       "id": "equifax",
@@ -39,7 +150,115 @@
       "uptimePct": 99.95,
       "syncCadence": "Nightly 06:00Z",
       "recordsGrowthQtr": "+0.9% this quarter",
-      "matchErrorRate": 0.7
+      "matchErrorRate": 0.7,
+      "network": {
+        "coveredSubjects": 1150000,
+        "checks12mo": 1158000,
+        "findings12mo": 55584,
+        "autoClearPct": 78.5,
+        "medianTurnaroundDays": 1,
+        "findingsByGuideline": {
+          "F": 55584
+        },
+        "monthly": [
+          {
+            "month": "2025-08",
+            "checks": 90710,
+            "findings": 4354,
+            "high": 522,
+            "moderate": 1437,
+            "low": 2395
+          },
+          {
+            "month": "2025-09",
+            "checks": 95535,
+            "findings": 4586,
+            "high": 550,
+            "moderate": 1513,
+            "low": 2523
+          },
+          {
+            "month": "2025-10",
+            "checks": 99395,
+            "findings": 4771,
+            "high": 573,
+            "moderate": 1574,
+            "low": 2624
+          },
+          {
+            "month": "2025-11",
+            "checks": 93605,
+            "findings": 4493,
+            "high": 539,
+            "moderate": 1483,
+            "low": 2471
+          },
+          {
+            "month": "2025-12",
+            "checks": 97465,
+            "findings": 4678,
+            "high": 561,
+            "moderate": 1544,
+            "low": 2573
+          },
+          {
+            "month": "2026-01",
+            "checks": 102290,
+            "findings": 4910,
+            "high": 589,
+            "moderate": 1620,
+            "low": 2701
+          },
+          {
+            "month": "2026-02",
+            "checks": 91675,
+            "findings": 4400,
+            "high": 528,
+            "moderate": 1452,
+            "low": 2420
+          },
+          {
+            "month": "2026-03",
+            "checks": 88780,
+            "findings": 4261,
+            "high": 511,
+            "moderate": 1406,
+            "low": 2344
+          },
+          {
+            "month": "2026-04",
+            "checks": 100360,
+            "findings": 4817,
+            "high": 578,
+            "moderate": 1590,
+            "low": 2649
+          },
+          {
+            "month": "2026-05",
+            "checks": 104220,
+            "findings": 5003,
+            "high": 600,
+            "moderate": 1651,
+            "low": 2752
+          },
+          {
+            "month": "2026-06",
+            "checks": 98430,
+            "findings": 4725,
+            "high": 567,
+            "moderate": 1559,
+            "low": 2599
+          },
+          {
+            "month": "2026-07",
+            "checks": 95535,
+            "findings": 4586,
+            "high": 550,
+            "moderate": 1513,
+            "low": 2523
+          }
+        ]
+      }
     },
     {
       "id": "experian",
@@ -57,7 +276,115 @@
       "uptimePct": 99.93,
       "syncCadence": "Nightly 06:00Z",
       "recordsGrowthQtr": "+0.8% this quarter",
-      "matchErrorRate": 0.9
+      "matchErrorRate": 0.9,
+      "network": {
+        "coveredSubjects": 480000,
+        "checks12mo": 458400,
+        "findings12mo": 18795,
+        "autoClearPct": 81.0,
+        "medianTurnaroundDays": 1,
+        "findingsByGuideline": {
+          "F": 18795
+        },
+        "monthly": [
+          {
+            "month": "2025-08",
+            "checks": 35908,
+            "findings": 1472,
+            "high": 162,
+            "moderate": 442,
+            "low": 868
+          },
+          {
+            "month": "2025-09",
+            "checks": 37818,
+            "findings": 1551,
+            "high": 171,
+            "moderate": 465,
+            "low": 915
+          },
+          {
+            "month": "2025-10",
+            "checks": 39346,
+            "findings": 1613,
+            "high": 177,
+            "moderate": 484,
+            "low": 952
+          },
+          {
+            "month": "2025-11",
+            "checks": 37054,
+            "findings": 1519,
+            "high": 167,
+            "moderate": 456,
+            "low": 896
+          },
+          {
+            "month": "2025-12",
+            "checks": 38582,
+            "findings": 1582,
+            "high": 174,
+            "moderate": 475,
+            "low": 933
+          },
+          {
+            "month": "2026-01",
+            "checks": 40492,
+            "findings": 1660,
+            "high": 183,
+            "moderate": 498,
+            "low": 979
+          },
+          {
+            "month": "2026-02",
+            "checks": 36290,
+            "findings": 1488,
+            "high": 164,
+            "moderate": 446,
+            "low": 878
+          },
+          {
+            "month": "2026-03",
+            "checks": 35144,
+            "findings": 1441,
+            "high": 159,
+            "moderate": 432,
+            "low": 850
+          },
+          {
+            "month": "2026-04",
+            "checks": 39728,
+            "findings": 1629,
+            "high": 179,
+            "moderate": 489,
+            "low": 961
+          },
+          {
+            "month": "2026-05",
+            "checks": 41256,
+            "findings": 1691,
+            "high": 186,
+            "moderate": 507,
+            "low": 998
+          },
+          {
+            "month": "2026-06",
+            "checks": 38964,
+            "findings": 1598,
+            "high": 176,
+            "moderate": 479,
+            "low": 943
+          },
+          {
+            "month": "2026-07",
+            "checks": 37818,
+            "findings": 1551,
+            "high": 171,
+            "moderate": 465,
+            "low": 915
+          }
+        ]
+      }
     },
     {
       "id": "transunion",
@@ -76,7 +403,115 @@
       "uptimePct": 99.97,
       "syncCadence": "Nightly 06:00Z",
       "recordsGrowthQtr": "+1.1% this quarter",
-      "matchErrorRate": 0.8
+      "matchErrorRate": 0.8,
+      "network": {
+        "coveredSubjects": 1150000,
+        "checks12mo": 1113600,
+        "findings12mo": 57907,
+        "autoClearPct": 76.0,
+        "medianTurnaroundDays": 1,
+        "findingsByGuideline": {
+          "F": 57907
+        },
+        "monthly": [
+          {
+            "month": "2025-08",
+            "checks": 87232,
+            "findings": 4536,
+            "high": 590,
+            "moderate": 1542,
+            "low": 2404
+          },
+          {
+            "month": "2025-09",
+            "checks": 91872,
+            "findings": 4777,
+            "high": 621,
+            "moderate": 1624,
+            "low": 2532
+          },
+          {
+            "month": "2025-10",
+            "checks": 95584,
+            "findings": 4970,
+            "high": 646,
+            "moderate": 1690,
+            "low": 2634
+          },
+          {
+            "month": "2025-11",
+            "checks": 90016,
+            "findings": 4681,
+            "high": 609,
+            "moderate": 1592,
+            "low": 2480
+          },
+          {
+            "month": "2025-12",
+            "checks": 93728,
+            "findings": 4874,
+            "high": 634,
+            "moderate": 1657,
+            "low": 2583
+          },
+          {
+            "month": "2026-01",
+            "checks": 98368,
+            "findings": 5115,
+            "high": 665,
+            "moderate": 1739,
+            "low": 2711
+          },
+          {
+            "month": "2026-02",
+            "checks": 88160,
+            "findings": 4584,
+            "high": 596,
+            "moderate": 1559,
+            "low": 2429
+          },
+          {
+            "month": "2026-03",
+            "checks": 85376,
+            "findings": 4440,
+            "high": 577,
+            "moderate": 1510,
+            "low": 2353
+          },
+          {
+            "month": "2026-04",
+            "checks": 96512,
+            "findings": 5019,
+            "high": 652,
+            "moderate": 1706,
+            "low": 2661
+          },
+          {
+            "month": "2026-05",
+            "checks": 100224,
+            "findings": 5212,
+            "high": 678,
+            "moderate": 1772,
+            "low": 2762
+          },
+          {
+            "month": "2026-06",
+            "checks": 94656,
+            "findings": 4922,
+            "high": 640,
+            "moderate": 1673,
+            "low": 2609
+          },
+          {
+            "month": "2026-07",
+            "checks": 91872,
+            "findings": 4777,
+            "high": 621,
+            "moderate": 1624,
+            "low": 2532
+          }
+        ]
+      }
     },
     {
       "id": "lexisnexis",
@@ -97,7 +532,117 @@
       "uptimePct": 99.9,
       "syncCadence": "Nightly 04:30Z",
       "recordsGrowthQtr": "+1.4% this quarter",
-      "matchErrorRate": 1.2
+      "matchErrorRate": 1.2,
+      "network": {
+        "coveredSubjects": 2400000,
+        "checks12mo": 655200,
+        "findings12mo": 21624,
+        "autoClearPct": 70.5,
+        "medianTurnaroundDays": 2,
+        "findingsByGuideline": {
+          "F": 9515,
+          "J": 8217,
+          "E": 3892
+        },
+        "monthly": [
+          {
+            "month": "2025-08",
+            "checks": 51324,
+            "findings": 1694,
+            "high": 152,
+            "moderate": 474,
+            "low": 1068
+          },
+          {
+            "month": "2025-09",
+            "checks": 54054,
+            "findings": 1784,
+            "high": 161,
+            "moderate": 500,
+            "low": 1123
+          },
+          {
+            "month": "2025-10",
+            "checks": 56238,
+            "findings": 1856,
+            "high": 167,
+            "moderate": 520,
+            "low": 1169
+          },
+          {
+            "month": "2025-11",
+            "checks": 52962,
+            "findings": 1748,
+            "high": 157,
+            "moderate": 489,
+            "low": 1102
+          },
+          {
+            "month": "2025-12",
+            "checks": 55146,
+            "findings": 1820,
+            "high": 164,
+            "moderate": 510,
+            "low": 1146
+          },
+          {
+            "month": "2026-01",
+            "checks": 57876,
+            "findings": 1910,
+            "high": 172,
+            "moderate": 535,
+            "low": 1203
+          },
+          {
+            "month": "2026-02",
+            "checks": 51870,
+            "findings": 1712,
+            "high": 154,
+            "moderate": 479,
+            "low": 1079
+          },
+          {
+            "month": "2026-03",
+            "checks": 50232,
+            "findings": 1658,
+            "high": 149,
+            "moderate": 464,
+            "low": 1045
+          },
+          {
+            "month": "2026-04",
+            "checks": 56784,
+            "findings": 1874,
+            "high": 169,
+            "moderate": 525,
+            "low": 1180
+          },
+          {
+            "month": "2026-05",
+            "checks": 58968,
+            "findings": 1946,
+            "high": 175,
+            "moderate": 545,
+            "low": 1226
+          },
+          {
+            "month": "2026-06",
+            "checks": 55692,
+            "findings": 1838,
+            "high": 165,
+            "moderate": 515,
+            "low": 1158
+          },
+          {
+            "month": "2026-07",
+            "checks": 54054,
+            "findings": 1784,
+            "high": 161,
+            "moderate": 500,
+            "low": 1123
+          }
+        ]
+      }
     },
     {
       "id": "fincen",
@@ -116,7 +661,116 @@
       "uptimePct": 99.99,
       "syncCadence": "Daily 12:00Z",
       "recordsGrowthQtr": "+2.3% this quarter",
-      "matchErrorRate": 0.2
+      "matchErrorRate": 0.2,
+      "network": {
+        "coveredSubjects": 3600000,
+        "checks12mo": 220800,
+        "findings12mo": 3532,
+        "autoClearPct": 48.0,
+        "medianTurnaroundDays": 3,
+        "findingsByGuideline": {
+          "F": 2543,
+          "B": 989
+        },
+        "monthly": [
+          {
+            "month": "2025-08",
+            "checks": 17296,
+            "findings": 277,
+            "high": 94,
+            "moderate": 114,
+            "low": 69
+          },
+          {
+            "month": "2025-09",
+            "checks": 18216,
+            "findings": 291,
+            "high": 99,
+            "moderate": 119,
+            "low": 73
+          },
+          {
+            "month": "2025-10",
+            "checks": 18952,
+            "findings": 303,
+            "high": 103,
+            "moderate": 124,
+            "low": 76
+          },
+          {
+            "month": "2025-11",
+            "checks": 17848,
+            "findings": 286,
+            "high": 97,
+            "moderate": 117,
+            "low": 72
+          },
+          {
+            "month": "2025-12",
+            "checks": 18584,
+            "findings": 297,
+            "high": 101,
+            "moderate": 122,
+            "low": 74
+          },
+          {
+            "month": "2026-01",
+            "checks": 19504,
+            "findings": 312,
+            "high": 106,
+            "moderate": 128,
+            "low": 78
+          },
+          {
+            "month": "2026-02",
+            "checks": 17480,
+            "findings": 280,
+            "high": 95,
+            "moderate": 115,
+            "low": 70
+          },
+          {
+            "month": "2026-03",
+            "checks": 16928,
+            "findings": 271,
+            "high": 92,
+            "moderate": 111,
+            "low": 68
+          },
+          {
+            "month": "2026-04",
+            "checks": 19136,
+            "findings": 306,
+            "high": 104,
+            "moderate": 125,
+            "low": 77
+          },
+          {
+            "month": "2026-05",
+            "checks": 19872,
+            "findings": 318,
+            "high": 108,
+            "moderate": 130,
+            "low": 80
+          },
+          {
+            "month": "2026-06",
+            "checks": 18768,
+            "findings": 300,
+            "high": 102,
+            "moderate": 123,
+            "low": 75
+          },
+          {
+            "month": "2026-07",
+            "checks": 18216,
+            "findings": 291,
+            "high": 99,
+            "moderate": 119,
+            "low": 73
+          }
+        ]
+      }
     },
     {
       "id": "cbp-i94",
@@ -137,7 +791,117 @@
       "uptimePct": 99.96,
       "syncCadence": "Hourly",
       "recordsGrowthQtr": "+1.8% this quarter",
-      "matchErrorRate": 0.5
+      "matchErrorRate": 0.5,
+      "network": {
+        "coveredSubjects": 3600000,
+        "checks12mo": 795600,
+        "findings12mo": 19094,
+        "autoClearPct": 83.5,
+        "medianTurnaroundDays": 1,
+        "findingsByGuideline": {
+          "B": 7828,
+          "C": 6874,
+          "E": 4392
+        },
+        "monthly": [
+          {
+            "month": "2025-08",
+            "checks": 62322,
+            "findings": 1496,
+            "high": 120,
+            "moderate": 404,
+            "low": 972
+          },
+          {
+            "month": "2025-09",
+            "checks": 65637,
+            "findings": 1575,
+            "high": 126,
+            "moderate": 425,
+            "low": 1024
+          },
+          {
+            "month": "2025-10",
+            "checks": 68289,
+            "findings": 1639,
+            "high": 131,
+            "moderate": 443,
+            "low": 1065
+          },
+          {
+            "month": "2025-11",
+            "checks": 64311,
+            "findings": 1543,
+            "high": 123,
+            "moderate": 417,
+            "low": 1003
+          },
+          {
+            "month": "2025-12",
+            "checks": 66963,
+            "findings": 1607,
+            "high": 129,
+            "moderate": 434,
+            "low": 1044
+          },
+          {
+            "month": "2026-01",
+            "checks": 70278,
+            "findings": 1687,
+            "high": 135,
+            "moderate": 455,
+            "low": 1097
+          },
+          {
+            "month": "2026-02",
+            "checks": 62985,
+            "findings": 1512,
+            "high": 121,
+            "moderate": 408,
+            "low": 983
+          },
+          {
+            "month": "2026-03",
+            "checks": 60996,
+            "findings": 1464,
+            "high": 117,
+            "moderate": 395,
+            "low": 952
+          },
+          {
+            "month": "2026-04",
+            "checks": 68952,
+            "findings": 1655,
+            "high": 132,
+            "moderate": 447,
+            "low": 1076
+          },
+          {
+            "month": "2026-05",
+            "checks": 71604,
+            "findings": 1718,
+            "high": 137,
+            "moderate": 464,
+            "low": 1117
+          },
+          {
+            "month": "2026-06",
+            "checks": 67626,
+            "findings": 1623,
+            "high": 130,
+            "moderate": 438,
+            "low": 1055
+          },
+          {
+            "month": "2026-07",
+            "checks": 65637,
+            "findings": 1575,
+            "high": 126,
+            "moderate": 425,
+            "low": 1024
+          }
+        ]
+      }
     },
     {
       "id": "courts",
@@ -159,7 +923,119 @@
       "uptimePct": 97.1,
       "syncCadence": "Weekly Mon 06:00Z",
       "recordsGrowthQtr": "+0.4% this quarter",
-      "matchErrorRate": 3.6
+      "matchErrorRate": 3.6,
+      "network": {
+        "coveredSubjects": 940000,
+        "checks12mo": 140913,
+        "findings12mo": 9582,
+        "autoClearPct": 41.0,
+        "medianTurnaroundDays": 9,
+        "findingsByGuideline": {
+          "J": 4024,
+          "D": 1246,
+          "G": 1629,
+          "H": 862,
+          "F": 1821
+        },
+        "monthly": [
+          {
+            "month": "2025-08",
+            "checks": 11938,
+            "findings": 812,
+            "high": 154,
+            "moderate": 317,
+            "low": 341
+          },
+          {
+            "month": "2025-09",
+            "checks": 12573,
+            "findings": 855,
+            "high": 162,
+            "moderate": 333,
+            "low": 360
+          },
+          {
+            "month": "2025-10",
+            "checks": 13081,
+            "findings": 890,
+            "high": 169,
+            "moderate": 347,
+            "low": 374
+          },
+          {
+            "month": "2025-11",
+            "checks": 12319,
+            "findings": 838,
+            "high": 159,
+            "moderate": 327,
+            "low": 352
+          },
+          {
+            "month": "2025-12",
+            "checks": 12827,
+            "findings": 872,
+            "high": 166,
+            "moderate": 340,
+            "low": 366
+          },
+          {
+            "month": "2026-01",
+            "checks": 13462,
+            "findings": 915,
+            "high": 174,
+            "moderate": 357,
+            "low": 384
+          },
+          {
+            "month": "2026-02",
+            "checks": 12065,
+            "findings": 820,
+            "high": 156,
+            "moderate": 320,
+            "low": 344
+          },
+          {
+            "month": "2026-03",
+            "checks": 11684,
+            "findings": 795,
+            "high": 151,
+            "moderate": 310,
+            "low": 334
+          },
+          {
+            "month": "2026-04",
+            "checks": 13208,
+            "findings": 898,
+            "high": 171,
+            "moderate": 350,
+            "low": 377
+          },
+          {
+            "month": "2026-05",
+            "checks": 13716,
+            "findings": 933,
+            "high": 177,
+            "moderate": 364,
+            "low": 392
+          },
+          {
+            "month": "2026-06",
+            "checks": 7125,
+            "findings": 484,
+            "high": 92,
+            "moderate": 189,
+            "low": 203
+          },
+          {
+            "month": "2026-07",
+            "checks": 6915,
+            "findings": 470,
+            "high": 89,
+            "moderate": 183,
+            "low": 198
+          }
+        ]
+      }
     },
     {
       "id": "dmv",
@@ -178,7 +1054,116 @@
       "uptimePct": 99.88,
       "syncCadence": "Nightly 05:00Z",
       "recordsGrowthQtr": "+0.5% this quarter",
-      "matchErrorRate": 1.1
+      "matchErrorRate": 1.1,
+      "network": {
+        "coveredSubjects": 1800000,
+        "checks12mo": 406800,
+        "findings12mo": 12609,
+        "autoClearPct": 88.0,
+        "medianTurnaroundDays": 2,
+        "findingsByGuideline": {
+          "G": 7944,
+          "J": 4665
+        },
+        "monthly": [
+          {
+            "month": "2025-08",
+            "checks": 31866,
+            "findings": 988,
+            "high": 69,
+            "moderate": 237,
+            "low": 682
+          },
+          {
+            "month": "2025-09",
+            "checks": 33561,
+            "findings": 1040,
+            "high": 73,
+            "moderate": 250,
+            "low": 717
+          },
+          {
+            "month": "2025-10",
+            "checks": 34917,
+            "findings": 1082,
+            "high": 76,
+            "moderate": 260,
+            "low": 746
+          },
+          {
+            "month": "2025-11",
+            "checks": 32883,
+            "findings": 1019,
+            "high": 71,
+            "moderate": 245,
+            "low": 703
+          },
+          {
+            "month": "2025-12",
+            "checks": 34239,
+            "findings": 1061,
+            "high": 74,
+            "moderate": 255,
+            "low": 732
+          },
+          {
+            "month": "2026-01",
+            "checks": 35934,
+            "findings": 1114,
+            "high": 78,
+            "moderate": 267,
+            "low": 769
+          },
+          {
+            "month": "2026-02",
+            "checks": 32205,
+            "findings": 998,
+            "high": 70,
+            "moderate": 240,
+            "low": 688
+          },
+          {
+            "month": "2026-03",
+            "checks": 31188,
+            "findings": 967,
+            "high": 68,
+            "moderate": 232,
+            "low": 667
+          },
+          {
+            "month": "2026-04",
+            "checks": 35256,
+            "findings": 1093,
+            "high": 77,
+            "moderate": 262,
+            "low": 754
+          },
+          {
+            "month": "2026-05",
+            "checks": 36612,
+            "findings": 1135,
+            "high": 79,
+            "moderate": 272,
+            "low": 784
+          },
+          {
+            "month": "2026-06",
+            "checks": 34578,
+            "findings": 1072,
+            "high": 75,
+            "moderate": 257,
+            "low": 740
+          },
+          {
+            "month": "2026-07",
+            "checks": 33561,
+            "findings": 1040,
+            "high": 73,
+            "moderate": 250,
+            "low": 717
+          }
+        ]
+      }
     },
     {
       "id": "irs",
@@ -196,7 +1181,115 @@
       "uptimePct": 99.94,
       "syncCadence": "Weekly Fri 06:00Z",
       "recordsGrowthQtr": "+0.3% this quarter",
-      "matchErrorRate": 0.6
+      "matchErrorRate": 0.6,
+      "network": {
+        "coveredSubjects": 620000,
+        "checks12mo": 112800,
+        "findings12mo": 6092,
+        "autoClearPct": 64.0,
+        "medianTurnaroundDays": 6,
+        "findingsByGuideline": {
+          "F": 6092
+        },
+        "monthly": [
+          {
+            "month": "2025-08",
+            "checks": 8836,
+            "findings": 477,
+            "high": 72,
+            "moderate": 172,
+            "low": 233
+          },
+          {
+            "month": "2025-09",
+            "checks": 9306,
+            "findings": 503,
+            "high": 75,
+            "moderate": 181,
+            "low": 247
+          },
+          {
+            "month": "2025-10",
+            "checks": 9682,
+            "findings": 523,
+            "high": 78,
+            "moderate": 188,
+            "low": 257
+          },
+          {
+            "month": "2025-11",
+            "checks": 9118,
+            "findings": 492,
+            "high": 74,
+            "moderate": 177,
+            "low": 241
+          },
+          {
+            "month": "2025-12",
+            "checks": 9494,
+            "findings": 513,
+            "high": 77,
+            "moderate": 185,
+            "low": 251
+          },
+          {
+            "month": "2026-01",
+            "checks": 9964,
+            "findings": 538,
+            "high": 81,
+            "moderate": 194,
+            "low": 263
+          },
+          {
+            "month": "2026-02",
+            "checks": 8930,
+            "findings": 482,
+            "high": 72,
+            "moderate": 174,
+            "low": 236
+          },
+          {
+            "month": "2026-03",
+            "checks": 8648,
+            "findings": 467,
+            "high": 70,
+            "moderate": 168,
+            "low": 229
+          },
+          {
+            "month": "2026-04",
+            "checks": 9776,
+            "findings": 528,
+            "high": 79,
+            "moderate": 190,
+            "low": 259
+          },
+          {
+            "month": "2026-05",
+            "checks": 10152,
+            "findings": 548,
+            "high": 82,
+            "moderate": 197,
+            "low": 269
+          },
+          {
+            "month": "2026-06",
+            "checks": 9588,
+            "findings": 518,
+            "high": 78,
+            "moderate": 186,
+            "low": 254
+          },
+          {
+            "month": "2026-07",
+            "checks": 9306,
+            "findings": 503,
+            "high": 75,
+            "moderate": 181,
+            "low": 247
+          }
+        ]
+      }
     },
     {
       "id": "sead5",
@@ -217,7 +1310,118 @@
       "uptimePct": 99.8,
       "syncCadence": "On request",
       "recordsGrowthQtr": "+4.2% this quarter",
-      "matchErrorRate": 2.4
+      "matchErrorRate": 2.4,
+      "network": {
+        "coveredSubjects": 210000,
+        "checks12mo": 57600,
+        "findings12mo": 4550,
+        "autoClearPct": 37.5,
+        "medianTurnaroundDays": 5,
+        "findingsByGuideline": {
+          "A": 410,
+          "D": 1228,
+          "E": 1866,
+          "J": 1046
+        },
+        "monthly": [
+          {
+            "month": "2025-08",
+            "checks": 4512,
+            "findings": 356,
+            "high": 61,
+            "moderate": 121,
+            "low": 174
+          },
+          {
+            "month": "2025-09",
+            "checks": 4752,
+            "findings": 375,
+            "high": 64,
+            "moderate": 128,
+            "low": 183
+          },
+          {
+            "month": "2025-10",
+            "checks": 4944,
+            "findings": 391,
+            "high": 66,
+            "moderate": 133,
+            "low": 192
+          },
+          {
+            "month": "2025-11",
+            "checks": 4656,
+            "findings": 368,
+            "high": 63,
+            "moderate": 125,
+            "low": 180
+          },
+          {
+            "month": "2025-12",
+            "checks": 4848,
+            "findings": 383,
+            "high": 65,
+            "moderate": 130,
+            "low": 188
+          },
+          {
+            "month": "2026-01",
+            "checks": 5088,
+            "findings": 402,
+            "high": 68,
+            "moderate": 137,
+            "low": 197
+          },
+          {
+            "month": "2026-02",
+            "checks": 4560,
+            "findings": 360,
+            "high": 61,
+            "moderate": 122,
+            "low": 177
+          },
+          {
+            "month": "2026-03",
+            "checks": 4416,
+            "findings": 349,
+            "high": 59,
+            "moderate": 119,
+            "low": 171
+          },
+          {
+            "month": "2026-04",
+            "checks": 4992,
+            "findings": 394,
+            "high": 67,
+            "moderate": 134,
+            "low": 193
+          },
+          {
+            "month": "2026-05",
+            "checks": 5184,
+            "findings": 410,
+            "high": 70,
+            "moderate": 139,
+            "low": 201
+          },
+          {
+            "month": "2026-06",
+            "checks": 4896,
+            "findings": 387,
+            "high": 66,
+            "moderate": 132,
+            "low": 189
+          },
+          {
+            "month": "2026-07",
+            "checks": 4752,
+            "findings": 375,
+            "high": 64,
+            "moderate": 128,
+            "low": 183
+          }
+        ]
+      }
     },
     {
       "id": "diss",
@@ -236,7 +1440,115 @@
       "uptimePct": 99.99,
       "syncCadence": "Continuous (event push)",
       "recordsGrowthQtr": "+1.0% this quarter",
-      "matchErrorRate": 0.4
+      "matchErrorRate": 0.4,
+      "network": {
+        "coveredSubjects": 2900000,
+        "checks12mo": 258000,
+        "findings12mo": 3095,
+        "autoClearPct": 69.0,
+        "medianTurnaroundDays": 1,
+        "findingsByGuideline": {
+          "E": 3095
+        },
+        "monthly": [
+          {
+            "month": "2025-08",
+            "checks": 20210,
+            "findings": 243,
+            "high": 51,
+            "moderate": 80,
+            "low": 112
+          },
+          {
+            "month": "2025-09",
+            "checks": 21285,
+            "findings": 255,
+            "high": 54,
+            "moderate": 84,
+            "low": 117
+          },
+          {
+            "month": "2025-10",
+            "checks": 22145,
+            "findings": 266,
+            "high": 56,
+            "moderate": 88,
+            "low": 122
+          },
+          {
+            "month": "2025-11",
+            "checks": 20855,
+            "findings": 250,
+            "high": 52,
+            "moderate": 82,
+            "low": 116
+          },
+          {
+            "month": "2025-12",
+            "checks": 21715,
+            "findings": 261,
+            "high": 55,
+            "moderate": 86,
+            "low": 120
+          },
+          {
+            "month": "2026-01",
+            "checks": 22790,
+            "findings": 273,
+            "high": 57,
+            "moderate": 90,
+            "low": 126
+          },
+          {
+            "month": "2026-02",
+            "checks": 20425,
+            "findings": 245,
+            "high": 51,
+            "moderate": 81,
+            "low": 113
+          },
+          {
+            "month": "2026-03",
+            "checks": 19780,
+            "findings": 237,
+            "high": 50,
+            "moderate": 78,
+            "low": 109
+          },
+          {
+            "month": "2026-04",
+            "checks": 22360,
+            "findings": 268,
+            "high": 56,
+            "moderate": 88,
+            "low": 124
+          },
+          {
+            "month": "2026-05",
+            "checks": 23220,
+            "findings": 279,
+            "high": 59,
+            "moderate": 92,
+            "low": 128
+          },
+          {
+            "month": "2026-06",
+            "checks": 21930,
+            "findings": 263,
+            "high": 55,
+            "moderate": 87,
+            "low": 121
+          },
+          {
+            "month": "2026-07",
+            "checks": 21285,
+            "findings": 255,
+            "high": 54,
+            "moderate": 84,
+            "low": 117
+          }
+        ]
+      }
     }
   ]
 }

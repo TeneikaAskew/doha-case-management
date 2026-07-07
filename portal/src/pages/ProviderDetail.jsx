@@ -148,10 +148,10 @@ export default function ProviderDetail() {
       ) : (
         <>
           <HealthKpis provider={p} />
-          {alerts.length > 0 && (
+          {p.network && (
             <div className="provider-charts">
-              <VolumeByMonth alerts={alerts} />
-              <GuidelineYield provider={p} alerts={alerts} />
+              <VolumeByMonth network={p.network} isCv={isCv} />
+              <GuidelineYield provider={p} />
             </div>
           )}
           {isCv ? (
