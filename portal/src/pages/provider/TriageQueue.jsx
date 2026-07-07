@@ -53,7 +53,7 @@ export default function TriageQueue({ alerts, isAnalyst, dispositionAlert }) {
         <KPICard label="Oldest Open"
           value={oldestOpen === null ? '-' : `${oldestOpen}d`}
           accent="var(--dcsa-gold)" />
-        <KPICard label="Median Time To Adjudicate"
+        <KPICard label="Median Days To Adjudicate"
           value={medianTta === null ? '-' : `${medianTta}d`}
           accent="var(--dcsa-ocean)" />
         <KPICard label="Alerts Received" value={alerts.length}

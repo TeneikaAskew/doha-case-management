@@ -183,8 +183,9 @@
 .landing .panel p { margin-top: 18px; color: var(--l-ink-2); font-size: 17px; max-width: 46ch; }
 .landing .panel .btn { margin-top: 28px; }
 
+/* wide preview tables scroll inside the shot, never the page */
 .landing .app-shot { background: var(--l-panel-a); border-radius: 18px;
-  box-shadow: var(--l-card-shadow); padding: 22px; }
+  box-shadow: var(--l-card-shadow); padding: 22px; overflow-x: auto; }
 .landing .app-head { display: flex; justify-content: space-between; align-items: center;
   margin-bottom: 16px; }
 .landing .app-head h3 { font-size: 18px; font-weight: 800; letter-spacing: -0.01em; }

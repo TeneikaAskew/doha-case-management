@@ -59,7 +59,7 @@ test('every page loads and the hero case walks through all tabs', async ({ page 
   await expect(page.getByText('Record Checks Delivered')).toBeVisible();
   await page.getByRole('switch', { name: /triage/i }).click();
   await expect(page.getByText('Work Queue - Open First')).toBeVisible();
-  await expect(page.getByText('Median Time To Adjudicate')).toBeVisible();
+  await expect(page.getByText('Median Days To Adjudicate')).toBeVisible();
   await page.getByRole('switch', { name: /triage/i }).click(); // session-sticky: turn back off
   await page.getByRole('cell', { name: 'Marcus T. Bell' }).first().click();
   await expect(page).toHaveURL(/continuous-vetting/);

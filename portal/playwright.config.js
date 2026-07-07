@@ -6,12 +6,16 @@ try {
   process.loadEnvFile(fileURLToPath(new URL('./.env', import.meta.url)));
 } catch { /* no .env present (e.g. CI); tests use their fallback path */ }
 
+// E2E_PORT escapes collisions when another Vite app already holds 4173
+// (reuseExistingServer would silently attach to it).
+const PORT = Number(process.env.E2E_PORT || 4173);
+
 export default defineConfig({
   testDir: './e2e',
-  use: { baseURL: 'http://localhost:4173' },
+  use: { baseURL: `http://localhost:${PORT}` },
   webServer: {
-    command: 'npm run build && npm run preview',
-    port: 4173,
+    command: `npm run build && npm run preview -- --port ${PORT} --strictPort`,
+    port: PORT,
     reuseExistingServer: !process.env.CI,
   },
 });
