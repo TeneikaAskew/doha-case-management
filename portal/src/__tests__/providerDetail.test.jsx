@@ -15,6 +15,9 @@ const PROVIDERS = [
       autoClearPct: 76, medianTurnaroundDays: 1,
       findingsByGuideline: { F: 170 },
       monthly: [
+        { month: '2026-02', checks: 900, findings: 45, high: 9, moderate: 18, low: 18 },
+        { month: '2026-03', checks: 900, findings: 45, high: 9, moderate: 18, low: 18 },
+        { month: '2026-04', checks: 900, findings: 45, high: 9, moderate: 18, low: 18 },
         { month: '2026-05', checks: 1000, findings: 50, high: 10, moderate: 20, low: 20 },
         { month: '2026-06', checks: 1200, findings: 80, high: 20, moderate: 30, low: 30 },
         { month: '2026-07', checks: 900, findings: 40, high: 5, moderate: 15, low: 20 },
@@ -122,8 +125,11 @@ describe('ProviderDetail - default (health) view', () => {
     await screen.findByRole('heading', { name: 'TransUnion' });
     expect(screen.getByText('Covered Subjects').closest('.kpi-card'))
       .toHaveTextContent('1,150,000');
-    expect(screen.getByText('Checks Past Year').closest('.kpi-card'))
-      .toHaveTextContent('3,100');
+    const checks = screen.getByText('Checks Past Year').closest('.kpi-card');
+    expect(checks).toHaveTextContent('3,100');
+    // (1000+1200+900) vs (900*3) = +14.8%, with an upward trend arrow
+    expect(checks).toHaveTextContent('+14.8% vs prior quarter');
+    expect(within(checks).getByLabelText('increasing')).toBeInTheDocument();
     expect(screen.getByText('Findings Past Year').closest('.kpi-card'))
       .toHaveTextContent('auto-clear 76%');
     expect(screen.getByText('Median Turnaround').closest('.kpi-card'))

@@ -106,9 +106,12 @@ def trailing_months(today: str, n: int = 12) -> list[str]:
 def build_network_stats(pid: str, status: str) -> "schemas.ProviderNetworkStats":
     covered, base, rate, hi, mod, auto_clear, turnaround, weights = \
         PROVIDER_NETWORK[pid]
+    # each provider starts the seasonal shape at a different point so
+    # monthly patterns and quarter-over-quarter trends differ by source
+    offset = list(PROVIDER_NETWORK).index(pid)
     monthly = []
     for i, month in enumerate(trailing_months(TODAY)):
-        checks = round(base * MONTH_SHAPE[i])
+        checks = round(base * MONTH_SHAPE[(i + offset) % 12])
         # a DEGRADED source visibly under-delivers in its most recent months
         if status == "DEGRADED" and i >= 10:
             checks = round(checks * 0.55)
