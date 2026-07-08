@@ -378,3 +378,28 @@ def test_provider_network_stats(out):
     degraded = next(p for p in providers if p.status == "DEGRADED")
     last, prior = degraded.network.monthly[-1], degraded.network.monthly[-4]
     assert last.checks < prior.checks * 0.7, "degraded dip missing"
+
+def test_standard_form_complete_and_consistent(out):
+    out_dir, _ = out
+    for path in sorted((out_dir / "cases").glob("*.json")):
+        c = json.loads(path.read_text(encoding="utf-8"))
+        form = c["standardForm"]
+        subj = c["subject"]
+        assert len(form["sections"]) == 29, subj["id"]
+        assert form["sections"][0]["section"] == "Section 1"
+        answers = {q["number"]: q for s in form["sections"]
+                   for q in s["questions"]}
+        # identity answers mirror the seeded profile
+        assert answers["1.1"]["answer"] == subj["name"], subj["id"]
+        assert answers["2.1"]["answer"] == subj["dob"], subj["id"]
+        assert answers["4.1"]["answer"] == subj["ssn"], subj["id"]
+        # flagged questions always explain themselves
+        for q in answers.values():
+            if q["flagged"]:
+                assert q["detail"], f"{subj['id']} {q['number']} flagged, no detail"
+    # issue tie-ins: candor flags land where the cases developed them
+    okafor = json.loads((out_dir / "cases" / "SUBJ-001.json").read_text(encoding="utf-8"))
+    qs = {q["number"]: q for s in okafor["standardForm"]["sections"]
+          for q in s["questions"]}
+    assert qs["26.1"]["flagged"] and "$47,300" in qs["26.1"]["detail"]
+    assert qs["19.1"]["answer"] == "Yes" and qs["19.1"]["flagged"]

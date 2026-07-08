@@ -17,6 +17,7 @@ import schemas
 from documents import PROVIDER_IDS
 from hero_cases import build_hero_cases, TODAY
 from roster import build_roster_cases
+from standard_form import build_standard_form
 
 DEFAULT_OUT = Path(__file__).resolve().parents[1] / "public" / "data"
 
@@ -155,6 +156,11 @@ def main(out_dir: Path = DEFAULT_OUT) -> dict:
 
     cases = build_hero_cases(precedents) + build_roster_cases(precedents)
     cv_feed.extend_cases(cases)
+
+    # Every case carries the subject's full questionnaire (SF-86 / PVQ),
+    # answers derived from the seeded profile plus per-case issue overrides.
+    for c in cases:
+        c["standardForm"] = build_standard_form(c["subject"])
 
     # Canonical provider ids + computed open-alert counts.
     for c in cases:

@@ -29,7 +29,7 @@ test('every page loads and the hero case walks through all tabs', async ({ page 
   await page.getByText('Daniel R. Okafor').click();
   await expect(page.getByRole('heading', { name: 'Daniel R. Okafor' })).toBeVisible();
   await expect(page.getByText('Eligibility: Interim')).toBeVisible();
-  for (const tab of ['Overview', 'Guidelines', 'Investigation', 'Adjudication',
+  for (const tab of ['Overview', 'Guidelines', 'Investigation', 'Adjudication', 'SF / PVQ',
     'Continuous Vetting', 'Documents']) {
     await page.getByRole('tab', { name: tab }).click();
     await expect(page.getByRole('tab', { name: tab })).toHaveAttribute('aria-selected', 'true');

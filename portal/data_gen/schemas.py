@@ -301,6 +301,28 @@ class GeneratedDocument(BaseModel):
     transactions: list[DocTransaction] = []
 
 
+class SFQuestion(BaseModel):
+    number: str               # e.g. "22.1"
+    question: str
+    answer: str               # "Yes" / "No" / "Not applicable" / a value
+    detail: Optional[str] = None
+    flagged: bool = False     # discrepancy or developed-issue tie-in
+
+
+class SFSection(BaseModel):
+    section: str              # "Section 22"
+    title: str
+    questions: list[SFQuestion]
+
+
+class StandardForm(BaseModel):
+    """The subject's questionnaire (SF-86, transitioning to the PVQ)."""
+    formVersion: str
+    submitted: str
+    status: str
+    sections: list[SFSection]
+
+
 class CaseDetail(BaseModel):
     subject: SubjectProfile
     aiSummary: str
@@ -312,6 +334,7 @@ class CaseDetail(BaseModel):
     adjudication: Adjudication
     alerts: list[CVAlert]
     documents: list[Document]
+    standardForm: StandardForm
 
 
 class ProviderMonthlyStat(BaseModel):

@@ -224,5 +224,466 @@
       "description": "Police-record response, submitted 2026-04-15",
       "url": "documents/SUBJ-005/sf86-section22.json"
     }
-  ]
+  ],
+  "standardForm": {
+    "formVersion": "SF-86 (Nov 2016), PVQ transition",
+    "submitted": "2026-04-15",
+    "status": "Released to DCSA via eApp",
+    "sections": [
+      {
+        "section": "Section 1",
+        "title": "Full Name",
+        "questions": [
+          {
+            "number": "1.1",
+            "question": "Provide your full legal name.",
+            "answer": "Tomas E. Herrera",
+            "detail": null,
+            "flagged": false
+          }
+        ]
+      },
+      {
+        "section": "Section 2",
+        "title": "Date of Birth",
+        "questions": [
+          {
+            "number": "2.1",
+            "question": "Provide your date of birth.",
+            "answer": "1985-06-15",
+            "detail": null,
+            "flagged": false
+          }
+        ]
+      },
+      {
+        "section": "Section 3",
+        "title": "Place of Birth",
+        "questions": [
+          {
+            "number": "3.1",
+            "question": "Provide your place of birth.",
+            "answer": "Dayton, OH",
+            "detail": null,
+            "flagged": false
+          }
+        ]
+      },
+      {
+        "section": "Section 4",
+        "title": "Social Security Number",
+        "questions": [
+          {
+            "number": "4.1",
+            "question": "Provide your U.S. Social Security Number.",
+            "answer": "925-45-1185",
+            "detail": null,
+            "flagged": false
+          }
+        ]
+      },
+      {
+        "section": "Section 5",
+        "title": "Other Names Used",
+        "questions": [
+          {
+            "number": "5.1",
+            "question": "Have you used any other names (maiden name, alias, nickname)?",
+            "answer": "No",
+            "detail": null,
+            "flagged": false
+          }
+        ]
+      },
+      {
+        "section": "Section 6",
+        "title": "Your Identifying Information",
+        "questions": [
+          {
+            "number": "6.1",
+            "question": "Height.",
+            "answer": "6' 0\"",
+            "detail": null,
+            "flagged": false
+          },
+          {
+            "number": "6.2",
+            "question": "Weight.",
+            "answer": "165 lb",
+            "detail": null,
+            "flagged": false
+          },
+          {
+            "number": "6.3",
+            "question": "Hair color.",
+            "answer": "Black",
+            "detail": null,
+            "flagged": false
+          },
+          {
+            "number": "6.4",
+            "question": "Eye color.",
+            "answer": "Blue",
+            "detail": null,
+            "flagged": false
+          },
+          {
+            "number": "6.5",
+            "question": "Sex.",
+            "answer": "Male",
+            "detail": null,
+            "flagged": false
+          }
+        ]
+      },
+      {
+        "section": "Section 7",
+        "title": "Your Contact Information",
+        "questions": [
+          {
+            "number": "7.1",
+            "question": "Home telephone number.",
+            "answer": "(703) 555-0105",
+            "detail": null,
+            "flagged": false
+          },
+          {
+            "number": "7.2",
+            "question": "Personal email address.",
+            "answer": "tomas.herrera@contractor.example",
+            "detail": null,
+            "flagged": false
+          }
+        ]
+      },
+      {
+        "section": "Section 8",
+        "title": "U.S. Passport Information",
+        "questions": [
+          {
+            "number": "8.1",
+            "question": "Do you possess a current U.S. passport?",
+            "answer": "No",
+            "detail": null,
+            "flagged": false
+          }
+        ]
+      },
+      {
+        "section": "Section 9",
+        "title": "Citizenship",
+        "questions": [
+          {
+            "number": "9.1",
+            "question": "Provide your citizenship status.",
+            "answer": "United States (by birth)",
+            "detail": null,
+            "flagged": false
+          }
+        ]
+      },
+      {
+        "section": "Section 10",
+        "title": "Dual/Multiple Citizenship",
+        "questions": [
+          {
+            "number": "10.1",
+            "question": "Do you now hold, or have you ever held, citizenship of another country?",
+            "answer": "No",
+            "detail": null,
+            "flagged": false
+          },
+          {
+            "number": "10.2",
+            "question": "Have you ever been issued a passport by a country other than the United States?",
+            "answer": "No",
+            "detail": null,
+            "flagged": false
+          }
+        ]
+      },
+      {
+        "section": "Section 11",
+        "title": "Where You Have Lived",
+        "questions": [
+          {
+            "number": "11.1",
+            "question": "List where you have lived, beginning with your present residence.",
+            "answer": "2 residences listed",
+            "detail": "255 Foxhall Pl, Silver Spring, MD 20902 (2021-06-25 to present); 385 Copper Creek Ct Apt 7, Alexandria, VA 22310 (2014-01-17 to 2021-06-25)",
+            "flagged": false
+          }
+        ]
+      },
+      {
+        "section": "Section 12",
+        "title": "Where You Went to School",
+        "questions": [
+          {
+            "number": "12.1",
+            "question": "Have you attended any schools in the last 10 years?",
+            "answer": "No",
+            "detail": "Education completed before the 10-year coverage window.",
+            "flagged": false
+          }
+        ]
+      },
+      {
+        "section": "Section 13",
+        "title": "Employment Activities",
+        "questions": [
+          {
+            "number": "13.1",
+            "question": "List your employment activities, beginning with the present.",
+            "answer": "2 employers listed",
+            "detail": "Facilities Technician, Meridian National Services (2019-08-27 to present); Associate Facilities Technician, Chesapeake Mission Services (2014-01-17 to 2019-08-27)",
+            "flagged": false
+          },
+          {
+            "number": "13.2",
+            "question": "In the last 7 years, have you been fired, or quit a job after being told you would be fired?",
+            "answer": "No",
+            "detail": null,
+            "flagged": false
+          }
+        ]
+      },
+      {
+        "section": "Section 14",
+        "title": "Selective Service Record",
+        "questions": [
+          {
+            "number": "14.1",
+            "question": "If you are a male born after December 31, 1959, have you registered with the Selective Service System?",
+            "answer": "Yes",
+            "detail": "Registration verified.",
+            "flagged": false
+          }
+        ]
+      },
+      {
+        "section": "Section 15",
+        "title": "Military History",
+        "questions": [
+          {
+            "number": "15.1",
+            "question": "Have you ever served in the U.S. military?",
+            "answer": "No",
+            "detail": null,
+            "flagged": false
+          }
+        ]
+      },
+      {
+        "section": "Section 16",
+        "title": "People Who Know You Well",
+        "questions": [
+          {
+            "number": "16.1",
+            "question": "Provide three people who know you well.",
+            "answer": "3 references provided",
+            "detail": "Names and contact information verified in eApp; on file with the case.",
+            "flagged": false
+          }
+        ]
+      },
+      {
+        "section": "Section 17",
+        "title": "Marital/Relationship Status",
+        "questions": [
+          {
+            "number": "17.1",
+            "question": "Provide your current marital/relationship status.",
+            "answer": "Divorced",
+            "detail": null,
+            "flagged": false
+          }
+        ]
+      },
+      {
+        "section": "Section 18",
+        "title": "Relatives",
+        "questions": [
+          {
+            "number": "18.1",
+            "question": "Provide your relatives and their citizenship and country of residence.",
+            "answer": "Immediate family listed",
+            "detail": "All listed relatives are U.S. citizens residing in the United States.",
+            "flagged": false
+          }
+        ]
+      },
+      {
+        "section": "Section 19",
+        "title": "Foreign Contacts",
+        "questions": [
+          {
+            "number": "19.1",
+            "question": "Do you have, or have you had, close and/or continuing contact with a foreign national within the last 7 years?",
+            "answer": "No",
+            "detail": null,
+            "flagged": false
+          }
+        ]
+      },
+      {
+        "section": "Section 20",
+        "title": "Foreign Activities",
+        "questions": [
+          {
+            "number": "20.1",
+            "question": "Do you have any foreign financial interests?",
+            "answer": "No",
+            "detail": null,
+            "flagged": false
+          },
+          {
+            "number": "20.2",
+            "question": "Have you provided services to, or held employment with, a foreign government or entity?",
+            "answer": "No",
+            "detail": null,
+            "flagged": false
+          },
+          {
+            "number": "20.3",
+            "question": "Have you traveled outside the United States in the last 7 years?",
+            "answer": "No",
+            "detail": null,
+            "flagged": false
+          }
+        ]
+      },
+      {
+        "section": "Section 21",
+        "title": "Psychological and Emotional Health",
+        "questions": [
+          {
+            "number": "21.1",
+            "question": "Has a court or administrative agency ever ordered you to consult with a mental health professional, or do you have a condition that could affect your judgment, reliability, or trustworthiness?",
+            "answer": "No",
+            "detail": null,
+            "flagged": false
+          }
+        ]
+      },
+      {
+        "section": "Section 22",
+        "title": "Police Record",
+        "questions": [
+          {
+            "number": "22.1",
+            "question": "In the last 7 years, have you been arrested by any police officer, sheriff, marshal, or any other type of law enforcement official?",
+            "answer": "No",
+            "detail": null,
+            "flagged": false
+          },
+          {
+            "number": "22.2",
+            "question": "Have you ever been charged with a felony offense?",
+            "answer": "No",
+            "detail": null,
+            "flagged": false
+          }
+        ]
+      },
+      {
+        "section": "Section 23",
+        "title": "Illegal Use of Drugs or Drug Activity",
+        "questions": [
+          {
+            "number": "23.1",
+            "question": "In the last 7 years, have you illegally used any drugs or controlled substances?",
+            "answer": "No",
+            "detail": null,
+            "flagged": false
+          }
+        ]
+      },
+      {
+        "section": "Section 24",
+        "title": "Use of Alcohol",
+        "questions": [
+          {
+            "number": "24.1",
+            "question": "In the last 7 years, has your use of alcohol had a negative impact on your work performance, professional or personal relationships, your finances, or resulted in intervention by law enforcement or public safety personnel?",
+            "answer": "No",
+            "detail": null,
+            "flagged": false
+          }
+        ]
+      },
+      {
+        "section": "Section 25",
+        "title": "Investigations and Clearance Record",
+        "questions": [
+          {
+            "number": "25.1",
+            "question": "Has the U.S. Government ever investigated your background and/or granted you a security clearance eligibility?",
+            "answer": "No",
+            "detail": "This is the subject's first investigation.",
+            "flagged": false
+          }
+        ]
+      },
+      {
+        "section": "Section 26",
+        "title": "Financial Record",
+        "questions": [
+          {
+            "number": "26.1",
+            "question": "Are you currently over 120 days delinquent on any debt?",
+            "answer": "No",
+            "detail": null,
+            "flagged": false
+          },
+          {
+            "number": "26.2",
+            "question": "In the last 7 years, have you defaulted on any type of loan or had bills turned over to a collection agency?",
+            "answer": "No",
+            "detail": null,
+            "flagged": false
+          }
+        ]
+      },
+      {
+        "section": "Section 27",
+        "title": "Use of Information Technology Systems",
+        "questions": [
+          {
+            "number": "27.1",
+            "question": "In the last 7 years, have you illegally or without proper authorization accessed or attempted to access any information technology system?",
+            "answer": "No",
+            "detail": null,
+            "flagged": false
+          }
+        ]
+      },
+      {
+        "section": "Section 28",
+        "title": "Involvement in Non-Criminal Court Actions",
+        "questions": [
+          {
+            "number": "28.1",
+            "question": "In the last 10 years, have you been a party to any public record civil court action?",
+            "answer": "No",
+            "detail": null,
+            "flagged": false
+          }
+        ]
+      },
+      {
+        "section": "Section 29",
+        "title": "Association Record",
+        "questions": [
+          {
+            "number": "29.1",
+            "question": "Have you ever been a member of an organization dedicated to the use of violence or force to overthrow the U.S. Government?",
+            "answer": "No",
+            "detail": null,
+            "flagged": false
+          }
+        ]
+      }
+    ]
+  }
 }

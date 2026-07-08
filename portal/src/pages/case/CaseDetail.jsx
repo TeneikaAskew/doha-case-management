@@ -15,6 +15,7 @@ import GuidelinesTab from './GuidelinesTab.jsx';
 import InvestigationTab from './InvestigationTab.jsx';
 import AdjudicationTab from './AdjudicationTab.jsx';
 import CVTab from './CVTab.jsx';
+import StandardFormTab from './StandardFormTab.jsx';
 import DocumentsTab from './DocumentsTab.jsx';
 import AskCaseTab from './AskCaseTab.jsx';
 import './case.css';
@@ -25,6 +26,7 @@ const TABS = [
   { slug: 'investigation', label: 'Investigation', component: InvestigationTab },
   { slug: 'adjudication', label: 'Adjudication', component: AdjudicationTab },
   { slug: 'continuous-vetting', label: 'Continuous Vetting', component: CVTab },
+  { slug: 'standard-form', label: 'SF / PVQ', component: StandardFormTab },
   { slug: 'documents', label: 'Documents', component: DocumentsTab },
   { slug: 'ask', label: 'Ask the Case', Icon: FiMessageCircle, component: AskCaseTab },
 ];
