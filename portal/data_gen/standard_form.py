@@ -15,8 +15,8 @@ ELIGIBILITY_LABELS = {
 # subject id -> submission date; default applies to current initial cases
 SUBMITTED = {
     "SUBJ-001": "2025-09-08",
-    "SUBJ-002": "2024-11-04",
-    "SUBJ-003": "2026-03-02",
+    "SUBJ-002": "2023-01-15",
+    "SUBJ-003": "2026-06-10",
     "SUBJ-012": "2025-06-20",
     "SUBJ-013": "2025-11-12",
     "SUBJ-014": "2024-12-09",
@@ -27,42 +27,255 @@ DEFAULT_SUBMITTED = "2026-04-15"
 # subject id -> {question number: partial override}
 OVERRIDES = {
     "SUBJ-001": {
+        "3.1": dict(detail="Born in Lagos, Nigeria; immigrated to the United "
+                           "States and naturalized in 2003."),
+        "5.1": dict(answer="No",
+                    detail="No maiden name, alias, or nickname used; identity "
+                           "confirmed across bureau and DMV record checks."),
         "8.1": dict(answer="Yes",
-                    detail="U.S. passport on file; used for April 2026 Nigeria "
-                           "travel."),
+                    detail="U.S. passport No. 531048291 on file; used for the "
+                           "April 2026 Nigeria travel reported in Section 20."),
+        "9.1": dict(detail="Naturalized U.S. citizen since 2003; Nigerian "
+                           "citizen by birth (see Section 10)."),
+        "10.1": dict(answer="Yes",
+                     detail="Held Nigerian citizenship by birth; renounced on "
+                            "U.S. naturalization in 2003. No dual citizenship "
+                            "claimed since."),
+        "10.2": dict(answer="No",
+                     detail="No foreign passport held since naturalization; the "
+                            "prior Nigerian passport expired and was not "
+                            "renewed."),
+        "12.1": dict(answer="No",
+                     detail="No school attendance within the last 10 years; "
+                            "higher education completed before the coverage "
+                            "window."),
+        "13.2": dict(answer="No",
+                     detail="No termination for cause. A six-month involuntary "
+                            "layoff in 2024 (reduction in force) is corroborated "
+                            "by employer records; the subject was rehired at a "
+                            "comparable grade."),
+        "15.1": dict(answer="No", detail="No U.S. military service."),
+        "16.1": dict(answer="3 references provided",
+                     detail="Three references furnished - a current supervisor "
+                            "at Sentinel Dynamics, a six-year Manassas neighbor, "
+                            "and a former colleague; all interviewed and "
+                            "favorable."),
+        "17.1": dict(detail="Married; spouse is a U.S. citizen residing with the "
+                            "subject in Manassas, VA."),
         "18.1": dict(answer="Mother and two siblings listed", flagged=True,
-                     detail="Mother and two siblings are Nigerian citizens "
-                            "resident in Nigeria; one sibling is employed by a "
-                            "state-owned oil company. See Guideline B."),
+                     detail="Spouse is a U.S. citizen. Mother and two siblings "
+                            "are Nigerian citizens resident in Lagos, Nigeria; "
+                            "one sibling is employed by a state-owned oil "
+                            "company - developed through record checks and not "
+                            "disclosed on the questionnaire. See Guideline B."),
         "19.1": dict(answer="Yes", flagged=True,
-                     detail="Continuing contact with immediate family in "
-                            "Nigeria; assessed under Guideline B."),
+                     detail="Continuing contact with his mother and two siblings "
+                            "in Nigeria, including monthly financial remittances "
+                            "to Lagos beneficiaries (Jan-Mar 2026). Assessed "
+                            "under Guideline B."),
+        "20.1": dict(answer="No",
+                     detail="No foreign financial accounts or property. Outbound "
+                            "family remittances to Nigeria are addressed in "
+                            "Section 19 and the FinCEN SAR."),
+        "20.2": dict(answer="No",
+                     detail="No foreign-government employment. A sibling's "
+                            "employment with a Nigerian state-owned enterprise "
+                            "is addressed in Section 18."),
         "20.3": dict(answer="Yes", flagged=True,
-                     detail="Prior Nigeria travel reported. The April 2026 trip "
-                            "(2026-04-11 to 2026-04-25) occurred after "
-                            "submission and was not reported per SEAD-3."),
+                     detail="Prior personal travel to Nigeria to visit family "
+                            "was reported. The April 2026 trip (2026-04-11 to "
+                            "2026-04-25, for a family funeral) postdates this "
+                            "submission and was not reported to the FSO as "
+                            "required by SEAD-3; captured via CBP I-94."),
+        "21.1": dict(answer="No",
+                     detail="No court-ordered mental-health consultation and no "
+                            "condition affecting judgment, reliability, or "
+                            "trustworthiness."),
+        "22.1": dict(answer="No",
+                     detail="No arrests in the last seven years; NCIC and DMV "
+                            "checks returned no record."),
+        "22.2": dict(answer="No", detail="No felony charges of any kind."),
+        "23.1": dict(answer="No",
+                     detail="No illegal drug or controlled-substance use; the "
+                            "SEAD-5 social-media review developed no contrary "
+                            "information."),
+        "24.1": dict(answer="No",
+                     detail="No alcohol-related impact on work, relationships, "
+                            "finances, or law-enforcement involvement."),
+        "25.1": dict(answer="Yes",
+                     detail="Interim eligibility granted at initiation; this T5 "
+                            "periodic reinvestigation (DCSA-PR-2025-448121) is in "
+                            "adjudication."),
         "26.1": dict(answer="Yes", flagged=True,
-                     detail="Reported approximately $18,900 delinquent. "
-                            "Tri-bureau verification shows $47,300 across five "
-                            "accounts; the understatement raised a candor "
-                            "concern."),
+                     detail="Reported two accounts totaling approximately $9,000 "
+                            "delinquent following the 2024 layoff, with repayment "
+                            "intended on re-employment. Tri-bureau verification "
+                            "established $47,300 delinquent across five accounts "
+                            "(two charged off); the understatement raised a "
+                            "candor concern under Guideline F."),
         "26.2": dict(answer="Yes", flagged=True,
-                     detail="Collection accounts acknowledged; see the credit "
-                            "report evidence under Guideline F."),
-        "28.1": dict(flagged=True,
-                     detail="Small-claims judgment ($3,100, 2025) predates "
-                            "submission and was not listed."),
+                     detail="Collection accounts acknowledged. Verification "
+                            "developed two charge-offs and a new $12,400 "
+                            "auto-loan collection (reported June 2026, placed "
+                            "with Harborline Recovery). See the credit evidence "
+                            "under Guideline F."),
+        "27.1": dict(answer="No",
+                     detail="No unauthorized access to any information "
+                            "technology system."),
+        "28.1": dict(answer="No", flagged=True,
+                     detail="Answered No. A 2025 small-claims judgment ($3,100, "
+                            "unpaid) predates submission and was not listed; "
+                            "developed through state-court records and "
+                            "cross-referenced under Guideline F."),
+        "29.1": dict(answer="No",
+                     detail="No membership in any organization advocating the "
+                            "overthrow of the U.S. Government by force or "
+                            "violence."),
     },
     "SUBJ-002": {
+        "3.1": dict(detail="Born in Norfolk, Virginia; U.S. citizen by birth."),
+        "5.1": dict(answer="No",
+                    detail="No alias or nickname used; identity confirmed via "
+                           "fingerprint enrollment and DMV records."),
+        "9.1": dict(detail="U.S. citizen by birth; no other citizenship held."),
+        "10.1": dict(answer="No",
+                     detail="No current or prior citizenship of any other "
+                            "country."),
+        "12.1": dict(answer="No",
+                     detail="No school attendance within the last 10 years."),
+        "13.2": dict(answer="No",
+                     detail="No termination for cause across the employment "
+                            "history (Tidewater Defense Logistics, Port of "
+                            "Virginia, U.S. Navy)."),
+        "15.1": dict(answer="Yes",
+                     detail="U.S. Navy, enlisted - Logistics Specialist (LS2), "
+                            "2010-08-09 to 2014-09-30; honorable separation."),
+        "16.1": dict(answer="3 references provided",
+                     detail="Three references furnished - a Tidewater Defense "
+                            "Logistics supervisor, a former Navy colleague, and "
+                            "a Chesapeake neighbor; contact information verified "
+                            "in eApp."),
+        "17.1": dict(detail="Divorced; no current spouse or cohabitant."),
+        "18.1": dict(answer="Immediate family listed",
+                     detail="Immediate family are U.S. citizens residing in "
+                            "Virginia; no foreign relatives reported."),
+        "19.1": dict(answer="No",
+                     detail="No close or continuing contact with any foreign "
+                            "national."),
+        "20.1": dict(answer="No", detail="No foreign financial interests."),
+        "20.2": dict(answer="No",
+                     detail="No employment with or service to a foreign "
+                            "government or entity."),
         "20.3": dict(answer="Yes",
-                     detail="Vacation travel reported. A 2025 five-day trip was "
-                            "initially unreported; adjudicated no-action."),
-        "22.1": dict(flagged=True,
-                     detail="Accurate at submission. DUI arrest 2026-06-21 "
-                            "postdates the form; captured via FBI Rap Back."),
-        "24.1": dict(flagged=True,
-                     detail="Alcohol-related arrest 2026-06-21 postdates "
-                            "submission; evaluation pending under Guideline G."),
+                     detail="Personal vacation travel reported; border-crossing "
+                            "records matched (adjudicated no-action)."),
+        "21.1": dict(answer="No",
+                     detail="No court-ordered mental-health consultation and no "
+                            "condition affecting judgment or reliability."),
+        "22.1": dict(answer="No", flagged=True,
+                     detail="Accurate at submission (January 2023). A DUI arrest "
+                            "on 2026-06-21 (Chesapeake PD, first offense, BAC "
+                            "0.18%) postdates the form and was captured via FBI "
+                            "Rap Back; disposition pending arraignment "
+                            "2026-07-14."),
+        "22.2": dict(answer="No",
+                     detail="No felony charges; the 2026 DUI is charged as a "
+                            "first-offense misdemeanor."),
+        "23.1": dict(answer="No",
+                     detail="No illegal drug or controlled-substance use "
+                            "reported."),
+        "24.1": dict(answer="No", flagged=True,
+                     detail="Accurate at submission. The alcohol-related arrest "
+                            "of 2026-06-21 postdates the form; evaluation pending "
+                            "under Guideline G."),
+        "25.1": dict(answer="Yes",
+                     detail="Favorable T3 adjudication in 2023; Secret "
+                            "eligibility granted and currently enrolled in "
+                            "continuous vetting."),
+        "26.1": dict(answer="No",
+                     detail="Accurate at submission. A 30-day, $800 retail-card "
+                            "delinquency surfaced via CV in October 2025, was "
+                            "brought current in November 2025, and was "
+                            "adjudicated no-action - it never reached 120 days."),
+        "26.2": dict(answer="No",
+                     detail="No defaults or collections. The 2025 retail "
+                            "delinquency reached 30 days only and was resolved "
+                            "by payment."),
+        "27.1": dict(answer="No",
+                     detail="No unauthorized access to any information "
+                            "technology system."),
+        "28.1": dict(answer="No",
+                     detail="No public-record civil court actions."),
+        "29.1": dict(answer="No",
+                     detail="No membership in any organization advocating the "
+                            "overthrow of the U.S. Government by force or "
+                            "violence."),
+    },
+    "SUBJ-003": {
+        "3.1": dict(detail="Born in Edison, New Jersey; U.S. citizen by birth."),
+        "5.1": dict(answer="No",
+                    detail="No maiden name, alias, or nickname used."),
+        "8.1": dict(answer="No",
+                    detail="No U.S. passport reported on the questionnaire."),
+        "9.1": dict(detail="U.S. citizen by birth; no other citizenship held."),
+        "10.1": dict(answer="No",
+                     detail="No current or prior foreign citizenship."),
+        "12.1": dict(answer="Yes",
+                     detail="B.S. Finance, University of Maryland, conferred "
+                            "2018 - within the 10-year coverage window; verified "
+                            "through the National Student Clearinghouse."),
+        "13.2": dict(answer="No",
+                     detail="No termination for cause (Chesapeake Analytics "
+                            "Group; T. Rowe Price)."),
+        "15.1": dict(answer="No", detail="No U.S. military service."),
+        "16.1": dict(answer="3 references provided",
+                     detail="Three references furnished - a Chesapeake Analytics "
+                            "supervisor, a former T. Rowe Price colleague, and a "
+                            "Columbia, MD neighbor; contact information verified "
+                            "in eApp."),
+        "17.1": dict(detail="Never married; no spouse or cohabitant."),
+        "18.1": dict(answer="Immediate family listed",
+                     detail="Immediate family are U.S. citizens residing in New "
+                            "Jersey and Maryland; no foreign relatives "
+                            "reported."),
+        "19.1": dict(answer="No",
+                     detail="No close or continuing contact with any foreign "
+                            "national."),
+        "20.1": dict(answer="No", detail="No foreign financial interests."),
+        "20.2": dict(answer="No",
+                     detail="No employment with or service to a foreign "
+                            "government or entity."),
+        "20.3": dict(answer="No",
+                     detail="No foreign travel in the last seven years."),
+        "21.1": dict(answer="No",
+                     detail="No court-ordered mental-health consultation and no "
+                            "condition affecting judgment or reliability."),
+        "22.1": dict(answer="No",
+                     detail="No arrests; NCIC and fingerprint checks returned no "
+                            "record."),
+        "22.2": dict(answer="No", detail="No felony charges."),
+        "23.1": dict(answer="No",
+                     detail="No illegal drug or controlled-substance use."),
+        "24.1": dict(answer="No",
+                     detail="No alcohol-related incident or impact reported."),
+        "25.1": dict(answer="No",
+                     detail="This T3 initial investigation is the subject's "
+                            "first; no prior clearance."),
+        "26.1": dict(answer="No",
+                     detail="No delinquencies. The tri-bureau summary shows "
+                            "eight open accounts, all current, 12% utilization, "
+                            "with no collections, judgments, or bankruptcies."),
+        "26.2": dict(answer="No",
+                     detail="No defaults or accounts placed for collection."),
+        "27.1": dict(answer="No",
+                     detail="No unauthorized access to any information "
+                            "technology system."),
+        "28.1": dict(answer="No",
+                     detail="No public-record civil court actions."),
+        "29.1": dict(answer="No",
+                     detail="No membership in any organization advocating the "
+                            "overthrow of the U.S. Government by force or "
+                            "violence."),
     },
     "SUBJ-006": {
         "13.2": dict(flagged=True,
