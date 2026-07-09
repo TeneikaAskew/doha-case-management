@@ -983,7 +983,7 @@
   ],
   "standardForm": {
     "formVersion": "SF-86 (Nov 2016), PVQ transition",
-    "submitted": "2024-11-04",
+    "submitted": "2023-01-15",
     "status": "Released to DCSA via eApp",
     "sections": [
       {
@@ -1020,7 +1020,7 @@
             "number": "3.1",
             "question": "Provide your place of birth.",
             "answer": "Norfolk, Virginia",
-            "detail": null,
+            "detail": "Born in Norfolk, Virginia; U.S. citizen by birth.",
             "flagged": false
           }
         ]
@@ -1046,7 +1046,7 @@
             "number": "5.1",
             "question": "Have you used any other names (maiden name, alias, nickname)?",
             "answer": "No",
-            "detail": null,
+            "detail": "No alias or nickname used; identity confirmed via fingerprint enrollment and DMV records.",
             "flagged": false
           }
         ]
@@ -1133,7 +1133,7 @@
             "number": "9.1",
             "question": "Provide your citizenship status.",
             "answer": "United States (by birth)",
-            "detail": null,
+            "detail": "U.S. citizen by birth; no other citizenship held.",
             "flagged": false
           }
         ]
@@ -1146,7 +1146,7 @@
             "number": "10.1",
             "question": "Do you now hold, or have you ever held, citizenship of another country?",
             "answer": "No",
-            "detail": null,
+            "detail": "No current or prior citizenship of any other country.",
             "flagged": false
           },
           {
@@ -1179,7 +1179,7 @@
             "number": "12.1",
             "question": "Have you attended any schools in the last 10 years?",
             "answer": "No",
-            "detail": "Education completed before the 10-year coverage window.",
+            "detail": "No school attendance within the last 10 years.",
             "flagged": false
           }
         ]
@@ -1199,7 +1199,7 @@
             "number": "13.2",
             "question": "In the last 7 years, have you been fired, or quit a job after being told you would be fired?",
             "answer": "No",
-            "detail": null,
+            "detail": "No termination for cause across the employment history (Tidewater Defense Logistics, Port of Virginia, U.S. Navy).",
             "flagged": false
           }
         ]
@@ -1224,8 +1224,8 @@
           {
             "number": "15.1",
             "question": "Have you ever served in the U.S. military?",
-            "answer": "No",
-            "detail": null,
+            "answer": "Yes",
+            "detail": "U.S. Navy, enlisted - Logistics Specialist (LS2), 2010-08-09 to 2014-09-30; honorable separation.",
             "flagged": false
           }
         ]
@@ -1238,7 +1238,7 @@
             "number": "16.1",
             "question": "Provide three people who know you well.",
             "answer": "3 references provided",
-            "detail": "Names and contact information verified in eApp; on file with the case.",
+            "detail": "Three references furnished - a Tidewater Defense Logistics supervisor, a former Navy colleague, and a Chesapeake neighbor; contact information verified in eApp.",
             "flagged": false
           }
         ]
@@ -1251,7 +1251,7 @@
             "number": "17.1",
             "question": "Provide your current marital/relationship status.",
             "answer": "Divorced",
-            "detail": null,
+            "detail": "Divorced; no current spouse or cohabitant.",
             "flagged": false
           }
         ]
@@ -1264,7 +1264,7 @@
             "number": "18.1",
             "question": "Provide your relatives and their citizenship and country of residence.",
             "answer": "Immediate family listed",
-            "detail": "All listed relatives are U.S. citizens residing in the United States.",
+            "detail": "Immediate family are U.S. citizens residing in Virginia; no foreign relatives reported.",
             "flagged": false
           }
         ]
@@ -1277,7 +1277,7 @@
             "number": "19.1",
             "question": "Do you have, or have you had, close and/or continuing contact with a foreign national within the last 7 years?",
             "answer": "No",
-            "detail": null,
+            "detail": "No close or continuing contact with any foreign national.",
             "flagged": false
           }
         ]
@@ -1290,21 +1290,21 @@
             "number": "20.1",
             "question": "Do you have any foreign financial interests?",
             "answer": "No",
-            "detail": null,
+            "detail": "No foreign financial interests.",
             "flagged": false
           },
           {
             "number": "20.2",
             "question": "Have you provided services to, or held employment with, a foreign government or entity?",
             "answer": "No",
-            "detail": null,
+            "detail": "No employment with or service to a foreign government or entity.",
             "flagged": false
           },
           {
             "number": "20.3",
             "question": "Have you traveled outside the United States in the last 7 years?",
             "answer": "Yes",
-            "detail": "Vacation travel reported. A 2025 five-day trip was initially unreported; adjudicated no-action.",
+            "detail": "Personal vacation travel reported; border-crossing records matched (adjudicated no-action).",
             "flagged": false
           }
         ]
@@ -1317,7 +1317,7 @@
             "number": "21.1",
             "question": "Has a court or administrative agency ever ordered you to consult with a mental health professional, or do you have a condition that could affect your judgment, reliability, or trustworthiness?",
             "answer": "No",
-            "detail": null,
+            "detail": "No court-ordered mental-health consultation and no condition affecting judgment or reliability.",
             "flagged": false
           }
         ]
@@ -1330,14 +1330,14 @@
             "number": "22.1",
             "question": "In the last 7 years, have you been arrested by any police officer, sheriff, marshal, or any other type of law enforcement official?",
             "answer": "No",
-            "detail": "Accurate at submission. DUI arrest 2026-06-21 postdates the form; captured via FBI Rap Back.",
+            "detail": "Accurate at submission (January 2023). A DUI arrest on 2026-06-21 (Chesapeake PD, first offense, BAC 0.18%) postdates the form and was captured via FBI Rap Back; disposition pending arraignment 2026-07-14.",
             "flagged": true
           },
           {
             "number": "22.2",
             "question": "Have you ever been charged with a felony offense?",
             "answer": "No",
-            "detail": null,
+            "detail": "No felony charges; the 2026 DUI is charged as a first-offense misdemeanor.",
             "flagged": false
           }
         ]
@@ -1350,7 +1350,7 @@
             "number": "23.1",
             "question": "In the last 7 years, have you illegally used any drugs or controlled substances?",
             "answer": "No",
-            "detail": null,
+            "detail": "No illegal drug or controlled-substance use reported.",
             "flagged": false
           }
         ]
@@ -1363,7 +1363,7 @@
             "number": "24.1",
             "question": "In the last 7 years, has your use of alcohol had a negative impact on your work performance, professional or personal relationships, your finances, or resulted in intervention by law enforcement or public safety personnel?",
             "answer": "No",
-            "detail": "Alcohol-related arrest 2026-06-21 postdates submission; evaluation pending under Guideline G.",
+            "detail": "Accurate at submission. The alcohol-related arrest of 2026-06-21 postdates the form; evaluation pending under Guideline G.",
             "flagged": true
           }
         ]
@@ -1376,7 +1376,7 @@
             "number": "25.1",
             "question": "Has the U.S. Government ever investigated your background and/or granted you a security clearance eligibility?",
             "answer": "Yes",
-            "detail": "Current standing: Secret eligibility.",
+            "detail": "Favorable T3 adjudication in 2023; Secret eligibility granted and currently enrolled in continuous vetting.",
             "flagged": false
           }
         ]
@@ -1389,14 +1389,14 @@
             "number": "26.1",
             "question": "Are you currently over 120 days delinquent on any debt?",
             "answer": "No",
-            "detail": null,
+            "detail": "Accurate at submission. A 30-day, $800 retail-card delinquency surfaced via CV in October 2025, was brought current in November 2025, and was adjudicated no-action - it never reached 120 days.",
             "flagged": false
           },
           {
             "number": "26.2",
             "question": "In the last 7 years, have you defaulted on any type of loan or had bills turned over to a collection agency?",
             "answer": "No",
-            "detail": null,
+            "detail": "No defaults or collections. The 2025 retail delinquency reached 30 days only and was resolved by payment.",
             "flagged": false
           }
         ]
@@ -1409,7 +1409,7 @@
             "number": "27.1",
             "question": "In the last 7 years, have you illegally or without proper authorization accessed or attempted to access any information technology system?",
             "answer": "No",
-            "detail": null,
+            "detail": "No unauthorized access to any information technology system.",
             "flagged": false
           }
         ]
@@ -1422,7 +1422,7 @@
             "number": "28.1",
             "question": "In the last 10 years, have you been a party to any public record civil court action?",
             "answer": "No",
-            "detail": null,
+            "detail": "No public-record civil court actions.",
             "flagged": false
           }
         ]
@@ -1435,7 +1435,7 @@
             "number": "29.1",
             "question": "Have you ever been a member of an organization dedicated to the use of violence or force to overthrow the U.S. Government?",
             "answer": "No",
-            "detail": null,
+            "detail": "No membership in any organization advocating the overthrow of the U.S. Government by force or violence.",
             "flagged": false
           }
         ]
