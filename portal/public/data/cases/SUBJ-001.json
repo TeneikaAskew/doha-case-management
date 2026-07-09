@@ -1265,8 +1265,8 @@
           {
             "number": "10.2",
             "question": "Have you ever been issued a passport by a country other than the United States?",
-            "answer": "No",
-            "detail": "No foreign passport held since naturalization; the prior Nigerian passport expired and was not renewed.",
+            "answer": "Yes",
+            "detail": "Held a Nigerian passport before U.S. naturalization; it expired and was not renewed. No non-U.S. passport held since 2003.",
             "flagged": false
           }
         ]

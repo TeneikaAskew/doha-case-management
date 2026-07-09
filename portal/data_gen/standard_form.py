@@ -41,10 +41,10 @@ OVERRIDES = {
                      detail="Held Nigerian citizenship by birth; renounced on "
                             "U.S. naturalization in 2003. No dual citizenship "
                             "claimed since."),
-        "10.2": dict(answer="No",
-                     detail="No foreign passport held since naturalization; the "
-                            "prior Nigerian passport expired and was not "
-                            "renewed."),
+        "10.2": dict(answer="Yes",
+                     detail="Held a Nigerian passport before U.S. naturalization; "
+                            "it expired and was not renewed. No non-U.S. passport "
+                            "held since 2003."),
         "12.1": dict(answer="No",
                      detail="No school attendance within the last 10 years; "
                             "higher education completed before the coverage "
