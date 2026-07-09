@@ -1,8 +1,16 @@
 import { FiFileText, FiAlertTriangle } from 'react-icons/fi';
 import CollapsibleSection from '../../components/CollapsibleSection.jsx';
 import StatusBadge from '../../components/StatusBadge.jsx';
+import DataTable from '../../components/DataTable.jsx';
 
 const BADGE_ANSWERS = { Yes: 'warning', No: 'neutral', 'Not applicable': 'neutral' };
+
+// toDate is null for the current residence/employer; render it as "Present".
+function sfColumns(columns) {
+  return columns.map((c) => (c.key === 'toDate'
+    ? { ...c, render: (row) => row.toDate || 'Present' }
+    : c));
+}
 
 function QuestionRow({ q }) {
   const badgeVariant = q.flagged ? 'warning' : BADGE_ANSWERS[q.answer];
@@ -20,6 +28,12 @@ function QuestionRow({ q }) {
           {q.flagged && <FiAlertTriangle className="sf-flag-icon" aria-label="Flagged" />}
           {q.detail}
         </p>
+      )}
+      {q.table && (
+        <div className="sf-table">
+          <DataTable columns={sfColumns(q.table.columns)} rows={q.table.rows}
+            rowKey={q.table.rowKey || 'fromDate'} />
+        </div>
       )}
     </li>
   );

@@ -336,7 +336,8 @@
             "question": "Provide your full legal name.",
             "answer": "Renee L. Calloway",
             "detail": null,
-            "flagged": false
+            "flagged": false,
+            "table": null
           }
         ]
       },
@@ -349,7 +350,8 @@
             "question": "Provide your date of birth.",
             "answer": "1986-07-16",
             "detail": null,
-            "flagged": false
+            "flagged": false,
+            "table": null
           }
         ]
       },
@@ -362,7 +364,8 @@
             "question": "Provide your place of birth.",
             "answer": "Richmond, VA",
             "detail": null,
-            "flagged": false
+            "flagged": false,
+            "table": null
           }
         ]
       },
@@ -375,7 +378,8 @@
             "question": "Provide your U.S. Social Security Number.",
             "answer": "926-52-1222",
             "detail": null,
-            "flagged": false
+            "flagged": false,
+            "table": null
           }
         ]
       },
@@ -388,7 +392,8 @@
             "question": "Have you used any other names (maiden name, alias, nickname)?",
             "answer": "No",
             "detail": null,
-            "flagged": false
+            "flagged": false,
+            "table": null
           }
         ]
       },
@@ -401,35 +406,40 @@
             "question": "Height.",
             "answer": "6' 1\"",
             "detail": null,
-            "flagged": false
+            "flagged": false,
+            "table": null
           },
           {
             "number": "6.2",
             "question": "Weight.",
             "answer": "170 lb",
             "detail": null,
-            "flagged": false
+            "flagged": false,
+            "table": null
           },
           {
             "number": "6.3",
             "question": "Hair color.",
             "answer": "Blond",
             "detail": null,
-            "flagged": false
+            "flagged": false,
+            "table": null
           },
           {
             "number": "6.4",
             "question": "Eye color.",
             "answer": "Green",
             "detail": null,
-            "flagged": false
+            "flagged": false,
+            "table": null
           },
           {
             "number": "6.5",
             "question": "Sex.",
             "answer": "Female",
             "detail": null,
-            "flagged": false
+            "flagged": false,
+            "table": null
           }
         ]
       },
@@ -442,14 +452,16 @@
             "question": "Home telephone number.",
             "answer": "(703) 555-0106",
             "detail": null,
-            "flagged": false
+            "flagged": false,
+            "table": null
           },
           {
             "number": "7.2",
             "question": "Personal email address.",
             "answer": "renee.calloway@contractor.example",
             "detail": null,
-            "flagged": false
+            "flagged": false,
+            "table": null
           }
         ]
       },
@@ -462,7 +474,8 @@
             "question": "Do you possess a current U.S. passport?",
             "answer": "No",
             "detail": null,
-            "flagged": false
+            "flagged": false,
+            "table": null
           }
         ]
       },
@@ -475,7 +488,8 @@
             "question": "Provide your citizenship status.",
             "answer": "United States (by birth)",
             "detail": null,
-            "flagged": false
+            "flagged": false,
+            "table": null
           }
         ]
       },
@@ -488,14 +502,16 @@
             "question": "Do you now hold, or have you ever held, citizenship of another country?",
             "answer": "No",
             "detail": null,
-            "flagged": false
+            "flagged": false,
+            "table": null
           },
           {
             "number": "10.2",
             "question": "Have you ever been issued a passport by a country other than the United States?",
             "answer": "No",
             "detail": null,
-            "flagged": false
+            "flagged": false,
+            "table": null
           }
         ]
       },
@@ -507,8 +523,37 @@
             "number": "11.1",
             "question": "List where you have lived, beginning with your present residence.",
             "answer": "2 residences listed",
-            "detail": "286 Larkspur Ct, Arlington, VA 22204 (2022-07-10 to present); 402 Waverly Row Apt 8, Springfield, VA 22153 (2009-02-22 to 2022-07-10)",
-            "flagged": false
+            "detail": null,
+            "flagged": false,
+            "table": {
+              "columns": [
+                {
+                  "key": "address",
+                  "label": "Address"
+                },
+                {
+                  "key": "fromDate",
+                  "label": "Start"
+                },
+                {
+                  "key": "toDate",
+                  "label": "End"
+                }
+              ],
+              "rows": [
+                {
+                  "address": "286 Larkspur Ct, Arlington, VA 22204",
+                  "fromDate": "2022-07-10",
+                  "toDate": null
+                },
+                {
+                  "address": "402 Waverly Row Apt 8, Springfield, VA 22153",
+                  "fromDate": "2009-02-22",
+                  "toDate": "2022-07-10"
+                }
+              ],
+              "rowKey": "fromDate"
+            }
           }
         ]
       },
@@ -521,7 +566,8 @@
             "question": "Have you attended any schools in the last 10 years?",
             "answer": "No",
             "detail": "Education completed before the 10-year coverage window.",
-            "flagged": false
+            "flagged": false,
+            "table": null
           }
         ]
       },
@@ -533,15 +579,57 @@
             "number": "13.1",
             "question": "List your employment activities, beginning with the present.",
             "answer": "2 employers listed",
-            "detail": "Program Analyst, Clearwater Mission Systems (2020-09-16 to present); Associate Program Analyst, Ardent Federal Systems (2009-02-22 to 2020-09-16)",
-            "flagged": false
+            "detail": null,
+            "flagged": false,
+            "table": {
+              "columns": [
+                {
+                  "key": "employer",
+                  "label": "Employer"
+                },
+                {
+                  "key": "title",
+                  "label": "Role"
+                },
+                {
+                  "key": "address",
+                  "label": "Employer address"
+                },
+                {
+                  "key": "fromDate",
+                  "label": "Start"
+                },
+                {
+                  "key": "toDate",
+                  "label": "End"
+                }
+              ],
+              "rows": [
+                {
+                  "employer": "Clearwater Mission Systems",
+                  "title": "Program Analyst",
+                  "address": "5875 Trinity Pkwy Suite 300, Centreville, VA 20120",
+                  "fromDate": "2020-09-16",
+                  "toDate": null
+                },
+                {
+                  "employer": "Ardent Federal Systems",
+                  "title": "Associate Program Analyst",
+                  "address": "2101 Wilson Blvd Suite 900, Arlington, VA 22201",
+                  "fromDate": "2009-02-22",
+                  "toDate": "2020-09-16"
+                }
+              ],
+              "rowKey": "fromDate"
+            }
           },
           {
             "number": "13.2",
             "question": "In the last 7 years, have you been fired, or quit a job after being told you would be fired?",
             "answer": "No",
             "detail": "Employer records show a 2022 termination for cause omitted from the employment application; see Guideline E.",
-            "flagged": true
+            "flagged": true,
+            "table": null
           }
         ]
       },
@@ -554,7 +642,8 @@
             "question": "If you are a male born after December 31, 1959, have you registered with the Selective Service System?",
             "answer": "Not applicable",
             "detail": null,
-            "flagged": false
+            "flagged": false,
+            "table": null
           }
         ]
       },
@@ -567,7 +656,8 @@
             "question": "Have you ever served in the U.S. military?",
             "answer": "No",
             "detail": null,
-            "flagged": false
+            "flagged": false,
+            "table": null
           }
         ]
       },
@@ -580,7 +670,8 @@
             "question": "Provide three people who know you well.",
             "answer": "3 references provided",
             "detail": "Names and contact information verified in eApp; on file with the case.",
-            "flagged": false
+            "flagged": false,
+            "table": null
           }
         ]
       },
@@ -593,7 +684,8 @@
             "question": "Provide your current marital/relationship status.",
             "answer": "Single",
             "detail": null,
-            "flagged": false
+            "flagged": false,
+            "table": null
           }
         ]
       },
@@ -606,7 +698,8 @@
             "question": "Provide your relatives and their citizenship and country of residence.",
             "answer": "Immediate family listed",
             "detail": "All listed relatives are U.S. citizens residing in the United States.",
-            "flagged": false
+            "flagged": false,
+            "table": null
           }
         ]
       },
@@ -619,7 +712,8 @@
             "question": "Do you have, or have you had, close and/or continuing contact with a foreign national within the last 7 years?",
             "answer": "No",
             "detail": null,
-            "flagged": false
+            "flagged": false,
+            "table": null
           }
         ]
       },
@@ -632,21 +726,24 @@
             "question": "Do you have any foreign financial interests?",
             "answer": "No",
             "detail": null,
-            "flagged": false
+            "flagged": false,
+            "table": null
           },
           {
             "number": "20.2",
             "question": "Have you provided services to, or held employment with, a foreign government or entity?",
             "answer": "No",
             "detail": null,
-            "flagged": false
+            "flagged": false,
+            "table": null
           },
           {
             "number": "20.3",
             "question": "Have you traveled outside the United States in the last 7 years?",
             "answer": "No",
             "detail": null,
-            "flagged": false
+            "flagged": false,
+            "table": null
           }
         ]
       },
@@ -659,7 +756,8 @@
             "question": "Has a court or administrative agency ever ordered you to consult with a mental health professional, or do you have a condition that could affect your judgment, reliability, or trustworthiness?",
             "answer": "No",
             "detail": null,
-            "flagged": false
+            "flagged": false,
+            "table": null
           }
         ]
       },
@@ -672,14 +770,16 @@
             "question": "In the last 7 years, have you been arrested by any police officer, sheriff, marshal, or any other type of law enforcement official?",
             "answer": "No",
             "detail": null,
-            "flagged": false
+            "flagged": false,
+            "table": null
           },
           {
             "number": "22.2",
             "question": "Have you ever been charged with a felony offense?",
             "answer": "No",
             "detail": null,
-            "flagged": false
+            "flagged": false,
+            "table": null
           }
         ]
       },
@@ -692,7 +792,8 @@
             "question": "In the last 7 years, have you illegally used any drugs or controlled substances?",
             "answer": "No",
             "detail": null,
-            "flagged": false
+            "flagged": false,
+            "table": null
           }
         ]
       },
@@ -705,7 +806,8 @@
             "question": "In the last 7 years, has your use of alcohol had a negative impact on your work performance, professional or personal relationships, your finances, or resulted in intervention by law enforcement or public safety personnel?",
             "answer": "No",
             "detail": null,
-            "flagged": false
+            "flagged": false,
+            "table": null
           }
         ]
       },
@@ -718,7 +820,8 @@
             "question": "Has the U.S. Government ever investigated your background and/or granted you a security clearance eligibility?",
             "answer": "Yes",
             "detail": "Current standing: Interim eligibility.",
-            "flagged": false
+            "flagged": false,
+            "table": null
           }
         ]
       },
@@ -731,14 +834,16 @@
             "question": "Are you currently over 120 days delinquent on any debt?",
             "answer": "No",
             "detail": null,
-            "flagged": false
+            "flagged": false,
+            "table": null
           },
           {
             "number": "26.2",
             "question": "In the last 7 years, have you defaulted on any type of loan or had bills turned over to a collection agency?",
             "answer": "No",
             "detail": null,
-            "flagged": false
+            "flagged": false,
+            "table": null
           }
         ]
       },
@@ -751,7 +856,8 @@
             "question": "In the last 7 years, have you illegally or without proper authorization accessed or attempted to access any information technology system?",
             "answer": "No",
             "detail": null,
-            "flagged": false
+            "flagged": false,
+            "table": null
           }
         ]
       },
@@ -764,7 +870,8 @@
             "question": "In the last 10 years, have you been a party to any public record civil court action?",
             "answer": "No",
             "detail": null,
-            "flagged": false
+            "flagged": false,
+            "table": null
           }
         ]
       },
@@ -777,7 +884,8 @@
             "question": "Have you ever been a member of an organization dedicated to the use of violence or force to overthrow the U.S. Government?",
             "answer": "No",
             "detail": null,
-            "flagged": false
+            "flagged": false,
+            "table": null
           }
         ]
       }

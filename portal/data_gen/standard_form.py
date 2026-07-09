@@ -24,6 +24,28 @@ SUBMITTED = {
 }
 DEFAULT_SUBMITTED = "2026-04-15"
 
+
+def _cols(*pairs):
+    return [dict(key=k, label=l) for k, l in pairs]
+
+
+# Column layouts for the structured (non yes/no) list answers, so the SF/PVQ
+# tab shows the underlying entries as a table instead of a summary label.
+RELATIVE_COLS = _cols(("relationship", "Relationship"), ("name", "Name"),
+                      ("citizenship", "Citizenship"),
+                      ("residence", "Country of residence"))
+RELATIVE_COLS_NOTES = RELATIVE_COLS + _cols(("notes", "Notes"))
+REFERENCE_COLS = _cols(("name", "Name"), ("relationship", "Relationship"),
+                       ("since", "Known since"), ("location", "Location"))
+CONTACT_COLS = _cols(("name", "Name"), ("relationship", "Relationship"),
+                     ("citizenship", "Citizenship"), ("country", "Country"),
+                     ("contact", "Nature and frequency"))
+TRAVEL_COLS = _cols(("destination", "Destination"), ("purpose", "Purpose"),
+                    ("departed", "Departed"), ("returned", "Returned"),
+                    ("reported", "Reported"))
+SCHOOL_COLS = _cols(("school", "School"), ("degree", "Degree/diploma"),
+                    ("location", "Location"), ("from", "From"), ("to", "To"))
+
 # subject id -> {question number: partial override}
 OVERRIDES = {
     "SUBJ-001": {
@@ -56,23 +78,59 @@ OVERRIDES = {
                             "comparable grade."),
         "15.1": dict(answer="No", detail="No U.S. military service."),
         "16.1": dict(answer="3 references provided",
-                     detail="Three references furnished - a current supervisor "
-                            "at Sentinel Dynamics, a six-year Manassas neighbor, "
-                            "and a former colleague; all interviewed and "
-                            "favorable."),
+                     detail="All three references were interviewed and "
+                            "favorable.",
+                     table=dict(columns=REFERENCE_COLS, rowKey="name", rows=[
+                         dict(name="Gregory A. Feldman",
+                              relationship="Current supervisor, Sentinel "
+                                           "Dynamics",
+                              since="2018", location="Chantilly, VA"),
+                         dict(name="Yvonne R. Carter", relationship="Neighbor",
+                              since="2019", location="Manassas, VA"),
+                         dict(name="Peter Adeyemi",
+                              relationship="Former colleague, Praxis Federal",
+                              since="2013", location="Reston, VA"),
+                     ])),
         "17.1": dict(detail="Married; spouse is a U.S. citizen residing with the "
                             "subject in Manassas, VA."),
-        "18.1": dict(answer="Mother and two siblings listed", flagged=True,
-                     detail="Spouse is a U.S. citizen. Mother and two siblings "
-                            "are Nigerian citizens resident in Lagos, Nigeria; "
-                            "one sibling is employed by a state-owned oil "
+        "18.1": dict(answer="Spouse, mother, and two siblings", flagged=True,
+                     detail="One sibling is employed by a state-owned oil "
                             "company - developed through record checks and not "
-                            "disclosed on the questionnaire. See Guideline B."),
+                            "disclosed on the questionnaire. See Guideline B.",
+                     table=dict(columns=RELATIVE_COLS_NOTES, rowKey="name", rows=[
+                         dict(relationship="Spouse", name="Amara O. Okafor",
+                              citizenship="United States",
+                              residence="Manassas, VA, USA",
+                              notes="Naturalized U.S. citizen"),
+                         dict(relationship="Mother", name="Ngozi Okafor",
+                              citizenship="Nigeria", residence="Lagos, Nigeria",
+                              notes="Retired"),
+                         dict(relationship="Brother", name="Emeka Okafor",
+                              citizenship="Nigeria", residence="Lagos, Nigeria",
+                              notes="State-owned oil company; not disclosed on "
+                                    "the SF-86"),
+                         dict(relationship="Sister", name="Chidinma Okafor",
+                              citizenship="Nigeria", residence="Abuja, Nigeria",
+                              notes="Secondary-school teacher"),
+                     ])),
         "19.1": dict(answer="Yes", flagged=True,
-                     detail="Continuing contact with his mother and two siblings "
-                            "in Nigeria, including monthly financial remittances "
-                            "to Lagos beneficiaries (Jan-Mar 2026). Assessed "
-                            "under Guideline B."),
+                     detail="Continuing contact with immediate family in "
+                            "Nigeria, including monthly financial remittances to "
+                            "Lagos beneficiaries (Jan-Mar 2026). Assessed under "
+                            "Guideline B.",
+                     table=dict(columns=CONTACT_COLS, rowKey="name", rows=[
+                         dict(name="Ngozi Okafor", relationship="Mother",
+                              citizenship="Nigeria", country="Nigeria",
+                              contact="Monthly phone contact; financial "
+                                      "remittances"),
+                         dict(name="Emeka Okafor", relationship="Brother",
+                              citizenship="Nigeria", country="Nigeria",
+                              contact="Regular contact; state-owned-enterprise "
+                                      "employee"),
+                         dict(name="Chidinma Okafor", relationship="Sister",
+                              citizenship="Nigeria", country="Nigeria",
+                              contact="Periodic contact"),
+                     ])),
         "20.1": dict(answer="No",
                      detail="No foreign financial accounts or property. Outbound "
                             "family remittances to Nigeria are addressed in "
@@ -82,11 +140,18 @@ OVERRIDES = {
                             "employment with a Nigerian state-owned enterprise "
                             "is addressed in Section 18."),
         "20.3": dict(answer="Yes", flagged=True,
-                     detail="Prior personal travel to Nigeria to visit family "
-                            "was reported. The April 2026 trip (2026-04-11 to "
-                            "2026-04-25, for a family funeral) postdates this "
-                            "submission and was not reported to the FSO as "
-                            "required by SEAD-3; captured via CBP I-94."),
+                     detail="The April 2026 trip postdates this submission and "
+                            "was not reported to the FSO as required by SEAD-3; "
+                            "captured via CBP I-94.",
+                     table=dict(columns=TRAVEL_COLS, rowKey="departed", rows=[
+                         dict(destination="Lagos, Nigeria",
+                              purpose="Family funeral", departed="2026-04-11",
+                              returned="2026-04-25",
+                              reported="Not reported (SEAD-3)"),
+                         dict(destination="Lagos, Nigeria",
+                              purpose="Family visit", departed="2022-12-18",
+                              returned="2023-01-03", reported="Reported"),
+                     ])),
         "21.1": dict(answer="No",
                      detail="No court-ordered mental-health consultation and no "
                             "condition affecting judgment, reliability, or "
@@ -151,14 +216,33 @@ OVERRIDES = {
                      detail="U.S. Navy, enlisted - Logistics Specialist (LS2), "
                             "2010-08-09 to 2014-09-30; honorable separation."),
         "16.1": dict(answer="3 references provided",
-                     detail="Three references furnished - a Tidewater Defense "
-                            "Logistics supervisor, a former Navy colleague, and "
-                            "a Chesapeake neighbor; contact information verified "
-                            "in eApp."),
+                     detail="Contact information verified in eApp.",
+                     table=dict(columns=REFERENCE_COLS, rowKey="name", rows=[
+                         dict(name="Daniel P. Hutchins",
+                              relationship="Supervisor, Tidewater Defense "
+                                           "Logistics",
+                              since="2019", location="Chesapeake, VA"),
+                         dict(name="Raymond J. Ellis",
+                              relationship="Former Navy colleague (LS1)",
+                              since="2011", location="Norfolk, VA"),
+                         dict(name="Tanya Brooks", relationship="Neighbor",
+                              since="2021", location="Chesapeake, VA"),
+                     ])),
         "17.1": dict(detail="Divorced; no current spouse or cohabitant."),
         "18.1": dict(answer="Immediate family listed",
                      detail="Immediate family are U.S. citizens residing in "
-                            "Virginia; no foreign relatives reported."),
+                            "Virginia; no foreign relatives reported.",
+                     table=dict(columns=RELATIVE_COLS, rowKey="name", rows=[
+                         dict(relationship="Mother", name="Susan Bell",
+                              citizenship="United States",
+                              residence="Norfolk, VA, USA"),
+                         dict(relationship="Father", name="Raymond Bell",
+                              citizenship="United States",
+                              residence="Virginia Beach, VA, USA"),
+                         dict(relationship="Sister", name="Karen Bell-Ortiz",
+                              citizenship="United States",
+                              residence="Richmond, VA, USA"),
+                     ])),
         "19.1": dict(answer="No",
                      detail="No close or continuing contact with any foreign "
                             "national."),
@@ -168,7 +252,13 @@ OVERRIDES = {
                             "government or entity."),
         "20.3": dict(answer="Yes",
                      detail="Personal vacation travel reported; border-crossing "
-                            "records matched (adjudicated no-action)."),
+                            "records matched (adjudicated no-action).",
+                     table=dict(columns=TRAVEL_COLS, rowKey="departed", rows=[
+                         dict(destination="Punta Cana, Dominican Republic",
+                              purpose="Vacation", departed="2025-05-12",
+                              returned="2025-05-17",
+                              reported="Reported (no action)"),
+                     ])),
         "21.1": dict(answer="No",
                      detail="No court-ordered mental-health consultation and no "
                             "condition affecting judgment or reliability."),
@@ -221,23 +311,46 @@ OVERRIDES = {
         "10.1": dict(answer="No",
                      detail="No current or prior foreign citizenship."),
         "12.1": dict(answer="Yes",
-                     detail="B.S. Finance, University of Maryland, conferred "
-                            "2018 - within the 10-year coverage window; verified "
-                            "through the National Student Clearinghouse."),
+                     detail="Within the 10-year coverage window; verified "
+                            "through the National Student Clearinghouse.",
+                     table=dict(columns=SCHOOL_COLS, rowKey="school", rows=[
+                         dict(school="University of Maryland",
+                              degree="B.S. Finance", location="College Park, MD",
+                              **{"from": "2014", "to": "2018"}),
+                     ])),
         "13.2": dict(answer="No",
                      detail="No termination for cause (Chesapeake Analytics "
                             "Group; T. Rowe Price)."),
         "15.1": dict(answer="No", detail="No U.S. military service."),
         "16.1": dict(answer="3 references provided",
-                     detail="Three references furnished - a Chesapeake Analytics "
-                            "supervisor, a former T. Rowe Price colleague, and a "
-                            "Columbia, MD neighbor; contact information verified "
-                            "in eApp."),
+                     detail="Contact information verified in eApp.",
+                     table=dict(columns=REFERENCE_COLS, rowKey="name", rows=[
+                         dict(name="Laura Kim",
+                              relationship="Supervisor, Chesapeake Analytics "
+                                           "Group",
+                              since="2022", location="Columbia, MD"),
+                         dict(name="Brian Osei",
+                              relationship="Former colleague, T. Rowe Price",
+                              since="2018", location="Baltimore, MD"),
+                         dict(name="Meera Nair", relationship="Neighbor",
+                              since="2022", location="Columbia, MD"),
+                     ])),
         "17.1": dict(detail="Never married; no spouse or cohabitant."),
         "18.1": dict(answer="Immediate family listed",
                      detail="Immediate family are U.S. citizens residing in New "
                             "Jersey and Maryland; no foreign relatives "
-                            "reported."),
+                            "reported.",
+                     table=dict(columns=RELATIVE_COLS, rowKey="name", rows=[
+                         dict(relationship="Mother", name="Anjali Shah",
+                              citizenship="United States",
+                              residence="Edison, NJ, USA"),
+                         dict(relationship="Father", name="Rajesh Shah",
+                              citizenship="United States",
+                              residence="Edison, NJ, USA"),
+                         dict(relationship="Brother", name="Arjun Shah",
+                              citizenship="United States",
+                              residence="Jersey City, NJ, USA"),
+                     ])),
         "19.1": dict(answer="No",
                      detail="No close or continuing contact with any foreign "
                             "national."),
@@ -316,22 +429,30 @@ OVERRIDES = {
 }
 
 
-def _q(number, question, answer, detail=None):
+def _q(number, question, answer, detail=None, table=None):
     return dict(number=number, question=question, answer=answer,
-                detail=detail, flagged=False)
+                detail=detail, flagged=False, table=table)
 
 
-def _residences(subj):
-    return "; ".join(
-        f"{h['address']} ({h['fromDate']} to {h['toDate'] or 'present'})"
-        for h in subj["addressHistory"])
+def _table(columns, rows, row_key):
+    """Structured list answer: [(key, label), ...] columns plus row dicts."""
+    return dict(columns=[dict(key=k, label=l) for k, l in columns],
+                rows=rows, rowKey=row_key)
 
 
-def _employers(subj):
-    return "; ".join(
-        f"{e['title']}, {e['employer']} ({e['fromDate']} to "
-        f"{e['toDate'] or 'present'})"
-        for e in subj["employmentHistory"])
+def _address_table(subj):
+    """Residences as a structured table, matching the Overview tab."""
+    return _table([("address", "Address"), ("fromDate", "Start"),
+                   ("toDate", "End")],
+                  subj["addressHistory"], "fromDate")
+
+
+def _employment_table(subj):
+    """Employment activities as a structured table, matching the Overview tab."""
+    return _table([("employer", "Employer"), ("title", "Role"),
+                   ("address", "Employer address"), ("fromDate", "Start"),
+                   ("toDate", "End")],
+                  subj["employmentHistory"], "fromDate")
 
 
 def _sections(subj):
@@ -381,7 +502,7 @@ def _sections(subj):
             _q("11.1", "List where you have lived, beginning with your "
                "present residence.",
                f"{len(subj['addressHistory'])} residences listed",
-               _residences(subj)),
+               table=_address_table(subj)),
         ]),
         ("Section 12", "Where You Went to School", [
             _q("12.1", "Have you attended any schools in the last 10 years?",
@@ -392,7 +513,7 @@ def _sections(subj):
             _q("13.1", "List your employment activities, beginning with the "
                "present.",
                f"{len(subj['employmentHistory'])} employers listed",
-               _employers(subj)),
+               table=_employment_table(subj)),
             _q("13.2", "In the last 7 years, have you been fired, or quit a "
                "job after being told you would be fired?", "No"),
         ]),
