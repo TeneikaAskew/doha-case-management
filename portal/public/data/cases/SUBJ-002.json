@@ -995,7 +995,8 @@
             "question": "Provide your full legal name.",
             "answer": "Marcus T. Bell",
             "detail": null,
-            "flagged": false
+            "flagged": false,
+            "table": null
           }
         ]
       },
@@ -1008,7 +1009,8 @@
             "question": "Provide your date of birth.",
             "answer": "1992-11-02",
             "detail": null,
-            "flagged": false
+            "flagged": false,
+            "table": null
           }
         ]
       },
@@ -1021,7 +1023,8 @@
             "question": "Provide your place of birth.",
             "answer": "Norfolk, Virginia",
             "detail": "Born in Norfolk, Virginia; U.S. citizen by birth.",
-            "flagged": false
+            "flagged": false,
+            "table": null
           }
         ]
       },
@@ -1034,7 +1037,8 @@
             "question": "Provide your U.S. Social Security Number.",
             "answer": "917-38-7733",
             "detail": null,
-            "flagged": false
+            "flagged": false,
+            "table": null
           }
         ]
       },
@@ -1047,7 +1051,8 @@
             "question": "Have you used any other names (maiden name, alias, nickname)?",
             "answer": "No",
             "detail": "No alias or nickname used; identity confirmed via fingerprint enrollment and DMV records.",
-            "flagged": false
+            "flagged": false,
+            "table": null
           }
         ]
       },
@@ -1060,35 +1065,40 @@
             "question": "Height.",
             "answer": "5' 10\"",
             "detail": null,
-            "flagged": false
+            "flagged": false,
+            "table": null
           },
           {
             "number": "6.2",
             "question": "Weight.",
             "answer": "182 lb",
             "detail": null,
-            "flagged": false
+            "flagged": false,
+            "table": null
           },
           {
             "number": "6.3",
             "question": "Hair color.",
             "answer": "Brown",
             "detail": null,
-            "flagged": false
+            "flagged": false,
+            "table": null
           },
           {
             "number": "6.4",
             "question": "Eye color.",
             "answer": "Blue",
             "detail": null,
-            "flagged": false
+            "flagged": false,
+            "table": null
           },
           {
             "number": "6.5",
             "question": "Sex.",
             "answer": "Male",
             "detail": null,
-            "flagged": false
+            "flagged": false,
+            "table": null
           }
         ]
       },
@@ -1101,14 +1111,16 @@
             "question": "Home telephone number.",
             "answer": "(757) 555-0186",
             "detail": null,
-            "flagged": false
+            "flagged": false,
+            "table": null
           },
           {
             "number": "7.2",
             "question": "Personal email address.",
             "answer": "mtbell92@example.com",
             "detail": null,
-            "flagged": false
+            "flagged": false,
+            "table": null
           }
         ]
       },
@@ -1121,7 +1133,8 @@
             "question": "Do you possess a current U.S. passport?",
             "answer": "No",
             "detail": null,
-            "flagged": false
+            "flagged": false,
+            "table": null
           }
         ]
       },
@@ -1134,7 +1147,8 @@
             "question": "Provide your citizenship status.",
             "answer": "United States (by birth)",
             "detail": "U.S. citizen by birth; no other citizenship held.",
-            "flagged": false
+            "flagged": false,
+            "table": null
           }
         ]
       },
@@ -1147,14 +1161,16 @@
             "question": "Do you now hold, or have you ever held, citizenship of another country?",
             "answer": "No",
             "detail": "No current or prior citizenship of any other country.",
-            "flagged": false
+            "flagged": false,
+            "table": null
           },
           {
             "number": "10.2",
             "question": "Have you ever been issued a passport by a country other than the United States?",
             "answer": "No",
             "detail": null,
-            "flagged": false
+            "flagged": false,
+            "table": null
           }
         ]
       },
@@ -1166,8 +1182,42 @@
             "number": "11.1",
             "question": "List where you have lived, beginning with your present residence.",
             "answer": "3 residences listed",
-            "detail": "88 Quarry Ridge Rd, Chesapeake, VA 23320 (2021-03-27 to present); 414 Kempsville Crossing Ln, Virginia Beach, VA 23464 (2016-09-03 to 2021-03-27); 1108 Colley Ave Apt 2B, Norfolk, VA 23517 (2012-06-16 to 2016-09-03)",
-            "flagged": false
+            "detail": null,
+            "flagged": false,
+            "table": {
+              "columns": [
+                {
+                  "key": "address",
+                  "label": "Address"
+                },
+                {
+                  "key": "fromDate",
+                  "label": "Start"
+                },
+                {
+                  "key": "toDate",
+                  "label": "End"
+                }
+              ],
+              "rows": [
+                {
+                  "address": "88 Quarry Ridge Rd, Chesapeake, VA 23320",
+                  "fromDate": "2021-03-27",
+                  "toDate": null
+                },
+                {
+                  "address": "414 Kempsville Crossing Ln, Virginia Beach, VA 23464",
+                  "fromDate": "2016-09-03",
+                  "toDate": "2021-03-27"
+                },
+                {
+                  "address": "1108 Colley Ave Apt 2B, Norfolk, VA 23517",
+                  "fromDate": "2012-06-16",
+                  "toDate": "2016-09-03"
+                }
+              ],
+              "rowKey": "fromDate"
+            }
           }
         ]
       },
@@ -1180,7 +1230,8 @@
             "question": "Have you attended any schools in the last 10 years?",
             "answer": "No",
             "detail": "No school attendance within the last 10 years.",
-            "flagged": false
+            "flagged": false,
+            "table": null
           }
         ]
       },
@@ -1192,15 +1243,64 @@
             "number": "13.1",
             "question": "List your employment activities, beginning with the present.",
             "answer": "3 employers listed",
-            "detail": "Logistics Coordinator, Tidewater Defense Logistics (2019-04-08 to present); Warehouse Operations Specialist, Port of Virginia (2014-10-20 to 2019-04-05); Logistics Specialist (LS2), U.S. Navy (enlisted) (2010-08-09 to 2014-09-30)",
-            "flagged": false
+            "detail": null,
+            "flagged": false,
+            "table": {
+              "columns": [
+                {
+                  "key": "employer",
+                  "label": "Employer"
+                },
+                {
+                  "key": "title",
+                  "label": "Role"
+                },
+                {
+                  "key": "address",
+                  "label": "Employer address"
+                },
+                {
+                  "key": "fromDate",
+                  "label": "Start"
+                },
+                {
+                  "key": "toDate",
+                  "label": "End"
+                }
+              ],
+              "rows": [
+                {
+                  "employer": "Tidewater Defense Logistics",
+                  "title": "Logistics Coordinator",
+                  "address": "1401 Precon Dr Suite 210, Chesapeake, VA 23320",
+                  "fromDate": "2019-04-08",
+                  "toDate": null
+                },
+                {
+                  "employer": "Port of Virginia",
+                  "title": "Warehouse Operations Specialist",
+                  "address": "600 World Trade Center, Norfolk, VA 23510",
+                  "fromDate": "2014-10-20",
+                  "toDate": "2019-04-05"
+                },
+                {
+                  "employer": "U.S. Navy (enlisted)",
+                  "title": "Logistics Specialist (LS2)",
+                  "address": "1530 Gilbert St, Naval Station Norfolk, VA 23511",
+                  "fromDate": "2010-08-09",
+                  "toDate": "2014-09-30"
+                }
+              ],
+              "rowKey": "fromDate"
+            }
           },
           {
             "number": "13.2",
             "question": "In the last 7 years, have you been fired, or quit a job after being told you would be fired?",
             "answer": "No",
             "detail": "No termination for cause across the employment history (Tidewater Defense Logistics, Port of Virginia, U.S. Navy).",
-            "flagged": false
+            "flagged": false,
+            "table": null
           }
         ]
       },
@@ -1213,7 +1313,8 @@
             "question": "If you are a male born after December 31, 1959, have you registered with the Selective Service System?",
             "answer": "Yes",
             "detail": "Registration verified.",
-            "flagged": false
+            "flagged": false,
+            "table": null
           }
         ]
       },
@@ -1226,7 +1327,8 @@
             "question": "Have you ever served in the U.S. military?",
             "answer": "Yes",
             "detail": "U.S. Navy, enlisted - Logistics Specialist (LS2), 2010-08-09 to 2014-09-30; honorable separation.",
-            "flagged": false
+            "flagged": false,
+            "table": null
           }
         ]
       },
@@ -1238,8 +1340,49 @@
             "number": "16.1",
             "question": "Provide three people who know you well.",
             "answer": "3 references provided",
-            "detail": "Three references furnished - a Tidewater Defense Logistics supervisor, a former Navy colleague, and a Chesapeake neighbor; contact information verified in eApp.",
-            "flagged": false
+            "detail": "Contact information verified in eApp.",
+            "flagged": false,
+            "table": {
+              "columns": [
+                {
+                  "key": "name",
+                  "label": "Name"
+                },
+                {
+                  "key": "relationship",
+                  "label": "Relationship"
+                },
+                {
+                  "key": "since",
+                  "label": "Known since"
+                },
+                {
+                  "key": "location",
+                  "label": "Location"
+                }
+              ],
+              "rows": [
+                {
+                  "name": "Daniel P. Hutchins",
+                  "relationship": "Supervisor, Tidewater Defense Logistics",
+                  "since": "2019",
+                  "location": "Chesapeake, VA"
+                },
+                {
+                  "name": "Raymond J. Ellis",
+                  "relationship": "Former Navy colleague (LS1)",
+                  "since": "2011",
+                  "location": "Norfolk, VA"
+                },
+                {
+                  "name": "Tanya Brooks",
+                  "relationship": "Neighbor",
+                  "since": "2021",
+                  "location": "Chesapeake, VA"
+                }
+              ],
+              "rowKey": "name"
+            }
           }
         ]
       },
@@ -1252,7 +1395,8 @@
             "question": "Provide your current marital/relationship status.",
             "answer": "Divorced",
             "detail": "Divorced; no current spouse or cohabitant.",
-            "flagged": false
+            "flagged": false,
+            "table": null
           }
         ]
       },
@@ -1265,7 +1409,48 @@
             "question": "Provide your relatives and their citizenship and country of residence.",
             "answer": "Immediate family listed",
             "detail": "Immediate family are U.S. citizens residing in Virginia; no foreign relatives reported.",
-            "flagged": false
+            "flagged": false,
+            "table": {
+              "columns": [
+                {
+                  "key": "relationship",
+                  "label": "Relationship"
+                },
+                {
+                  "key": "name",
+                  "label": "Name"
+                },
+                {
+                  "key": "citizenship",
+                  "label": "Citizenship"
+                },
+                {
+                  "key": "residence",
+                  "label": "Country of residence"
+                }
+              ],
+              "rows": [
+                {
+                  "relationship": "Mother",
+                  "name": "Susan Bell",
+                  "citizenship": "United States",
+                  "residence": "Norfolk, VA, USA"
+                },
+                {
+                  "relationship": "Father",
+                  "name": "Raymond Bell",
+                  "citizenship": "United States",
+                  "residence": "Virginia Beach, VA, USA"
+                },
+                {
+                  "relationship": "Sister",
+                  "name": "Karen Bell-Ortiz",
+                  "citizenship": "United States",
+                  "residence": "Richmond, VA, USA"
+                }
+              ],
+              "rowKey": "name"
+            }
           }
         ]
       },
@@ -1278,7 +1463,8 @@
             "question": "Do you have, or have you had, close and/or continuing contact with a foreign national within the last 7 years?",
             "answer": "No",
             "detail": "No close or continuing contact with any foreign national.",
-            "flagged": false
+            "flagged": false,
+            "table": null
           }
         ]
       },
@@ -1291,21 +1477,57 @@
             "question": "Do you have any foreign financial interests?",
             "answer": "No",
             "detail": "No foreign financial interests.",
-            "flagged": false
+            "flagged": false,
+            "table": null
           },
           {
             "number": "20.2",
             "question": "Have you provided services to, or held employment with, a foreign government or entity?",
             "answer": "No",
             "detail": "No employment with or service to a foreign government or entity.",
-            "flagged": false
+            "flagged": false,
+            "table": null
           },
           {
             "number": "20.3",
             "question": "Have you traveled outside the United States in the last 7 years?",
             "answer": "Yes",
             "detail": "Personal vacation travel reported; border-crossing records matched (adjudicated no-action).",
-            "flagged": false
+            "flagged": false,
+            "table": {
+              "columns": [
+                {
+                  "key": "destination",
+                  "label": "Destination"
+                },
+                {
+                  "key": "purpose",
+                  "label": "Purpose"
+                },
+                {
+                  "key": "departed",
+                  "label": "Departed"
+                },
+                {
+                  "key": "returned",
+                  "label": "Returned"
+                },
+                {
+                  "key": "reported",
+                  "label": "Reported"
+                }
+              ],
+              "rows": [
+                {
+                  "destination": "Punta Cana, Dominican Republic",
+                  "purpose": "Vacation",
+                  "departed": "2025-05-12",
+                  "returned": "2025-05-17",
+                  "reported": "Reported (no action)"
+                }
+              ],
+              "rowKey": "departed"
+            }
           }
         ]
       },
@@ -1318,7 +1540,8 @@
             "question": "Has a court or administrative agency ever ordered you to consult with a mental health professional, or do you have a condition that could affect your judgment, reliability, or trustworthiness?",
             "answer": "No",
             "detail": "No court-ordered mental-health consultation and no condition affecting judgment or reliability.",
-            "flagged": false
+            "flagged": false,
+            "table": null
           }
         ]
       },
@@ -1331,14 +1554,16 @@
             "question": "In the last 7 years, have you been arrested by any police officer, sheriff, marshal, or any other type of law enforcement official?",
             "answer": "No",
             "detail": "Accurate at submission (January 2023). A DUI arrest on 2026-06-21 (Chesapeake PD, first offense, BAC 0.18%) postdates the form and was captured via FBI Rap Back; disposition pending arraignment 2026-07-14.",
-            "flagged": true
+            "flagged": true,
+            "table": null
           },
           {
             "number": "22.2",
             "question": "Have you ever been charged with a felony offense?",
             "answer": "No",
             "detail": "No felony charges; the 2026 DUI is charged as a first-offense misdemeanor.",
-            "flagged": false
+            "flagged": false,
+            "table": null
           }
         ]
       },
@@ -1351,7 +1576,8 @@
             "question": "In the last 7 years, have you illegally used any drugs or controlled substances?",
             "answer": "No",
             "detail": "No illegal drug or controlled-substance use reported.",
-            "flagged": false
+            "flagged": false,
+            "table": null
           }
         ]
       },
@@ -1364,7 +1590,8 @@
             "question": "In the last 7 years, has your use of alcohol had a negative impact on your work performance, professional or personal relationships, your finances, or resulted in intervention by law enforcement or public safety personnel?",
             "answer": "No",
             "detail": "Accurate at submission. The alcohol-related arrest of 2026-06-21 postdates the form; evaluation pending under Guideline G.",
-            "flagged": true
+            "flagged": true,
+            "table": null
           }
         ]
       },
@@ -1377,7 +1604,8 @@
             "question": "Has the U.S. Government ever investigated your background and/or granted you a security clearance eligibility?",
             "answer": "Yes",
             "detail": "Favorable T3 adjudication in 2023; Secret eligibility granted and currently enrolled in continuous vetting.",
-            "flagged": false
+            "flagged": false,
+            "table": null
           }
         ]
       },
@@ -1390,14 +1618,16 @@
             "question": "Are you currently over 120 days delinquent on any debt?",
             "answer": "No",
             "detail": "Accurate at submission. A 30-day, $800 retail-card delinquency surfaced via CV in October 2025, was brought current in November 2025, and was adjudicated no-action - it never reached 120 days.",
-            "flagged": false
+            "flagged": false,
+            "table": null
           },
           {
             "number": "26.2",
             "question": "In the last 7 years, have you defaulted on any type of loan or had bills turned over to a collection agency?",
             "answer": "No",
             "detail": "No defaults or collections. The 2025 retail delinquency reached 30 days only and was resolved by payment.",
-            "flagged": false
+            "flagged": false,
+            "table": null
           }
         ]
       },
@@ -1410,7 +1640,8 @@
             "question": "In the last 7 years, have you illegally or without proper authorization accessed or attempted to access any information technology system?",
             "answer": "No",
             "detail": "No unauthorized access to any information technology system.",
-            "flagged": false
+            "flagged": false,
+            "table": null
           }
         ]
       },
@@ -1423,7 +1654,8 @@
             "question": "In the last 10 years, have you been a party to any public record civil court action?",
             "answer": "No",
             "detail": "No public-record civil court actions.",
-            "flagged": false
+            "flagged": false,
+            "table": null
           }
         ]
       },
@@ -1436,7 +1668,8 @@
             "question": "Have you ever been a member of an organization dedicated to the use of violence or force to overthrow the U.S. Government?",
             "answer": "No",
             "detail": "No membership in any organization advocating the overthrow of the U.S. Government by force or violence.",
-            "flagged": false
+            "flagged": false,
+            "table": null
           }
         ]
       }

@@ -301,12 +301,26 @@ class GeneratedDocument(BaseModel):
     transactions: list[DocTransaction] = []
 
 
+class SFTableColumn(BaseModel):
+    key: str
+    label: str
+
+
+class SFTable(BaseModel):
+    """Structured list answer (e.g. residences, employers, relatives) rendered
+    as a table instead of a run-on string, mirroring the Overview tab."""
+    columns: list[SFTableColumn]
+    rows: list[dict]          # row values are strings; toDate None renders "Present"
+    rowKey: str = "fromDate"  # row field used as the stable table key
+
+
 class SFQuestion(BaseModel):
     number: str               # e.g. "22.1"
     question: str
     answer: str               # "Yes" / "No" / "Not applicable" / a value
     detail: Optional[str] = None
     flagged: bool = False     # discrepancy or developed-issue tie-in
+    table: Optional[SFTable] = None  # structured list answer, when applicable
 
 
 class SFSection(BaseModel):

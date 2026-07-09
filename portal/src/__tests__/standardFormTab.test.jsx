@@ -24,6 +24,24 @@ const CASE = {
           detail: 'Reported $18,900; verification shows $47,300.',
           flagged: true },
       ] },
+      { section: 'Section 18', title: 'Relatives', questions: [
+        { number: '18.1', question: 'Provide your relatives.',
+          answer: '2 relatives', detail: null, flagged: false,
+          table: {
+            rowKey: 'name',
+            columns: [
+              { key: 'relationship', label: 'Relationship' },
+              { key: 'name', label: 'Name' },
+              { key: 'residence', label: 'Country of residence' },
+            ],
+            rows: [
+              { relationship: 'Mother', name: 'Ngozi Okafor',
+                residence: 'Lagos, Nigeria' },
+              { relationship: 'Spouse', name: 'Amara O. Okafor',
+                residence: 'Manassas, VA, USA' },
+            ],
+          } },
+      ] },
     ],
   },
 };
@@ -51,6 +69,16 @@ describe('StandardFormTab', () => {
     fireEvent.click(screen.getByRole('button', { name: /Section 26/ }));
     expect(screen.getByText('Yes')).toBeInTheDocument();
     expect(screen.getByText(/verification shows \$47,300/)).toBeInTheDocument();
+  });
+
+  it('renders a structured list answer as a table', () => {
+    render(<StandardFormTab caseData={CASE} />);
+    fireEvent.click(screen.getByRole('button', { name: /Section 18/ }));
+    // column headers and row values from the table both render
+    expect(screen.getByText('Country of residence')).toBeInTheDocument();
+    expect(screen.getByText('Ngozi Okafor')).toBeInTheDocument();
+    expect(screen.getByText('Lagos, Nigeria')).toBeInTheDocument();
+    expect(screen.getByText('Amara O. Okafor')).toBeInTheDocument();
   });
 
   it('handles a case without a form', () => {

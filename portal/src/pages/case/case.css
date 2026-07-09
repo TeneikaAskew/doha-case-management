@@ -414,6 +414,7 @@
   max-width: 45%; }
 .sf-detail { margin: var(--space-1) 0 0 calc(32px + var(--space-3));
   font-size: var(--font-size-sm); }
+.sf-table { margin: var(--space-2) 0 0 calc(32px + var(--space-3)); }
 .sf-flagged { background: var(--status-warning-bg);
   border-left: 3px solid var(--status-warning);
   padding: var(--space-2) var(--space-3); border-radius: var(--radius-sm); }
