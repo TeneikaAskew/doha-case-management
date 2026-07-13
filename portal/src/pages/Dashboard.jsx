@@ -7,6 +7,7 @@ import { usePersona } from '../state/PersonaContext.jsx';
 import { useDemo } from '../state/DemoContext.jsx';
 import {
   STAGE_LABELS, STATUS_LABELS, STATUS_VARIANTS, riskBand, effectiveAssignee,
+  effectiveStage,
 } from '../domain.js';
 import KPICard from '../components/KPICard.jsx';
 import DataTable from '../components/DataTable.jsx';
@@ -18,7 +19,8 @@ import SectionRef, { RefLink } from '../components/SectionRef.jsx';
 import { REFS } from '../references.js';
 
 function buildKpis(personaId, subjects, alerts, staff, assignments) {
-  const inStage = (st) => subjects.filter((s) => s.stage === st);
+  const inStage = (st) => subjects.filter(
+    (s) => effectiveStage(s, assignments) === st);
   const openAlerts = alerts.filter((a) => !['ADJUDICATED', 'CLOSED'].includes(a.state));
   if (personaId === 'manager') {
     const staffById = Object.fromEntries((staff || []).map((s) => [s.id, s]));

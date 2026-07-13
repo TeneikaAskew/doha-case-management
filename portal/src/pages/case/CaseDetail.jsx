@@ -6,7 +6,7 @@ import { usePersona } from '../../state/PersonaContext.jsx';
 import { useDemo } from '../../state/DemoContext.jsx';
 import {
   STAGE_LABELS, STATUS_LABELS, STATUS_VARIANTS, ELIGIBILITY_LABELS, riskBand,
-  effectiveAssignee, applyAssignments,
+  effectiveAssignee, applyAssignments, effectiveStage,
 } from '../../domain.js';
 import { recommendAssignees } from '../workforce/recommend.js';
 import StatusBadge from '../../components/StatusBadge.jsx';
@@ -74,7 +74,9 @@ export default function CaseDetail() {
           </div>
           <div className="subject-pills">
             <StatusBadge variant={STATUS_VARIANTS[s.status]}>{STATUS_LABELS[s.status]}</StatusBadge>
-            <StatusBadge variant="neutral">{STAGE_LABELS[s.stage]}</StatusBadge>
+            <StatusBadge variant="neutral">
+              {STAGE_LABELS[effectiveStage(s, demo.assignments)]}
+            </StatusBadge>
             {s.flaggedGuidelines.map((g) => <GuidelineChip key={g} code={g} />)}
           </div>
           <div className="subject-assignment">

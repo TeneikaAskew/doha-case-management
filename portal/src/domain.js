@@ -168,6 +168,16 @@ export function effectiveAssignee(subject, assignments = {}, staffById = {}) {
   return subject.assignee || null;
 }
 
+// Assigning an unassigned Initiation case opens its investigation, so its
+// effective stage becomes Investigation and it flows into the investigator's
+// default queue. Display-only overlay; the generated stage is unchanged.
+export function effectiveStage(subject, assignments = {}) {
+  if (subject.stage === 'INITIATION' && assignments[subject.id]) {
+    return 'INVESTIGATION';
+  }
+  return subject.stage;
+}
+
 function statusFromUtil(pct) {
   if (pct >= 100) return 'AT_CAPACITY';
   if (pct >= 75) return 'LIMITED';

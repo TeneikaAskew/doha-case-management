@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import {
   GUIDELINES, PERSONAS, ALERT_TRANSITIONS, riskBand, STATUS_VARIANTS,
-  applyAssignments,
+  applyAssignments, effectiveStage,
 } from '../domain.js';
 
 describe('domain', () => {
@@ -33,6 +33,15 @@ describe('domain', () => {
   it('maps statuses to badge variants', () => {
     expect(STATUS_VARIANTS.CLEAR).toBe('success');
     expect(STATUS_VARIANTS.ACTION_REQUIRED).toBe('error');
+  });
+
+  it('effectiveStage advances an assigned initiation case to investigation', () => {
+    const init = { id: 'C1', stage: 'INITIATION' };
+    expect(effectiveStage(init, {})).toBe('INITIATION');           // unassigned
+    expect(effectiveStage(init, { C1: 'S1' })).toBe('INVESTIGATION'); // assigned
+    // other stages are never rewritten
+    const cv = { id: 'C2', stage: 'CONTINUOUS_VETTING' };
+    expect(effectiveStage(cv, { C2: 'S1' })).toBe('CONTINUOUS_VETTING');
   });
 
   it('applyAssignments moves load from the old owner to the new on reassignment', () => {

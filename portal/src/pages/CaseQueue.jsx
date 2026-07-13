@@ -6,7 +6,7 @@ import { usePersona } from '../state/PersonaContext.jsx';
 import { useDemo } from '../state/DemoContext.jsx';
 import {
   STAGE_LABELS, STATUS_LABELS, STATUS_VARIANTS, GUIDELINES, riskBand,
-  effectiveAssignee,
+  effectiveAssignee, effectiveStage,
 } from '../domain.js';
 import DataTable from '../components/DataTable.jsx';
 import StatusBadge from '../components/StatusBadge.jsx';
@@ -47,10 +47,10 @@ export default function CaseQueue() {
   const rows = useMemo(() => {
     if (!subjects) return [];
     return subjects.filter((s) =>
-      (stage === 'ALL' || s.stage === stage) &&
+      (stage === 'ALL' || effectiveStage(s, demo.assignments) === stage) &&
       (guideline === 'ALL' || s.flaggedGuidelines.includes(guideline)) &&
       (!q || s.name.toLowerCase().includes(q) || s.id.toLowerCase().includes(q)));
-  }, [subjects, stage, guideline, q]);
+  }, [subjects, stage, guideline, q, demo.assignments]);
 
   if (loading || staffQ.loading) return <Loading />;
   if (error) return <div className="page"><ErrorAlert message={error} /></div>;
@@ -60,7 +60,8 @@ export default function CaseQueue() {
     { key: 'name', label: 'Subject', sortable: true,
       render: (s) => <div><strong>{s.name}</strong><div className="muted">{s.position}</div></div> },
     { key: 'tier', label: 'Tier', sortable: true },
-    { key: 'stage', label: 'Stage', sortable: true, render: (s) => STAGE_LABELS[s.stage] },
+    { key: 'stage', label: 'Stage', sortable: true,
+      render: (s) => STAGE_LABELS[effectiveStage(s, demo.assignments)] },
     { key: 'status', label: 'Status',
       render: (s) => <StatusBadge variant={STATUS_VARIANTS[s.status]}>{STATUS_LABELS[s.status]}</StatusBadge> },
     { key: 'riskScore', label: 'Risk score', sortable: true,
