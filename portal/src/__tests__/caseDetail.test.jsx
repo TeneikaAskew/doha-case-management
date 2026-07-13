@@ -3,13 +3,14 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import { MemoryRouter, Routes, Route } from 'react-router-dom';
 import { PersonaProvider } from '../state/PersonaContext.jsx';
 import { DemoProvider } from '../state/DemoContext.jsx';
-import { CASE_001, STAFF } from './fixtures.js';
+import { CASE_001, STAFF, SUBJECTS } from './fixtures.js';
 
 vi.mock('../data/api.js', () => ({
   getCase: (id) => id === 'SUBJ-001'
     ? Promise.resolve(CASE_001)
     : Promise.reject(new Error(`Failed to load cases/${id}.json (HTTP 404)`)),
   getStaff: () => Promise.resolve(STAFF),
+  getSubjects: () => Promise.resolve(SUBJECTS),
 }));
 
 import CaseDetail from '../pages/case/CaseDetail.jsx';

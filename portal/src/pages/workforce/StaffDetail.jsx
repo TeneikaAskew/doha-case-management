@@ -7,7 +7,7 @@ import { useDemo } from '../../state/DemoContext.jsx';
 import {
   STAFF_ROLE_LABELS, EMPLOYMENT_LABELS, STAFF_STATUS_LABELS,
   STAFF_STATUS_VARIANTS, STAGE_LABELS, STATUS_LABELS, STATUS_VARIANTS,
-  utilizationAccent, effectiveAssignee,
+  utilizationAccent, effectiveAssignee, applyAssignments,
 } from '../../domain.js';
 import KVGrid from '../../components/KVGrid.jsx';
 import DataTable from '../../components/DataTable.jsx';
@@ -24,9 +24,10 @@ export default function StaffDetail() {
 
   const model = useMemo(() => {
     if (!staffQ.data || !subjectsQ.data) return null;
-    const person = staffQ.data.find((s) => s.id === id);
+    const eff = applyAssignments(staffQ.data, subjectsQ.data, demo.assignments);
+    const person = eff.find((s) => s.id === id);
     if (!person) return { missing: true };
-    const staffById = Object.fromEntries(staffQ.data.map((s) => [s.id, s]));
+    const staffById = Object.fromEntries(eff.map((s) => [s.id, s]));
     const caseload = subjectsQ.data.filter((subj) => {
       const owner = effectiveAssignee(subj, demo.assignments, staffById);
       return owner && owner.staffId === id;

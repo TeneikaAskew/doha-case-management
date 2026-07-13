@@ -7,8 +7,8 @@ import { useDemo } from '../state/DemoContext.jsx';
 import { usePersona } from '../state/PersonaContext.jsx';
 import {
   STAFF_ROLE_LABELS, EMPLOYMENT_LABELS, STAFF_STATUS_LABELS,
-  STAFF_STATUS_VARIANTS, STAGE_LABELS, GUIDELINES, utilizationAccent,
-  effectiveAssignee,
+  STAFF_STATUS_VARIANTS, STAGE_LABELS, utilizationAccent,
+  effectiveAssignee, applyAssignments,
 } from '../domain.js';
 import KPICard from '../components/KPICard.jsx';
 import DataTable from '../components/DataTable.jsx';
@@ -102,14 +102,16 @@ export default function Workforce() {
 
   const model = useMemo(() => {
     if (!staff || !subjects) return null;
-    const staffById = Object.fromEntries(staff.map((s) => [s.id, s]));
-    const workers = staff.filter((s) => s.role !== 'MANAGER');
+    const eff = applyAssignments(staff, subjects, demo.assignments);
+    const staffById = Object.fromEntries(eff.map((s) => [s.id, s]));
+    const workers = eff.filter((s) => s.role !== 'MANAGER');
     const avg = (arr, key) => (arr.length
       ? Math.round(arr.reduce((n, s) => n + s[key], 0) / arr.length) : 0);
     const unassigned = subjects.filter(
       (s) => !effectiveAssignee(s, demo.assignments, staffById));
-    const locations = [...new Set(staff.map((s) => s.location))].sort();
+    const locations = [...new Set(eff.map((s) => s.location))].sort();
     return {
+      eff,
       workers,
       unassigned,
       locations,
@@ -132,7 +134,7 @@ export default function Workforce() {
   const error = staffQ.error || subjectsQ.error;
   if (error) return <div className="page"><ErrorAlert message={error} /></div>;
 
-  const rows = staff.filter((s) =>
+  const rows = model.eff.filter((s) =>
     (role === 'ALL' || s.role === role)
     && (employment === 'ALL' || s.employmentType === employment)
     && (location === 'ALL' || s.location === location)
@@ -220,7 +222,7 @@ export default function Workforce() {
         {model.kpis.map((k) => <KPICard key={k.label} {...k} />)}
       </div>
 
-      <AssignmentPanel unassigned={model.unassigned} staff={staff}
+      <AssignmentPanel unassigned={model.unassigned} staff={model.eff}
         isManager={isManager} onAssign={assignCase} />
 
       <div className="card">

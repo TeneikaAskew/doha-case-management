@@ -1,12 +1,12 @@
 import { Link, useParams, useSearchParams } from 'react-router-dom';
 import { FiMessageCircle } from 'react-icons/fi';
-import { getCase, getStaff } from '../../data/api.js';
+import { getCase, getStaff, getSubjects } from '../../data/api.js';
 import { useData } from '../../data/useData.js';
 import { usePersona } from '../../state/PersonaContext.jsx';
 import { useDemo } from '../../state/DemoContext.jsx';
 import {
   STAGE_LABELS, STATUS_LABELS, STATUS_VARIANTS, ELIGIBILITY_LABELS, riskBand,
-  effectiveAssignee,
+  effectiveAssignee, applyAssignments,
 } from '../../domain.js';
 import { recommendAssignees } from '../workforce/recommend.js';
 import StatusBadge from '../../components/StatusBadge.jsx';
@@ -41,8 +41,9 @@ export default function CaseDetail() {
   const [params, setParams] = useSearchParams();
   const { data: caseData, loading, error } = useData(() => getCase(id), [id]);
   const staffQ = useData(getStaff);
+  const subjectsQ = useData(getSubjects);
 
-  if (loading || staffQ.loading) return <Loading />;
+  if (loading || staffQ.loading || subjectsQ.loading) return <Loading />;
   if (error) return <div className="page"><ErrorAlert message={error} /></div>;
 
   const active = params.get('tab') || persona.defaultCaseTab;
@@ -50,7 +51,10 @@ export default function CaseDetail() {
   const TabBody = tab.component;
   const s = caseData.subject;
   const band = riskBand(s.riskScore);
-  const staff = staffQ.data || [];
+  // effective roster reflects live demo (re)assignments, so recommendations
+  // score against current capacity, not the generated snapshot
+  const staff = applyAssignments(staffQ.data || [], subjectsQ.data || [],
+    demo.assignments);
   const staffById = Object.fromEntries(staff.map((m) => [m.id, m]));
   const assignee = effectiveAssignee(s, demo.assignments, staffById);
   const isManager = persona.id === 'manager';

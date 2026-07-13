@@ -167,3 +167,32 @@ export function effectiveAssignee(subject, assignments = {}, staffById = {}) {
   }
   return subject.assignee || null;
 }
+
+function statusFromUtil(pct) {
+  if (pct >= 100) return 'AT_CAPACITY';
+  if (pct >= 75) return 'LIMITED';
+  return 'AVAILABLE';
+}
+
+// Recompute each staffer's live caseload from the current effective assignments
+// (generated + demo overrides), so a reassignment moves load off the old owner
+// and onto the new one, and utilization/status/recommendations stay consistent.
+// `openCases` keeps each person's standing (non-demo) baseline load.
+export function applyAssignments(staff, subjects, assignments = {}) {
+  const byId = Object.fromEntries(staff.map((s) => [s.id, s]));
+  const casesByStaff = {};
+  for (const subject of subjects) {
+    const owner = effectiveAssignee(subject, assignments, byId);
+    if (owner) (casesByStaff[owner.staffId] ||= []).push(subject.id);
+  }
+  return staff.map((s) => {
+    const baseLoad = Math.max(0, s.openCases - s.assignedCaseIds.length);
+    const assignedCaseIds = casesByStaff[s.id] || [];
+    const openCases = baseLoad + assignedCaseIds.length;
+    const utilizationPct = s.capacity
+      ? Math.min(100, Math.round((1000 * openCases) / s.capacity) / 10)
+      : 0;
+    const status = s.status === 'OUT' ? 'OUT' : statusFromUtil(utilizationPct);
+    return { ...s, assignedCaseIds, openCases, utilizationPct, status };
+  });
+}
