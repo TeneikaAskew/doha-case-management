@@ -16,7 +16,12 @@
       ],
       "daysInStage": 41,
       "cvEnrolled": true,
-      "openAlerts": 3
+      "openAlerts": 3,
+      "assignee": {
+        "staffId": "STAFF-010",
+        "name": "L. Ortiz",
+        "role": "ADJUDICATOR"
+      }
     },
     {
       "id": "SUBJ-002",
@@ -34,7 +39,12 @@
       ],
       "daysInStage": 9,
       "cvEnrolled": true,
-      "openAlerts": 2
+      "openAlerts": 2,
+      "assignee": {
+        "staffId": "STAFF-008",
+        "name": "P. Nguyen",
+        "role": "ANALYST"
+      }
     },
     {
       "id": "SUBJ-003",
@@ -49,7 +59,12 @@
       "flaggedGuidelines": [],
       "daysInStage": 22,
       "cvEnrolled": false,
-      "openAlerts": 0
+      "openAlerts": 0,
+      "assignee": {
+        "staffId": "STAFF-001",
+        "name": "K. Rivas",
+        "role": "INVESTIGATOR"
+      }
     },
     {
       "id": "SUBJ-004",
@@ -64,7 +79,8 @@
       "flaggedGuidelines": [],
       "daysInStage": 3,
       "cvEnrolled": false,
-      "openAlerts": 0
+      "openAlerts": 0,
+      "assignee": null
     },
     {
       "id": "SUBJ-005",
@@ -79,7 +95,8 @@
       "flaggedGuidelines": [],
       "daysInStage": 7,
       "cvEnrolled": false,
-      "openAlerts": 0
+      "openAlerts": 0,
+      "assignee": null
     },
     {
       "id": "SUBJ-006",
@@ -96,7 +113,12 @@
       ],
       "daysInStage": 33,
       "cvEnrolled": false,
-      "openAlerts": 0
+      "openAlerts": 0,
+      "assignee": {
+        "staffId": "STAFF-002",
+        "name": "M. Delgado",
+        "role": "INVESTIGATOR"
+      }
     },
     {
       "id": "SUBJ-007",
@@ -113,7 +135,12 @@
       ],
       "daysInStage": 58,
       "cvEnrolled": false,
-      "openAlerts": 0
+      "openAlerts": 0,
+      "assignee": {
+        "staffId": "STAFF-003",
+        "name": "S. Whitfield",
+        "role": "INVESTIGATOR"
+      }
     },
     {
       "id": "SUBJ-008",
@@ -128,7 +155,12 @@
       "flaggedGuidelines": [],
       "daysInStage": 19,
       "cvEnrolled": false,
-      "openAlerts": 0
+      "openAlerts": 0,
+      "assignee": {
+        "staffId": "STAFF-004",
+        "name": "J. Ramos",
+        "role": "INVESTIGATOR"
+      }
     },
     {
       "id": "SUBJ-009",
@@ -145,7 +177,12 @@
       ],
       "daysInStage": 27,
       "cvEnrolled": false,
-      "openAlerts": 0
+      "openAlerts": 0,
+      "assignee": {
+        "staffId": "STAFF-011",
+        "name": "C. Yamamoto",
+        "role": "ADJUDICATOR"
+      }
     },
     {
       "id": "SUBJ-010",
@@ -160,7 +197,12 @@
       "flaggedGuidelines": [],
       "daysInStage": 12,
       "cvEnrolled": false,
-      "openAlerts": 0
+      "openAlerts": 0,
+      "assignee": {
+        "staffId": "STAFF-012",
+        "name": "M. Abara",
+        "role": "ADJUDICATOR"
+      }
     },
     {
       "id": "SUBJ-011",
@@ -175,7 +217,12 @@
       "flaggedGuidelines": [],
       "daysInStage": 8,
       "cvEnrolled": false,
-      "openAlerts": 0
+      "openAlerts": 0,
+      "assignee": {
+        "staffId": "STAFF-010",
+        "name": "L. Ortiz",
+        "role": "ADJUDICATOR"
+      }
     },
     {
       "id": "SUBJ-012",
@@ -190,7 +237,12 @@
       "flaggedGuidelines": [],
       "daysInStage": 340,
       "cvEnrolled": true,
-      "openAlerts": 2
+      "openAlerts": 2,
+      "assignee": {
+        "staffId": "STAFF-007",
+        "name": "R. Chen",
+        "role": "ANALYST"
+      }
     },
     {
       "id": "SUBJ-013",
@@ -207,7 +259,12 @@
       ],
       "daysInStage": 120,
       "cvEnrolled": true,
-      "openAlerts": 2
+      "openAlerts": 2,
+      "assignee": {
+        "staffId": "STAFF-009",
+        "name": "T. Bauer",
+        "role": "ANALYST"
+      }
     },
     {
       "id": "SUBJ-014",
@@ -222,7 +279,12 @@
       "flaggedGuidelines": [],
       "daysInStage": 510,
       "cvEnrolled": true,
-      "openAlerts": 1
+      "openAlerts": 1,
+      "assignee": {
+        "staffId": "STAFF-007",
+        "name": "R. Chen",
+        "role": "ANALYST"
+      }
     },
     {
       "id": "SUBJ-015",
@@ -239,7 +301,12 @@
       ],
       "daysInStage": 21,
       "cvEnrolled": true,
-      "openAlerts": 1
+      "openAlerts": 1,
+      "assignee": {
+        "staffId": "STAFF-007",
+        "name": "R. Chen",
+        "role": "ANALYST"
+      }
     }
   ]
 }

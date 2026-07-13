@@ -15,6 +15,11 @@
     "daysInStage": 21,
     "cvEnrolled": true,
     "openAlerts": 1,
+    "assignee": {
+      "staffId": "STAFF-007",
+      "name": "R. Chen",
+      "role": "ANALYST"
+    },
     "ssn": "935-35-1555",
     "dob": "1980-07-16",
     "placeOfBirth": "San Antonio, TX",

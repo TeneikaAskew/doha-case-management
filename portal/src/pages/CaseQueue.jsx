@@ -1,10 +1,12 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { getSubjects } from '../data/api.js';
+import { getSubjects, getStaff } from '../data/api.js';
 import { useData } from '../data/useData.js';
 import { usePersona } from '../state/PersonaContext.jsx';
+import { useDemo } from '../state/DemoContext.jsx';
 import {
   STAGE_LABELS, STATUS_LABELS, STATUS_VARIANTS, GUIDELINES, riskBand,
+  effectiveAssignee, effectiveStage,
 } from '../domain.js';
 import DataTable from '../components/DataTable.jsx';
 import StatusBadge from '../components/StatusBadge.jsx';
@@ -17,6 +19,7 @@ const PERSONA_STAGE = {
   investigator: 'INVESTIGATION',
   analyst: 'CONTINUOUS_VETTING',
   adjudicator: 'ADJUDICATION',
+  manager: 'ALL',
 };
 
 const RISK_ACCENT = {
@@ -37,24 +40,28 @@ export default function CaseQueue() {
   }, [q]);
 
   const navigate = useNavigate();
+  const { demo } = useDemo();
   const { data: subjects, loading, error } = useData(getSubjects);
+  const staffQ = useData(getStaff);
 
   const rows = useMemo(() => {
     if (!subjects) return [];
     return subjects.filter((s) =>
-      (stage === 'ALL' || s.stage === stage) &&
+      (stage === 'ALL' || effectiveStage(s, demo.assignments) === stage) &&
       (guideline === 'ALL' || s.flaggedGuidelines.includes(guideline)) &&
       (!q || s.name.toLowerCase().includes(q) || s.id.toLowerCase().includes(q)));
-  }, [subjects, stage, guideline, q]);
+  }, [subjects, stage, guideline, q, demo.assignments]);
 
-  if (loading) return <Loading />;
+  if (loading || staffQ.loading) return <Loading />;
   if (error) return <div className="page"><ErrorAlert message={error} /></div>;
 
+  const staffById = Object.fromEntries((staffQ.data || []).map((s) => [s.id, s]));
   const columns = [
     { key: 'name', label: 'Subject', sortable: true,
       render: (s) => <div><strong>{s.name}</strong><div className="muted">{s.position}</div></div> },
     { key: 'tier', label: 'Tier', sortable: true },
-    { key: 'stage', label: 'Stage', sortable: true, render: (s) => STAGE_LABELS[s.stage] },
+    { key: 'stage', label: 'Stage', sortable: true,
+      render: (s) => STAGE_LABELS[effectiveStage(s, demo.assignments)] },
     { key: 'status', label: 'Status',
       render: (s) => <StatusBadge variant={STATUS_VARIANTS[s.status]}>{STATUS_LABELS[s.status]}</StatusBadge> },
     { key: 'riskScore', label: 'Risk score', sortable: true,
@@ -66,6 +73,11 @@ export default function CaseQueue() {
       render: (s) => s.flaggedGuidelines.length
         ? s.flaggedGuidelines.map((g) => <GuidelineChip key={g} code={g} />)
         : <span className="muted">-</span> },
+    { key: 'assignee', label: 'Assignee',
+      render: (s) => {
+        const a = effectiveAssignee(s, demo.assignments, staffById);
+        return a ? a.name : <span className="muted">Unassigned</span>;
+      } },
     { key: 'daysInStage', label: 'Days in stage', sortable: true },
   ];
 

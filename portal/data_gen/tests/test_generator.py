@@ -16,7 +16,8 @@ def out(tmp_path_factory):
 
 def test_counts(out):
     _, counts = out
-    assert counts == {"subjects": 15, "cases": 15, "alerts": counts["alerts"]}
+    assert counts == {"subjects": 15, "cases": 15, "alerts": counts["alerts"],
+                      "staff": 14}
     assert counts["alerts"] >= 4
 
 
@@ -28,6 +29,41 @@ def test_subjects_file_validates(out):
     stages = {s.stage for s in parsed.subjects}
     assert stages == {"INITIATION", "INVESTIGATION", "ADJUDICATION", "CONTINUOUS_VETTING"}
     assert any(s.fastTrack for s in parsed.subjects)
+
+
+def test_staff_file_validates_and_assignments_are_consistent(out):
+    out_dir, _ = out
+    staff = schemas.StaffFile.model_validate(
+        json.loads((out_dir / "staff.json").read_text(encoding="utf-8"))).staff
+    subjects = schemas.SubjectsFile.model_validate(
+        json.loads((out_dir / "subjects.json").read_text(encoding="utf-8"))).subjects
+    # Every role and both employment types are represented.
+    assert {s.role for s in staff} == {
+        "INVESTIGATOR", "ANALYST", "ADJUDICATOR", "MANAGER"}
+    assert {s.employmentType for s in staff} == {"FEDERAL", "CONTRACTOR"}
+    # Utilization stays within bounds and tracks caseload vs capacity.
+    for s in staff:
+        assert 0.0 <= s.utilizationPct <= 100.0, s.id
+        assert s.openCases >= len(s.assignedCaseIds), s.id
+        if s.role == "MANAGER":
+            assert s.capacity == 0 and not s.assignedCaseIds
+
+    by_id = {s.id: s for s in staff}
+    assigned_ids = {cid for s in staff for cid in s.assignedCaseIds}
+    for subj in subjects:
+        if subj.stage == "INITIATION":
+            # Newly-initiated cases await manager assignment.
+            assert subj.assignee is None, subj.id
+            continue
+        assert subj.assignee is not None, subj.id
+        owner = by_id[subj.assignee.staffId]
+        # The stamped assignee agrees with the staff roster and covers the tier.
+        assert subj.id in owner.assignedCaseIds, subj.id
+        assert subj.assignee.role == owner.role
+        assert subj.tier in owner.tierCoverage, subj.id
+        assert owner.status != "OUT", subj.id
+    # assignedCaseIds and subject.assignee are two views of the same assignment.
+    assert assigned_ids == {s.id for s in subjects if s.assignee}
 
 
 def test_every_case_file_validates(out):

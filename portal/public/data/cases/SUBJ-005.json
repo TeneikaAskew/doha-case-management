@@ -13,6 +13,7 @@
     "daysInStage": 7,
     "cvEnrolled": false,
     "openAlerts": 0,
+    "assignee": null,
     "ssn": "925-45-1185",
     "dob": "1985-06-15",
     "placeOfBirth": "Dayton, OH",

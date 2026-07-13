@@ -3,10 +3,11 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import { MemoryRouter, useNavigate, Routes, Route } from 'react-router-dom';
 import { PersonaProvider } from '../state/PersonaContext.jsx';
 import { DemoProvider } from '../state/DemoContext.jsx';
-import { SUBJECTS } from './fixtures.js';
+import { SUBJECTS, STAFF } from './fixtures.js';
 
 vi.mock('../data/api.js', () => ({
   getSubjects: () => Promise.resolve(SUBJECTS),
+  getStaff: () => Promise.resolve(STAFF),
 }));
 
 import CaseQueue from '../pages/CaseQueue.jsx';

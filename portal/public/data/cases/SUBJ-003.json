@@ -13,6 +13,11 @@
     "daysInStage": 22,
     "cvEnrolled": false,
     "openAlerts": 0,
+    "assignee": {
+      "staffId": "STAFF-001",
+      "name": "K. Rivas",
+      "role": "INVESTIGATOR"
+    },
     "ssn": "941-62-2210",
     "dob": "1996-07-30",
     "placeOfBirth": "Edison, New Jersey",

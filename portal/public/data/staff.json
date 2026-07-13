@@ -1,0 +1,364 @@
+{
+  "staff": [
+    {
+      "id": "STAFF-001",
+      "name": "K. Rivas",
+      "role": "INVESTIGATOR",
+      "employmentType": "FEDERAL",
+      "team": "DCSA Field Operations",
+      "location": "Northern Virginia",
+      "tierCoverage": [
+        "T1",
+        "T2",
+        "T3"
+      ],
+      "specialties": [
+        "E"
+      ],
+      "capacity": 6,
+      "openCases": 4,
+      "utilizationPct": 66.7,
+      "medianTurnaroundDays": 71.0,
+      "onTimePct": 88.0,
+      "status": "AVAILABLE",
+      "nextAvailable": "2026-07-02",
+      "assignedCaseIds": [
+        "SUBJ-003"
+      ]
+    },
+    {
+      "id": "STAFF-002",
+      "name": "M. Delgado",
+      "role": "INVESTIGATOR",
+      "employmentType": "FEDERAL",
+      "team": "DCSA Field Operations",
+      "location": "Mid-Atlantic",
+      "tierCoverage": [
+        "T3",
+        "T5"
+      ],
+      "specialties": [
+        "F",
+        "E"
+      ],
+      "capacity": 5,
+      "openCases": 3,
+      "utilizationPct": 60.0,
+      "medianTurnaroundDays": 78.0,
+      "onTimePct": 91.0,
+      "status": "AVAILABLE",
+      "nextAvailable": "2026-07-02",
+      "assignedCaseIds": [
+        "SUBJ-006"
+      ]
+    },
+    {
+      "id": "STAFF-003",
+      "name": "S. Whitfield",
+      "role": "INVESTIGATOR",
+      "employmentType": "FEDERAL",
+      "team": "DCSA Field Operations",
+      "location": "Washington DC",
+      "tierCoverage": [
+        "T5"
+      ],
+      "specialties": [
+        "B",
+        "F"
+      ],
+      "capacity": 4,
+      "openCases": 3,
+      "utilizationPct": 75.0,
+      "medianTurnaroundDays": 84.0,
+      "onTimePct": 82.0,
+      "status": "LIMITED",
+      "nextAvailable": "2026-07-07",
+      "assignedCaseIds": [
+        "SUBJ-007"
+      ]
+    },
+    {
+      "id": "STAFF-004",
+      "name": "J. Ramos",
+      "role": "INVESTIGATOR",
+      "employmentType": "CONTRACTOR",
+      "team": "Sentinel Investigative Services",
+      "location": "National Capital Region",
+      "tierCoverage": [
+        "T2",
+        "T3",
+        "T5"
+      ],
+      "specialties": [
+        "J",
+        "H"
+      ],
+      "capacity": 6,
+      "openCases": 5,
+      "utilizationPct": 83.3,
+      "medianTurnaroundDays": 66.0,
+      "onTimePct": 94.0,
+      "status": "LIMITED",
+      "nextAvailable": "2026-07-07",
+      "assignedCaseIds": [
+        "SUBJ-008"
+      ]
+    },
+    {
+      "id": "STAFF-005",
+      "name": "D. Foley",
+      "role": "INVESTIGATOR",
+      "employmentType": "FEDERAL",
+      "team": "DCSA Field Operations",
+      "location": "Tidewater",
+      "tierCoverage": [
+        "T1",
+        "T2",
+        "T3"
+      ],
+      "specialties": [
+        "G",
+        "J"
+      ],
+      "capacity": 6,
+      "openCases": 3,
+      "utilizationPct": 50.0,
+      "medianTurnaroundDays": 69.0,
+      "onTimePct": 90.0,
+      "status": "AVAILABLE",
+      "nextAvailable": "2026-07-02",
+      "assignedCaseIds": []
+    },
+    {
+      "id": "STAFF-006",
+      "name": "A. Okonkwo",
+      "role": "INVESTIGATOR",
+      "employmentType": "CONTRACTOR",
+      "team": "Vanguard Background Services",
+      "location": "Southeast",
+      "tierCoverage": [
+        "T3",
+        "T5"
+      ],
+      "specialties": [
+        "M",
+        "E"
+      ],
+      "capacity": 5,
+      "openCases": 2,
+      "utilizationPct": 40.0,
+      "medianTurnaroundDays": 74.0,
+      "onTimePct": 86.0,
+      "status": "OUT",
+      "nextAvailable": "2026-07-23",
+      "assignedCaseIds": []
+    },
+    {
+      "id": "STAFF-007",
+      "name": "R. Chen",
+      "role": "ANALYST",
+      "employmentType": "FEDERAL",
+      "team": "CV Analysis Cell - East",
+      "location": "National Capital Region",
+      "tierCoverage": [
+        "T3",
+        "T5"
+      ],
+      "specialties": [
+        "F",
+        "B"
+      ],
+      "capacity": 8,
+      "openCases": 7,
+      "utilizationPct": 87.5,
+      "medianTurnaroundDays": 4.0,
+      "onTimePct": 96.0,
+      "status": "LIMITED",
+      "nextAvailable": "2026-07-07",
+      "assignedCaseIds": [
+        "SUBJ-012",
+        "SUBJ-014",
+        "SUBJ-015"
+      ]
+    },
+    {
+      "id": "STAFF-008",
+      "name": "P. Nguyen",
+      "role": "ANALYST",
+      "employmentType": "CONTRACTOR",
+      "team": "Sentinel Investigative Services",
+      "location": "Western Region",
+      "tierCoverage": [
+        "T3",
+        "T5"
+      ],
+      "specialties": [
+        "J",
+        "G"
+      ],
+      "capacity": 8,
+      "openCases": 6,
+      "utilizationPct": 75.0,
+      "medianTurnaroundDays": 5.0,
+      "onTimePct": 89.0,
+      "status": "LIMITED",
+      "nextAvailable": "2026-07-07",
+      "assignedCaseIds": [
+        "SUBJ-002"
+      ]
+    },
+    {
+      "id": "STAFF-009",
+      "name": "T. Bauer",
+      "role": "ANALYST",
+      "employmentType": "FEDERAL",
+      "team": "CV Analysis Cell - West",
+      "location": "Western Region",
+      "tierCoverage": [
+        "T3",
+        "T5"
+      ],
+      "specialties": [
+        "K",
+        "E"
+      ],
+      "capacity": 8,
+      "openCases": 4,
+      "utilizationPct": 50.0,
+      "medianTurnaroundDays": 6.0,
+      "onTimePct": 92.0,
+      "status": "AVAILABLE",
+      "nextAvailable": "2026-07-02",
+      "assignedCaseIds": [
+        "SUBJ-013"
+      ]
+    },
+    {
+      "id": "STAFF-010",
+      "name": "L. Ortiz",
+      "role": "ADJUDICATOR",
+      "employmentType": "FEDERAL",
+      "team": "DoD CAF Adjudications",
+      "location": "National Capital Region",
+      "tierCoverage": [
+        "T1",
+        "T2",
+        "T3",
+        "T5"
+      ],
+      "specialties": [
+        "F",
+        "B"
+      ],
+      "capacity": 10,
+      "openCases": 8,
+      "utilizationPct": 80.0,
+      "medianTurnaroundDays": 27.0,
+      "onTimePct": 90.0,
+      "status": "LIMITED",
+      "nextAvailable": "2026-07-07",
+      "assignedCaseIds": [
+        "SUBJ-001",
+        "SUBJ-011"
+      ]
+    },
+    {
+      "id": "STAFF-011",
+      "name": "C. Yamamoto",
+      "role": "ADJUDICATOR",
+      "employmentType": "FEDERAL",
+      "team": "DoD CAF Adjudications",
+      "location": "National Capital Region",
+      "tierCoverage": [
+        "T3",
+        "T5"
+      ],
+      "specialties": [
+        "H",
+        "G"
+      ],
+      "capacity": 10,
+      "openCases": 8,
+      "utilizationPct": 80.0,
+      "medianTurnaroundDays": 31.0,
+      "onTimePct": 84.0,
+      "status": "LIMITED",
+      "nextAvailable": "2026-07-07",
+      "assignedCaseIds": [
+        "SUBJ-009"
+      ]
+    },
+    {
+      "id": "STAFF-012",
+      "name": "M. Abara",
+      "role": "ADJUDICATOR",
+      "employmentType": "FEDERAL",
+      "team": "DoD CAF Adjudications",
+      "location": "National Capital Region",
+      "tierCoverage": [
+        "T1",
+        "T5"
+      ],
+      "specialties": [
+        "J",
+        "E"
+      ],
+      "capacity": 9,
+      "openCases": 6,
+      "utilizationPct": 66.7,
+      "medianTurnaroundDays": 24.0,
+      "onTimePct": 93.0,
+      "status": "AVAILABLE",
+      "nextAvailable": "2026-07-02",
+      "assignedCaseIds": [
+        "SUBJ-010"
+      ]
+    },
+    {
+      "id": "STAFF-013",
+      "name": "D. Okoye",
+      "role": "MANAGER",
+      "employmentType": "FEDERAL",
+      "team": "DCSA Field Operations",
+      "location": "National Capital Region",
+      "tierCoverage": [
+        "T1",
+        "T2",
+        "T3",
+        "T5"
+      ],
+      "specialties": [],
+      "capacity": 0,
+      "openCases": 0,
+      "utilizationPct": 0.0,
+      "medianTurnaroundDays": 0.0,
+      "onTimePct": 100.0,
+      "status": "AVAILABLE",
+      "nextAvailable": "2026-07-02",
+      "assignedCaseIds": []
+    },
+    {
+      "id": "STAFF-014",
+      "name": "R. Feldman",
+      "role": "MANAGER",
+      "employmentType": "FEDERAL",
+      "team": "DoD CAF Adjudications",
+      "location": "National Capital Region",
+      "tierCoverage": [
+        "T1",
+        "T2",
+        "T3",
+        "T5"
+      ],
+      "specialties": [],
+      "capacity": 0,
+      "openCases": 0,
+      "utilizationPct": 0.0,
+      "medianTurnaroundDays": 0.0,
+      "onTimePct": 100.0,
+      "status": "AVAILABLE",
+      "nextAvailable": "2026-07-02",
+      "assignedCaseIds": []
+    }
+  ]
+}

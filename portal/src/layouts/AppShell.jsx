@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import {
   FiHome, FiUser, FiUsers, FiActivity, FiDatabase, FiBarChart2, FiHelpCircle,
-  FiChevronLeft, FiChevronRight, FiSearch, FiRotateCcw, FiLogOut,
+  FiChevronLeft, FiChevronRight, FiSearch, FiRotateCcw, FiLogOut, FiBriefcase,
 } from 'react-icons/fi';
 import { usePersona } from '../state/PersonaContext.jsx';
 import { useDemo } from '../state/DemoContext.jsx';
@@ -17,6 +17,7 @@ const NAV_ITEMS = [
   { to: '/', end: true, label: 'Subjects', Icon: FiUsers },
   { to: '/dashboard', label: 'Dashboard', Icon: FiHome },
   { to: '/cases', label: 'Case Queue', Icon: FiUser },
+  { to: '/workforce', label: 'Workforce', Icon: FiBriefcase },
   { to: '/alerts', label: 'Alerts', Icon: FiActivity },
   { to: '/providers', label: 'Data Providers', Icon: FiDatabase },
   { to: '/analytics', label: 'Analytics', Icon: FiBarChart2 },

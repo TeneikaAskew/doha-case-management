@@ -18,7 +18,41 @@ export const PERSONAS = [
   { id: 'investigator', label: 'Investigator', defaultCaseTab: 'investigation' },
   { id: 'analyst', label: 'Analyst', defaultCaseTab: 'continuous-vetting' },
   { id: 'adjudicator', label: 'Adjudicator', defaultCaseTab: 'adjudication' },
+  { id: 'manager', label: 'Manager', defaultCaseTab: 'overview' },
 ];
+
+// Which worker role owns a case at each lifecycle stage (mirrors data_gen
+// workforce.STAGE_ROLE). Managers assign work rather than take it.
+export const STAGE_ROLE = {
+  INITIATION: 'INVESTIGATOR',
+  INVESTIGATION: 'INVESTIGATOR',
+  ADJUDICATION: 'ADJUDICATOR',
+  CONTINUOUS_VETTING: 'ANALYST',
+};
+
+export const STAFF_ROLE_LABELS = {
+  INVESTIGATOR: 'Investigator',
+  ANALYST: 'Analyst',
+  ADJUDICATOR: 'Adjudicator',
+  MANAGER: 'Manager',
+};
+
+export const EMPLOYMENT_LABELS = { FEDERAL: 'Federal', CONTRACTOR: 'Contractor' };
+
+export const STAFF_STATUS_LABELS = {
+  AVAILABLE: 'Available',
+  LIMITED: 'Limited',
+  AT_CAPACITY: 'At Capacity',
+  OUT: 'Out',
+};
+
+// Capacity, not severity: available is favorable (green), out is neutral gray.
+export const STAFF_STATUS_VARIANTS = {
+  AVAILABLE: 'success',
+  LIMITED: 'warning',
+  AT_CAPACITY: 'error',
+  OUT: 'neutral',
+};
 
 export const STAGE_LABELS = {
   INITIATION: 'Initiation',
@@ -114,4 +148,61 @@ export function riskBand(score) {
   if (score >= 75) return 'high';
   if (score >= 40) return 'moderate';
   return 'low';
+}
+
+// Utilization reads as capacity pressure, not risk: low is favorable.
+export function utilizationAccent(pct) {
+  if (pct >= 90) return 'var(--status-alert)';
+  if (pct >= 75) return 'var(--status-warning-dark)';
+  return 'var(--status-clear)';
+}
+
+// A case's effective owner: a demo assignment (from DemoContext) overrides the
+// generated assignee. Returns an {staffId,name,role} object or null.
+export function effectiveAssignee(subject, assignments = {}, staffById = {}) {
+  const demoStaffId = assignments[subject.id];
+  if (demoStaffId && staffById[demoStaffId]) {
+    const s = staffById[demoStaffId];
+    return { staffId: s.id, name: s.name, role: s.role };
+  }
+  return subject.assignee || null;
+}
+
+// Assigning an unassigned Initiation case opens its investigation, so its
+// effective stage becomes Investigation and it flows into the investigator's
+// default queue. Display-only overlay; the generated stage is unchanged.
+export function effectiveStage(subject, assignments = {}) {
+  if (subject.stage === 'INITIATION' && assignments[subject.id]) {
+    return 'INVESTIGATION';
+  }
+  return subject.stage;
+}
+
+function statusFromUtil(pct) {
+  if (pct >= 100) return 'AT_CAPACITY';
+  if (pct >= 75) return 'LIMITED';
+  return 'AVAILABLE';
+}
+
+// Recompute each staffer's live caseload from the current effective assignments
+// (generated + demo overrides), so a reassignment moves load off the old owner
+// and onto the new one, and utilization/status/recommendations stay consistent.
+// `openCases` keeps each person's standing (non-demo) baseline load.
+export function applyAssignments(staff, subjects, assignments = {}) {
+  const byId = Object.fromEntries(staff.map((s) => [s.id, s]));
+  const casesByStaff = {};
+  for (const subject of subjects) {
+    const owner = effectiveAssignee(subject, assignments, byId);
+    if (owner) (casesByStaff[owner.staffId] ||= []).push(subject.id);
+  }
+  return staff.map((s) => {
+    const baseLoad = Math.max(0, s.openCases - s.assignedCaseIds.length);
+    const assignedCaseIds = casesByStaff[s.id] || [];
+    const openCases = baseLoad + assignedCaseIds.length;
+    const utilizationPct = s.capacity
+      ? Math.min(100, Math.round((1000 * openCases) / s.capacity) / 10)
+      : 0;
+    const status = s.status === 'OUT' ? 'OUT' : statusFromUtil(utilizationPct);
+    return { ...s, assignedCaseIds, openCases, utilizationPct, status };
+  });
 }

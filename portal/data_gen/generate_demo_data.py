@@ -18,6 +18,7 @@ from documents import PROVIDER_IDS
 from hero_cases import build_hero_cases, TODAY
 from roster import build_roster_cases
 from standard_form import build_standard_form
+from workforce import build_staff
 
 DEFAULT_OUT = Path(__file__).resolve().parents[1] / "public" / "data"
 
@@ -169,6 +170,10 @@ def main(out_dir: Path = DEFAULT_OUT) -> dict:
         c["subject"]["openAlerts"] = sum(
             1 for a in c["alerts"] if a["state"] not in ("ADJUDICATED", "CLOSED"))
 
+    # Workforce roster; assigns each case to an eligible worker and stamps
+    # subject["assignee"], so this must run before the subjects/cases are dumped.
+    staff = build_staff(cases)
+
     # One real DOHA record kept for reference; typed per-subject documents
     # are authored in hero_cases/roster and written below.
     df_full = corpus.load_full_corpus()
@@ -231,6 +236,7 @@ def main(out_dir: Path = DEFAULT_OUT) -> dict:
         path.parent.mkdir(parents=True, exist_ok=True)
         dump(gd.model_dump(), path)
     dump(schemas.SubjectsFile(subjects=subjects).model_dump(), out_dir / "subjects.json")
+    dump(schemas.StaffFile(staff=staff).model_dump(), out_dir / "staff.json")
     for c in validated_cases:
         dump(c.model_dump(), out_dir / "cases" / f"{c.subject.id}.json")
     dump(schemas.AlertsFile(alerts=all_alerts).model_dump(), out_dir / "alerts.json")
@@ -293,7 +299,7 @@ def main(out_dir: Path = DEFAULT_OUT) -> dict:
     dump(analytics.model_dump(), out_dir / "analytics.json")
 
     return {"subjects": len(subjects), "cases": len(validated_cases),
-            "alerts": len(all_alerts)}
+            "alerts": len(all_alerts), "staff": len(staff)}
 
 
 if __name__ == "__main__":

@@ -16,6 +16,11 @@
     "daysInStage": 9,
     "cvEnrolled": true,
     "openAlerts": 2,
+    "assignee": {
+      "staffId": "STAFF-008",
+      "name": "P. Nguyen",
+      "role": "ANALYST"
+    },
     "ssn": "917-38-7733",
     "dob": "1992-11-02",
     "placeOfBirth": "Norfolk, Virginia",

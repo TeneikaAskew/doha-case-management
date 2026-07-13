@@ -10,6 +10,8 @@ import SubjectsHome from './pages/SubjectsHome.jsx';
 import Dashboard from './pages/Dashboard.jsx';
 import CaseQueue from './pages/CaseQueue.jsx';
 import CaseDetail from './pages/case/CaseDetail.jsx';
+import Workforce from './pages/Workforce.jsx';
+import StaffDetail from './pages/workforce/StaffDetail.jsx';
 import CVAlerts from './pages/CVAlerts.jsx';
 import DataProviders from './pages/DataProviders.jsx';
 import ProviderDetail from './pages/ProviderDetail.jsx';
@@ -46,6 +48,8 @@ function Gate() {
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/cases" element={<CaseQueue />} />
               <Route path="/cases/:id" element={<CaseDetail />} />
+              <Route path="/workforce" element={<Workforce />} />
+              <Route path="/workforce/:id" element={<StaffDetail />} />
               <Route path="/alerts" element={<CVAlerts />} />
               <Route path="/providers" element={<DataProviders />} />
               <Route path="/providers/:id" element={<ProviderDetail />} />

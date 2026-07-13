@@ -2,7 +2,8 @@ import { createContext, useContext, useState } from 'react';
 import { ALERT_TRANSITIONS } from '../domain.js';
 
 const EMPTY = {
-  alertStates: {}, decisions: {}, roiEntries: {}, worksheetRatings: {}, askThreads: {},
+  alertStates: {}, decisions: {}, roiEntries: {}, worksheetRatings: {},
+  askThreads: {}, assignments: {},
 };
 const DemoContext = createContext(null);
 
@@ -140,6 +141,9 @@ export function DemoProvider({ children }) {
     dispositionAlert,
     recordDecision: (caseId, d) => appendTo('decisions', caseId, d),
     addRoiEntry: (caseId, e) => appendTo('roiEntries', caseId, e),
+    assignCase: (caseId, staffId) => persist({
+      ...demo, assignments: { ...demo.assignments, [caseId]: staffId },
+    }),
     askThreadState,
     addAskMessage,
     newAskConversation,
