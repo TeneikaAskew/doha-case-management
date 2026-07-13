@@ -15,6 +15,11 @@
     "daysInStage": 120,
     "cvEnrolled": true,
     "openAlerts": 2,
+    "assignee": {
+      "staffId": "STAFF-009",
+      "name": "T. Bauer",
+      "role": "ANALYST"
+    },
     "ssn": "933-21-1481",
     "dob": "1993-05-14",
     "placeOfBirth": "Baltimore, MD",

@@ -13,6 +13,11 @@
     "daysInStage": 19,
     "cvEnrolled": false,
     "openAlerts": 0,
+    "assignee": {
+      "staffId": "STAFF-004",
+      "name": "J. Ramos",
+      "role": "INVESTIGATOR"
+    },
     "ssn": "928-66-1296",
     "dob": "1988-09-18",
     "placeOfBirth": "Columbus, OH",

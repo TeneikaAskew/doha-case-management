@@ -16,6 +16,11 @@
     "daysInStage": 41,
     "cvEnrolled": true,
     "openAlerts": 3,
+    "assignee": {
+      "staffId": "STAFF-010",
+      "name": "L. Ortiz",
+      "role": "ADJUDICATOR"
+    },
     "ssn": "923-04-4821",
     "dob": "1988-03-14",
     "placeOfBirth": "Lagos, Nigeria",

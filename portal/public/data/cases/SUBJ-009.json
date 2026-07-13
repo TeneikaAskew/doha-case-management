@@ -15,6 +15,11 @@
     "daysInStage": 27,
     "cvEnrolled": false,
     "openAlerts": 0,
+    "assignee": {
+      "staffId": "STAFF-011",
+      "name": "C. Yamamoto",
+      "role": "ADJUDICATOR"
+    },
     "ssn": "929-73-1333",
     "dob": "1989-01-10",
     "placeOfBirth": "San Antonio, TX",

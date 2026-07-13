@@ -23,6 +23,15 @@ DocType = Literal["POLICE_REPORT", "CREDIT_REPORT", "SAR", "RAPBACK_NOTIFICATION
                   "SF86_EXCERPT", "TRAVEL_RECORD", "INCIDENT_REPORT", "ROI",
                   "PUBLIC_RECORD"]
 EvidenceType = Literal["ALERT", "RECORD_CHECK", "DOCUMENT"]
+StaffRole = Literal["INVESTIGATOR", "ANALYST", "ADJUDICATOR", "MANAGER"]
+EmploymentType = Literal["FEDERAL", "CONTRACTOR"]
+StaffStatus = Literal["AVAILABLE", "LIMITED", "AT_CAPACITY", "OUT"]
+
+
+class Assignee(BaseModel):
+    staffId: str
+    name: str
+    role: StaffRole
 
 
 class SubjectSummary(BaseModel):
@@ -39,6 +48,7 @@ class SubjectSummary(BaseModel):
     daysInStage: int = Field(ge=0)
     cvEnrolled: bool
     openAlerts: int = Field(ge=0)
+    assignee: Optional[Assignee] = None  # case owner; None = unassigned
 
 
 class AddressEntry(BaseModel):
@@ -451,6 +461,31 @@ class CaseLinksFile(BaseModel):
 
 class SubjectsFile(BaseModel):
     subjects: list[SubjectSummary]
+
+
+class StaffMember(BaseModel):
+    """A member of the vetting workforce (investigator, analyst, adjudicator,
+    or manager), federal or contractor, with capacity and turnaround metrics."""
+    id: str                              # STAFF-001
+    name: str
+    role: StaffRole
+    employmentType: EmploymentType
+    team: str                            # org / unit
+    location: str                        # field office
+    tierCoverage: list[Tier]             # investigation tiers this person works
+    specialties: list[GuidelineCode]     # guideline areas of strength
+    capacity: int = Field(ge=0)          # max concurrent cases
+    openCases: int = Field(ge=0)         # current caseload
+    utilizationPct: float = Field(ge=0.0, le=100.0)
+    medianTurnaroundDays: float = Field(ge=0.0)
+    onTimePct: float = Field(ge=0.0, le=100.0)  # SLA adherence
+    status: StaffStatus
+    nextAvailable: str                   # ISO date the person frees capacity
+    assignedCaseIds: list[str] = []      # demo case ids owned by this person
+
+
+class StaffFile(BaseModel):
+    staff: list[StaffMember]
 
 
 class AlertsFile(BaseModel):

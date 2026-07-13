@@ -15,6 +15,11 @@
     "daysInStage": 58,
     "cvEnrolled": false,
     "openAlerts": 0,
+    "assignee": {
+      "staffId": "STAFF-003",
+      "name": "S. Whitfield",
+      "role": "INVESTIGATOR"
+    },
     "ssn": "927-59-1259",
     "dob": "1987-08-17",
     "placeOfBirth": "Baltimore, MD",

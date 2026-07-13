@@ -13,6 +13,11 @@
     "daysInStage": 510,
     "cvEnrolled": true,
     "openAlerts": 1,
+    "assignee": {
+      "staffId": "STAFF-007",
+      "name": "R. Chen",
+      "role": "ANALYST"
+    },
     "ssn": "934-28-1518",
     "dob": "1994-06-15",
     "placeOfBirth": "Columbus, OH",

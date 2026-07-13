@@ -13,6 +13,7 @@
     "daysInStage": 3,
     "cvEnrolled": false,
     "openAlerts": 0,
+    "assignee": null,
     "ssn": "924-38-1148",
     "dob": "1984-05-14",
     "placeOfBirth": "Tacoma, WA",

@@ -13,6 +13,11 @@
     "daysInStage": 8,
     "cvEnrolled": false,
     "openAlerts": 0,
+    "assignee": {
+      "staffId": "STAFF-010",
+      "name": "L. Ortiz",
+      "role": "ADJUDICATOR"
+    },
     "ssn": "931-87-1407",
     "dob": "1991-03-12",
     "placeOfBirth": "Dayton, OH",

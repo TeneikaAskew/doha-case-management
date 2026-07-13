@@ -15,6 +15,11 @@
     "daysInStage": 33,
     "cvEnrolled": false,
     "openAlerts": 0,
+    "assignee": {
+      "staffId": "STAFF-002",
+      "name": "M. Delgado",
+      "role": "INVESTIGATOR"
+    },
     "ssn": "926-52-1222",
     "dob": "1986-07-16",
     "placeOfBirth": "Richmond, VA",

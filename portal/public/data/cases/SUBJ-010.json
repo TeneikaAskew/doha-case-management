@@ -13,6 +13,11 @@
     "daysInStage": 12,
     "cvEnrolled": false,
     "openAlerts": 0,
+    "assignee": {
+      "staffId": "STAFF-012",
+      "name": "M. Abara",
+      "role": "ADJUDICATOR"
+    },
     "ssn": "930-80-1370",
     "dob": "1990-02-11",
     "placeOfBirth": "Tacoma, WA",
