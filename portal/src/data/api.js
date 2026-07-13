@@ -12,6 +12,7 @@ export async function fetchJson(path) {
 }
 
 export const getSubjects = () => fetchJson('subjects.json').then((d) => d.subjects);
+export const getStaff = () => fetchJson('staff.json').then((d) => d.staff);
 export const getCase = (id) => fetchJson(`cases/${id}.json`);
 export const getAlerts = () => fetchJson('alerts.json').then((d) => d.alerts);
 export const getProviders = () => fetchJson('providers.json').then((d) => d.providers);

@@ -1,12 +1,12 @@
 import { useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FiList } from 'react-icons/fi';
-import { getSubjects, getAlerts } from '../data/api.js';
+import { getSubjects, getAlerts, getStaff } from '../data/api.js';
 import { useData } from '../data/useData.js';
 import { usePersona } from '../state/PersonaContext.jsx';
 import { useDemo } from '../state/DemoContext.jsx';
 import {
-  STAGE_LABELS, STATUS_LABELS, STATUS_VARIANTS, riskBand,
+  STAGE_LABELS, STATUS_LABELS, STATUS_VARIANTS, riskBand, effectiveAssignee,
 } from '../domain.js';
 import KPICard from '../components/KPICard.jsx';
 import DataTable from '../components/DataTable.jsx';
@@ -17,9 +17,31 @@ import { Loading, ErrorAlert } from '../components/States.jsx';
 import SectionRef, { RefLink } from '../components/SectionRef.jsx';
 import { REFS } from '../references.js';
 
-function buildKpis(personaId, subjects, alerts) {
+function buildKpis(personaId, subjects, alerts, staff, assignments) {
   const inStage = (st) => subjects.filter((s) => s.stage === st);
   const openAlerts = alerts.filter((a) => !['ADJUDICATED', 'CLOSED'].includes(a.state));
+  if (personaId === 'manager') {
+    const staffById = Object.fromEntries((staff || []).map((s) => [s.id, s]));
+    const workers = (staff || []).filter((s) => s.role !== 'MANAGER');
+    const avg = (key) => (workers.length
+      ? Math.round(workers.reduce((n, s) => n + s[key], 0) / workers.length) : 0);
+    const unassigned = subjects.filter(
+      (s) => !effectiveAssignee(s, assignments, staffById));
+    return {
+      queue: unassigned,
+      title: 'Cases Awaiting Assignment',
+      kpis: [
+        { label: 'Workforce', value: workers.length, accent: 'var(--dcsa-ocean)' },
+        { label: 'Available Now',
+          value: workers.filter((s) => s.status === 'AVAILABLE').length,
+          accent: 'var(--status-clear)' },
+        { label: 'Avg Utilization', value: `${avg('utilizationPct')}%`,
+          accent: 'var(--status-warning-dark)' },
+        { label: 'Awaiting Assignment', value: unassigned.length,
+          accent: unassigned.length ? 'var(--status-alert)' : 'var(--status-clear)' },
+      ],
+    };
+  }
   switch (personaId) {
     case 'investigator': {
       const inv = inStage('INVESTIGATION');
@@ -81,15 +103,18 @@ export default function Dashboard() {
   const navigate = useNavigate();
   const subjectsQ = useData(getSubjects);
   const alertsQ = useData(getAlerts);
+  const staffQ = useData(getStaff);
 
   const model = useMemo(() => {
-    if (!subjectsQ.data || !alertsQ.data) return null;
+    if (!subjectsQ.data || !alertsQ.data || !staffQ.data) return null;
     const effectiveAlerts = alertsQ.data.map((a) => ({ ...a, state: demo.alertStates[a.id] || a.state }));
-    return buildKpis(persona.id, subjectsQ.data, effectiveAlerts);
-  }, [persona.id, subjectsQ.data, alertsQ.data, demo.alertStates]);
+    return buildKpis(persona.id, subjectsQ.data, effectiveAlerts, staffQ.data,
+      demo.assignments);
+  }, [persona.id, subjectsQ.data, alertsQ.data, staffQ.data, demo.alertStates,
+    demo.assignments]);
 
-  if (subjectsQ.loading || alertsQ.loading) return <Loading />;
-  const error = subjectsQ.error || alertsQ.error;
+  if (subjectsQ.loading || alertsQ.loading || staffQ.loading) return <Loading />;
+  const error = subjectsQ.error || alertsQ.error || staffQ.error;
   if (error) return <div className="page"><ErrorAlert message={error} /></div>;
 
   const columns = [

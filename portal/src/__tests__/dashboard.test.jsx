@@ -3,11 +3,12 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { PersonaProvider, usePersona } from '../state/PersonaContext.jsx';
 import { DemoProvider } from '../state/DemoContext.jsx';
-import { SUBJECTS, ALERTS } from './fixtures.js';
+import { SUBJECTS, ALERTS, STAFF } from './fixtures.js';
 
 vi.mock('../data/api.js', () => ({
   getSubjects: () => Promise.resolve(SUBJECTS),
   getAlerts: () => Promise.resolve(ALERTS),
+  getStaff: () => Promise.resolve(STAFF),
 }));
 
 import Dashboard from '../pages/Dashboard.jsx';

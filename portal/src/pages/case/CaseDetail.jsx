@@ -1,11 +1,14 @@
 import { Link, useParams, useSearchParams } from 'react-router-dom';
 import { FiMessageCircle } from 'react-icons/fi';
-import { getCase } from '../../data/api.js';
+import { getCase, getStaff } from '../../data/api.js';
 import { useData } from '../../data/useData.js';
 import { usePersona } from '../../state/PersonaContext.jsx';
+import { useDemo } from '../../state/DemoContext.jsx';
 import {
   STAGE_LABELS, STATUS_LABELS, STATUS_VARIANTS, ELIGIBILITY_LABELS, riskBand,
+  effectiveAssignee,
 } from '../../domain.js';
+import { recommendAssignees } from '../workforce/recommend.js';
 import StatusBadge from '../../components/StatusBadge.jsx';
 import GuidelineChip from '../../components/GuidelineChip.jsx';
 import { Loading, ErrorAlert } from '../../components/States.jsx';
@@ -34,10 +37,12 @@ const TABS = [
 export default function CaseDetail() {
   const { id } = useParams();
   const { persona } = usePersona();
+  const { demo, assignCase } = useDemo();
   const [params, setParams] = useSearchParams();
   const { data: caseData, loading, error } = useData(() => getCase(id), [id]);
+  const staffQ = useData(getStaff);
 
-  if (loading) return <Loading />;
+  if (loading || staffQ.loading) return <Loading />;
   if (error) return <div className="page"><ErrorAlert message={error} /></div>;
 
   const active = params.get('tab') || persona.defaultCaseTab;
@@ -45,6 +50,11 @@ export default function CaseDetail() {
   const TabBody = tab.component;
   const s = caseData.subject;
   const band = riskBand(s.riskScore);
+  const staff = staffQ.data || [];
+  const staffById = Object.fromEntries(staff.map((m) => [m.id, m]));
+  const assignee = effectiveAssignee(s, demo.assignments, staffById);
+  const isManager = persona.id === 'manager';
+  const recos = recommendAssignees(s, staff);
 
   return (
     <div className="page">
@@ -62,6 +72,27 @@ export default function CaseDetail() {
             <StatusBadge variant={STATUS_VARIANTS[s.status]}>{STATUS_LABELS[s.status]}</StatusBadge>
             <StatusBadge variant="neutral">{STAGE_LABELS[s.stage]}</StatusBadge>
             {s.flaggedGuidelines.map((g) => <GuidelineChip key={g} code={g} />)}
+          </div>
+          <div className="subject-assignment">
+            <span className="muted">Assignee:</span>
+            {assignee
+              ? <Link to={`/workforce/${assignee.staffId}`}>{assignee.name}</Link>
+              : <em className="muted">Unassigned</em>}
+            {isManager && recos.length > 0 && (
+              <label className="subject-reassign">
+                <span className="form-label-inline">
+                  {assignee ? 'Reassign' : 'Assign'}
+                </span>
+                <select aria-label="Assign case" value={assignee?.staffId || ''}
+                  onChange={(e) => assignCase(s.id, e.target.value)}>
+                  {!assignee && <option value="" disabled>Select assignee</option>}
+                  {recos.map((r) => (
+                    <option key={r.staff.id} value={r.staff.id}>
+                      {r.staff.name} - {r.roleLabel} ({r.score})
+                    </option>))}
+                </select>
+              </label>
+            )}
           </div>
         </div>
         <div className="risk-dial-wrap">

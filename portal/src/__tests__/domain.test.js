@@ -10,9 +10,11 @@ describe('domain', () => {
     expect(GUIDELINES.F).toBe('Financial Considerations');
   });
 
-  it('defines three personas with default case tabs', () => {
-    expect(PERSONAS.map((p) => p.id)).toEqual(['investigator', 'analyst', 'adjudicator']);
+  it('defines the personas with default case tabs', () => {
+    expect(PERSONAS.map((p) => p.id)).toEqual(
+      ['investigator', 'analyst', 'adjudicator', 'manager']);
     expect(PERSONAS.find((p) => p.id === 'adjudicator').defaultCaseTab).toBe('adjudication');
+    expect(PERSONAS.find((p) => p.id === 'manager').defaultCaseTab).toBe('overview');
   });
 
   it('risk bands', () => {
