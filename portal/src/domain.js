@@ -144,6 +144,14 @@ export const ALERT_CATEGORY_GUIDELINE = {
   TERRORISM: 'A', ELIGIBILITY: 'E', SUITABILITY: 'E',
 };
 
+// Compact large-number notation for tight (mobile) layouts: 3410000 -> "3.4M",
+// 84210556 -> "84.2M", 36700 -> "36.7K". Small numbers pass through unabbreviated.
+export function formatCompact(n) {
+  return new Intl.NumberFormat('en-US', {
+    notation: 'compact', maximumFractionDigits: 1,
+  }).format(n);
+}
+
 export function riskBand(score) {
   if (score >= 75) return 'high';
   if (score >= 40) return 'moderate';

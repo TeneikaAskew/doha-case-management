@@ -4,6 +4,7 @@ import {
 } from '../../domain.js';
 import KPICard from '../../components/KPICard.jsx';
 import StatusBadge from '../../components/StatusBadge.jsx';
+import Count from '../../components/Count.jsx';
 import { EmptyState } from '../../components/States.jsx';
 
 const SEVERITY_VARIANT = { HIGH: 'error', MODERATE: 'warning', LOW: 'info' };
@@ -59,7 +60,7 @@ export default function TriageQueue({ alerts, network, isAnalyst, dispositionAle
         <KPICard label="Alerts Received" value={alerts.length}
           accent="var(--dcsa-navy)"
           subtitle={network
-            && `${network.findings12mo.toLocaleString('en-US')} network-wide past year`} />
+            && <><Count value={network.findings12mo} /> network-wide past year</>} />
         <KPICard label="Adjudicated / Closed" value={done.length}
           accent="var(--status-clear)"
           subtitle={network && `auto-clear ${network.autoClearPct}% upstream`}

@@ -1,4 +1,5 @@
 import KPICard from '../../components/KPICard.jsx';
+import Count from '../../components/Count.jsx';
 
 // Trailing-quarter check volume vs the quarter before it, from the
 // provider's own monthly series.
@@ -21,7 +22,7 @@ export default function HealthKpis({ provider: p }) {
   const checksTrend = n && quarterTrend(n.monthly);
   return (
     <div className="kpi-grid kpi-grid-six">
-      <KPICard label="Records" value={p.recordCount.toLocaleString('en-US')}
+      <KPICard label="Records" value={<Count value={p.recordCount} />}
         accent="var(--dcsa-ocean)" subtitle={p.recordsGrowthQtr}
         trend={p.recordsGrowthQtr.startsWith('+') ? 'up' : 'down'} />
       <KPICard label="Match Error Rate" value={`${p.matchErrorRate}%`}
@@ -30,15 +31,15 @@ export default function HealthKpis({ provider: p }) {
       {n && (
         <>
           <KPICard label="Covered Subjects"
-            value={n.coveredSubjects.toLocaleString('en-US')}
+            value={<Count value={n.coveredSubjects} />}
             accent="var(--dcsa-navy)" subtitle="wired to this source" />
           <KPICard label="Checks Past Year"
-            value={n.checks12mo.toLocaleString('en-US')}
+            value={<Count value={n.checks12mo} />}
             accent="var(--dcsa-ocean)"
             subtitle={checksTrend ? checksTrend.label : 'network-wide deliveries'}
             trend={checksTrend?.dir} />
           <KPICard label="Alerts Past Year"
-            value={n.findings12mo.toLocaleString('en-US')}
+            value={<Count value={n.findings12mo} />}
             accent="var(--status-warning)"
             subtitle={`auto-clear ${n.autoClearPct}%`}
             progressPct={n.autoClearPct} />

@@ -10,9 +10,16 @@ import CollapsibleSection from '../components/CollapsibleSection.jsx';
 import KVGrid from '../components/KVGrid.jsx';
 import DataTable from '../components/DataTable.jsx';
 import Toggle from '../components/Toggle.jsx';
+import Count from '../components/Count.jsx';
 import { EmptyState } from '../components/States.jsx';
 
 describe('primitives', () => {
+  it('Count renders both a full and a compact form of a large number', () => {
+    const { container } = render(<Count value={3410000} />);
+    expect(container.querySelector('.count-full').textContent).toBe('3,410,000');
+    expect(container.querySelector('.count-compact').textContent).toBe('3.4M');
+  });
+
   it('Toggle renders as a switch, fires onChange, and supports disabled', () => {
     const onChange = vi.fn();
     const { rerender } = render(
