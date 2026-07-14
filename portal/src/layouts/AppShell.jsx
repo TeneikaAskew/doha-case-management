@@ -3,6 +3,7 @@ import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import {
   FiHome, FiUser, FiUsers, FiActivity, FiDatabase, FiBarChart2, FiHelpCircle,
   FiChevronLeft, FiChevronRight, FiSearch, FiRotateCcw, FiLogOut, FiBriefcase,
+  FiMenu,
 } from 'react-icons/fi';
 import { usePersona } from '../state/PersonaContext.jsx';
 import { useDemo } from '../state/DemoContext.jsx';
@@ -31,6 +32,7 @@ export default function AppShell() {
   const navigate = useNavigate();
   const [collapsed, setCollapsed] = useState(
     () => localStorage.getItem(SIDEBAR_STORAGE_KEY) === 'collapsed');
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
   const toggleSidebar = () => {
     const next = !collapsed;
@@ -47,6 +49,11 @@ export default function AppShell() {
   return (
     <div className="app">
       <header className="app-header">
+        <button type="button" className="mobile-nav-toggle"
+          aria-label="Toggle navigation" aria-expanded={mobileNavOpen}
+          onClick={() => setMobileNavOpen((o) => !o)}>
+          <FiMenu aria-hidden="true" />
+        </button>
         <div className="app-header-brand">
           <ShieldMark className="app-header-seal" />
           <div>
@@ -79,13 +86,19 @@ export default function AppShell() {
           </button>
         </div>
       </header>
-      <nav className={collapsed ? 'app-sidebar collapsed' : 'app-sidebar'}>
+      {mobileNavOpen && (
+        <button type="button" className="nav-backdrop" aria-label="Close navigation"
+          onClick={() => setMobileNavOpen(false)} />
+      )}
+      <nav className={`app-sidebar${collapsed ? ' collapsed' : ''}`
+        + `${mobileNavOpen ? ' mobile-open' : ''}`}>
         <button type="button" className="sidebar-toggle" onClick={toggleSidebar}
           aria-label="Toggle sidebar">
           {collapsed ? <FiChevronRight /> : <FiChevronLeft />}
         </button>
         {NAV_ITEMS.map(({ to, end, label, Icon }) => (
-          <NavLink key={to} to={to} end={end} title={collapsed ? label : undefined}>
+          <NavLink key={to} to={to} end={end} title={collapsed ? label : undefined}
+            onClick={() => setMobileNavOpen(false)}>
             <span className="sidebar-icon" aria-hidden="true"><Icon /></span>
             <span className="sidebar-label">{label}</span>
           </NavLink>
