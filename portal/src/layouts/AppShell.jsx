@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import {
   FiHome, FiUser, FiUsers, FiActivity, FiDatabase, FiBarChart2, FiHelpCircle,
@@ -33,6 +33,22 @@ export default function AppShell() {
   const [collapsed, setCollapsed] = useState(
     () => localStorage.getItem(SIDEBAR_STORAGE_KEY) === 'collapsed');
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const navRef = useRef(null);
+
+  // On phones the drawer is only translated off-screen, so mark it inert while
+  // closed - otherwise its links stay in the tab order and screen-reader flow
+  // ahead of the page content. On wider screens the sidebar is always visible
+  // and interactive.
+  useEffect(() => {
+    const mq = window.matchMedia?.('(max-width: 640px)');
+    if (!mq) return undefined;
+    const apply = () => {
+      if (navRef.current) navRef.current.inert = mq.matches && !mobileNavOpen;
+    };
+    apply();
+    mq.addEventListener('change', apply);
+    return () => mq.removeEventListener('change', apply);
+  }, [mobileNavOpen]);
 
   const toggleSidebar = () => {
     const next = !collapsed;
@@ -90,7 +106,7 @@ export default function AppShell() {
         <button type="button" className="nav-backdrop" aria-label="Close navigation"
           onClick={() => setMobileNavOpen(false)} />
       )}
-      <nav className={`app-sidebar${collapsed ? ' collapsed' : ''}`
+      <nav ref={navRef} className={`app-sidebar${collapsed ? ' collapsed' : ''}`
         + `${mobileNavOpen ? ' mobile-open' : ''}`}>
         <button type="button" className="sidebar-toggle" onClick={toggleSidebar}
           aria-label="Toggle sidebar">
