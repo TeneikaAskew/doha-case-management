@@ -45,6 +45,12 @@ describe('primitives', () => {
     expect(screen.getByText('3 overdue')).toBeInTheDocument();
   });
 
+  it('KPICard compacts a large numeric value for phones', () => {
+    const { container } = render(<KPICard label="Records" value={3410000} />);
+    expect(container.querySelector('.count-full').textContent).toBe('3,410,000');
+    expect(container.querySelector('.count-compact').textContent).toBe('3.4M');
+  });
+
   it('KPICard shows a trend arrow and a progress bar when asked', () => {
     render(<KPICard label="Records" value="1,000" subtitle="+0.6% this quarter"
       trend="up" progressPct={55} />);
