@@ -4,6 +4,7 @@ import { getAlerts, getProviderActivity, getProviders } from '../data/api.js';
 import { useData } from '../data/useData.js';
 import { GUIDELINES } from '../domain.js';
 import StatusBadge from '../components/StatusBadge.jsx';
+import Count from '../components/Count.jsx';
 import { Loading, ErrorAlert } from '../components/States.jsx';
 import SectionRef, { RefLink } from '../components/SectionRef.jsx';
 import { REFS } from '../references.js';
@@ -53,7 +54,7 @@ export default function DataProviders() {
                 <StatusBadge key={u} variant="neutral">{USED_IN_LABEL[u]}</StatusBadge>))}
             </div>
             <div className="provider-sync-row">
-              <p><strong>{p.recordCount.toLocaleString('en-US')}</strong>
+              <p><strong><Count value={p.recordCount} /></strong>
                 <span className="muted"> records</span></p>
               <span className="muted provider-sync"
                 aria-label={`Last sync ${p.lastSync.slice(0, 10)}`}

@@ -242,3 +242,11 @@
   text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-secondary);
   margin: 0; }
 .document-context-note { margin: 0; font-size: var(--font-size-sm); }
+
+/* Count: full number on desktop, compact K/M/B on phones (matches the KPI
+   grid breakpoint). */
+.count-compact { display: none; }
+@media (max-width: 600px) {
+  .count-full { display: none; }
+  .count-compact { display: inline; }
+}

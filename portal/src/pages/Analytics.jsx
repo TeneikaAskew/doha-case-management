@@ -12,6 +12,7 @@ import {
   STAGE_LABELS, ELIGIBILITY_LABELS, ALERT_CATEGORY_LABELS, riskBand,
 } from '../domain.js';
 import KPICard from '../components/KPICard.jsx';
+import Count from '../components/Count.jsx';
 import Toggle from '../components/Toggle.jsx';
 import { Loading, ErrorAlert } from '../components/States.jsx';
 import SectionRef, { RefLink } from '../components/SectionRef.jsx';
@@ -22,7 +23,6 @@ const TOOLTIP_STYLE = {
   background: 'var(--bg-card)', border: '1px solid var(--border-light)',
   borderRadius: 'var(--radius-sm)', boxShadow: 'var(--shadow-dropdown)',
 };
-const fmt = (n) => n.toLocaleString('en-US');
 // compact data labels: 20,881 -> "20.9k", 941 -> "941"
 const kfmt = (n) => (n >= 1000 ? `${(n / 1000).toFixed(1).replace(/\.0$/, '')}k` : String(n));
 
@@ -389,15 +389,15 @@ function CorpusTab({ corpus }) {
   return (
     <>
       <div className="kpi-grid">
-        <KPICard label="Total DOHA Cases" value={fmt(corpus.totalCases)}
+        <KPICard label="Total DOHA Cases" value={<Count value={corpus.totalCases} />}
           accent="var(--dcsa-navy)" />
-        <KPICard label="Granted" value={fmt(corpus.byOutcome.GRANTED ?? 0)}
+        <KPICard label="Granted" value={<Count value={corpus.byOutcome.GRANTED ?? 0} />}
           accent="var(--status-clear)" />
-        <KPICard label="Denied" value={fmt(corpus.byOutcome.DENIED ?? 0)}
+        <KPICard label="Denied" value={<Count value={corpus.byOutcome.DENIED ?? 0} />}
           accent="var(--status-alert)" />
-        <KPICard label="Hearings" value={fmt(corpus.byCaseType.hearing ?? 0)}
+        <KPICard label="Hearings" value={<Count value={corpus.byCaseType.hearing ?? 0} />}
           accent="var(--dcsa-gold)" />
-        <KPICard label="Appeals" value={fmt(corpus.byCaseType.appeal ?? 0)}
+        <KPICard label="Appeals" value={<Count value={corpus.byCaseType.appeal ?? 0} />}
           accent="var(--dcsa-ocean)" />
       </div>
       <div className="card chart-card">
