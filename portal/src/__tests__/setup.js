@@ -27,3 +27,13 @@ global.ResizeObserver = class ResizeObserver {
   unobserve() {}
   disconnect() {}
 };
+
+// jsdom lacks matchMedia; the shell uses it to make the mobile nav drawer inert.
+// Default to desktop (no match) so the sidebar stays interactive in tests.
+if (!window.matchMedia) {
+  window.matchMedia = (query) => ({
+    matches: false, media: query, onchange: null,
+    addEventListener() {}, removeEventListener() {},
+    addListener() {}, removeListener() {}, dispatchEvent() { return false; },
+  });
+}
