@@ -122,6 +122,10 @@ export default function AppShell() {
       </nav>
       <main className="app-main">
         <Outlet />
+        <footer className="app-footer">
+          Built by <a href="https://www.linkedin.com/in/teneikaaskew"
+            target="_blank" rel="noreferrer">Teneika Askew</a>
+        </footer>
       </main>
     </div>
   );
