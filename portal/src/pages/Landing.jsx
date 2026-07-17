@@ -747,6 +747,10 @@ export default function Landing({ onSignIn }) {
               and analytics come from published DOHA decisions.
             </span>
             <span>Photography via Unsplash and Pexels.</span>
+            <span>
+              Built by <a href="https://www.linkedin.com/in/teneikaaskew"
+                target="_blank" rel="noreferrer">Teneika Askew</a>.
+            </span>
           </div>
         </div>
       </footer>

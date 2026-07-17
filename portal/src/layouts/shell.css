@@ -107,3 +107,9 @@
   .nav-backdrop { display: block; position: fixed; inset: var(--header-height) 0 0 0;
     background: rgba(0, 21, 48, 0.4); border: none; z-index: 85; cursor: pointer; }
 }
+
+.app-footer { padding: var(--space-4) var(--space-6); text-align: center;
+  font-size: var(--font-size-xs); color: var(--text-muted);
+  border-top: 1px solid var(--border-light); }
+.app-footer a { color: var(--dcsa-ocean-dark); font-weight: 600; }
+.app-footer a:hover { text-decoration: underline; }
