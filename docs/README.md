@@ -10,6 +10,7 @@ portal (`portal/`) and the SEAD-4 / DOHA data and analysis work that underpins i
 
 | Doc | What it is |
 | --- | --- |
+| [whitepaper/aegis-vetting-at-mission-speed.md](whitepaper/aegis-vetting-at-mission-speed.md) | **White paper**: the research-backed, screenshot-led case for the vetting experience layer, written for agency stakeholders. A self-contained HTML edition sits beside it for sharing and print-to-PDF. |
 | [portal/PRODUCT.md](../portal/PRODUCT.md) | Plain-language product overview: who the portal serves, the story it tells, the Trusted Workforce 2.0 lifecycle it covers. |
 | [portal/CAPABILITIES.md](../portal/CAPABILITIES.md) | Factual, file-referenced inventory of what the app does today (access, personas, tabs, data model). |
 | [README.md](../README.md) | Repo-level README for the SEAD-4 Adjudicative Guidelines Analyzer (the original LLM project this grew from). |
