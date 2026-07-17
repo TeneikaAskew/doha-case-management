@@ -77,6 +77,25 @@ def test_every_case_file_validates(out):
         assert case.subject.addressHistory and case.subject.employmentHistory
 
 
+def test_fictional_identity_conventions_are_enforced(out):
+    """Every subject uses fictional-safe identifiers: 900-series SSNs (never
+    issued by SSA), phones in the reserved 555-01xx fiction range, and
+    example-domain emails. A regenerated dataset cannot ship a real-looking
+    identifier without failing here."""
+    import re
+    out_dir, _ = out
+    for f in sorted((out_dir / "cases").glob("*.json")):
+        s = schemas.CaseDetail.model_validate(
+            json.loads(f.read_text(encoding="utf-8"))).subject
+        assert re.fullmatch(r"9\d{2}-\d{2}-\d{4}", s.ssn), \
+            f"{s.id}: SSN not in the fictional 900-series format"
+        assert re.fullmatch(r"\(\d{3}\) 555-01\d{2}", s.phone), \
+            f"{s.id}: phone not in the reserved 555-01xx range"
+        domain = s.email.rsplit("@", 1)[-1]
+        assert domain == "example.com" or domain.endswith(".example"), \
+            f"{s.id}: email not on an example domain"
+
+
 def test_every_subject_profile_is_complete(out):
     """Demo requirement: no biographic field may be missing or blank, anywhere."""
     out_dir, _ = out
